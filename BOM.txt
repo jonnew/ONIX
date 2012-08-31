@@ -1,0 +1,30 @@
+Capacitors:
+# Value   Name      Package Digi-Key Part #   ID            Description
+3 0.1 uF  capacitor 402     445-1265-1-ND     C1, C2, C10   Bypass
+2 10 uF   capacitor 603     399-5504-1-ND     C3, C5        Bypass
+1 1.0 uF  capacitor 402     490-3890-1-ND     C4            Bypass
+
+Resistors:
+# Value       Name      Package Digi-Key Part #   ID    Description
+1 0           resistor  603     P0.0GCT-ND        R0    Ref-to-GND	
+1 100         resistor  402     P100JCT-ND        R7    SDO impedance matching resistor
+1 15.8K (1%)  resistor  603     P15.8KHCT-ND      RH1   High-cut resistor 1
+1 26.7K (1%)  resistor  603     P26.7KHCT-ND      RH2   High-cut resistor 2
+1 86.6K (1%)  resistor  603     P86.6KHCT-ND      RL    Low-cut resistor
+1 2K          resistor  402     P2.0KJCT-ND       RLED  Resistor for LED
+
+ICs:
+# Name       Package     Digi-Key Part #          ID    Description
+1 RHA2132    QFN-40      N/A                      U1    Intan 32ch amplifier/mux 
+1 ADP1710    TSOT-23-5   ADP1710AUJZ-2.5-R7CT-ND  U2    Voltage regulator
+1 ADR381     SOT-23      ADR381ARTZ-REEL7CT-ND    U3    Voltage reference
+1 AD7980     MSOP-10     AD7980ARMZRL7CT-ND       U4    16-bit ADC
+
+LED:
+# Value      Name    Package  Digi-Key Part #     ID    Description
+1 RED        LED     603      160-1447-1-ND       LED   power indicator LED
+
+Connectors:
+# Value        Name                      Digi-Key Part Number    ID       Description
+1 467650001    Micro HDMI-D connector    WM1281CT-ND             HDMI     micro HDMI connector
+1 503376-3410  Molex 34ch 0.4mm          5033763410-ND           MOLEX    EIB connector - mouser nr: 538-503376-3410
