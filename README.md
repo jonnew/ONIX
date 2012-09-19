@@ -9,6 +9,8 @@ Cost of raw materials: $457.37
 
 Time to build: 1.5 hours
 
+View on [Open Ephys](http://open-ephys.com/headstage/).
+
 If you're interested in building your own headstage, we strongly recommend getting in touch with us via the Open Ephys [contact](http://open-ephys.com/contact) page.
 
 Details
