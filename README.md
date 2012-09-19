@@ -41,6 +41,7 @@ Features that may be added in the future
 
 Known issues
 ------------------
+- In the current version of the headstage, the board and schematic are NOT consistent. This will be updated in future revisions. For now, please disregard any airwires, disconnected traces, or DRC errors that stem from Eagle detecting inconsistencies between the two files.
 - Gold-immersion finish makes the white solder mask look slighly pinkish; let's switch to black in the future
 
 File types
