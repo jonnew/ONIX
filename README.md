@@ -3,7 +3,7 @@ headstage
 
 Description
 ----------------
-The Open Ephys headstage uses an [Intan amplifier chip](www.intantech.com) to filter, amplify, and multiplex 32 channels of neural data. An onboard analog-to-digital converter digitizes each signal with 16-bit resolution. Instead of one wire per channel, as is required for analog headstages, our headstage can send 32 channels over as few as 7 wires. And the signal is purely digital, so there are no artifacts from tether movement.
+The Open Ephys headstage uses an [Intan amplifier chip](http://www.intantech.com) to filter, amplify, and multiplex 32 channels of neural data. An onboard analog-to-digital converter digitizes each signal with 16-bit resolution. Instead of one wire per channel, as is required for analog headstages, our headstage can send 32 channels over as few as 7 wires. And the signal is purely digital, so there are no artifacts from tether movement.
 
 Cost of raw materials: $457.37
 
