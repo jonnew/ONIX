@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.1">
+<eagle version="6.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -6195,23 +6195,13 @@ Metric Code Size 5664</description>
 <instance part="GND13" gate="1" x="-78.74" y="-88.9" rot="R270"/>
 <instance part="GND14" gate="1" x="-15.24" y="-38.1"/>
 <instance part="GND15" gate="1" x="-86.36" y="-60.96" rot="R270"/>
-<instance part="GND16" gate="1" x="-27.94" y="50.8" rot="R270"/>
-<instance part="GND17" gate="1" x="30.48" y="66.04" rot="R90"/>
+<instance part="GND16" gate="1" x="-27.94" y="66.04" rot="R270"/>
+<instance part="GND17" gate="1" x="33.02" y="50.8" rot="R90"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GND" class="0">
-<segment>
-<pinref part="S1" gate="A" pin="B18"/>
-<wire x1="22.86" y1="66.04" x2="27.94" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="GND17" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="S1" gate="A" pin="T1"/>
-<wire x1="-20.32" y1="50.8" x2="-25.4" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="GND16" gate="1" pin="GND"/>
-</segment>
 <segment>
 <wire x1="27.94" y1="-83.82" x2="27.94" y2="-73.66" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="-73.66" x2="25.4" y2="-71.12" width="0.1524" layer="91"/>
@@ -6307,22 +6297,32 @@ Metric Code Size 5664</description>
 <pinref part="GND15" gate="1" pin="GND"/>
 <wire x1="-78.74" y1="-60.96" x2="-83.82" y2="-60.96" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="GND16" gate="1" pin="GND"/>
+<pinref part="S1" gate="A" pin="B1"/>
+<wire x1="-25.4" y1="66.04" x2="-20.32" y2="66.04" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND17" gate="1" pin="GND"/>
+<pinref part="S1" gate="A" pin="T18"/>
+<wire x1="30.48" y1="50.8" x2="22.86" y2="50.8" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="REF" class="0">
-<segment>
-<pinref part="S1" gate="A" pin="B1"/>
-<wire x1="-20.32" y1="66.04" x2="-25.4" y2="66.04" width="0.1524" layer="91"/>
-<label x="-33.02" y="66.04" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="S1" gate="A" pin="T18"/>
-<wire x1="22.86" y1="50.8" x2="27.94" y2="50.8" width="0.1524" layer="91"/>
-<label x="30.48" y="50.8" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="U1" gate="A" pin="REF_ELEC"/>
 <wire x1="-30.48" y1="0" x2="-35.56" y2="0" width="0.1524" layer="91"/>
 <label x="-40.64" y="0" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="S1" gate="A" pin="T1"/>
+<wire x1="-20.32" y1="50.8" x2="-25.4" y2="50.8" width="0.1524" layer="91"/>
+<label x="-30.48" y="50.8" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="S1" gate="A" pin="B18"/>
+<wire x1="22.86" y1="66.04" x2="27.94" y2="66.04" width="0.1524" layer="91"/>
+<label x="30.48" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CS-" class="0">
