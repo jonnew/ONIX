@@ -46,5 +46,3 @@ File types
 - .SLDPRT files = SolidWorks part files; contain CAD models of 3D components
 - .STL files = stereolithography files; can be sent to a rapid prototyping service (such as Shapeways) to create 3D objects
 - .eps file = encapsulated postscript files; describe the shape of laser-cut parts (Ponoko only). Can be edited in Adobe Illustrator.
-
-NOTE: If you're interested in building any of the Open Ephys tools on your own, please get in touch with us via our [contact](http://open-ephys.com/contact) page.
