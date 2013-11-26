@@ -1,5 +1,5 @@
 Qty,Value,Device,Package,Digi-Key part number,Schematic Name,description,price,total,order
-1,RHA2132,Intan RHA2132,QFN-40,N/A,U1,Intan 32ch amplifier/mux ,390,390,
+1,RHD2132,Intan RHD2132,QFN-40,N/A,U1,Intan 32ch amplifier/mux ,390,390,
 4,0.1 uF,capacitor,402,445-1265-1-ND,"C_a,C_{x,y,z}",Bypass for accelerometer,0.1,0.4,50
 1,10 uF,capacitor,402,587-3237-1-ND,C_vdd,Bypass main Vdd,0.1,0.1,100
 1,10 nF,capacitor,402,445-1262-6-ND,C_ref,Bypass adc ref,0.1,0.1,50
