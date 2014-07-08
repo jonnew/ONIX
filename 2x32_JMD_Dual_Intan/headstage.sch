@@ -832,7 +832,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <rectangle x1="-0.1524" y1="-1.0668" x2="0.1524" y2="-0.254" layer="51" rot="R90"/>
 <rectangle x1="-0.1524" y1="0.254" x2="0.1524" y2="1.0668" layer="51" rot="R90"/>
 </package>
-<package name="1X05">
+<package name="1X06">
 <wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
 <wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
 <wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
@@ -881,6 +881,15 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="9.525" y1="-1.27" x2="8.89" y2="-0.635" width="0.1524" layer="21"/>
 <pad name="5" x="10.16" y="0" drill="1.016" rot="R90"/>
 <rectangle x1="9.906" y1="-0.254" x2="10.414" y2="0.254" layer="51"/>
+<wire x1="11.43" y1="0.635" x2="12.065" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="12.065" y1="1.27" x2="13.335" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="13.335" y1="1.27" x2="13.97" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="13.97" y1="0.635" x2="13.97" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="13.97" y1="-0.635" x2="13.335" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="13.335" y1="-1.27" x2="12.065" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="12.065" y1="-1.27" x2="11.43" y2="-0.635" width="0.1524" layer="21"/>
+<pad name="6" x="12.7" y="0" drill="1.016" rot="R90"/>
+<rectangle x1="12.446" y1="-0.254" x2="12.954" y2="0.254" layer="51"/>
 </package>
 <package name="JMD70">
 <smd name="1" x="-8.5" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R90"/>
@@ -1018,18 +1027,19 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <vertex x="-2.413" y="-2.921"/>
 </polygon>
 </symbol>
-<symbol name="PINHD1X5">
-<wire x1="-3.81" y1="-7.62" x2="3.81" y2="-7.62" width="0.4064" layer="94"/>
-<wire x1="3.81" y1="-7.62" x2="3.81" y2="7.62" width="0.4064" layer="94"/>
+<symbol name="PINHD1X6">
+<wire x1="-3.81" y1="-10.16" x2="3.81" y2="-10.16" width="0.4064" layer="94"/>
+<wire x1="3.81" y1="-10.16" x2="3.81" y2="7.62" width="0.4064" layer="94"/>
 <wire x1="3.81" y1="7.62" x2="-3.81" y2="7.62" width="0.4064" layer="94"/>
-<wire x1="-3.81" y1="7.62" x2="-3.81" y2="-7.62" width="0.4064" layer="94"/>
+<wire x1="-3.81" y1="7.62" x2="-3.81" y2="-10.16" width="0.4064" layer="94"/>
 <text x="-3.81" y="8.255" size="1.778" layer="95">&gt;NAME</text>
-<text x="-3.81" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-3.81" y="-12.7" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="1" x="0" y="5.08" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="2" x="0" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="3" x="0" y="0" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="4" x="0" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="5" x="0" y="-5.08" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="6" x="0" y="-7.62" visible="pad" length="short" direction="pas" function="dot"/>
 </symbol>
 <symbol name="PINHD2X35">
 <pin name="1" x="0" y="-7.62" visible="pad" length="middle" rot="R90"/>
@@ -1338,18 +1348,19 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="PINHX-1X5">
+<deviceset name="PINHX-1X6">
 <gates>
-<gate name="G$1" symbol="PINHD1X5" x="0" y="0"/>
+<gate name="G$1" symbol="PINHD1X6" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="1X05">
+<device name="" package="1X06">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
 <connect gate="G$1" pin="3" pad="3"/>
 <connect gate="G$1" pin="4" pad="4"/>
 <connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="6" pad="6"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1498,7 +1509,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="GND32" library="supply1" deviceset="GND" device=""/>
 <part name="VDD17" library="supply1" deviceset="VDD" device=""/>
 <part name="PWR" library="puggleboard" deviceset="LED" device="_0603"/>
-<part name="JP1" library="puggleboard" deviceset="PINHX-1X5" device=""/>
+<part name="JP1" library="puggleboard" deviceset="PINHX-1X6" device=""/>
 <part name="AIN" library="puggleboard" deviceset="PINHD-2X35" device="_JMD70"/>
 </parts>
 <sheets>
@@ -1703,7 +1714,12 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="U2" gate="A" pin="GND3"/>
 <pinref part="GND32" gate="1" pin="GND"/>
-<wire x1="231.14" y1="129.54" x2="231.14" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="129.54" x2="231.14" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="G$1" pin="6"/>
+<wire x1="231.14" y1="121.92" x2="231.14" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="121.92" x2="223.52" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="121.92" x2="223.52" y2="104.14" width="0.1524" layer="91"/>
+<junction x="231.14" y="121.92"/>
 </segment>
 </net>
 <net name="REF" class="0">
