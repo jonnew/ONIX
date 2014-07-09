@@ -709,7 +709,7 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="12.192" y="24.511" size="0.8128" layer="27" font="vector" ratio="18"/>
 </element>
 <element name="PLATE" library="headstage" package="PCM12" value="" x="20.193" y="9.779" smashed="yes" rot="R90">
-<attribute name="NAME" x="20.701" y="11.303" size="0.8128" layer="25" font="vector" ratio="18" rot="R270"/>
+<attribute name="NAME" x="20.955" y="11.303" size="0.8128" layer="25" font="vector" ratio="18" rot="R270"/>
 <attribute name="VALUE" x="22.733" y="16.129" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="R6" library="headstage" package="0402" value="0" x="5.207" y="14.732" smashed="yes" rot="R90">
