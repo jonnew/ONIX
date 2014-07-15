@@ -146,10 +146,12 @@
 <wire x1="0.635" y1="27.3685" x2="0" y2="26.7335" width="0" layer="20"/>
 <wire x1="0" y1="26.7335" x2="0" y2="0.635" width="0" layer="20"/>
 <wire x1="0" y1="0.635" x2="0.635" y2="0" width="0" layer="20"/>
-<text x="21.209" y="3.7465" size="1.27" layer="22" font="vector" ratio="18" rot="MR0">open-ephys.org</text>
-<text x="21.209" y="2.0955" size="1.27" layer="22" font="vector" ratio="18" rot="MR0">CC BY-SA JPN 2014</text>
 <text x="2.032" y="17.0815" size="1.27" layer="21" font="vector" ratio="18" rot="R90">REF</text>
 <text x="21.844" y="17.0815" size="1.27" layer="21" font="vector" ratio="18" rot="R90">GND</text>
+<text x="11.1125" y="4.2545" size="1.143" layer="22" font="vector" ratio="18" rot="MR0" align="center">2X32_JMD
+Headstage Rev. 0
+CC BY-SA JPN 2014
+open-ephys.org</text>
 </plain>
 <libraries>
 <library name="puggleboard">
@@ -648,87 +650,90 @@ Modified: 2014.07.10
 </pass>
 </autorouter>
 <elements>
-<element name="U1" library="headstage" package="ADXL335" value="ADXL335" x="3.556" y="5.715" smashed="yes"/>
+<element name="U1" library="headstage" package="ADXL335" value="ADXL335" x="3.556" y="5.715" smashed="yes">
+<attribute name="NAME" x="1.27" y="5.207" size="0.8128" layer="25" font="vector" ratio="18" rot="R90"/>
+<attribute name="VALUE" x="7.112" y="3.302" size="0.8128" layer="27" font="vector" ratio="18" rot="R90"/>
+</element>
 <element name="RHD_A" library="headstage" package="QFN56_8_X_8_LARGE" value="RHD2132_QFN" x="11.075" y="15.7855" smashed="yes">
-<attribute name="NAME" x="9.271" y="18.3515" size="0.8128" layer="25" font="vector" ratio="18"/>
+<attribute name="NAME" x="9.271" y="18.3515" size="0.8128" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="R3" library="headstage" package="0402" value="100" x="12.22375" y="7.8105" smashed="yes" rot="R90">
-<attribute name="NAME" x="11.6205" y="9.87425" size="0.8128" layer="25" font="vector" ratio="18"/>
-<attribute name="VALUE" x="9.525" y="8.98525" size="0.8128" layer="27" font="vector" ratio="18"/>
+<attribute name="NAME" x="11.6205" y="9.87425" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="9.525" y="8.98525" size="0.8128" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="R1" library="headstage" package="0402" value="100" x="8.92175" y="7.8105" smashed="yes" rot="R90">
-<attribute name="NAME" x="8.3185" y="9.87425" size="0.8128" layer="25" font="vector" ratio="18"/>
+<attribute name="NAME" x="8.3185" y="9.87425" size="0.8128" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="R2" library="headstage" package="0402" value="100" x="10.57275" y="7.8105" smashed="yes" rot="R90">
-<attribute name="NAME" x="9.9695" y="9.87425" size="0.8128" layer="25" font="vector" ratio="18"/>
+<attribute name="NAME" x="9.9695" y="9.87425" size="0.8128" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="C1" library="headstage" package="0402" value=".1uF" x="3.429" y="8.636" smashed="yes" rot="R180">
-<attribute name="NAME" x="1.397" y="8.1915" size="0.8128" layer="25" font="vector" ratio="18" rot="R90"/>
-<attribute name="VALUE" x="2.159" y="8.1915" size="0.8128" layer="27" font="vector" ratio="18" rot="R90"/>
+<attribute name="NAME" x="1.397" y="8.1915" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="2.159" y="8.1915" size="0.8128" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
-<element name="C2" library="headstage" package="0402" value=".1uF" x="5.588" y="8.128" smashed="yes" rot="R270">
-<attribute name="NAME" x="7.0485" y="6.985" size="0.8128" layer="25" font="vector" ratio="18" rot="R90"/>
-<attribute name="VALUE" x="7.8105" y="6.985" size="0.8128" layer="27" font="vector" ratio="18" rot="R90"/>
+<element name="C2" library="headstage" package="0402" value=".1uF" x="5.588" y="8.8265" smashed="yes" rot="R270">
+<attribute name="NAME" x="6.2865" y="10.287" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="VALUE" x="7.1755" y="10.287" size="0.8128" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
-<element name="C3" library="headstage" package="0402" value=".1uF" x="5.588" y="3.175" smashed="yes" rot="R90">
-<attribute name="NAME" x="4.699" y="1.143" size="0.8128" layer="25" font="vector" ratio="18"/>
-<attribute name="VALUE" x="6.985" y="1.27" size="0.8128" layer="27" font="vector" ratio="18" rot="R90"/>
+<element name="C3" library="headstage" package="0402" value=".1uF" x="5.6515" y="2.54" smashed="yes" rot="R90">
+<attribute name="NAME" x="4.7625" y="0.508" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="7.0485" y="0.635" size="0.8128" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
-<element name="C4" library="headstage" package="0402" value=".1uF" x="3.429" y="2.667" smashed="yes">
-<attribute name="NAME" x="1.016" y="2.0955" size="0.8128" layer="25" font="vector" ratio="18"/>
-<attribute name="VALUE" x="1.016" y="1.143" size="0.8128" layer="27" font="vector" ratio="18"/>
+<element name="C4" library="headstage" package="0402" value=".1uF" x="3.3655" y="2.7305" smashed="yes">
+<attribute name="NAME" x="0.9525" y="2.159" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="0.9525" y="1.2065" size="0.8128" layer="27" font="vector" ratio="20"/>
 </element>
-<element name="C6" library="headstage" package="0603" value=".1uF" x="5.461" y="11.2395" smashed="yes" rot="R90">
-<attribute name="NAME" x="3.3655" y="10.2235" size="0.8128" layer="25" font="vector" ratio="18" rot="R270" align="center-right"/>
-<attribute name="VALUE" x="4.191" y="10.2235" size="0.8128" layer="27" font="vector" ratio="18" rot="R90" align="center-left"/>
+<element name="C6" library="headstage" package="0603" value=".1uF" x="5.3975" y="11.4935" smashed="yes" rot="R90">
+<attribute name="NAME" x="3.302" y="10.4775" size="0.8128" layer="25" font="vector" ratio="20" rot="R270" align="center-right"/>
+<attribute name="VALUE" x="4.1275" y="10.4775" size="0.8128" layer="27" font="vector" ratio="20" rot="R90" align="center-left"/>
 </element>
-<element name="C5" library="headstage" package="0402" value="10nF" x="15.24" y="10.9855" smashed="yes" rot="R270">
-<attribute name="NAME" x="16.764" y="10.287" size="0.8128" layer="25" font="vector" ratio="18" rot="R90"/>
-<attribute name="VALUE" x="16.764" y="11.938" size="0.8128" layer="27" font="vector" ratio="18" rot="R90"/>
+<element name="C5" library="headstage" package="0402" value="10nF" x="16.002" y="10.922" smashed="yes" rot="R270">
+<attribute name="NAME" x="17.526" y="10.2235" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="17.526" y="11.8745" size="0.8128" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="R4" library="headstage" package="0402" value="1k" x="17.907" y="1.3335" smashed="yes" rot="R270">
-<attribute name="NAME" x="17.272" y="1.3335" size="0.8128" layer="25" font="vector" ratio="18" rot="R90"/>
-<attribute name="VALUE" x="17.272" y="2.4765" size="0.8128" layer="27" font="vector" ratio="18"/>
+<attribute name="NAME" x="17.272" y="1.3335" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="17.272" y="2.4765" size="0.8128" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="RHD_B" library="headstage" package="QFN56_8_X_8_LARGE" value="RHD2132_QFN" x="11.075" y="15.7855" smashed="yes" rot="MR0">
-<attribute name="NAME" x="12.948" y="18.3855" size="0.8128" layer="26" font="vector" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="12.948" y="18.3855" size="0.8128" layer="26" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="C9" library="headstage" package="0603" value=".1uF" x="16.637" y="11.2395" smashed="yes" rot="MR90">
-<attribute name="NAME" x="17.399" y="9.017" size="0.8128" layer="26" font="vector" ratio="18" rot="MR180" align="center-right"/>
-<attribute name="VALUE" x="17.399" y="8.128" size="0.8128" layer="28" font="vector" ratio="18" rot="MR0" align="center-left"/>
+<attribute name="NAME" x="17.399" y="9.017" size="0.8128" layer="26" font="vector" ratio="20" rot="MR180" align="center-right"/>
+<attribute name="VALUE" x="17.399" y="8.128" size="0.8128" layer="28" font="vector" ratio="20" rot="MR0" align="center-left"/>
 </element>
-<element name="C8" library="headstage" package="0402" value="10nF" x="6.858" y="10.9855" smashed="yes" rot="MR270">
-<attribute name="NAME" x="7.493" y="8.8265" size="0.8128" layer="26" font="vector" ratio="18" rot="MR0"/>
-<attribute name="VALUE" x="7.493" y="7.8105" size="0.8128" layer="28" font="vector" ratio="18" rot="MR0"/>
+<element name="C8" library="headstage" package="0402" value="10nF" x="6.1595" y="10.922" smashed="yes" rot="MR270">
+<attribute name="NAME" x="6.7945" y="8.763" size="0.8128" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="VALUE" x="6.7945" y="7.747" size="0.8128" layer="28" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="PWR" library="puggleboard" package="CHIP-LED0603" value="GR" x="20.32" y="1.0795" smashed="yes" rot="R90">
-<attribute name="NAME" x="19.1135" y="1.905" size="0.8128" layer="25" font="vector" ratio="18"/>
+<attribute name="NAME" x="19.1135" y="1.905" size="0.8128" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="AIN" library="headstage" package="JMD70" value="JMD70" x="11.02011875" y="23.64211875" smashed="yes" rot="R180">
-<attribute name="NAME" x="8.255" y="23.9395" size="0.8128" layer="25" font="vector" ratio="18"/>
-<attribute name="VALUE" x="12.192" y="23.9395" size="0.8128" layer="27" font="vector" ratio="18"/>
+<attribute name="NAME" x="8.255" y="23.9395" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="12.192" y="23.9395" size="0.8128" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="PLATE" library="headstage" package="PCM12" value="PCM12" x="20.193" y="9.5885" smashed="yes" rot="R90">
-<attribute name="NAME" x="20.955" y="11.1125" size="0.8128" layer="25" font="vector" ratio="18" rot="R270"/>
+<attribute name="NAME" x="20.955" y="11.1125" size="0.8128" layer="25" font="vector" ratio="20" rot="R270"/>
 </element>
 <element name="R6" library="headstage" package="0402" value="0" x="5.207" y="14.1605" smashed="yes" rot="R90">
-<attribute name="NAME" x="3.683" y="13.3985" size="0.8128" layer="25" font="vector" ratio="18" rot="R90"/>
-<attribute name="VALUE" x="4.572" y="13.3985" size="0.8128" layer="27" font="vector" ratio="18" rot="R90"/>
+<attribute name="NAME" x="3.683" y="13.3985" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="4.572" y="13.3985" size="0.8128" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="OUT" library="headstage" package="JMD20" value="JMD" x="14.25575" y="3.4925" smashed="yes">
-<attribute name="NAME" x="9.67055" y="3.6195" size="0.8128" layer="25" font="vector" ratio="18"/>
-<attribute name="VALUE" x="12.33755" y="3.6195" size="0.8128" layer="27" font="vector" ratio="18"/>
+<attribute name="NAME" x="9.67055" y="3.6195" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="12.33755" y="3.6195" size="0.8128" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="R5" library="headstage" package="0402" value="1k" x="17.907" y="4.3815" smashed="yes" rot="R90">
-<attribute name="NAME" x="17.272" y="4.3815" size="0.8128" layer="25" font="vector" ratio="18" rot="R90"/>
-<attribute name="VALUE" x="17.272" y="5.5245" size="0.8128" layer="27" font="vector" ratio="18"/>
+<attribute name="NAME" x="17.272" y="4.3815" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="17.272" y="5.5245" size="0.8128" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="PLT" library="puggleboard" package="CHIP-LED0603" value="RD" x="20.32" y="3.6195" smashed="yes" rot="R90">
-<attribute name="NAME" x="19.2405" y="4.318" size="0.8128" layer="25" font="vector" ratio="18"/>
+<attribute name="NAME" x="19.2405" y="4.318" size="0.8128" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="C7" library="headstage" package="0603" value="1uF" x="16.002" y="8.001" smashed="yes" rot="R90">
-<attribute name="NAME" x="13.843" y="7.0485" size="0.8128" layer="25" font="vector" ratio="18" rot="R270" align="center-right"/>
-<attribute name="VALUE" x="14.732" y="7.0485" size="0.8128" layer="27" font="vector" ratio="18" rot="R90" align="center-left"/>
+<attribute name="NAME" x="13.843" y="7.0485" size="0.8128" layer="25" font="vector" ratio="20" rot="R270" align="center-right"/>
+<attribute name="VALUE" x="14.732" y="7.0485" size="0.8128" layer="27" font="vector" ratio="20" rot="R90" align="center-left"/>
 </element>
 </elements>
 <signals>
@@ -817,7 +822,7 @@ Modified: 2014.07.10
 <vertex x="22.733" y="14.2875"/>
 <vertex x="22.733" y="0"/>
 </polygon>
-<via x="6.35" y="1.0795" extent="1-16" drill="0.254"/>
+<via x="6.5405" y="1.0795" extent="1-16" drill="0.254"/>
 <via x="3.81" y="1.0795" extent="1-16" drill="0.254"/>
 <via x="1.27" y="1.0795" extent="1-16" drill="0.254"/>
 <via x="21.59" y="8.6995" extent="1-16" drill="0.254"/>
@@ -830,14 +835,19 @@ Modified: 2014.07.10
 <wire x1="21.608" y1="25.3935" x2="21.59" y2="25.3755" width="0.254" layer="15"/>
 <wire x1="21.59" y1="25.3755" x2="21.59" y2="20.4435" width="0.254" layer="15"/>
 <via x="21.59" y="20.4435" extent="1-16" drill="0.254"/>
-<via x="13.335" y="2.921" extent="1-16" drill="0.254"/>
-<via x="10.795" y="2.921" extent="1-16" drill="0.254"/>
+<via x="13.335" y="3.048" extent="1-16" drill="0.254"/>
+<via x="10.795" y="3.048" extent="1-16" drill="0.254"/>
 <contactref element="RHD_B" pad="16"/>
 <contactref element="RHD_B" pad="15"/>
 <contactref element="RHD_B" pad="14"/>
 <contactref element="R5" pad="1"/>
 <wire x1="17.907" y1="1.8669" x2="17.907" y2="2.8575" width="0.254" layer="1"/>
 <contactref element="C7" pad="1"/>
+<contactref element="OUT" pad="17"/>
+<contactref element="OUT" pad="11"/>
+<contactref element="OUT" pad="13"/>
+<via x="2.54" y="11.4935" extent="1-16" drill="0.254"/>
+<via x="17.8435" y="13.0175" extent="1-16" drill="0.254"/>
 </signal>
 <signal name="REF">
 <contactref element="RHD_A" pad="10"/>
@@ -901,7 +911,6 @@ Modified: 2014.07.10
 <vertex x="22.733" y="0"/>
 </polygon>
 <wire x1="7.025" y1="13.0355" x2="6.3934" y2="13.0355" width="0.254" layer="1"/>
-<wire x1="6.3934" y1="13.0355" x2="5.461" y2="12.1031" width="0.254" layer="1"/>
 <contactref element="PLATE" pad="1"/>
 <wire x1="16.365" y1="13.0355" x2="16.637" y2="12.7635" width="0.254" layer="16"/>
 <wire x1="16.637" y1="12.7635" x2="16.637" y2="12.1031" width="0.254" layer="16"/>
@@ -944,18 +953,22 @@ Modified: 2014.07.10
 <via x="17.0815" y="8.9535" extent="1-16" drill="0.254"/>
 <wire x1="16.002" y1="8.8646" x2="16.9926" y2="8.8646" width="0.254" layer="1"/>
 <wire x1="16.9926" y1="8.8646" x2="17.0815" y2="8.9535" width="0.254" layer="1"/>
+<wire x1="5.3975" y1="12.3571" x2="5.715" y2="12.3571" width="0.254" layer="1"/>
+<wire x1="5.715" y1="12.3571" x2="6.3934" y2="13.0355" width="0.254" layer="1"/>
 </signal>
 <signal name="AUXOUT_A">
 <contactref element="RHD_A" pad="27"/>
-<contactref element="OUT" pad="11"/>
 <wire x1="13.825" y1="11.7355" x2="13.843" y2="11.7175" width="0.1524" layer="1"/>
 <wire x1="15.113" y1="6.985" x2="15.113" y2="3.175" width="0.127" layer="1"/>
-<wire x1="14.25575" y1="1.3675" x2="14.25575" y2="2.31775" width="0.127" layer="1"/>
-<wire x1="14.25575" y1="2.31775" x2="15.113" y2="3.175" width="0.127" layer="1"/>
+<wire x1="14.224" y1="2.286" x2="15.113" y2="3.175" width="0.127" layer="1"/>
 <wire x1="15.113" y1="6.985" x2="14.097" y2="8.001" width="0.127" layer="1"/>
 <wire x1="14.097" y1="8.001" x2="14.097" y2="9.144" width="0.127" layer="1"/>
 <wire x1="14.097" y1="9.144" x2="13.825" y2="9.416" width="0.127" layer="1"/>
 <wire x1="13.825" y1="9.416" x2="13.825" y2="11.7355" width="0.127" layer="1"/>
+<contactref element="OUT" pad="14"/>
+<wire x1="12.75575" y1="1.3675" x2="12.75575" y2="2.15125" width="0.127" layer="1"/>
+<wire x1="12.75575" y1="2.15125" x2="12.8905" y2="2.286" width="0.127" layer="1"/>
+<wire x1="12.8905" y1="2.286" x2="14.224" y2="2.286" width="0.127" layer="1"/>
 </signal>
 <signal name="IN8">
 <contactref element="RHD_A" pad="1"/>
@@ -1376,9 +1389,11 @@ Modified: 2014.07.10
 <wire x1="7.025" y1="12.5355" x2="6.757" y2="12.5355" width="0.1524" layer="1"/>
 <wire x1="6.757" y1="12.5355" x2="6.731" y2="12.5095" width="0.1524" layer="1"/>
 <wire x1="6.731" y1="12.5095" x2="6.731" y2="8.7376" width="0.127" layer="1"/>
-<wire x1="6.731" y1="8.7376" x2="5.588" y2="7.5946" width="0.127" layer="1"/>
-<wire x1="5.588" y1="7.5946" x2="5.331" y2="7.3376" width="0.1524" layer="1"/>
-<wire x1="5.331" y1="7.3376" x2="5.331" y2="6.665" width="0.1524" layer="1"/>
+<wire x1="5.331" y1="7.3376" x2="5.331" y2="6.665" width="0.127" layer="1"/>
+<wire x1="5.331" y1="7.3376" x2="5.588" y2="7.5946" width="0.127" layer="1"/>
+<wire x1="5.588" y1="7.5946" x2="5.588" y2="8.2931" width="0.127" layer="1"/>
+<wire x1="5.588" y1="8.2931" x2="6.2865" y2="8.2931" width="0.127" layer="1"/>
+<wire x1="6.2865" y1="8.2931" x2="6.731" y2="8.7376" width="0.127" layer="1"/>
 </signal>
 <signal name="YOUT1">
 <contactref element="RHD_A" pad="15"/>
@@ -1389,7 +1404,7 @@ Modified: 2014.07.10
 <wire x1="7.112" y1="8.001" x2="5.969" y2="6.858" width="0.127" layer="1"/>
 <wire x1="5.969" y1="6.858" x2="5.969" y2="5.365" width="0.127" layer="1"/>
 <wire x1="5.969" y1="5.365" x2="5.969" y2="3.9624" width="0.127" layer="1"/>
-<wire x1="5.969" y1="3.9624" x2="5.588" y2="3.7084" width="0.127" layer="1"/>
+<wire x1="5.969" y1="3.9624" x2="5.6515" y2="3.0734" width="0.127" layer="1"/>
 <wire x1="5.331" y1="5.365" x2="5.969" y2="5.365" width="0.127" layer="1"/>
 </signal>
 <signal name="ZOUT1">
@@ -1399,14 +1414,14 @@ Modified: 2014.07.10
 <wire x1="8.325" y1="11.7355" x2="8.325" y2="11.3095" width="0.127" layer="1"/>
 <wire x1="8.325" y1="11.3095" x2="7.493" y2="10.4775" width="0.127" layer="1"/>
 <wire x1="7.493" y1="10.4775" x2="7.493" y2="7.747" width="0.127" layer="1"/>
-<wire x1="4.506" y1="3.94" x2="4.506" y2="2.667" width="0.127" layer="1"/>
-<wire x1="4.506" y1="2.667" x2="4.506" y2="2.098" width="0.127" layer="1"/>
-<wire x1="4.506" y1="2.098" x2="4.826" y2="1.778" width="0.127" layer="1"/>
-<wire x1="4.826" y1="1.778" x2="6.477" y2="1.778" width="0.127" layer="1"/>
-<wire x1="6.477" y1="1.778" x2="6.731" y2="2.032" width="0.127" layer="1"/>
+<wire x1="4.506" y1="3.94" x2="4.506" y2="2.7305" width="0.127" layer="1"/>
+<wire x1="4.506" y1="2.7305" x2="4.506" y2="2.098" width="0.127" layer="1"/>
 <wire x1="6.731" y1="2.032" x2="6.731" y2="6.985" width="0.127" layer="1"/>
 <wire x1="6.731" y1="6.985" x2="7.493" y2="7.747" width="0.127" layer="1"/>
-<wire x1="3.9624" y1="2.667" x2="4.506" y2="2.667" width="0.127" layer="1"/>
+<wire x1="3.8989" y1="2.7305" x2="4.506" y2="2.7305" width="0.127" layer="1"/>
+<wire x1="4.506" y1="2.098" x2="5.1435" y2="1.4605" width="0.127" layer="1"/>
+<wire x1="5.1435" y1="1.4605" x2="6.1595" y2="1.4605" width="0.127" layer="1"/>
+<wire x1="6.1595" y1="1.4605" x2="6.731" y2="2.032" width="0.127" layer="1"/>
 </signal>
 <signal name="LEDOUT1">
 <contactref element="R4" pad="2"/>
@@ -1834,17 +1849,15 @@ Modified: 2014.07.10
 <signal name="N$7">
 <contactref element="RHD_A" pad="28"/>
 <contactref element="C5" pad="1"/>
-<wire x1="14.325" y1="11.7355" x2="15.0234" y2="11.7355" width="0.254" layer="1"/>
-<wire x1="15.0234" y1="11.7355" x2="15.24" y2="11.5189" width="0.254" layer="1"/>
+<wire x1="14.325" y1="11.7355" x2="15.7219" y2="11.7355" width="0.254" layer="1"/>
+<wire x1="15.7219" y1="11.7355" x2="16.002" y2="11.4554" width="0.254" layer="1" curve="-90"/>
 </signal>
 <signal name="N$3">
 <contactref element="C8" pad="1"/>
 <contactref element="RHD_B" pad="28"/>
-<wire x1="6.858" y1="11.5189" x2="7.2016" y2="11.7355" width="0.254" layer="16"/>
-<wire x1="7.2016" y1="11.7355" x2="7.825" y2="11.7355" width="0.254" layer="16"/>
-</signal>
-<signal name="AUXOUT_B">
-<contactref element="RHD_B" pad="27"/>
+<wire x1="7.825" y1="11.7355" x2="6.3761" y2="11.7355" width="0.254" layer="16"/>
+<wire x1="6.3761" y1="11.7355" x2="6.3761" y2="11.672" width="0.254" layer="16"/>
+<wire x1="6.3761" y1="11.672" x2="6.1595" y2="11.4554" width="0.254" layer="16"/>
 </signal>
 <signal name="ELEC_TEST_A">
 <contactref element="RHD_A" pad="33"/>
@@ -1857,12 +1870,13 @@ Modified: 2014.07.10
 <wire x1="22.225" y1="14.2875" x2="22.225" y2="0.762" width="0.127" layer="16"/>
 <wire x1="22.225" y1="0.762" x2="21.9075" y2="0.4445" width="0.127" layer="16"/>
 <wire x1="21.9075" y1="0.4445" x2="17.272" y2="0.4445" width="0.127" layer="16"/>
-<contactref element="OUT" pad="13"/>
 <wire x1="17.272" y1="0.4445" x2="16.891" y2="0.8255" width="0.127" layer="16"/>
 <via x="16.891" y="0.8255" extent="1-16" drill="0.254"/>
 <wire x1="16.891" y1="0.8255" x2="16.51" y2="0.4445" width="0.127" layer="1"/>
-<wire x1="16.51" y1="0.4445" x2="13.25575" y2="0.4445" width="0.127" layer="1"/>
-<wire x1="13.25575" y1="0.4445" x2="13.25575" y2="1.3675" width="0.127" layer="1"/>
+<wire x1="11.75575" y1="1.3675" x2="11.75575" y2="0.579159375" width="0.127" layer="1"/>
+<wire x1="11.75575" y1="0.579159375" x2="11.890409375" y2="0.4445" width="0.127" layer="1"/>
+<wire x1="11.890409375" y1="0.4445" x2="16.51" y2="0.4445" width="0.127" layer="1"/>
+<contactref element="OUT" pad="16"/>
 </signal>
 <signal name="ELEC_TEST_B">
 <contactref element="RHD_B" pad="33"/>
@@ -1874,21 +1888,22 @@ Modified: 2014.07.10
 <wire x1="0.508" y1="14.2875" x2="0.508" y2="0.762" width="0.127" layer="16"/>
 <wire x1="0.508" y1="0.762" x2="0.8255" y2="0.4445" width="0.127" layer="16"/>
 <wire x1="0.8255" y1="0.4445" x2="7.493" y2="0.4445" width="0.127" layer="16"/>
-<contactref element="OUT" pad="14"/>
 <wire x1="7.493" y1="0.4445" x2="7.874" y2="0.8255" width="0.127" layer="16"/>
 <via x="7.874" y="0.8255" extent="1-16" drill="0.254"/>
 <wire x1="7.874" y1="0.8255" x2="8.255" y2="0.4445" width="0.127" layer="1"/>
-<wire x1="8.255" y1="0.4445" x2="12.75575" y2="0.4445" width="0.127" layer="1"/>
-<wire x1="12.75575" y1="1.3675" x2="12.75575" y2="0.4445" width="0.127" layer="1"/>
+<contactref element="OUT" pad="18"/>
+<wire x1="10.75575" y1="1.3675" x2="10.75575" y2="0.552815625" width="0.127" layer="1"/>
+<wire x1="10.75575" y1="0.552815625" x2="10.647434375" y2="0.4445" width="0.127" layer="1"/>
+<wire x1="10.647434375" y1="0.4445" x2="8.255" y2="0.4445" width="0.127" layer="1"/>
 </signal>
 <signal name="VESD">
 <contactref element="RHD_A" pad="32"/>
 <contactref element="PLATE" pad="2"/>
 <contactref element="RHD_B" pad="32"/>
-<wire x1="7.025" y1="14.0355" x2="6.094" y2="14.0355" width="0.127" layer="16"/>
-<wire x1="6.094" y1="14.0355" x2="5.969" y2="14.1605" width="0.127" layer="16"/>
-<wire x1="5.969" y1="14.1605" x2="4.064" y2="14.1605" width="0.127" layer="16"/>
-<wire x1="4.064" y1="14.1605" x2="4.064" y2="14.4145" width="0.127" layer="16"/>
+<wire x1="7.025" y1="14.0355" x2="6.094" y2="14.0355" width="0.254" layer="16"/>
+<wire x1="6.094" y1="14.0355" x2="5.969" y2="14.1605" width="0.254" layer="16"/>
+<wire x1="5.969" y1="14.1605" x2="4.064" y2="14.1605" width="0.254" layer="16"/>
+<wire x1="4.064" y1="14.1605" x2="4.064" y2="14.4145" width="0.254" layer="16"/>
 <via x="4.064" y="14.4145" extent="1-16" drill="0.254"/>
 <wire x1="4.064" y1="14.4145" x2="4.064" y2="19.2405" width="0.254" layer="15"/>
 <wire x1="4.064" y1="19.2405" x2="5.334" y2="20.5105" width="0.254" layer="15"/>
@@ -1907,15 +1922,6 @@ Modified: 2014.07.10
 <wire x1="21.1836" y1="3.6195" x2="22.225" y2="3.6195" width="0.254" layer="1"/>
 <wire x1="22.225" y1="3.6195" x2="22.225" y2="9.5885" width="0.254" layer="1"/>
 </signal>
-<signal name="N$8">
-<contactref element="OUT" pad="18"/>
-</signal>
-<signal name="N$9">
-<contactref element="OUT" pad="17"/>
-</signal>
-<signal name="N$10">
-<contactref element="OUT" pad="16"/>
-</signal>
 <signal name="LEDOUT2">
 <contactref element="R5" pad="2"/>
 <contactref element="PLT" pad="C"/>
@@ -1925,4 +1931,10 @@ Modified: 2014.07.10
 </signals>
 </board>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>

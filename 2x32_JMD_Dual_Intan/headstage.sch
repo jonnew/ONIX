@@ -1686,6 +1686,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="C7" library="headstage" deviceset="C" device="_0603" value="1uF"/>
 <part name="VDD2" library="headstage" deviceset="VDD" device=""/>
 <part name="GND7" library="headstage" deviceset="GND" device=""/>
+<part name="GND8" library="headstage" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1754,6 +1755,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <instance part="C7" gate="C" x="203.2" y="71.12" rot="R180"/>
 <instance part="VDD2" gate="G$1" x="203.2" y="88.9"/>
 <instance part="GND7" gate="1" x="203.2" y="55.88"/>
+<instance part="GND8" gate="1" x="129.54" y="40.64"/>
 </instances>
 <busses>
 </busses>
@@ -1917,8 +1919,16 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </segment>
 <segment>
 <pinref part="OUT" gate="G$1" pin="12"/>
-<wire x1="142.24" y1="48.26" x2="142.24" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="48.26" x2="142.24" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="GND4" gate="1" pin="GND"/>
+<pinref part="OUT" gate="G$1" pin="13"/>
+<wire x1="142.24" y1="45.72" x2="142.24" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="48.26" x2="139.7" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="45.72" x2="142.24" y2="45.72" width="0.1524" layer="91"/>
+<junction x="142.24" y="45.72"/>
+<pinref part="OUT" gate="G$1" pin="11"/>
+<wire x1="144.78" y1="48.26" x2="144.78" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="45.72" x2="142.24" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="OUT" gate="G$1" pin="15"/>
@@ -1934,6 +1944,11 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="GND7" gate="1" pin="GND"/>
 <pinref part="C7" gate="C" pin="1"/>
 <wire x1="203.2" y1="68.58" x2="203.2" y2="58.42" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="OUT" gate="G$1" pin="17"/>
+<wire x1="129.54" y1="48.26" x2="129.54" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="GND8" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="REF" class="0">
@@ -2236,9 +2251,9 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <label x="149.86" y="152.4" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="OUT" gate="G$1" pin="11"/>
-<wire x1="144.78" y1="48.26" x2="144.78" y2="43.18" width="0.1524" layer="91"/>
-<label x="144.78" y="45.72" size="1.778" layer="95" rot="R270"/>
+<pinref part="OUT" gate="G$1" pin="14"/>
+<wire x1="137.16" y1="48.26" x2="137.16" y2="33.02" width="0.1524" layer="91"/>
+<label x="137.16" y="35.56" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="IN8" class="0">
@@ -3052,13 +3067,6 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="304.8" y1="157.48" x2="276.86" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="AUXOUT_B" class="0">
-<segment>
-<pinref part="RHD_B" gate="A" pin="AUXOUT"/>
-<wire x1="274.32" y1="160.02" x2="274.32" y2="147.32" width="0.1524" layer="91"/>
-<label x="274.32" y="147.32" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="ELEC_TEST_A" class="0">
 <segment>
 <pinref part="RHD_A" gate="A" pin="ELEC_TEST"/>
@@ -3066,9 +3074,9 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <label x="167.64" y="190.5" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="OUT" gate="G$1" pin="13"/>
-<wire x1="139.7" y1="48.26" x2="139.7" y2="43.18" width="0.1524" layer="91"/>
-<label x="139.7" y="45.72" size="1.778" layer="95" rot="R270"/>
+<pinref part="OUT" gate="G$1" pin="16"/>
+<wire x1="132.08" y1="48.26" x2="132.08" y2="33.02" width="0.1524" layer="91"/>
+<label x="132.08" y="35.56" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="ELEC_TEST_B" class="0">
@@ -3078,9 +3086,9 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <label x="292.1" y="190.5" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="OUT" gate="G$1" pin="14"/>
-<wire x1="137.16" y1="48.26" x2="137.16" y2="43.18" width="0.1524" layer="91"/>
-<label x="137.16" y="45.72" size="1.778" layer="95" rot="R270"/>
+<pinref part="OUT" gate="G$1" pin="18"/>
+<wire x1="127" y1="48.26" x2="127" y2="33.02" width="0.1524" layer="91"/>
+<label x="127" y="35.56" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="VESD" class="0">
@@ -3103,24 +3111,6 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <label x="175.26" y="86.36" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="N$8" class="0">
-<segment>
-<pinref part="OUT" gate="G$1" pin="18"/>
-<wire x1="127" y1="48.26" x2="127" y2="43.18" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$9" class="0">
-<segment>
-<pinref part="OUT" gate="G$1" pin="17"/>
-<wire x1="129.54" y1="48.26" x2="129.54" y2="43.18" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$10" class="0">
-<segment>
-<pinref part="OUT" gate="G$1" pin="16"/>
-<wire x1="132.08" y1="48.26" x2="132.08" y2="43.18" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="LEDOUT2" class="0">
 <segment>
 <pinref part="R5" gate="R" pin="2"/>
@@ -3131,6 +3121,25 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,165.1,167.64,RHD_A,CTR,GND,,,"/>
+<approved hash="104,1,101.6,185.42,RHD_A,GND1,GND,,,"/>
+<approved hash="104,1,101.6,182.88,RHD_A,GND2,GND,,,"/>
+<approved hash="104,1,116.84,160.02,RHD_A,GND3,GND,,,"/>
+<approved hash="104,1,165.1,172.72,RHD_A,GND4,GND,,,"/>
+<approved hash="104,1,101.6,180.34,RHD_A,VDD1,VDD,,,"/>
+<approved hash="104,1,144.78,160.02,RHD_A,VDD2,VDD,,,"/>
+<approved hash="104,1,165.1,182.88,RHD_A,VDD3,VDD,,,"/>
+<approved hash="104,1,289.56,167.64,RHD_B,CTR,GND,,,"/>
+<approved hash="104,1,226.06,185.42,RHD_B,GND1,GND,,,"/>
+<approved hash="104,1,226.06,182.88,RHD_B,GND2,GND,,,"/>
+<approved hash="104,1,241.3,160.02,RHD_B,GND3,GND,,,"/>
+<approved hash="104,1,289.56,172.72,RHD_B,GND4,GND,,,"/>
+<approved hash="104,1,226.06,180.34,RHD_B,VDD1,VDD,,,"/>
+<approved hash="104,1,269.24,160.02,RHD_B,VDD2,VDD,,,"/>
+<approved hash="104,1,289.56,182.88,RHD_B,VDD3,VDD,,,"/>
+<approved hash="113,1,190.396,152.296,FRAME1,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
