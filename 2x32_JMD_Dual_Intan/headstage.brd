@@ -401,7 +401,7 @@ by exp-lbrs.ulp</description>
 <text x="-10.668" y="3.302" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-10.668" y="-4.318" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
-<package name="JMD20">
+<package name="JMD20-RA">
 <circle x="-5.1186" y="1.8542" radius="0.227184375" width="0.127" layer="21"/>
 <wire x1="-6.668" y1="-1.016" x2="-6.668" y2="-2.286" width="0.1778" layer="21"/>
 <wire x1="-6.668" y1="-2.286" x2="-4.89" y2="-2.286" width="0.1778" layer="21"/>
@@ -720,7 +720,7 @@ Modified: 2014.07.10
 <attribute name="NAME" x="3.683" y="13.3985" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
 <attribute name="VALUE" x="4.572" y="13.3985" size="0.8128" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
-<element name="OUT" library="headstage" package="JMD20" value="JMD" x="14.25575" y="3.4925" smashed="yes">
+<element name="OUT" library="headstage" package="JMD20-RA" value="JMD" x="14.25575" y="3.4925" smashed="yes">
 <attribute name="NAME" x="9.67055" y="3.6195" size="0.8128" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="12.33755" y="3.6195" size="0.8128" layer="27" font="vector" ratio="20"/>
 </element>
@@ -1403,8 +1403,8 @@ Modified: 2014.07.10
 <wire x1="7.112" y1="11.0225" x2="7.112" y2="8.001" width="0.127" layer="1"/>
 <wire x1="7.112" y1="8.001" x2="5.969" y2="6.858" width="0.127" layer="1"/>
 <wire x1="5.969" y1="6.858" x2="5.969" y2="5.365" width="0.127" layer="1"/>
-<wire x1="5.969" y1="5.365" x2="5.969" y2="3.9624" width="0.127" layer="1"/>
-<wire x1="5.969" y1="3.9624" x2="5.6515" y2="3.0734" width="0.127" layer="1"/>
+<wire x1="5.969" y1="5.365" x2="5.969" y2="3.3909" width="0.127" layer="1"/>
+<wire x1="5.969" y1="3.3909" x2="5.6515" y2="3.0734" width="0.127" layer="1"/>
 <wire x1="5.331" y1="5.365" x2="5.969" y2="5.365" width="0.127" layer="1"/>
 </signal>
 <signal name="ZOUT1">

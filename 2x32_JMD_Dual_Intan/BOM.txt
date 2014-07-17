@@ -1,1 +1,8 @@
+HEADSTAGE:
 https://docs.google.com/spreadsheets/d/1sSIfUUQQ63w412H609otfNJevaj0tG3jFlzK6JuryBI/edit?usp=sharing
+
+SPI-INTERFACE: (temp)
+
+2 TC33X-202ECT-ND
+6 1080-1354-1-ND
+2 

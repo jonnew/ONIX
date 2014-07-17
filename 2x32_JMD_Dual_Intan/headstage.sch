@@ -651,7 +651,7 @@ by exp-lbrs.ulp</description>
 <text x="-10.668" y="3.302" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-10.668" y="-4.318" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
-<package name="JMD20">
+<package name="JMD20-RA">
 <circle x="-5.1186" y="1.8542" radius="0.227184375" width="0.127" layer="21"/>
 <wire x1="-6.668" y1="-1.016" x2="-6.668" y2="-2.286" width="0.1778" layer="21"/>
 <wire x1="-6.668" y1="-2.286" x2="-4.89" y2="-2.286" width="0.1778" layer="21"/>
@@ -755,6 +755,41 @@ by exp-lbrs.ulp</description>
 <smd name="2" x="1.651" y="0" dx="1.2192" dy="1.8796" layer="1"/>
 <text x="-2.54" y="1.524" size="1.016" layer="25" font="vector">&gt;NAME</text>
 <text x="-2.54" y="-2.54" size="1.016" layer="27" font="vector">&gt;VALUE</text>
+</package>
+<package name="JMD20-V">
+<circle x="-5.2456" y="-1.5748" radius="0.227184375" width="0.127" layer="21"/>
+<wire x1="-6.668" y1="-1.016" x2="-6.668" y2="-2.286" width="0.1778" layer="21"/>
+<wire x1="-6.668" y1="-2.286" x2="-4.89" y2="-2.286" width="0.1778" layer="21"/>
+<wire x1="-4.89" y1="2.286" x2="-6.668" y2="2.286" width="0.1778" layer="21"/>
+<wire x1="-6.668" y1="2.286" x2="-6.668" y2="1.016" width="0.1778" layer="21"/>
+<wire x1="0.3804" y1="2.286" x2="2.1584" y2="2.286" width="0.1778" layer="21"/>
+<wire x1="2.1584" y1="2.286" x2="2.1584" y2="1.016" width="0.1778" layer="21"/>
+<wire x1="0.3804" y1="-2.286" x2="2.1584" y2="-2.286" width="0.1778" layer="21"/>
+<wire x1="2.1584" y1="-2.286" x2="2.1584" y2="-1.016" width="0.1778" layer="21"/>
+<smd name="1" x="-4.5" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="2" x="-4" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="3" x="-3.5" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="4" x="-3" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="5" x="-2.5" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="6" x="-2" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="7" x="-1.5" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="8" x="-1" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="9" x="-0.5" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="10" x="0" y="-2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="11" x="0" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="12" x="-0.5" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="13" x="-1" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="14" x="-1.5" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="15" x="-2" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="16" x="-2.5" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="17" x="-3" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="18" x="-3.5" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="19" x="-4" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="20" x="-4.5" y="2.125" dx="1.35" dy="0.3" layer="1" rot="R270"/>
+<smd name="MECH1" x="-6.475" y="0" dx="1.4" dy="0.85" layer="1" rot="R270"/>
+<smd name="MECH2" x="1.975" y="0" dx="1.4" dy="0.85" layer="1" rot="R270"/>
+<text x="-6.3632" y="3.302" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-6.3632" y="-4.318" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
@@ -1430,7 +1465,34 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <gate name="G$1" symbol="PINHD2X10" x="0" y="0"/>
 </gates>
 <devices>
-<device name="_JMD" package="JMD20">
+<device name="_JMD-RA" package="JMD20-RA">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="11" pad="11"/>
+<connect gate="G$1" pin="12" pad="12"/>
+<connect gate="G$1" pin="13" pad="13"/>
+<connect gate="G$1" pin="14" pad="14"/>
+<connect gate="G$1" pin="15" pad="15"/>
+<connect gate="G$1" pin="16" pad="16"/>
+<connect gate="G$1" pin="17" pad="17"/>
+<connect gate="G$1" pin="18" pad="18"/>
+<connect gate="G$1" pin="19" pad="19"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="20" pad="20"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_JMD20-V" package="JMD20-V">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="10" pad="10"/>
@@ -1674,7 +1736,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="GND1" library="headstage" deviceset="GND" device=""/>
 <part name="R6" library="headstage" deviceset="R" device="_0402" value="0"/>
 <part name="GND2" library="headstage" deviceset="GND" device=""/>
-<part name="OUT" library="headstage" deviceset="PINHD-2X10" device="_JMD" value="JMD"/>
+<part name="OUT" library="headstage" deviceset="PINHD-2X10" device="_JMD-RA" value="JMD"/>
 <part name="VDD1" library="headstage" deviceset="VDD" device=""/>
 <part name="GND3" library="headstage" deviceset="GND" device=""/>
 <part name="GND4" library="headstage" deviceset="GND" device=""/>
