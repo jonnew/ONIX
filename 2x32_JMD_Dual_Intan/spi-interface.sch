@@ -1028,10 +1028,10 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="HS1" library="headstage" deviceset="PINHD-2X10" device="_JMD20-V" value="JMD20-V"/>
 <part name="VDD1" library="headstage" deviceset="VDD" device=""/>
 <part name="GND4" library="headstage" deviceset="GND" device=""/>
-<part name="R2" library="headstage" deviceset="R" device="_0402" value="82"/>
+<part name="R1" library="headstage" deviceset="R" device="_0402" value="82"/>
 <part name="A1" library="cyclops" deviceset="LED" device="_0603" value="IR"/>
 <part name="Q1" library="cyclops" deviceset="BC817*" device="SMD" technology="-16" value="BC817"/>
-<part name="R1" library="headstage" deviceset="R" device="_0402" value="10k"/>
+<part name="R11" library="headstage" deviceset="R" device="_0402" value="10k"/>
 <part name="A2" library="cyclops" deviceset="LED" device="_0603" value="IR"/>
 <part name="A3" library="cyclops" deviceset="LED" device="_0603" value="IR"/>
 <part name="ATRIM" library="headstage" deviceset="TRIM" device="_EIA/EIAJ" value="2k"/>
@@ -1053,10 +1053,10 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="HS2" library="headstage" deviceset="PINHD-2X10" device="_JMD20-V" value="JMD20-V"/>
 <part name="VDD3" library="headstage" deviceset="VDD" device=""/>
 <part name="GND1" library="headstage" deviceset="GND" device=""/>
-<part name="R4" library="headstage" deviceset="R" device="_0402" value="82"/>
+<part name="R6" library="headstage" deviceset="R" device="_0402" value="82"/>
 <part name="P1" library="cyclops" deviceset="LED" device="_0603" value="IR"/>
 <part name="Q2" library="cyclops" deviceset="BC817*" device="SMD" technology="-16" value="BC817"/>
-<part name="R3" library="headstage" deviceset="R" device="_0402" value="10k"/>
+<part name="R12" library="headstage" deviceset="R" device="_0402" value="10k"/>
 <part name="P2" library="cyclops" deviceset="LED" device="_0603" value="IR"/>
 <part name="P3" library="cyclops" deviceset="LED" device="_0603" value="IR"/>
 <part name="PTRIM" library="headstage" deviceset="TRIM" device="_EIA/EIAJ" value="2k"/>
@@ -1089,14 +1089,14 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P5" library="cyclops" deviceset="LED" device="_0603" value="IR"/>
 <part name="C1" library="headstage" deviceset="C" device="_0805" value="10uF"/>
 <part name="FRAME1" library="headstage" deviceset="FRAME" device=""/>
+<part name="R2" library="headstage" deviceset="R" device="_0402" value="82"/>
+<part name="R3" library="headstage" deviceset="R" device="_0402" value="82"/>
+<part name="R4" library="headstage" deviceset="R" device="_0402" value="82"/>
 <part name="R5" library="headstage" deviceset="R" device="_0402" value="82"/>
-<part name="R6" library="headstage" deviceset="R" device="_0402" value="82"/>
 <part name="R7" library="headstage" deviceset="R" device="_0402" value="82"/>
 <part name="R8" library="headstage" deviceset="R" device="_0402" value="82"/>
 <part name="R9" library="headstage" deviceset="R" device="_0402" value="82"/>
 <part name="R10" library="headstage" deviceset="R" device="_0402" value="82"/>
-<part name="R11" library="headstage" deviceset="R" device="_0402" value="82"/>
-<part name="R12" library="headstage" deviceset="R" device="_0402" value="82"/>
 </parts>
 <sheets>
 <sheet>
@@ -1106,10 +1106,10 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="HS1" gate="G$1" x="228.6" y="73.66" rot="MR90"/>
 <instance part="VDD1" gate="G$1" x="248.92" y="58.42"/>
 <instance part="GND4" gate="1" x="251.46" y="83.82"/>
-<instance part="R2" gate="R" x="287.02" y="132.08" rot="R90"/>
+<instance part="R1" gate="R" x="287.02" y="132.08" rot="R90"/>
 <instance part="A1" gate="G$1" x="287.02" y="119.38"/>
 <instance part="Q1" gate="G$1" x="304.8" y="93.98"/>
-<instance part="R1" gate="R" x="289.56" y="93.98" rot="R180"/>
+<instance part="R11" gate="R" x="289.56" y="93.98" rot="R180"/>
 <instance part="A2" gate="G$1" x="297.18" y="119.38"/>
 <instance part="A3" gate="G$1" x="307.34" y="119.38"/>
 <instance part="ATRIM" gate="G$1" x="307.34" y="157.48" rot="MR180"/>
@@ -1131,10 +1131,10 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="HS2" gate="G$1" x="373.38" y="73.66" rot="MR90"/>
 <instance part="VDD3" gate="G$1" x="393.7" y="58.42"/>
 <instance part="GND1" gate="1" x="396.24" y="83.82"/>
-<instance part="R4" gate="R" x="431.8" y="132.08" rot="R90"/>
+<instance part="R6" gate="R" x="431.8" y="132.08" rot="R90"/>
 <instance part="P1" gate="G$1" x="431.8" y="119.38"/>
 <instance part="Q2" gate="G$1" x="449.58" y="93.98"/>
-<instance part="R3" gate="R" x="434.34" y="93.98" rot="R180"/>
+<instance part="R12" gate="R" x="434.34" y="93.98" rot="R180"/>
 <instance part="P2" gate="G$1" x="441.96" y="119.38"/>
 <instance part="P3" gate="G$1" x="452.12" y="119.38"/>
 <instance part="PTRIM" gate="G$1" x="452.12" y="157.48" rot="MR180"/>
@@ -1168,14 +1168,14 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="C1" gate="C" x="203.2" y="149.86"/>
 <instance part="FRAME1" gate="G$1" x="144.78" y="-40.64"/>
 <instance part="FRAME1" gate="G$2" x="416.56" y="-40.64"/>
-<instance part="R5" gate="R" x="297.18" y="132.08" rot="R90"/>
-<instance part="R6" gate="R" x="307.34" y="132.08" rot="R90"/>
-<instance part="R7" gate="R" x="317.5" y="132.08" rot="R90"/>
-<instance part="R8" gate="R" x="327.66" y="132.08" rot="R90"/>
-<instance part="R9" gate="R" x="441.96" y="132.08" rot="R90"/>
-<instance part="R10" gate="R" x="452.12" y="132.08" rot="R90"/>
-<instance part="R11" gate="R" x="462.28" y="132.08" rot="R90"/>
-<instance part="R12" gate="R" x="472.44" y="132.08" rot="R90"/>
+<instance part="R2" gate="R" x="297.18" y="132.08" rot="R90"/>
+<instance part="R3" gate="R" x="307.34" y="132.08" rot="R90"/>
+<instance part="R4" gate="R" x="317.5" y="132.08" rot="R90"/>
+<instance part="R5" gate="R" x="327.66" y="132.08" rot="R90"/>
+<instance part="R7" gate="R" x="441.96" y="132.08" rot="R90"/>
+<instance part="R8" gate="R" x="452.12" y="132.08" rot="R90"/>
+<instance part="R9" gate="R" x="462.28" y="132.08" rot="R90"/>
+<instance part="R10" gate="R" x="472.44" y="132.08" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -1434,14 +1434,14 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </net>
 <net name="N$34" class="0">
 <segment>
-<pinref part="R1" gate="R" pin="2"/>
+<pinref part="R11" gate="R" pin="2"/>
 <wire x1="279.4" y1="93.98" x2="284.48" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="SJ1" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$28" class="0">
 <segment>
-<pinref part="R1" gate="R" pin="1"/>
+<pinref part="R11" gate="R" pin="1"/>
 <pinref part="Q1" gate="G$1" pin="B"/>
 <wire x1="294.64" y1="93.98" x2="302.26" y2="93.98" width="0.1524" layer="91"/>
 </segment>
@@ -1455,17 +1455,17 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="ATRIM" gate="G$1" pin="E"/>
 <wire x1="317.5" y1="142.24" x2="327.66" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="307.34" y1="149.86" x2="307.34" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="R2" gate="R" pin="2"/>
+<pinref part="R1" gate="R" pin="2"/>
 <wire x1="287.02" y1="137.16" x2="287.02" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="R5" gate="R" pin="2"/>
+<pinref part="R2" gate="R" pin="2"/>
 <wire x1="297.18" y1="137.16" x2="297.18" y2="142.24" width="0.1524" layer="91"/>
 <junction x="297.18" y="142.24"/>
-<pinref part="R6" gate="R" pin="2"/>
+<pinref part="R3" gate="R" pin="2"/>
 <wire x1="307.34" y1="137.16" x2="307.34" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="R7" gate="R" pin="2"/>
+<pinref part="R4" gate="R" pin="2"/>
 <wire x1="317.5" y1="137.16" x2="317.5" y2="142.24" width="0.1524" layer="91"/>
 <junction x="317.5" y="142.24"/>
-<pinref part="R8" gate="R" pin="2"/>
+<pinref part="R5" gate="R" pin="2"/>
 <wire x1="327.66" y1="137.16" x2="327.66" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -1503,14 +1503,14 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </net>
 <net name="N$4" class="0">
 <segment>
-<pinref part="R3" gate="R" pin="2"/>
+<pinref part="R12" gate="R" pin="2"/>
 <wire x1="424.18" y1="93.98" x2="429.26" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="SJ2" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$5" class="0">
 <segment>
-<pinref part="R3" gate="R" pin="1"/>
+<pinref part="R12" gate="R" pin="1"/>
 <pinref part="Q2" gate="G$1" pin="B"/>
 <wire x1="439.42" y1="93.98" x2="447.04" y2="93.98" width="0.1524" layer="91"/>
 </segment>
@@ -1518,21 +1518,21 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <net name="N$6" class="0">
 <segment>
 <wire x1="431.8" y1="142.24" x2="441.96" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="R12" gate="R" pin="2"/>
+<pinref part="R10" gate="R" pin="2"/>
 <wire x1="441.96" y1="142.24" x2="452.12" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="452.12" y1="142.24" x2="462.28" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="462.28" y1="142.24" x2="472.44" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="472.44" y1="137.16" x2="472.44" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="R11" gate="R" pin="2"/>
+<pinref part="R9" gate="R" pin="2"/>
 <wire x1="462.28" y1="137.16" x2="462.28" y2="142.24" width="0.1524" layer="91"/>
 <junction x="462.28" y="142.24"/>
-<pinref part="R10" gate="R" pin="2"/>
+<pinref part="R8" gate="R" pin="2"/>
 <wire x1="452.12" y1="137.16" x2="452.12" y2="142.24" width="0.1524" layer="91"/>
 <junction x="452.12" y="142.24"/>
-<pinref part="R9" gate="R" pin="2"/>
+<pinref part="R7" gate="R" pin="2"/>
 <wire x1="441.96" y1="137.16" x2="441.96" y2="142.24" width="0.1524" layer="91"/>
 <junction x="441.96" y="142.24"/>
-<pinref part="R4" gate="R" pin="2"/>
+<pinref part="R6" gate="R" pin="2"/>
 <wire x1="431.8" y1="137.16" x2="431.8" y2="142.24" width="0.1524" layer="91"/>
 <pinref part="PTRIM" gate="G$1" pin="E"/>
 <wire x1="452.12" y1="142.24" x2="452.12" y2="149.86" width="0.1524" layer="91"/>
@@ -1654,35 +1654,35 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="R2" gate="R" pin="1"/>
+<pinref part="R1" gate="R" pin="1"/>
 <pinref part="A1" gate="G$1" pin="A"/>
 <wire x1="287.02" y1="127" x2="287.02" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
-<pinref part="R5" gate="R" pin="1"/>
+<pinref part="R2" gate="R" pin="1"/>
 <pinref part="A2" gate="G$1" pin="A"/>
 <wire x1="297.18" y1="127" x2="297.18" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$9" class="0">
 <segment>
-<pinref part="R6" gate="R" pin="1"/>
+<pinref part="R3" gate="R" pin="1"/>
 <pinref part="A3" gate="G$1" pin="A"/>
 <wire x1="307.34" y1="127" x2="307.34" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$10" class="0">
 <segment>
-<pinref part="R7" gate="R" pin="1"/>
+<pinref part="R4" gate="R" pin="1"/>
 <pinref part="A4" gate="G$1" pin="A"/>
 <wire x1="317.5" y1="127" x2="317.5" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$11" class="0">
 <segment>
-<pinref part="R8" gate="R" pin="1"/>
+<pinref part="R5" gate="R" pin="1"/>
 <pinref part="A5" gate="G$1" pin="A"/>
 <wire x1="327.66" y1="127" x2="327.66" y2="121.92" width="0.1524" layer="91"/>
 </segment>
@@ -1690,35 +1690,35 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <net name="N$2" class="0">
 <segment>
 <pinref part="P1" gate="G$1" pin="A"/>
-<pinref part="R4" gate="R" pin="1"/>
+<pinref part="R6" gate="R" pin="1"/>
 <wire x1="431.8" y1="121.92" x2="431.8" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
 <segment>
 <pinref part="P2" gate="G$1" pin="A"/>
-<pinref part="R9" gate="R" pin="1"/>
+<pinref part="R7" gate="R" pin="1"/>
 <wire x1="441.96" y1="121.92" x2="441.96" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="P3" gate="G$1" pin="A"/>
-<pinref part="R10" gate="R" pin="1"/>
+<pinref part="R8" gate="R" pin="1"/>
 <wire x1="452.12" y1="121.92" x2="452.12" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
 <pinref part="P4" gate="G$1" pin="A"/>
-<pinref part="R11" gate="R" pin="1"/>
+<pinref part="R9" gate="R" pin="1"/>
 <wire x1="462.28" y1="121.92" x2="462.28" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$15" class="0">
 <segment>
 <pinref part="P5" gate="G$1" pin="A"/>
-<pinref part="R12" gate="R" pin="1"/>
+<pinref part="R10" gate="R" pin="1"/>
 <wire x1="472.44" y1="121.92" x2="472.44" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
