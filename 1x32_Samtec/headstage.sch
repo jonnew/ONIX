@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.4">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -112,7 +112,7 @@
 <smd name="T3" x="0.3175" y="-2.159" dx="0.381" dy="1.016" layer="1" rot="R180"/>
 <smd name="T2" x="0.9525" y="-2.159" dx="0.381" dy="1.016" layer="1" rot="R180"/>
 <smd name="T1" x="1.5875" y="-2.159" dx="0.381" dy="1.016" layer="1" rot="R180"/>
-<text x="-2.54" y="-2.3495" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="-2.54" y="-2.3495" size="1.27" layer="25" font="vector" rot="R90">&gt;NAME</text>
 <wire x1="-2.2225" y1="-0.3302" x2="-1.5875" y2="-0.3302" width="0.127" layer="21"/>
 <wire x1="-1.5875" y1="-0.3302" x2="-0.9525" y2="-0.3302" width="0.127" layer="21"/>
 <wire x1="-0.9525" y1="-0.3302" x2="-0.3175" y2="-0.3302" width="0.127" layer="21"/>
@@ -266,6 +266,37 @@
 <rectangle x1="-2.413" y1="-2.413" x2="-0.381" y2="-0.381" layer="31"/>
 <rectangle x1="0.381" y1="-2.413" x2="2.413" y2="-0.381" layer="31"/>
 </package>
+<package name="MILLMAX-12PIN">
+<wire x1="3.81" y1="0.9398" x2="3.81" y2="-1.6002" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="-1.6002" x2="-3.81" y2="0.9398" width="0.127" layer="21"/>
+<wire x1="-3.175" y1="-1.6002" x2="-3.175" y2="-1.7145" width="0.127" layer="21"/>
+<wire x1="-1.905" y1="-1.6002" x2="-1.905" y2="-1.7145" width="0.127" layer="21"/>
+<wire x1="3.175" y1="-1.6002" x2="3.175" y2="-1.7145" width="0.127" layer="21"/>
+<smd name="B4" x="-0.635" y="-3.429" dx="0.762" dy="2.794" layer="16" rot="R180"/>
+<smd name="B3" x="0.635" y="-3.429" dx="0.762" dy="2.794" layer="16" rot="R180"/>
+<smd name="B5" x="-1.905" y="-3.429" dx="0.762" dy="2.794" layer="16" rot="R180"/>
+<smd name="B2" x="1.905" y="-3.429" dx="0.762" dy="2.794" layer="16" rot="R180"/>
+<smd name="B6" x="-3.175" y="-3.429" dx="0.762" dy="2.794" layer="16" rot="R180"/>
+<smd name="B1" x="3.175" y="-3.429" dx="0.762" dy="2.794" layer="16" rot="R180"/>
+<smd name="T6" x="-3.175" y="-3.429" dx="0.762" dy="2.794" layer="1" rot="R180"/>
+<smd name="T5" x="-1.905" y="-3.429" dx="0.762" dy="2.794" layer="1" rot="R180"/>
+<smd name="T4" x="-0.635" y="-3.429" dx="0.762" dy="2.794" layer="1" rot="R180"/>
+<smd name="T3" x="0.635" y="-3.429" dx="0.762" dy="2.794" layer="1" rot="R180"/>
+<smd name="T2" x="1.905" y="-3.429" dx="0.762" dy="2.794" layer="1" rot="R180"/>
+<smd name="T1" x="3.175" y="-3.683" dx="0.762" dy="3.302" layer="1" rot="R180"/>
+<text x="-5.08" y="-3.6195" size="1.27" layer="25" font="vector" rot="R90">&gt;NAME</text>
+<wire x1="-3.81" y1="-1.6002" x2="-3.175" y2="-1.6002" width="0.127" layer="21"/>
+<wire x1="-3.175" y1="-1.6002" x2="-1.905" y2="-1.6002" width="0.127" layer="21"/>
+<wire x1="-1.905" y1="-1.6002" x2="-0.635" y2="-1.6002" width="0.127" layer="21"/>
+<wire x1="-0.635" y1="-1.6002" x2="0.635" y2="-1.6002" width="0.127" layer="21"/>
+<wire x1="0.635" y1="-1.6002" x2="1.905" y2="-1.6002" width="0.127" layer="21"/>
+<wire x1="1.905" y1="-1.6002" x2="3.175" y2="-1.6002" width="0.127" layer="21"/>
+<wire x1="3.175" y1="-1.6002" x2="3.81" y2="-1.6002" width="0.127" layer="21"/>
+<wire x1="-0.635" y1="-1.6002" x2="-0.635" y2="-1.7145" width="0.127" layer="21"/>
+<wire x1="0.635" y1="-1.6002" x2="0.635" y2="-1.7145" width="0.127" layer="21"/>
+<wire x1="1.905" y1="-1.6002" x2="1.905" y2="-1.7145" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="0.9398" x2="3.81" y2="0.9398" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="RHD2000-CABLE">
@@ -356,11 +387,31 @@
 </symbols>
 <devicesets>
 <deviceset name="RHD2000-CABLE-AMP-SIDE" prefix="S">
+<description>Omnetics A79623 PZN-12-AA connector for SPI interface (amplifier side)</description>
 <gates>
 <gate name="A" symbol="RHD2000-CABLE" x="0" y="2.54"/>
 </gates>
 <devices>
 <device name="" package="OMNETICS_PZN-12-AA">
+<connects>
+<connect gate="A" pin="!CS!+" pad="T1"/>
+<connect gate="A" pin="!CS!-" pad="B1"/>
+<connect gate="A" pin="GND" pad="B6"/>
+<connect gate="A" pin="MISO1+" pad="T4"/>
+<connect gate="A" pin="MISO1-" pad="B4"/>
+<connect gate="A" pin="MISO2+" pad="T5"/>
+<connect gate="A" pin="MISO2-" pad="B5"/>
+<connect gate="A" pin="MOSI+" pad="T3"/>
+<connect gate="A" pin="MOSI-" pad="B3"/>
+<connect gate="A" pin="SCLK+" pad="T2"/>
+<connect gate="A" pin="SCLK-" pad="B2"/>
+<connect gate="A" pin="VDD" pad="T6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="MILLMAX" package="MILLMAX-12PIN">
 <connects>
 <connect gate="A" pin="!CS!+" pad="T1"/>
 <connect gate="A" pin="!CS!-" pad="B1"/>
@@ -11007,7 +11058,7 @@ Source: www.kingbright.com</description>
 </classes>
 <parts>
 <part name="U$1" library="voigts" deviceset="ADXL335" device=""/>
-<part name="S2" library="RHD2000" deviceset="RHD2000-CABLE-AMP-SIDE" device=""/>
+<part name="S2" library="RHD2000" deviceset="RHD2000-CABLE-AMP-SIDE" device="MILLMAX" value="RHD2000-CABLE-AMP-SIDEMILLMAX"/>
 <part name="U1" library="RHD2000" deviceset="RHD2132" device="_QFN"/>
 <part name="R1" library="resistor" deviceset="R-EU_" device="R0402" value="100"/>
 <part name="R2" library="resistor" deviceset="R-EU_" device="R0402" value="100"/>
