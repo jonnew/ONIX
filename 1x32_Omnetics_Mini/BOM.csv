@@ -3,9 +3,7 @@ Qty,Value,Device,Package,Digi-Key part number,Schematic Name,description,price,t
 4,0.1 uF,capacitor,402,445-1265-1-ND,"C_a,C_{x,y,z}",Bypass for accelerometer,0.1,0.4,50
 1,10 uF,capacitor,402,587-3237-1-ND,C_vdd,Bypass main Vdd,0.1,0.1,100
 1,10 nF,capacitor,402,445-1262-6-ND,C_ref,Bypass adc ref,0.1,0.1,50
-1,300,resistor,402,P300LCT-ND,Rled,led current limiting resistor,0.1,0.1,50
 3,100,resistor,402,P100JCT-ND,"R1,2,3",SDO impedance matching resistor,0.1,0.3,50
-1,RED,LED,603,160-1447-1-ND,LED,power indicator LED,0.32,0.32,50
 1,,Omnetics A79025,surface mount,N/A,S1,32 ch right angle omnetics connector,51.32,51.32,
 1,,Omnetics PZN-12-AA,surface mount,N/A,S2,12 pin right angle polarized omnetics connector,16.36,16.36,
 1,,ADXL335BCPZ-RL7,16-LQFN,ADXL335BCPZ-RL7CT-ND,adxl,3 axis analog accelerometer,6.25,6.25,
