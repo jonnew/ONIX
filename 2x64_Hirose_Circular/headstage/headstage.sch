@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -2544,13 +2544,9 @@ by exp-lbrs.ulp</description>
 <wire x1="899.16" y1="182.88" x2="901.7" y2="182.88" width="0.1524" layer="91"/>
 <junction x="904.24" y="182.88"/>
 <wire x1="901.7" y1="182.88" x2="904.24" y2="182.88" width="0.1524" layer="91"/>
-<wire x1="909.32" y1="187.96" x2="909.32" y2="182.88" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="5"/>
 <wire x1="904.24" y1="182.88" x2="906.78" y2="182.88" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="6"/>
-<wire x1="906.78" y1="182.88" x2="909.32" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="906.78" y1="187.96" x2="906.78" y2="182.88" width="0.1524" layer="91"/>
-<junction x="906.78" y="182.88"/>
 <pinref part="U$1" gate="G$1" pin="8"/>
 <wire x1="901.7" y1="187.96" x2="901.7" y2="182.88" width="0.1524" layer="91"/>
 <junction x="901.7" y="182.88"/>
@@ -2852,7 +2848,7 @@ by exp-lbrs.ulp</description>
 <label x="1186.18" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="MISO1-" class="0">
+<net name="MISO2-" class="0">
 <segment>
 <wire x1="911.86" y1="203.2" x2="911.86" y2="327.66" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="MISO-"/>
@@ -2861,35 +2857,13 @@ by exp-lbrs.ulp</description>
 <label x="911.86" y="312.42" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="MISO1+" class="0">
+<net name="MISO2+" class="0">
 <segment>
 <wire x1="914.4" y1="327.66" x2="914.4" y2="203.2" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="MISO+"/>
 <pinref part="U$1" gate="G$1" pin="18"/>
 <label x="914.4" y="208.28" size="1.778" layer="95" rot="R90"/>
 <label x="914.4" y="312.42" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
-<net name="MISO2-" class="0">
-<segment>
-<wire x1="916.94" y1="261.62" x2="1140.46" y2="261.62" width="0.1524" layer="91"/>
-<wire x1="916.94" y1="203.2" x2="916.94" y2="261.62" width="0.1524" layer="91"/>
-<pinref part="AMP_B" gate="A" pin="MISO-"/>
-<label x="1140.46" y="314.96" size="1.778" layer="95" rot="R90"/>
-<wire x1="1140.46" y1="261.62" x2="1140.46" y2="327.66" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="19"/>
-<label x="916.94" y="208.28" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
-<net name="MISO2+" class="0">
-<segment>
-<wire x1="1143" y1="259.08" x2="919.48" y2="259.08" width="0.1524" layer="91"/>
-<wire x1="919.48" y1="259.08" x2="919.48" y2="203.2" width="0.1524" layer="91"/>
-<pinref part="AMP_B" gate="A" pin="MISO+"/>
-<label x="1143" y="314.96" size="1.778" layer="95" rot="R90"/>
-<wire x1="1143" y1="259.08" x2="1143" y2="327.66" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="20"/>
-<label x="919.48" y="208.28" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="N$1" class="1">
@@ -2941,9 +2915,9 @@ by exp-lbrs.ulp</description>
 </segment>
 <segment>
 <pinref part="AMP_B" gate="A" pin="REF_ELEC"/>
-<wire x1="1054.1" y1="327.66" x2="1054.1" y2="322.58" width="0.1524" layer="91"/>
-<wire x1="1054.1" y1="322.58" x2="1041.4" y2="322.58" width="0.1524" layer="91"/>
-<label x="1041.4" y="322.58" size="1.778" layer="95"/>
+<wire x1="1054.1" y1="327.66" x2="1054.1" y2="320.04" width="0.1524" layer="91"/>
+<wire x1="1054.1" y1="320.04" x2="1043.94" y2="320.04" width="0.1524" layer="91"/>
+<label x="1043.94" y="320.04" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U3" gate="A" pin="3Z"/>
@@ -5558,6 +5532,12 @@ by exp-lbrs.ulp</description>
 <label x="911.86" y="175.26" size="1.778" layer="95" rot="R270"/>
 <pinref part="U$1" gate="G$1" pin="4"/>
 </segment>
+<segment>
+<pinref part="AMP_A" gate="A" pin="AUXOUT"/>
+<wire x1="932.18" y1="327.66" x2="932.18" y2="312.42" width="0.1524" layer="91"/>
+<wire x1="932.18" y1="312.42" x2="944.88" y2="312.42" width="0.1524" layer="91"/>
+<label x="934.72" y="312.42" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="GND_THRU" class="0">
 <segment>
@@ -5655,14 +5635,6 @@ by exp-lbrs.ulp</description>
 <wire x1="1447.8" y1="464.82" x2="1447.8" y2="510.54" width="0.1524" layer="91"/>
 <wire x1="1447.8" y1="510.54" x2="1468.12" y2="510.54" width="0.1524" layer="91"/>
 <label x="1447.8" y="482.6" size="1.778" layer="95" rot="R90"/>
-</segment>
-<segment>
-<pinref part="DTHRU_TOP" gate="G$1" pin="5"/>
-<wire x1="1468.12" y1="469.9" x2="1452.88" y2="469.9" width="0.1524" layer="91"/>
-<pinref part="DTHRU_BOT" gate="G$1" pin="5"/>
-<wire x1="1452.88" y1="469.9" x2="1452.88" y2="505.46" width="0.1524" layer="91"/>
-<wire x1="1452.88" y1="505.46" x2="1468.12" y2="505.46" width="0.1524" layer="91"/>
-<label x="1452.88" y="482.6" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="DTHRU_TOP" gate="G$1" pin="6"/>
@@ -5886,6 +5858,51 @@ by exp-lbrs.ulp</description>
 <pinref part="R4" gate="R" pin="2"/>
 <pinref part="U3" gate="A" pin="3Y0"/>
 <wire x1="1158.24" y1="99.06" x2="1148.08" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="MISO1-" class="0">
+<segment>
+<wire x1="916.94" y1="261.62" x2="1140.46" y2="261.62" width="0.1524" layer="91"/>
+<wire x1="916.94" y1="203.2" x2="916.94" y2="261.62" width="0.1524" layer="91"/>
+<pinref part="AMP_B" gate="A" pin="MISO-"/>
+<label x="1140.46" y="314.96" size="1.778" layer="95" rot="R90"/>
+<wire x1="1140.46" y1="261.62" x2="1140.46" y2="327.66" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="19"/>
+<label x="916.94" y="208.28" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="MISO1+" class="0">
+<segment>
+<wire x1="1143" y1="259.08" x2="919.48" y2="259.08" width="0.1524" layer="91"/>
+<wire x1="919.48" y1="259.08" x2="919.48" y2="203.2" width="0.1524" layer="91"/>
+<pinref part="AMP_B" gate="A" pin="MISO+"/>
+<label x="1143" y="314.96" size="1.778" layer="95" rot="R90"/>
+<wire x1="1143" y1="259.08" x2="1143" y2="327.66" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="20"/>
+<label x="919.48" y="208.28" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="AUXOUT_B" class="0">
+<segment>
+<pinref part="AMP_B" gate="A" pin="AUXOUT"/>
+<wire x1="1160.78" y1="327.66" x2="1160.78" y2="307.34" width="0.1524" layer="91"/>
+<wire x1="1160.78" y1="307.34" x2="1173.48" y2="307.34" width="0.1524" layer="91"/>
+<label x="1163.32" y="307.34" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="5"/>
+<wire x1="909.32" y1="187.96" x2="909.32" y2="172.72" width="0.1524" layer="91"/>
+<label x="909.32" y="175.26" size="1.778" layer="95" rot="R270"/>
+</segment>
+</net>
+<net name="AUXOUT_B_THRU" class="0">
+<segment>
+<pinref part="DTHRU_TOP" gate="G$1" pin="5"/>
+<wire x1="1468.12" y1="469.9" x2="1452.88" y2="469.9" width="0.1524" layer="91"/>
+<pinref part="DTHRU_BOT" gate="G$1" pin="5"/>
+<wire x1="1452.88" y1="469.9" x2="1452.88" y2="505.46" width="0.1524" layer="91"/>
+<wire x1="1452.88" y1="505.46" x2="1468.12" y2="505.46" width="0.1524" layer="91"/>
+<label x="1452.88" y="482.6" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 </nets>
