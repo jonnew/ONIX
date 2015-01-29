@@ -28,10 +28,10 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
@@ -898,32 +898,45 @@ design rules under a new name.</description>
 <contactref element="R5" pad="1"/>
 <contactref element="R7" pad="1"/>
 <contactref element="R6" pad="1"/>
+<polygon width="0.254" layer="2" thermals="no">
+<vertex x="-22.86" y="0"/>
+<vertex x="-22.86" y="22.86"/>
+<vertex x="22.86" y="22.86"/>
+<vertex x="22.86" y="-22.86"/>
+<vertex x="-22.86" y="-22.86"/>
+</polygon>
+<via x="-3.556" y="13.2588" extent="1-16" drill="0.381"/>
+<wire x1="-3.752" y1="14.2256" x2="-3.352" y2="14.2256" width="0.254" layer="16"/>
+<wire x1="-3.352" y1="14.2256" x2="-3.556" y2="14.0216" width="0.254" layer="16" curve="90"/>
+<wire x1="-3.556" y1="14.0216" x2="-3.556" y2="13.2588" width="0.254" layer="16"/>
+<via x="-2.6416" y="2.0828" extent="1-16" drill="0.1524"/>
+<via x="3.556" y="-13.2588" extent="1-16" drill="0.381"/>
+<wire x1="3.556" y1="-13.2588" x2="3.556" y2="-14.2256" width="0.254" layer="16"/>
+<wire x1="3.556" y1="-14.2256" x2="3.352" y2="-14.2256" width="0.254" layer="16"/>
+<wire x1="3.556" y1="-14.2256" x2="3.752" y2="-14.2256" width="0.254" layer="16"/>
 <wire x1="-10.16" y1="-35.56" x2="-9.6266" y2="-50.8" width="0" layer="19" extent="1-1"/>
 <wire x1="0" y1="-35.56" x2="-10.16" y2="-35.56" width="0" layer="19" extent="1-1"/>
 <wire x1="5.0038" y1="-24.8412" x2="0" y2="-35.56" width="0" layer="19" extent="1-1"/>
 <wire x1="3.752" y1="-14.2256" x2="5.0038" y2="-24.8412" width="0" layer="19" extent="1-16"/>
-<wire x1="3.352" y1="-14.2256" x2="3.752" y2="-14.2256" width="0" layer="19" extent="16-16"/>
-<wire x1="2.794" y1="-5.2324" x2="3.352" y2="-14.2256" width="0" layer="19" extent="16-16"/>
-<wire x1="2.6416" y1="-2.4892" x2="2.794" y2="-5.2324" width="0" layer="19" extent="16-16"/>
-<wire x1="-0.1016" y1="-2.4892" x2="2.6416" y2="-2.4892" width="0" layer="19" extent="16-16"/>
-<wire x1="5.842" y1="-2.4892" x2="2.6416" y2="-2.4892" width="0" layer="19" extent="16-16"/>
-<wire x1="7.2517" y1="-1.016" x2="5.842" y2="-2.4892" width="0" layer="19" extent="16-16"/>
-<wire x1="0.1016" y1="2.4892" x2="-0.1016" y2="-2.4892" width="0" layer="19" extent="16-16"/>
-<wire x1="-2.6416" y1="2.4892" x2="0.1016" y2="2.4892" width="0" layer="19" extent="16-16"/>
+<wire x1="-2.6416" y1="2.4892" x2="-2.6416" y2="2.0828" width="0" layer="19" extent="16-16"/>
 <wire x1="-2.794" y1="5.2324" x2="-2.6416" y2="2.4892" width="0" layer="19" extent="16-16"/>
+<wire x1="0.1016" y1="2.4892" x2="-2.6416" y2="2.4892" width="0" layer="19" extent="16-16"/>
 <wire x1="-5.842" y1="2.4892" x2="-2.6416" y2="2.4892" width="0" layer="19" extent="16-16"/>
 <wire x1="-7.2517" y1="1.016" x2="-5.842" y2="2.4892" width="0" layer="19" extent="16-16"/>
 <wire x1="-9.9441" y1="1.27" x2="-7.2517" y2="1.016" width="0" layer="19" extent="16-16"/>
 <wire x1="-9.9441" y1="0.3048" x2="-9.9441" y2="1.27" width="0" layer="19" extent="16-16"/>
 <wire x1="-9.9441" y1="2.2352" x2="-9.9441" y2="1.27" width="0" layer="19" extent="16-16"/>
+<wire x1="-0.1016" y1="-2.4892" x2="0.1016" y2="2.4892" width="0" layer="19" extent="16-16"/>
+<wire x1="2.6416" y1="-2.4892" x2="-0.1016" y2="-2.4892" width="0" layer="19" extent="16-16"/>
+<wire x1="2.794" y1="-5.2324" x2="2.6416" y2="-2.4892" width="0" layer="19" extent="16-16"/>
+<wire x1="5.842" y1="-2.4892" x2="2.6416" y2="-2.4892" width="0" layer="19" extent="16-16"/>
+<wire x1="7.2517" y1="-1.016" x2="5.842" y2="-2.4892" width="0" layer="19" extent="16-16"/>
 <wire x1="-8.7794" y1="-6.5742" x2="-9.9441" y2="0.3048" width="0" layer="19" extent="16-16"/>
 <wire x1="-8.1294" y1="-6.5742" x2="-8.7794" y2="-6.5742" width="0" layer="19" extent="16-16"/>
 <wire x1="-7.4794" y1="-6.5742" x2="-8.1294" y2="-6.5742" width="0" layer="19" extent="16-16"/>
 <wire x1="-9.448" y1="-11.8856" x2="-8.7794" y2="-6.5742" width="0" layer="19" extent="16-16"/>
 <wire x1="-9.848" y1="-11.8856" x2="-9.448" y2="-11.8856" width="0" layer="19" extent="16-16"/>
 <wire x1="-17.0434" y1="-1.27" x2="-9.9441" y2="0.3048" width="0" layer="19" extent="16-16"/>
-<wire x1="-3.352" y1="14.2256" x2="-2.794" y2="5.2324" width="0" layer="19" extent="16-16"/>
-<wire x1="-3.752" y1="14.2256" x2="-3.352" y2="14.2256" width="0" layer="19" extent="16-16"/>
 <wire x1="-9.6266" y1="-22.86" x2="-9.448" y2="-11.8856" width="0" layer="19" extent="1-16"/>
 <wire x1="14.7406" y1="7.8012" x2="7.2517" y2="-1.016" width="0" layer="19" extent="1-16"/>
 <wire x1="14.7406" y1="8.2012" x2="14.7406" y2="7.8012" width="0" layer="19" extent="1-1"/>
@@ -957,6 +970,14 @@ design rules under a new name.</description>
 <contactref element="AMP_B" pad="B18"/>
 <contactref element="AMP_B" pad="B17"/>
 <contactref element="AMP_B" pad="B21"/>
+<polygon width="0.254" layer="3" thermals="no">
+<vertex x="-22.86" y="0"/>
+<vertex x="-22.86" y="22.86"/>
+<vertex x="22.86" y="22.86"/>
+<vertex x="22.86" y="-22.86"/>
+<vertex x="-22.86" y="-22.86"/>
+</polygon>
+<via x="-0.1016" y="2.0828" extent="1-16" drill="0.1524"/>
 <wire x1="-10.16" y1="-39.37" x2="-10.6934" y2="-50.8" width="0" layer="19" extent="1-1"/>
 <wire x1="-10.6934" y1="-22.86" x2="-10.16" y2="-39.37" width="0" layer="19" extent="1-1"/>
 <wire x1="-4.2294" y1="-0.9342" x2="-10.6934" y2="-22.86" width="0" layer="19" extent="1-16"/>
@@ -968,6 +989,7 @@ design rules under a new name.</description>
 <wire x1="-0.3048" y1="2.4892" x2="-0.508" y2="2.4892" width="0" layer="19" extent="16-16"/>
 <wire x1="-0.1016" y1="2.4892" x2="-0.3048" y2="2.4892" width="0" layer="19" extent="16-16"/>
 <wire x1="0.3048" y1="2.4892" x2="-0.1016" y2="2.4892" width="0" layer="19" extent="16-16"/>
+<wire x1="-0.1016" y1="2.0828" x2="-0.1016" y2="2.4892" width="0" layer="19" extent="16-16"/>
 <wire x1="-0.3048" y1="-2.4892" x2="-4.2294" y2="-0.9342" width="0" layer="19" extent="16-16"/>
 <wire x1="0.1016" y1="-2.4892" x2="-0.3048" y2="-2.4892" width="0" layer="19" extent="16-16"/>
 <wire x1="0.3048" y1="-2.4892" x2="0.1016" y2="-2.4892" width="0" layer="19" extent="16-16"/>
@@ -2576,162 +2598,288 @@ design rules under a new name.</description>
 <signal name="N$108">
 <contactref element="ATHRU_B_BOT" pad="33"/>
 <contactref element="ATHRU_B_TOP" pad="33"/>
-<wire x1="14.7406" y1="2.952" x2="14.2256" y2="2.952" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="2.952" x2="15.4432" y2="2.952" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="2.952" x2="15.4432" y2="2.9464" width="0.1524" layer="1"/>
+<via x="15.4432" y="2.9464" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="2.9464" x2="15.4432" y2="2.952" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="2.952" x2="14.2256" y2="2.952" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$109">
 <contactref element="ATHRU_B_BOT" pad="32"/>
 <contactref element="ATHRU_B_TOP" pad="32"/>
-<wire x1="14.7406" y1="2.552" x2="14.2256" y2="2.552" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="2.552" x2="15.9004" y2="2.552" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="2.552" x2="15.9004" y2="2.54" width="0.1524" layer="1"/>
+<via x="15.9004" y="2.54" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="2.54" x2="15.9004" y2="2.552" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="2.552" x2="14.2256" y2="2.552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$110">
 <contactref element="ATHRU_B_BOT" pad="31"/>
 <contactref element="ATHRU_B_TOP" pad="31"/>
-<wire x1="14.7406" y1="2.152" x2="14.2256" y2="2.152" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="2.152" x2="15.4432" y2="2.152" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="2.152" x2="15.4432" y2="2.1336" width="0.1524" layer="1"/>
+<via x="15.4432" y="2.1336" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="2.1336" x2="15.4432" y2="2.152" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="2.152" x2="14.2256" y2="2.152" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$111">
 <contactref element="ATHRU_B_BOT" pad="30"/>
 <contactref element="ATHRU_B_TOP" pad="30"/>
-<wire x1="14.7406" y1="1.752" x2="14.2256" y2="1.752" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="1.752" x2="15.9004" y2="1.752" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="1.752" x2="15.9004" y2="1.7272" width="0.1524" layer="1"/>
+<via x="15.9004" y="1.7272" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="1.7272" x2="15.9004" y2="1.752" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="1.752" x2="14.2256" y2="1.752" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$112">
 <contactref element="ATHRU_B_BOT" pad="29"/>
 <contactref element="ATHRU_B_TOP" pad="29"/>
-<wire x1="14.7406" y1="1.352" x2="14.2256" y2="1.352" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="1.352" x2="15.4432" y2="1.352" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="1.352" x2="15.4432" y2="1.3208" width="0.1524" layer="1"/>
+<via x="15.4432" y="1.3208" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="1.3208" x2="15.4432" y2="1.352" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="1.352" x2="14.2256" y2="1.352" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$113">
 <contactref element="ATHRU_B_BOT" pad="28"/>
 <contactref element="ATHRU_B_TOP" pad="28"/>
-<wire x1="14.7406" y1="0.952" x2="14.2256" y2="0.952" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="0.952" x2="15.9004" y2="0.952" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="0.952" x2="15.9004" y2="0.9652" width="0.1524" layer="1"/>
+<via x="15.9004" y="0.9652" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="0.9652" x2="15.9004" y2="0.952" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="0.952" x2="14.2256" y2="0.952" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$114">
 <contactref element="ATHRU_B_BOT" pad="27"/>
 <contactref element="ATHRU_B_TOP" pad="27"/>
-<wire x1="14.7406" y1="0.552" x2="14.2256" y2="0.552" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="0.552" x2="15.4432" y2="0.552" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="0.552" x2="15.4432" y2="0.5588" width="0.1524" layer="1"/>
+<via x="15.4432" y="0.5588" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="0.5588" x2="15.4432" y2="0.552" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="0.552" x2="14.2256" y2="0.552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$115">
 <contactref element="ATHRU_B_BOT" pad="26"/>
 <contactref element="ATHRU_B_TOP" pad="26"/>
-<wire x1="14.7406" y1="0.152" x2="14.2256" y2="0.152" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="0.152" x2="15.9004" y2="0.152" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="0.152" x2="15.9004" y2="0.1524" width="0.1524" layer="1"/>
+<via x="15.9004" y="0.1524" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="0.1524" x2="15.9004" y2="0.152" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="0.152" x2="14.2256" y2="0.152" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$116">
 <contactref element="ATHRU_B_BOT" pad="25"/>
 <contactref element="ATHRU_B_TOP" pad="25"/>
-<wire x1="14.7406" y1="-0.248" x2="14.2256" y2="-0.248" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-0.248" x2="15.4432" y2="-0.248" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-0.248" x2="15.4432" y2="-0.254" width="0.1524" layer="1"/>
+<via x="15.4432" y="-0.254" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-0.254" x2="15.4432" y2="-0.248" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-0.248" x2="14.2256" y2="-0.248" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$117">
 <contactref element="ATHRU_B_BOT" pad="24"/>
 <contactref element="ATHRU_B_TOP" pad="24"/>
-<wire x1="14.7406" y1="-0.648" x2="14.2256" y2="-0.648" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-0.648" x2="15.9004" y2="-0.648" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-0.648" x2="15.9004" y2="-0.6604" width="0.1524" layer="1"/>
+<via x="15.9004" y="-0.6604" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-0.6604" x2="15.9004" y2="-0.648" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-0.648" x2="14.2256" y2="-0.648" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$118">
 <contactref element="ATHRU_B_BOT" pad="23"/>
 <contactref element="ATHRU_B_TOP" pad="23"/>
-<wire x1="14.7406" y1="-1.048" x2="14.2256" y2="-1.048" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-1.048" x2="15.4432" y2="-1.048" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-1.048" x2="15.4432" y2="-1.016" width="0.1524" layer="1"/>
+<via x="15.4432" y="-1.016" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-1.016" x2="15.4432" y2="-1.048" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-1.048" x2="14.2256" y2="-1.048" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$119">
 <contactref element="ATHRU_B_BOT" pad="22"/>
 <contactref element="ATHRU_B_TOP" pad="22"/>
-<wire x1="14.7406" y1="-1.448" x2="14.2256" y2="-1.448" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-1.448" x2="15.9004" y2="-1.448" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-1.448" x2="15.9004" y2="-1.4224" width="0.1524" layer="1"/>
+<via x="15.9004" y="-1.4224" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-1.4224" x2="15.9004" y2="-1.448" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-1.448" x2="14.2256" y2="-1.448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$120">
 <contactref element="ATHRU_B_BOT" pad="21"/>
 <contactref element="ATHRU_B_TOP" pad="21"/>
-<wire x1="14.7406" y1="-1.848" x2="14.2256" y2="-1.848" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-1.848" x2="15.4432" y2="-1.848" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-1.848" x2="15.4432" y2="-1.8288" width="0.1524" layer="1"/>
+<via x="15.4432" y="-1.8288" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-1.8288" x2="15.4432" y2="-1.848" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-1.848" x2="14.2256" y2="-1.848" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$121">
 <contactref element="ATHRU_B_BOT" pad="20"/>
 <contactref element="ATHRU_B_TOP" pad="20"/>
-<wire x1="14.7406" y1="-2.248" x2="14.2256" y2="-2.248" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-2.248" x2="15.9004" y2="-2.248" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-2.248" x2="15.9004" y2="-2.2352" width="0.1524" layer="1"/>
+<via x="15.9004" y="-2.2352" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-2.2352" x2="15.9004" y2="-2.248" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-2.248" x2="14.2256" y2="-2.248" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$122">
 <contactref element="ATHRU_B_BOT" pad="19"/>
 <contactref element="ATHRU_B_TOP" pad="19"/>
-<wire x1="14.7406" y1="-2.648" x2="14.2256" y2="-2.648" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-2.648" x2="15.4432" y2="-2.648" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-2.648" x2="15.4432" y2="-2.6416" width="0.1524" layer="1"/>
+<via x="15.4432" y="-2.6416" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-2.6416" x2="15.4432" y2="-2.648" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-2.648" x2="14.2256" y2="-2.648" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$123">
 <contactref element="ATHRU_B_BOT" pad="18"/>
 <contactref element="ATHRU_B_TOP" pad="18"/>
-<wire x1="14.7406" y1="-3.048" x2="14.2256" y2="-3.048" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-3.048" x2="15.9004" y2="-3.048" width="0.1524" layer="1"/>
+<via x="15.9004" y="-3.048" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-3.048" x2="14.2256" y2="-3.048" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$124">
 <contactref element="ATHRU_B_BOT" pad="17"/>
 <contactref element="ATHRU_B_TOP" pad="17"/>
-<wire x1="14.7406" y1="-3.448" x2="14.2256" y2="-3.448" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-3.448" x2="15.4432" y2="-3.448" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-3.448" x2="15.4432" y2="-3.4544" width="0.1524" layer="1"/>
+<via x="15.4432" y="-3.4544" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-3.4544" x2="15.4432" y2="-3.448" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-3.448" x2="14.2256" y2="-3.448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$125">
 <contactref element="ATHRU_B_BOT" pad="16"/>
 <contactref element="ATHRU_B_TOP" pad="16"/>
-<wire x1="14.7406" y1="-3.848" x2="14.2256" y2="-3.848" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-3.848" x2="15.9004" y2="-3.848" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-3.848" x2="15.9004" y2="-3.8608" width="0.1524" layer="1"/>
+<via x="15.9004" y="-3.8608" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-3.8608" x2="15.9004" y2="-3.848" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-3.848" x2="14.2256" y2="-3.848" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$126">
 <contactref element="ATHRU_B_BOT" pad="15"/>
 <contactref element="ATHRU_B_TOP" pad="15"/>
-<wire x1="14.7406" y1="-4.248" x2="14.2256" y2="-4.248" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-4.248" x2="15.4432" y2="-4.248" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-4.248" x2="15.4432" y2="-4.2672" width="0.1524" layer="1"/>
+<via x="15.4432" y="-4.2672" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-4.2672" x2="15.4432" y2="-4.248" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-4.248" x2="14.2256" y2="-4.248" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$127">
 <contactref element="ATHRU_B_BOT" pad="14"/>
 <contactref element="ATHRU_B_TOP" pad="14"/>
-<wire x1="14.7406" y1="-4.648" x2="14.2256" y2="-4.648" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-4.648" x2="15.9004" y2="-4.648" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-4.648" x2="15.9004" y2="-4.6736" width="0.1524" layer="1"/>
+<via x="15.9004" y="-4.6736" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-4.6736" x2="15.9004" y2="-4.648" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-4.648" x2="14.2256" y2="-4.648" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$128">
 <contactref element="ATHRU_B_BOT" pad="13"/>
 <contactref element="ATHRU_B_TOP" pad="13"/>
-<wire x1="14.7406" y1="-5.048" x2="14.2256" y2="-5.048" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-5.048" x2="15.4432" y2="-5.048" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-5.048" x2="15.4432" y2="-5.0292" width="0.1524" layer="1"/>
+<via x="15.4432" y="-5.0292" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-5.0292" x2="15.4432" y2="-5.048" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-5.048" x2="14.2256" y2="-5.048" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$129">
 <contactref element="ATHRU_B_BOT" pad="12"/>
 <contactref element="ATHRU_B_TOP" pad="12"/>
-<wire x1="14.7406" y1="-5.448" x2="14.2256" y2="-5.448" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-5.448" x2="15.9004" y2="-5.448" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-5.448" x2="15.9004" y2="-5.4356" width="0.1524" layer="1"/>
+<via x="15.9004" y="-5.4356" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-5.4356" x2="15.9004" y2="-5.448" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-5.448" x2="14.2256" y2="-5.448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$130">
 <contactref element="ATHRU_B_BOT" pad="11"/>
 <contactref element="ATHRU_B_TOP" pad="11"/>
-<wire x1="14.7406" y1="-5.848" x2="14.2256" y2="-5.848" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-5.848" x2="15.4432" y2="-5.848" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-5.848" x2="15.4432" y2="-5.842" width="0.1524" layer="1"/>
+<via x="15.4432" y="-5.842" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-5.842" x2="15.4432" y2="-5.848" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-5.848" x2="14.2256" y2="-5.848" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$157">
 <contactref element="ATHRU_B_BOT" pad="10"/>
 <contactref element="ATHRU_B_TOP" pad="10"/>
-<wire x1="14.7406" y1="-6.248" x2="14.2256" y2="-6.248" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-6.248" x2="15.9004" y2="-6.248" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-6.248" x2="15.9004" y2="-6.2484" width="0.1524" layer="1"/>
+<via x="15.9004" y="-6.2484" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-6.2484" x2="15.9004" y2="-6.248" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-6.248" x2="14.2256" y2="-6.248" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$158">
 <contactref element="ATHRU_B_BOT" pad="9"/>
 <contactref element="ATHRU_B_TOP" pad="9"/>
-<wire x1="14.7406" y1="-6.648" x2="14.2256" y2="-6.648" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-6.648" x2="15.4432" y2="-6.648" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-6.648" x2="15.4432" y2="-6.6548" width="0.1524" layer="1"/>
+<via x="15.4432" y="-6.6548" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-6.6548" x2="15.4432" y2="-6.648" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-6.648" x2="14.2256" y2="-6.648" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$159">
 <contactref element="ATHRU_B_BOT" pad="8"/>
 <contactref element="ATHRU_B_TOP" pad="8"/>
-<wire x1="14.7406" y1="-7.048" x2="14.2256" y2="-7.048" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-7.048" x2="15.9004" y2="-7.048" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-7.048" x2="15.9004" y2="-7.0612" width="0.1524" layer="1"/>
+<via x="15.9004" y="-7.0612" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-7.0612" x2="15.9004" y2="-7.048" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-7.048" x2="14.2256" y2="-7.048" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$160">
 <contactref element="ATHRU_B_BOT" pad="7"/>
 <contactref element="ATHRU_B_TOP" pad="7"/>
-<wire x1="14.7406" y1="-7.448" x2="14.2256" y2="-7.448" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-7.448" x2="15.4432" y2="-7.448" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-7.448" x2="15.4432" y2="-7.4676" width="0.1524" layer="1"/>
+<via x="15.4432" y="-7.4676" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-7.4676" x2="15.4432" y2="-7.448" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-7.448" x2="14.2256" y2="-7.448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$161">
 <contactref element="ATHRU_B_BOT" pad="6"/>
 <contactref element="ATHRU_B_TOP" pad="6"/>
-<wire x1="14.7406" y1="-7.848" x2="14.2256" y2="-7.848" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-7.848" x2="15.9004" y2="-7.848" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-7.848" x2="15.9004" y2="-7.874" width="0.1524" layer="1"/>
+<via x="15.9004" y="-7.874" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-7.874" x2="15.9004" y2="-7.848" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-7.848" x2="14.2256" y2="-7.848" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$163">
 <contactref element="ATHRU_B_BOT" pad="5"/>
 <contactref element="ATHRU_B_TOP" pad="5"/>
-<wire x1="14.7406" y1="-8.248" x2="14.2256" y2="-8.248" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-8.248" x2="15.4432" y2="-8.248" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-8.248" x2="15.4432" y2="-8.2804" width="0.1524" layer="1"/>
+<via x="15.4432" y="-8.2804" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-8.2804" x2="15.4432" y2="-8.248" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-8.248" x2="14.2256" y2="-8.248" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$164">
 <contactref element="ATHRU_B_BOT" pad="4"/>
 <contactref element="ATHRU_B_TOP" pad="4"/>
-<wire x1="14.7406" y1="-8.648" x2="14.2256" y2="-8.648" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-8.648" x2="15.9004" y2="-8.648" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="-8.648" x2="15.9004" y2="-8.636" width="0.1524" layer="1"/>
+<via x="15.9004" y="-8.636" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="-8.636" x2="15.9004" y2="-8.648" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="-8.648" x2="14.2256" y2="-8.648" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$165">
 <contactref element="ATHRU_B_BOT" pad="3"/>
 <contactref element="ATHRU_B_TOP" pad="3"/>
-<wire x1="14.7406" y1="-9.048" x2="14.2256" y2="-9.048" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="-9.048" x2="15.4432" y2="-9.048" width="0.1524" layer="1"/>
+<wire x1="15.4432" y1="-9.048" x2="15.4432" y2="-9.0424" width="0.1524" layer="1"/>
+<via x="15.4432" y="-9.0424" extent="1-16" drill="0.1524"/>
+<wire x1="15.4432" y1="-9.0424" x2="15.4432" y2="-9.048" width="0.1524" layer="16"/>
+<wire x1="15.4432" y1="-9.048" x2="14.2256" y2="-9.048" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$166">
 <contactref element="ATHRU_B_BOT" pad="34"/>
 <contactref element="ATHRU_B_TOP" pad="34"/>
-<wire x1="14.7406" y1="3.352" x2="14.2256" y2="3.352" width="0" layer="19" extent="1-16"/>
+<wire x1="14.7406" y1="3.352" x2="15.9004" y2="3.352" width="0.1524" layer="1"/>
+<wire x1="15.9004" y1="3.352" x2="15.9004" y2="3.3528" width="0.1524" layer="1"/>
+<via x="15.9004" y="3.3528" extent="1-16" drill="0.1524"/>
+<wire x1="15.9004" y1="3.3528" x2="15.9004" y2="3.352" width="0.1524" layer="16"/>
+<wire x1="15.9004" y1="3.352" x2="14.2256" y2="3.352" width="0.1524" layer="16"/>
 </signal>
 <signal name="REF_THRU" class="1">
 <contactref element="ATHRU_B_BOT" pad="70"/>
@@ -2749,8 +2897,8 @@ design rules under a new name.</description>
 <wire x1="-13.2588" y1="9.652" x2="-13.2588" y2="9.6448" width="0.1524" layer="16"/>
 <wire x1="-13.2588" y1="9.6448" x2="-11.8856" y2="9.6448" width="0.1524" layer="16"/>
 <wire x1="-14.7406" y1="-3.9552" x2="-14.2256" y2="-3.9552" width="0" layer="19" extent="1-16"/>
-<wire x1="-11.8856" y1="9.6448" x2="-14.2256" y2="-3.9552" width="0" layer="19" extent="16-16"/>
-<wire x1="14.2256" y1="3.752" x2="-13.2588" y2="9.6448" width="0" layer="19" extent="1-16"/>
+<wire x1="-13.2588" y1="9.6448" x2="-14.2256" y2="-3.9552" width="0" layer="19" extent="1-16"/>
+<wire x1="14.2256" y1="3.752" x2="-11.3706" y2="9.6448" width="0" layer="19" extent="1-16"/>
 <wire x1="14.7406" y1="3.752" x2="14.2256" y2="3.752" width="0" layer="19" extent="1-16"/>
 <wire x1="11.8856" y1="-9.848" x2="14.2256" y2="3.752" width="0" layer="19" extent="16-16"/>
 <wire x1="11.3706" y1="-9.848" x2="11.8856" y2="-9.848" width="0" layer="19" extent="1-16"/>
@@ -2758,440 +2906,770 @@ design rules under a new name.</description>
 <signal name="N$198">
 <contactref element="ATHRU_B_BOT" pad="69"/>
 <contactref element="ATHRU_B_TOP" pad="69"/>
-<wire x1="11.3706" y1="-9.448" x2="11.8856" y2="-9.448" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-9.448" x2="12.8524" y2="-9.448" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-9.448" x2="12.8524" y2="-9.4488" width="0.1524" layer="16"/>
+<via x="12.8524" y="-9.4488" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-9.4488" x2="12.8524" y2="-9.448" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-9.448" x2="11.3706" y2="-9.448" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$167">
 <contactref element="ATHRU_B_BOT" pad="38"/>
 <contactref element="ATHRU_B_TOP" pad="38"/>
-<wire x1="11.3706" y1="2.952" x2="11.8856" y2="2.952" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="2.952" x2="13.2588" y2="2.952" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="2.952" x2="13.2588" y2="2.9464" width="0.1524" layer="16"/>
+<via x="13.2588" y="2.9464" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="2.9464" x2="13.2588" y2="2.952" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="2.952" x2="11.3706" y2="2.952" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$168">
 <contactref element="ATHRU_B_BOT" pad="39"/>
 <contactref element="ATHRU_B_TOP" pad="39"/>
-<wire x1="11.3706" y1="2.552" x2="11.8856" y2="2.552" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="2.552" x2="12.8524" y2="2.552" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="2.552" x2="12.8524" y2="2.54" width="0.1524" layer="16"/>
+<via x="12.8524" y="2.54" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="2.54" x2="12.8524" y2="2.552" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="2.552" x2="11.3706" y2="2.552" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$169">
 <contactref element="ATHRU_B_BOT" pad="40"/>
 <contactref element="ATHRU_B_TOP" pad="40"/>
-<wire x1="11.3706" y1="2.152" x2="11.8856" y2="2.152" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="2.152" x2="13.2588" y2="2.152" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="2.152" x2="13.2588" y2="2.1336" width="0.1524" layer="16"/>
+<via x="13.2588" y="2.1336" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="2.1336" x2="13.2588" y2="2.152" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="2.152" x2="11.3706" y2="2.152" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$170">
 <contactref element="ATHRU_B_BOT" pad="41"/>
 <contactref element="ATHRU_B_TOP" pad="41"/>
-<wire x1="11.3706" y1="1.752" x2="11.8856" y2="1.752" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="1.752" x2="12.8524" y2="1.752" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="1.752" x2="12.8524" y2="1.7272" width="0.1524" layer="16"/>
+<via x="12.8524" y="1.7272" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="1.7272" x2="12.8524" y2="1.752" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="1.752" x2="11.3706" y2="1.752" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$171">
 <contactref element="ATHRU_B_BOT" pad="42"/>
 <contactref element="ATHRU_B_TOP" pad="42"/>
-<wire x1="11.3706" y1="1.352" x2="11.8856" y2="1.352" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="1.352" x2="13.2588" y2="1.352" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="1.352" x2="13.2588" y2="1.3716" width="0.1524" layer="16"/>
+<via x="13.2588" y="1.3716" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="1.3716" x2="13.2588" y2="1.352" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="1.352" x2="11.3706" y2="1.352" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$172">
 <contactref element="ATHRU_B_BOT" pad="43"/>
 <contactref element="ATHRU_B_TOP" pad="43"/>
-<wire x1="11.3706" y1="0.952" x2="11.8856" y2="0.952" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="0.952" x2="12.8524" y2="0.952" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="0.952" x2="12.8524" y2="0.9652" width="0.1524" layer="16"/>
+<via x="12.8524" y="0.9652" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="0.9652" x2="12.8524" y2="0.952" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="0.952" x2="11.3706" y2="0.952" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$173">
 <contactref element="ATHRU_B_BOT" pad="44"/>
 <contactref element="ATHRU_B_TOP" pad="44"/>
-<wire x1="11.3706" y1="0.552" x2="11.8856" y2="0.552" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="0.552" x2="13.2588" y2="0.552" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="0.552" x2="13.2588" y2="0.5588" width="0.1524" layer="16"/>
+<via x="13.2588" y="0.5588" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="0.5588" x2="13.2588" y2="0.552" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="0.552" x2="11.3706" y2="0.552" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$174">
 <contactref element="ATHRU_B_BOT" pad="45"/>
 <contactref element="ATHRU_B_TOP" pad="45"/>
-<wire x1="11.3706" y1="0.152" x2="11.8856" y2="0.152" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="0.152" x2="12.8524" y2="0.152" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="0.152" x2="12.8524" y2="0.1524" width="0.1524" layer="16"/>
+<via x="12.8524" y="0.1524" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="0.1524" x2="12.8524" y2="0.152" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="0.152" x2="11.3706" y2="0.152" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$175">
 <contactref element="ATHRU_B_BOT" pad="46"/>
 <contactref element="ATHRU_B_TOP" pad="46"/>
-<wire x1="11.3706" y1="-0.248" x2="11.8856" y2="-0.248" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-0.248" x2="13.2588" y2="-0.248" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-0.248" x2="13.2588" y2="-0.254" width="0.1524" layer="16"/>
+<via x="13.2588" y="-0.254" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-0.254" x2="13.2588" y2="-0.248" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-0.248" x2="11.3706" y2="-0.248" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$176">
 <contactref element="ATHRU_B_BOT" pad="47"/>
 <contactref element="ATHRU_B_TOP" pad="47"/>
-<wire x1="11.3706" y1="-0.648" x2="11.8856" y2="-0.648" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-0.648" x2="12.8524" y2="-0.648" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-0.648" x2="12.8524" y2="-0.6604" width="0.1524" layer="16"/>
+<via x="12.8524" y="-0.6604" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-0.6604" x2="12.8524" y2="-0.648" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-0.648" x2="11.3706" y2="-0.648" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$177">
 <contactref element="ATHRU_B_BOT" pad="48"/>
 <contactref element="ATHRU_B_TOP" pad="48"/>
-<wire x1="11.3706" y1="-1.048" x2="11.8856" y2="-1.048" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-1.048" x2="13.2588" y2="-1.048" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-1.048" x2="13.2588" y2="-1.0668" width="0.1524" layer="16"/>
+<via x="13.2588" y="-1.0668" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-1.0668" x2="13.2588" y2="-1.048" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-1.048" x2="11.3706" y2="-1.048" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$178">
 <contactref element="ATHRU_B_BOT" pad="49"/>
 <contactref element="ATHRU_B_TOP" pad="49"/>
-<wire x1="11.3706" y1="-1.448" x2="11.8856" y2="-1.448" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-1.448" x2="12.8524" y2="-1.448" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-1.448" x2="12.8524" y2="-1.4224" width="0.1524" layer="16"/>
+<via x="12.8524" y="-1.4224" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-1.4224" x2="12.8524" y2="-1.448" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-1.448" x2="11.3706" y2="-1.448" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$179">
 <contactref element="ATHRU_B_BOT" pad="50"/>
 <contactref element="ATHRU_B_TOP" pad="50"/>
-<wire x1="11.3706" y1="-1.848" x2="11.8856" y2="-1.848" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-1.848" x2="13.2588" y2="-1.848" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-1.848" x2="13.2588" y2="-1.8796" width="0.1524" layer="16"/>
+<via x="13.2588" y="-1.8796" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-1.8796" x2="13.2588" y2="-1.848" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-1.848" x2="11.3706" y2="-1.848" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$180">
 <contactref element="ATHRU_B_BOT" pad="51"/>
 <contactref element="ATHRU_B_TOP" pad="51"/>
-<wire x1="11.3706" y1="-2.248" x2="11.8856" y2="-2.248" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-2.248" x2="12.8524" y2="-2.248" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-2.248" x2="12.8524" y2="-2.2352" width="0.1524" layer="16"/>
+<via x="12.8524" y="-2.2352" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-2.2352" x2="12.8524" y2="-2.248" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-2.248" x2="11.3706" y2="-2.248" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$181">
 <contactref element="ATHRU_B_BOT" pad="52"/>
 <contactref element="ATHRU_B_TOP" pad="52"/>
-<wire x1="11.3706" y1="-2.648" x2="11.8856" y2="-2.648" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-2.648" x2="13.2588" y2="-2.648" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-2.648" x2="13.2588" y2="-2.6416" width="0.1524" layer="16"/>
+<via x="13.2588" y="-2.6416" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-2.6416" x2="13.2588" y2="-2.648" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-2.648" x2="11.3706" y2="-2.648" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$182">
 <contactref element="ATHRU_B_BOT" pad="53"/>
 <contactref element="ATHRU_B_TOP" pad="53"/>
-<wire x1="11.3706" y1="-3.048" x2="11.8856" y2="-3.048" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-3.048" x2="12.8524" y2="-3.048" width="0.1524" layer="16"/>
+<via x="12.8524" y="-3.048" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-3.048" x2="11.3706" y2="-3.048" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$183">
 <contactref element="ATHRU_B_BOT" pad="54"/>
 <contactref element="ATHRU_B_TOP" pad="54"/>
-<wire x1="11.3706" y1="-3.448" x2="11.8856" y2="-3.448" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-3.448" x2="13.2588" y2="-3.448" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-3.448" x2="13.2588" y2="-3.4544" width="0.1524" layer="16"/>
+<via x="13.2588" y="-3.4544" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-3.4544" x2="13.2588" y2="-3.448" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-3.448" x2="11.3706" y2="-3.448" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$184">
 <contactref element="ATHRU_B_BOT" pad="55"/>
 <contactref element="ATHRU_B_TOP" pad="55"/>
-<wire x1="11.3706" y1="-3.848" x2="11.8856" y2="-3.848" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-3.848" x2="12.8524" y2="-3.848" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-3.848" x2="12.8524" y2="-3.8608" width="0.1524" layer="16"/>
+<via x="12.8524" y="-3.8608" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-3.8608" x2="12.8524" y2="-3.848" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-3.848" x2="11.3706" y2="-3.848" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$185">
 <contactref element="ATHRU_B_BOT" pad="56"/>
 <contactref element="ATHRU_B_TOP" pad="56"/>
-<wire x1="11.3706" y1="-4.248" x2="11.8856" y2="-4.248" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-4.248" x2="13.2588" y2="-4.248" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-4.248" x2="13.2588" y2="-4.2672" width="0.1524" layer="16"/>
+<via x="13.2588" y="-4.2672" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-4.2672" x2="13.2588" y2="-4.248" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-4.248" x2="11.3706" y2="-4.248" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$186">
 <contactref element="ATHRU_B_BOT" pad="57"/>
 <contactref element="ATHRU_B_TOP" pad="57"/>
-<wire x1="11.3706" y1="-4.648" x2="11.8856" y2="-4.648" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-4.648" x2="12.8524" y2="-4.648" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-4.648" x2="12.8524" y2="-4.6736" width="0.1524" layer="16"/>
+<via x="12.8524" y="-4.6736" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-4.6736" x2="12.8524" y2="-4.648" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-4.648" x2="11.3706" y2="-4.648" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$187">
 <contactref element="ATHRU_B_BOT" pad="58"/>
 <contactref element="ATHRU_B_TOP" pad="58"/>
-<wire x1="11.3706" y1="-5.048" x2="11.8856" y2="-5.048" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-5.048" x2="13.2588" y2="-5.048" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-5.048" x2="13.2588" y2="-5.0292" width="0.1524" layer="16"/>
+<via x="13.2588" y="-5.0292" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-5.0292" x2="13.2588" y2="-5.048" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-5.048" x2="11.3706" y2="-5.048" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$188">
 <contactref element="ATHRU_B_BOT" pad="59"/>
 <contactref element="ATHRU_B_TOP" pad="59"/>
-<wire x1="11.3706" y1="-5.448" x2="11.8856" y2="-5.448" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-5.448" x2="12.8524" y2="-5.448" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-5.448" x2="12.8524" y2="-5.4356" width="0.1524" layer="16"/>
+<via x="12.8524" y="-5.4356" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-5.4356" x2="12.8524" y2="-5.448" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-5.448" x2="11.3706" y2="-5.448" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$189">
 <contactref element="ATHRU_B_BOT" pad="60"/>
 <contactref element="ATHRU_B_TOP" pad="60"/>
-<wire x1="11.3706" y1="-5.848" x2="11.8856" y2="-5.848" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-5.848" x2="13.2588" y2="-5.848" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-5.848" x2="13.2588" y2="-5.842" width="0.1524" layer="16"/>
+<via x="13.2588" y="-5.842" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-5.842" x2="13.2588" y2="-5.848" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-5.848" x2="11.3706" y2="-5.848" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$190">
 <contactref element="ATHRU_B_BOT" pad="61"/>
 <contactref element="ATHRU_B_TOP" pad="61"/>
-<wire x1="11.3706" y1="-6.248" x2="11.8856" y2="-6.248" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-6.248" x2="12.8524" y2="-6.248" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-6.248" x2="12.8524" y2="-6.2484" width="0.1524" layer="16"/>
+<via x="12.8524" y="-6.2484" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-6.2484" x2="12.8524" y2="-6.248" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-6.248" x2="11.3706" y2="-6.248" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$191">
 <contactref element="ATHRU_B_BOT" pad="62"/>
 <contactref element="ATHRU_B_TOP" pad="62"/>
-<wire x1="11.3706" y1="-6.648" x2="11.8856" y2="-6.648" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-6.648" x2="13.2588" y2="-6.648" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-6.648" x2="13.2588" y2="-6.6548" width="0.1524" layer="16"/>
+<via x="13.2588" y="-6.6548" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-6.6548" x2="13.2588" y2="-6.648" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-6.648" x2="11.3706" y2="-6.648" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$192">
 <contactref element="ATHRU_B_BOT" pad="63"/>
 <contactref element="ATHRU_B_TOP" pad="63"/>
-<wire x1="11.3706" y1="-7.048" x2="11.8856" y2="-7.048" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-7.048" x2="12.8524" y2="-7.048" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-7.048" x2="12.8524" y2="-7.0612" width="0.1524" layer="16"/>
+<via x="12.8524" y="-7.0612" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-7.0612" x2="12.8524" y2="-7.048" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-7.048" x2="11.3706" y2="-7.048" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$193">
 <contactref element="ATHRU_B_BOT" pad="64"/>
 <contactref element="ATHRU_B_TOP" pad="64"/>
-<wire x1="11.3706" y1="-7.448" x2="11.8856" y2="-7.448" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-7.448" x2="13.2588" y2="-7.448" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-7.448" x2="13.2588" y2="-7.4676" width="0.1524" layer="16"/>
+<via x="13.2588" y="-7.4676" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-7.4676" x2="13.2588" y2="-7.448" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-7.448" x2="11.3706" y2="-7.448" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$194">
 <contactref element="ATHRU_B_BOT" pad="65"/>
 <contactref element="ATHRU_B_TOP" pad="65"/>
-<wire x1="11.3706" y1="-7.848" x2="11.8856" y2="-7.848" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-7.848" x2="12.8524" y2="-7.848" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-7.848" x2="12.8524" y2="-7.874" width="0.1524" layer="16"/>
+<via x="12.8524" y="-7.874" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-7.874" x2="12.8524" y2="-7.848" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-7.848" x2="11.3706" y2="-7.848" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$195">
 <contactref element="ATHRU_B_BOT" pad="66"/>
 <contactref element="ATHRU_B_TOP" pad="66"/>
-<wire x1="11.3706" y1="-8.248" x2="11.8856" y2="-8.248" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-8.248" x2="13.2588" y2="-8.248" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-8.248" x2="13.2588" y2="-8.2804" width="0.1524" layer="16"/>
+<via x="13.2588" y="-8.2804" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-8.2804" x2="13.2588" y2="-8.248" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-8.248" x2="11.3706" y2="-8.248" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$196">
 <contactref element="ATHRU_B_BOT" pad="67"/>
 <contactref element="ATHRU_B_TOP" pad="67"/>
-<wire x1="11.3706" y1="-8.648" x2="11.8856" y2="-8.648" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-8.648" x2="12.8524" y2="-8.648" width="0.1524" layer="16"/>
+<wire x1="12.8524" y1="-8.648" x2="12.8524" y2="-8.636" width="0.1524" layer="16"/>
+<via x="12.8524" y="-8.636" extent="1-16" drill="0.1524"/>
+<wire x1="12.8524" y1="-8.636" x2="12.8524" y2="-8.648" width="0.1524" layer="1"/>
+<wire x1="12.8524" y1="-8.648" x2="11.3706" y2="-8.648" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$197">
 <contactref element="ATHRU_B_BOT" pad="68"/>
 <contactref element="ATHRU_B_TOP" pad="68"/>
-<wire x1="11.3706" y1="-9.048" x2="11.8856" y2="-9.048" width="0" layer="19" extent="1-16"/>
+<wire x1="11.8856" y1="-9.048" x2="13.2588" y2="-9.048" width="0.1524" layer="16"/>
+<wire x1="13.2588" y1="-9.048" x2="13.2588" y2="-9.0424" width="0.1524" layer="16"/>
+<via x="13.2588" y="-9.0424" extent="1-16" drill="0.1524"/>
+<wire x1="13.2588" y1="-9.0424" x2="13.2588" y2="-9.048" width="0.1524" layer="1"/>
+<wire x1="13.2588" y1="-9.048" x2="11.3706" y2="-9.048" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$199">
 <contactref element="ATHRU_A_BOT" pad="33"/>
 <contactref element="ATHRU_A_TOP" pad="33"/>
-<wire x1="-14.7406" y1="-3.1552" x2="-14.2256" y2="-3.1552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-3.1552" x2="-15.4432" y2="-3.1552" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="-3.1552" x2="-15.4432" y2="-3.1496" width="0.1524" layer="1"/>
+<via x="-15.4432" y="-3.1496" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="-3.1496" x2="-15.4432" y2="-3.1552" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="-3.1552" x2="-14.2256" y2="-3.1552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$200">
 <contactref element="ATHRU_A_BOT" pad="32"/>
 <contactref element="ATHRU_A_TOP" pad="32"/>
-<wire x1="-14.7406" y1="-2.7552" x2="-14.2256" y2="-2.7552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-2.7552" x2="-15.9004" y2="-2.7552" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="-2.7552" x2="-15.9004" y2="-2.7432" width="0.1524" layer="1"/>
+<via x="-15.9004" y="-2.7432" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="-2.7432" x2="-15.9004" y2="-2.7552" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="-2.7552" x2="-14.2256" y2="-2.7552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$201">
 <contactref element="ATHRU_A_BOT" pad="31"/>
 <contactref element="ATHRU_A_TOP" pad="31"/>
-<wire x1="-14.7406" y1="-2.3552" x2="-14.2256" y2="-2.3552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-2.3552" x2="-15.4432" y2="-2.3552" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="-2.3552" x2="-15.4432" y2="-2.3368" width="0.1524" layer="1"/>
+<via x="-15.4432" y="-2.3368" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="-2.3368" x2="-15.4432" y2="-2.3552" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="-2.3552" x2="-14.2256" y2="-2.3552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$202">
 <contactref element="ATHRU_A_BOT" pad="30"/>
 <contactref element="ATHRU_A_TOP" pad="30"/>
-<wire x1="-14.7406" y1="-1.9552" x2="-14.2256" y2="-1.9552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-1.9552" x2="-15.9004" y2="-1.9552" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="-1.9552" x2="-15.9004" y2="-1.9304" width="0.1524" layer="1"/>
+<via x="-15.9004" y="-1.9304" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="-1.9304" x2="-15.9004" y2="-1.9552" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="-1.9552" x2="-14.2256" y2="-1.9552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$203">
 <contactref element="ATHRU_A_BOT" pad="29"/>
 <contactref element="ATHRU_A_TOP" pad="29"/>
-<wire x1="-14.7406" y1="-1.5552" x2="-14.2256" y2="-1.5552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-1.5552" x2="-15.4432" y2="-1.5552" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="-1.5552" x2="-15.4432" y2="-1.524" width="0.1524" layer="1"/>
+<via x="-15.4432" y="-1.524" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="-1.524" x2="-15.4432" y2="-1.5552" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="-1.5552" x2="-14.2256" y2="-1.5552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$204">
 <contactref element="ATHRU_A_BOT" pad="28"/>
 <contactref element="ATHRU_A_TOP" pad="28"/>
-<wire x1="-14.7406" y1="-1.1552" x2="-14.2256" y2="-1.1552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-1.1552" x2="-15.9004" y2="-1.1552" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="-1.1552" x2="-15.9004" y2="-1.1684" width="0.1524" layer="1"/>
+<via x="-15.9004" y="-1.1684" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="-1.1684" x2="-15.9004" y2="-1.1552" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="-1.1552" x2="-14.2256" y2="-1.1552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$205">
 <contactref element="ATHRU_A_BOT" pad="27"/>
 <contactref element="ATHRU_A_TOP" pad="27"/>
-<wire x1="-14.7406" y1="-0.7552" x2="-14.2256" y2="-0.7552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-0.7552" x2="-15.4432" y2="-0.7552" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="-0.7552" x2="-15.4432" y2="-0.762" width="0.1524" layer="1"/>
+<via x="-15.4432" y="-0.762" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="-0.762" x2="-15.4432" y2="-0.7552" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="-0.7552" x2="-14.2256" y2="-0.7552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$206">
 <contactref element="ATHRU_A_BOT" pad="26"/>
 <contactref element="ATHRU_A_TOP" pad="26"/>
-<wire x1="-14.7406" y1="-0.3552" x2="-14.2256" y2="-0.3552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-0.3552" x2="-15.9004" y2="-0.3552" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="-0.3552" x2="-15.9004" y2="-0.3556" width="0.1524" layer="1"/>
+<via x="-15.9004" y="-0.3556" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="-0.3556" x2="-15.9004" y2="-0.3552" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="-0.3552" x2="-14.2256" y2="-0.3552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$207">
 <contactref element="ATHRU_A_BOT" pad="25"/>
 <contactref element="ATHRU_A_TOP" pad="25"/>
-<wire x1="-14.7406" y1="0.0448" x2="-14.2256" y2="0.0448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="0.0448" x2="-15.4432" y2="0.0448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="0.0448" x2="-15.4432" y2="0.0508" width="0.1524" layer="1"/>
+<via x="-15.4432" y="0.0508" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="0.0508" x2="-15.4432" y2="0.0448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="0.0448" x2="-14.2256" y2="0.0448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$208">
 <contactref element="ATHRU_A_BOT" pad="24"/>
 <contactref element="ATHRU_A_TOP" pad="24"/>
-<wire x1="-14.7406" y1="0.4448" x2="-14.2256" y2="0.4448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="0.4448" x2="-15.9004" y2="0.4448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="0.4448" x2="-15.9004" y2="0.4572" width="0.1524" layer="1"/>
+<via x="-15.9004" y="0.4572" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="0.4572" x2="-15.9004" y2="0.4448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="0.4448" x2="-14.2256" y2="0.4448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$209">
 <contactref element="ATHRU_A_BOT" pad="23"/>
 <contactref element="ATHRU_A_TOP" pad="23"/>
-<wire x1="-14.7406" y1="0.8448" x2="-14.2256" y2="0.8448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="0.8448" x2="-15.4432" y2="0.8448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="0.8448" x2="-15.4432" y2="0.8128" width="0.1524" layer="1"/>
+<via x="-15.4432" y="0.8128" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="0.8128" x2="-15.4432" y2="0.8448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="0.8448" x2="-14.2256" y2="0.8448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$210">
 <contactref element="ATHRU_A_BOT" pad="22"/>
 <contactref element="ATHRU_A_TOP" pad="22"/>
-<wire x1="-14.7406" y1="1.2448" x2="-14.2256" y2="1.2448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="1.2448" x2="-15.9004" y2="1.2448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="1.2448" x2="-15.9004" y2="1.2192" width="0.1524" layer="1"/>
+<via x="-15.9004" y="1.2192" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="1.2192" x2="-15.9004" y2="1.2448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="1.2448" x2="-14.2256" y2="1.2448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$211">
 <contactref element="ATHRU_A_BOT" pad="21"/>
 <contactref element="ATHRU_A_TOP" pad="21"/>
-<wire x1="-14.7406" y1="1.6448" x2="-14.2256" y2="1.6448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="1.6448" x2="-15.4432" y2="1.6448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="1.6448" x2="-15.4432" y2="1.6256" width="0.1524" layer="1"/>
+<via x="-15.4432" y="1.6256" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="1.6256" x2="-15.4432" y2="1.6448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="1.6448" x2="-14.2256" y2="1.6448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$212">
 <contactref element="ATHRU_A_BOT" pad="20"/>
 <contactref element="ATHRU_A_TOP" pad="20"/>
-<wire x1="-14.7406" y1="2.0448" x2="-14.2256" y2="2.0448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="2.0448" x2="-15.9004" y2="2.0448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="2.0448" x2="-15.9004" y2="2.032" width="0.1524" layer="1"/>
+<via x="-15.9004" y="2.032" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="2.032" x2="-15.9004" y2="2.0448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="2.0448" x2="-14.2256" y2="2.0448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$213">
 <contactref element="ATHRU_A_BOT" pad="19"/>
 <contactref element="ATHRU_A_TOP" pad="19"/>
-<wire x1="-14.7406" y1="2.4448" x2="-14.2256" y2="2.4448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="2.4448" x2="-15.4432" y2="2.4448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="2.4448" x2="-15.4432" y2="2.4384" width="0.1524" layer="1"/>
+<via x="-15.4432" y="2.4384" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="2.4384" x2="-15.4432" y2="2.4448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="2.4448" x2="-14.2256" y2="2.4448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$214">
 <contactref element="ATHRU_A_BOT" pad="18"/>
 <contactref element="ATHRU_A_TOP" pad="18"/>
-<wire x1="-14.7406" y1="2.8448" x2="-14.2256" y2="2.8448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="2.8448" x2="-15.9004" y2="2.8448" width="0.1524" layer="1"/>
+<via x="-15.9004" y="2.8448" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="2.8448" x2="-14.2256" y2="2.8448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$215">
 <contactref element="ATHRU_A_BOT" pad="17"/>
 <contactref element="ATHRU_A_TOP" pad="17"/>
-<wire x1="-14.7406" y1="3.2448" x2="-14.2256" y2="3.2448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="3.2448" x2="-15.4432" y2="3.2448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="3.2448" x2="-15.4432" y2="3.2512" width="0.1524" layer="1"/>
+<via x="-15.4432" y="3.2512" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="3.2512" x2="-15.4432" y2="3.2448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="3.2448" x2="-14.2256" y2="3.2448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$216">
 <contactref element="ATHRU_A_BOT" pad="16"/>
 <contactref element="ATHRU_A_TOP" pad="16"/>
-<wire x1="-14.7406" y1="3.6448" x2="-14.2256" y2="3.6448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="3.6448" x2="-15.9004" y2="3.6448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="3.6448" x2="-15.9004" y2="3.6576" width="0.1524" layer="1"/>
+<via x="-15.9004" y="3.6576" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="3.6576" x2="-15.9004" y2="3.6448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="3.6448" x2="-14.2256" y2="3.6448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$217">
 <contactref element="ATHRU_A_BOT" pad="15"/>
 <contactref element="ATHRU_A_TOP" pad="15"/>
-<wire x1="-14.7406" y1="4.0448" x2="-14.2256" y2="4.0448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="4.0448" x2="-15.4432" y2="4.0448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="4.0448" x2="-15.4432" y2="4.064" width="0.1524" layer="1"/>
+<via x="-15.4432" y="4.064" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="4.064" x2="-15.4432" y2="4.0448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="4.0448" x2="-14.2256" y2="4.0448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$218">
 <contactref element="ATHRU_A_BOT" pad="14"/>
 <contactref element="ATHRU_A_TOP" pad="14"/>
-<wire x1="-14.7406" y1="4.4448" x2="-14.2256" y2="4.4448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="4.4448" x2="-15.9004" y2="4.4448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="4.4448" x2="-15.9004" y2="4.4704" width="0.1524" layer="1"/>
+<via x="-15.9004" y="4.4704" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="4.4704" x2="-15.9004" y2="4.4448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="4.4448" x2="-14.2256" y2="4.4448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$219">
 <contactref element="ATHRU_A_BOT" pad="13"/>
 <contactref element="ATHRU_A_TOP" pad="13"/>
-<wire x1="-14.7406" y1="4.8448" x2="-14.2256" y2="4.8448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="4.8448" x2="-15.4432" y2="4.8448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="4.8448" x2="-15.4432" y2="4.826" width="0.1524" layer="1"/>
+<via x="-15.4432" y="4.826" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="4.826" x2="-15.4432" y2="4.8448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="4.8448" x2="-14.2256" y2="4.8448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$220">
 <contactref element="ATHRU_A_BOT" pad="12"/>
 <contactref element="ATHRU_A_TOP" pad="12"/>
-<wire x1="-14.7406" y1="5.2448" x2="-14.2256" y2="5.2448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="5.2448" x2="-15.9004" y2="5.2448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="5.2448" x2="-15.9004" y2="5.2324" width="0.1524" layer="1"/>
+<via x="-15.9004" y="5.2324" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="5.2324" x2="-15.9004" y2="5.2448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="5.2448" x2="-14.2256" y2="5.2448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$221">
 <contactref element="ATHRU_A_BOT" pad="11"/>
 <contactref element="ATHRU_A_TOP" pad="11"/>
-<wire x1="-14.7406" y1="5.6448" x2="-14.2256" y2="5.6448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="5.6448" x2="-15.4432" y2="5.6448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="5.6448" x2="-15.4432" y2="5.6388" width="0.1524" layer="1"/>
+<via x="-15.4432" y="5.6388" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="5.6388" x2="-15.4432" y2="5.6448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="5.6448" x2="-14.2256" y2="5.6448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$222">
 <contactref element="ATHRU_A_BOT" pad="10"/>
 <contactref element="ATHRU_A_TOP" pad="10"/>
-<wire x1="-14.7406" y1="6.0448" x2="-14.2256" y2="6.0448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="6.0448" x2="-15.9004" y2="6.0448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="6.0448" x2="-15.9004" y2="6.0452" width="0.1524" layer="1"/>
+<via x="-15.9004" y="6.0452" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="6.0452" x2="-15.9004" y2="6.0448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="6.0448" x2="-14.2256" y2="6.0448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$223">
 <contactref element="ATHRU_A_BOT" pad="9"/>
 <contactref element="ATHRU_A_TOP" pad="9"/>
-<wire x1="-14.7406" y1="6.4448" x2="-14.2256" y2="6.4448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="6.4448" x2="-15.4432" y2="6.4448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="6.4448" x2="-15.4432" y2="6.4516" width="0.1524" layer="1"/>
+<via x="-15.4432" y="6.4516" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="6.4516" x2="-15.4432" y2="6.4448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="6.4448" x2="-14.2256" y2="6.4448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$224">
 <contactref element="ATHRU_A_BOT" pad="8"/>
 <contactref element="ATHRU_A_TOP" pad="8"/>
-<wire x1="-14.7406" y1="6.8448" x2="-14.2256" y2="6.8448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="6.8448" x2="-15.9004" y2="6.8448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="6.8448" x2="-15.9004" y2="6.858" width="0.1524" layer="1"/>
+<via x="-15.9004" y="6.858" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="6.858" x2="-15.9004" y2="6.8448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="6.8448" x2="-14.2256" y2="6.8448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$225">
 <contactref element="ATHRU_A_BOT" pad="7"/>
 <contactref element="ATHRU_A_TOP" pad="7"/>
-<wire x1="-14.7406" y1="7.2448" x2="-14.2256" y2="7.2448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="7.2448" x2="-15.4432" y2="7.2448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="7.2448" x2="-15.4432" y2="7.2644" width="0.1524" layer="1"/>
+<via x="-15.4432" y="7.2644" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="7.2644" x2="-15.4432" y2="7.2448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="7.2448" x2="-14.2256" y2="7.2448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$226">
 <contactref element="ATHRU_A_BOT" pad="6"/>
 <contactref element="ATHRU_A_TOP" pad="6"/>
-<wire x1="-14.7406" y1="7.6448" x2="-14.2256" y2="7.6448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="7.6448" x2="-15.9004" y2="7.6448" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="7.6448" x2="-15.9004" y2="7.6708" width="0.1524" layer="1"/>
+<via x="-15.9004" y="7.6708" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="7.6708" x2="-15.9004" y2="7.6448" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="7.6448" x2="-14.2256" y2="7.6448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$227">
 <contactref element="ATHRU_A_BOT" pad="5"/>
 <contactref element="ATHRU_A_TOP" pad="5"/>
-<wire x1="-14.7406" y1="8.0448" x2="-14.2256" y2="8.0448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="8.0448" x2="-15.4432" y2="8.0448" width="0.1524" layer="1"/>
+<wire x1="-15.4432" y1="8.0448" x2="-15.4432" y2="8.0772" width="0.1524" layer="1"/>
+<via x="-15.4432" y="8.0772" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="8.0772" x2="-15.4432" y2="8.0448" width="0.1524" layer="16"/>
+<wire x1="-15.4432" y1="8.0448" x2="-14.2256" y2="8.0448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$228">
 <contactref element="ATHRU_A_BOT" pad="4"/>
 <contactref element="ATHRU_A_TOP" pad="4"/>
-<wire x1="-14.7406" y1="8.4448" x2="-14.2256" y2="8.4448" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="8.4448" x2="-15.8496" y2="8.4448" width="0.1524" layer="1"/>
+<wire x1="-15.8496" y1="8.4448" x2="-15.9004" y2="8.4328" width="0.1524" layer="1"/>
+<via x="-15.9004" y="8.4328" extent="1-16" drill="0.1524"/>
+<wire x1="-14.2256" y1="8.4328" x2="-14.2256" y2="8.4448" width="0.1524" layer="16"/>
+<wire x1="-14.2256" y1="8.4448" x2="-14.7406" y2="8.4448" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="N$229">
 <contactref element="ATHRU_A_BOT" pad="3"/>
 <contactref element="ATHRU_A_TOP" pad="3"/>
+<wire x1="-14.7406" y1="8.8448" x2="-14.7406" y2="8.8392" width="0.1524" layer="1"/>
+<wire x1="-14.7406" y1="8.8392" x2="-15.4432" y2="8.8392" width="0.1524" layer="1"/>
+<via x="-15.4432" y="8.8392" extent="1-16" drill="0.1524"/>
+<wire x1="-15.4432" y1="8.8392" x2="-15.3924" y2="8.8448" width="0.1524" layer="16"/>
 <wire x1="-14.7406" y1="8.8448" x2="-14.2256" y2="8.8448" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="N$230">
 <contactref element="ATHRU_A_BOT" pad="34"/>
 <contactref element="ATHRU_A_TOP" pad="34"/>
-<wire x1="-14.7406" y1="-3.5552" x2="-14.2256" y2="-3.5552" width="0" layer="19" extent="1-16"/>
+<wire x1="-14.7406" y1="-3.5552" x2="-15.9004" y2="-3.5552" width="0.1524" layer="1"/>
+<wire x1="-15.9004" y1="-3.5552" x2="-15.9004" y2="-3.556" width="0.1524" layer="1"/>
+<via x="-15.9004" y="-3.556" extent="1-16" drill="0.1524"/>
+<wire x1="-15.9004" y1="-3.556" x2="-15.9004" y2="-3.5552" width="0.1524" layer="16"/>
+<wire x1="-15.9004" y1="-3.5552" x2="-14.2256" y2="-3.5552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$231">
 <contactref element="ATHRU_A_BOT" pad="38"/>
 <contactref element="ATHRU_A_TOP" pad="38"/>
-<wire x1="-11.3706" y1="-3.1552" x2="-11.8856" y2="-3.1552" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="-3.1552" x2="-13.2588" y2="-3.1552" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="-3.1552" x2="-13.2588" y2="-3.1496" width="0.1524" layer="1"/>
+<via x="-13.2588" y="-3.1496" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="-3.1496" x2="-13.2588" y2="-3.1552" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="-3.1552" x2="-11.8856" y2="-3.1552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$232">
 <contactref element="ATHRU_A_BOT" pad="39"/>
 <contactref element="ATHRU_A_TOP" pad="39"/>
-<wire x1="-11.3706" y1="-2.7552" x2="-11.8856" y2="-2.7552" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="-2.7552" x2="-12.8524" y2="-2.7552" width="0.1524" layer="1"/>
+<wire x1="-12.8524" y1="-2.7552" x2="-12.8524" y2="-2.7432" width="0.1524" layer="1"/>
+<via x="-12.8524" y="-2.7432" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="-2.7432" x2="-12.8524" y2="-2.7552" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="-2.7552" x2="-11.8856" y2="-2.7552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$233">
 <contactref element="ATHRU_A_BOT" pad="40"/>
 <contactref element="ATHRU_A_TOP" pad="40"/>
-<wire x1="-11.3706" y1="-2.3552" x2="-11.8856" y2="-2.3552" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="-2.3552" x2="-13.2588" y2="-2.3552" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="-2.3552" x2="-13.2588" y2="-2.3368" width="0.1524" layer="1"/>
+<via x="-13.2588" y="-2.3368" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="-2.3368" x2="-13.2588" y2="-2.3552" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="-2.3552" x2="-11.8856" y2="-2.3552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$234">
 <contactref element="ATHRU_A_BOT" pad="41"/>
 <contactref element="ATHRU_A_TOP" pad="41"/>
-<wire x1="-11.3706" y1="-1.9552" x2="-11.8856" y2="-1.9552" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="-1.9552" x2="-12.8524" y2="-1.9552" width="0.1524" layer="1"/>
+<wire x1="-12.8524" y1="-1.9552" x2="-12.8524" y2="-1.9304" width="0.1524" layer="1"/>
+<via x="-12.8524" y="-1.9304" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="-1.9304" x2="-12.8524" y2="-1.9552" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="-1.9552" x2="-11.8856" y2="-1.9552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$235">
 <contactref element="ATHRU_A_BOT" pad="42"/>
 <contactref element="ATHRU_A_TOP" pad="42"/>
-<wire x1="-11.3706" y1="-1.5552" x2="-11.8856" y2="-1.5552" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="-1.5552" x2="-13.2588" y2="-1.5552" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="-1.5552" x2="-13.2588" y2="-1.5748" width="0.1524" layer="1"/>
+<via x="-13.2588" y="-1.5748" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="-1.5748" x2="-13.2588" y2="-1.5552" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="-1.5552" x2="-11.8856" y2="-1.5552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$236">
 <contactref element="ATHRU_A_BOT" pad="43"/>
 <contactref element="ATHRU_A_TOP" pad="43"/>
-<wire x1="-11.3706" y1="-1.1552" x2="-11.8856" y2="-1.1552" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="-1.1552" x2="-12.8524" y2="-1.1552" width="0.1524" layer="1"/>
+<wire x1="-12.8524" y1="-1.1552" x2="-12.8524" y2="-1.1684" width="0.1524" layer="1"/>
+<via x="-12.8524" y="-1.1684" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="-1.1684" x2="-12.8524" y2="-1.1552" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="-1.1552" x2="-11.8856" y2="-1.1552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$237">
 <contactref element="ATHRU_A_BOT" pad="44"/>
 <contactref element="ATHRU_A_TOP" pad="44"/>
-<wire x1="-11.3706" y1="-0.7552" x2="-11.8856" y2="-0.7552" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="-0.7552" x2="-13.2588" y2="-0.7552" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="-0.7552" x2="-13.2588" y2="-0.762" width="0.1524" layer="1"/>
+<via x="-13.2588" y="-0.762" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="-0.762" x2="-13.2588" y2="-0.7552" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="-0.7552" x2="-11.8856" y2="-0.7552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$238">
 <contactref element="ATHRU_A_BOT" pad="45"/>
 <contactref element="ATHRU_A_TOP" pad="45"/>
-<wire x1="-11.3706" y1="-0.3552" x2="-11.8856" y2="-0.3552" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="-0.3552" x2="-12.0396" y2="-0.3552" width="0.1524" layer="1"/>
+<wire x1="-12.0396" y1="-0.3552" x2="-12.8524" y2="-0.3556" width="0.1524" layer="1"/>
+<via x="-12.8524" y="-0.3556" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="-0.3556" x2="-12.8524" y2="-0.3552" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="-0.3552" x2="-11.8856" y2="-0.3552" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$239">
 <contactref element="ATHRU_A_BOT" pad="46"/>
 <contactref element="ATHRU_A_TOP" pad="46"/>
-<wire x1="-11.3706" y1="0.0448" x2="-11.8856" y2="0.0448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="0.0448" x2="-13.2588" y2="0.0448" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="0.0448" x2="-13.2588" y2="0.0508" width="0.1524" layer="1"/>
+<via x="-13.2588" y="0.0508" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="0.0508" x2="-13.2588" y2="0.0448" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="0.0448" x2="-11.8856" y2="0.0448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$240">
 <contactref element="ATHRU_A_BOT" pad="47"/>
 <contactref element="ATHRU_A_TOP" pad="47"/>
-<wire x1="-11.3706" y1="0.4448" x2="-11.8856" y2="0.4448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="0.4448" x2="-12.8524" y2="0.4448" width="0.1524" layer="1"/>
+<wire x1="-12.8524" y1="0.4448" x2="-12.8524" y2="0.4572" width="0.1524" layer="1"/>
+<via x="-12.8524" y="0.4572" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="0.4572" x2="-12.8524" y2="0.4448" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="0.4448" x2="-11.8856" y2="0.4448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$241">
 <contactref element="ATHRU_A_BOT" pad="48"/>
 <contactref element="ATHRU_A_TOP" pad="48"/>
-<wire x1="-11.3706" y1="0.8448" x2="-11.8856" y2="0.8448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="0.8448" x2="-13.2588" y2="0.8448" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="0.8448" x2="-13.2588" y2="0.8636" width="0.1524" layer="1"/>
+<via x="-13.2588" y="0.8636" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="0.8636" x2="-13.2588" y2="0.8448" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="0.8448" x2="-11.8856" y2="0.8448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$242">
 <contactref element="ATHRU_A_BOT" pad="49"/>
 <contactref element="ATHRU_A_TOP" pad="49"/>
-<wire x1="-11.3706" y1="1.2448" x2="-11.8856" y2="1.2448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="1.2448" x2="-12.8524" y2="1.2448" width="0.1524" layer="1"/>
+<wire x1="-12.8524" y1="1.2448" x2="-12.8524" y2="1.2192" width="0.1524" layer="1"/>
+<via x="-12.8524" y="1.2192" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="1.2192" x2="-12.8524" y2="1.2448" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="1.2448" x2="-11.8856" y2="1.2448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$243">
 <contactref element="ATHRU_A_BOT" pad="50"/>
 <contactref element="ATHRU_A_TOP" pad="50"/>
-<wire x1="-11.3706" y1="1.6448" x2="-11.8856" y2="1.6448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="1.6448" x2="-13.2588" y2="1.6448" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="1.6448" x2="-13.2588" y2="1.6764" width="0.1524" layer="1"/>
+<via x="-13.2588" y="1.6764" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="1.6764" x2="-13.2588" y2="1.6448" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="1.6448" x2="-11.8856" y2="1.6448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$244">
 <contactref element="ATHRU_A_BOT" pad="51"/>
 <contactref element="ATHRU_A_TOP" pad="51"/>
-<wire x1="-11.3706" y1="2.0448" x2="-11.8856" y2="2.0448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="2.0448" x2="-12.8524" y2="2.0448" width="0.1524" layer="1"/>
+<wire x1="-12.8524" y1="2.0448" x2="-12.8524" y2="2.032" width="0.1524" layer="1"/>
+<via x="-12.8524" y="2.032" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="2.032" x2="-12.8524" y2="2.0448" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="2.0448" x2="-11.8856" y2="2.0448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$245">
 <contactref element="ATHRU_A_BOT" pad="52"/>
 <contactref element="ATHRU_A_TOP" pad="52"/>
-<wire x1="-11.3706" y1="2.4448" x2="-11.8856" y2="2.4448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="2.4448" x2="-13.2588" y2="2.4448" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="2.4448" x2="-13.2588" y2="2.4384" width="0.1524" layer="1"/>
+<via x="-13.2588" y="2.4384" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="2.4384" x2="-13.2588" y2="2.4448" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="2.4448" x2="-11.8856" y2="2.4448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$246">
 <contactref element="ATHRU_A_BOT" pad="53"/>
 <contactref element="ATHRU_A_TOP" pad="53"/>
-<wire x1="-11.3706" y1="2.8448" x2="-11.8856" y2="2.8448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="2.8448" x2="-12.8524" y2="2.8448" width="0.1524" layer="1"/>
+<via x="-12.8524" y="2.8448" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="2.8448" x2="-11.8856" y2="2.8448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$247">
 <contactref element="ATHRU_A_BOT" pad="54"/>
 <contactref element="ATHRU_A_TOP" pad="54"/>
-<wire x1="-11.3706" y1="3.2448" x2="-11.8856" y2="3.2448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="3.2448" x2="-13.2588" y2="3.2448" width="0.1524" layer="1"/>
+<wire x1="-13.2588" y1="3.2448" x2="-13.2588" y2="3.2512" width="0.1524" layer="1"/>
+<via x="-13.2588" y="3.2512" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="3.2512" x2="-13.2588" y2="3.2448" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="3.2448" x2="-11.8856" y2="3.2448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$248">
 <contactref element="ATHRU_A_BOT" pad="55"/>
 <contactref element="ATHRU_A_TOP" pad="55"/>
-<wire x1="-11.3706" y1="3.6448" x2="-11.8856" y2="3.6448" width="0" layer="19" extent="1-16"/>
+<wire x1="-11.3706" y1="3.6448" x2="-12.8524" y2="3.6448" width="0.1524" layer="1"/>
+<wire x1="-12.8524" y1="3.6448" x2="-12.8524" y2="3.6576" width="0.1524" layer="1"/>
+<via x="-12.8524" y="3.6576" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="3.6576" x2="-12.8524" y2="3.6448" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="3.6448" x2="-11.8856" y2="3.6448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$249">
 <contactref element="ATHRU_A_BOT" pad="56"/>
 <contactref element="ATHRU_A_TOP" pad="56"/>
 <wire x1="-11.3706" y1="4.0448" x2="-13.2588" y2="4.0448" width="0.1524" layer="1"/>
 <wire x1="-13.2588" y1="4.0448" x2="-13.2588" y2="4.064" width="0.1524" layer="1"/>
-<wire x1="-13.2588" y1="4.064" x2="-11.8856" y2="4.0448" width="0" layer="19" extent="1-16"/>
+<via x="-13.2588" y="4.064" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="4.064" x2="-13.2588" y2="4.0448" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="4.0448" x2="-11.8856" y2="4.0448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$250">
 <contactref element="ATHRU_A_BOT" pad="57"/>
 <contactref element="ATHRU_A_TOP" pad="57"/>
 <wire x1="-11.3706" y1="4.4448" x2="-12.8524" y2="4.4448" width="0.1524" layer="1"/>
 <wire x1="-12.8524" y1="4.4448" x2="-12.8524" y2="4.4704" width="0.1524" layer="1"/>
-<wire x1="-12.8524" y1="4.4704" x2="-11.8856" y2="4.4448" width="0" layer="19" extent="1-16"/>
+<via x="-12.8524" y="4.4704" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="4.4704" x2="-12.8524" y2="4.4448" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="4.4448" x2="-11.8856" y2="4.4448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$251">
 <contactref element="ATHRU_A_BOT" pad="58"/>
 <contactref element="ATHRU_A_TOP" pad="58"/>
 <wire x1="-11.3706" y1="4.8448" x2="-13.2588" y2="4.8448" width="0.1524" layer="1"/>
 <wire x1="-13.2588" y1="4.8448" x2="-13.2588" y2="4.826" width="0.1524" layer="1"/>
-<wire x1="-13.2588" y1="4.826" x2="-11.8856" y2="4.8448" width="0" layer="19" extent="1-16"/>
+<via x="-13.2588" y="4.826" extent="1-16" drill="0.1524"/>
+<wire x1="-13.2588" y1="4.826" x2="-13.2588" y2="4.8448" width="0.1524" layer="16"/>
+<wire x1="-13.2588" y1="4.8448" x2="-11.8856" y2="4.8448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$252">
 <contactref element="ATHRU_A_BOT" pad="59"/>
 <contactref element="ATHRU_A_TOP" pad="59"/>
 <wire x1="-11.3706" y1="5.2448" x2="-12.8524" y2="5.2448" width="0.1524" layer="1"/>
 <wire x1="-12.8524" y1="5.2448" x2="-12.8524" y2="5.2324" width="0.1524" layer="1"/>
-<wire x1="-12.8524" y1="5.2324" x2="-11.8856" y2="5.2448" width="0" layer="19" extent="1-16"/>
+<via x="-12.8524" y="5.2324" extent="1-16" drill="0.1524"/>
+<wire x1="-12.8524" y1="5.2324" x2="-12.8524" y2="5.2448" width="0.1524" layer="16"/>
+<wire x1="-12.8524" y1="5.2448" x2="-11.8856" y2="5.2448" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$253">
 <contactref element="ATHRU_A_BOT" pad="60"/>
