@@ -1,0 +1,1318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE eagle SYSTEM "eagle.dtd">
+<eagle version="6.5.0">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="yes" active="yes"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="no" active="no"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
+<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
+<layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
+<layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="no" active="no"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="no" active="no"/>
+<layer number="95" name="Names" color="7" fill="1" visible="no" active="no"/>
+<layer number="96" name="Values" color="7" fill="1" visible="no" active="no"/>
+<layer number="97" name="Info" color="7" fill="1" visible="no" active="no"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
+<layer number="99" name="SpiceOrder" color="5" fill="1" visible="no" active="no"/>
+<layer number="100" name="help" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="101" name="DOC" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="102" name="bot_pads" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="103" name="fp3" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="104" name="S_DOKU" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="105" name="Beschreib" color="9" fill="1" visible="yes" active="yes"/>
+<layer number="106" name="BGA-Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="107" name="BD-Top" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="108" name="fp8" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="109" name="fp9" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="110" name="fp0" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="111" name="LPC17xx" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="112" name="tSilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="113" name="IDFDebug" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="116" name="Patch_BOT" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="121" name="_tsilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="122" name="_bsilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="123" name="tTestmark" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="124" name="bTestmark" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="125" name="_tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="126" name="_bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="127" name="_tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="128" name="_bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="144" name="Drill_legend" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="150" name="Notes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="151" name="HeatSink" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="152" name="_bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="153" name="FabDoc1" color="6" fill="1" visible="no" active="no"/>
+<layer number="154" name="FabDoc2" color="2" fill="1" visible="no" active="no"/>
+<layer number="155" name="FabDoc3" color="7" fill="15" visible="no" active="no"/>
+<layer number="199" name="Contour" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="200" name="200bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="201" name="201bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="202" name="202bmp" color="3" fill="1" visible="no" active="no"/>
+<layer number="203" name="203bmp" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="204" name="204bmp" color="5" fill="10" visible="yes" active="yes"/>
+<layer number="205" name="205bmp" color="6" fill="10" visible="yes" active="yes"/>
+<layer number="206" name="206bmp" color="7" fill="10" visible="yes" active="yes"/>
+<layer number="207" name="207bmp" color="8" fill="10" visible="yes" active="yes"/>
+<layer number="208" name="208bmp" color="9" fill="10" visible="yes" active="yes"/>
+<layer number="209" name="209bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="210" name="210bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="211" name="211bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="212" name="212bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="213" name="213bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="214" name="214bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="215" name="215bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="216" name="216bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="217" name="217bmp" color="18" fill="1" visible="no" active="no"/>
+<layer number="218" name="218bmp" color="19" fill="1" visible="no" active="no"/>
+<layer number="219" name="219bmp" color="20" fill="1" visible="no" active="no"/>
+<layer number="220" name="220bmp" color="21" fill="1" visible="no" active="no"/>
+<layer number="221" name="221bmp" color="22" fill="1" visible="no" active="no"/>
+<layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
+<layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
+<layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="248" name="Housing" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="249" name="Edge" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="250" name="Descript" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="251" name="SMDround" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="254" name="OrgLBR" color="7" fill="1" visible="yes" active="yes"/>
+</layers>
+<board>
+<plain>
+<circle x="0" y="0" radius="20" width="0.01" layer="20"/>
+<hole x="8.89" y="9.4996" drill="1.27"/>
+<hole x="9.4996" y="-8.89" drill="1.27"/>
+<hole x="-8.89" y="-9.4996" drill="1.27"/>
+<hole x="-9.4996" y="8.89" drill="1.27"/>
+</plain>
+<libraries>
+<library name="jonnew">
+<description>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Jonnew's Eagle Library&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3&gt;
+&lt;span style="font-family:arial,helvetica,sans-serif;"&gt;Jonnew's Eagle Library&amp;nbsp;&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;&lt;span style="font-family:arial,helvetica,sans-serif;"&gt;Cyclops&lt;/span&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;&lt;span style="font-family:arial,helvetica,sans-serif;"&gt;Puggle&lt;/span&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;&lt;span style="font-family:arial,helvetica,sans-serif;"&gt;Open Ephys&lt;/span&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;&lt;span style="font-family:arial,helvetica,sans-serif;"&gt;Etc.&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;/body&gt;
+&lt;/html&gt;</description>
+<packages>
+<package name="DF40-70HEAD">
+<circle x="-6.8234" y="-0.5542" radius="0.227184375" width="0.127" layer="21"/>
+<text x="-8.89" y="2.54" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-8.89" y="-3.81" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<smd name="1" x="-6.8" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<wire x1="-7.8" y1="-1" x2="-7.8" y2="1" width="0.127" layer="21"/>
+<smd name="2" x="-6.4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="3" x="-6" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="4" x="-5.6" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="5" x="-5.2" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="6" x="-4.8" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="7" x="-4.4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="8" x="-4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="9" x="-3.6" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="10" x="-3.2" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="11" x="-2.8" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="12" x="-2.4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="13" x="-2" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="14" x="-1.6" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="15" x="-1.2" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="16" x="-0.8" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="17" x="-0.4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="18" x="0" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="19" x="0.4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="20" x="0.8" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="21" x="1.2" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="22" x="1.6" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="23" x="2" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="24" x="2.4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="25" x="2.8" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="26" x="3.2" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="27" x="3.6" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="28" x="4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="29" x="4.4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="30" x="4.8" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="31" x="5.2" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="32" x="5.6" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="33" x="6" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="34" x="6.4" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="35" x="6.8" y="-1.685" dx="0.23" dy="0.66" layer="1"/>
+<smd name="36" x="6.8" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="37" x="6.4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="38" x="6" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="39" x="5.6" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="40" x="5.2" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="41" x="4.8" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="42" x="4.4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="43" x="4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="44" x="3.6" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="45" x="3.2" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="46" x="2.8" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="47" x="2.4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="48" x="2" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="49" x="1.6" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="50" x="1.2" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="51" x="0.8" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="52" x="0.4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="53" x="0" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="54" x="-0.4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="55" x="-0.8" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="56" x="-1.2" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="57" x="-1.6" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="58" x="-2" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="59" x="-2.4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="60" x="-2.8" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="61" x="-3.2" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="62" x="-3.6" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="63" x="-4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="64" x="-4.4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="65" x="-4.8" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="66" x="-5.2" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="67" x="-5.6" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="68" x="-6" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="69" x="-6.4" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="70" x="-6.8" y="1.685" dx="0.23" dy="0.66" layer="1" rot="R180"/>
+<smd name="M3" x="7.275" y="1.685" dx="0.35" dy="0.66" layer="1" rot="R180"/>
+<smd name="M2" x="7.275" y="-1.685" dx="0.35" dy="0.66" layer="1"/>
+<smd name="M1" x="-7.275" y="-1.685" dx="0.35" dy="0.66" layer="1"/>
+<smd name="M4" x="-7.275" y="1.685" dx="0.35" dy="0.66" layer="1" rot="R180"/>
+<wire x1="-7.8" y1="1" x2="7.8" y2="1" width="0.127" layer="21"/>
+<wire x1="7.8" y1="1" x2="7.8" y2="-1" width="0.127" layer="21"/>
+<wire x1="7.8" y1="-1" x2="-7.8" y2="-1" width="0.127" layer="21"/>
+<wire x1="-7.4" y1="0.5" x2="-7.4" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="-7.4" y1="-0.5" x2="-7.3" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="-7.4" y1="0.5" x2="7.4" y2="0.5" width="0.127" layer="21"/>
+<wire x1="7.4" y1="0.5" x2="7.4" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="7.4" y1="-0.5" x2="-6.4" y2="-0.5" width="0.127" layer="21"/>
+<rectangle x1="-8" y1="-1.2" x2="8" y2="1.2" layer="39"/>
+</package>
+</packages>
+</library>
+</libraries>
+<attributes>
+</attributes>
+<variantdefs>
+</variantdefs>
+<classes>
+<class number="0" name="default" width="0" drill="0">
+</class>
+<class number="1" name="thick" width="0.1016" drill="0">
+</class>
+</classes>
+<designrules name="Precision-Image *">
+<description language="de">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
+&lt;p&gt;
+Die Standard-Design-Rules sind so gewählt, dass sie für 
+die meisten Anwendungen passen. Sollte ihre Platine 
+besondere Anforderungen haben, treffen Sie die erforderlichen
+Einstellungen hier und speichern die Design Rules unter 
+einem neuen Namen ab.</description>
+<description language="en">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
+&lt;p&gt;
+The default Design Rules have been set to cover
+a wide range of applications. Your particular design
+may have different requirements, so please make the
+necessary adjustments and save your customized
+design rules under a new name.</description>
+<param name="layerSetup" value="(1*2+3*16)"/>
+<param name="mtCopper" value="0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm"/>
+<param name="mtIsolate" value="1.5mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm"/>
+<param name="mdWireWire" value="2mil"/>
+<param name="mdWirePad" value="2mil"/>
+<param name="mdWireVia" value="2mil"/>
+<param name="mdPadPad" value="2mil"/>
+<param name="mdPadVia" value="2mil"/>
+<param name="mdViaVia" value="2mil"/>
+<param name="mdSmdPad" value="2mil"/>
+<param name="mdSmdVia" value="2mil"/>
+<param name="mdSmdSmd" value="2mil"/>
+<param name="mdViaViaSameLayer" value="8mil"/>
+<param name="mnLayersViaInSmd" value="2"/>
+<param name="mdCopperDimension" value="12mil"/>
+<param name="mdDrill" value="15mil"/>
+<param name="mdSmdStop" value="0mil"/>
+<param name="msWidth" value="2mil"/>
+<param name="msDrill" value="6mil"/>
+<param name="msMicroVia" value="9.99mm"/>
+<param name="msBlindViaRatio" value="0.5"/>
+<param name="rvPadTop" value="0.25"/>
+<param name="rvPadInner" value="0.25"/>
+<param name="rvPadBottom" value="0.25"/>
+<param name="rvViaOuter" value="0.25"/>
+<param name="rvViaInner" value="0.25"/>
+<param name="rvMicroViaOuter" value="0.25"/>
+<param name="rvMicroViaInner" value="0.25"/>
+<param name="rlMinPadTop" value="5mil"/>
+<param name="rlMaxPadTop" value="12mil"/>
+<param name="rlMinPadInner" value="5mil"/>
+<param name="rlMaxPadInner" value="12mil"/>
+<param name="rlMinPadBottom" value="5mil"/>
+<param name="rlMaxPadBottom" value="12mil"/>
+<param name="rlMinViaOuter" value="5mil"/>
+<param name="rlMaxViaOuter" value="12mil"/>
+<param name="rlMinViaInner" value="5mil"/>
+<param name="rlMaxViaInner" value="12mil"/>
+<param name="rlMinMicroViaOuter" value="5mil"/>
+<param name="rlMaxMicroViaOuter" value="12mil"/>
+<param name="rlMinMicroViaInner" value="5mil"/>
+<param name="rlMaxMicroViaInner" value="12mil"/>
+<param name="psTop" value="-1"/>
+<param name="psBottom" value="-1"/>
+<param name="psFirst" value="-1"/>
+<param name="psElongationLong" value="100"/>
+<param name="psElongationOffset" value="100"/>
+<param name="mvStopFrame" value="1"/>
+<param name="mvCreamFrame" value="0"/>
+<param name="mlMinStopFrame" value="2mil"/>
+<param name="mlMaxStopFrame" value="2mil"/>
+<param name="mlMinCreamFrame" value="0mil"/>
+<param name="mlMaxCreamFrame" value="0mil"/>
+<param name="mlViaStopLimit" value="0mil"/>
+<param name="srRoundness" value="0"/>
+<param name="srMinRoundness" value="0mil"/>
+<param name="srMaxRoundness" value="0mil"/>
+<param name="slThermalIsolate" value="10mil"/>
+<param name="slThermalsForVias" value="0"/>
+<param name="dpMaxLengthDifference" value="10mm"/>
+<param name="dpGapFactor" value="2.5"/>
+<param name="checkGrid" value="0"/>
+<param name="checkAngle" value="0"/>
+<param name="checkFont" value="1"/>
+<param name="checkRestrict" value="1"/>
+<param name="useDiameter" value="13"/>
+<param name="maxErrors" value="50"/>
+</designrules>
+<autorouter>
+<pass name="Default">
+<param name="RoutingGrid" value="50mil"/>
+<param name="tpViaShape" value="round"/>
+<param name="PrefDir.1" value="|"/>
+<param name="PrefDir.2" value="0"/>
+<param name="PrefDir.3" value="0"/>
+<param name="PrefDir.4" value="0"/>
+<param name="PrefDir.5" value="0"/>
+<param name="PrefDir.6" value="0"/>
+<param name="PrefDir.7" value="0"/>
+<param name="PrefDir.8" value="0"/>
+<param name="PrefDir.9" value="0"/>
+<param name="PrefDir.10" value="0"/>
+<param name="PrefDir.11" value="0"/>
+<param name="PrefDir.12" value="0"/>
+<param name="PrefDir.13" value="0"/>
+<param name="PrefDir.14" value="0"/>
+<param name="PrefDir.15" value="0"/>
+<param name="PrefDir.16" value="-"/>
+<param name="cfVia" value="8"/>
+<param name="cfNonPref" value="5"/>
+<param name="cfChangeDir" value="2"/>
+<param name="cfOrthStep" value="2"/>
+<param name="cfDiagStep" value="3"/>
+<param name="cfExtdStep" value="0"/>
+<param name="cfBonusStep" value="1"/>
+<param name="cfMalusStep" value="1"/>
+<param name="cfPadImpact" value="4"/>
+<param name="cfSmdImpact" value="4"/>
+<param name="cfBusImpact" value="0"/>
+<param name="cfHugging" value="3"/>
+<param name="cfAvoid" value="4"/>
+<param name="cfPolygon" value="10"/>
+<param name="cfBase.1" value="0"/>
+<param name="cfBase.2" value="1"/>
+<param name="cfBase.3" value="1"/>
+<param name="cfBase.4" value="1"/>
+<param name="cfBase.5" value="1"/>
+<param name="cfBase.6" value="1"/>
+<param name="cfBase.7" value="1"/>
+<param name="cfBase.8" value="1"/>
+<param name="cfBase.9" value="1"/>
+<param name="cfBase.10" value="1"/>
+<param name="cfBase.11" value="1"/>
+<param name="cfBase.12" value="1"/>
+<param name="cfBase.13" value="1"/>
+<param name="cfBase.14" value="1"/>
+<param name="cfBase.15" value="1"/>
+<param name="cfBase.16" value="0"/>
+<param name="mnVias" value="20"/>
+<param name="mnSegments" value="9999"/>
+<param name="mnExtdSteps" value="9999"/>
+<param name="mnRipupLevel" value="10"/>
+<param name="mnRipupSteps" value="100"/>
+<param name="mnRipupTotal" value="100"/>
+</pass>
+<pass name="Follow-me" refer="Default" active="yes">
+</pass>
+<pass name="Busses" refer="Default" active="yes">
+<param name="cfNonPref" value="4"/>
+<param name="cfBusImpact" value="4"/>
+<param name="cfHugging" value="0"/>
+<param name="mnVias" value="0"/>
+</pass>
+<pass name="Route" refer="Default" active="yes">
+</pass>
+<pass name="Optimize1" refer="Default" active="yes">
+<param name="cfVia" value="99"/>
+<param name="cfExtdStep" value="10"/>
+<param name="cfHugging" value="1"/>
+<param name="mnExtdSteps" value="1"/>
+<param name="mnRipupLevel" value="0"/>
+</pass>
+<pass name="Optimize2" refer="Optimize1" active="yes">
+<param name="cfNonPref" value="0"/>
+<param name="cfChangeDir" value="6"/>
+<param name="cfExtdStep" value="0"/>
+<param name="cfBonusStep" value="2"/>
+<param name="cfMalusStep" value="2"/>
+<param name="cfPadImpact" value="2"/>
+<param name="cfSmdImpact" value="2"/>
+<param name="cfHugging" value="0"/>
+</pass>
+<pass name="Optimize3" refer="Optimize2" active="yes">
+<param name="cfChangeDir" value="8"/>
+<param name="cfPadImpact" value="0"/>
+<param name="cfSmdImpact" value="0"/>
+</pass>
+<pass name="Optimize4" refer="Optimize3" active="yes">
+<param name="cfChangeDir" value="25"/>
+</pass>
+</autorouter>
+<elements>
+<element name="B" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="-3.048" y="-13.0556" smashed="yes">
+<attribute name="NAME" x="-3.048" y="-8.7376" size="0.8128" layer="25" font="vector" ratio="19" align="center"/>
+<attribute name="VALUE" x="-2.794" y="-9.906" size="0.8128" layer="27" font="vector" ratio="19" align="center"/>
+</element>
+<element name="C" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="-13.0556" y="3.048" smashed="yes" rot="R270">
+<attribute name="NAME" x="-16.002" y="3.048" size="0.8128" layer="25" font="vector" ratio="19" rot="R270" align="center"/>
+<attribute name="VALUE" x="-17.018" y="3.048" size="0.8128" layer="27" font="vector" ratio="19" rot="R270" align="center"/>
+</element>
+<element name="D" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="13.0556" y="-3.048" smashed="yes" rot="R90">
+<attribute name="NAME" x="17.018" y="-3.048" size="0.8128" layer="25" font="vector" ratio="19" rot="R270" align="center"/>
+<attribute name="VALUE" x="16.002" y="-3.048" size="0.8128" layer="27" font="vector" ratio="19" rot="R270" align="center"/>
+</element>
+<element name="A" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="3.048" y="13.0556" smashed="yes" rot="R180">
+<attribute name="NAME" x="2.9972" y="9.906" size="0.8128" layer="25" font="vector" ratio="19" rot="R180" align="center"/>
+<attribute name="VALUE" x="2.9972" y="8.636" size="0.8128" layer="27" font="vector" ratio="19" rot="R180" align="center"/>
+</element>
+</elements>
+<signals>
+<signal name="GND" class="1">
+<polygon width="0.254" layer="2" thermals="no">
+<vertex x="-22.86" y="22.86"/>
+<vertex x="22.86" y="22.86"/>
+<vertex x="22.86" y="-22.86"/>
+<vertex x="-22.86" y="-22.86"/>
+</polygon>
+</signal>
+<signal name="VCC" class="1">
+<polygon width="0.254" layer="3" thermals="no">
+<vertex x="-22.86" y="22.86"/>
+<vertex x="22.86" y="22.86"/>
+<vertex x="22.86" y="-22.86"/>
+<vertex x="-22.86" y="-22.86"/>
+</polygon>
+</signal>
+<signal name="N$199">
+<contactref element="A" pad="33"/>
+</signal>
+<signal name="N$200">
+<contactref element="A" pad="32"/>
+</signal>
+<signal name="N$201">
+<contactref element="A" pad="31"/>
+</signal>
+<signal name="N$202">
+<contactref element="A" pad="30"/>
+</signal>
+<signal name="N$203">
+<contactref element="A" pad="29"/>
+</signal>
+<signal name="N$204">
+<contactref element="A" pad="28"/>
+</signal>
+<signal name="N$205">
+<contactref element="A" pad="27"/>
+</signal>
+<signal name="N$206">
+<contactref element="A" pad="26"/>
+</signal>
+<signal name="N$207">
+<contactref element="A" pad="25"/>
+</signal>
+<signal name="N$208">
+<contactref element="A" pad="24"/>
+</signal>
+<signal name="N$209">
+<contactref element="A" pad="23"/>
+</signal>
+<signal name="N$210">
+<contactref element="A" pad="22"/>
+</signal>
+<signal name="N$211">
+<contactref element="A" pad="21"/>
+</signal>
+<signal name="N$212">
+<contactref element="A" pad="20"/>
+</signal>
+<signal name="N$213">
+<contactref element="A" pad="19"/>
+</signal>
+<signal name="N$214">
+<contactref element="A" pad="18"/>
+</signal>
+<signal name="N$215">
+<contactref element="A" pad="17"/>
+</signal>
+<signal name="N$216">
+<contactref element="A" pad="16"/>
+</signal>
+<signal name="N$217">
+<contactref element="A" pad="15"/>
+</signal>
+<signal name="N$218">
+<contactref element="A" pad="14"/>
+</signal>
+<signal name="N$219">
+<contactref element="A" pad="13"/>
+</signal>
+<signal name="N$220">
+<contactref element="A" pad="12"/>
+</signal>
+<signal name="N$221">
+<contactref element="A" pad="11"/>
+</signal>
+<signal name="N$222">
+<contactref element="A" pad="10"/>
+</signal>
+<signal name="N$223">
+<contactref element="A" pad="9"/>
+</signal>
+<signal name="N$224">
+<contactref element="A" pad="8"/>
+</signal>
+<signal name="N$225">
+<contactref element="A" pad="7"/>
+</signal>
+<signal name="N$226">
+<contactref element="A" pad="6"/>
+</signal>
+<signal name="N$227">
+<contactref element="A" pad="5"/>
+</signal>
+<signal name="N$228">
+<contactref element="A" pad="4"/>
+</signal>
+<signal name="N$229">
+<contactref element="A" pad="3"/>
+</signal>
+<signal name="N$231">
+<contactref element="A" pad="38"/>
+</signal>
+<signal name="N$232">
+<contactref element="A" pad="39"/>
+</signal>
+<signal name="N$233">
+<contactref element="A" pad="40"/>
+</signal>
+<signal name="N$234">
+<contactref element="A" pad="41"/>
+</signal>
+<signal name="N$235">
+<contactref element="A" pad="42"/>
+</signal>
+<signal name="N$236">
+<contactref element="A" pad="43"/>
+</signal>
+<signal name="N$237">
+<contactref element="A" pad="44"/>
+</signal>
+<signal name="N$238">
+<contactref element="A" pad="45"/>
+</signal>
+<signal name="N$239">
+<contactref element="A" pad="46"/>
+</signal>
+<signal name="N$240">
+<contactref element="A" pad="47"/>
+</signal>
+<signal name="N$241">
+<contactref element="A" pad="48"/>
+</signal>
+<signal name="N$242">
+<contactref element="A" pad="49"/>
+</signal>
+<signal name="N$243">
+<contactref element="A" pad="50"/>
+</signal>
+<signal name="N$244">
+<contactref element="A" pad="51"/>
+</signal>
+<signal name="N$245">
+<contactref element="A" pad="52"/>
+</signal>
+<signal name="N$246">
+<contactref element="A" pad="53"/>
+</signal>
+<signal name="N$247">
+<contactref element="A" pad="54"/>
+</signal>
+<signal name="N$248">
+<contactref element="A" pad="55"/>
+</signal>
+<signal name="N$249">
+<contactref element="A" pad="56"/>
+</signal>
+<signal name="N$250">
+<contactref element="A" pad="57"/>
+</signal>
+<signal name="N$251">
+<contactref element="A" pad="58"/>
+</signal>
+<signal name="N$252">
+<contactref element="A" pad="59"/>
+</signal>
+<signal name="N$253">
+<contactref element="A" pad="60"/>
+</signal>
+<signal name="N$254">
+<contactref element="A" pad="61"/>
+</signal>
+<signal name="N$255">
+<contactref element="A" pad="62"/>
+</signal>
+<signal name="N$256">
+<contactref element="A" pad="63"/>
+</signal>
+<signal name="N$257">
+<contactref element="A" pad="64"/>
+</signal>
+<signal name="N$258">
+<contactref element="A" pad="65"/>
+</signal>
+<signal name="N$259">
+<contactref element="A" pad="66"/>
+</signal>
+<signal name="N$260">
+<contactref element="A" pad="67"/>
+</signal>
+<signal name="N$261">
+<contactref element="A" pad="68"/>
+</signal>
+<signal name="AGND_A0">
+<contactref element="A" pad="69"/>
+<contactref element="A" pad="70"/>
+<wire x1="9.848" y1="11.3706" x2="9.448" y2="11.3706" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$230">
+<contactref element="A" pad="2"/>
+</signal>
+<signal name="REF_A0">
+<contactref element="A" pad="1"/>
+</signal>
+<signal name="REF_A1">
+<contactref element="A" pad="36"/>
+</signal>
+<signal name="N$1000">
+<contactref element="A" pad="37"/>
+</signal>
+<signal name="AGND_A1">
+<contactref element="A" pad="34"/>
+<contactref element="A" pad="35"/>
+<wire x1="-3.752" y1="14.7406" x2="-3.352" y2="14.7406" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$129">
+<contactref element="C" pad="33"/>
+</signal>
+<signal name="N$130">
+<contactref element="C" pad="32"/>
+</signal>
+<signal name="N$131">
+<contactref element="C" pad="31"/>
+</signal>
+<signal name="N$132">
+<contactref element="C" pad="30"/>
+</signal>
+<signal name="N$133">
+<contactref element="C" pad="29"/>
+</signal>
+<signal name="N$134">
+<contactref element="C" pad="28"/>
+</signal>
+<signal name="N$135">
+<contactref element="C" pad="27"/>
+</signal>
+<signal name="N$136">
+<contactref element="C" pad="26"/>
+</signal>
+<signal name="N$137">
+<contactref element="C" pad="25"/>
+</signal>
+<signal name="N$138">
+<contactref element="C" pad="24"/>
+</signal>
+<signal name="N$139">
+<contactref element="C" pad="23"/>
+</signal>
+<signal name="N$140">
+<contactref element="C" pad="22"/>
+</signal>
+<signal name="N$141">
+<contactref element="C" pad="21"/>
+</signal>
+<signal name="N$142">
+<contactref element="C" pad="20"/>
+</signal>
+<signal name="N$143">
+<contactref element="C" pad="19"/>
+</signal>
+<signal name="N$144">
+<contactref element="C" pad="18"/>
+</signal>
+<signal name="N$145">
+<contactref element="C" pad="17"/>
+</signal>
+<signal name="N$146">
+<contactref element="C" pad="16"/>
+</signal>
+<signal name="N$147">
+<contactref element="C" pad="15"/>
+</signal>
+<signal name="N$148">
+<contactref element="C" pad="14"/>
+</signal>
+<signal name="N$149">
+<contactref element="C" pad="13"/>
+</signal>
+<signal name="N$150">
+<contactref element="C" pad="12"/>
+</signal>
+<signal name="N$151">
+<contactref element="C" pad="11"/>
+</signal>
+<signal name="N$152">
+<contactref element="C" pad="10"/>
+</signal>
+<signal name="N$153">
+<contactref element="C" pad="9"/>
+</signal>
+<signal name="N$154">
+<contactref element="C" pad="8"/>
+</signal>
+<signal name="N$155">
+<contactref element="C" pad="7"/>
+</signal>
+<signal name="N$156">
+<contactref element="C" pad="6"/>
+</signal>
+<signal name="N$157">
+<contactref element="C" pad="5"/>
+</signal>
+<signal name="N$158">
+<contactref element="C" pad="4"/>
+</signal>
+<signal name="N$159">
+<contactref element="C" pad="3"/>
+</signal>
+<signal name="N$160">
+<contactref element="C" pad="38"/>
+</signal>
+<signal name="N$161">
+<contactref element="C" pad="39"/>
+</signal>
+<signal name="N$162">
+<contactref element="C" pad="40"/>
+</signal>
+<signal name="N$163">
+<contactref element="C" pad="41"/>
+</signal>
+<signal name="N$164">
+<contactref element="C" pad="42"/>
+</signal>
+<signal name="N$165">
+<contactref element="C" pad="43"/>
+</signal>
+<signal name="N$166">
+<contactref element="C" pad="44"/>
+</signal>
+<signal name="N$167">
+<contactref element="C" pad="45"/>
+</signal>
+<signal name="N$168">
+<contactref element="C" pad="46"/>
+</signal>
+<signal name="N$169">
+<contactref element="C" pad="47"/>
+</signal>
+<signal name="N$170">
+<contactref element="C" pad="48"/>
+</signal>
+<signal name="N$171">
+<contactref element="C" pad="49"/>
+</signal>
+<signal name="N$172">
+<contactref element="C" pad="50"/>
+</signal>
+<signal name="N$173">
+<contactref element="C" pad="51"/>
+</signal>
+<signal name="N$174">
+<contactref element="C" pad="52"/>
+</signal>
+<signal name="N$175">
+<contactref element="C" pad="53"/>
+</signal>
+<signal name="N$176">
+<contactref element="C" pad="54"/>
+</signal>
+<signal name="N$177">
+<contactref element="C" pad="55"/>
+</signal>
+<signal name="N$178">
+<contactref element="C" pad="56"/>
+</signal>
+<signal name="N$179">
+<contactref element="C" pad="57"/>
+</signal>
+<signal name="N$180">
+<contactref element="C" pad="58"/>
+</signal>
+<signal name="N$181">
+<contactref element="C" pad="59"/>
+</signal>
+<signal name="N$182">
+<contactref element="C" pad="60"/>
+</signal>
+<signal name="N$183">
+<contactref element="C" pad="61"/>
+</signal>
+<signal name="N$184">
+<contactref element="C" pad="62"/>
+</signal>
+<signal name="N$185">
+<contactref element="C" pad="63"/>
+</signal>
+<signal name="N$186">
+<contactref element="C" pad="64"/>
+</signal>
+<signal name="N$187">
+<contactref element="C" pad="65"/>
+</signal>
+<signal name="N$188">
+<contactref element="C" pad="66"/>
+</signal>
+<signal name="N$189">
+<contactref element="C" pad="67"/>
+</signal>
+<signal name="N$190">
+<contactref element="C" pad="68"/>
+</signal>
+<signal name="N$191">
+<contactref element="C" pad="2"/>
+</signal>
+<signal name="N$192">
+<contactref element="C" pad="37"/>
+</signal>
+<signal name="N$65">
+<contactref element="B" pad="33"/>
+</signal>
+<signal name="N$66">
+<contactref element="B" pad="32"/>
+</signal>
+<signal name="N$67">
+<contactref element="B" pad="31"/>
+</signal>
+<signal name="N$68">
+<contactref element="B" pad="30"/>
+</signal>
+<signal name="N$69">
+<contactref element="B" pad="29"/>
+</signal>
+<signal name="N$70">
+<contactref element="B" pad="28"/>
+</signal>
+<signal name="N$71">
+<contactref element="B" pad="27"/>
+</signal>
+<signal name="N$72">
+<contactref element="B" pad="26"/>
+</signal>
+<signal name="N$73">
+<contactref element="B" pad="25"/>
+</signal>
+<signal name="N$74">
+<contactref element="B" pad="24"/>
+</signal>
+<signal name="N$75">
+<contactref element="B" pad="23"/>
+</signal>
+<signal name="N$76">
+<contactref element="B" pad="22"/>
+</signal>
+<signal name="N$77">
+<contactref element="B" pad="21"/>
+</signal>
+<signal name="N$78">
+<contactref element="B" pad="20"/>
+</signal>
+<signal name="N$79">
+<contactref element="B" pad="19"/>
+</signal>
+<signal name="N$80">
+<contactref element="B" pad="18"/>
+</signal>
+<signal name="N$81">
+<contactref element="B" pad="17"/>
+</signal>
+<signal name="N$82">
+<contactref element="B" pad="16"/>
+</signal>
+<signal name="N$83">
+<contactref element="B" pad="15"/>
+</signal>
+<signal name="N$84">
+<contactref element="B" pad="14"/>
+</signal>
+<signal name="N$85">
+<contactref element="B" pad="13"/>
+</signal>
+<signal name="N$86">
+<contactref element="B" pad="12"/>
+</signal>
+<signal name="N$87">
+<contactref element="B" pad="11"/>
+</signal>
+<signal name="N$88">
+<contactref element="B" pad="10"/>
+</signal>
+<signal name="N$89">
+<contactref element="B" pad="9"/>
+</signal>
+<signal name="N$90">
+<contactref element="B" pad="8"/>
+</signal>
+<signal name="N$91">
+<contactref element="B" pad="7"/>
+</signal>
+<signal name="N$92">
+<contactref element="B" pad="6"/>
+</signal>
+<signal name="N$93">
+<contactref element="B" pad="5"/>
+</signal>
+<signal name="N$94">
+<contactref element="B" pad="4"/>
+</signal>
+<signal name="N$95">
+<contactref element="B" pad="3"/>
+</signal>
+<signal name="N$96">
+<contactref element="B" pad="38"/>
+</signal>
+<signal name="N$97">
+<contactref element="B" pad="39"/>
+</signal>
+<signal name="N$98">
+<contactref element="B" pad="40"/>
+</signal>
+<signal name="N$99">
+<contactref element="B" pad="41"/>
+</signal>
+<signal name="N$100">
+<contactref element="B" pad="42"/>
+</signal>
+<signal name="N$101">
+<contactref element="B" pad="43"/>
+</signal>
+<signal name="N$102">
+<contactref element="B" pad="44"/>
+</signal>
+<signal name="N$103">
+<contactref element="B" pad="45"/>
+</signal>
+<signal name="N$104">
+<contactref element="B" pad="46"/>
+</signal>
+<signal name="N$105">
+<contactref element="B" pad="47"/>
+</signal>
+<signal name="N$106">
+<contactref element="B" pad="48"/>
+</signal>
+<signal name="N$107">
+<contactref element="B" pad="49"/>
+</signal>
+<signal name="N$108">
+<contactref element="B" pad="50"/>
+</signal>
+<signal name="N$109">
+<contactref element="B" pad="51"/>
+</signal>
+<signal name="N$110">
+<contactref element="B" pad="52"/>
+</signal>
+<signal name="N$111">
+<contactref element="B" pad="53"/>
+</signal>
+<signal name="N$112">
+<contactref element="B" pad="54"/>
+</signal>
+<signal name="N$113">
+<contactref element="B" pad="55"/>
+</signal>
+<signal name="N$114">
+<contactref element="B" pad="56"/>
+</signal>
+<signal name="N$115">
+<contactref element="B" pad="57"/>
+</signal>
+<signal name="N$116">
+<contactref element="B" pad="58"/>
+</signal>
+<signal name="N$117">
+<contactref element="B" pad="59"/>
+</signal>
+<signal name="N$118">
+<contactref element="B" pad="60"/>
+</signal>
+<signal name="N$119">
+<contactref element="B" pad="61"/>
+</signal>
+<signal name="N$120">
+<contactref element="B" pad="62"/>
+</signal>
+<signal name="N$121">
+<contactref element="B" pad="63"/>
+</signal>
+<signal name="N$122">
+<contactref element="B" pad="64"/>
+</signal>
+<signal name="N$123">
+<contactref element="B" pad="65"/>
+</signal>
+<signal name="N$124">
+<contactref element="B" pad="66"/>
+</signal>
+<signal name="N$125">
+<contactref element="B" pad="67"/>
+</signal>
+<signal name="N$126">
+<contactref element="B" pad="68"/>
+</signal>
+<signal name="N$127">
+<contactref element="B" pad="2"/>
+</signal>
+<signal name="N$128">
+<contactref element="B" pad="37"/>
+</signal>
+<signal name="N$1">
+<contactref element="D" pad="33"/>
+</signal>
+<signal name="N$2">
+<contactref element="D" pad="32"/>
+</signal>
+<signal name="N$3">
+<contactref element="D" pad="31"/>
+</signal>
+<signal name="N$4">
+<contactref element="D" pad="30"/>
+</signal>
+<signal name="N$5">
+<contactref element="D" pad="29"/>
+</signal>
+<signal name="N$6">
+<contactref element="D" pad="28"/>
+</signal>
+<signal name="N$7">
+<contactref element="D" pad="27"/>
+</signal>
+<signal name="N$8">
+<contactref element="D" pad="26"/>
+</signal>
+<signal name="N$9">
+<contactref element="D" pad="25"/>
+</signal>
+<signal name="N$10">
+<contactref element="D" pad="24"/>
+</signal>
+<signal name="N$11">
+<contactref element="D" pad="23"/>
+</signal>
+<signal name="N$12">
+<contactref element="D" pad="22"/>
+</signal>
+<signal name="N$13">
+<contactref element="D" pad="21"/>
+</signal>
+<signal name="N$14">
+<contactref element="D" pad="20"/>
+</signal>
+<signal name="N$15">
+<contactref element="D" pad="19"/>
+</signal>
+<signal name="N$16">
+<contactref element="D" pad="18"/>
+</signal>
+<signal name="N$17">
+<contactref element="D" pad="17"/>
+</signal>
+<signal name="N$18">
+<contactref element="D" pad="16"/>
+</signal>
+<signal name="N$19">
+<contactref element="D" pad="15"/>
+</signal>
+<signal name="N$20">
+<contactref element="D" pad="14"/>
+</signal>
+<signal name="N$21">
+<contactref element="D" pad="13"/>
+</signal>
+<signal name="N$22">
+<contactref element="D" pad="12"/>
+</signal>
+<signal name="N$23">
+<contactref element="D" pad="11"/>
+</signal>
+<signal name="N$24">
+<contactref element="D" pad="10"/>
+</signal>
+<signal name="N$25">
+<contactref element="D" pad="9"/>
+</signal>
+<signal name="N$26">
+<contactref element="D" pad="8"/>
+</signal>
+<signal name="N$27">
+<contactref element="D" pad="7"/>
+</signal>
+<signal name="N$28">
+<contactref element="D" pad="6"/>
+</signal>
+<signal name="N$29">
+<contactref element="D" pad="5"/>
+</signal>
+<signal name="N$30">
+<contactref element="D" pad="4"/>
+</signal>
+<signal name="N$31">
+<contactref element="D" pad="3"/>
+</signal>
+<signal name="N$32">
+<contactref element="D" pad="38"/>
+</signal>
+<signal name="N$33">
+<contactref element="D" pad="39"/>
+</signal>
+<signal name="N$34">
+<contactref element="D" pad="40"/>
+</signal>
+<signal name="N$35">
+<contactref element="D" pad="41"/>
+</signal>
+<signal name="N$36">
+<contactref element="D" pad="42"/>
+</signal>
+<signal name="N$37">
+<contactref element="D" pad="43"/>
+</signal>
+<signal name="N$38">
+<contactref element="D" pad="44"/>
+</signal>
+<signal name="N$39">
+<contactref element="D" pad="45"/>
+</signal>
+<signal name="N$40">
+<contactref element="D" pad="46"/>
+</signal>
+<signal name="N$41">
+<contactref element="D" pad="47"/>
+</signal>
+<signal name="N$42">
+<contactref element="D" pad="48"/>
+</signal>
+<signal name="N$43">
+<contactref element="D" pad="49"/>
+</signal>
+<signal name="N$44">
+<contactref element="D" pad="50"/>
+</signal>
+<signal name="N$45">
+<contactref element="D" pad="51"/>
+</signal>
+<signal name="N$46">
+<contactref element="D" pad="52"/>
+</signal>
+<signal name="N$47">
+<contactref element="D" pad="53"/>
+</signal>
+<signal name="N$48">
+<contactref element="D" pad="54"/>
+</signal>
+<signal name="N$49">
+<contactref element="D" pad="55"/>
+</signal>
+<signal name="N$50">
+<contactref element="D" pad="56"/>
+</signal>
+<signal name="N$51">
+<contactref element="D" pad="57"/>
+</signal>
+<signal name="N$52">
+<contactref element="D" pad="58"/>
+</signal>
+<signal name="N$53">
+<contactref element="D" pad="59"/>
+</signal>
+<signal name="N$54">
+<contactref element="D" pad="60"/>
+</signal>
+<signal name="N$55">
+<contactref element="D" pad="61"/>
+</signal>
+<signal name="N$56">
+<contactref element="D" pad="62"/>
+</signal>
+<signal name="N$57">
+<contactref element="D" pad="63"/>
+</signal>
+<signal name="N$58">
+<contactref element="D" pad="64"/>
+</signal>
+<signal name="N$59">
+<contactref element="D" pad="65"/>
+</signal>
+<signal name="N$60">
+<contactref element="D" pad="66"/>
+</signal>
+<signal name="N$61">
+<contactref element="D" pad="67"/>
+</signal>
+<signal name="N$62">
+<contactref element="D" pad="68"/>
+</signal>
+<signal name="N$63">
+<contactref element="D" pad="2"/>
+</signal>
+<signal name="N$64">
+<contactref element="D" pad="37"/>
+</signal>
+<signal name="REF_B1">
+<contactref element="B" pad="36"/>
+</signal>
+<signal name="REF_B0">
+<contactref element="B" pad="1"/>
+</signal>
+<signal name="AGND_B1">
+<contactref element="B" pad="34"/>
+<contactref element="B" pad="35"/>
+<wire x1="3.752" y1="-14.7406" x2="3.352" y2="-14.7406" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="AGND_B0">
+<contactref element="B" pad="69"/>
+<contactref element="B" pad="70"/>
+<wire x1="-9.848" y1="-11.3706" x2="-9.448" y2="-11.3706" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="REF_C0">
+<contactref element="C" pad="1"/>
+</signal>
+<signal name="AGND_C0">
+<contactref element="C" pad="69"/>
+<contactref element="C" pad="70"/>
+<wire x1="-11.3706" y1="9.848" x2="-11.3706" y2="9.448" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="REF_C1">
+<contactref element="C" pad="36"/>
+</signal>
+<signal name="AGND_C1">
+<contactref element="C" pad="34"/>
+<contactref element="C" pad="35"/>
+<wire x1="-14.7406" y1="-3.752" x2="-14.7406" y2="-3.352" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="AGND_D1">
+<contactref element="D" pad="34"/>
+<contactref element="D" pad="35"/>
+<wire x1="14.7406" y1="3.752" x2="14.7406" y2="3.352" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="REF_D1">
+<contactref element="D" pad="36"/>
+</signal>
+<signal name="AGND_D0">
+<contactref element="D" pad="69"/>
+<contactref element="D" pad="70"/>
+<wire x1="11.3706" y1="-9.848" x2="11.3706" y2="-9.448" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="REF_D0">
+<contactref element="D" pad="1"/>
+</signal>
+</signals>
+</board>
+</drawing>
+</eagle>
