@@ -554,38 +554,83 @@
 <pad name="P31" x="5.2" y="0.9" drill="0.1524" diameter="0.3048" stop="no"/>
 <pad name="P32" x="7.8" y="1.3" drill="0.1524" diameter="0.3048" stop="no"/>
 <pad name="P33" x="8.3" y="1.9" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P37" x="12" y="2.8" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P38" x="11.6" y="3.1" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P39" x="11.2" y="3.4" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P40" x="10.8" y="3.7" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P41" x="10.4" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P42" x="10" y="4.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P43" x="9.6" y="4.6" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P44" x="9.2" y="4.9" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P45" x="8.8" y="5.2" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P46" x="8.4" y="5.5" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P47" x="8" y="5.8" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P48" x="7.6" y="6.1" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P49" x="7.2" y="6.4" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P50" x="6.8" y="6.7" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P51" x="6.4" y="7" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P52" x="6" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P53" x="5.5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P54" x="5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P55" x="4.5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P56" x="4" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P57" x="3.5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P58" x="3" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P59" x="2.5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P60" x="2" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P61" x="1.5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P62" x="1" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P63" x="0.5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P64" x="0" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P65" x="-0.5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P66" x="-1" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P67" x="-1.5" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
-<pad name="P68" x="-2" y="7.3" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P37" x="6.4" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P38" x="6" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P39" x="5.6" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P40" x="5.2" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P41" x="4.8" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P42" x="4.4" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P43" x="4" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P44" x="3.6" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P45" x="3.2" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P46" x="2.8" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P47" x="2.4" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P48" x="2" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P49" x="1.6" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P50" x="1.2" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P51" x="0.8" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P52" x="0.4" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P53" x="0" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P54" x="-0.4" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P55" x="-0.8" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P56" x="-1.2" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P57" x="-1.6" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P58" x="-2" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P59" x="-2.4" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P60" x="-2.8" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P61" x="-3.2" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P62" x="-3.6" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P63" x="-4" y="2.4" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P64" x="-4.4" y="3.2" drill="0.1524" diameter="0.3048" stop="no"/>
+<pad name="P65" x="-4.8" y="4" drill="0.1524" diameter="0.3048" stop="no"/>
+<wire x1="6.4" y1="2.4" x2="6.4" y2="6" width="0.127" layer="52"/>
+<wire x1="5.6" y1="2.4" x2="5.6" y2="6" width="0.127" layer="52"/>
+<wire x1="4.8" y1="2.4" x2="4.8" y2="6" width="0.127" layer="52"/>
+<wire x1="4" y1="2.4" x2="4" y2="6" width="0.127" layer="52"/>
+<wire x1="3.2" y1="2.4" x2="3.2" y2="6" width="0.127" layer="52"/>
+<wire x1="2.4" y1="2.4" x2="2.4" y2="6" width="0.127" layer="52"/>
+<wire x1="1.6" y1="2.4" x2="1.6" y2="6" width="0.127" layer="52"/>
+<wire x1="0.8" y1="2.4" x2="0.8" y2="6" width="0.127" layer="52"/>
+<wire x1="0" y1="2.4" x2="0" y2="6" width="0.127" layer="52"/>
+<wire x1="-0.8" y1="2.4" x2="-0.8" y2="6" width="0.127" layer="52"/>
+<wire x1="-1.6" y1="2.4" x2="-1.6" y2="6" width="0.127" layer="52"/>
+<wire x1="-2.4" y1="2.4" x2="-2.4" y2="6" width="0.127" layer="52"/>
+<wire x1="-3.2" y1="2.4" x2="-3.2" y2="6" width="0.127" layer="52"/>
+<wire x1="-4" y1="2.4" x2="-4" y2="6" width="0.127" layer="52"/>
+<wire x1="-4.8" y1="2.4" x2="-4.8" y2="6" width="0.127" layer="52"/>
+<wire x1="-5.6" y1="2.4" x2="-5.6" y2="6" width="0.127" layer="52"/>
+<wire x1="6" y1="2.4" x2="6" y2="4" width="0.127" layer="51"/>
+<wire x1="6" y1="4" x2="6" y2="6" width="0.127" layer="51"/>
+<wire x1="5.2" y1="2.4" x2="5.2" y2="6" width="0.127" layer="51"/>
+<wire x1="4.4" y1="2.4" x2="4.4" y2="6" width="0.127" layer="51"/>
+<wire x1="3.6" y1="2.4" x2="3.6" y2="6" width="0.127" layer="51"/>
+<wire x1="2.8" y1="2.4" x2="2.8" y2="6" width="0.127" layer="51"/>
+<wire x1="2" y1="2.4" x2="2" y2="6" width="0.127" layer="51"/>
+<wire x1="1.2" y1="2.4" x2="1.2" y2="6" width="0.127" layer="51"/>
+<wire x1="0.4" y1="2.4" x2="0.4" y2="6" width="0.127" layer="51"/>
+<wire x1="-0.4" y1="2.4" x2="-0.4" y2="6" width="0.127" layer="51"/>
+<wire x1="-1.2" y1="2.4" x2="-1.2" y2="6" width="0.127" layer="51"/>
+<wire x1="-2" y1="2.4" x2="-2" y2="6" width="0.127" layer="51"/>
+<wire x1="-2.8" y1="2.4" x2="-2.8" y2="6" width="0.127" layer="51"/>
+<wire x1="-3.6" y1="2.4" x2="-3.6" y2="6" width="0.127" layer="51"/>
+<wire x1="-4.4" y1="2.4" x2="-4.4" y2="6" width="0.127" layer="51"/>
+<wire x1="-5.2" y1="2.4" x2="-5.2" y2="6" width="0.127" layer="51"/>
+<wire x1="-6" y1="2.4" x2="-6" y2="4.6" width="0.127" layer="51"/>
+<wire x1="-6" y1="4.6" x2="-6" y2="6" width="0.127" layer="51"/>
+<wire x1="6" y1="4" x2="5.9" y2="4.1" width="0.127" layer="51"/>
+<wire x1="5.9" y1="4.1" x2="5.7" y2="4.2" width="0.127" layer="51"/>
+<wire x1="5.3" y1="4.3" x2="5.7" y2="4.2" width="0.127" layer="51"/>
+<wire x1="4.5" y1="4.4" x2="5.3" y2="4.3" width="0.127" layer="51"/>
+<wire x1="2.9" y1="4.5" x2="4.5" y2="4.4" width="0.127" layer="51"/>
+<wire x1="-0.3" y1="4.6" x2="2.9" y2="4.5" width="0.127" layer="51"/>
+<wire x1="-0.3" y1="4.6" x2="-6" y2="4.6" width="0.127" layer="51"/>
+<wire x1="6.4" y1="4" x2="6.3" y2="4.1" width="0.127" layer="52"/>
+<wire x1="6.3" y1="4.1" x2="6.1" y2="4.2" width="0.127" layer="52"/>
+<wire x1="5.7" y1="4.3" x2="6.1" y2="4.2" width="0.127" layer="52"/>
+<wire x1="4.9" y1="4.4" x2="5.7" y2="4.3" width="0.127" layer="52"/>
+<wire x1="3.3" y1="4.5" x2="4.9" y2="4.4" width="0.127" layer="52"/>
+<wire x1="0.1" y1="4.6" x2="3.3" y2="4.5" width="0.127" layer="52"/>
+<wire x1="0.1" y1="4.6" x2="-5.6" y2="4.6" width="0.127" layer="52"/>
 </package>
 </packages>
 <symbols>
@@ -1124,9 +1169,9 @@
 <connect gate="G$1" pin="63" pad="63 P63"/>
 <connect gate="G$1" pin="64" pad="64 P64"/>
 <connect gate="G$1" pin="65" pad="65 P65"/>
-<connect gate="G$1" pin="66" pad="66 P66"/>
-<connect gate="G$1" pin="67" pad="67 P67"/>
-<connect gate="G$1" pin="68" pad="68 P68"/>
+<connect gate="G$1" pin="66" pad="66"/>
+<connect gate="G$1" pin="67" pad="67"/>
+<connect gate="G$1" pin="68" pad="68"/>
 <connect gate="G$1" pin="69" pad="69"/>
 <connect gate="G$1" pin="7" pad="7 P7"/>
 <connect gate="G$1" pin="70" pad="70"/>
