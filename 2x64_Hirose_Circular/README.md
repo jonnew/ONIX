@@ -1,5 +1,5 @@
 # 128 channel headstage module for rat tetrode drives
-A very low profile digital headstage for amplifying, filtering, and digitizing microwire voltage data from a microdrive implant. Up to 256 wires (64 tetrodes) can be aquired.
+A very low profile digital headstage for amplifying, filtering, and digitizing microwire voltage data from a microdrive implant. Up to 256 wires (64 tetrodes) can be acquired.
 
 ## Features
 - Circular form factor conforms with most _tetrode drive_ assemblies
@@ -22,9 +22,11 @@ A very low profile digital headstage for amplifying, filtering, and digitizing m
  - Ask for Reid's opinion on the possibility of this chip introducing HF noise into the RHD chip sitting right below it.
  - Reid did not think it would be an issue
 - [ ] Stack height concerns
- - The ADX is sitting right over an RHD. This leads to an effective stack height of their combined thinkness. Solution: only populate the to ADX since thats all you need anyway.
+ - The ADX is sitting right over an RHD. This leads to an effective stack height of their combined thickness. Solution: only populate the to ADX since thats all you need anyway. 
+ - Just for the record, the ADX is 1.5 mm tall. The potted RHD is 0.8 mm. Total stack height = 2.3 + 2.3*0.1 ~ 2.5 mm. This is a stack height option for the hirose connectors, so I think even if this issue arises for some reason, its fixable. 
  - The 74HC4053 is a pretty thick chip (standard TSOP). I got 2 mm stack height headers. Will it fit? Its 1.75 mm thick max, so it should fit (barely). Also, need to take into account that the bottom headstage is rotated 90 deg. relative to the top. It looks like nothing will move underneath the 74HC4053 so long as the bottom ADX is not populated, but I need to test this on some cheapo boards before making the real ones!
  - Should get stack height of potted die from Reid just to be safe.
+ - Potted chip is ~0.8 mm tall. 
 - [ ] Do I really need the four holes in the center of the board. They are meant to be fore fiber optics, but they are a serious pain when routing the EIBs.
 
 ## Hardware and Documentation Licensing
