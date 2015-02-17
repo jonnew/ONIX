@@ -1,7 +1,7 @@
 # 128 channel headstage module for rat tetrode drives
 A very low profile digital headstage for amplifying, filtering, and digitizing microwire voltage data from a microdrive implant. Up to 256 wires (64 tetrodes) can be acquired.
 
-## Features
+# Features
 - Circular form factor conforms with most _tetrode drive_ assemblies
  - Low profile, stacked connectorization using 0.4mm pitch [Hirose DF40](http://www.digikey.com/product-search/en?FV=ffec4097) mezzanine headers
 - SPI interface options for:
@@ -24,13 +24,18 @@ A very low profile digital headstage for amplifying, filtering, and digitizing m
 - [ ] Stack height concerns
  - The ADX is sitting right over an RHD. This leads to an effective stack height of their combined thickness. Solution: only populate the to ADX since thats all you need anyway. 
  - Just for the record, the ADX is 1.5 mm tall. The potted RHD is 0.8 mm. Total stack height = 2.3 + 2.3*0.1 ~ 2.5 mm. This is a stack height option for the hirose connectors, so I think even if this issue arises for some reason, its fixable. 
- - The 74HC4053 is a pretty thick chip (standard TSOP). I got 2 mm stack height headers. Will it fit? Its 1.75 mm thick max, so it should fit (barely). Also, need to take into account that the bottom headstage is rotated 90 deg. relative to the top. It looks like nothing will move underneath the 74HC4053 so long as the bottom ADX is not populated, but I need to test this on some cheapo boards before making the real ones!
+ - The 74HC4053 is a pretty thick chip (standard TSSOP). I got 2 mm stack height headers. Will it fit? Its 1.75 mm thick max, so it should fit (barely). Also, need to take into account that the bottom headstage is rotated 90 deg. relative to the top. It looks like nothing will move underneath the 74HC4053 so long as the bottom ADX is not populated, but I need to test this on some cheapo boards before making the real ones!
  - Should get stack height of potted die from Reid just to be safe.
  - Potted chip is ~0.8 mm tall. 
 - [ ] Do I really need the four holes in the center of the board. They are meant to be fore fiber optics, but they are a serious pain when routing the EIBs.
-
+- [x] The EIB needs mounting holes. Maybe something that will fit the old style drive bodies with a triangular mounts.
+ - Idea: Use a central t-nut on the drive body. This way, there only has to be one hole to mount the EIB and the connection will be very strong, especially if some sacrificial 'bumps' are placed on the 3D printed pad that will make contact with the bottom of the EIB.
+ - I created a standard mounting fixture called EIB_MOUNT_A. This provides a center hole for a M2 or 2-56 screw and two alignment holes for tabs on the drive body's mounting plate.
+- [ ] I need to make sure that he DF40 headers are not going to short onto the vias underneath the connectors on the EIB. This should be done empirically.
+- [ ] The silkscreen on the tetrodes is too small. Make it bigger and move toward the inner part of the EIB.
+- [ ] For the implants with VTA recordings -- where will these static electrodes interface with the EIB. Will they just take an couple 'tetrode spots', or is something more specialized needed?
+    
 ## Hardware and Documentation Licensing
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">128 Channel Circular Hirose Headstage Module</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/jonnew/cyclops" property="cc:attributionName" rel="cc:attributionURL">Jonathan P. Newman</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/jonnew/cyclops" rel="dct:source">https://github.mit.edu/jpnewman/headstage</a>.
-
 
 
