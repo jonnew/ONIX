@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [128 channel headstage module for rat tetrode drives](#128-channel-headstage-module-for-rat-tetrode-drives)
+- [Features](#features)
+  - [TODO](#todo)
+  - [Hardware and Documentation Licensing](#hardware-and-documentation-licensing)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 128 channel headstage module for rat tetrode drives
 A very low profile digital headstage for amplifying, filtering, and digitizing microwire voltage data from a microdrive implant. Up to 256 wires (64 tetrodes) can be acquired.
 
