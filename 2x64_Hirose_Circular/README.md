@@ -3,7 +3,8 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [128 channel headstage module for rat tetrode drives](#128-channel-headstage-module-for-rat-tetrode-drives)
-- [Features](#features)
+  - [Features](#features)
+  - [Bill of materials](#bill-of-materials)
   - [TODO](#todo)
   - [Hardware and Documentation Licensing](#hardware-and-documentation-licensing)
 
@@ -12,7 +13,7 @@
 # 128 channel headstage module for rat tetrode drives
 A very low profile digital headstage for amplifying, filtering, and digitizing microwire voltage data from a microdrive implant. Up to 256 wires (64 tetrodes) can be acquired.
 
-# Features
+## Features
 - Circular form factor conforms with most _tetrode drive_ assemblies
  - Low profile, stacked connectorization using 0.4mm pitch [Hirose DF40](http://www.digikey.com/product-search/en?FV=ffec4097) mezzanine headers
 - SPI interface options for:
@@ -20,8 +21,10 @@ A very low profile digital headstage for amplifying, filtering, and digitizing m
  - 256 channels using a double LVDS bus (64 tetrodes)
 - Integrated electrode plating and impedance testing
 
-## TODO
+## Bill of materials
+The bill of materials for the headstage, EIBs, spacer boards, and SPI interface boards can be found on [this google doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit?usp=sharing).
 
+## TODO
 - [x] Analog connections terminating at the inputs to an RHD chip do not need to feed through to the next board. However, digital connections _always_ should feed through because they need to make it to the headstage interface
  - Is there a way to prevent stubs in the digital feed troughs that will go the wrong way?
 - [x] Does it make a difference if the header or the receptacle is next to the RHD, specifically in regard to stack height. i.e. is there going to be enough room for the potted chip?
