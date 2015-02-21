@@ -343,11 +343,12 @@ UsedLibrary="/home/jon/.eagle/lbr/xilinx-xcv.lbr"
 UsedLibrary="/home/jon/.eagle/lbr/zetex.lbr"
 UsedLibrary="/home/jon/.eagle/lbr/zilog.lbr"
 UsedLibrary="/home/jon/Private/headstage/eagle-lib/jonnew-lbr/lib/jonnew.lbr"
+UsedLibrary="/home/jon/Private/maze/eight-arm-radial-maze/electronics/jonnew-lbr/lib/jonnew.lbr"
 
 [Win_1]
 Type="Control Panel"
 Loc="0 27 876 426"
-State=0
+State=2
 Number=0
 
 [Desktop]

@@ -14,11 +14,11 @@
 A very low profile digital headstage for amplifying, filtering, and digitizing microwire voltage data from a microdrive implant. Up to 256 wires (64 tetrodes) can be acquired.
 
 ## Features
-- Circular form factor conforms with most _tetrode drive_ assemblies
+- Circular form factor is aimed at conformation with **tetrode drive** assemblies
  - Low profile, stacked connectorization using 0.4mm pitch [Hirose DF40](http://www.digikey.com/product-search/en?FV=ffec4097) mezzanine headers
 - SPI interface options for:
- - 128 channels using a single LVDS bus (32 tetrodes)
- - 256 channels using a double LVDS bus (64 tetrodes)
+ - 128 channels using a single double data-rate LVDS bus (32 tetrodes)
+ - 256 channels using two double data-rate LVDS busses (64 tetrodes)
 - Integrated electrode plating and impedance testing
 
 ## Bill of materials
@@ -40,7 +40,7 @@ The bill of materials for the headstage, EIBs, spacer boards, and SPI interface 
  - Just for the record, the ADX is 1.5 mm tall. The potted RHD is 0.8 mm. Total stack height = 2.3 + 2.3*0.1 ~ 2.5 mm. This is a stack height option for the hirose connectors, so I think even if this issue arises for some reason, its fixable. 
  - The 74HC4053 is a pretty thick chip (standard TSSOP). I got 2 mm stack height headers. Will it fit? Its 1.75 mm thick max, so it should fit (barely). Also, need to take into account that the bottom headstage is rotated 90 deg. relative to the top. It looks like nothing will move underneath the 74HC4053 so long as the bottom ADX is not populated, but I need to test this on some cheapo boards before making the real ones!
  - Should get stack height of potted die from Reid just to be safe.
- - Potted chip is ~0.8 mm tall. 
+  - EDIT: Potted chip is ~0.8 mm tall. 
 - [ ] Do I really need the four holes in the center of the board. They are meant to be fore fiber optics, but they are a serious pain when routing the EIBs.
 - [x] The EIB needs mounting holes. Maybe something that will fit the old style drive bodies with a triangular mounts.
  - Idea: Use a central t-nut on the drive body. This way, there only has to be one hole to mount the EIB and the connection will be very strong, especially if some sacrificial 'bumps' are placed on the 3D printed pad that will make contact with the bottom of the EIB.
