@@ -148,13 +148,7 @@
 <circle x="0" y="0" radius="17.358628125" width="0.127" layer="51"/>
 <circle x="0" y="0" radius="17.169440625" width="0.127" layer="52"/>
 <circle x="0" y="0" radius="20" width="0.01" layer="20"/>
-<wire x1="0.25399375" y1="2.793984375" x2="1.77799375" y2="1.7779875" width="0.254" layer="21" curve="-54.008504"/>
-<wire x1="0.25399375" y1="2.793984375" x2="0.253996875" y2="2.539990625" width="0.254" layer="21"/>
-<wire x1="0.253996875" y1="2.539990625" x2="-0.25399375" y2="2.793990625" width="0.254" layer="21"/>
-<wire x1="-0.25399375" y1="2.793990625" x2="0.253996875" y2="3.0479875" width="0.254" layer="21"/>
-<wire x1="0.253996875" y1="3.0479875" x2="0.25399375" y2="2.793984375" width="0.254" layer="21"/>
-<wire x1="0.25399375" y1="2.793984375" x2="0" y2="2.793990625" width="0.254" layer="21"/>
-<text x="0.761996875" y="3.3019875" size="0.8128" layer="21" font="vector" ratio="18" rot="R318.7">34°</text>
+<text x="-2.5145875" y="5.283196875" size="0.8128" layer="21" font="vector" ratio="18" rot="R13.5">34°</text>
 <text x="-0.625" y="18.5" size="0.8128" layer="21" font="vector" ratio="18" align="center">S</text>
 <text x="-2.125" y="18.5" size="0.8128" layer="21" font="vector" ratio="18" align="center">R</text>
 <text x="0.875" y="18.5" size="0.8128" layer="21" font="vector" ratio="18" align="center">A</text>
@@ -171,6 +165,33 @@
 <text x="-2.25" y="-18.625" size="0.8128" layer="21" font="vector" ratio="18" align="center">A</text>
 <text x="-3.875" y="-14.875" size="0.8128" layer="21" font="vector" ratio="18" rot="R304" align="center">G-S-A</text>
 <text x="10.375" y="-5.25" size="0.8128" layer="21" font="vector" ratio="18" rot="R304" align="center">A-S-G</text>
+<text x="11" y="-1.625" size="0.8128" layer="21" font="vector" ratio="18" align="center">S</text>
+<text x="11" y="-2.625" size="0.8128" layer="21" font="vector" ratio="18" align="center">R</text>
+<text x="11" y="-0.625" size="0.8128" layer="21" font="vector" ratio="18" align="center">A</text>
+<wire x1="18.375" y1="1.125" x2="18.375" y2="-1.125" width="0.1524" layer="21"/>
+<wire x1="18.375" y1="1.125" x2="17.76" y2="0.99" width="0.1524" layer="21"/>
+<wire x1="16.61" y1="0.74" x2="14.22" y2="0.22" width="0.1524" layer="21"/>
+<wire x1="13.09" y1="-0.03" x2="11.5" y2="-0.375" width="0.1524" layer="21"/>
+<wire x1="11.5" y1="-0.375" x2="11.5" y2="-2.875" width="0.1524" layer="21"/>
+<wire x1="0" y1="4.75" x2="0" y2="8.9662" width="0.127" layer="21" style="shortdash"/>
+<wire x1="0" y1="0" x2="-4.7244" y2="6.9342" width="0.127" layer="21" style="shortdash"/>
+<wire x1="-3.7338" y1="5.8166" x2="-0.109221875" y2="6.842759375" width="0.254" layer="21" curve="-37.086036"/>
+<wire x1="-3.7846" y1="5.7912" x2="-3.6322" y2="6.1722" width="0.254" layer="21"/>
+<wire x1="-3.6322" y1="6.1722" x2="-3.4036" y2="5.7404" width="0.254" layer="21"/>
+<wire x1="-3.4036" y1="5.7404" x2="-3.7846" y2="5.7912" width="0.254" layer="21"/>
+<text x="-3.556" y="1.27" size="0.8128" layer="22" font="vector" ratio="19" rot="MR289.7" align="center">128 Channel EIB</text>
+<wire x1="-0.544534375" y1="6.666715625" x2="-2.457603125" y2="7.351690625" width="0.1524" layer="22"/>
+<wire x1="-2.457603125" y1="7.351690625" x2="-6.56746875" y2="-4.126715625" width="0.1524" layer="22"/>
+<wire x1="-6.56746875" y1="-4.126715625" x2="-4.6544" y2="-4.811690625" width="0.1524" layer="22"/>
+<wire x1="-4.6544" y1="-4.811690625" x2="-0.544534375" y2="6.666715625" width="0.1524" layer="22"/>
+<text x="5.08" y="-1.778" size="0.8128" layer="22" font="vector" ratio="19" rot="MR289.7" align="center">Rev. 1.0
+CC BY-SA-NC-4.0
+JPN, MWL@MIT
+2015-02</text>
+<wire x1="9.526265625" y1="3.10498125" x2="4.743596875" y2="4.817425" width="0.1524" layer="22"/>
+<wire x1="4.743596875" y1="4.817425" x2="0.63373125" y2="-6.66098125" width="0.1524" layer="22"/>
+<wire x1="0.63373125" y1="-6.66098125" x2="5.4164" y2="-8.373425" width="0.1524" layer="22"/>
+<wire x1="5.4164" y1="-8.373425" x2="9.526265625" y2="3.10498125" width="0.1524" layer="22"/>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -307,33 +328,40 @@
 <hole x="0" y="0" drill="2.2606"/>
 <hole x="1.5" y="5" drill="1.5"/>
 <hole x="-1.5" y="-5" drill="1.5"/>
-<text x="1.5" y="0" size="1.016" layer="21" font="vector" ratio="18" align="center-left">M2
+<text x="1.625" y="0" size="1.016" layer="21" font="vector" ratio="18" align="center-left">M2
 2-56</text>
-<text x="2.487284375" y="3.64435625" size="1.016" layer="21" font="vector" ratio="18" rot="R324.5">1.5mm</text>
-<wire x1="0.06083125" y1="6.026546875" x2="0.6365" y2="5.615928125" width="0.127" layer="21"/>
-<wire x1="2.363496875" y1="4.38406875" x2="2.65133125" y2="4.178759375" width="0.127" layer="21"/>
-<wire x1="2.61006875" y1="4.42533125" x2="2.363496875" y2="4.38406875" width="0.127" layer="21"/>
-<wire x1="2.363496875" y1="4.38406875" x2="2.404759375" y2="4.1375" width="0.127" layer="21"/>
-<wire x1="0.5952375" y1="5.862496875" x2="0.6365" y2="5.615928125" width="0.127" layer="21"/>
-<wire x1="0.6365" y1="5.615928125" x2="0.389928125" y2="5.574665625" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-5" x2="-2.75" y2="-5" width="0.127" layer="21"/>
-<wire x1="-2.75" y1="-5" x2="-2.75" y2="0" width="0.127" layer="21"/>
-<wire x1="-2.75" y1="0" x2="-2.5" y2="0" width="0.127" layer="21"/>
+<text x="2.625" y="3.5" size="1.016" layer="21" font="vector" ratio="18" rot="R324.5">1.5mm</text>
+<wire x1="-0.06416875" y1="6.151546875" x2="0.5115" y2="5.740928125" width="0.127" layer="21"/>
+<wire x1="2.488496875" y1="4.25906875" x2="2.77633125" y2="4.053759375" width="0.127" layer="21"/>
+<wire x1="2.73506875" y1="4.30033125" x2="2.488496875" y2="4.25906875" width="0.127" layer="21"/>
+<wire x1="2.488496875" y1="4.25906875" x2="2.529759375" y2="4.0125" width="0.127" layer="21"/>
+<wire x1="0.4702375" y1="5.987496875" x2="0.5115" y2="5.740928125" width="0.127" layer="21"/>
+<wire x1="0.5115" y1="5.740928125" x2="0.264928125" y2="5.699665625" width="0.127" layer="21"/>
+<wire x1="-2.75" y1="-5" x2="-3" y2="-5" width="0.127" layer="21"/>
+<wire x1="-3" y1="-5" x2="-3" y2="0" width="0.127" layer="21"/>
+<wire x1="-3" y1="0" x2="-2.75" y2="0" width="0.127" layer="21"/>
 <wire x1="-1.5" y1="-3" x2="-1.5" y2="-3.25" width="0.127" layer="21"/>
 <wire x1="-1.5" y1="-3.25" x2="0" y2="-3.25" width="0.127" layer="21"/>
 <wire x1="0" y1="-3.25" x2="0" y2="-3" width="0.127" layer="21"/>
 <text x="-0.25" y="-2.75" size="1.016" layer="21" font="vector" ratio="18" align="bottom-center">1.5mm</text>
-<text x="-3" y="-2.5" size="1.016" layer="21" font="vector" ratio="18" rot="R90" align="bottom-center">5mm</text>
-<wire x1="-1.27" y1="1.27" x2="-1.27" y2="3.81" width="0.4064" layer="21"/>
-<wire x1="-1.27" y1="3.81" x2="-1.778" y2="3.048" width="0.4064" layer="21"/>
-<wire x1="-1.778" y1="3.048" x2="-0.762" y2="3.048" width="0.4064" layer="21"/>
-<wire x1="-0.762" y1="3.048" x2="-1.27" y2="3.81" width="0.4064" layer="21"/>
-<text x="-1.5" y="1.778" size="1.016" layer="21" font="vector" ratio="18" rot="R180" align="center-left">F</text>
+<text x="-3.25" y="-2.5" size="1.016" layer="21" font="vector" ratio="18" rot="R90" align="bottom-center">5mm</text>
+<wire x1="-0.02" y1="1.77" x2="-0.02" y2="4.31" width="0.4064" layer="21"/>
+<wire x1="-0.02" y1="4.31" x2="-0.528" y2="3.548" width="0.4064" layer="21"/>
+<wire x1="-0.528" y1="3.548" x2="0.488" y2="3.548" width="0.4064" layer="21"/>
+<wire x1="0.488" y1="3.548" x2="-0.02" y2="4.31" width="0.4064" layer="21"/>
+<text x="-0.25" y="2.278" size="1.016" layer="21" font="vector" ratio="18" rot="R180" align="center-left">F</text>
 <wire x1="-1.5" y1="-3.5" x2="-1.5" y2="-3.25" width="0.127" layer="21"/>
 <wire x1="0" y1="-3.25" x2="0" y2="-3.5" width="0.127" layer="21"/>
-<wire x1="-2.75" y1="-5" x2="-3" y2="-5" width="0.127" layer="21"/>
-<wire x1="-2.75" y1="0" x2="-3" y2="0" width="0.127" layer="21"/>
+<wire x1="-3" y1="-5" x2="-3.25" y2="-5" width="0.127" layer="21"/>
+<wire x1="-3" y1="0" x2="-3.25" y2="0" width="0.127" layer="21"/>
 <text x="3.75" y="0.75" size="0.8128" layer="21" font="vector" ratio="18" align="center-left">or</text>
+<circle x="1.5" y="5" radius="1" width="0.127" layer="21"/>
+<circle x="-1.5" y="-5" radius="1" width="0.127" layer="21"/>
+<circle x="0" y="0" radius="1.38066875" width="0.127" layer="21"/>
+<circle x="0" y="0" radius="10" width="0.127" layer="22"/>
+<circle x="1.5" y="5" radius="1" width="0.127" layer="22"/>
+<circle x="0" y="0" radius="1.38066875" width="0.127" layer="22"/>
+<circle x="-1.5" y="-5" radius="1" width="0.127" layer="22"/>
 </package>
 <package name="SJ_2_0201">
 <wire x1="-0.9652" y1="0.4064" x2="0.9652" y2="0.4064" width="0.127" layer="21"/>
@@ -606,212 +634,11 @@ Please make sure your boards conform to these design rules.</description>
 <element name="REF_B1" library="jonnew" package="GOLDPIN_0.5ID_0.7OD" value="LRG_GP" x="18.999990625" y="-0.249996875" rot="R34"/>
 <element name="REF_B0" library="jonnew" package="GOLDPIN_0.5ID_0.7OD" value="LRG_GP" x="1.5" y="-18.99999375" rot="R34"/>
 <element name="AGND_B1" library="jonnew" package="GOLDPIN_0.5ID_0.7OD" value="LRG_GP" x="18.99999375" y="0.75" rot="R34"/>
-<element name="E$1" library="jonnew" package="DF40-70HEAD" value="" x="-4.7736875" y="12.527984375" smashed="yes" rot="R214">
-<attribute name="VALUE" x="0.46593125" y="20.657840625" size="0.889" layer="27" font="vector" ratio="18" rot="R214"/>
-</element>
-<element name="E$2" library="jonnew" package="DF40-70HEAD" value="" x="4.7736875" y="-12.527984375" smashed="yes" rot="R34">
-<attribute name="VALUE" x="-0.46593125" y="-20.657840625" size="0.889" layer="27" font="vector" ratio="18" rot="R34"/>
-</element>
+<element name="E$1" library="jonnew" package="DF40-70HEAD" value="" x="-4.7736875" y="12.527984375" rot="R34"/>
+<element name="E$2" library="jonnew" package="DF40-70HEAD" value="" x="4.7736875" y="-12.527984375" rot="R34"/>
+<element name="SJ_A2" library="jonnew" package="SJ_2_0201" value="" x="4.6193" y="11.019371875" smashed="yes" rot="MR124"/>
 </elements>
 <signals>
-<signal name="N$199">
-<contactref element="TET7" pad="3"/>
-</signal>
-<signal name="N$200">
-<contactref element="TET7" pad="2"/>
-</signal>
-<signal name="N$201">
-<contactref element="TET7" pad="1"/>
-</signal>
-<signal name="N$202">
-<contactref element="TET7" pad="0"/>
-</signal>
-<signal name="N$203">
-<contactref element="TET6" pad="3"/>
-</signal>
-<signal name="N$204">
-<contactref element="TET6" pad="2"/>
-</signal>
-<signal name="N$205">
-<contactref element="TET6" pad="1"/>
-</signal>
-<signal name="N$206">
-<contactref element="TET6" pad="0"/>
-</signal>
-<signal name="N$207">
-<contactref element="TET5" pad="3"/>
-</signal>
-<signal name="N$208">
-<contactref element="TET5" pad="2"/>
-</signal>
-<signal name="N$209">
-<contactref element="TET5" pad="1"/>
-</signal>
-<signal name="N$210">
-<contactref element="TET5" pad="0"/>
-</signal>
-<signal name="N$211">
-<contactref element="TET4" pad="3"/>
-</signal>
-<signal name="N$212">
-<contactref element="TET4" pad="2"/>
-</signal>
-<signal name="N$213">
-<contactref element="TET4" pad="1"/>
-</signal>
-<signal name="N$214">
-<contactref element="TET4" pad="0"/>
-</signal>
-<signal name="N$215">
-<contactref element="TET3" pad="3"/>
-</signal>
-<signal name="N$216">
-<contactref element="TET3" pad="2"/>
-</signal>
-<signal name="N$217">
-<contactref element="TET3" pad="1"/>
-</signal>
-<signal name="N$218">
-<contactref element="TET3" pad="0"/>
-</signal>
-<signal name="N$219">
-<contactref element="TET2" pad="3"/>
-</signal>
-<signal name="N$220">
-<contactref element="TET2" pad="2"/>
-</signal>
-<signal name="N$221">
-<contactref element="TET2" pad="1"/>
-</signal>
-<signal name="N$222">
-<contactref element="TET2" pad="0"/>
-</signal>
-<signal name="N$223">
-<contactref element="TET1" pad="3"/>
-</signal>
-<signal name="N$224">
-<contactref element="TET1" pad="2"/>
-</signal>
-<signal name="N$225">
-<contactref element="TET1" pad="1"/>
-</signal>
-<signal name="N$226">
-<contactref element="TET1" pad="0"/>
-</signal>
-<signal name="N$227">
-<contactref element="TET0" pad="3"/>
-</signal>
-<signal name="N$228">
-<contactref element="TET0" pad="2"/>
-</signal>
-<signal name="N$229">
-<contactref element="TET0" pad="1"/>
-</signal>
-<signal name="N$231">
-<contactref element="TET8" pad="1"/>
-</signal>
-<signal name="N$232">
-<contactref element="TET8" pad="2"/>
-</signal>
-<signal name="N$233">
-<contactref element="TET8" pad="3"/>
-</signal>
-<signal name="N$234">
-<contactref element="TET9" pad="0"/>
-</signal>
-<signal name="N$235">
-<contactref element="TET9" pad="1"/>
-</signal>
-<signal name="N$236">
-<contactref element="TET9" pad="2"/>
-</signal>
-<signal name="N$237">
-<contactref element="TET9" pad="3"/>
-</signal>
-<signal name="N$238">
-<contactref element="TET10" pad="0"/>
-</signal>
-<signal name="N$239">
-<contactref element="TET10" pad="1"/>
-</signal>
-<signal name="N$240">
-<contactref element="TET10" pad="2"/>
-</signal>
-<signal name="N$241">
-<contactref element="TET10" pad="3"/>
-</signal>
-<signal name="N$242">
-<contactref element="TET11" pad="0"/>
-</signal>
-<signal name="N$243">
-<contactref element="TET11" pad="1"/>
-</signal>
-<signal name="N$244">
-<contactref element="TET11" pad="2"/>
-</signal>
-<signal name="N$245">
-<contactref element="TET11" pad="3"/>
-</signal>
-<signal name="N$246">
-<contactref element="TET12" pad="0"/>
-</signal>
-<signal name="N$247">
-<contactref element="TET12" pad="1"/>
-</signal>
-<signal name="N$248">
-<contactref element="TET12" pad="2"/>
-</signal>
-<signal name="N$249">
-<contactref element="TET12" pad="3"/>
-</signal>
-<signal name="N$250">
-<contactref element="TET13" pad="0"/>
-</signal>
-<signal name="N$251">
-<contactref element="TET13" pad="1"/>
-</signal>
-<signal name="N$252">
-<contactref element="TET13" pad="2"/>
-</signal>
-<signal name="N$253">
-<contactref element="TET13" pad="3"/>
-</signal>
-<signal name="N$254">
-<contactref element="TET14" pad="0"/>
-</signal>
-<signal name="N$255">
-<contactref element="TET14" pad="1"/>
-</signal>
-<signal name="N$256">
-<contactref element="TET14" pad="2"/>
-</signal>
-<signal name="N$257">
-<contactref element="TET14" pad="3"/>
-</signal>
-<signal name="N$258">
-<contactref element="TET15" pad="0"/>
-</signal>
-<signal name="N$259">
-<contactref element="TET15" pad="1"/>
-</signal>
-<signal name="N$260">
-<contactref element="TET15" pad="2"/>
-</signal>
-<signal name="N$261">
-<contactref element="TET15" pad="3"/>
-</signal>
-<signal name="N$230">
-<contactref element="TET0" pad="0"/>
-</signal>
-<signal name="REF_A0">
-<contactref element="REF_A0" pad="P$1"/>
-</signal>
-<signal name="REF_A1">
-<contactref element="REF_A1" pad="P$1"/>
-</signal>
-<signal name="N$1000">
-<contactref element="TET8" pad="0"/>
-</signal>
 <signal name="N$71">
 </signal>
 <signal name="N$72">
@@ -859,6 +686,140 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="AGND_B1">
 </signal>
 <signal name="AGND_B0">
+</signal>
+<signal name="N$205">
+</signal>
+<signal name="N$206">
+</signal>
+<signal name="N$207">
+</signal>
+<signal name="N$210">
+</signal>
+<signal name="N$232">
+</signal>
+<signal name="N$233">
+</signal>
+<signal name="N$235">
+</signal>
+<signal name="N$236">
+</signal>
+<signal name="N$238">
+</signal>
+<signal name="N$239">
+</signal>
+<signal name="N$241">
+</signal>
+<signal name="N$242">
+</signal>
+<signal name="N$244">
+</signal>
+<signal name="N$245">
+</signal>
+<signal name="N$247">
+</signal>
+<signal name="N$248">
+</signal>
+<signal name="N$250">
+</signal>
+<signal name="N$251">
+</signal>
+<signal name="N$253">
+</signal>
+<signal name="N$254">
+</signal>
+<signal name="N$256">
+</signal>
+<signal name="N$257">
+</signal>
+<signal name="N$258">
+</signal>
+<signal name="N$260">
+</signal>
+<signal name="REF_A0">
+<contactref element="REF_A0" pad="P$1"/>
+</signal>
+<signal name="REF_A1">
+<contactref element="REF_A1" pad="P$1"/>
+</signal>
+<signal name="N$1000">
+</signal>
+<signal name="N$1">
+</signal>
+<signal name="N$2">
+</signal>
+<signal name="N$3">
+</signal>
+<signal name="N$76">
+</signal>
+<signal name="N$4">
+</signal>
+<signal name="N$5">
+</signal>
+<signal name="N$6">
+</signal>
+<signal name="N$7">
+</signal>
+<signal name="N$8">
+</signal>
+<signal name="N$9">
+</signal>
+<signal name="N$10">
+</signal>
+<signal name="N$11">
+</signal>
+<signal name="N$12">
+</signal>
+<signal name="N$13">
+</signal>
+<signal name="N$14">
+</signal>
+<signal name="N$15">
+</signal>
+<signal name="N$16">
+</signal>
+<signal name="N$17">
+</signal>
+<signal name="N$18">
+</signal>
+<signal name="N$19">
+</signal>
+<signal name="N$20">
+</signal>
+<signal name="N$21">
+</signal>
+<signal name="N$123">
+</signal>
+<signal name="N$125">
+</signal>
+<signal name="N$22">
+</signal>
+<signal name="REF_B1">
+<contactref element="REF_B1" pad="P$1"/>
+</signal>
+<signal name="REF_B0">
+<contactref element="REF_B0" pad="P$1"/>
+</signal>
+<signal name="GND">
+<contactref element="SJ_A0" pad="1"/>
+<contactref element="SJ_A1" pad="1"/>
+<polygon width="0.254" layer="1" thermals="no">
+<vertex x="-6.85405" y="-35.261046875"/>
+<vertex x="-35.261046875" y="6.85405"/>
+<vertex x="6.85405" y="35.261046875"/>
+<vertex x="35.261046875" y="-6.85405"/>
+</polygon>
+<contactref element="SJ_B0" pad="1"/>
+<contactref element="SJ_B1" pad="1"/>
+<polygon width="0.254" layer="16" thermals="no">
+<vertex x="-6.85405" y="-35.261046875"/>
+<vertex x="-35.261046875" y="6.85405"/>
+<vertex x="6.85405" y="35.261046875"/>
+<vertex x="35.261046875" y="-6.85405"/>
+</polygon>
+<contactref element="SJ_A2" pad="1"/>
+<contactref element="SJ_A2" pad="2"/>
+<wire x1="4.931778125" y1="11.4826375" x2="4.306825" y2="10.556103125" width="0" layer="19" extent="16-16"/>
+<wire x1="2.568175" y1="16.806103125" x2="4.931778125" y2="11.4826375" width="0" layer="19" extent="1-16"/>
 </signal>
 </signals>
 </board>
