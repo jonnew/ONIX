@@ -2816,6 +2816,8 @@ by exp-lbrs.ulp</description>
 <part name="GND28" library="headstage" deviceset="GND" device=""/>
 <part name="VDD12" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND30" library="headstage" deviceset="GND" device=""/>
+<part name="MECH5" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
+<part name="MECH6" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
 </parts>
 <sheets>
 <sheet>
@@ -2914,6 +2916,8 @@ by exp-lbrs.ulp</description>
 <instance part="GND28" gate="1" x="347.98" y="271.78"/>
 <instance part="VDD12" gate="VCC" x="317.5" y="345.44"/>
 <instance part="GND30" gate="1" x="287.02" y="271.78"/>
+<instance part="MECH5" gate="G$1" x="193.04" y="48.26" rot="R270"/>
+<instance part="MECH6" gate="G$1" x="213.36" y="48.26" rot="R270"/>
 </instances>
 <busses>
 </busses>
