@@ -818,7 +818,6 @@ Please make sure your boards conform to these design rules.</description>
 </polygon>
 <contactref element="SJ_A2" pad="1"/>
 <contactref element="SJ_A2" pad="2"/>
-<wire x1="4.931778125" y1="11.4826375" x2="4.306825" y2="10.556103125" width="0" layer="19" extent="16-16"/>
 <wire x1="2.568175" y1="16.806103125" x2="4.931778125" y2="11.4826375" width="0" layer="19" extent="1-16"/>
 </signal>
 </signals>

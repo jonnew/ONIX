@@ -3717,6 +3717,17 @@ grid 2.54 mm</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="113,1,86.36,186.69,DIO_E1B,,,,,"/>
+<approved hash="113,1,190.396,152.296,FRAME1,,,,,"/>
+<approved hash="113,1,160.02,29.21,MECH_N1B,,,,,"/>
+<approved hash="113,1,180.34,29.21,MECH_W1B,,,,,"/>
+<approved hash="113,1,63.5,58.42,MECH_E0B,,,,,"/>
+<approved hash="113,1,83.82,58.42,MECH_S0B,,,,,"/>
+<approved hash="113,1,104.14,58.42,MECH_W0B,,,,,"/>
+<approved hash="113,1,124.46,58.42,MECH_N0B,,,,,"/>
+<approved hash="113,1,142.24,29.21,MECH_S1B,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>

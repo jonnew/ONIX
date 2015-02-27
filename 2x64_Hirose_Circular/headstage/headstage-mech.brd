@@ -6,11 +6,11 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.005" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.01" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
-<layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="yes" active="yes"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
 <layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
@@ -22,7 +22,7 @@
 <layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -416,8 +416,8 @@ Headstage Module</text>
 <wire x1="-0.8128" y1="-0.4064" x2="-0.8128" y2="0.4064" width="0.127" layer="21"/>
 <smd name="1" x="-0.3937" y="0" dx="0.4318" dy="0.4318" layer="1"/>
 <smd name="2" x="0.3937" y="0" dx="0.4318" dy="0.4318" layer="1"/>
-<text x="-1.0668" y="0.5588" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-1.1938" y="-1.5748" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<text x="-1.0668" y="0.5588" size="1.016" layer="25" font="vector">&gt;NAME</text>
+<text x="-1.1938" y="-1.5748" size="1.016" layer="27" font="vector">&gt;VALUE</text>
 <rectangle x1="-0.3048" y1="-0.1524" x2="-0.1524" y2="0.1524" layer="51"/>
 <rectangle x1="0.1524" y1="-0.1524" x2="0.3048" y2="0.1524" layer="51"/>
 </package>
@@ -639,7 +639,7 @@ by exp-lbrs.ulp</description>
 <class number="1" name="thick" width="0.1016" drill="0">
 </class>
 </classes>
-<designrules name="ohs-park-2-layer">
+<designrules name="ohs-park-4-layer">
 <description language="de">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
 &lt;p&gt;
 Die Standard-Design-Rules sind so gewählt, dass sie für 
@@ -650,26 +650,26 @@ einem neuen Namen ab.</description>
 <description language="en">&lt;b&gt;Laen's PCB Order Design Rules&lt;/b&gt;
 &lt;p&gt;
 Please make sure your boards conform to these design rules.</description>
-<param name="layerSetup" value="(1*16)"/>
-<param name="mtCopper" value="0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm"/>
-<param name="mtIsolate" value="1.5011mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm"/>
-<param name="mdWireWire" value="6mil"/>
-<param name="mdWirePad" value="6mil"/>
-<param name="mdWireVia" value="6mil"/>
-<param name="mdPadPad" value="6mil"/>
-<param name="mdPadVia" value="6mil"/>
-<param name="mdViaVia" value="6mil"/>
-<param name="mdSmdPad" value="6mil"/>
-<param name="mdSmdVia" value="6mil"/>
-<param name="mdSmdSmd" value="6mil"/>
+<param name="layerSetup" value="(1*2*15*16)"/>
+<param name="mtCopper" value="0.035559375mm 0.01778125mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.01778125mm 0.035559375mm"/>
+<param name="mtIsolate" value="0.17018125mm 47mil 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.17018125mm"/>
+<param name="mdWireWire" value="5mil"/>
+<param name="mdWirePad" value="5mil"/>
+<param name="mdWireVia" value="5mil"/>
+<param name="mdPadPad" value="5mil"/>
+<param name="mdPadVia" value="5mil"/>
+<param name="mdViaVia" value="5mil"/>
+<param name="mdSmdPad" value="5mil"/>
+<param name="mdSmdVia" value="5mil"/>
+<param name="mdSmdSmd" value="5mil"/>
 <param name="mdViaViaSameLayer" value="8mil"/>
 <param name="mnLayersViaInSmd" value="2"/>
 <param name="mdCopperDimension" value="15mil"/>
-<param name="mdDrill" value="6mil"/>
+<param name="mdDrill" value="5mil"/>
 <param name="mdSmdStop" value="0mil"/>
-<param name="msWidth" value="6mil"/>
-<param name="msDrill" value="13mil"/>
-<param name="msMicroVia" value="13mil"/>
+<param name="msWidth" value="5mil"/>
+<param name="msDrill" value="10mil"/>
+<param name="msMicroVia" value="10mil"/>
 <param name="msBlindViaRatio" value="0.5"/>
 <param name="rvPadTop" value="0.25"/>
 <param name="rvPadInner" value="0.25"/>
@@ -678,15 +678,15 @@ Please make sure your boards conform to these design rules.</description>
 <param name="rvViaInner" value="0.25"/>
 <param name="rvMicroViaOuter" value="0.25"/>
 <param name="rvMicroViaInner" value="0.25"/>
-<param name="rlMinPadTop" value="7mil"/>
+<param name="rlMinPadTop" value="4mil"/>
 <param name="rlMaxPadTop" value="20mil"/>
-<param name="rlMinPadInner" value="7mil"/>
+<param name="rlMinPadInner" value="4mil"/>
 <param name="rlMaxPadInner" value="20mil"/>
-<param name="rlMinPadBottom" value="7mil"/>
+<param name="rlMinPadBottom" value="4mil"/>
 <param name="rlMaxPadBottom" value="20mil"/>
-<param name="rlMinViaOuter" value="7mil"/>
+<param name="rlMinViaOuter" value="4mil"/>
 <param name="rlMaxViaOuter" value="20mil"/>
-<param name="rlMinViaInner" value="7mil"/>
+<param name="rlMinViaInner" value="4mil"/>
 <param name="rlMaxViaInner" value="20mil"/>
 <param name="rlMinMicroViaOuter" value="4mil"/>
 <param name="rlMaxMicroViaOuter" value="20mil"/>
@@ -855,39 +855,39 @@ Please make sure your boards conform to these design rules.</description>
 <element name="R7" library="RHD2000_eval_board" package="0201" value="100k" x="-8.2296" y="1.2192" smashed="yes" rot="MR270">
 <attribute name="NAME" x="-9.652" y="2.794" size="0.8128" layer="26" font="vector" ratio="19" rot="MR90"/>
 </element>
-<element name="R4" library="RHD2000_eval_board" package="0402" value="0" x="-7.7216" y="-8.1788" smashed="yes" rot="MR180">
-<attribute name="NAME" x="-6.35" y="-7.874" size="0.8128" layer="26" font="vector" ratio="19" rot="MR180"/>
-<attribute name="VALUE" x="-6.35" y="-8.89" size="0.8128" layer="28" font="vector" ratio="19" rot="MR180"/>
+<element name="R4" library="RHD2000_eval_board" package="0402" value="0" x="-7.4676" y="-8.1788" smashed="yes" rot="MR180">
+<attribute name="NAME" x="-6.096" y="-7.874" size="0.8128" layer="26" font="vector" ratio="19" rot="MR180"/>
+<attribute name="VALUE" x="-6.096" y="-8.89" size="0.8128" layer="28" font="vector" ratio="19" rot="MR180"/>
 </element>
-<element name="ATHRU_B_BOT" library="jonnew" package="DF40-70REC" value="DF40REC" x="13.0556" y="-3.048" smashed="yes" rot="MR90">
+<element name="ATHRU_E0B" library="jonnew" package="DF40-70REC" value="DF40REC" x="13.0556" y="-3.048" smashed="yes" rot="MR90">
 <attribute name="NAME" x="18.034" y="-1.778" size="0.8128" layer="26" font="vector" ratio="19" rot="MR90" align="center"/>
 <attribute name="VALUE" x="16.764" y="-1.778" size="0.8128" layer="28" font="vector" ratio="19" rot="MR90" align="center"/>
 </element>
-<element name="ATHRU_B_TOP" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="13.0556" y="-3.048" smashed="yes" rot="R90">
+<element name="ATHRU_E0T" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="13.0556" y="-3.048" smashed="yes" rot="R90">
 <attribute name="NAME" x="8.7376" y="-3.048" size="0.8128" layer="25" font="vector" ratio="19" rot="R90" align="center"/>
 <attribute name="VALUE" x="9.906" y="-2.794" size="0.8128" layer="27" font="vector" ratio="19" rot="R90" align="center"/>
 </element>
-<element name="MECH1" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="-3.048" y="-13.0556" smashed="yes">
+<element name="MECH_S0T" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="-3.048" y="-13.0556" smashed="yes">
 <attribute name="NAME" x="-3.048" y="-16.002" size="0.8128" layer="25" font="vector" ratio="19" align="center"/>
 <attribute name="VALUE" x="-3.048" y="-17.018" size="0.8128" layer="27" font="vector" ratio="19" align="center"/>
 </element>
-<element name="MECH2" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="3.048" y="13.0556" smashed="yes" rot="R180">
+<element name="MECH_N0T" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="3.048" y="13.0556" smashed="yes" rot="R180">
 <attribute name="NAME" x="3.048" y="17.018" size="0.8128" layer="25" font="vector" ratio="19" align="center"/>
 <attribute name="VALUE" x="3.048" y="16.002" size="0.8128" layer="27" font="vector" ratio="19" align="center"/>
 </element>
-<element name="ATHRU_A_BOT" library="jonnew" package="DF40-70REC" value="DF40REC" x="-13.0556" y="3.048" smashed="yes" rot="MR270">
+<element name="ATHRU_W0B" library="jonnew" package="DF40-70REC" value="DF40REC" x="-13.0556" y="3.048" smashed="yes" rot="MR270">
 <attribute name="NAME" x="-16.764" y="1.9812" size="0.8128" layer="26" font="vector" ratio="19" rot="MR90" align="center"/>
 <attribute name="VALUE" x="-18.034" y="1.9812" size="0.8128" layer="28" font="vector" ratio="19" rot="MR90" align="center"/>
 </element>
-<element name="ATHRU_A_TOP" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="-13.0556" y="3.048" smashed="yes" rot="R270">
+<element name="ATHRU_W0T" library="jonnew" package="DF40-70HEAD" value="DF40HEAD" x="-13.0556" y="3.048" smashed="yes" rot="R270">
 <attribute name="NAME" x="-9.906" y="2.9972" size="0.8128" layer="25" font="vector" ratio="19" rot="R270" align="center"/>
 <attribute name="VALUE" x="-8.636" y="2.9972" size="0.8128" layer="27" font="vector" ratio="19" rot="R270" align="center"/>
 </element>
-<element name="AIN_A" library="jonnew" package="DF40-70REC" value="DF40REC" x="3.048" y="13.0556" smashed="yes" rot="MR0">
+<element name="AIN_N0B" library="jonnew" package="DF40-70REC" value="DF40REC" x="3.048" y="13.0556" smashed="yes" rot="MR0">
 <attribute name="NAME" x="3.048" y="17.018" size="0.8128" layer="26" font="vector" ratio="19" rot="MR180" align="center"/>
 <attribute name="VALUE" x="3.048" y="16.002" size="0.8128" layer="28" font="vector" ratio="19" rot="MR180" align="center"/>
 </element>
-<element name="AIN_B" library="jonnew" package="DF40-70REC" value="DF40REC" x="-3.048" y="-13.0556" smashed="yes" rot="MR180">
+<element name="AIN_S0B" library="jonnew" package="DF40-70REC" value="DF40REC" x="-3.048" y="-13.0556" smashed="yes" rot="MR180">
 <attribute name="NAME" x="-3.048" y="-15.748" size="0.8128" layer="26" font="vector" ratio="19" rot="MR180" align="center"/>
 <attribute name="VALUE" x="-3.048" y="-16.764" size="0.8128" layer="28" font="vector" ratio="19" rot="MR180" align="center"/>
 </element>
@@ -903,23 +903,23 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="5.207" y="2.794" size="0.8128" layer="25" font="vector" ratio="19" rot="R90"/>
 <attribute name="VALUE" x="6.096" y="2.794" size="0.8128" layer="27" font="vector" ratio="19" rot="R90"/>
 </element>
-<element name="DTHRU_TOP" library="jonnew" package="DF40-20HEAD" value="DF40HEAD" x="-9.6012" y="13.0556" smashed="yes" rot="R180">
+<element name="DTHRU_N1T" library="jonnew" package="DF40-20HEAD" value="DF40HEAD" x="-9.6012" y="13.0556" smashed="yes" rot="R180">
 <attribute name="NAME" x="-9.398" y="16.002" size="0.8128" layer="25" font="vector" ratio="19" rot="R20"/>
 <attribute name="VALUE" x="-7.366" y="15.494" size="0.8128" layer="27" font="vector" ratio="19" rot="R20"/>
 </element>
-<element name="DTHRU_BOT" library="jonnew" package="DF40-20REC" value="DF40REC" x="-9.6012" y="13.0556" smashed="yes" rot="MR0">
+<element name="DTHRU_N1B" library="jonnew" package="DF40-20REC" value="DF40REC" x="-9.6012" y="13.0556" smashed="yes" rot="MR0">
 <attribute name="NAME" x="-9.144" y="16.51" size="0.8128" layer="26" font="vector" ratio="19" rot="MR160"/>
 <attribute name="VALUE" x="-7.62" y="16.002" size="0.8128" layer="28" font="vector" ratio="19" rot="MR160"/>
 </element>
-<element name="MECH3" library="jonnew" package="DF40-20HEAD" value="DF40HEAD" x="9.6012" y="-13.0556" smashed="yes">
+<element name="MECH_S1T" library="jonnew" package="DF40-20HEAD" value="DF40HEAD" x="9.6012" y="-13.0556" smashed="yes">
 <attribute name="NAME" x="9.398" y="-16.002" size="0.8128" layer="25" font="vector" ratio="19" rot="R200"/>
 <attribute name="VALUE" x="7.366" y="-15.494" size="0.8128" layer="27" font="vector" ratio="19" rot="R200"/>
 </element>
-<element name="MECH4" library="jonnew" package="DF40-20HEAD" value="DF40HEAD" x="-13.0556" y="-9.6012" smashed="yes" rot="R270">
+<element name="MECH_W1_T" library="jonnew" package="DF40-20HEAD" value="DF40HEAD" x="-13.0556" y="-9.6012" smashed="yes" rot="R270">
 <attribute name="NAME" x="-14.478" y="-6.35" size="0.8128" layer="25" font="vector" ratio="19"/>
 <attribute name="VALUE" x="-10.668" y="-4.826" size="0.8128" layer="27" font="vector" ratio="19" rot="R270"/>
 </element>
-<element name="DIO" library="jonnew" package="DF40-20HEAD" value="DF40HEAD" x="13.0556" y="9.6012" smashed="yes" rot="R90">
+<element name="DIO_E1_T" library="jonnew" package="DF40-20HEAD" value="DF40HEAD" x="13.0556" y="9.6012" smashed="yes" rot="R90">
 <attribute name="NAME" x="13.335" y="6.477" size="0.8128" layer="25" font="vector" ratio="19" rot="R180"/>
 <attribute name="VALUE" x="10.795" y="4.953" size="0.8128" layer="27" font="vector" ratio="19" rot="R90"/>
 </element>
@@ -950,1410 +950,141 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="-2.413" y="1.143" size="0.8128" layer="25" font="vector" ratio="19"/>
 <attribute name="VALUE" x="-2.413" y="0.254" size="0.8128" layer="27" font="vector" ratio="19"/>
 </element>
-<element name="E$1" library="jonnew" package="RHD2164_COB_MECH" value="" x="-2.794" y="5.2324" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="-4.064" y="9.0424" size="0.8128" layer="28" font="vector" ratio="18" rot="MR0"/>
+<element name="MECH_W1B" library="jonnew" package="DF40-20REC" value="DF40REC" x="-13.0556" y="-9.6012" smashed="yes" rot="MR270">
+<attribute name="NAME" x="-10.2108" y="-6.8072" size="0.889" layer="26" font="vector" ratio="19" rot="MR270"/>
+<attribute name="VALUE" x="-15.1384" y="-5.6388" size="0.889" layer="28" font="vector" ratio="19" rot="MR270"/>
 </element>
-<element name="E$2" library="jonnew" package="RHD2164_COB_MECH" value="" x="2.794" y="-5.2324" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="1.524" y="-1.4224" size="0.8128" layer="28" font="vector" ratio="18" rot="MR0"/>
+<element name="MECH_S1B" library="jonnew" package="DF40-20REC" value="DF40REC" x="9.6012" y="-13.0556" smashed="yes" rot="MR180">
+<attribute name="NAME" x="7.62" y="-16.002" size="0.889" layer="26" font="vector" ratio="19" rot="MR340"/>
+<attribute name="VALUE" x="9.144" y="-16.51" size="0.889" layer="28" font="vector" ratio="19" rot="MR340"/>
+</element>
+<element name="E$1" library="jonnew" package="RHD2164_COB_MECH" value="" x="2.794" y="-5.207" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="1.524" y="-1.397" size="0.8128" layer="28" font="vector" ratio="18" rot="MR0"/>
+</element>
+<element name="E$2" library="jonnew" package="RHD2164_COB_MECH" value="" x="-2.794" y="5.207" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="-4.064" y="9.017" size="0.8128" layer="28" font="vector" ratio="18" rot="MR0"/>
 </element>
 </elements>
 <signals>
-<signal name="GND" class="1">
-<contactref element="C2" pad="2"/>
-<contactref element="C1" pad="2"/>
-<contactref element="GND" pad="1"/>
-<contactref element="GND." pad="1"/>
-<contactref element="C7" pad="2"/>
-<contactref element="C8" pad="2"/>
-<contactref element="U2" pad="8"/>
-<contactref element="U2" pad="8"/>
-<contactref element="PLT" pad="B3"/>
-<contactref element="R4" pad="1"/>
-<contactref element="AIN_A" pad="69"/>
-<contactref element="AIN_A" pad="70"/>
-<contactref element="AIN_A" pad="34"/>
-<contactref element="AIN_A" pad="35"/>
-<contactref element="AIN_B" pad="69"/>
-<contactref element="AIN_B" pad="70"/>
-<contactref element="AIN_B" pad="34"/>
-<contactref element="AIN_B" pad="35"/>
-<contactref element="DIO" pad="1"/>
-<contactref element="DIO" pad="2"/>
-<contactref element="DIO" pad="3"/>
-<contactref element="DIO" pad="7"/>
-<contactref element="DIO" pad="6"/>
-<contactref element="U2" pad="6"/>
-<contactref element="U2" pad="7"/>
-<contactref element="R5" pad="1"/>
-<contactref element="R7" pad="1"/>
-<contactref element="R6" pad="1"/>
-<contactref element="C4" pad="1"/>
-<contactref element="C5" pad="1"/>
-<contactref element="C6" pad="1"/>
-<contactref element="U1" pad="COM3"/>
-<contactref element="U1" pad="COM2"/>
-<contactref element="U1" pad="COM4"/>
-<contactref element="C3" pad="2"/>
-<contactref element="U1" pad="ST"/>
-<contactref element="U1" pad="COM1"/>
-<contactref element="DIO" pad="5"/>
-<wire x1="14.7406" y1="9.8012" x2="14.7406" y2="10.2012" width="0" layer="19" extent="1-1"/>
-<wire x1="14.7406" y1="9.4012" x2="14.7406" y2="9.8012" width="0" layer="19" extent="1-1"/>
-<wire x1="14.7406" y1="8.6012" x2="14.7406" y2="9.4012" width="0" layer="19" extent="1-1"/>
-<wire x1="14.7406" y1="8.2012" x2="14.7406" y2="8.6012" width="0" layer="19" extent="1-1"/>
-<wire x1="14.7406" y1="7.8012" x2="14.7406" y2="8.2012" width="0" layer="19" extent="1-1"/>
-<wire x1="17.018" y1="7.366" x2="14.7406" y2="7.8012" width="0" layer="19" extent="1-1"/>
-<wire x1="9.848" y1="11.8856" x2="14.7406" y2="10.2012" width="0" layer="19" extent="1-16"/>
-<wire x1="9.448" y1="11.8856" x2="9.848" y2="11.8856" width="0" layer="19" extent="16-16"/>
-<wire x1="-18.3134" y1="-1.6256" x2="-17.018" y2="-7.366" width="0" layer="19" extent="1-1"/>
-<wire x1="-8.7794" y1="-6.5742" x2="-17.018" y2="-7.366" width="0" layer="19" extent="16-16"/>
-<wire x1="-8.1294" y1="-6.5742" x2="-8.7794" y2="-6.5742" width="0" layer="19" extent="16-16"/>
-<wire x1="-7.4794" y1="-6.5742" x2="-8.1294" y2="-6.5742" width="0" layer="19" extent="16-16"/>
-<wire x1="-8.255" y1="-8.1788" x2="-8.1294" y2="-6.5742" width="0" layer="19" extent="16-16"/>
-<wire x1="-9.448" y1="-11.8856" x2="-8.255" y2="-8.1788" width="0" layer="19" extent="16-16"/>
-<wire x1="-9.848" y1="-11.8856" x2="-9.448" y2="-11.8856" width="0" layer="19" extent="16-16"/>
-<wire x1="-0.4826" y1="-3.5052" x2="-7.4794" y2="-6.5742" width="0" layer="19" extent="1-16"/>
-<wire x1="-4.3434" y1="1.1684" x2="-0.4826" y2="-3.5052" width="0" layer="19" extent="1-1"/>
-<wire x1="-6.1849" y1="1.3208" x2="-4.3434" y2="1.1684" width="0" layer="19" extent="1-16"/>
-<wire x1="-4.2108" y1="3.1018" x2="-4.3434" y2="1.1684" width="0" layer="19" extent="1-1"/>
-<wire x1="-4.8608" y1="3.1018" x2="-4.2108" y2="3.1018" width="0" layer="19" extent="1-1"/>
-<wire x1="-3.5608" y1="3.1018" x2="-4.2108" y2="3.1018" width="0" layer="19" extent="1-1"/>
-<wire x1="-5.6358" y1="4.5768" x2="-4.8608" y2="3.1018" width="0" layer="19" extent="1-1"/>
-<wire x1="-5.6358" y1="5.2268" x2="-5.6358" y2="4.5768" width="0" layer="19" extent="1-1"/>
-<wire x1="-8.2296" y1="1.6129" x2="-6.1849" y2="1.3208" width="0" layer="19" extent="16-16"/>
-<wire x1="-9.1948" y1="1.6129" x2="-8.2296" y2="1.6129" width="0" layer="19" extent="16-16"/>
-<wire x1="-10.16" y1="1.6129" x2="-9.1948" y2="1.6129" width="0" layer="19" extent="16-16"/>
-<wire x1="0.4826" y1="3.5052" x2="-3.5608" y2="3.1018" width="0" layer="19" extent="1-1"/>
-<wire x1="0.4826" y1="4.8768" x2="0.4826" y2="3.5052" width="0" layer="19" extent="1-1"/>
-<wire x1="0.4826" y1="6.2484" x2="0.4826" y2="4.8768" width="0" layer="19" extent="1-1"/>
-<wire x1="2.54" y1="6.223" x2="0.4826" y2="6.2484" width="0" layer="19" extent="1-1"/>
-<wire x1="7.2517" y1="-1.2192" x2="-0.4826" y2="-3.5052" width="0" layer="19" extent="1-16"/>
-<wire x1="-3.352" y1="14.2256" x2="0.4826" y2="6.2484" width="0" layer="19" extent="1-16"/>
-<wire x1="-3.752" y1="14.2256" x2="-3.352" y2="14.2256" width="0" layer="19" extent="16-16"/>
-<wire x1="3.352" y1="-14.2256" x2="-0.4826" y2="-3.5052" width="0" layer="19" extent="1-16"/>
-<wire x1="3.752" y1="-14.2256" x2="3.352" y2="-14.2256" width="0" layer="19" extent="16-16"/>
+<signal name="S$3" class="1">
+</signal>
+<signal name="S$6" class="1">
 </signal>
 <signal name="VCC" class="1">
-<contactref element="C2" pad="1"/>
-<contactref element="VCC1" pad="1"/>
-<contactref element="C8" pad="1"/>
-<contactref element="U2" pad="16"/>
-<contactref element="U2" pad="16"/>
-<contactref element="VCC2" pad="1"/>
-<contactref element="DIO" pad="10"/>
-<contactref element="DIO" pad="8"/>
-<contactref element="DIO" pad="9"/>
-<contactref element="U1" pad="VS1"/>
-<contactref element="U1" pad="VS2"/>
-<contactref element="C3" pad="1"/>
-<wire x1="14.7406" y1="11.0012" x2="14.7406" y2="11.4012" width="0" layer="19" extent="1-1"/>
-<wire x1="14.7406" y1="10.6012" x2="14.7406" y2="11.0012" width="0" layer="19" extent="1-1"/>
-<wire x1="17.78" y1="5.4356" x2="14.7406" y2="10.6012" width="0" layer="19" extent="1-1"/>
-<wire x1="2.54" y1="7.2898" x2="14.7406" y2="10.6012" width="0" layer="19" extent="1-1"/>
-<wire x1="-0.5842" y1="3.5052" x2="2.54" y2="7.2898" width="0" layer="19" extent="1-1"/>
-<wire x1="-3.5108" y1="6.6518" x2="-0.5842" y2="3.5052" width="0" layer="19" extent="1-1"/>
-<wire x1="-4.1608" y1="6.6518" x2="-3.5108" y2="6.6518" width="0" layer="19" extent="1-1"/>
-<wire x1="-4.2294" y1="-0.9342" x2="-0.5842" y2="3.5052" width="0" layer="19" extent="1-16"/>
-<wire x1="0.5842" y1="-3.5052" x2="-4.2294" y2="-0.9342" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="CS-">
-<contactref element="R1" pad="1"/>
-<contactref element="DIO" pad="11"/>
-<wire x1="2.7051" y1="2.1336" x2="11.3706" y2="11.4012" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="CS+">
-<contactref element="R1" pad="2"/>
-<contactref element="DIO" pad="12"/>
-<wire x1="3.4925" y1="2.1336" x2="11.3706" y2="11.0012" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="SCLK-">
-<contactref element="R2" pad="1"/>
-<contactref element="DIO" pad="13"/>
-<wire x1="4.9403" y1="2.1336" x2="11.3706" y2="10.6012" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="SCLK+">
-<contactref element="R2" pad="2"/>
-<contactref element="DIO" pad="14"/>
-<wire x1="5.7277" y1="2.1336" x2="11.3706" y2="10.2012" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="MOSI-">
-<contactref element="R3" pad="1"/>
-<contactref element="DIO" pad="15"/>
-<wire x1="6.9723" y1="2.1336" x2="11.3706" y2="9.8012" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="MOSI+">
-<contactref element="R3" pad="2"/>
-<contactref element="DIO" pad="16"/>
-<wire x1="7.7597" y1="2.1336" x2="11.3706" y2="9.4012" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="N$42" class="1">
-<contactref element="C1" pad="1"/>
-</signal>
-<signal name="ELEC_TEST1">
-<contactref element="U2" pad="14"/>
-</signal>
-<signal name="N$1" class="1">
-<contactref element="C7" pad="1"/>
-</signal>
-<signal name="ELEC_TEST2">
-<contactref element="U2" pad="15"/>
-</signal>
-<signal name="N$131">
-<contactref element="U2" pad="11"/>
-<contactref element="PLT" pad="T1"/>
-<contactref element="R7" pad="2"/>
-<wire x1="-8.2296" y1="0.8255" x2="-17.0434" y2="-2.7686" width="0" layer="19" extent="1-16"/>
-<wire x1="-7.4794" y1="-0.9342" x2="-8.2296" y2="0.8255" width="0" layer="19" extent="16-16"/>
-</signal>
-<signal name="N$132">
-<contactref element="U2" pad="10"/>
-<contactref element="PLT" pad="T2"/>
-<contactref element="R6" pad="2"/>
-<wire x1="-9.1948" y1="0.8255" x2="-17.6784" y2="-2.7686" width="0" layer="19" extent="1-16"/>
-<wire x1="-8.1294" y1="-0.9342" x2="-9.1948" y2="0.8255" width="0" layer="19" extent="16-16"/>
-</signal>
-<signal name="N$133">
-<contactref element="U2" pad="9"/>
-<contactref element="PLT" pad="T3"/>
-<contactref element="R5" pad="2"/>
-<wire x1="-10.16" y1="0.8255" x2="-18.3134" y2="-2.7686" width="0" layer="19" extent="1-16"/>
-<wire x1="-8.7794" y1="-0.9342" x2="-10.16" y2="0.8255" width="0" layer="19" extent="16-16"/>
-</signal>
-<signal name="BATH" class="1">
-<contactref element="PLT" pad="B1"/>
-<contactref element="U2" pad="3"/>
-<wire x1="-5.5294" y1="-6.5742" x2="-17.0434" y2="-1.6256" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$136">
-<contactref element="U2" pad="1"/>
-<contactref element="PLT" pad="B2"/>
-<contactref element="U2" pad="13"/>
-<wire x1="-6.1794" y1="-0.9342" x2="-17.6784" y2="-1.6256" width="0" layer="19" extent="1-16"/>
-<wire x1="-4.2294" y1="-6.5732" x2="-6.1794" y2="-0.9342" width="0" layer="19" extent="16-16"/>
-</signal>
-<signal name="N$134" class="1">
-<contactref element="R4" pad="2"/>
-<contactref element="U2" pad="5"/>
-<wire x1="-6.8294" y1="-6.5742" x2="-7.1882" y2="-8.1788" width="0" layer="19" extent="16-16"/>
-</signal>
-<signal name="N$2">
-<contactref element="AIN_A" pad="38"/>
-</signal>
-<signal name="N$3">
-<contactref element="AIN_A" pad="39"/>
-</signal>
-<signal name="N$4">
-<contactref element="AIN_A" pad="40"/>
-</signal>
-<signal name="N$5">
-<contactref element="AIN_A" pad="41"/>
-</signal>
-<signal name="N$162">
-<contactref element="AIN_A" pad="37"/>
-</signal>
-<signal name="N$6">
-<contactref element="AIN_A" pad="42"/>
-</signal>
-<signal name="N$70">
-<contactref element="AIN_A" pad="43"/>
-</signal>
-<signal name="N$71">
-<contactref element="AIN_A" pad="44"/>
-</signal>
-<signal name="N$72">
-<contactref element="AIN_A" pad="45"/>
-</signal>
-<signal name="N$73">
-<contactref element="AIN_A" pad="46"/>
-</signal>
-<signal name="N$137">
-<contactref element="AIN_A" pad="47"/>
-</signal>
-<signal name="N$138">
-<contactref element="AIN_A" pad="48"/>
-</signal>
-<signal name="N$139">
-<contactref element="AIN_A" pad="49"/>
-</signal>
-<signal name="N$140">
-<contactref element="AIN_A" pad="50"/>
-</signal>
-<signal name="N$141">
-<contactref element="AIN_A" pad="51"/>
-</signal>
-<signal name="N$142">
-<contactref element="AIN_A" pad="52"/>
-</signal>
-<signal name="N$143">
-<contactref element="AIN_A" pad="53"/>
-</signal>
-<signal name="N$144">
-<contactref element="AIN_A" pad="54"/>
-</signal>
-<signal name="N$145">
-<contactref element="AIN_A" pad="55"/>
-</signal>
-<signal name="N$146">
-<contactref element="AIN_A" pad="56"/>
-</signal>
-<signal name="N$147">
-<contactref element="AIN_A" pad="57"/>
-</signal>
-<signal name="N$148">
-<contactref element="AIN_A" pad="58"/>
-</signal>
-<signal name="N$149">
-<contactref element="AIN_A" pad="59"/>
-</signal>
-<signal name="N$150">
-<contactref element="AIN_A" pad="60"/>
-</signal>
-<signal name="N$151">
-<contactref element="AIN_A" pad="61"/>
-</signal>
-<signal name="N$152">
-<contactref element="AIN_A" pad="62"/>
-</signal>
-<signal name="N$153">
-<contactref element="AIN_A" pad="63"/>
-</signal>
-<signal name="N$154">
-<contactref element="AIN_A" pad="64"/>
-</signal>
-<signal name="N$155">
-<contactref element="AIN_A" pad="65"/>
-</signal>
-<signal name="N$156">
-<contactref element="AIN_A" pad="66"/>
-</signal>
-<signal name="N$451">
-<contactref element="AIN_A" pad="67"/>
-</signal>
-<signal name="N$450">
-<contactref element="AIN_A" pad="68"/>
-</signal>
-<signal name="N$7">
-<contactref element="AIN_A" pad="32"/>
-</signal>
-<signal name="N$8">
-<contactref element="AIN_A" pad="31"/>
-</signal>
-<signal name="N$9">
-<contactref element="AIN_A" pad="30"/>
-</signal>
-<signal name="N$10">
-<contactref element="AIN_A" pad="29"/>
-</signal>
-<signal name="N$12">
-<contactref element="AIN_A" pad="28"/>
-</signal>
-<signal name="N$13">
-<contactref element="AIN_A" pad="27"/>
-</signal>
-<signal name="N$14">
-<contactref element="AIN_A" pad="26"/>
-</signal>
-<signal name="N$15">
-<contactref element="AIN_A" pad="25"/>
-</signal>
-<signal name="N$16">
-<contactref element="AIN_A" pad="24"/>
-</signal>
-<signal name="N$17">
-<contactref element="AIN_A" pad="23"/>
-</signal>
-<signal name="N$18">
-<contactref element="AIN_A" pad="22"/>
-</signal>
-<signal name="N$19">
-<contactref element="AIN_A" pad="21"/>
-</signal>
-<signal name="N$20">
-<contactref element="AIN_A" pad="20"/>
-</signal>
-<signal name="N$21">
-<contactref element="AIN_A" pad="19"/>
-</signal>
-<signal name="N$22">
-<contactref element="AIN_A" pad="18"/>
-</signal>
-<signal name="N$23">
-<contactref element="AIN_A" pad="17"/>
-</signal>
-<signal name="N$24">
-<contactref element="AIN_A" pad="16"/>
-</signal>
-<signal name="N$25">
-<contactref element="AIN_A" pad="15"/>
-</signal>
-<signal name="N$26">
-<contactref element="AIN_A" pad="14"/>
-</signal>
-<signal name="N$27">
-<contactref element="AIN_A" pad="13"/>
-</signal>
-<signal name="N$28">
-<contactref element="AIN_A" pad="12"/>
-</signal>
-<signal name="N$29">
-<contactref element="AIN_A" pad="11"/>
-</signal>
-<signal name="N$30">
-<contactref element="AIN_A" pad="10"/>
-</signal>
-<signal name="N$31">
-<contactref element="AIN_A" pad="9"/>
-</signal>
-<signal name="N$32">
-<contactref element="AIN_A" pad="8"/>
-</signal>
-<signal name="N$33">
-<contactref element="AIN_A" pad="7"/>
-</signal>
-<signal name="N$34">
-<contactref element="AIN_A" pad="6"/>
-</signal>
-<signal name="N$41">
-<contactref element="AIN_A" pad="5"/>
-</signal>
-<signal name="N$43">
-<contactref element="AIN_A" pad="4"/>
-</signal>
-<signal name="N$44">
-<contactref element="AIN_A" pad="3"/>
-</signal>
-<signal name="N$45">
-<contactref element="AIN_A" pad="2"/>
-</signal>
-<signal name="N$46">
-<contactref element="AIN_A" pad="33"/>
-</signal>
-<signal name="N$11">
-<contactref element="AIN_B" pad="38"/>
-</signal>
-<signal name="N$35">
-<contactref element="AIN_B" pad="39"/>
-</signal>
-<signal name="N$36">
-<contactref element="AIN_B" pad="40"/>
-</signal>
-<signal name="N$75">
-<contactref element="AIN_B" pad="37"/>
-</signal>
-<signal name="N$37">
-<contactref element="AIN_B" pad="41"/>
-</signal>
-<signal name="N$38">
-<contactref element="AIN_B" pad="42"/>
-</signal>
-<signal name="N$39">
-<contactref element="AIN_B" pad="43"/>
-</signal>
-<signal name="N$40">
-<contactref element="AIN_B" pad="44"/>
-</signal>
-<signal name="N$47">
-<contactref element="AIN_B" pad="45"/>
-</signal>
-<signal name="N$48">
-<contactref element="AIN_B" pad="46"/>
-</signal>
-<signal name="N$49">
-<contactref element="AIN_B" pad="47"/>
-</signal>
-<signal name="N$50">
-<contactref element="AIN_B" pad="48"/>
-</signal>
-<signal name="N$51">
-<contactref element="AIN_B" pad="49"/>
-</signal>
-<signal name="N$52">
-<contactref element="AIN_B" pad="50"/>
-</signal>
-<signal name="N$53">
-<contactref element="AIN_B" pad="51"/>
-</signal>
-<signal name="N$54">
-<contactref element="AIN_B" pad="52"/>
-</signal>
-<signal name="N$55">
-<contactref element="AIN_B" pad="53"/>
-</signal>
-<signal name="N$56">
-<contactref element="AIN_B" pad="54"/>
-</signal>
-<signal name="N$57">
-<contactref element="AIN_B" pad="55"/>
-</signal>
-<signal name="N$58">
-<contactref element="AIN_B" pad="56"/>
-</signal>
-<signal name="N$59">
-<contactref element="AIN_B" pad="57"/>
-</signal>
-<signal name="N$60">
-<contactref element="AIN_B" pad="58"/>
-</signal>
-<signal name="N$61">
-<contactref element="AIN_B" pad="59"/>
-</signal>
-<signal name="N$62">
-<contactref element="AIN_B" pad="60"/>
-</signal>
-<signal name="N$63">
-<contactref element="AIN_B" pad="61"/>
-</signal>
-<signal name="N$64">
-<contactref element="AIN_B" pad="62"/>
-</signal>
-<signal name="N$65">
-<contactref element="AIN_B" pad="63"/>
-</signal>
-<signal name="N$66">
-<contactref element="AIN_B" pad="64"/>
-</signal>
-<signal name="N$67">
-<contactref element="AIN_B" pad="65"/>
-</signal>
-<signal name="N$68">
-<contactref element="AIN_B" pad="66"/>
-</signal>
-<signal name="N$69">
-<contactref element="AIN_B" pad="67"/>
-</signal>
-<signal name="N$74">
-<contactref element="AIN_B" pad="68"/>
-</signal>
-<signal name="N$76">
-<contactref element="AIN_B" pad="32"/>
-</signal>
-<signal name="N$77">
-<contactref element="AIN_B" pad="31"/>
-</signal>
-<signal name="N$78">
-<contactref element="AIN_B" pad="30"/>
-</signal>
-<signal name="N$79">
-<contactref element="AIN_B" pad="29"/>
-</signal>
-<signal name="N$80">
-<contactref element="AIN_B" pad="28"/>
-</signal>
-<signal name="N$81">
-<contactref element="AIN_B" pad="27"/>
-</signal>
-<signal name="N$82">
-<contactref element="AIN_B" pad="26"/>
-</signal>
-<signal name="N$83">
-<contactref element="AIN_B" pad="25"/>
-</signal>
-<signal name="N$84">
-<contactref element="AIN_B" pad="24"/>
-</signal>
-<signal name="N$85">
-<contactref element="AIN_B" pad="23"/>
-</signal>
-<signal name="N$86">
-<contactref element="AIN_B" pad="22"/>
-</signal>
-<signal name="N$87">
-<contactref element="AIN_B" pad="21"/>
-</signal>
-<signal name="N$88">
-<contactref element="AIN_B" pad="20"/>
-</signal>
-<signal name="N$89">
-<contactref element="AIN_B" pad="19"/>
-</signal>
-<signal name="N$90">
-<contactref element="AIN_B" pad="18"/>
-</signal>
-<signal name="N$91">
-<contactref element="AIN_B" pad="17"/>
-</signal>
-<signal name="N$92">
-<contactref element="AIN_B" pad="16"/>
-</signal>
-<signal name="N$93">
-<contactref element="AIN_B" pad="15"/>
-</signal>
-<signal name="N$94">
-<contactref element="AIN_B" pad="14"/>
-</signal>
-<signal name="N$95">
-<contactref element="AIN_B" pad="13"/>
-</signal>
-<signal name="N$96">
-<contactref element="AIN_B" pad="12"/>
-</signal>
-<signal name="N$97">
-<contactref element="AIN_B" pad="11"/>
-</signal>
-<signal name="N$98">
-<contactref element="AIN_B" pad="10"/>
-</signal>
-<signal name="N$99">
-<contactref element="AIN_B" pad="9"/>
-</signal>
-<signal name="N$100">
-<contactref element="AIN_B" pad="8"/>
-</signal>
-<signal name="N$101">
-<contactref element="AIN_B" pad="7"/>
-</signal>
-<signal name="N$102">
-<contactref element="AIN_B" pad="6"/>
-</signal>
-<signal name="N$103">
-<contactref element="AIN_B" pad="5"/>
-</signal>
-<signal name="N$104">
-<contactref element="AIN_B" pad="4"/>
-</signal>
-<signal name="N$105">
-<contactref element="AIN_B" pad="3"/>
-</signal>
-<signal name="N$106">
-<contactref element="AIN_B" pad="2"/>
-</signal>
-<signal name="N$107">
-<contactref element="AIN_B" pad="33"/>
-</signal>
-<signal name="N$108">
-<contactref element="ATHRU_B_BOT" pad="33"/>
-<contactref element="ATHRU_B_TOP" pad="33"/>
-<wire x1="14.7406" y1="2.952" x2="14.2256" y2="2.952" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$109">
-<contactref element="ATHRU_B_BOT" pad="32"/>
-<contactref element="ATHRU_B_TOP" pad="32"/>
-<wire x1="14.7406" y1="2.552" x2="14.2256" y2="2.552" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$110">
-<contactref element="ATHRU_B_BOT" pad="31"/>
-<contactref element="ATHRU_B_TOP" pad="31"/>
-<wire x1="14.7406" y1="2.152" x2="14.2256" y2="2.152" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$111">
-<contactref element="ATHRU_B_BOT" pad="30"/>
-<contactref element="ATHRU_B_TOP" pad="30"/>
-<wire x1="14.7406" y1="1.752" x2="14.2256" y2="1.752" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$112">
-<contactref element="ATHRU_B_BOT" pad="29"/>
-<contactref element="ATHRU_B_TOP" pad="29"/>
-<wire x1="14.7406" y1="1.352" x2="14.2256" y2="1.352" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$113">
-<contactref element="ATHRU_B_BOT" pad="28"/>
-<contactref element="ATHRU_B_TOP" pad="28"/>
-<wire x1="14.7406" y1="0.952" x2="14.2256" y2="0.952" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$114">
-<contactref element="ATHRU_B_BOT" pad="27"/>
-<contactref element="ATHRU_B_TOP" pad="27"/>
-<wire x1="14.7406" y1="0.552" x2="14.2256" y2="0.552" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$115">
-<contactref element="ATHRU_B_BOT" pad="26"/>
-<contactref element="ATHRU_B_TOP" pad="26"/>
-<wire x1="14.7406" y1="0.152" x2="14.2256" y2="0.152" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$116">
-<contactref element="ATHRU_B_BOT" pad="25"/>
-<contactref element="ATHRU_B_TOP" pad="25"/>
-<wire x1="14.7406" y1="-0.248" x2="14.2256" y2="-0.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$117">
-<contactref element="ATHRU_B_BOT" pad="24"/>
-<contactref element="ATHRU_B_TOP" pad="24"/>
-<wire x1="14.7406" y1="-0.648" x2="14.2256" y2="-0.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$118">
-<contactref element="ATHRU_B_BOT" pad="23"/>
-<contactref element="ATHRU_B_TOP" pad="23"/>
-<wire x1="14.7406" y1="-1.048" x2="14.2256" y2="-1.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$119">
-<contactref element="ATHRU_B_BOT" pad="22"/>
-<contactref element="ATHRU_B_TOP" pad="22"/>
-<wire x1="14.7406" y1="-1.448" x2="14.2256" y2="-1.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$120">
-<contactref element="ATHRU_B_BOT" pad="21"/>
-<contactref element="ATHRU_B_TOP" pad="21"/>
-<wire x1="14.7406" y1="-1.848" x2="14.2256" y2="-1.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$121">
-<contactref element="ATHRU_B_BOT" pad="20"/>
-<contactref element="ATHRU_B_TOP" pad="20"/>
-<wire x1="14.7406" y1="-2.248" x2="14.2256" y2="-2.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$122">
-<contactref element="ATHRU_B_BOT" pad="19"/>
-<contactref element="ATHRU_B_TOP" pad="19"/>
-<wire x1="14.7406" y1="-2.648" x2="14.2256" y2="-2.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$123">
-<contactref element="ATHRU_B_BOT" pad="18"/>
-<contactref element="ATHRU_B_TOP" pad="18"/>
-<wire x1="14.7406" y1="-3.048" x2="14.2256" y2="-3.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$124">
-<contactref element="ATHRU_B_BOT" pad="17"/>
-<contactref element="ATHRU_B_TOP" pad="17"/>
-<wire x1="14.7406" y1="-3.448" x2="14.2256" y2="-3.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$125">
-<contactref element="ATHRU_B_BOT" pad="16"/>
-<contactref element="ATHRU_B_TOP" pad="16"/>
-<wire x1="14.7406" y1="-3.848" x2="14.2256" y2="-3.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$126">
-<contactref element="ATHRU_B_BOT" pad="15"/>
-<contactref element="ATHRU_B_TOP" pad="15"/>
-<wire x1="14.7406" y1="-4.248" x2="14.2256" y2="-4.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$127">
-<contactref element="ATHRU_B_BOT" pad="14"/>
-<contactref element="ATHRU_B_TOP" pad="14"/>
-<wire x1="14.7406" y1="-4.648" x2="14.2256" y2="-4.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$128">
-<contactref element="ATHRU_B_BOT" pad="13"/>
-<contactref element="ATHRU_B_TOP" pad="13"/>
-<wire x1="14.7406" y1="-5.048" x2="14.2256" y2="-5.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$129">
-<contactref element="ATHRU_B_BOT" pad="12"/>
-<contactref element="ATHRU_B_TOP" pad="12"/>
-<wire x1="14.7406" y1="-5.448" x2="14.2256" y2="-5.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$130">
-<contactref element="ATHRU_B_BOT" pad="11"/>
-<contactref element="ATHRU_B_TOP" pad="11"/>
-<wire x1="14.7406" y1="-5.848" x2="14.2256" y2="-5.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$157">
-<contactref element="ATHRU_B_BOT" pad="10"/>
-<contactref element="ATHRU_B_TOP" pad="10"/>
-<wire x1="14.7406" y1="-6.248" x2="14.2256" y2="-6.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$158">
-<contactref element="ATHRU_B_BOT" pad="9"/>
-<contactref element="ATHRU_B_TOP" pad="9"/>
-<wire x1="14.7406" y1="-6.648" x2="14.2256" y2="-6.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$159">
-<contactref element="ATHRU_B_BOT" pad="8"/>
-<contactref element="ATHRU_B_TOP" pad="8"/>
-<wire x1="14.7406" y1="-7.048" x2="14.2256" y2="-7.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$160">
-<contactref element="ATHRU_B_BOT" pad="7"/>
-<contactref element="ATHRU_B_TOP" pad="7"/>
-<wire x1="14.7406" y1="-7.448" x2="14.2256" y2="-7.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$161">
-<contactref element="ATHRU_B_BOT" pad="6"/>
-<contactref element="ATHRU_B_TOP" pad="6"/>
-<wire x1="14.7406" y1="-7.848" x2="14.2256" y2="-7.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$163">
-<contactref element="ATHRU_B_BOT" pad="5"/>
-<contactref element="ATHRU_B_TOP" pad="5"/>
-<wire x1="14.7406" y1="-8.248" x2="14.2256" y2="-8.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$164">
-<contactref element="ATHRU_B_BOT" pad="4"/>
-<contactref element="ATHRU_B_TOP" pad="4"/>
-<wire x1="14.7406" y1="-8.648" x2="14.2256" y2="-8.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$165">
-<contactref element="ATHRU_B_BOT" pad="3"/>
-<contactref element="ATHRU_B_TOP" pad="3"/>
-<wire x1="14.7406" y1="-9.048" x2="14.2256" y2="-9.048" width="0" layer="19" extent="1-16"/>
+<polygon width="0.254" layer="15" thermals="no">
+<vertex x="-19.812" y="0" curve="-90"/>
+<vertex x="0" y="19.812" curve="-90"/>
+<vertex x="19.812" y="0" curve="-90"/>
+<vertex x="0" y="-19.812" curve="-90"/>
+</polygon>
+</signal>
+<signal name="S$12">
 </signal>
 <signal name="AGND_THRU_4">
-<contactref element="ATHRU_B_BOT" pad="69"/>
-<contactref element="ATHRU_B_TOP" pad="69"/>
-<contactref element="ATHRU_B_TOP" pad="70"/>
-<contactref element="ATHRU_B_BOT" pad="70"/>
-<wire x1="11.8856" y1="-9.848" x2="11.8856" y2="-9.448" width="0" layer="19" extent="16-16"/>
-<wire x1="11.3706" y1="-9.448" x2="11.8856" y2="-9.448" width="0" layer="19" extent="1-16"/>
-<wire x1="11.3706" y1="-9.848" x2="11.3706" y2="-9.448" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="N$167">
-<contactref element="ATHRU_B_BOT" pad="38"/>
-<contactref element="ATHRU_B_TOP" pad="38"/>
-<wire x1="11.3706" y1="2.952" x2="11.8856" y2="2.952" width="0" layer="19" extent="1-16"/>
+<signal name="S$21">
 </signal>
-<signal name="N$168">
-<contactref element="ATHRU_B_BOT" pad="39"/>
-<contactref element="ATHRU_B_TOP" pad="39"/>
-<wire x1="11.3706" y1="2.552" x2="11.8856" y2="2.552" width="0" layer="19" extent="1-16"/>
+<signal name="S$20">
 </signal>
-<signal name="N$169">
-<contactref element="ATHRU_B_BOT" pad="40"/>
-<contactref element="ATHRU_B_TOP" pad="40"/>
-<wire x1="11.3706" y1="2.152" x2="11.8856" y2="2.152" width="0" layer="19" extent="1-16"/>
+<signal name="S$19">
 </signal>
-<signal name="N$170">
-<contactref element="ATHRU_B_BOT" pad="41"/>
-<contactref element="ATHRU_B_TOP" pad="41"/>
-<wire x1="11.3706" y1="1.752" x2="11.8856" y2="1.752" width="0" layer="19" extent="1-16"/>
+<signal name="S$18">
 </signal>
-<signal name="N$171">
-<contactref element="ATHRU_B_BOT" pad="42"/>
-<contactref element="ATHRU_B_TOP" pad="42"/>
-<wire x1="11.3706" y1="1.352" x2="11.8856" y2="1.352" width="0" layer="19" extent="1-16"/>
+<signal name="S$17">
 </signal>
-<signal name="N$172">
-<contactref element="ATHRU_B_BOT" pad="43"/>
-<contactref element="ATHRU_B_TOP" pad="43"/>
-<wire x1="11.3706" y1="0.952" x2="11.8856" y2="0.952" width="0" layer="19" extent="1-16"/>
+<signal name="S$16">
 </signal>
-<signal name="N$173">
-<contactref element="ATHRU_B_BOT" pad="44"/>
-<contactref element="ATHRU_B_TOP" pad="44"/>
-<wire x1="11.3706" y1="0.552" x2="11.8856" y2="0.552" width="0" layer="19" extent="1-16"/>
+<signal name="S$15">
 </signal>
-<signal name="N$174">
-<contactref element="ATHRU_B_BOT" pad="45"/>
-<contactref element="ATHRU_B_TOP" pad="45"/>
-<wire x1="11.3706" y1="0.152" x2="11.8856" y2="0.152" width="0" layer="19" extent="1-16"/>
+<signal name="S$14">
 </signal>
-<signal name="N$175">
-<contactref element="ATHRU_B_BOT" pad="46"/>
-<contactref element="ATHRU_B_TOP" pad="46"/>
-<wire x1="11.3706" y1="-0.248" x2="11.8856" y2="-0.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$176">
-<contactref element="ATHRU_B_BOT" pad="47"/>
-<contactref element="ATHRU_B_TOP" pad="47"/>
-<wire x1="11.3706" y1="-0.648" x2="11.8856" y2="-0.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$177">
-<contactref element="ATHRU_B_BOT" pad="48"/>
-<contactref element="ATHRU_B_TOP" pad="48"/>
-<wire x1="11.3706" y1="-1.048" x2="11.8856" y2="-1.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$178">
-<contactref element="ATHRU_B_BOT" pad="49"/>
-<contactref element="ATHRU_B_TOP" pad="49"/>
-<wire x1="11.3706" y1="-1.448" x2="11.8856" y2="-1.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$179">
-<contactref element="ATHRU_B_BOT" pad="50"/>
-<contactref element="ATHRU_B_TOP" pad="50"/>
-<wire x1="11.3706" y1="-1.848" x2="11.8856" y2="-1.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$180">
-<contactref element="ATHRU_B_BOT" pad="51"/>
-<contactref element="ATHRU_B_TOP" pad="51"/>
-<wire x1="11.3706" y1="-2.248" x2="11.8856" y2="-2.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$181">
-<contactref element="ATHRU_B_BOT" pad="52"/>
-<contactref element="ATHRU_B_TOP" pad="52"/>
-<wire x1="11.3706" y1="-2.648" x2="11.8856" y2="-2.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$182">
-<contactref element="ATHRU_B_BOT" pad="53"/>
-<contactref element="ATHRU_B_TOP" pad="53"/>
-<wire x1="11.3706" y1="-3.048" x2="11.8856" y2="-3.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$183">
-<contactref element="ATHRU_B_BOT" pad="54"/>
-<contactref element="ATHRU_B_TOP" pad="54"/>
-<wire x1="11.3706" y1="-3.448" x2="11.8856" y2="-3.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$184">
-<contactref element="ATHRU_B_BOT" pad="55"/>
-<contactref element="ATHRU_B_TOP" pad="55"/>
-<wire x1="11.3706" y1="-3.848" x2="11.8856" y2="-3.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$185">
-<contactref element="ATHRU_B_BOT" pad="56"/>
-<contactref element="ATHRU_B_TOP" pad="56"/>
-<wire x1="11.3706" y1="-4.248" x2="11.8856" y2="-4.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$186">
-<contactref element="ATHRU_B_BOT" pad="57"/>
-<contactref element="ATHRU_B_TOP" pad="57"/>
-<wire x1="11.3706" y1="-4.648" x2="11.8856" y2="-4.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$187">
-<contactref element="ATHRU_B_BOT" pad="58"/>
-<contactref element="ATHRU_B_TOP" pad="58"/>
-<wire x1="11.3706" y1="-5.048" x2="11.8856" y2="-5.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$188">
-<contactref element="ATHRU_B_BOT" pad="59"/>
-<contactref element="ATHRU_B_TOP" pad="59"/>
-<wire x1="11.3706" y1="-5.448" x2="11.8856" y2="-5.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$189">
-<contactref element="ATHRU_B_BOT" pad="60"/>
-<contactref element="ATHRU_B_TOP" pad="60"/>
-<wire x1="11.3706" y1="-5.848" x2="11.8856" y2="-5.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$190">
-<contactref element="ATHRU_B_BOT" pad="61"/>
-<contactref element="ATHRU_B_TOP" pad="61"/>
-<wire x1="11.3706" y1="-6.248" x2="11.8856" y2="-6.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$191">
-<contactref element="ATHRU_B_BOT" pad="62"/>
-<contactref element="ATHRU_B_TOP" pad="62"/>
-<wire x1="11.3706" y1="-6.648" x2="11.8856" y2="-6.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$192">
-<contactref element="ATHRU_B_BOT" pad="63"/>
-<contactref element="ATHRU_B_TOP" pad="63"/>
-<wire x1="11.3706" y1="-7.048" x2="11.8856" y2="-7.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$193">
-<contactref element="ATHRU_B_BOT" pad="64"/>
-<contactref element="ATHRU_B_TOP" pad="64"/>
-<wire x1="11.3706" y1="-7.448" x2="11.8856" y2="-7.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$194">
-<contactref element="ATHRU_B_BOT" pad="65"/>
-<contactref element="ATHRU_B_TOP" pad="65"/>
-<wire x1="11.3706" y1="-7.848" x2="11.8856" y2="-7.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$195">
-<contactref element="ATHRU_B_BOT" pad="66"/>
-<contactref element="ATHRU_B_TOP" pad="66"/>
-<wire x1="11.3706" y1="-8.248" x2="11.8856" y2="-8.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$196">
-<contactref element="ATHRU_B_BOT" pad="67"/>
-<contactref element="ATHRU_B_TOP" pad="67"/>
-<wire x1="11.3706" y1="-8.648" x2="11.8856" y2="-8.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$197">
-<contactref element="ATHRU_B_BOT" pad="68"/>
-<contactref element="ATHRU_B_TOP" pad="68"/>
-<wire x1="11.3706" y1="-9.048" x2="11.8856" y2="-9.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$199">
-<contactref element="ATHRU_A_BOT" pad="33"/>
-<contactref element="ATHRU_A_TOP" pad="33"/>
-<wire x1="-14.7406" y1="-2.952" x2="-14.2256" y2="-2.952" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$200">
-<contactref element="ATHRU_A_BOT" pad="32"/>
-<contactref element="ATHRU_A_TOP" pad="32"/>
-<wire x1="-14.7406" y1="-2.552" x2="-14.2256" y2="-2.552" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$201">
-<contactref element="ATHRU_A_BOT" pad="31"/>
-<contactref element="ATHRU_A_TOP" pad="31"/>
-<wire x1="-14.7406" y1="-2.152" x2="-14.2256" y2="-2.152" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$202">
-<contactref element="ATHRU_A_BOT" pad="30"/>
-<contactref element="ATHRU_A_TOP" pad="30"/>
-<wire x1="-14.7406" y1="-1.752" x2="-14.2256" y2="-1.752" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$203">
-<contactref element="ATHRU_A_BOT" pad="29"/>
-<contactref element="ATHRU_A_TOP" pad="29"/>
-<wire x1="-14.7406" y1="-1.352" x2="-14.2256" y2="-1.352" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$204">
-<contactref element="ATHRU_A_BOT" pad="28"/>
-<contactref element="ATHRU_A_TOP" pad="28"/>
-<wire x1="-14.7406" y1="-0.952" x2="-14.2256" y2="-0.952" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$205">
-<contactref element="ATHRU_A_BOT" pad="27"/>
-<contactref element="ATHRU_A_TOP" pad="27"/>
-<wire x1="-14.7406" y1="-0.552" x2="-14.2256" y2="-0.552" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$206">
-<contactref element="ATHRU_A_BOT" pad="26"/>
-<contactref element="ATHRU_A_TOP" pad="26"/>
-<wire x1="-14.7406" y1="-0.152" x2="-14.2256" y2="-0.152" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$207">
-<contactref element="ATHRU_A_BOT" pad="25"/>
-<contactref element="ATHRU_A_TOP" pad="25"/>
-<wire x1="-14.7406" y1="0.248" x2="-14.2256" y2="0.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$208">
-<contactref element="ATHRU_A_BOT" pad="24"/>
-<contactref element="ATHRU_A_TOP" pad="24"/>
-<wire x1="-14.7406" y1="0.648" x2="-14.2256" y2="0.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$209">
-<contactref element="ATHRU_A_BOT" pad="23"/>
-<contactref element="ATHRU_A_TOP" pad="23"/>
-<wire x1="-14.7406" y1="1.048" x2="-14.2256" y2="1.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$210">
-<contactref element="ATHRU_A_BOT" pad="22"/>
-<contactref element="ATHRU_A_TOP" pad="22"/>
-<wire x1="-14.7406" y1="1.448" x2="-14.2256" y2="1.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$211">
-<contactref element="ATHRU_A_BOT" pad="21"/>
-<contactref element="ATHRU_A_TOP" pad="21"/>
-<wire x1="-14.7406" y1="1.848" x2="-14.2256" y2="1.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$212">
-<contactref element="ATHRU_A_BOT" pad="20"/>
-<contactref element="ATHRU_A_TOP" pad="20"/>
-<wire x1="-14.7406" y1="2.248" x2="-14.2256" y2="2.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$213">
-<contactref element="ATHRU_A_BOT" pad="19"/>
-<contactref element="ATHRU_A_TOP" pad="19"/>
-<wire x1="-14.7406" y1="2.648" x2="-14.2256" y2="2.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$214">
-<contactref element="ATHRU_A_BOT" pad="18"/>
-<contactref element="ATHRU_A_TOP" pad="18"/>
-<wire x1="-14.7406" y1="3.048" x2="-14.2256" y2="3.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$215">
-<contactref element="ATHRU_A_BOT" pad="17"/>
-<contactref element="ATHRU_A_TOP" pad="17"/>
-<wire x1="-14.7406" y1="3.448" x2="-14.2256" y2="3.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$216">
-<contactref element="ATHRU_A_BOT" pad="16"/>
-<contactref element="ATHRU_A_TOP" pad="16"/>
-<wire x1="-14.7406" y1="3.848" x2="-14.2256" y2="3.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$217">
-<contactref element="ATHRU_A_BOT" pad="15"/>
-<contactref element="ATHRU_A_TOP" pad="15"/>
-<wire x1="-14.7406" y1="4.248" x2="-14.2256" y2="4.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$218">
-<contactref element="ATHRU_A_BOT" pad="14"/>
-<contactref element="ATHRU_A_TOP" pad="14"/>
-<wire x1="-14.7406" y1="4.648" x2="-14.2256" y2="4.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$219">
-<contactref element="ATHRU_A_BOT" pad="13"/>
-<contactref element="ATHRU_A_TOP" pad="13"/>
-<wire x1="-14.7406" y1="5.048" x2="-14.2256" y2="5.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$220">
-<contactref element="ATHRU_A_BOT" pad="12"/>
-<contactref element="ATHRU_A_TOP" pad="12"/>
-<wire x1="-14.7406" y1="5.448" x2="-14.2256" y2="5.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$221">
-<contactref element="ATHRU_A_BOT" pad="11"/>
-<contactref element="ATHRU_A_TOP" pad="11"/>
-<wire x1="-14.7406" y1="5.848" x2="-14.2256" y2="5.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$222">
-<contactref element="ATHRU_A_BOT" pad="10"/>
-<contactref element="ATHRU_A_TOP" pad="10"/>
-<wire x1="-14.7406" y1="6.248" x2="-14.2256" y2="6.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$223">
-<contactref element="ATHRU_A_BOT" pad="9"/>
-<contactref element="ATHRU_A_TOP" pad="9"/>
-<wire x1="-14.7406" y1="6.648" x2="-14.2256" y2="6.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$224">
-<contactref element="ATHRU_A_BOT" pad="8"/>
-<contactref element="ATHRU_A_TOP" pad="8"/>
-<wire x1="-14.7406" y1="7.048" x2="-14.2256" y2="7.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$225">
-<contactref element="ATHRU_A_BOT" pad="7"/>
-<contactref element="ATHRU_A_TOP" pad="7"/>
-<wire x1="-14.7406" y1="7.448" x2="-14.2256" y2="7.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$226">
-<contactref element="ATHRU_A_BOT" pad="6"/>
-<contactref element="ATHRU_A_TOP" pad="6"/>
-<wire x1="-14.7406" y1="7.848" x2="-14.2256" y2="7.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$227">
-<contactref element="ATHRU_A_BOT" pad="5"/>
-<contactref element="ATHRU_A_TOP" pad="5"/>
-<wire x1="-14.7406" y1="8.248" x2="-14.2256" y2="8.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$228">
-<contactref element="ATHRU_A_BOT" pad="4"/>
-<contactref element="ATHRU_A_TOP" pad="4"/>
-<wire x1="-14.7406" y1="8.648" x2="-14.2256" y2="8.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$229">
-<contactref element="ATHRU_A_BOT" pad="3"/>
-<contactref element="ATHRU_A_TOP" pad="3"/>
-<wire x1="-14.7406" y1="9.048" x2="-14.2256" y2="9.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$231">
-<contactref element="ATHRU_A_BOT" pad="38"/>
-<contactref element="ATHRU_A_TOP" pad="38"/>
-<wire x1="-11.3706" y1="-2.952" x2="-11.8856" y2="-2.952" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$232">
-<contactref element="ATHRU_A_BOT" pad="39"/>
-<contactref element="ATHRU_A_TOP" pad="39"/>
-<wire x1="-11.3706" y1="-2.552" x2="-11.8856" y2="-2.552" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$233">
-<contactref element="ATHRU_A_BOT" pad="40"/>
-<contactref element="ATHRU_A_TOP" pad="40"/>
-<wire x1="-11.3706" y1="-2.152" x2="-11.8856" y2="-2.152" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$234">
-<contactref element="ATHRU_A_BOT" pad="41"/>
-<contactref element="ATHRU_A_TOP" pad="41"/>
-<wire x1="-11.3706" y1="-1.752" x2="-11.8856" y2="-1.752" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$235">
-<contactref element="ATHRU_A_BOT" pad="42"/>
-<contactref element="ATHRU_A_TOP" pad="42"/>
-<wire x1="-11.3706" y1="-1.352" x2="-11.8856" y2="-1.352" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$236">
-<contactref element="ATHRU_A_BOT" pad="43"/>
-<contactref element="ATHRU_A_TOP" pad="43"/>
-<wire x1="-11.3706" y1="-0.952" x2="-11.8856" y2="-0.952" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$237">
-<contactref element="ATHRU_A_BOT" pad="44"/>
-<contactref element="ATHRU_A_TOP" pad="44"/>
-<wire x1="-11.3706" y1="-0.552" x2="-11.8856" y2="-0.552" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$238">
-<contactref element="ATHRU_A_BOT" pad="45"/>
-<contactref element="ATHRU_A_TOP" pad="45"/>
-<wire x1="-11.3706" y1="-0.152" x2="-11.8856" y2="-0.152" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$239">
-<contactref element="ATHRU_A_BOT" pad="46"/>
-<contactref element="ATHRU_A_TOP" pad="46"/>
-<wire x1="-11.3706" y1="0.248" x2="-11.8856" y2="0.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$240">
-<contactref element="ATHRU_A_BOT" pad="47"/>
-<contactref element="ATHRU_A_TOP" pad="47"/>
-<wire x1="-11.3706" y1="0.648" x2="-11.8856" y2="0.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$241">
-<contactref element="ATHRU_A_BOT" pad="48"/>
-<contactref element="ATHRU_A_TOP" pad="48"/>
-<wire x1="-11.3706" y1="1.048" x2="-11.8856" y2="1.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$242">
-<contactref element="ATHRU_A_BOT" pad="49"/>
-<contactref element="ATHRU_A_TOP" pad="49"/>
-<wire x1="-11.3706" y1="1.448" x2="-11.8856" y2="1.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$243">
-<contactref element="ATHRU_A_BOT" pad="50"/>
-<contactref element="ATHRU_A_TOP" pad="50"/>
-<wire x1="-11.3706" y1="1.848" x2="-11.8856" y2="1.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$244">
-<contactref element="ATHRU_A_BOT" pad="51"/>
-<contactref element="ATHRU_A_TOP" pad="51"/>
-<wire x1="-11.3706" y1="2.248" x2="-11.8856" y2="2.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$245">
-<contactref element="ATHRU_A_BOT" pad="52"/>
-<contactref element="ATHRU_A_TOP" pad="52"/>
-<wire x1="-11.3706" y1="2.648" x2="-11.8856" y2="2.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$246">
-<contactref element="ATHRU_A_BOT" pad="53"/>
-<contactref element="ATHRU_A_TOP" pad="53"/>
-<wire x1="-11.3706" y1="3.048" x2="-11.8856" y2="3.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$247">
-<contactref element="ATHRU_A_BOT" pad="54"/>
-<contactref element="ATHRU_A_TOP" pad="54"/>
-<wire x1="-11.3706" y1="3.448" x2="-11.8856" y2="3.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$248">
-<contactref element="ATHRU_A_BOT" pad="55"/>
-<contactref element="ATHRU_A_TOP" pad="55"/>
-<wire x1="-11.3706" y1="3.848" x2="-11.8856" y2="3.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$249">
-<contactref element="ATHRU_A_BOT" pad="56"/>
-<contactref element="ATHRU_A_TOP" pad="56"/>
-<wire x1="-11.3706" y1="4.248" x2="-11.8856" y2="4.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$250">
-<contactref element="ATHRU_A_BOT" pad="57"/>
-<contactref element="ATHRU_A_TOP" pad="57"/>
-<wire x1="-11.3706" y1="4.648" x2="-11.8856" y2="4.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$251">
-<contactref element="ATHRU_A_BOT" pad="58"/>
-<contactref element="ATHRU_A_TOP" pad="58"/>
-<wire x1="-11.3706" y1="5.048" x2="-11.8856" y2="5.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$252">
-<contactref element="ATHRU_A_BOT" pad="59"/>
-<contactref element="ATHRU_A_TOP" pad="59"/>
-<wire x1="-11.3706" y1="5.448" x2="-11.8856" y2="5.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$253">
-<contactref element="ATHRU_A_BOT" pad="60"/>
-<contactref element="ATHRU_A_TOP" pad="60"/>
-<wire x1="-11.3706" y1="5.848" x2="-11.8856" y2="5.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$254">
-<contactref element="ATHRU_A_BOT" pad="61"/>
-<contactref element="ATHRU_A_TOP" pad="61"/>
-<wire x1="-11.3706" y1="6.248" x2="-11.8856" y2="6.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$255">
-<contactref element="ATHRU_A_BOT" pad="62"/>
-<contactref element="ATHRU_A_TOP" pad="62"/>
-<wire x1="-11.3706" y1="6.648" x2="-11.8856" y2="6.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$256">
-<contactref element="ATHRU_A_BOT" pad="63"/>
-<contactref element="ATHRU_A_TOP" pad="63"/>
-<wire x1="-11.3706" y1="7.048" x2="-11.8856" y2="7.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$257">
-<contactref element="ATHRU_A_BOT" pad="64"/>
-<contactref element="ATHRU_A_TOP" pad="64"/>
-<wire x1="-11.3706" y1="7.448" x2="-11.8856" y2="7.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$258">
-<contactref element="ATHRU_A_BOT" pad="65"/>
-<contactref element="ATHRU_A_TOP" pad="65"/>
-<wire x1="-11.3706" y1="7.848" x2="-11.8856" y2="7.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$259">
-<contactref element="ATHRU_A_BOT" pad="66"/>
-<contactref element="ATHRU_A_TOP" pad="66"/>
-<wire x1="-11.3706" y1="8.248" x2="-11.8856" y2="8.248" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$260">
-<contactref element="ATHRU_A_BOT" pad="67"/>
-<contactref element="ATHRU_A_TOP" pad="67"/>
-<wire x1="-11.3706" y1="8.648" x2="-11.8856" y2="8.648" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="N$261">
-<contactref element="ATHRU_A_BOT" pad="68"/>
-<contactref element="ATHRU_A_TOP" pad="68"/>
-<wire x1="-11.3706" y1="9.048" x2="-11.8856" y2="9.048" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="VDD_THRU">
-<contactref element="DTHRU_TOP" pad="10"/>
-<contactref element="DTHRU_BOT" pad="10"/>
-<wire x1="-11.4012" y1="14.2256" x2="-11.4012" y2="14.7406" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="AUXOUT_A_THRU">
-<contactref element="DTHRU_TOP" pad="4"/>
-<contactref element="DTHRU_BOT" pad="4"/>
-<wire x1="-9.0012" y1="14.2256" x2="-9.0012" y2="14.7406" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="CS-_THRU">
-<contactref element="DTHRU_TOP" pad="11"/>
-<contactref element="DTHRU_BOT" pad="11"/>
-<wire x1="-11.4012" y1="11.8856" x2="-11.4012" y2="11.3706" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="CS+_THRU">
-<contactref element="DTHRU_BOT" pad="12"/>
-<contactref element="DTHRU_TOP" pad="12"/>
-<wire x1="-11.0012" y1="11.3706" x2="-11.0012" y2="11.8856" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="SCLK-_THRU">
-<contactref element="DTHRU_BOT" pad="13"/>
-<contactref element="DTHRU_TOP" pad="13"/>
-<wire x1="-10.6012" y1="11.3706" x2="-10.6012" y2="11.8856" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="SCLK+_THRU">
-<contactref element="DTHRU_TOP" pad="14"/>
-<contactref element="DTHRU_BOT" pad="14"/>
-<wire x1="-10.2012" y1="11.8856" x2="-10.2012" y2="11.3706" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="MOSI-_THRU">
-<contactref element="DTHRU_BOT" pad="15"/>
-<contactref element="DTHRU_TOP" pad="15"/>
-<wire x1="-9.8012" y1="11.3706" x2="-9.8012" y2="11.8856" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="MOSI+_THRU">
-<contactref element="DTHRU_BOT" pad="16"/>
-<contactref element="DTHRU_TOP" pad="16"/>
-<wire x1="-9.4012" y1="11.3706" x2="-9.4012" y2="11.8856" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="MISO1-_THRU">
-<contactref element="DTHRU_BOT" pad="17"/>
-<contactref element="DTHRU_TOP" pad="17"/>
-<wire x1="-9.0012" y1="11.3706" x2="-9.0012" y2="11.8856" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="MISO1+_THRU">
-<contactref element="DTHRU_BOT" pad="18"/>
-<contactref element="DTHRU_TOP" pad="18"/>
-<wire x1="-8.6012" y1="11.3706" x2="-8.6012" y2="11.8856" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="MISO2-_THRU">
-<contactref element="DTHRU_BOT" pad="19"/>
-<contactref element="DTHRU_TOP" pad="19"/>
-<wire x1="-8.2012" y1="11.3706" x2="-8.2012" y2="11.8856" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="MISO2+_THRU">
-<contactref element="DTHRU_BOT" pad="20"/>
-<contactref element="DTHRU_TOP" pad="20"/>
-<wire x1="-7.8012" y1="11.3706" x2="-7.8012" y2="11.8856" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="MISO1-">
-<contactref element="DIO" pad="19"/>
-</signal>
-<signal name="MISO1+">
-<contactref element="DIO" pad="20"/>
-</signal>
-<signal name="AUXOUT_B">
-<contactref element="DIO" pad="4"/>
-</signal>
-<signal name="AUXOUT_B_THRU">
-<contactref element="DTHRU_TOP" pad="5"/>
-<contactref element="DTHRU_BOT" pad="5"/>
-<wire x1="-9.4012" y1="14.2256" x2="-9.4012" y2="14.7406" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="MISO2-">
-<contactref element="DIO" pad="17"/>
-</signal>
-<signal name="MISO2+">
-<contactref element="DIO" pad="18"/>
-</signal>
-<signal name="REF">
-<contactref element="U2" pad="4"/>
-<contactref element="AIN_A" pad="1"/>
-<contactref element="AIN_A" pad="36"/>
-<contactref element="AIN_B" pad="36"/>
-<contactref element="AIN_B" pad="1"/>
-<contactref element="REF1" pad="1"/>
-<contactref element="REF2" pad="1"/>
-<wire x1="-9.848" y1="-14.2256" x2="-12.5476" y2="-13.7668" width="0" layer="19" extent="16-16"/>
-<wire x1="-6.1794" y1="-6.5742" x2="-9.848" y2="-14.2256" width="0" layer="19" extent="16-16"/>
-<wire x1="3.752" y1="-11.8856" x2="-6.1794" y2="-6.5742" width="0" layer="19" extent="16-16"/>
-<wire x1="-3.752" y1="11.8856" x2="-6.1794" y2="-6.5742" width="0" layer="19" extent="16-16"/>
-<wire x1="9.848" y1="14.2256" x2="-3.752" y2="11.8856" width="0" layer="19" extent="16-16"/>
-<wire x1="12.5476" y1="13.7668" x2="9.848" y2="14.2256" width="0" layer="19" extent="16-16"/>
+<signal name="S$23">
 </signal>
 <signal name="DGND_THRU">
-<contactref element="DTHRU_TOP" pad="1"/>
-<contactref element="DTHRU_BOT" pad="1"/>
-<contactref element="DTHRU_TOP" pad="2"/>
-<contactref element="DTHRU_BOT" pad="2"/>
-<contactref element="DTHRU_TOP" pad="3"/>
-<contactref element="DTHRU_BOT" pad="3"/>
-<contactref element="DTHRU_TOP" pad="6"/>
-<contactref element="DTHRU_BOT" pad="6"/>
-<contactref element="DTHRU_TOP" pad="7"/>
-<contactref element="DTHRU_BOT" pad="7"/>
-<contactref element="DTHRU_TOP" pad="8"/>
-<contactref element="DTHRU_BOT" pad="8"/>
-<contactref element="DTHRU_TOP" pad="9"/>
-<contactref element="DTHRU_BOT" pad="9"/>
-<wire x1="-8.2012" y1="14.7406" x2="-7.8012" y2="14.7406" width="0" layer="19" extent="1-1"/>
-<wire x1="-8.6012" y1="14.7406" x2="-8.2012" y2="14.7406" width="0" layer="19" extent="1-1"/>
-<wire x1="-7.8012" y1="14.2256" x2="-7.8012" y2="14.7406" width="0" layer="19" extent="1-16"/>
-<wire x1="-8.2012" y1="14.2256" x2="-7.8012" y2="14.2256" width="0" layer="19" extent="16-16"/>
-<wire x1="-8.6012" y1="14.2256" x2="-8.2012" y2="14.2256" width="0" layer="19" extent="16-16"/>
-<wire x1="-9.8012" y1="14.7406" x2="-8.6012" y2="14.7406" width="0" layer="19" extent="1-1"/>
-<wire x1="-10.2012" y1="14.7406" x2="-9.8012" y2="14.7406" width="0" layer="19" extent="1-1"/>
-<wire x1="-10.6012" y1="14.7406" x2="-10.2012" y2="14.7406" width="0" layer="19" extent="1-1"/>
-<wire x1="-11.0012" y1="14.7406" x2="-10.6012" y2="14.7406" width="0" layer="19" extent="1-1"/>
-<wire x1="-9.8012" y1="14.2256" x2="-9.8012" y2="14.7406" width="0" layer="19" extent="1-16"/>
-<wire x1="-10.2012" y1="14.2256" x2="-9.8012" y2="14.2256" width="0" layer="19" extent="16-16"/>
-<wire x1="-10.6012" y1="14.2256" x2="-10.2012" y2="14.2256" width="0" layer="19" extent="16-16"/>
-<wire x1="-11.0012" y1="14.2256" x2="-10.6012" y2="14.2256" width="0" layer="19" extent="16-16"/>
+</signal>
+<signal name="S$25">
 </signal>
 <signal name="AGND_THRU_1">
-<contactref element="ATHRU_A_BOT" pad="34"/>
-<contactref element="ATHRU_A_TOP" pad="34"/>
-<contactref element="ATHRU_A_TOP" pad="35"/>
-<contactref element="ATHRU_A_BOT" pad="35"/>
-<wire x1="-14.2256" y1="-3.752" x2="-14.2256" y2="-3.352" width="0" layer="19" extent="16-16"/>
-<wire x1="-14.7406" y1="-3.352" x2="-14.2256" y2="-3.352" width="0" layer="19" extent="1-16"/>
-<wire x1="-14.7406" y1="-3.752" x2="-14.7406" y2="-3.352" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="S$27">
 </signal>
 <signal name="AGND_THRU_2">
-<contactref element="ATHRU_A_TOP" pad="69"/>
-<contactref element="ATHRU_A_TOP" pad="70"/>
-<contactref element="ATHRU_A_BOT" pad="69"/>
-<contactref element="ATHRU_A_BOT" pad="70"/>
-<wire x1="-11.3706" y1="9.848" x2="-11.3706" y2="9.448" width="0" layer="19" extent="1-1"/>
-<wire x1="-11.8856" y1="9.448" x2="-11.3706" y2="9.448" width="0" layer="19" extent="1-16"/>
-<wire x1="-11.8856" y1="9.848" x2="-11.8856" y2="9.448" width="0" layer="19" extent="16-16"/>
 </signal>
-<signal name="N$230">
-<contactref element="ATHRU_A_TOP" pad="2"/>
-<contactref element="ATHRU_A_BOT" pad="2"/>
-<wire x1="-14.2256" y1="9.448" x2="-14.7406" y2="9.448" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="REF_THRU_2">
-<contactref element="ATHRU_A_BOT" pad="1"/>
-<contactref element="ATHRU_A_TOP" pad="1"/>
-<wire x1="-14.7406" y1="9.848" x2="-14.2256" y2="9.848" width="0" layer="19" extent="1-16"/>
-</signal>
-<signal name="REF_THRU_1">
-<contactref element="ATHRU_A_TOP" pad="36"/>
-<contactref element="ATHRU_A_BOT" pad="36"/>
-<wire x1="-11.8856" y1="-3.752" x2="-11.3706" y2="-3.752" width="0" layer="19" extent="1-16"/>
+<signal name="S$29" class="1">
 </signal>
 <signal name="AGND_THRU_3" class="1">
-<contactref element="ATHRU_B_TOP" pad="35"/>
-<contactref element="ATHRU_B_TOP" pad="34"/>
-<contactref element="ATHRU_B_BOT" pad="35"/>
-<contactref element="ATHRU_B_BOT" pad="34"/>
-<wire x1="14.7406" y1="3.352" x2="14.7406" y2="3.752" width="0" layer="19" extent="1-1"/>
-<wire x1="14.2256" y1="3.752" x2="14.7406" y2="3.752" width="0" layer="19" extent="1-16"/>
-<wire x1="14.2256" y1="3.352" x2="14.2256" y2="3.752" width="0" layer="19" extent="16-16"/>
 </signal>
-<signal name="N$262">
-<contactref element="ATHRU_B_TOP" pad="37"/>
-<contactref element="ATHRU_B_BOT" pad="37"/>
-<wire x1="11.8856" y1="3.352" x2="11.3706" y2="3.352" width="0" layer="19" extent="1-16"/>
+<signal name="S$5" class="1">
 </signal>
-<signal name="REF_THRU_3">
-<contactref element="ATHRU_B_BOT" pad="36"/>
-<contactref element="ATHRU_B_TOP" pad="36"/>
-<wire x1="11.3706" y1="3.752" x2="11.8856" y2="3.752" width="0" layer="19" extent="1-16"/>
+<signal name="S$4" class="1">
 </signal>
-<signal name="N$166">
-<contactref element="ATHRU_B_BOT" pad="2"/>
-<contactref element="ATHRU_B_TOP" pad="2"/>
-<wire x1="14.7406" y1="-9.448" x2="14.2256" y2="-9.448" width="0" layer="19" extent="1-16"/>
+<signal name="S$2" class="1">
 </signal>
-<signal name="REF_THRU_4">
-<contactref element="ATHRU_B_TOP" pad="1"/>
-<contactref element="ATHRU_B_BOT" pad="1"/>
-<wire x1="14.2256" y1="-9.848" x2="14.7406" y2="-9.848" width="0" layer="19" extent="1-16"/>
+<signal name="S$1" class="1">
 </signal>
-<signal name="N$1000">
-<contactref element="ATHRU_A_TOP" pad="37"/>
-<contactref element="ATHRU_A_BOT" pad="37"/>
-<wire x1="-11.8856" y1="-3.352" x2="-11.3706" y2="-3.352" width="0" layer="19" extent="1-16"/>
+<signal name="S$7" class="1">
+<contactref element="U2" pad="8"/>
+<contactref element="U2" pad="8"/>
 </signal>
-<signal name="XOUT1">
-<contactref element="U1" pad="XOUT"/>
-<contactref element="C4" pad="2"/>
-<wire x1="-0.5842" y1="6.2484" x2="-2.0858" y2="5.8268" width="0" layer="19" extent="1-1"/>
+<signal name="S$9" class="1">
 </signal>
-<signal name="YOUT1">
-<contactref element="U1" pad="YOUT"/>
-<contactref element="C5" pad="2"/>
-<wire x1="-0.5842" y1="4.8768" x2="-2.0858" y2="4.5268" width="0" layer="19" extent="1-1"/>
+<signal name="GND" class="1">
+<polygon width="0.254" layer="2" thermals="no">
+<vertex x="-19.812" y="0" curve="-90"/>
+<vertex x="0" y="19.812" curve="-90"/>
+<vertex x="19.812" y="0" curve="-90"/>
+<vertex x="0" y="-19.812" curve="-90"/>
+</polygon>
 </signal>
-<signal name="ZOUT1">
-<contactref element="U1" pad="ZOUT"/>
-<contactref element="C6" pad="2"/>
-<wire x1="-2.9108" y1="3.1018" x2="-3.2766" y2="1.1684" width="0" layer="19" extent="1-1"/>
+<signal name="S$11" class="1">
+</signal>
+<signal name="S$10" class="1">
+<contactref element="U2" pad="16"/>
+<contactref element="U2" pad="16"/>
+</signal>
+<signal name="S$30" class="1">
+</signal>
+<signal name="S$28" class="1">
+</signal>
+<signal name="S$26" class="1">
+</signal>
+<signal name="S$24" class="1">
+</signal>
+<signal name="S$33">
+</signal>
+<signal name="AGND_THRU_5">
+</signal>
+<signal name="S$43">
+</signal>
+<signal name="S$42">
+</signal>
+<signal name="S$41">
+</signal>
+<signal name="S$40">
+</signal>
+<signal name="S$39">
+</signal>
+<signal name="S$38">
+</signal>
+<signal name="S$37">
+</signal>
+<signal name="S$36">
+</signal>
+<signal name="S$45">
+</signal>
+<signal name="DGND_THRU1">
+</signal>
+<signal name="S$47">
+</signal>
+<signal name="AGND_THRU_6">
+</signal>
+<signal name="S$49">
+</signal>
+<signal name="AGND_THRU_7">
+</signal>
+<signal name="S$51" class="1">
+</signal>
+<signal name="AGND_THRU_8" class="1">
 </signal>
 </signals>
 </board>
