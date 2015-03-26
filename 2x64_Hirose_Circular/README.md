@@ -2,18 +2,18 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [128 channel headstage module for rat tetrode drives](#128-channel-headstage-module-for-rat-tetrode-drives)
-  - [Features](#features)
-  - [Bill of materials](#bill-of-materials)
-  - [TODO](#todo)
-  - [Hardware and Documentation Licensing](#hardware-and-documentation-licensing)
+- [128 channel headstage module for rat tetrode drives](##128-channel-headstage-module-for-rat-tetrode-drives)
+  - [Features](##features)
+  - [Bill of materials](##bill-of-materials)
+  - [TODO](##todo)
+  - [Hardware and Documentation Licensing](##hardware-and-documentation-licensing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# 128 channel headstage module for rat tetrode drives
+## 128 channel headstage module for rat tetrode drives
 A very low profile digital headstage for amplifying, filtering, and digitizing microwire voltage data from a microdrive implant. Up to 256 wires (64 tetrodes) can be acquired.
 
-## Features
+#### Features
 - Circular form factor is aimed at conformation with **tetrode drive** assemblies
  - Low profile, stacked connectorization using 0.4mm pitch [Hirose DF40](http://www.digikey.com/product-search/en?FV=ffec4097) mezzanine headers
 - SPI interface options for:
@@ -21,10 +21,10 @@ A very low profile digital headstage for amplifying, filtering, and digitizing m
  - 256 channels using two double data-rate LVDS busses (64 tetrodes)
 - Integrated electrode plating and impedance testing
 
-## Bill of materials
+#### Bill of materials
 The bill of materials for the headstage, EIBs, spacer boards, and SPI interface boards can be found on [this google doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit?usp=sharing).
 
-## TODO
+#### TODO
 - [x] Analog connections terminating at the inputs to an RHD chip do not need to feed through to the next board. However, digital connections __always__ should feed through because they need to make it to the headstage interface
  - Is there a way to prevent stubs in the digital feed troughs that will go the wrong way?
 - [x] Does it make a difference if the header or the receptacle is next to the RHD, specifically in regard to stack height. i.e. is there going to be enough room for the potted chip?
@@ -51,8 +51,11 @@ The bill of materials for the headstage, EIBs, spacer boards, and SPI interface 
 - [ ] For the implants with VTA recordings -- where will these static electrodes interface with the EIB. Will they just take an couple 'tetrode spots', or is something more specialized needed?
 - [ ] In talking to Jakob, I realized that I could share a single CS, MOSI, and SCLK bus among all 4 intan chips assuming (1) I don't mind that all the chips do the same thing (2) I make sure that the accumlating decrease in the effective resistance of having 2X100 ohm resistors close to eachother (multidrop config) is not going to mess with the LVDS signal integrity.
  - To impelment this (in the simplest way possible) I should just be able to jumper the CS, MOSI, and SCLK lines at the level of SPI interface board. If this works without chaning any of the headstage terminations, then great, I just saved 6 wires!
-    
-## Hardware and Documentation Licensing
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">128 Channel Circular Hirose Headstage Module</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/jonnew/cyclops" property="cc:attributionName" rel="cc:attributionURL">Jonathan P. Newman</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/jonnew/cyclops" rel="dct:source">https://github.mit.edu/jpnewman/headstage</a>.
+- [ ] On the SPI interface, on the mock ups from OSH park, small vias failed to support distinctions between octagon style plated holes and round holes. This means that my clever way of disiginusigh SPI interface polarity was a bust. 
+- [ ] The holes for the spi wire are too small - muliply by 1.5
+- [ ] The boarder silkscreens on the small passives (0402 and smaller) is too close to the pads and is not showing up on the boards.
+
+#### Hardware and Documentation Licensing
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">128 Channel Circular Hirose Headstage Module</span> by <a xmlns:cc="http://creativecommons.org/ns##" href="https://github.com/jonnew/cyclops" property="cc:attributionName" rel="cc:attributionURL">Jonathan P. Newman</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/jonnew/cyclops" rel="dct:source">https://github.mit.edu/jpnewman/headstage</a>.
 
 
