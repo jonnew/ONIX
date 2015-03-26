@@ -2,15 +2,15 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [128 channel headstage module for rat tetrode drives](##128-channel-headstage-module-for-rat-tetrode-drives)
-  - [Features](##features)
-  - [Bill of materials](##bill-of-materials)
-  - [TODO](##todo)
-  - [Hardware and Documentation Licensing](##hardware-and-documentation-licensing)
+- [128 channel headstage module for rat tetrode drives](#128-channel-headstage-module-for-rat-tetrode-drives)
+  - [Features](#features)
+  - [Bill of materials](#bill-of-materials)
+  - [TODO](#todo)
+  - [Hardware and Documentation Licensing](#hardware-and-documentation-licensing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## 128 channel headstage module for rat tetrode drives
+### 128 channel headstage module for rat tetrode drives
 A very low profile digital headstage for amplifying, filtering, and digitizing microwire voltage data from a microdrive implant. Up to 256 wires (64 tetrodes) can be acquired.
 
 #### Features
@@ -31,6 +31,7 @@ The bill of materials for the headstage, EIBs, spacer boards, and SPI interface 
  - Selected a connector that has various options for stack height, up to 3mm which will be more than enough
 - [x] Make sure the circuit has __ample test-points__, especially for probing GND, VDD, REF, ELEC_TEST, AUX_OUT.
  - I did my best, but was not able to get the ELEC_TEST pinned out due to routing issues. However, these signals have only a standard CMOS analog switch between their wire entry point and the RHD chip, so I'm not sure test points onboard are super critical.
+- [ ] Make the annualar ring on test points larger. Its hard to notice how tiny everything on these boards are when doing the layout.
 - [x] Address Reid's concern about routing high impedance ELEC_TEST lines near digital signals
 - [x] Add three axis accelerometer to one of the RHD's aux analog inputs
  - Ask for Reid's opinion on the possibility of this chip introducing HF noise into the RHD chip sitting right below it.
