@@ -25,20 +25,21 @@ A very low profile digital headstage for amplifying, filtering, and digitizing m
 The bill of materials for the headstage, EIBs, spacer boards, and SPI interface boards can be found on [this google doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit?usp=sharing).
 
 #### TODO
-- [x] Analog connections terminating at the inputs to an RHD chip do not need to feed through to the next board. However, digital connections __always__ should feed through because they need to make it to the headstage interface
- - Is there a way to prevent stubs in the digital feed troughs that will go the wrong way?
+- [x] Analog connections terminating at the inputs to an RHD chip do not need to feed through to the 
+next board. However, digital connections __always__ should feed through because they need to make it to the headstage interface
+  - Is there a way to prevent stubs in the digital feed troughs that will go the wrong way?
 - [x] Does it make a difference if the header or the receptacle is next to the RHD, specifically in regard to stack height. i.e. is there going to be enough room for the potted chip?
- - Selected a connector that has various options for stack height, up to 3mm which will be more than enough
+  - Selected a connector that has various options for stack height, up to 3mm which will be more than enough
 - [x] Make sure the circuit has __ample test-points__, especially for probing GND, VDD, REF, ELEC_TEST, AUX_OUT.
- - I did my best, but was not able to get the ELEC_TEST pinned out due to routing issues. However, these signals have only a standard CMOS analog switch between their wire entry point and the RHD chip, so I'm not sure test points onboard are super critical.
+  - I did my best, but was not able to get the ELEC_TEST pinned out due to routing issues. However, these signals have only a standard CMOS analog switch between their wire entry point and the RHD chip, so I'm not sure test points onboard are super critical.
 - [ ] Make the annualar ring on test points larger. Its hard to notice how tiny everything on these boards are when doing the layout.
 - [x] Address Reid's concern about routing high impedance ELEC_TEST lines near digital signals
 - [x] Add three axis accelerometer to one of the RHD's aux analog inputs
- - Ask for Reid's opinion on the possibility of this chip introducing HF noise into the RHD chip sitting right below it.
- - Reid did not think it would be an issue
+  - Ask for Reid's opinion on the possibility of this chip introducing HF noise into the RHD chip sitting right below it.
+  - Reid did not think it would be an issue
 - [ ] Stack height concerns __test empirically using mockups__
  - The ADX is sitting right over an RHD. This leads to an effective stack height of their combined thickness. Solution: only populate the to ADX since thats all you need anyway. 
- - Just for the record, the ADX is 1.5 mm tall. The potted RHD is 0.8 mm. Total stack height = 2.3 + 2.3*0.1 ~ 2.5 mm. This is a stack height option for the hirose connectors, so I think even if this issue arises for some reason, its fixable. 
+ - Just for the record, the ADX is 1.5 mm tall. The potted RHD is 0.8 mm. Total stack height = 2.3 + 2.3\*0.1 ~ 2.5 mm. This is a stack height option for the hirose connectors, so I think even if this issue arises for some reason, s fixable. 
  - The 74HC4053 is a pretty thick chip (standard TSSOP). I got 2 mm stack height headers. Will it fit? Its 1.75 mm thick max, so it should fit (barely). Also, need to take into account that the bottom headstage is rotated 90 deg. relative to the top. It looks like nothing will move underneath the 74HC4053 so long as the bottom ADX is not populated, but I need to test this on some cheapo boards before making the real ones!
  - Should get stack height of potted die from Reid just to be safe.
   - EDIT: Potted chip is ~0.8 mm tall. 
@@ -62,6 +63,8 @@ The bill of materials for the headstage, EIBs, spacer boards, and SPI interface 
   - Move as many LEDs to as tight of an area as possible, in between the 2nd and 4th LEDs on current design
   - Move the current limit resistors far away so they do not get in the way of the diffuser
   - Shape the PCB to fit the diffuser over the LEDs
+- [ ] LED choices: Use green and blue for the SPI interface board. The orange LED matches the room
+  lighting and is hard to track
 #### Hardware and Documentation Licensing
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">128 Channel Circular Hirose Headstage Module</span> by <a xmlns:cc="http://creativecommons.org/ns##" href="https://github.com/jonnew/cyclops" property="cc:attributionName" rel="cc:attributionURL">Jonathan P. Newman</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/jonnew/cyclops" rel="dct:source">https://github.mit.edu/jpnewman/headstage</a>.
 
