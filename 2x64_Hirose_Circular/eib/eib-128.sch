@@ -1448,10 +1448,10 @@
 </library>
 </libraries>
 <attributes>
-<attribute name="DESIGNER" value="JPN@MIT"/>
-<attribute name="DESIGN_NAME" value="2x64_hirose-circular"/>
+<attribute name="DESIGNER" value="JONNEW, MWL@MIT"/>
+<attribute name="DESIGN_NAME" value="eib-128 (2x64_hirose-circular)"/>
 <attribute name="LICENSE" value="(c) Jon Newman CC-BY-SA-NC 4.0"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
 </variantdefs>

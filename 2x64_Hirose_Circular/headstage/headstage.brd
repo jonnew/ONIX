@@ -141,7 +141,7 @@
 <board>
 <plain>
 <circle x="0" y="0" radius="19.812" width="0.01" layer="20"/>
-<text x="0" y="-8.255" size="0.8128" layer="21" font="vector" ratio="19" align="center">Rev. 1.0
+<text x="0" y="-8.255" size="0.8128" layer="21" font="vector" ratio="19" align="center">Rev. 1.1
 CC BY-SA-NC-4.0
 JPN, MWL@MIT
 2015-01

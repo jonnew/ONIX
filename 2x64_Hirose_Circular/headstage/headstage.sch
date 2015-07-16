@@ -1711,6 +1711,9 @@
 <pin name="T1" x="5.08" y="5.08" length="short" rot="R270"/>
 <pin name="T3" x="-10.16" y="5.08" length="short" rot="R270"/>
 </symbol>
+<symbol name="FRAME_D_L">
+<frame x1="-431.8" y1="0" x2="431.8" y2="558.8" columns="16" rows="11" layer="94" border-bottom="no"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="PINHD-2X35" uservalue="yes">
@@ -2526,6 +2529,19 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="FRAME_D_L" prefix="FRAME" uservalue="yes">
+<description>&lt;b&gt;FRAME&lt;/b&gt; D Size , 22 x 34 INCH, Landscape&lt;p&gt;</description>
+<gates>
+<gate name="G$1" symbol="FRAME_D_L" x="0" y="0" addlevel="always"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="headstage">
@@ -2696,10 +2712,10 @@ by exp-lbrs.ulp</description>
 </library>
 </libraries>
 <attributes>
-<attribute name="DESIGNER" value="JPN@MIT"/>
-<attribute name="DESIGN_NAME" value="2x64_hirose-circular"/>
+<attribute name="DESIGNER" value="JONNEW, MWL@MIT"/>
+<attribute name="DESIGN_NAME" value="headstage (2x64_hirose-circular)"/>
 <attribute name="LICENSE" value="(c) Jon Newman CC-BY-SA-NC 4.0"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -2790,6 +2806,7 @@ by exp-lbrs.ulp</description>
 <part name="GND30" library="headstage" deviceset="GND" device=""/>
 <part name="MECH_W1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
 <part name="MECH_S1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
+<part name="FRAME1" library="jonnew" deviceset="FRAME_D_L" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2888,6 +2905,7 @@ by exp-lbrs.ulp</description>
 <instance part="GND30" gate="1" x="287.02" y="271.78"/>
 <instance part="MECH_W1B" gate="G$1" x="193.04" y="48.26" rot="R270"/>
 <instance part="MECH_S1B" gate="G$1" x="213.36" y="48.26" rot="R270"/>
+<instance part="FRAME1" gate="G$1" x="431.8" y="0"/>
 </instances>
 <busses>
 </busses>
