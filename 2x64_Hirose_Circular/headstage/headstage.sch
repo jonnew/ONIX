@@ -1714,6 +1714,41 @@
 <symbol name="FRAME_D_L">
 <frame x1="-431.8" y1="0" x2="431.8" y2="558.8" columns="16" rows="11" layer="94" border-bottom="no"/>
 </symbol>
+<symbol name="DOCFIELD-GEN">
+<wire x1="0" y1="0" x2="71.12" y2="0" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="15.24" x2="77.47" y2="15.24" width="0.1016" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="0" y1="5.08" x2="71.12" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="0" y1="5.08" x2="0" y2="15.24" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="15.24" x2="101.6" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="71.12" y1="5.08" x2="71.12" y2="0" width="0.1016" layer="94"/>
+<wire x1="71.12" y1="5.08" x2="77.47" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="71.12" y1="0" x2="101.6" y2="0" width="0.1016" layer="94"/>
+<wire x1="77.47" y1="15.24" x2="77.47" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="77.47" y1="15.24" x2="0" y2="15.24" width="0.1016" layer="94"/>
+<wire x1="77.47" y1="5.08" x2="101.6" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="5.08" x2="101.6" y2="0" width="0.1016" layer="94"/>
+<wire x1="0" y1="15.24" x2="0" y2="22.86" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="35.56" x2="66.04" y2="35.56" width="0.1016" layer="94"/>
+<wire x1="66.04" y1="35.56" x2="0" y2="35.56" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="35.56" x2="101.6" y2="22.86" width="0.1016" layer="94"/>
+<wire x1="0" y1="22.86" x2="66.04" y2="22.86" width="0.1016" layer="94"/>
+<wire x1="66.04" y1="22.86" x2="101.6" y2="22.86" width="0.1016" layer="94"/>
+<wire x1="0" y1="22.86" x2="0" y2="35.56" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="22.86" x2="101.6" y2="15.24" width="0.1016" layer="94"/>
+<text x="1.27" y="1.27" size="2.54" layer="94" font="vector">Date:</text>
+<text x="12.7" y="1.27" size="2.54" layer="94" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="72.39" y="1.27" size="2.54" layer="94" font="vector">Sheet:</text>
+<text x="86.36" y="1.27" size="2.54" layer="94" font="vector">&gt;SHEET</text>
+<text x="78.74" y="11.43" size="2.54" layer="94" font="vector">REV:</text>
+<text x="1.27" y="19.05" size="2.54" layer="94" font="vector">TITLE:</text>
+<text x="1.27" y="11.43" size="2.54" layer="94" font="vector">License:</text>
+<text x="15.24" y="19.05" size="2.54" layer="94" font="vector">&gt;DESIGN_NAME</text>
+<text x="1.27" y="6.35" size="2.54" layer="94" font="vector">&gt;LICENSE</text>
+<text x="78.74" y="6.35" size="2.54" layer="94" font="vector">&gt;REVISION</text>
+<text x="1.27" y="30.48" size="2.54" layer="94" font="vector">DESIGNED BY:</text>
+<text x="1.27" y="25.4" size="2.54" layer="94" font="vector">&gt;DESIGNER</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="PINHD-2X35" uservalue="yes">
@@ -2542,6 +2577,18 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="DOCFIELD-GEN">
+<gates>
+<gate name="G$1" symbol="DOCFIELD-GEN" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="headstage">
@@ -2807,6 +2854,7 @@ by exp-lbrs.ulp</description>
 <part name="MECH_W1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
 <part name="MECH_S1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
 <part name="FRAME1" library="jonnew" deviceset="FRAME_D_L" device=""/>
+<part name="U$1" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2906,6 +2954,7 @@ by exp-lbrs.ulp</description>
 <instance part="MECH_W1B" gate="G$1" x="193.04" y="48.26" rot="R270"/>
 <instance part="MECH_S1B" gate="G$1" x="213.36" y="48.26" rot="R270"/>
 <instance part="FRAME1" gate="G$1" x="431.8" y="0"/>
+<instance part="U$1" gate="G$1" x="756.92" y="0"/>
 </instances>
 <busses>
 </busses>
