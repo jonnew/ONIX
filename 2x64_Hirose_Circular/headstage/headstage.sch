@@ -2814,24 +2814,24 @@ by exp-lbrs.ulp</description>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
-<part name="ATHRU_E0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40REC"/>
-<part name="ATHRU_E0T" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
-<part name="MECH_S0T" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
-<part name="MECH_N0T" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
-<part name="ATHRU_W0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40REC"/>
-<part name="ATHRU_W0T" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
-<part name="AIN_N0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40REC"/>
-<part name="AIN_S0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40REC"/>
+<part name="ATHRU_BEB" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40REC"/>
+<part name="ATHRU_TEB" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
+<part name="MECH_TSB" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
+<part name="MECH_TNB" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
+<part name="ATHRU_BWB" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40REC"/>
+<part name="ATHRU_TWB" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
+<part name="AIN_BNB" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40REC"/>
+<part name="AIN_BSB" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40REC"/>
 <part name="R3" library="jonnew" deviceset="R" device="_0201" value="100"/>
 <part name="R1" library="jonnew" deviceset="R" device="_0201" value="100"/>
 <part name="R2" library="jonnew" deviceset="R" device="_0201" value="100"/>
 <part name="GND35" library="headstage" deviceset="GND" device=""/>
 <part name="GND37" library="headstage" deviceset="GND" device=""/>
-<part name="DTHRU_N1T" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
-<part name="DTHRU_N1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
-<part name="MECH_S1T" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
-<part name="MECH_W1_T" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
-<part name="DIO_E1_T" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
+<part name="DTHRU_TNA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
+<part name="DTHRU_BNA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
+<part name="MECH_TSA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
+<part name="MECH_TWA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
+<part name="DIO_TEA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
 <part name="P+1" library="jonnew" deviceset="VCC" device=""/>
 <part name="P+3" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
@@ -2851,8 +2851,8 @@ by exp-lbrs.ulp</description>
 <part name="GND28" library="headstage" deviceset="GND" device=""/>
 <part name="VDD12" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND30" library="headstage" deviceset="GND" device=""/>
-<part name="MECH_W1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
-<part name="MECH_S1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
+<part name="MECH_BWA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
+<part name="MECH_BSA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
 <part name="FRAME1" library="jonnew" deviceset="FRAME_D_L" device=""/>
 <part name="U$1" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
 </parts>
@@ -2904,24 +2904,24 @@ by exp-lbrs.ulp</description>
 <instance part="P+20" gate="VCC" x="566.42" y="363.22"/>
 <instance part="GND7" gate="1" x="464.82" y="393.7"/>
 <instance part="GND9" gate="1" x="444.5" y="492.76"/>
-<instance part="ATHRU_E0B" gate="G$1" x="744.22" y="147.32" rot="R270"/>
-<instance part="ATHRU_E0T" gate="G$1" x="744.22" y="157.48" rot="MR90"/>
-<instance part="MECH_S0T" gate="G$1" x="111.76" y="35.56" rot="MR90"/>
-<instance part="MECH_N0T" gate="G$1" x="132.08" y="35.56" rot="MR90"/>
-<instance part="ATHRU_W0B" gate="G$1" x="744.22" y="353.06" rot="R270"/>
-<instance part="ATHRU_W0T" gate="G$1" x="744.22" y="363.22" rot="MR90"/>
-<instance part="AIN_N0B" gate="G$1" x="157.48" y="487.68" rot="MR270"/>
-<instance part="AIN_S0B" gate="G$1" x="464.82" y="487.68" rot="MR270"/>
+<instance part="ATHRU_BEB" gate="G$1" x="744.22" y="147.32" rot="R270"/>
+<instance part="ATHRU_TEB" gate="G$1" x="744.22" y="157.48" rot="MR90"/>
+<instance part="MECH_TSB" gate="G$1" x="111.76" y="35.56" rot="MR90"/>
+<instance part="MECH_TNB" gate="G$1" x="132.08" y="35.56" rot="MR90"/>
+<instance part="ATHRU_BWB" gate="G$1" x="744.22" y="353.06" rot="R270"/>
+<instance part="ATHRU_TWB" gate="G$1" x="744.22" y="363.22" rot="MR90"/>
+<instance part="AIN_BNB" gate="G$1" x="157.48" y="487.68" rot="MR270"/>
+<instance part="AIN_BSB" gate="G$1" x="464.82" y="487.68" rot="MR270"/>
 <instance part="R3" gate="R" x="176.53" y="231.14" rot="R90"/>
 <instance part="R1" gate="R" x="166.37" y="205.74" rot="R90"/>
 <instance part="R2" gate="R" x="171.45" y="218.44" rot="R90"/>
 <instance part="GND35" gate="1" x="185.42" y="162.56"/>
 <instance part="GND37" gate="1" x="172.72" y="162.56"/>
-<instance part="DTHRU_N1T" gate="G$1" x="744.22" y="477.52" rot="MR90"/>
-<instance part="DTHRU_N1B" gate="G$1" x="744.22" y="513.08" rot="R270"/>
-<instance part="MECH_S1T" gate="G$1" x="152.4" y="45.72" rot="MR90"/>
-<instance part="MECH_W1_T" gate="G$1" x="172.72" y="45.72" rot="MR90"/>
-<instance part="DIO_E1_T" gate="G$1" x="177.8" y="177.8" rot="MR0"/>
+<instance part="DTHRU_TNA" gate="G$1" x="744.22" y="477.52" rot="MR90"/>
+<instance part="DTHRU_BNA" gate="G$1" x="744.22" y="513.08" rot="R270"/>
+<instance part="MECH_TSA" gate="G$1" x="152.4" y="45.72" rot="MR90"/>
+<instance part="MECH_TWA" gate="G$1" x="172.72" y="45.72" rot="MR90"/>
+<instance part="DIO_TEA" gate="G$1" x="177.8" y="177.8" rot="MR0"/>
 <instance part="P+1" gate="VCC" x="403.86" y="332.74"/>
 <instance part="P+3" gate="VCC" x="492.76" y="332.74"/>
 <instance part="PLT" gate="A" x="381" y="45.72"/>
@@ -2951,8 +2951,8 @@ by exp-lbrs.ulp</description>
 <instance part="GND28" gate="1" x="347.98" y="271.78"/>
 <instance part="VDD12" gate="VCC" x="317.5" y="345.44"/>
 <instance part="GND30" gate="1" x="287.02" y="271.78"/>
-<instance part="MECH_W1B" gate="G$1" x="193.04" y="48.26" rot="R270"/>
-<instance part="MECH_S1B" gate="G$1" x="213.36" y="48.26" rot="R270"/>
+<instance part="MECH_BWA" gate="G$1" x="193.04" y="48.26" rot="R270"/>
+<instance part="MECH_BSA" gate="G$1" x="213.36" y="48.26" rot="R270"/>
 <instance part="FRAME1" gate="G$1" x="431.8" y="0"/>
 <instance part="U$1" gate="G$1" x="756.92" y="0"/>
 </instances>
@@ -3032,8 +3032,8 @@ by exp-lbrs.ulp</description>
 <wire x1="137.16" y1="497.84" x2="142.24" y2="497.84" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="497.84" x2="142.24" y2="487.68" width="0.1524" layer="91"/>
 <junction x="142.24" y="487.68"/>
-<pinref part="AIN_N0B" gate="G$1" pin="69"/>
-<pinref part="AIN_N0B" gate="G$1" pin="70"/>
+<pinref part="AIN_BNB" gate="G$1" pin="69"/>
+<pinref part="AIN_BNB" gate="G$1" pin="70"/>
 </segment>
 <segment>
 <wire x1="165.1" y1="403.86" x2="167.64" y2="403.86" width="0.1524" layer="91"/>
@@ -3043,8 +3043,8 @@ by exp-lbrs.ulp</description>
 <junction x="167.64" y="401.32"/>
 <pinref part="GND15" gate="1" pin="GND"/>
 <wire x1="167.64" y1="396.24" x2="157.48" y2="396.24" width="0.1524" layer="91"/>
-<pinref part="AIN_N0B" gate="G$1" pin="34"/>
-<pinref part="AIN_N0B" gate="G$1" pin="35"/>
+<pinref part="AIN_BNB" gate="G$1" pin="34"/>
+<pinref part="AIN_BNB" gate="G$1" pin="35"/>
 </segment>
 <segment>
 <pinref part="GND9" gate="1" pin="GND"/>
@@ -3055,8 +3055,8 @@ by exp-lbrs.ulp</description>
 <wire x1="444.5" y1="497.84" x2="449.58" y2="497.84" width="0.1524" layer="91"/>
 <wire x1="449.58" y1="497.84" x2="449.58" y2="487.68" width="0.1524" layer="91"/>
 <junction x="449.58" y="487.68"/>
-<pinref part="AIN_S0B" gate="G$1" pin="69"/>
-<pinref part="AIN_S0B" gate="G$1" pin="70"/>
+<pinref part="AIN_BSB" gate="G$1" pin="69"/>
+<pinref part="AIN_BSB" gate="G$1" pin="70"/>
 </segment>
 <segment>
 <wire x1="472.44" y1="403.86" x2="474.98" y2="403.86" width="0.1524" layer="91"/>
@@ -3066,8 +3066,8 @@ by exp-lbrs.ulp</description>
 <junction x="474.98" y="401.32"/>
 <pinref part="GND7" gate="1" pin="GND"/>
 <wire x1="474.98" y1="396.24" x2="464.82" y2="396.24" width="0.1524" layer="91"/>
-<pinref part="AIN_S0B" gate="G$1" pin="34"/>
-<pinref part="AIN_S0B" gate="G$1" pin="35"/>
+<pinref part="AIN_BSB" gate="G$1" pin="34"/>
+<pinref part="AIN_BSB" gate="G$1" pin="35"/>
 </segment>
 <segment>
 <wire x1="185.42" y1="170.18" x2="185.42" y2="165.1" width="0.1524" layer="91"/>
@@ -3077,19 +3077,19 @@ by exp-lbrs.ulp</description>
 <junction x="185.42" y="165.1"/>
 <wire x1="187.96" y1="170.18" x2="187.96" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="165.1" x2="185.42" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="1"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="2"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="3"/>
+<pinref part="DIO_TEA" gate="G$1" pin="1"/>
+<pinref part="DIO_TEA" gate="G$1" pin="2"/>
+<pinref part="DIO_TEA" gate="G$1" pin="3"/>
 </segment>
 <segment>
 <pinref part="GND37" gate="1" pin="GND"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="7"/>
+<pinref part="DIO_TEA" gate="G$1" pin="7"/>
 <junction x="172.72" y="165.1"/>
 <wire x1="172.72" y1="170.18" x2="172.72" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="165.1" x2="175.26" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="6"/>
+<pinref part="DIO_TEA" gate="G$1" pin="6"/>
 <wire x1="175.26" y1="170.18" x2="175.26" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="5"/>
+<pinref part="DIO_TEA" gate="G$1" pin="5"/>
 <wire x1="175.26" y1="165.1" x2="177.8" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="165.1" x2="177.8" y2="170.18" width="0.1524" layer="91"/>
 <junction x="175.26" y="165.1"/>
@@ -3275,10 +3275,10 @@ by exp-lbrs.ulp</description>
 <wire x1="157.48" y1="175.26" x2="157.48" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="167.64" x2="165.1" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="167.64" x2="165.1" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="10"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="8"/>
+<pinref part="DIO_TEA" gate="G$1" pin="10"/>
+<pinref part="DIO_TEA" gate="G$1" pin="8"/>
 <wire x1="170.18" y1="167.64" x2="170.18" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="9"/>
+<pinref part="DIO_TEA" gate="G$1" pin="9"/>
 <wire x1="167.64" y1="167.64" x2="167.64" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="170.18" y1="167.64" x2="167.64" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="167.64" x2="165.1" y2="167.64" width="0.1524" layer="91"/>
@@ -3317,7 +3317,7 @@ by exp-lbrs.ulp</description>
 <label x="472.44" y="322.58" size="1.778" layer="95" rot="R90"/>
 <wire x1="472.44" y1="259.08" x2="472.44" y2="335.28" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="!CS!-"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="11"/>
+<pinref part="DIO_TEA" gate="G$1" pin="11"/>
 <label x="165.1" y="190.5" size="1.778" layer="95" rot="R90"/>
 <label x="165.1" y="320.04" size="1.778" layer="95" rot="R90"/>
 </segment>
@@ -3337,7 +3337,7 @@ by exp-lbrs.ulp</description>
 <wire x1="168.91" y1="210.82" x2="168.91" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="168.91" y1="200.66" x2="167.64" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="200.66" x2="167.64" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="12"/>
+<pinref part="DIO_TEA" gate="G$1" pin="12"/>
 <label x="167.64" y="190.5" size="1.778" layer="95" rot="R90"/>
 <wire x1="167.64" y1="256.54" x2="167.64" y2="210.82" width="0.1524" layer="91"/>
 <junction x="167.64" y="256.54"/>
@@ -3361,7 +3361,7 @@ by exp-lbrs.ulp</description>
 <label x="477.52" y="322.58" size="1.778" layer="95" rot="R90"/>
 <wire x1="477.52" y1="254" x2="477.52" y2="335.28" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="SCLK-"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="13"/>
+<pinref part="DIO_TEA" gate="G$1" pin="13"/>
 <label x="170.18" y="190.5" size="1.778" layer="95" rot="R90"/>
 <label x="170.18" y="320.04" size="1.778" layer="95" rot="R90"/>
 </segment>
@@ -3383,7 +3383,7 @@ by exp-lbrs.ulp</description>
 <label x="480.06" y="322.58" size="1.778" layer="95" rot="R90"/>
 <wire x1="480.06" y1="251.46" x2="480.06" y2="335.28" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="SCLK+"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="14"/>
+<pinref part="DIO_TEA" gate="G$1" pin="14"/>
 <label x="172.72" y="190.5" size="1.778" layer="95" rot="R90"/>
 <label x="172.72" y="320.04" size="1.778" layer="95" rot="R90"/>
 </segment>
@@ -3405,7 +3405,7 @@ by exp-lbrs.ulp</description>
 <label x="482.6" y="322.58" size="1.778" layer="95" rot="R90"/>
 <wire x1="482.6" y1="248.92" x2="482.6" y2="335.28" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="MOSI-"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="15"/>
+<pinref part="DIO_TEA" gate="G$1" pin="15"/>
 <label x="175.26" y="190.5" size="1.778" layer="95" rot="R90"/>
 <label x="175.26" y="320.04" size="1.778" layer="95" rot="R90"/>
 </segment>
@@ -3427,7 +3427,7 @@ by exp-lbrs.ulp</description>
 <label x="485.14" y="322.58" size="1.778" layer="95" rot="R90"/>
 <wire x1="485.14" y1="246.38" x2="485.14" y2="335.28" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="MOSI+"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="16"/>
+<pinref part="DIO_TEA" gate="G$1" pin="16"/>
 <label x="177.8" y="190.5" size="1.778" layer="95" rot="R90"/>
 <label x="177.8" y="320.04" size="1.778" layer="95" rot="R90"/>
 </segment>
@@ -3480,7 +3480,7 @@ by exp-lbrs.ulp</description>
 <wire x1="137.16" y1="396.24" x2="137.16" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="406.4" x2="149.86" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="403.86" x2="139.7" y2="406.4" width="0.1524" layer="91"/>
-<pinref part="AIN_N0B" gate="G$1" pin="38"/>
+<pinref part="AIN_BNB" gate="G$1" pin="38"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -3491,7 +3491,7 @@ by exp-lbrs.ulp</description>
 <wire x1="134.62" y1="396.24" x2="134.62" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="408.94" x2="149.86" y2="408.94" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="403.86" x2="139.7" y2="408.94" width="0.1524" layer="91"/>
-<pinref part="AIN_N0B" gate="G$1" pin="39"/>
+<pinref part="AIN_BNB" gate="G$1" pin="39"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -3502,7 +3502,7 @@ by exp-lbrs.ulp</description>
 <wire x1="132.08" y1="396.24" x2="132.08" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="411.48" x2="149.86" y2="411.48" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="403.86" x2="139.7" y2="411.48" width="0.1524" layer="91"/>
-<pinref part="AIN_N0B" gate="G$1" pin="40"/>
+<pinref part="AIN_BNB" gate="G$1" pin="40"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -3513,7 +3513,7 @@ by exp-lbrs.ulp</description>
 <wire x1="129.54" y1="396.24" x2="129.54" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="414.02" x2="149.86" y2="414.02" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="403.86" x2="139.7" y2="414.02" width="0.1524" layer="91"/>
-<pinref part="AIN_N0B" gate="G$1" pin="41"/>
+<pinref part="AIN_BNB" gate="G$1" pin="41"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -3524,7 +3524,7 @@ by exp-lbrs.ulp</description>
 <wire x1="139.7" y1="416.56" x2="149.86" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="127" y1="403.86" x2="139.7" y2="416.56" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN26"/>
-<pinref part="AIN_N0B" gate="G$1" pin="42"/>
+<pinref part="AIN_BNB" gate="G$1" pin="42"/>
 </segment>
 </net>
 <net name="N$70" class="0">
@@ -3535,7 +3535,7 @@ by exp-lbrs.ulp</description>
 <wire x1="124.46" y1="396.24" x2="124.46" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="419.1" x2="124.46" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN25"/>
-<pinref part="AIN_N0B" gate="G$1" pin="43"/>
+<pinref part="AIN_BNB" gate="G$1" pin="43"/>
 </segment>
 </net>
 <net name="N$71" class="0">
@@ -3546,7 +3546,7 @@ by exp-lbrs.ulp</description>
 <wire x1="121.92" y1="396.24" x2="121.92" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="421.64" x2="121.92" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN24"/>
-<pinref part="AIN_N0B" gate="G$1" pin="44"/>
+<pinref part="AIN_BNB" gate="G$1" pin="44"/>
 </segment>
 </net>
 <net name="N$72" class="0">
@@ -3557,7 +3557,7 @@ by exp-lbrs.ulp</description>
 <wire x1="119.38" y1="396.24" x2="119.38" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="424.18" x2="119.38" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN23"/>
-<pinref part="AIN_N0B" gate="G$1" pin="45"/>
+<pinref part="AIN_BNB" gate="G$1" pin="45"/>
 </segment>
 </net>
 <net name="N$73" class="0">
@@ -3568,7 +3568,7 @@ by exp-lbrs.ulp</description>
 <wire x1="116.84" y1="396.24" x2="116.84" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="426.72" x2="116.84" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN22"/>
-<pinref part="AIN_N0B" gate="G$1" pin="46"/>
+<pinref part="AIN_BNB" gate="G$1" pin="46"/>
 </segment>
 </net>
 <net name="N$137" class="0">
@@ -3579,7 +3579,7 @@ by exp-lbrs.ulp</description>
 <wire x1="114.3" y1="396.24" x2="114.3" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="429.26" x2="114.3" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN21"/>
-<pinref part="AIN_N0B" gate="G$1" pin="47"/>
+<pinref part="AIN_BNB" gate="G$1" pin="47"/>
 </segment>
 </net>
 <net name="N$138" class="0">
@@ -3590,7 +3590,7 @@ by exp-lbrs.ulp</description>
 <wire x1="111.76" y1="396.24" x2="111.76" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="431.8" x2="111.76" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN20"/>
-<pinref part="AIN_N0B" gate="G$1" pin="48"/>
+<pinref part="AIN_BNB" gate="G$1" pin="48"/>
 </segment>
 </net>
 <net name="N$139" class="0">
@@ -3601,7 +3601,7 @@ by exp-lbrs.ulp</description>
 <wire x1="109.22" y1="396.24" x2="109.22" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="434.34" x2="109.22" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN19"/>
-<pinref part="AIN_N0B" gate="G$1" pin="49"/>
+<pinref part="AIN_BNB" gate="G$1" pin="49"/>
 </segment>
 </net>
 <net name="N$140" class="0">
@@ -3612,7 +3612,7 @@ by exp-lbrs.ulp</description>
 <wire x1="106.68" y1="396.24" x2="106.68" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="436.88" x2="106.68" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN18"/>
-<pinref part="AIN_N0B" gate="G$1" pin="50"/>
+<pinref part="AIN_BNB" gate="G$1" pin="50"/>
 </segment>
 </net>
 <net name="N$141" class="0">
@@ -3623,7 +3623,7 @@ by exp-lbrs.ulp</description>
 <wire x1="104.14" y1="396.24" x2="104.14" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="439.42" x2="104.14" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN17"/>
-<pinref part="AIN_N0B" gate="G$1" pin="51"/>
+<pinref part="AIN_BNB" gate="G$1" pin="51"/>
 </segment>
 </net>
 <net name="N$142" class="0">
@@ -3634,7 +3634,7 @@ by exp-lbrs.ulp</description>
 <wire x1="101.6" y1="396.24" x2="101.6" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="441.96" x2="101.6" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN16"/>
-<pinref part="AIN_N0B" gate="G$1" pin="52"/>
+<pinref part="AIN_BNB" gate="G$1" pin="52"/>
 </segment>
 </net>
 <net name="N$143" class="0">
@@ -3645,7 +3645,7 @@ by exp-lbrs.ulp</description>
 <wire x1="99.06" y1="396.24" x2="99.06" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="444.5" x2="99.06" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN15"/>
-<pinref part="AIN_N0B" gate="G$1" pin="53"/>
+<pinref part="AIN_BNB" gate="G$1" pin="53"/>
 </segment>
 </net>
 <net name="N$144" class="0">
@@ -3656,7 +3656,7 @@ by exp-lbrs.ulp</description>
 <wire x1="96.52" y1="396.24" x2="96.52" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="447.04" x2="96.52" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN14"/>
-<pinref part="AIN_N0B" gate="G$1" pin="54"/>
+<pinref part="AIN_BNB" gate="G$1" pin="54"/>
 </segment>
 </net>
 <net name="N$145" class="0">
@@ -3667,7 +3667,7 @@ by exp-lbrs.ulp</description>
 <wire x1="93.98" y1="396.24" x2="93.98" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="449.58" x2="93.98" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN13"/>
-<pinref part="AIN_N0B" gate="G$1" pin="55"/>
+<pinref part="AIN_BNB" gate="G$1" pin="55"/>
 </segment>
 </net>
 <net name="N$146" class="0">
@@ -3678,7 +3678,7 @@ by exp-lbrs.ulp</description>
 <wire x1="91.44" y1="396.24" x2="91.44" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="452.12" x2="91.44" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN12"/>
-<pinref part="AIN_N0B" gate="G$1" pin="56"/>
+<pinref part="AIN_BNB" gate="G$1" pin="56"/>
 </segment>
 </net>
 <net name="N$147" class="0">
@@ -3689,7 +3689,7 @@ by exp-lbrs.ulp</description>
 <wire x1="88.9" y1="396.24" x2="88.9" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="454.66" x2="88.9" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN11"/>
-<pinref part="AIN_N0B" gate="G$1" pin="57"/>
+<pinref part="AIN_BNB" gate="G$1" pin="57"/>
 </segment>
 </net>
 <net name="N$148" class="0">
@@ -3700,7 +3700,7 @@ by exp-lbrs.ulp</description>
 <wire x1="86.36" y1="396.24" x2="86.36" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="457.2" x2="86.36" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN10"/>
-<pinref part="AIN_N0B" gate="G$1" pin="58"/>
+<pinref part="AIN_BNB" gate="G$1" pin="58"/>
 </segment>
 </net>
 <net name="N$149" class="0">
@@ -3711,7 +3711,7 @@ by exp-lbrs.ulp</description>
 <wire x1="83.82" y1="396.24" x2="83.82" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="459.74" x2="83.82" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN9"/>
-<pinref part="AIN_N0B" gate="G$1" pin="59"/>
+<pinref part="AIN_BNB" gate="G$1" pin="59"/>
 </segment>
 </net>
 <net name="N$150" class="0">
@@ -3722,7 +3722,7 @@ by exp-lbrs.ulp</description>
 <wire x1="81.28" y1="396.24" x2="81.28" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="462.28" x2="81.28" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN8"/>
-<pinref part="AIN_N0B" gate="G$1" pin="60"/>
+<pinref part="AIN_BNB" gate="G$1" pin="60"/>
 </segment>
 </net>
 <net name="N$151" class="0">
@@ -3733,7 +3733,7 @@ by exp-lbrs.ulp</description>
 <wire x1="78.74" y1="396.24" x2="78.74" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="464.82" x2="78.74" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN7"/>
-<pinref part="AIN_N0B" gate="G$1" pin="61"/>
+<pinref part="AIN_BNB" gate="G$1" pin="61"/>
 </segment>
 </net>
 <net name="N$152" class="0">
@@ -3744,7 +3744,7 @@ by exp-lbrs.ulp</description>
 <wire x1="76.2" y1="396.24" x2="76.2" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="467.36" x2="76.2" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN6"/>
-<pinref part="AIN_N0B" gate="G$1" pin="62"/>
+<pinref part="AIN_BNB" gate="G$1" pin="62"/>
 </segment>
 </net>
 <net name="N$153" class="0">
@@ -3755,7 +3755,7 @@ by exp-lbrs.ulp</description>
 <wire x1="73.66" y1="396.24" x2="73.66" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="469.9" x2="73.66" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN5"/>
-<pinref part="AIN_N0B" gate="G$1" pin="63"/>
+<pinref part="AIN_BNB" gate="G$1" pin="63"/>
 </segment>
 </net>
 <net name="N$154" class="0">
@@ -3766,7 +3766,7 @@ by exp-lbrs.ulp</description>
 <wire x1="71.12" y1="396.24" x2="71.12" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="472.44" x2="71.12" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN4"/>
-<pinref part="AIN_N0B" gate="G$1" pin="64"/>
+<pinref part="AIN_BNB" gate="G$1" pin="64"/>
 </segment>
 </net>
 <net name="N$155" class="0">
@@ -3777,7 +3777,7 @@ by exp-lbrs.ulp</description>
 <wire x1="68.58" y1="396.24" x2="68.58" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="474.98" x2="68.58" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN3"/>
-<pinref part="AIN_N0B" gate="G$1" pin="65"/>
+<pinref part="AIN_BNB" gate="G$1" pin="65"/>
 </segment>
 </net>
 <net name="N$156" class="0">
@@ -3788,7 +3788,7 @@ by exp-lbrs.ulp</description>
 <wire x1="66.04" y1="396.24" x2="66.04" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="477.52" x2="66.04" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN2"/>
-<pinref part="AIN_N0B" gate="G$1" pin="66"/>
+<pinref part="AIN_BNB" gate="G$1" pin="66"/>
 </segment>
 </net>
 <net name="N$451" class="0">
@@ -3799,7 +3799,7 @@ by exp-lbrs.ulp</description>
 <wire x1="63.5" y1="396.24" x2="63.5" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="480.06" x2="63.5" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN1"/>
-<pinref part="AIN_N0B" gate="G$1" pin="67"/>
+<pinref part="AIN_BNB" gate="G$1" pin="67"/>
 </segment>
 </net>
 <net name="N$450" class="0">
@@ -3810,7 +3810,7 @@ by exp-lbrs.ulp</description>
 <wire x1="60.96" y1="396.24" x2="60.96" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="482.6" x2="60.96" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN0"/>
-<pinref part="AIN_N0B" gate="G$1" pin="68"/>
+<pinref part="AIN_BNB" gate="G$1" pin="68"/>
 </segment>
 </net>
 <net name="N$162" class="0">
@@ -3820,7 +3820,7 @@ by exp-lbrs.ulp</description>
 <wire x1="154.94" y1="375.92" x2="154.94" y2="381" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="381" x2="139.7" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="396.24" x2="139.7" y2="403.86" width="0.1524" layer="91"/>
-<pinref part="AIN_N0B" gate="G$1" pin="37"/>
+<pinref part="AIN_BNB" gate="G$1" pin="37"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -3831,7 +3831,7 @@ by exp-lbrs.ulp</description>
 <wire x1="175.26" y1="408.94" x2="165.1" y2="408.94" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="406.4" x2="175.26" y2="408.94" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN33"/>
-<pinref part="AIN_N0B" gate="G$1" pin="32"/>
+<pinref part="AIN_BNB" gate="G$1" pin="32"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -3842,7 +3842,7 @@ by exp-lbrs.ulp</description>
 <wire x1="175.26" y1="411.48" x2="165.1" y2="411.48" width="0.1524" layer="91"/>
 <wire x1="180.34" y1="406.4" x2="175.26" y2="411.48" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN34"/>
-<pinref part="AIN_N0B" gate="G$1" pin="31"/>
+<pinref part="AIN_BNB" gate="G$1" pin="31"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -3853,7 +3853,7 @@ by exp-lbrs.ulp</description>
 <wire x1="175.26" y1="414.02" x2="165.1" y2="414.02" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="406.4" x2="175.26" y2="414.02" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN35"/>
-<pinref part="AIN_N0B" gate="G$1" pin="30"/>
+<pinref part="AIN_BNB" gate="G$1" pin="30"/>
 </segment>
 </net>
 <net name="N$10" class="0">
@@ -3864,7 +3864,7 @@ by exp-lbrs.ulp</description>
 <wire x1="175.26" y1="416.56" x2="165.1" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="406.4" x2="175.26" y2="416.56" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN36"/>
-<pinref part="AIN_N0B" gate="G$1" pin="29"/>
+<pinref part="AIN_BNB" gate="G$1" pin="29"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -3875,7 +3875,7 @@ by exp-lbrs.ulp</description>
 <wire x1="175.26" y1="419.1" x2="165.1" y2="419.1" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="406.4" x2="175.26" y2="419.1" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN37"/>
-<pinref part="AIN_N0B" gate="G$1" pin="28"/>
+<pinref part="AIN_BNB" gate="G$1" pin="28"/>
 </segment>
 </net>
 <net name="N$13" class="0">
@@ -3886,7 +3886,7 @@ by exp-lbrs.ulp</description>
 <wire x1="190.5" y1="398.78" x2="190.5" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="421.64" x2="190.5" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN38"/>
-<pinref part="AIN_N0B" gate="G$1" pin="27"/>
+<pinref part="AIN_BNB" gate="G$1" pin="27"/>
 </segment>
 </net>
 <net name="N$14" class="0">
@@ -3897,7 +3897,7 @@ by exp-lbrs.ulp</description>
 <wire x1="193.04" y1="398.78" x2="193.04" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="424.18" x2="193.04" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN39"/>
-<pinref part="AIN_N0B" gate="G$1" pin="26"/>
+<pinref part="AIN_BNB" gate="G$1" pin="26"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -3908,7 +3908,7 @@ by exp-lbrs.ulp</description>
 <wire x1="195.58" y1="398.78" x2="195.58" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="426.72" x2="195.58" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN40"/>
-<pinref part="AIN_N0B" gate="G$1" pin="25"/>
+<pinref part="AIN_BNB" gate="G$1" pin="25"/>
 </segment>
 </net>
 <net name="N$16" class="0">
@@ -3919,7 +3919,7 @@ by exp-lbrs.ulp</description>
 <wire x1="198.12" y1="398.78" x2="198.12" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="429.26" x2="198.12" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN41"/>
-<pinref part="AIN_N0B" gate="G$1" pin="24"/>
+<pinref part="AIN_BNB" gate="G$1" pin="24"/>
 </segment>
 </net>
 <net name="N$17" class="0">
@@ -3930,7 +3930,7 @@ by exp-lbrs.ulp</description>
 <wire x1="200.66" y1="398.78" x2="200.66" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="431.8" x2="200.66" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN42"/>
-<pinref part="AIN_N0B" gate="G$1" pin="23"/>
+<pinref part="AIN_BNB" gate="G$1" pin="23"/>
 </segment>
 </net>
 <net name="N$18" class="0">
@@ -3941,7 +3941,7 @@ by exp-lbrs.ulp</description>
 <wire x1="203.2" y1="398.78" x2="203.2" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="434.34" x2="203.2" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN43"/>
-<pinref part="AIN_N0B" gate="G$1" pin="22"/>
+<pinref part="AIN_BNB" gate="G$1" pin="22"/>
 </segment>
 </net>
 <net name="N$19" class="0">
@@ -3952,7 +3952,7 @@ by exp-lbrs.ulp</description>
 <wire x1="205.74" y1="398.78" x2="205.74" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="436.88" x2="205.74" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN44"/>
-<pinref part="AIN_N0B" gate="G$1" pin="21"/>
+<pinref part="AIN_BNB" gate="G$1" pin="21"/>
 </segment>
 </net>
 <net name="N$20" class="0">
@@ -3963,7 +3963,7 @@ by exp-lbrs.ulp</description>
 <wire x1="208.28" y1="398.78" x2="208.28" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="439.42" x2="208.28" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN45"/>
-<pinref part="AIN_N0B" gate="G$1" pin="20"/>
+<pinref part="AIN_BNB" gate="G$1" pin="20"/>
 </segment>
 </net>
 <net name="N$21" class="0">
@@ -3974,7 +3974,7 @@ by exp-lbrs.ulp</description>
 <wire x1="210.82" y1="398.78" x2="210.82" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="441.96" x2="210.82" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN46"/>
-<pinref part="AIN_N0B" gate="G$1" pin="19"/>
+<pinref part="AIN_BNB" gate="G$1" pin="19"/>
 </segment>
 </net>
 <net name="N$22" class="0">
@@ -3985,7 +3985,7 @@ by exp-lbrs.ulp</description>
 <wire x1="213.36" y1="398.78" x2="213.36" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="444.5" x2="213.36" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN47"/>
-<pinref part="AIN_N0B" gate="G$1" pin="18"/>
+<pinref part="AIN_BNB" gate="G$1" pin="18"/>
 </segment>
 </net>
 <net name="N$23" class="0">
@@ -3996,7 +3996,7 @@ by exp-lbrs.ulp</description>
 <wire x1="215.9" y1="398.78" x2="215.9" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="447.04" x2="215.9" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN48"/>
-<pinref part="AIN_N0B" gate="G$1" pin="17"/>
+<pinref part="AIN_BNB" gate="G$1" pin="17"/>
 </segment>
 </net>
 <net name="N$24" class="0">
@@ -4007,7 +4007,7 @@ by exp-lbrs.ulp</description>
 <wire x1="218.44" y1="398.78" x2="218.44" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="449.58" x2="218.44" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN49"/>
-<pinref part="AIN_N0B" gate="G$1" pin="16"/>
+<pinref part="AIN_BNB" gate="G$1" pin="16"/>
 </segment>
 </net>
 <net name="N$25" class="0">
@@ -4018,7 +4018,7 @@ by exp-lbrs.ulp</description>
 <wire x1="220.98" y1="398.78" x2="220.98" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="452.12" x2="220.98" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN50"/>
-<pinref part="AIN_N0B" gate="G$1" pin="15"/>
+<pinref part="AIN_BNB" gate="G$1" pin="15"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -4029,7 +4029,7 @@ by exp-lbrs.ulp</description>
 <wire x1="223.52" y1="398.78" x2="223.52" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="454.66" x2="223.52" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN51"/>
-<pinref part="AIN_N0B" gate="G$1" pin="14"/>
+<pinref part="AIN_BNB" gate="G$1" pin="14"/>
 </segment>
 </net>
 <net name="N$27" class="0">
@@ -4040,7 +4040,7 @@ by exp-lbrs.ulp</description>
 <wire x1="226.06" y1="398.78" x2="226.06" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="457.2" x2="226.06" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN52"/>
-<pinref part="AIN_N0B" gate="G$1" pin="13"/>
+<pinref part="AIN_BNB" gate="G$1" pin="13"/>
 </segment>
 </net>
 <net name="N$28" class="0">
@@ -4051,7 +4051,7 @@ by exp-lbrs.ulp</description>
 <wire x1="228.6" y1="398.78" x2="228.6" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="459.74" x2="228.6" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN53"/>
-<pinref part="AIN_N0B" gate="G$1" pin="12"/>
+<pinref part="AIN_BNB" gate="G$1" pin="12"/>
 </segment>
 </net>
 <net name="N$29" class="0">
@@ -4062,7 +4062,7 @@ by exp-lbrs.ulp</description>
 <wire x1="231.14" y1="398.78" x2="231.14" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="462.28" x2="231.14" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN54"/>
-<pinref part="AIN_N0B" gate="G$1" pin="11"/>
+<pinref part="AIN_BNB" gate="G$1" pin="11"/>
 </segment>
 </net>
 <net name="N$30" class="0">
@@ -4073,7 +4073,7 @@ by exp-lbrs.ulp</description>
 <wire x1="233.68" y1="398.78" x2="233.68" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="464.82" x2="233.68" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN55"/>
-<pinref part="AIN_N0B" gate="G$1" pin="10"/>
+<pinref part="AIN_BNB" gate="G$1" pin="10"/>
 </segment>
 </net>
 <net name="N$31" class="0">
@@ -4084,7 +4084,7 @@ by exp-lbrs.ulp</description>
 <wire x1="236.22" y1="398.78" x2="236.22" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="467.36" x2="236.22" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN56"/>
-<pinref part="AIN_N0B" gate="G$1" pin="9"/>
+<pinref part="AIN_BNB" gate="G$1" pin="9"/>
 </segment>
 </net>
 <net name="N$32" class="0">
@@ -4095,7 +4095,7 @@ by exp-lbrs.ulp</description>
 <wire x1="238.76" y1="398.78" x2="238.76" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="469.9" x2="238.76" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN57"/>
-<pinref part="AIN_N0B" gate="G$1" pin="8"/>
+<pinref part="AIN_BNB" gate="G$1" pin="8"/>
 </segment>
 </net>
 <net name="N$33" class="0">
@@ -4106,7 +4106,7 @@ by exp-lbrs.ulp</description>
 <wire x1="241.3" y1="398.78" x2="241.3" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="472.44" x2="241.3" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN58"/>
-<pinref part="AIN_N0B" gate="G$1" pin="7"/>
+<pinref part="AIN_BNB" gate="G$1" pin="7"/>
 </segment>
 </net>
 <net name="N$34" class="0">
@@ -4117,7 +4117,7 @@ by exp-lbrs.ulp</description>
 <wire x1="243.84" y1="398.78" x2="243.84" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="474.98" x2="243.84" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN59"/>
-<pinref part="AIN_N0B" gate="G$1" pin="6"/>
+<pinref part="AIN_BNB" gate="G$1" pin="6"/>
 </segment>
 </net>
 <net name="N$41" class="0">
@@ -4128,7 +4128,7 @@ by exp-lbrs.ulp</description>
 <wire x1="246.38" y1="398.78" x2="246.38" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="477.52" x2="246.38" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN60"/>
-<pinref part="AIN_N0B" gate="G$1" pin="5"/>
+<pinref part="AIN_BNB" gate="G$1" pin="5"/>
 </segment>
 </net>
 <net name="N$43" class="0">
@@ -4139,7 +4139,7 @@ by exp-lbrs.ulp</description>
 <wire x1="248.92" y1="398.78" x2="248.92" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="480.06" x2="248.92" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN61"/>
-<pinref part="AIN_N0B" gate="G$1" pin="4"/>
+<pinref part="AIN_BNB" gate="G$1" pin="4"/>
 </segment>
 </net>
 <net name="N$44" class="0">
@@ -4150,7 +4150,7 @@ by exp-lbrs.ulp</description>
 <wire x1="251.46" y1="398.78" x2="251.46" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="482.6" x2="251.46" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN62"/>
-<pinref part="AIN_N0B" gate="G$1" pin="3"/>
+<pinref part="AIN_BNB" gate="G$1" pin="3"/>
 </segment>
 </net>
 <net name="N$45" class="0">
@@ -4161,7 +4161,7 @@ by exp-lbrs.ulp</description>
 <wire x1="254" y1="398.78" x2="254" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="485.14" x2="254" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN63"/>
-<pinref part="AIN_N0B" gate="G$1" pin="2"/>
+<pinref part="AIN_BNB" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$46" class="0">
@@ -4171,7 +4171,7 @@ by exp-lbrs.ulp</description>
 <wire x1="157.48" y1="381" x2="175.26" y2="398.78" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="398.78" x2="175.26" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_A" gate="A" pin="IN32"/>
-<pinref part="AIN_N0B" gate="G$1" pin="33"/>
+<pinref part="AIN_BNB" gate="G$1" pin="33"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -4182,7 +4182,7 @@ by exp-lbrs.ulp</description>
 <wire x1="447.04" y1="406.4" x2="457.2" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="444.5" y1="403.86" x2="447.04" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN30"/>
-<pinref part="AIN_S0B" gate="G$1" pin="38"/>
+<pinref part="AIN_BSB" gate="G$1" pin="38"/>
 </segment>
 </net>
 <net name="N$35" class="0">
@@ -4193,7 +4193,7 @@ by exp-lbrs.ulp</description>
 <wire x1="447.04" y1="408.94" x2="457.2" y2="408.94" width="0.1524" layer="91"/>
 <wire x1="441.96" y1="403.86" x2="447.04" y2="408.94" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN29"/>
-<pinref part="AIN_S0B" gate="G$1" pin="39"/>
+<pinref part="AIN_BSB" gate="G$1" pin="39"/>
 </segment>
 </net>
 <net name="N$36" class="0">
@@ -4204,7 +4204,7 @@ by exp-lbrs.ulp</description>
 <wire x1="447.04" y1="411.48" x2="457.2" y2="411.48" width="0.1524" layer="91"/>
 <wire x1="439.42" y1="403.86" x2="447.04" y2="411.48" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN28"/>
-<pinref part="AIN_S0B" gate="G$1" pin="40"/>
+<pinref part="AIN_BSB" gate="G$1" pin="40"/>
 </segment>
 </net>
 <net name="N$37" class="0">
@@ -4215,7 +4215,7 @@ by exp-lbrs.ulp</description>
 <wire x1="447.04" y1="414.02" x2="457.2" y2="414.02" width="0.1524" layer="91"/>
 <wire x1="436.88" y1="403.86" x2="447.04" y2="414.02" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN27"/>
-<pinref part="AIN_S0B" gate="G$1" pin="41"/>
+<pinref part="AIN_BSB" gate="G$1" pin="41"/>
 </segment>
 </net>
 <net name="N$38" class="0">
@@ -4226,7 +4226,7 @@ by exp-lbrs.ulp</description>
 <wire x1="447.04" y1="416.56" x2="457.2" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="434.34" y1="403.86" x2="447.04" y2="416.56" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN26"/>
-<pinref part="AIN_S0B" gate="G$1" pin="42"/>
+<pinref part="AIN_BSB" gate="G$1" pin="42"/>
 </segment>
 </net>
 <net name="N$39" class="0">
@@ -4237,7 +4237,7 @@ by exp-lbrs.ulp</description>
 <wire x1="431.8" y1="396.24" x2="431.8" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="419.1" x2="431.8" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN25"/>
-<pinref part="AIN_S0B" gate="G$1" pin="43"/>
+<pinref part="AIN_BSB" gate="G$1" pin="43"/>
 </segment>
 </net>
 <net name="N$40" class="0">
@@ -4248,7 +4248,7 @@ by exp-lbrs.ulp</description>
 <wire x1="429.26" y1="396.24" x2="429.26" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="421.64" x2="429.26" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN24"/>
-<pinref part="AIN_S0B" gate="G$1" pin="44"/>
+<pinref part="AIN_BSB" gate="G$1" pin="44"/>
 </segment>
 </net>
 <net name="N$47" class="0">
@@ -4259,7 +4259,7 @@ by exp-lbrs.ulp</description>
 <wire x1="426.72" y1="396.24" x2="426.72" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="424.18" x2="426.72" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN23"/>
-<pinref part="AIN_S0B" gate="G$1" pin="45"/>
+<pinref part="AIN_BSB" gate="G$1" pin="45"/>
 </segment>
 </net>
 <net name="N$48" class="0">
@@ -4270,7 +4270,7 @@ by exp-lbrs.ulp</description>
 <wire x1="424.18" y1="396.24" x2="424.18" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="426.72" x2="424.18" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN22"/>
-<pinref part="AIN_S0B" gate="G$1" pin="46"/>
+<pinref part="AIN_BSB" gate="G$1" pin="46"/>
 </segment>
 </net>
 <net name="N$49" class="0">
@@ -4281,7 +4281,7 @@ by exp-lbrs.ulp</description>
 <wire x1="421.64" y1="396.24" x2="421.64" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="429.26" x2="421.64" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN21"/>
-<pinref part="AIN_S0B" gate="G$1" pin="47"/>
+<pinref part="AIN_BSB" gate="G$1" pin="47"/>
 </segment>
 </net>
 <net name="N$50" class="0">
@@ -4292,7 +4292,7 @@ by exp-lbrs.ulp</description>
 <wire x1="419.1" y1="396.24" x2="419.1" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="431.8" x2="419.1" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN20"/>
-<pinref part="AIN_S0B" gate="G$1" pin="48"/>
+<pinref part="AIN_BSB" gate="G$1" pin="48"/>
 </segment>
 </net>
 <net name="N$51" class="0">
@@ -4303,7 +4303,7 @@ by exp-lbrs.ulp</description>
 <wire x1="416.56" y1="396.24" x2="416.56" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="434.34" x2="416.56" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN19"/>
-<pinref part="AIN_S0B" gate="G$1" pin="49"/>
+<pinref part="AIN_BSB" gate="G$1" pin="49"/>
 </segment>
 </net>
 <net name="N$52" class="0">
@@ -4314,7 +4314,7 @@ by exp-lbrs.ulp</description>
 <wire x1="414.02" y1="396.24" x2="414.02" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="436.88" x2="414.02" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN18"/>
-<pinref part="AIN_S0B" gate="G$1" pin="50"/>
+<pinref part="AIN_BSB" gate="G$1" pin="50"/>
 </segment>
 </net>
 <net name="N$53" class="0">
@@ -4325,7 +4325,7 @@ by exp-lbrs.ulp</description>
 <wire x1="411.48" y1="396.24" x2="411.48" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="439.42" x2="411.48" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN17"/>
-<pinref part="AIN_S0B" gate="G$1" pin="51"/>
+<pinref part="AIN_BSB" gate="G$1" pin="51"/>
 </segment>
 </net>
 <net name="N$54" class="0">
@@ -4336,7 +4336,7 @@ by exp-lbrs.ulp</description>
 <wire x1="408.94" y1="396.24" x2="408.94" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="441.96" x2="408.94" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN16"/>
-<pinref part="AIN_S0B" gate="G$1" pin="52"/>
+<pinref part="AIN_BSB" gate="G$1" pin="52"/>
 </segment>
 </net>
 <net name="N$55" class="0">
@@ -4347,7 +4347,7 @@ by exp-lbrs.ulp</description>
 <wire x1="406.4" y1="396.24" x2="406.4" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="444.5" x2="406.4" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN15"/>
-<pinref part="AIN_S0B" gate="G$1" pin="53"/>
+<pinref part="AIN_BSB" gate="G$1" pin="53"/>
 </segment>
 </net>
 <net name="N$56" class="0">
@@ -4358,7 +4358,7 @@ by exp-lbrs.ulp</description>
 <wire x1="403.86" y1="396.24" x2="403.86" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="447.04" x2="403.86" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN14"/>
-<pinref part="AIN_S0B" gate="G$1" pin="54"/>
+<pinref part="AIN_BSB" gate="G$1" pin="54"/>
 </segment>
 </net>
 <net name="N$57" class="0">
@@ -4369,7 +4369,7 @@ by exp-lbrs.ulp</description>
 <wire x1="401.32" y1="396.24" x2="401.32" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="449.58" x2="401.32" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN13"/>
-<pinref part="AIN_S0B" gate="G$1" pin="55"/>
+<pinref part="AIN_BSB" gate="G$1" pin="55"/>
 </segment>
 </net>
 <net name="N$58" class="0">
@@ -4380,7 +4380,7 @@ by exp-lbrs.ulp</description>
 <wire x1="398.78" y1="396.24" x2="398.78" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="452.12" x2="398.78" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN12"/>
-<pinref part="AIN_S0B" gate="G$1" pin="56"/>
+<pinref part="AIN_BSB" gate="G$1" pin="56"/>
 </segment>
 </net>
 <net name="N$59" class="0">
@@ -4391,7 +4391,7 @@ by exp-lbrs.ulp</description>
 <wire x1="396.24" y1="396.24" x2="396.24" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="454.66" x2="396.24" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN11"/>
-<pinref part="AIN_S0B" gate="G$1" pin="57"/>
+<pinref part="AIN_BSB" gate="G$1" pin="57"/>
 </segment>
 </net>
 <net name="N$60" class="0">
@@ -4402,7 +4402,7 @@ by exp-lbrs.ulp</description>
 <wire x1="393.7" y1="396.24" x2="393.7" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="457.2" x2="393.7" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN10"/>
-<pinref part="AIN_S0B" gate="G$1" pin="58"/>
+<pinref part="AIN_BSB" gate="G$1" pin="58"/>
 </segment>
 </net>
 <net name="N$61" class="0">
@@ -4413,7 +4413,7 @@ by exp-lbrs.ulp</description>
 <wire x1="391.16" y1="396.24" x2="391.16" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="459.74" x2="391.16" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN9"/>
-<pinref part="AIN_S0B" gate="G$1" pin="59"/>
+<pinref part="AIN_BSB" gate="G$1" pin="59"/>
 </segment>
 </net>
 <net name="N$62" class="0">
@@ -4424,7 +4424,7 @@ by exp-lbrs.ulp</description>
 <wire x1="388.62" y1="396.24" x2="388.62" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="462.28" x2="388.62" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN8"/>
-<pinref part="AIN_S0B" gate="G$1" pin="60"/>
+<pinref part="AIN_BSB" gate="G$1" pin="60"/>
 </segment>
 </net>
 <net name="N$63" class="0">
@@ -4435,7 +4435,7 @@ by exp-lbrs.ulp</description>
 <wire x1="386.08" y1="396.24" x2="386.08" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="464.82" x2="386.08" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN7"/>
-<pinref part="AIN_S0B" gate="G$1" pin="61"/>
+<pinref part="AIN_BSB" gate="G$1" pin="61"/>
 </segment>
 </net>
 <net name="N$64" class="0">
@@ -4446,7 +4446,7 @@ by exp-lbrs.ulp</description>
 <wire x1="383.54" y1="396.24" x2="383.54" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="467.36" x2="383.54" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN6"/>
-<pinref part="AIN_S0B" gate="G$1" pin="62"/>
+<pinref part="AIN_BSB" gate="G$1" pin="62"/>
 </segment>
 </net>
 <net name="N$65" class="0">
@@ -4457,7 +4457,7 @@ by exp-lbrs.ulp</description>
 <wire x1="381" y1="396.24" x2="381" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="469.9" x2="381" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN5"/>
-<pinref part="AIN_S0B" gate="G$1" pin="63"/>
+<pinref part="AIN_BSB" gate="G$1" pin="63"/>
 </segment>
 </net>
 <net name="N$66" class="0">
@@ -4468,7 +4468,7 @@ by exp-lbrs.ulp</description>
 <wire x1="378.46" y1="396.24" x2="378.46" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="472.44" x2="378.46" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN4"/>
-<pinref part="AIN_S0B" gate="G$1" pin="64"/>
+<pinref part="AIN_BSB" gate="G$1" pin="64"/>
 </segment>
 </net>
 <net name="N$67" class="0">
@@ -4479,7 +4479,7 @@ by exp-lbrs.ulp</description>
 <wire x1="375.92" y1="396.24" x2="375.92" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="474.98" x2="375.92" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN3"/>
-<pinref part="AIN_S0B" gate="G$1" pin="65"/>
+<pinref part="AIN_BSB" gate="G$1" pin="65"/>
 </segment>
 </net>
 <net name="N$68" class="0">
@@ -4490,7 +4490,7 @@ by exp-lbrs.ulp</description>
 <wire x1="373.38" y1="396.24" x2="373.38" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="477.52" x2="373.38" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN2"/>
-<pinref part="AIN_S0B" gate="G$1" pin="66"/>
+<pinref part="AIN_BSB" gate="G$1" pin="66"/>
 </segment>
 </net>
 <net name="N$69" class="0">
@@ -4501,7 +4501,7 @@ by exp-lbrs.ulp</description>
 <wire x1="370.84" y1="396.24" x2="370.84" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="480.06" x2="370.84" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN1"/>
-<pinref part="AIN_S0B" gate="G$1" pin="67"/>
+<pinref part="AIN_BSB" gate="G$1" pin="67"/>
 </segment>
 </net>
 <net name="N$74" class="0">
@@ -4512,7 +4512,7 @@ by exp-lbrs.ulp</description>
 <wire x1="368.3" y1="396.24" x2="368.3" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="482.6" x2="368.3" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN0"/>
-<pinref part="AIN_S0B" gate="G$1" pin="68"/>
+<pinref part="AIN_BSB" gate="G$1" pin="68"/>
 </segment>
 </net>
 <net name="N$75" class="0">
@@ -4522,7 +4522,7 @@ by exp-lbrs.ulp</description>
 <wire x1="462.28" y1="381" x2="447.04" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="396.24" x2="447.04" y2="403.86" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN31"/>
-<pinref part="AIN_S0B" gate="G$1" pin="37"/>
+<pinref part="AIN_BSB" gate="G$1" pin="37"/>
 </segment>
 </net>
 <net name="N$76" class="0">
@@ -4533,7 +4533,7 @@ by exp-lbrs.ulp</description>
 <wire x1="482.6" y1="408.94" x2="472.44" y2="408.94" width="0.1524" layer="91"/>
 <wire x1="485.14" y1="406.4" x2="482.6" y2="408.94" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN33"/>
-<pinref part="AIN_S0B" gate="G$1" pin="32"/>
+<pinref part="AIN_BSB" gate="G$1" pin="32"/>
 </segment>
 </net>
 <net name="N$77" class="0">
@@ -4544,7 +4544,7 @@ by exp-lbrs.ulp</description>
 <wire x1="482.6" y1="411.48" x2="472.44" y2="411.48" width="0.1524" layer="91"/>
 <wire x1="487.68" y1="406.4" x2="482.6" y2="411.48" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN34"/>
-<pinref part="AIN_S0B" gate="G$1" pin="31"/>
+<pinref part="AIN_BSB" gate="G$1" pin="31"/>
 </segment>
 </net>
 <net name="N$78" class="0">
@@ -4555,7 +4555,7 @@ by exp-lbrs.ulp</description>
 <wire x1="482.6" y1="414.02" x2="472.44" y2="414.02" width="0.1524" layer="91"/>
 <wire x1="490.22" y1="406.4" x2="482.6" y2="414.02" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN35"/>
-<pinref part="AIN_S0B" gate="G$1" pin="30"/>
+<pinref part="AIN_BSB" gate="G$1" pin="30"/>
 </segment>
 </net>
 <net name="N$79" class="0">
@@ -4566,7 +4566,7 @@ by exp-lbrs.ulp</description>
 <wire x1="482.6" y1="416.56" x2="472.44" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="492.76" y1="406.4" x2="482.6" y2="416.56" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN36"/>
-<pinref part="AIN_S0B" gate="G$1" pin="29"/>
+<pinref part="AIN_BSB" gate="G$1" pin="29"/>
 </segment>
 </net>
 <net name="N$80" class="0">
@@ -4577,7 +4577,7 @@ by exp-lbrs.ulp</description>
 <wire x1="482.6" y1="419.1" x2="472.44" y2="419.1" width="0.1524" layer="91"/>
 <wire x1="495.3" y1="406.4" x2="482.6" y2="419.1" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN37"/>
-<pinref part="AIN_S0B" gate="G$1" pin="28"/>
+<pinref part="AIN_BSB" gate="G$1" pin="28"/>
 </segment>
 </net>
 <net name="N$81" class="0">
@@ -4588,7 +4588,7 @@ by exp-lbrs.ulp</description>
 <wire x1="497.84" y1="398.78" x2="497.84" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="421.64" x2="497.84" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN38"/>
-<pinref part="AIN_S0B" gate="G$1" pin="27"/>
+<pinref part="AIN_BSB" gate="G$1" pin="27"/>
 </segment>
 </net>
 <net name="N$82" class="0">
@@ -4599,7 +4599,7 @@ by exp-lbrs.ulp</description>
 <wire x1="500.38" y1="398.78" x2="500.38" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="424.18" x2="500.38" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN39"/>
-<pinref part="AIN_S0B" gate="G$1" pin="26"/>
+<pinref part="AIN_BSB" gate="G$1" pin="26"/>
 </segment>
 </net>
 <net name="N$83" class="0">
@@ -4610,7 +4610,7 @@ by exp-lbrs.ulp</description>
 <wire x1="502.92" y1="398.78" x2="502.92" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="426.72" x2="502.92" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN40"/>
-<pinref part="AIN_S0B" gate="G$1" pin="25"/>
+<pinref part="AIN_BSB" gate="G$1" pin="25"/>
 </segment>
 </net>
 <net name="N$84" class="0">
@@ -4621,7 +4621,7 @@ by exp-lbrs.ulp</description>
 <wire x1="505.46" y1="398.78" x2="505.46" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="429.26" x2="505.46" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN41"/>
-<pinref part="AIN_S0B" gate="G$1" pin="24"/>
+<pinref part="AIN_BSB" gate="G$1" pin="24"/>
 </segment>
 </net>
 <net name="N$85" class="0">
@@ -4632,7 +4632,7 @@ by exp-lbrs.ulp</description>
 <wire x1="508" y1="398.78" x2="508" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="431.8" x2="508" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN42"/>
-<pinref part="AIN_S0B" gate="G$1" pin="23"/>
+<pinref part="AIN_BSB" gate="G$1" pin="23"/>
 </segment>
 </net>
 <net name="N$86" class="0">
@@ -4643,7 +4643,7 @@ by exp-lbrs.ulp</description>
 <wire x1="510.54" y1="398.78" x2="510.54" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="434.34" x2="510.54" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN43"/>
-<pinref part="AIN_S0B" gate="G$1" pin="22"/>
+<pinref part="AIN_BSB" gate="G$1" pin="22"/>
 </segment>
 </net>
 <net name="N$87" class="0">
@@ -4654,7 +4654,7 @@ by exp-lbrs.ulp</description>
 <wire x1="513.08" y1="398.78" x2="513.08" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="436.88" x2="513.08" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN44"/>
-<pinref part="AIN_S0B" gate="G$1" pin="21"/>
+<pinref part="AIN_BSB" gate="G$1" pin="21"/>
 </segment>
 </net>
 <net name="N$88" class="0">
@@ -4665,7 +4665,7 @@ by exp-lbrs.ulp</description>
 <wire x1="515.62" y1="398.78" x2="515.62" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="439.42" x2="515.62" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN45"/>
-<pinref part="AIN_S0B" gate="G$1" pin="20"/>
+<pinref part="AIN_BSB" gate="G$1" pin="20"/>
 </segment>
 </net>
 <net name="N$89" class="0">
@@ -4676,7 +4676,7 @@ by exp-lbrs.ulp</description>
 <wire x1="518.16" y1="398.78" x2="518.16" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="441.96" x2="518.16" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN46"/>
-<pinref part="AIN_S0B" gate="G$1" pin="19"/>
+<pinref part="AIN_BSB" gate="G$1" pin="19"/>
 </segment>
 </net>
 <net name="N$90" class="0">
@@ -4687,7 +4687,7 @@ by exp-lbrs.ulp</description>
 <wire x1="520.7" y1="398.78" x2="520.7" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="444.5" x2="520.7" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN47"/>
-<pinref part="AIN_S0B" gate="G$1" pin="18"/>
+<pinref part="AIN_BSB" gate="G$1" pin="18"/>
 </segment>
 </net>
 <net name="N$91" class="0">
@@ -4698,7 +4698,7 @@ by exp-lbrs.ulp</description>
 <wire x1="523.24" y1="398.78" x2="523.24" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="447.04" x2="523.24" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN48"/>
-<pinref part="AIN_S0B" gate="G$1" pin="17"/>
+<pinref part="AIN_BSB" gate="G$1" pin="17"/>
 </segment>
 </net>
 <net name="N$92" class="0">
@@ -4709,7 +4709,7 @@ by exp-lbrs.ulp</description>
 <wire x1="525.78" y1="398.78" x2="525.78" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="449.58" x2="525.78" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN49"/>
-<pinref part="AIN_S0B" gate="G$1" pin="16"/>
+<pinref part="AIN_BSB" gate="G$1" pin="16"/>
 </segment>
 </net>
 <net name="N$93" class="0">
@@ -4720,7 +4720,7 @@ by exp-lbrs.ulp</description>
 <wire x1="528.32" y1="398.78" x2="528.32" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="452.12" x2="528.32" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN50"/>
-<pinref part="AIN_S0B" gate="G$1" pin="15"/>
+<pinref part="AIN_BSB" gate="G$1" pin="15"/>
 </segment>
 </net>
 <net name="N$94" class="0">
@@ -4731,7 +4731,7 @@ by exp-lbrs.ulp</description>
 <wire x1="530.86" y1="398.78" x2="530.86" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="454.66" x2="530.86" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN51"/>
-<pinref part="AIN_S0B" gate="G$1" pin="14"/>
+<pinref part="AIN_BSB" gate="G$1" pin="14"/>
 </segment>
 </net>
 <net name="N$95" class="0">
@@ -4742,7 +4742,7 @@ by exp-lbrs.ulp</description>
 <wire x1="533.4" y1="398.78" x2="533.4" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="457.2" x2="533.4" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN52"/>
-<pinref part="AIN_S0B" gate="G$1" pin="13"/>
+<pinref part="AIN_BSB" gate="G$1" pin="13"/>
 </segment>
 </net>
 <net name="N$96" class="0">
@@ -4753,7 +4753,7 @@ by exp-lbrs.ulp</description>
 <wire x1="535.94" y1="398.78" x2="535.94" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="459.74" x2="535.94" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN53"/>
-<pinref part="AIN_S0B" gate="G$1" pin="12"/>
+<pinref part="AIN_BSB" gate="G$1" pin="12"/>
 </segment>
 </net>
 <net name="N$97" class="0">
@@ -4764,7 +4764,7 @@ by exp-lbrs.ulp</description>
 <wire x1="538.48" y1="398.78" x2="538.48" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="462.28" x2="538.48" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN54"/>
-<pinref part="AIN_S0B" gate="G$1" pin="11"/>
+<pinref part="AIN_BSB" gate="G$1" pin="11"/>
 </segment>
 </net>
 <net name="N$98" class="0">
@@ -4775,7 +4775,7 @@ by exp-lbrs.ulp</description>
 <wire x1="541.02" y1="398.78" x2="541.02" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="464.82" x2="541.02" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN55"/>
-<pinref part="AIN_S0B" gate="G$1" pin="10"/>
+<pinref part="AIN_BSB" gate="G$1" pin="10"/>
 </segment>
 </net>
 <net name="N$99" class="0">
@@ -4786,7 +4786,7 @@ by exp-lbrs.ulp</description>
 <wire x1="543.56" y1="398.78" x2="543.56" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="467.36" x2="543.56" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN56"/>
-<pinref part="AIN_S0B" gate="G$1" pin="9"/>
+<pinref part="AIN_BSB" gate="G$1" pin="9"/>
 </segment>
 </net>
 <net name="N$100" class="0">
@@ -4797,7 +4797,7 @@ by exp-lbrs.ulp</description>
 <wire x1="546.1" y1="398.78" x2="546.1" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="469.9" x2="546.1" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN57"/>
-<pinref part="AIN_S0B" gate="G$1" pin="8"/>
+<pinref part="AIN_BSB" gate="G$1" pin="8"/>
 </segment>
 </net>
 <net name="N$101" class="0">
@@ -4808,7 +4808,7 @@ by exp-lbrs.ulp</description>
 <wire x1="548.64" y1="398.78" x2="548.64" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="472.44" x2="548.64" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN58"/>
-<pinref part="AIN_S0B" gate="G$1" pin="7"/>
+<pinref part="AIN_BSB" gate="G$1" pin="7"/>
 </segment>
 </net>
 <net name="N$102" class="0">
@@ -4819,7 +4819,7 @@ by exp-lbrs.ulp</description>
 <wire x1="551.18" y1="398.78" x2="551.18" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="474.98" x2="551.18" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN59"/>
-<pinref part="AIN_S0B" gate="G$1" pin="6"/>
+<pinref part="AIN_BSB" gate="G$1" pin="6"/>
 </segment>
 </net>
 <net name="N$103" class="0">
@@ -4830,7 +4830,7 @@ by exp-lbrs.ulp</description>
 <wire x1="553.72" y1="398.78" x2="553.72" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="477.52" x2="553.72" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN60"/>
-<pinref part="AIN_S0B" gate="G$1" pin="5"/>
+<pinref part="AIN_BSB" gate="G$1" pin="5"/>
 </segment>
 </net>
 <net name="N$104" class="0">
@@ -4841,7 +4841,7 @@ by exp-lbrs.ulp</description>
 <wire x1="556.26" y1="398.78" x2="556.26" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="480.06" x2="556.26" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN61"/>
-<pinref part="AIN_S0B" gate="G$1" pin="4"/>
+<pinref part="AIN_BSB" gate="G$1" pin="4"/>
 </segment>
 </net>
 <net name="N$105" class="0">
@@ -4852,7 +4852,7 @@ by exp-lbrs.ulp</description>
 <wire x1="558.8" y1="398.78" x2="558.8" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="482.6" x2="558.8" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN62"/>
-<pinref part="AIN_S0B" gate="G$1" pin="3"/>
+<pinref part="AIN_BSB" gate="G$1" pin="3"/>
 </segment>
 </net>
 <net name="N$106" class="0">
@@ -4863,7 +4863,7 @@ by exp-lbrs.ulp</description>
 <wire x1="561.34" y1="398.78" x2="561.34" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="485.14" x2="561.34" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN63"/>
-<pinref part="AIN_S0B" gate="G$1" pin="2"/>
+<pinref part="AIN_BSB" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$107" class="0">
@@ -4873,32 +4873,32 @@ by exp-lbrs.ulp</description>
 <wire x1="464.82" y1="381" x2="482.6" y2="398.78" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="398.78" x2="482.6" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="AMP_B" gate="A" pin="IN32"/>
-<pinref part="AIN_S0B" gate="G$1" pin="33"/>
+<pinref part="AIN_BSB" gate="G$1" pin="33"/>
 </segment>
 </net>
 <net name="N$108" class="0">
 <segment>
-<pinref part="ATHRU_E0B" gate="G$1" pin="33"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="33"/>
 <wire x1="650.24" y1="66.04" x2="736.6" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="33"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="33"/>
 <wire x1="650.24" y1="66.04" x2="650.24" y2="238.76" width="0.1524" layer="91"/>
 <wire x1="650.24" y1="238.76" x2="736.6" y2="238.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$109" class="0">
 <segment>
-<pinref part="ATHRU_E0B" gate="G$1" pin="32"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="32"/>
 <wire x1="652.78" y1="68.58" x2="736.6" y2="68.58" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="32"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="32"/>
 <wire x1="652.78" y1="68.58" x2="652.78" y2="236.22" width="0.1524" layer="91"/>
 <wire x1="652.78" y1="236.22" x2="736.6" y2="236.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$110" class="0">
 <segment>
-<pinref part="ATHRU_E0B" gate="G$1" pin="31"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="31"/>
 <wire x1="655.32" y1="71.12" x2="736.6" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="31"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="31"/>
 <wire x1="655.32" y1="71.12" x2="655.32" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="655.32" y1="233.68" x2="736.6" y2="233.68" width="0.1524" layer="91"/>
 </segment>
@@ -4906,8 +4906,8 @@ by exp-lbrs.ulp</description>
 <net name="N$111" class="0">
 <segment>
 <wire x1="657.86" y1="73.66" x2="736.6" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="30"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="30"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="30"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="30"/>
 <wire x1="657.86" y1="73.66" x2="657.86" y2="231.14" width="0.1524" layer="91"/>
 <wire x1="657.86" y1="231.14" x2="736.6" y2="231.14" width="0.1524" layer="91"/>
 </segment>
@@ -4915,8 +4915,8 @@ by exp-lbrs.ulp</description>
 <net name="N$112" class="0">
 <segment>
 <wire x1="660.4" y1="76.2" x2="736.6" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="29"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="29"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="29"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="29"/>
 <wire x1="660.4" y1="76.2" x2="660.4" y2="228.6" width="0.1524" layer="91"/>
 <wire x1="660.4" y1="228.6" x2="736.6" y2="228.6" width="0.1524" layer="91"/>
 </segment>
@@ -4924,8 +4924,8 @@ by exp-lbrs.ulp</description>
 <net name="N$113" class="0">
 <segment>
 <wire x1="662.94" y1="78.74" x2="736.6" y2="78.74" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="28"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="28"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="28"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="28"/>
 <wire x1="662.94" y1="78.74" x2="662.94" y2="226.06" width="0.1524" layer="91"/>
 <wire x1="662.94" y1="226.06" x2="736.6" y2="226.06" width="0.1524" layer="91"/>
 </segment>
@@ -4933,8 +4933,8 @@ by exp-lbrs.ulp</description>
 <net name="N$114" class="0">
 <segment>
 <wire x1="665.48" y1="81.28" x2="736.6" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="27"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="27"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="27"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="27"/>
 <wire x1="665.48" y1="81.28" x2="665.48" y2="223.52" width="0.1524" layer="91"/>
 <wire x1="665.48" y1="223.52" x2="736.6" y2="223.52" width="0.1524" layer="91"/>
 </segment>
@@ -4942,17 +4942,17 @@ by exp-lbrs.ulp</description>
 <net name="N$115" class="0">
 <segment>
 <wire x1="668.02" y1="83.82" x2="736.6" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="26"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="26"/>
 <wire x1="668.02" y1="83.82" x2="668.02" y2="220.98" width="0.1524" layer="91"/>
 <wire x1="668.02" y1="220.98" x2="736.6" y2="220.98" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="26"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="26"/>
 </segment>
 </net>
 <net name="N$116" class="0">
 <segment>
 <wire x1="670.56" y1="86.36" x2="736.6" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="25"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="25"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="25"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="25"/>
 <wire x1="670.56" y1="86.36" x2="670.56" y2="218.44" width="0.1524" layer="91"/>
 <wire x1="670.56" y1="218.44" x2="736.6" y2="218.44" width="0.1524" layer="91"/>
 </segment>
@@ -4960,8 +4960,8 @@ by exp-lbrs.ulp</description>
 <net name="N$117" class="0">
 <segment>
 <wire x1="673.1" y1="88.9" x2="736.6" y2="88.9" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="24"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="24"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="24"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="24"/>
 <wire x1="673.1" y1="88.9" x2="673.1" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="673.1" y1="215.9" x2="736.6" y2="215.9" width="0.1524" layer="91"/>
 </segment>
@@ -4969,8 +4969,8 @@ by exp-lbrs.ulp</description>
 <net name="N$118" class="0">
 <segment>
 <wire x1="675.64" y1="91.44" x2="736.6" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="23"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="23"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="23"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="23"/>
 <wire x1="675.64" y1="91.44" x2="675.64" y2="213.36" width="0.1524" layer="91"/>
 <wire x1="675.64" y1="213.36" x2="736.6" y2="213.36" width="0.1524" layer="91"/>
 </segment>
@@ -4978,17 +4978,17 @@ by exp-lbrs.ulp</description>
 <net name="N$119" class="0">
 <segment>
 <wire x1="678.18" y1="93.98" x2="736.6" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="22"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="22"/>
 <wire x1="678.18" y1="93.98" x2="678.18" y2="210.82" width="0.1524" layer="91"/>
 <wire x1="678.18" y1="210.82" x2="736.6" y2="210.82" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="22"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="22"/>
 </segment>
 </net>
 <net name="N$120" class="0">
 <segment>
 <wire x1="680.72" y1="96.52" x2="736.6" y2="96.52" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="21"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="21"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="21"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="21"/>
 <wire x1="680.72" y1="96.52" x2="680.72" y2="208.28" width="0.1524" layer="91"/>
 <wire x1="680.72" y1="208.28" x2="736.6" y2="208.28" width="0.1524" layer="91"/>
 </segment>
@@ -4996,8 +4996,8 @@ by exp-lbrs.ulp</description>
 <net name="N$121" class="0">
 <segment>
 <wire x1="683.26" y1="99.06" x2="736.6" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="20"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="20"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="20"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="20"/>
 <wire x1="683.26" y1="99.06" x2="683.26" y2="205.74" width="0.1524" layer="91"/>
 <wire x1="683.26" y1="205.74" x2="736.6" y2="205.74" width="0.1524" layer="91"/>
 </segment>
@@ -5005,8 +5005,8 @@ by exp-lbrs.ulp</description>
 <net name="N$122" class="0">
 <segment>
 <wire x1="685.8" y1="101.6" x2="736.6" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="19"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="19"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="19"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="19"/>
 <wire x1="685.8" y1="101.6" x2="685.8" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="685.8" y1="203.2" x2="736.6" y2="203.2" width="0.1524" layer="91"/>
 </segment>
@@ -5014,8 +5014,8 @@ by exp-lbrs.ulp</description>
 <net name="N$123" class="0">
 <segment>
 <wire x1="688.34" y1="104.14" x2="736.6" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="18"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="18"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="18"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="18"/>
 <wire x1="688.34" y1="104.14" x2="688.34" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="688.34" y1="200.66" x2="736.6" y2="200.66" width="0.1524" layer="91"/>
 </segment>
@@ -5023,8 +5023,8 @@ by exp-lbrs.ulp</description>
 <net name="N$124" class="0">
 <segment>
 <wire x1="690.88" y1="106.68" x2="736.6" y2="106.68" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="17"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="17"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="17"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="17"/>
 <wire x1="690.88" y1="106.68" x2="690.88" y2="198.12" width="0.1524" layer="91"/>
 <wire x1="690.88" y1="198.12" x2="736.6" y2="198.12" width="0.1524" layer="91"/>
 </segment>
@@ -5032,8 +5032,8 @@ by exp-lbrs.ulp</description>
 <net name="N$125" class="0">
 <segment>
 <wire x1="693.42" y1="109.22" x2="736.6" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="16"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="16"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="16"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="16"/>
 <wire x1="693.42" y1="109.22" x2="693.42" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="693.42" y1="195.58" x2="736.6" y2="195.58" width="0.1524" layer="91"/>
 </segment>
@@ -5041,8 +5041,8 @@ by exp-lbrs.ulp</description>
 <net name="N$126" class="0">
 <segment>
 <wire x1="695.96" y1="111.76" x2="736.6" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="15"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="15"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="15"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="15"/>
 <wire x1="695.96" y1="111.76" x2="695.96" y2="193.04" width="0.1524" layer="91"/>
 <wire x1="695.96" y1="193.04" x2="736.6" y2="193.04" width="0.1524" layer="91"/>
 </segment>
@@ -5050,8 +5050,8 @@ by exp-lbrs.ulp</description>
 <net name="N$127" class="0">
 <segment>
 <wire x1="698.5" y1="114.3" x2="736.6" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="14"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="14"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="14"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="14"/>
 <wire x1="698.5" y1="114.3" x2="698.5" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="698.5" y1="190.5" x2="736.6" y2="190.5" width="0.1524" layer="91"/>
 </segment>
@@ -5059,8 +5059,8 @@ by exp-lbrs.ulp</description>
 <net name="N$128" class="0">
 <segment>
 <wire x1="701.04" y1="116.84" x2="736.6" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="13"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="13"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="13"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="13"/>
 <wire x1="701.04" y1="116.84" x2="701.04" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="701.04" y1="187.96" x2="736.6" y2="187.96" width="0.1524" layer="91"/>
 </segment>
@@ -5068,8 +5068,8 @@ by exp-lbrs.ulp</description>
 <net name="N$129" class="0">
 <segment>
 <wire x1="703.58" y1="119.38" x2="736.6" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="12"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="12"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="12"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="12"/>
 <wire x1="703.58" y1="119.38" x2="703.58" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="703.58" y1="185.42" x2="736.6" y2="185.42" width="0.1524" layer="91"/>
 </segment>
@@ -5077,8 +5077,8 @@ by exp-lbrs.ulp</description>
 <net name="N$130" class="0">
 <segment>
 <wire x1="706.12" y1="121.92" x2="736.6" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="11"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="11"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="11"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="11"/>
 <wire x1="706.12" y1="121.92" x2="706.12" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="706.12" y1="182.88" x2="736.6" y2="182.88" width="0.1524" layer="91"/>
 </segment>
@@ -5086,8 +5086,8 @@ by exp-lbrs.ulp</description>
 <net name="N$157" class="0">
 <segment>
 <wire x1="708.66" y1="124.46" x2="736.6" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="10"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="10"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="10"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="10"/>
 <wire x1="708.66" y1="124.46" x2="708.66" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="708.66" y1="180.34" x2="736.6" y2="180.34" width="0.1524" layer="91"/>
 </segment>
@@ -5095,8 +5095,8 @@ by exp-lbrs.ulp</description>
 <net name="N$158" class="0">
 <segment>
 <wire x1="711.2" y1="127" x2="736.6" y2="127" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="9"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="9"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="9"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="9"/>
 <wire x1="711.2" y1="127" x2="711.2" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="711.2" y1="177.8" x2="736.6" y2="177.8" width="0.1524" layer="91"/>
 </segment>
@@ -5104,8 +5104,8 @@ by exp-lbrs.ulp</description>
 <net name="N$159" class="0">
 <segment>
 <wire x1="713.74" y1="129.54" x2="736.6" y2="129.54" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="8"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="8"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="8"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="8"/>
 <wire x1="713.74" y1="129.54" x2="713.74" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="713.74" y1="175.26" x2="736.6" y2="175.26" width="0.1524" layer="91"/>
 </segment>
@@ -5113,17 +5113,17 @@ by exp-lbrs.ulp</description>
 <net name="N$160" class="0">
 <segment>
 <wire x1="716.28" y1="132.08" x2="736.6" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="7"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="7"/>
 <wire x1="716.28" y1="132.08" x2="716.28" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="716.28" y1="172.72" x2="736.6" y2="172.72" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="7"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="7"/>
 </segment>
 </net>
 <net name="N$161" class="0">
 <segment>
 <wire x1="718.82" y1="134.62" x2="736.6" y2="134.62" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="6"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="6"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="6"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="6"/>
 <wire x1="718.82" y1="134.62" x2="718.82" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="718.82" y1="170.18" x2="736.6" y2="170.18" width="0.1524" layer="91"/>
 </segment>
@@ -5131,8 +5131,8 @@ by exp-lbrs.ulp</description>
 <net name="N$163" class="0">
 <segment>
 <wire x1="721.36" y1="137.16" x2="736.6" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="5"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="5"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="5"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="5"/>
 <wire x1="721.36" y1="137.16" x2="721.36" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="721.36" y1="167.64" x2="736.6" y2="167.64" width="0.1524" layer="91"/>
 </segment>
@@ -5140,8 +5140,8 @@ by exp-lbrs.ulp</description>
 <net name="N$164" class="0">
 <segment>
 <wire x1="723.9" y1="139.7" x2="736.6" y2="139.7" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="4"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="4"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="4"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="4"/>
 <wire x1="723.9" y1="139.7" x2="723.9" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="723.9" y1="165.1" x2="736.6" y2="165.1" width="0.1524" layer="91"/>
 </segment>
@@ -5149,9 +5149,9 @@ by exp-lbrs.ulp</description>
 <net name="N$165" class="0">
 <segment>
 <wire x1="726.44" y1="142.24" x2="736.6" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="3"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="3"/>
 <wire x1="726.44" y1="142.24" x2="726.44" y2="162.56" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="3"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="3"/>
 <wire x1="726.44" y1="162.56" x2="736.6" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -5160,8 +5160,8 @@ by exp-lbrs.ulp</description>
 <wire x1="840.74" y1="66.04" x2="751.84" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="840.74" y1="66.04" x2="840.74" y2="238.76" width="0.1524" layer="91"/>
 <wire x1="840.74" y1="238.76" x2="751.84" y2="238.76" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="38"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="38"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="38"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="38"/>
 </segment>
 </net>
 <net name="N$168" class="0">
@@ -5169,8 +5169,8 @@ by exp-lbrs.ulp</description>
 <wire x1="838.2" y1="68.58" x2="751.84" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="838.2" y1="68.58" x2="838.2" y2="236.22" width="0.1524" layer="91"/>
 <wire x1="838.2" y1="236.22" x2="751.84" y2="236.22" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="39"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="39"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="39"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="39"/>
 </segment>
 </net>
 <net name="N$169" class="0">
@@ -5178,8 +5178,8 @@ by exp-lbrs.ulp</description>
 <wire x1="835.66" y1="71.12" x2="751.84" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="835.66" y1="71.12" x2="835.66" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="835.66" y1="233.68" x2="751.84" y2="233.68" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="40"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="40"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="40"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="40"/>
 </segment>
 </net>
 <net name="N$170" class="0">
@@ -5187,8 +5187,8 @@ by exp-lbrs.ulp</description>
 <wire x1="833.12" y1="73.66" x2="751.84" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="833.12" y1="73.66" x2="833.12" y2="231.14" width="0.1524" layer="91"/>
 <wire x1="833.12" y1="231.14" x2="751.84" y2="231.14" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="41"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="41"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="41"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="41"/>
 </segment>
 </net>
 <net name="N$171" class="0">
@@ -5196,8 +5196,8 @@ by exp-lbrs.ulp</description>
 <wire x1="830.58" y1="76.2" x2="751.84" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="830.58" y1="76.2" x2="830.58" y2="228.6" width="0.1524" layer="91"/>
 <wire x1="830.58" y1="228.6" x2="751.84" y2="228.6" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="42"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="42"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="42"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="42"/>
 </segment>
 </net>
 <net name="N$172" class="0">
@@ -5205,8 +5205,8 @@ by exp-lbrs.ulp</description>
 <wire x1="828.04" y1="78.74" x2="751.84" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="828.04" y1="78.74" x2="828.04" y2="226.06" width="0.1524" layer="91"/>
 <wire x1="828.04" y1="226.06" x2="751.84" y2="226.06" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="43"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="43"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="43"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="43"/>
 </segment>
 </net>
 <net name="N$173" class="0">
@@ -5214,8 +5214,8 @@ by exp-lbrs.ulp</description>
 <wire x1="825.5" y1="81.28" x2="751.84" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="825.5" y1="81.28" x2="825.5" y2="223.52" width="0.1524" layer="91"/>
 <wire x1="825.5" y1="223.52" x2="751.84" y2="223.52" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="44"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="44"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="44"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="44"/>
 </segment>
 </net>
 <net name="N$174" class="0">
@@ -5223,8 +5223,8 @@ by exp-lbrs.ulp</description>
 <wire x1="822.96" y1="83.82" x2="751.84" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="822.96" y1="83.82" x2="822.96" y2="220.98" width="0.1524" layer="91"/>
 <wire x1="822.96" y1="220.98" x2="751.84" y2="220.98" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="45"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="45"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="45"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="45"/>
 </segment>
 </net>
 <net name="N$175" class="0">
@@ -5232,8 +5232,8 @@ by exp-lbrs.ulp</description>
 <wire x1="820.42" y1="86.36" x2="751.84" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="820.42" y1="86.36" x2="820.42" y2="218.44" width="0.1524" layer="91"/>
 <wire x1="820.42" y1="218.44" x2="751.84" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="46"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="46"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="46"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="46"/>
 </segment>
 </net>
 <net name="N$176" class="0">
@@ -5241,8 +5241,8 @@ by exp-lbrs.ulp</description>
 <wire x1="817.88" y1="88.9" x2="751.84" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="817.88" y1="88.9" x2="817.88" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="817.88" y1="215.9" x2="751.84" y2="215.9" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="47"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="47"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="47"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="47"/>
 </segment>
 </net>
 <net name="N$177" class="0">
@@ -5250,8 +5250,8 @@ by exp-lbrs.ulp</description>
 <wire x1="815.34" y1="91.44" x2="751.84" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="815.34" y1="91.44" x2="815.34" y2="213.36" width="0.1524" layer="91"/>
 <wire x1="815.34" y1="213.36" x2="751.84" y2="213.36" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="48"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="48"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="48"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="48"/>
 </segment>
 </net>
 <net name="N$178" class="0">
@@ -5259,8 +5259,8 @@ by exp-lbrs.ulp</description>
 <wire x1="812.8" y1="93.98" x2="751.84" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="812.8" y1="93.98" x2="812.8" y2="210.82" width="0.1524" layer="91"/>
 <wire x1="812.8" y1="210.82" x2="751.84" y2="210.82" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="49"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="49"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="49"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="49"/>
 </segment>
 </net>
 <net name="N$179" class="0">
@@ -5268,8 +5268,8 @@ by exp-lbrs.ulp</description>
 <wire x1="810.26" y1="96.52" x2="751.84" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="810.26" y1="96.52" x2="810.26" y2="208.28" width="0.1524" layer="91"/>
 <wire x1="810.26" y1="208.28" x2="751.84" y2="208.28" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="50"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="50"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="50"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="50"/>
 </segment>
 </net>
 <net name="N$180" class="0">
@@ -5277,8 +5277,8 @@ by exp-lbrs.ulp</description>
 <wire x1="807.72" y1="99.06" x2="751.84" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="807.72" y1="99.06" x2="807.72" y2="205.74" width="0.1524" layer="91"/>
 <wire x1="807.72" y1="205.74" x2="751.84" y2="205.74" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="51"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="51"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="51"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="51"/>
 </segment>
 </net>
 <net name="N$181" class="0">
@@ -5286,8 +5286,8 @@ by exp-lbrs.ulp</description>
 <wire x1="805.18" y1="101.6" x2="751.84" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="805.18" y1="101.6" x2="805.18" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="805.18" y1="203.2" x2="751.84" y2="203.2" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="52"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="52"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="52"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="52"/>
 </segment>
 </net>
 <net name="N$182" class="0">
@@ -5295,8 +5295,8 @@ by exp-lbrs.ulp</description>
 <wire x1="802.64" y1="104.14" x2="751.84" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="802.64" y1="104.14" x2="802.64" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="802.64" y1="200.66" x2="751.84" y2="200.66" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="53"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="53"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="53"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="53"/>
 </segment>
 </net>
 <net name="N$183" class="0">
@@ -5304,8 +5304,8 @@ by exp-lbrs.ulp</description>
 <wire x1="800.1" y1="106.68" x2="751.84" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="800.1" y1="106.68" x2="800.1" y2="198.12" width="0.1524" layer="91"/>
 <wire x1="800.1" y1="198.12" x2="751.84" y2="198.12" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="54"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="54"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="54"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="54"/>
 </segment>
 </net>
 <net name="N$184" class="0">
@@ -5313,8 +5313,8 @@ by exp-lbrs.ulp</description>
 <wire x1="797.56" y1="109.22" x2="751.84" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="797.56" y1="109.22" x2="797.56" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="797.56" y1="195.58" x2="751.84" y2="195.58" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="55"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="55"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="55"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="55"/>
 </segment>
 </net>
 <net name="N$185" class="0">
@@ -5322,8 +5322,8 @@ by exp-lbrs.ulp</description>
 <wire x1="795.02" y1="111.76" x2="751.84" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="795.02" y1="111.76" x2="795.02" y2="193.04" width="0.1524" layer="91"/>
 <wire x1="795.02" y1="193.04" x2="751.84" y2="193.04" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="56"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="56"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="56"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="56"/>
 </segment>
 </net>
 <net name="N$186" class="0">
@@ -5331,8 +5331,8 @@ by exp-lbrs.ulp</description>
 <wire x1="792.48" y1="114.3" x2="751.84" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="792.48" y1="114.3" x2="792.48" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="792.48" y1="190.5" x2="751.84" y2="190.5" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="57"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="57"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="57"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="57"/>
 </segment>
 </net>
 <net name="N$187" class="0">
@@ -5340,8 +5340,8 @@ by exp-lbrs.ulp</description>
 <wire x1="789.94" y1="116.84" x2="751.84" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="789.94" y1="116.84" x2="789.94" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="789.94" y1="187.96" x2="751.84" y2="187.96" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="58"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="58"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="58"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="58"/>
 </segment>
 </net>
 <net name="N$188" class="0">
@@ -5349,8 +5349,8 @@ by exp-lbrs.ulp</description>
 <wire x1="787.4" y1="119.38" x2="751.84" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="787.4" y1="119.38" x2="787.4" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="787.4" y1="185.42" x2="751.84" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="59"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="59"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="59"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="59"/>
 </segment>
 </net>
 <net name="N$189" class="0">
@@ -5358,8 +5358,8 @@ by exp-lbrs.ulp</description>
 <wire x1="784.86" y1="121.92" x2="751.84" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="784.86" y1="121.92" x2="784.86" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="784.86" y1="182.88" x2="751.84" y2="182.88" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="60"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="60"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="60"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="60"/>
 </segment>
 </net>
 <net name="N$190" class="0">
@@ -5367,8 +5367,8 @@ by exp-lbrs.ulp</description>
 <wire x1="782.32" y1="124.46" x2="751.84" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="782.32" y1="124.46" x2="782.32" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="782.32" y1="180.34" x2="751.84" y2="180.34" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="61"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="61"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="61"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="61"/>
 </segment>
 </net>
 <net name="N$191" class="0">
@@ -5376,8 +5376,8 @@ by exp-lbrs.ulp</description>
 <wire x1="779.78" y1="127" x2="751.84" y2="127" width="0.1524" layer="91"/>
 <wire x1="779.78" y1="127" x2="779.78" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="779.78" y1="177.8" x2="751.84" y2="177.8" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="62"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="62"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="62"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="62"/>
 </segment>
 </net>
 <net name="N$192" class="0">
@@ -5385,8 +5385,8 @@ by exp-lbrs.ulp</description>
 <wire x1="777.24" y1="129.54" x2="751.84" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="777.24" y1="129.54" x2="777.24" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="777.24" y1="175.26" x2="751.84" y2="175.26" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="63"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="63"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="63"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="63"/>
 </segment>
 </net>
 <net name="N$193" class="0">
@@ -5394,8 +5394,8 @@ by exp-lbrs.ulp</description>
 <wire x1="774.7" y1="132.08" x2="751.84" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="774.7" y1="132.08" x2="774.7" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="774.7" y1="172.72" x2="751.84" y2="172.72" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="64"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="64"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="64"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="64"/>
 </segment>
 </net>
 <net name="N$194" class="0">
@@ -5403,8 +5403,8 @@ by exp-lbrs.ulp</description>
 <wire x1="772.16" y1="134.62" x2="751.84" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="772.16" y1="134.62" x2="772.16" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="772.16" y1="170.18" x2="751.84" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="65"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="65"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="65"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="65"/>
 </segment>
 </net>
 <net name="N$195" class="0">
@@ -5412,8 +5412,8 @@ by exp-lbrs.ulp</description>
 <wire x1="769.62" y1="137.16" x2="751.84" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="769.62" y1="137.16" x2="769.62" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="769.62" y1="167.64" x2="751.84" y2="167.64" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="66"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="66"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="66"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="66"/>
 </segment>
 </net>
 <net name="N$196" class="0">
@@ -5421,8 +5421,8 @@ by exp-lbrs.ulp</description>
 <wire x1="767.08" y1="139.7" x2="751.84" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="767.08" y1="139.7" x2="767.08" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="767.08" y1="165.1" x2="751.84" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="67"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="67"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="67"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="67"/>
 </segment>
 </net>
 <net name="N$197" class="0">
@@ -5430,24 +5430,24 @@ by exp-lbrs.ulp</description>
 <wire x1="764.54" y1="142.24" x2="751.84" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="764.54" y1="142.24" x2="764.54" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="764.54" y1="162.56" x2="751.84" y2="162.56" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="68"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="68"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="68"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="68"/>
 </segment>
 </net>
 <net name="AGND_THRU_4" class="0">
 <segment>
-<pinref part="ATHRU_E0B" gate="G$1" pin="69"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="69"/>
 <wire x1="751.84" y1="144.78" x2="756.92" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="756.92" y1="144.78" x2="762" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="762" y1="144.78" x2="762" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="69"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="69"/>
 <wire x1="762" y1="160.02" x2="756.92" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="70"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="70"/>
 <wire x1="756.92" y1="160.02" x2="751.84" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="751.84" y1="157.48" x2="756.92" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="756.92" y1="157.48" x2="756.92" y2="160.02" width="0.1524" layer="91"/>
 <junction x="756.92" y="160.02"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="70"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="70"/>
 <wire x1="751.84" y1="147.32" x2="756.92" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="756.92" y1="147.32" x2="756.92" y2="144.78" width="0.1524" layer="91"/>
 <junction x="756.92" y="144.78"/>
@@ -5456,27 +5456,27 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="N$199" class="0">
 <segment>
-<pinref part="ATHRU_W0B" gate="G$1" pin="33"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="33"/>
 <wire x1="650.24" y1="271.78" x2="736.6" y2="271.78" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="33"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="33"/>
 <wire x1="650.24" y1="271.78" x2="650.24" y2="444.5" width="0.1524" layer="91"/>
 <wire x1="650.24" y1="444.5" x2="736.6" y2="444.5" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$200" class="0">
 <segment>
-<pinref part="ATHRU_W0B" gate="G$1" pin="32"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="32"/>
 <wire x1="652.78" y1="274.32" x2="736.6" y2="274.32" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="32"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="32"/>
 <wire x1="652.78" y1="274.32" x2="652.78" y2="441.96" width="0.1524" layer="91"/>
 <wire x1="652.78" y1="441.96" x2="736.6" y2="441.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$201" class="0">
 <segment>
-<pinref part="ATHRU_W0B" gate="G$1" pin="31"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="31"/>
 <wire x1="655.32" y1="276.86" x2="736.6" y2="276.86" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="31"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="31"/>
 <wire x1="655.32" y1="276.86" x2="655.32" y2="439.42" width="0.1524" layer="91"/>
 <wire x1="655.32" y1="439.42" x2="736.6" y2="439.42" width="0.1524" layer="91"/>
 </segment>
@@ -5484,8 +5484,8 @@ by exp-lbrs.ulp</description>
 <net name="N$202" class="0">
 <segment>
 <wire x1="657.86" y1="279.4" x2="736.6" y2="279.4" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="30"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="30"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="30"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="30"/>
 <wire x1="657.86" y1="279.4" x2="657.86" y2="436.88" width="0.1524" layer="91"/>
 <wire x1="657.86" y1="436.88" x2="736.6" y2="436.88" width="0.1524" layer="91"/>
 </segment>
@@ -5493,8 +5493,8 @@ by exp-lbrs.ulp</description>
 <net name="N$203" class="0">
 <segment>
 <wire x1="660.4" y1="281.94" x2="736.6" y2="281.94" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="29"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="29"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="29"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="29"/>
 <wire x1="660.4" y1="281.94" x2="660.4" y2="434.34" width="0.1524" layer="91"/>
 <wire x1="660.4" y1="434.34" x2="736.6" y2="434.34" width="0.1524" layer="91"/>
 </segment>
@@ -5502,8 +5502,8 @@ by exp-lbrs.ulp</description>
 <net name="N$204" class="0">
 <segment>
 <wire x1="662.94" y1="284.48" x2="736.6" y2="284.48" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="28"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="28"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="28"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="28"/>
 <wire x1="662.94" y1="284.48" x2="662.94" y2="431.8" width="0.1524" layer="91"/>
 <wire x1="662.94" y1="431.8" x2="736.6" y2="431.8" width="0.1524" layer="91"/>
 </segment>
@@ -5511,8 +5511,8 @@ by exp-lbrs.ulp</description>
 <net name="N$205" class="0">
 <segment>
 <wire x1="665.48" y1="287.02" x2="736.6" y2="287.02" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="27"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="27"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="27"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="27"/>
 <wire x1="665.48" y1="287.02" x2="665.48" y2="429.26" width="0.1524" layer="91"/>
 <wire x1="665.48" y1="429.26" x2="736.6" y2="429.26" width="0.1524" layer="91"/>
 </segment>
@@ -5520,17 +5520,17 @@ by exp-lbrs.ulp</description>
 <net name="N$206" class="0">
 <segment>
 <wire x1="668.02" y1="289.56" x2="736.6" y2="289.56" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="26"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="26"/>
 <wire x1="668.02" y1="289.56" x2="668.02" y2="426.72" width="0.1524" layer="91"/>
 <wire x1="668.02" y1="426.72" x2="736.6" y2="426.72" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="26"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="26"/>
 </segment>
 </net>
 <net name="N$207" class="0">
 <segment>
 <wire x1="670.56" y1="292.1" x2="736.6" y2="292.1" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="25"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="25"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="25"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="25"/>
 <wire x1="670.56" y1="292.1" x2="670.56" y2="424.18" width="0.1524" layer="91"/>
 <wire x1="670.56" y1="424.18" x2="736.6" y2="424.18" width="0.1524" layer="91"/>
 </segment>
@@ -5538,8 +5538,8 @@ by exp-lbrs.ulp</description>
 <net name="N$208" class="0">
 <segment>
 <wire x1="673.1" y1="294.64" x2="736.6" y2="294.64" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="24"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="24"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="24"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="24"/>
 <wire x1="673.1" y1="294.64" x2="673.1" y2="421.64" width="0.1524" layer="91"/>
 <wire x1="673.1" y1="421.64" x2="736.6" y2="421.64" width="0.1524" layer="91"/>
 </segment>
@@ -5547,8 +5547,8 @@ by exp-lbrs.ulp</description>
 <net name="N$209" class="0">
 <segment>
 <wire x1="675.64" y1="297.18" x2="736.6" y2="297.18" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="23"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="23"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="23"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="23"/>
 <wire x1="675.64" y1="297.18" x2="675.64" y2="419.1" width="0.1524" layer="91"/>
 <wire x1="675.64" y1="419.1" x2="736.6" y2="419.1" width="0.1524" layer="91"/>
 </segment>
@@ -5556,17 +5556,17 @@ by exp-lbrs.ulp</description>
 <net name="N$210" class="0">
 <segment>
 <wire x1="678.18" y1="299.72" x2="736.6" y2="299.72" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="22"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="22"/>
 <wire x1="678.18" y1="299.72" x2="678.18" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="678.18" y1="416.56" x2="736.6" y2="416.56" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="22"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="22"/>
 </segment>
 </net>
 <net name="N$211" class="0">
 <segment>
 <wire x1="680.72" y1="302.26" x2="736.6" y2="302.26" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="21"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="21"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="21"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="21"/>
 <wire x1="680.72" y1="302.26" x2="680.72" y2="414.02" width="0.1524" layer="91"/>
 <wire x1="680.72" y1="414.02" x2="736.6" y2="414.02" width="0.1524" layer="91"/>
 </segment>
@@ -5574,8 +5574,8 @@ by exp-lbrs.ulp</description>
 <net name="N$212" class="0">
 <segment>
 <wire x1="683.26" y1="304.8" x2="736.6" y2="304.8" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="20"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="20"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="20"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="20"/>
 <wire x1="683.26" y1="304.8" x2="683.26" y2="411.48" width="0.1524" layer="91"/>
 <wire x1="683.26" y1="411.48" x2="736.6" y2="411.48" width="0.1524" layer="91"/>
 </segment>
@@ -5583,8 +5583,8 @@ by exp-lbrs.ulp</description>
 <net name="N$213" class="0">
 <segment>
 <wire x1="685.8" y1="307.34" x2="736.6" y2="307.34" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="19"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="19"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="19"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="19"/>
 <wire x1="685.8" y1="307.34" x2="685.8" y2="408.94" width="0.1524" layer="91"/>
 <wire x1="685.8" y1="408.94" x2="736.6" y2="408.94" width="0.1524" layer="91"/>
 </segment>
@@ -5592,8 +5592,8 @@ by exp-lbrs.ulp</description>
 <net name="N$214" class="0">
 <segment>
 <wire x1="688.34" y1="309.88" x2="736.6" y2="309.88" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="18"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="18"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="18"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="18"/>
 <wire x1="688.34" y1="309.88" x2="688.34" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="688.34" y1="406.4" x2="736.6" y2="406.4" width="0.1524" layer="91"/>
 </segment>
@@ -5601,8 +5601,8 @@ by exp-lbrs.ulp</description>
 <net name="N$215" class="0">
 <segment>
 <wire x1="690.88" y1="312.42" x2="736.6" y2="312.42" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="17"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="17"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="17"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="17"/>
 <wire x1="690.88" y1="312.42" x2="690.88" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="690.88" y1="403.86" x2="736.6" y2="403.86" width="0.1524" layer="91"/>
 </segment>
@@ -5610,8 +5610,8 @@ by exp-lbrs.ulp</description>
 <net name="N$216" class="0">
 <segment>
 <wire x1="693.42" y1="314.96" x2="736.6" y2="314.96" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="16"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="16"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="16"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="16"/>
 <wire x1="693.42" y1="314.96" x2="693.42" y2="401.32" width="0.1524" layer="91"/>
 <wire x1="693.42" y1="401.32" x2="736.6" y2="401.32" width="0.1524" layer="91"/>
 </segment>
@@ -5619,8 +5619,8 @@ by exp-lbrs.ulp</description>
 <net name="N$217" class="0">
 <segment>
 <wire x1="695.96" y1="317.5" x2="736.6" y2="317.5" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="15"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="15"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="15"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="15"/>
 <wire x1="695.96" y1="317.5" x2="695.96" y2="398.78" width="0.1524" layer="91"/>
 <wire x1="695.96" y1="398.78" x2="736.6" y2="398.78" width="0.1524" layer="91"/>
 </segment>
@@ -5628,8 +5628,8 @@ by exp-lbrs.ulp</description>
 <net name="N$218" class="0">
 <segment>
 <wire x1="698.5" y1="320.04" x2="736.6" y2="320.04" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="14"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="14"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="14"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="14"/>
 <wire x1="698.5" y1="320.04" x2="698.5" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="698.5" y1="396.24" x2="736.6" y2="396.24" width="0.1524" layer="91"/>
 </segment>
@@ -5637,8 +5637,8 @@ by exp-lbrs.ulp</description>
 <net name="N$219" class="0">
 <segment>
 <wire x1="701.04" y1="322.58" x2="736.6" y2="322.58" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="13"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="13"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="13"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="13"/>
 <wire x1="701.04" y1="322.58" x2="701.04" y2="393.7" width="0.1524" layer="91"/>
 <wire x1="701.04" y1="393.7" x2="736.6" y2="393.7" width="0.1524" layer="91"/>
 </segment>
@@ -5646,8 +5646,8 @@ by exp-lbrs.ulp</description>
 <net name="N$220" class="0">
 <segment>
 <wire x1="703.58" y1="325.12" x2="736.6" y2="325.12" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="12"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="12"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="12"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="12"/>
 <wire x1="703.58" y1="325.12" x2="703.58" y2="391.16" width="0.1524" layer="91"/>
 <wire x1="703.58" y1="391.16" x2="736.6" y2="391.16" width="0.1524" layer="91"/>
 </segment>
@@ -5655,8 +5655,8 @@ by exp-lbrs.ulp</description>
 <net name="N$221" class="0">
 <segment>
 <wire x1="706.12" y1="327.66" x2="736.6" y2="327.66" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="11"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="11"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="11"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="11"/>
 <wire x1="706.12" y1="327.66" x2="706.12" y2="388.62" width="0.1524" layer="91"/>
 <wire x1="706.12" y1="388.62" x2="736.6" y2="388.62" width="0.1524" layer="91"/>
 </segment>
@@ -5664,8 +5664,8 @@ by exp-lbrs.ulp</description>
 <net name="N$222" class="0">
 <segment>
 <wire x1="708.66" y1="330.2" x2="736.6" y2="330.2" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="10"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="10"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="10"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="10"/>
 <wire x1="708.66" y1="330.2" x2="708.66" y2="386.08" width="0.1524" layer="91"/>
 <wire x1="708.66" y1="386.08" x2="736.6" y2="386.08" width="0.1524" layer="91"/>
 </segment>
@@ -5673,8 +5673,8 @@ by exp-lbrs.ulp</description>
 <net name="N$223" class="0">
 <segment>
 <wire x1="711.2" y1="332.74" x2="736.6" y2="332.74" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="9"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="9"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="9"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="9"/>
 <wire x1="711.2" y1="332.74" x2="711.2" y2="383.54" width="0.1524" layer="91"/>
 <wire x1="711.2" y1="383.54" x2="736.6" y2="383.54" width="0.1524" layer="91"/>
 </segment>
@@ -5682,8 +5682,8 @@ by exp-lbrs.ulp</description>
 <net name="N$224" class="0">
 <segment>
 <wire x1="713.74" y1="335.28" x2="736.6" y2="335.28" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="8"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="8"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="8"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="8"/>
 <wire x1="713.74" y1="335.28" x2="713.74" y2="381" width="0.1524" layer="91"/>
 <wire x1="713.74" y1="381" x2="736.6" y2="381" width="0.1524" layer="91"/>
 </segment>
@@ -5691,17 +5691,17 @@ by exp-lbrs.ulp</description>
 <net name="N$225" class="0">
 <segment>
 <wire x1="716.28" y1="337.82" x2="736.6" y2="337.82" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="7"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="7"/>
 <wire x1="716.28" y1="337.82" x2="716.28" y2="378.46" width="0.1524" layer="91"/>
 <wire x1="716.28" y1="378.46" x2="736.6" y2="378.46" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="7"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="7"/>
 </segment>
 </net>
 <net name="N$226" class="0">
 <segment>
 <wire x1="718.82" y1="340.36" x2="736.6" y2="340.36" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="6"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="6"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="6"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="6"/>
 <wire x1="718.82" y1="340.36" x2="718.82" y2="375.92" width="0.1524" layer="91"/>
 <wire x1="718.82" y1="375.92" x2="736.6" y2="375.92" width="0.1524" layer="91"/>
 </segment>
@@ -5709,8 +5709,8 @@ by exp-lbrs.ulp</description>
 <net name="N$227" class="0">
 <segment>
 <wire x1="721.36" y1="342.9" x2="736.6" y2="342.9" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="5"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="5"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="5"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="5"/>
 <wire x1="721.36" y1="342.9" x2="721.36" y2="373.38" width="0.1524" layer="91"/>
 <wire x1="721.36" y1="373.38" x2="736.6" y2="373.38" width="0.1524" layer="91"/>
 </segment>
@@ -5718,8 +5718,8 @@ by exp-lbrs.ulp</description>
 <net name="N$228" class="0">
 <segment>
 <wire x1="723.9" y1="345.44" x2="736.6" y2="345.44" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="4"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="4"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="4"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="4"/>
 <wire x1="723.9" y1="345.44" x2="723.9" y2="370.84" width="0.1524" layer="91"/>
 <wire x1="723.9" y1="370.84" x2="736.6" y2="370.84" width="0.1524" layer="91"/>
 </segment>
@@ -5727,9 +5727,9 @@ by exp-lbrs.ulp</description>
 <net name="N$229" class="0">
 <segment>
 <wire x1="726.44" y1="347.98" x2="736.6" y2="347.98" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="3"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="3"/>
 <wire x1="726.44" y1="347.98" x2="726.44" y2="368.3" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="3"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="3"/>
 <wire x1="726.44" y1="368.3" x2="736.6" y2="368.3" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -5738,8 +5738,8 @@ by exp-lbrs.ulp</description>
 <wire x1="840.74" y1="271.78" x2="751.84" y2="271.78" width="0.1524" layer="91"/>
 <wire x1="840.74" y1="271.78" x2="840.74" y2="444.5" width="0.1524" layer="91"/>
 <wire x1="840.74" y1="444.5" x2="751.84" y2="444.5" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="38"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="38"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="38"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="38"/>
 </segment>
 </net>
 <net name="N$232" class="0">
@@ -5747,8 +5747,8 @@ by exp-lbrs.ulp</description>
 <wire x1="838.2" y1="274.32" x2="751.84" y2="274.32" width="0.1524" layer="91"/>
 <wire x1="838.2" y1="274.32" x2="838.2" y2="441.96" width="0.1524" layer="91"/>
 <wire x1="838.2" y1="441.96" x2="751.84" y2="441.96" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="39"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="39"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="39"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="39"/>
 </segment>
 </net>
 <net name="N$233" class="0">
@@ -5756,8 +5756,8 @@ by exp-lbrs.ulp</description>
 <wire x1="835.66" y1="276.86" x2="751.84" y2="276.86" width="0.1524" layer="91"/>
 <wire x1="835.66" y1="276.86" x2="835.66" y2="439.42" width="0.1524" layer="91"/>
 <wire x1="835.66" y1="439.42" x2="751.84" y2="439.42" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="40"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="40"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="40"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="40"/>
 </segment>
 </net>
 <net name="N$234" class="0">
@@ -5765,8 +5765,8 @@ by exp-lbrs.ulp</description>
 <wire x1="833.12" y1="279.4" x2="751.84" y2="279.4" width="0.1524" layer="91"/>
 <wire x1="833.12" y1="279.4" x2="833.12" y2="436.88" width="0.1524" layer="91"/>
 <wire x1="833.12" y1="436.88" x2="751.84" y2="436.88" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="41"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="41"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="41"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="41"/>
 </segment>
 </net>
 <net name="N$235" class="0">
@@ -5774,8 +5774,8 @@ by exp-lbrs.ulp</description>
 <wire x1="830.58" y1="281.94" x2="751.84" y2="281.94" width="0.1524" layer="91"/>
 <wire x1="830.58" y1="281.94" x2="830.58" y2="434.34" width="0.1524" layer="91"/>
 <wire x1="830.58" y1="434.34" x2="751.84" y2="434.34" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="42"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="42"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="42"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="42"/>
 </segment>
 </net>
 <net name="N$236" class="0">
@@ -5783,8 +5783,8 @@ by exp-lbrs.ulp</description>
 <wire x1="828.04" y1="284.48" x2="751.84" y2="284.48" width="0.1524" layer="91"/>
 <wire x1="828.04" y1="284.48" x2="828.04" y2="431.8" width="0.1524" layer="91"/>
 <wire x1="828.04" y1="431.8" x2="751.84" y2="431.8" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="43"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="43"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="43"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="43"/>
 </segment>
 </net>
 <net name="N$237" class="0">
@@ -5792,8 +5792,8 @@ by exp-lbrs.ulp</description>
 <wire x1="825.5" y1="287.02" x2="751.84" y2="287.02" width="0.1524" layer="91"/>
 <wire x1="825.5" y1="287.02" x2="825.5" y2="429.26" width="0.1524" layer="91"/>
 <wire x1="825.5" y1="429.26" x2="751.84" y2="429.26" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="44"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="44"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="44"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="44"/>
 </segment>
 </net>
 <net name="N$238" class="0">
@@ -5801,8 +5801,8 @@ by exp-lbrs.ulp</description>
 <wire x1="822.96" y1="289.56" x2="751.84" y2="289.56" width="0.1524" layer="91"/>
 <wire x1="822.96" y1="289.56" x2="822.96" y2="426.72" width="0.1524" layer="91"/>
 <wire x1="822.96" y1="426.72" x2="751.84" y2="426.72" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="45"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="45"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="45"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="45"/>
 </segment>
 </net>
 <net name="N$239" class="0">
@@ -5810,8 +5810,8 @@ by exp-lbrs.ulp</description>
 <wire x1="820.42" y1="292.1" x2="751.84" y2="292.1" width="0.1524" layer="91"/>
 <wire x1="820.42" y1="292.1" x2="820.42" y2="424.18" width="0.1524" layer="91"/>
 <wire x1="820.42" y1="424.18" x2="751.84" y2="424.18" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="46"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="46"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="46"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="46"/>
 </segment>
 </net>
 <net name="N$240" class="0">
@@ -5819,8 +5819,8 @@ by exp-lbrs.ulp</description>
 <wire x1="817.88" y1="294.64" x2="751.84" y2="294.64" width="0.1524" layer="91"/>
 <wire x1="817.88" y1="294.64" x2="817.88" y2="421.64" width="0.1524" layer="91"/>
 <wire x1="817.88" y1="421.64" x2="751.84" y2="421.64" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="47"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="47"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="47"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="47"/>
 </segment>
 </net>
 <net name="N$241" class="0">
@@ -5828,8 +5828,8 @@ by exp-lbrs.ulp</description>
 <wire x1="815.34" y1="297.18" x2="751.84" y2="297.18" width="0.1524" layer="91"/>
 <wire x1="815.34" y1="297.18" x2="815.34" y2="419.1" width="0.1524" layer="91"/>
 <wire x1="815.34" y1="419.1" x2="751.84" y2="419.1" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="48"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="48"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="48"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="48"/>
 </segment>
 </net>
 <net name="N$242" class="0">
@@ -5837,8 +5837,8 @@ by exp-lbrs.ulp</description>
 <wire x1="812.8" y1="299.72" x2="751.84" y2="299.72" width="0.1524" layer="91"/>
 <wire x1="812.8" y1="299.72" x2="812.8" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="812.8" y1="416.56" x2="751.84" y2="416.56" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="49"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="49"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="49"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="49"/>
 </segment>
 </net>
 <net name="N$243" class="0">
@@ -5846,8 +5846,8 @@ by exp-lbrs.ulp</description>
 <wire x1="810.26" y1="302.26" x2="751.84" y2="302.26" width="0.1524" layer="91"/>
 <wire x1="810.26" y1="302.26" x2="810.26" y2="414.02" width="0.1524" layer="91"/>
 <wire x1="810.26" y1="414.02" x2="751.84" y2="414.02" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="50"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="50"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="50"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="50"/>
 </segment>
 </net>
 <net name="N$244" class="0">
@@ -5855,8 +5855,8 @@ by exp-lbrs.ulp</description>
 <wire x1="807.72" y1="304.8" x2="751.84" y2="304.8" width="0.1524" layer="91"/>
 <wire x1="807.72" y1="304.8" x2="807.72" y2="411.48" width="0.1524" layer="91"/>
 <wire x1="807.72" y1="411.48" x2="751.84" y2="411.48" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="51"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="51"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="51"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="51"/>
 </segment>
 </net>
 <net name="N$245" class="0">
@@ -5864,8 +5864,8 @@ by exp-lbrs.ulp</description>
 <wire x1="805.18" y1="307.34" x2="751.84" y2="307.34" width="0.1524" layer="91"/>
 <wire x1="805.18" y1="307.34" x2="805.18" y2="408.94" width="0.1524" layer="91"/>
 <wire x1="805.18" y1="408.94" x2="751.84" y2="408.94" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="52"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="52"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="52"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="52"/>
 </segment>
 </net>
 <net name="N$246" class="0">
@@ -5873,8 +5873,8 @@ by exp-lbrs.ulp</description>
 <wire x1="802.64" y1="309.88" x2="751.84" y2="309.88" width="0.1524" layer="91"/>
 <wire x1="802.64" y1="309.88" x2="802.64" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="802.64" y1="406.4" x2="751.84" y2="406.4" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="53"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="53"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="53"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="53"/>
 </segment>
 </net>
 <net name="N$247" class="0">
@@ -5882,8 +5882,8 @@ by exp-lbrs.ulp</description>
 <wire x1="800.1" y1="312.42" x2="751.84" y2="312.42" width="0.1524" layer="91"/>
 <wire x1="800.1" y1="312.42" x2="800.1" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="800.1" y1="403.86" x2="751.84" y2="403.86" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="54"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="54"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="54"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="54"/>
 </segment>
 </net>
 <net name="N$248" class="0">
@@ -5891,8 +5891,8 @@ by exp-lbrs.ulp</description>
 <wire x1="797.56" y1="314.96" x2="751.84" y2="314.96" width="0.1524" layer="91"/>
 <wire x1="797.56" y1="314.96" x2="797.56" y2="401.32" width="0.1524" layer="91"/>
 <wire x1="797.56" y1="401.32" x2="751.84" y2="401.32" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="55"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="55"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="55"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="55"/>
 </segment>
 </net>
 <net name="N$249" class="0">
@@ -5900,8 +5900,8 @@ by exp-lbrs.ulp</description>
 <wire x1="795.02" y1="317.5" x2="751.84" y2="317.5" width="0.1524" layer="91"/>
 <wire x1="795.02" y1="317.5" x2="795.02" y2="398.78" width="0.1524" layer="91"/>
 <wire x1="795.02" y1="398.78" x2="751.84" y2="398.78" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="56"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="56"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="56"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="56"/>
 </segment>
 </net>
 <net name="N$250" class="0">
@@ -5909,8 +5909,8 @@ by exp-lbrs.ulp</description>
 <wire x1="792.48" y1="320.04" x2="751.84" y2="320.04" width="0.1524" layer="91"/>
 <wire x1="792.48" y1="320.04" x2="792.48" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="792.48" y1="396.24" x2="751.84" y2="396.24" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="57"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="57"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="57"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="57"/>
 </segment>
 </net>
 <net name="N$251" class="0">
@@ -5918,8 +5918,8 @@ by exp-lbrs.ulp</description>
 <wire x1="789.94" y1="322.58" x2="751.84" y2="322.58" width="0.1524" layer="91"/>
 <wire x1="789.94" y1="322.58" x2="789.94" y2="393.7" width="0.1524" layer="91"/>
 <wire x1="789.94" y1="393.7" x2="751.84" y2="393.7" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="58"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="58"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="58"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="58"/>
 </segment>
 </net>
 <net name="N$252" class="0">
@@ -5927,8 +5927,8 @@ by exp-lbrs.ulp</description>
 <wire x1="787.4" y1="325.12" x2="751.84" y2="325.12" width="0.1524" layer="91"/>
 <wire x1="787.4" y1="325.12" x2="787.4" y2="391.16" width="0.1524" layer="91"/>
 <wire x1="787.4" y1="391.16" x2="751.84" y2="391.16" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="59"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="59"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="59"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="59"/>
 </segment>
 </net>
 <net name="N$253" class="0">
@@ -5936,8 +5936,8 @@ by exp-lbrs.ulp</description>
 <wire x1="784.86" y1="327.66" x2="751.84" y2="327.66" width="0.1524" layer="91"/>
 <wire x1="784.86" y1="327.66" x2="784.86" y2="388.62" width="0.1524" layer="91"/>
 <wire x1="784.86" y1="388.62" x2="751.84" y2="388.62" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="60"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="60"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="60"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="60"/>
 </segment>
 </net>
 <net name="N$254" class="0">
@@ -5945,8 +5945,8 @@ by exp-lbrs.ulp</description>
 <wire x1="782.32" y1="330.2" x2="751.84" y2="330.2" width="0.1524" layer="91"/>
 <wire x1="782.32" y1="330.2" x2="782.32" y2="386.08" width="0.1524" layer="91"/>
 <wire x1="782.32" y1="386.08" x2="751.84" y2="386.08" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="61"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="61"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="61"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="61"/>
 </segment>
 </net>
 <net name="N$255" class="0">
@@ -5954,8 +5954,8 @@ by exp-lbrs.ulp</description>
 <wire x1="779.78" y1="332.74" x2="751.84" y2="332.74" width="0.1524" layer="91"/>
 <wire x1="779.78" y1="332.74" x2="779.78" y2="383.54" width="0.1524" layer="91"/>
 <wire x1="779.78" y1="383.54" x2="751.84" y2="383.54" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="62"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="62"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="62"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="62"/>
 </segment>
 </net>
 <net name="N$256" class="0">
@@ -5963,8 +5963,8 @@ by exp-lbrs.ulp</description>
 <wire x1="777.24" y1="335.28" x2="751.84" y2="335.28" width="0.1524" layer="91"/>
 <wire x1="777.24" y1="335.28" x2="777.24" y2="381" width="0.1524" layer="91"/>
 <wire x1="777.24" y1="381" x2="751.84" y2="381" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="63"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="63"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="63"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="63"/>
 </segment>
 </net>
 <net name="N$257" class="0">
@@ -5972,8 +5972,8 @@ by exp-lbrs.ulp</description>
 <wire x1="774.7" y1="337.82" x2="751.84" y2="337.82" width="0.1524" layer="91"/>
 <wire x1="774.7" y1="337.82" x2="774.7" y2="378.46" width="0.1524" layer="91"/>
 <wire x1="774.7" y1="378.46" x2="751.84" y2="378.46" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="64"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="64"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="64"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="64"/>
 </segment>
 </net>
 <net name="N$258" class="0">
@@ -5981,8 +5981,8 @@ by exp-lbrs.ulp</description>
 <wire x1="772.16" y1="340.36" x2="751.84" y2="340.36" width="0.1524" layer="91"/>
 <wire x1="772.16" y1="340.36" x2="772.16" y2="375.92" width="0.1524" layer="91"/>
 <wire x1="772.16" y1="375.92" x2="751.84" y2="375.92" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="65"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="65"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="65"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="65"/>
 </segment>
 </net>
 <net name="N$259" class="0">
@@ -5990,8 +5990,8 @@ by exp-lbrs.ulp</description>
 <wire x1="769.62" y1="342.9" x2="751.84" y2="342.9" width="0.1524" layer="91"/>
 <wire x1="769.62" y1="342.9" x2="769.62" y2="373.38" width="0.1524" layer="91"/>
 <wire x1="769.62" y1="373.38" x2="751.84" y2="373.38" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="66"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="66"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="66"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="66"/>
 </segment>
 </net>
 <net name="N$260" class="0">
@@ -5999,8 +5999,8 @@ by exp-lbrs.ulp</description>
 <wire x1="767.08" y1="345.44" x2="751.84" y2="345.44" width="0.1524" layer="91"/>
 <wire x1="767.08" y1="345.44" x2="767.08" y2="370.84" width="0.1524" layer="91"/>
 <wire x1="767.08" y1="370.84" x2="751.84" y2="370.84" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="67"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="67"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="67"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="67"/>
 </segment>
 </net>
 <net name="N$261" class="0">
@@ -6008,25 +6008,25 @@ by exp-lbrs.ulp</description>
 <wire x1="764.54" y1="347.98" x2="751.84" y2="347.98" width="0.1524" layer="91"/>
 <wire x1="764.54" y1="347.98" x2="764.54" y2="368.3" width="0.1524" layer="91"/>
 <wire x1="764.54" y1="368.3" x2="751.84" y2="368.3" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="68"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="68"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="68"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="68"/>
 </segment>
 </net>
 <net name="VDD_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="10"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="10"/>
 <wire x1="736.6" y1="490.22" x2="734.06" y2="490.22" width="0.1524" layer="91"/>
 <wire x1="734.06" y1="490.22" x2="734.06" y2="500.38" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="10"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="10"/>
 <wire x1="734.06" y1="500.38" x2="736.6" y2="500.38" width="0.1524" layer="91"/>
 <label x="734.06" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="AUXOUT_A_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="4"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="4"/>
 <wire x1="736.6" y1="474.98" x2="718.82" y2="474.98" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="4"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="4"/>
 <wire x1="718.82" y1="474.98" x2="718.82" y2="515.62" width="0.1524" layer="91"/>
 <wire x1="718.82" y1="515.62" x2="736.6" y2="515.62" width="0.1524" layer="91"/>
 <label x="718.82" y="490.22" size="1.778" layer="95" rot="R90"/>
@@ -6034,79 +6034,79 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="CS-_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="11"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="11"/>
 <wire x1="751.84" y1="490.22" x2="756.92" y2="490.22" width="0.1524" layer="91"/>
 <wire x1="756.92" y1="490.22" x2="756.92" y2="500.38" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="11"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="11"/>
 <wire x1="756.92" y1="500.38" x2="751.84" y2="500.38" width="0.1524" layer="91"/>
 <label x="756.92" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="CS+_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1B" gate="G$1" pin="12"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="12"/>
 <wire x1="751.84" y1="502.92" x2="759.46" y2="502.92" width="0.1524" layer="91"/>
 <wire x1="759.46" y1="502.92" x2="759.46" y2="487.68" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1T" gate="G$1" pin="12"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="12"/>
 <wire x1="759.46" y1="487.68" x2="751.84" y2="487.68" width="0.1524" layer="91"/>
 <label x="759.46" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="SCLK-_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1B" gate="G$1" pin="13"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="13"/>
 <wire x1="751.84" y1="505.46" x2="762" y2="505.46" width="0.1524" layer="91"/>
 <wire x1="762" y1="505.46" x2="762" y2="485.14" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1T" gate="G$1" pin="13"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="13"/>
 <wire x1="762" y1="485.14" x2="751.84" y2="485.14" width="0.1524" layer="91"/>
 <label x="762" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="SCLK+_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="14"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="14"/>
 <wire x1="751.84" y1="482.6" x2="764.54" y2="482.6" width="0.1524" layer="91"/>
 <wire x1="764.54" y1="482.6" x2="764.54" y2="508" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="14"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="14"/>
 <wire x1="764.54" y1="508" x2="751.84" y2="508" width="0.1524" layer="91"/>
 <label x="764.54" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="MOSI-_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1B" gate="G$1" pin="15"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="15"/>
 <wire x1="751.84" y1="510.54" x2="767.08" y2="510.54" width="0.1524" layer="91"/>
 <wire x1="767.08" y1="510.54" x2="767.08" y2="480.06" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1T" gate="G$1" pin="15"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="15"/>
 <wire x1="767.08" y1="480.06" x2="751.84" y2="480.06" width="0.1524" layer="91"/>
 <label x="767.08" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="MOSI+_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1B" gate="G$1" pin="16"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="16"/>
 <wire x1="751.84" y1="513.08" x2="769.62" y2="513.08" width="0.1524" layer="91"/>
 <wire x1="769.62" y1="513.08" x2="769.62" y2="477.52" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1T" gate="G$1" pin="16"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="16"/>
 <wire x1="769.62" y1="477.52" x2="751.84" y2="477.52" width="0.1524" layer="91"/>
 <label x="769.62" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="MISO1-_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1B" gate="G$1" pin="17"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="17"/>
 <wire x1="751.84" y1="515.62" x2="772.16" y2="515.62" width="0.1524" layer="91"/>
 <wire x1="772.16" y1="515.62" x2="772.16" y2="474.98" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1T" gate="G$1" pin="17"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="17"/>
 <wire x1="772.16" y1="474.98" x2="751.84" y2="474.98" width="0.1524" layer="91"/>
 <label x="772.16" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="MISO1+_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1B" gate="G$1" pin="18"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="18"/>
 <wire x1="751.84" y1="518.16" x2="774.7" y2="518.16" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1T" gate="G$1" pin="18"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="18"/>
 <wire x1="774.7" y1="518.16" x2="774.7" y2="472.44" width="0.1524" layer="91"/>
 <wire x1="774.7" y1="472.44" x2="751.84" y2="472.44" width="0.1524" layer="91"/>
 <label x="774.7" y="490.22" size="1.778" layer="95" rot="R90"/>
@@ -6114,9 +6114,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="MISO2-_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1B" gate="G$1" pin="19"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="19"/>
 <wire x1="751.84" y1="520.7" x2="777.24" y2="520.7" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1T" gate="G$1" pin="19"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="19"/>
 <wire x1="777.24" y1="520.7" x2="777.24" y2="469.9" width="0.1524" layer="91"/>
 <wire x1="777.24" y1="469.9" x2="751.84" y2="469.9" width="0.1524" layer="91"/>
 <label x="777.24" y="490.22" size="1.778" layer="95" rot="R90"/>
@@ -6124,9 +6124,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="MISO2+_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1B" gate="G$1" pin="20"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="20"/>
 <wire x1="751.84" y1="523.24" x2="779.78" y2="523.24" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1T" gate="G$1" pin="20"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="20"/>
 <wire x1="779.78" y1="523.24" x2="779.78" y2="467.36" width="0.1524" layer="91"/>
 <wire x1="779.78" y1="467.36" x2="751.84" y2="467.36" width="0.1524" layer="91"/>
 <label x="779.78" y="490.22" size="1.778" layer="95" rot="R90"/>
@@ -6212,7 +6212,7 @@ by exp-lbrs.ulp</description>
 <pinref part="AMP_A" gate="A" pin="MISO-"/>
 <label x="185.42" y="190.5" size="1.778" layer="95" rot="R90"/>
 <label x="180.34" y="320.04" size="1.778" layer="95" rot="R90"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="19"/>
+<pinref part="DIO_TEA" gate="G$1" pin="19"/>
 </segment>
 </net>
 <net name="MISO1+" class="0">
@@ -6223,7 +6223,7 @@ by exp-lbrs.ulp</description>
 <pinref part="AMP_A" gate="A" pin="MISO+"/>
 <label x="187.96" y="190.5" size="1.778" layer="95" rot="R90"/>
 <label x="182.88" y="320.04" size="1.778" layer="95" rot="R90"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="20"/>
+<pinref part="DIO_TEA" gate="G$1" pin="20"/>
 </segment>
 </net>
 <net name="AUXOUT_B" class="0">
@@ -6236,14 +6236,14 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="180.34" y1="170.18" x2="180.34" y2="154.94" width="0.1524" layer="91"/>
 <label x="180.34" y="157.48" size="1.778" layer="95" rot="R270"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="4"/>
+<pinref part="DIO_TEA" gate="G$1" pin="4"/>
 </segment>
 </net>
 <net name="AUXOUT_B_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="5"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="5"/>
 <wire x1="736.6" y1="477.52" x2="721.36" y2="477.52" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="5"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="5"/>
 <wire x1="721.36" y1="477.52" x2="721.36" y2="513.08" width="0.1524" layer="91"/>
 <wire x1="721.36" y1="513.08" x2="736.6" y2="513.08" width="0.1524" layer="91"/>
 <label x="721.36" y="490.22" size="1.778" layer="95" rot="R90"/>
@@ -6257,7 +6257,7 @@ by exp-lbrs.ulp</description>
 <label x="487.68" y="322.58" size="1.778" layer="95" rot="R90"/>
 <wire x1="487.68" y1="243.84" x2="487.68" y2="335.28" width="0.1524" layer="91"/>
 <label x="180.34" y="190.5" size="1.778" layer="95" rot="R90"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="17"/>
+<pinref part="DIO_TEA" gate="G$1" pin="17"/>
 </segment>
 </net>
 <net name="MISO2+" class="0">
@@ -6268,19 +6268,19 @@ by exp-lbrs.ulp</description>
 <label x="490.22" y="322.58" size="1.778" layer="95" rot="R90"/>
 <wire x1="490.22" y1="241.3" x2="490.22" y2="335.28" width="0.1524" layer="91"/>
 <label x="182.88" y="190.5" size="1.778" layer="95" rot="R90"/>
-<pinref part="DIO_E1_T" gate="G$1" pin="18"/>
+<pinref part="DIO_TEA" gate="G$1" pin="18"/>
 </segment>
 </net>
 <net name="REF" class="0">
 <segment>
 <wire x1="165.1" y1="487.68" x2="170.18" y2="487.68" width="0.1524" layer="91"/>
 <label x="165.1" y="487.68" size="1.778" layer="95"/>
-<pinref part="AIN_N0B" gate="G$1" pin="1"/>
+<pinref part="AIN_BNB" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <wire x1="449.58" y1="401.32" x2="457.2" y2="401.32" width="0.1524" layer="91"/>
 <label x="449.58" y="401.32" size="1.778" layer="95"/>
-<pinref part="AIN_S0B" gate="G$1" pin="36"/>
+<pinref part="AIN_BSB" gate="G$1" pin="36"/>
 </segment>
 <segment>
 <label x="83.82" y="327.66" size="1.778" layer="95"/>
@@ -6291,7 +6291,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="142.24" y1="401.32" x2="149.86" y2="401.32" width="0.1524" layer="91"/>
 <label x="142.24" y="401.32" size="1.778" layer="95"/>
-<pinref part="AIN_N0B" gate="G$1" pin="36"/>
+<pinref part="AIN_BNB" gate="G$1" pin="36"/>
 </segment>
 <segment>
 <pinref part="AMP_B" gate="A" pin="REF_ELEC"/>
@@ -6307,7 +6307,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="472.44" y1="487.68" x2="477.52" y2="487.68" width="0.1524" layer="91"/>
 <label x="472.44" y="487.68" size="1.778" layer="95"/>
-<pinref part="AIN_S0B" gate="G$1" pin="1"/>
+<pinref part="AIN_BSB" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="REF1" gate="TP$1" pin="1"/>
@@ -6322,57 +6322,57 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="DGND_THRU" class="0">
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="1"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="1"/>
 <wire x1="736.6" y1="467.36" x2="711.2" y2="467.36" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="1"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="1"/>
 <wire x1="711.2" y1="467.36" x2="711.2" y2="523.24" width="0.1524" layer="91"/>
 <wire x1="711.2" y1="523.24" x2="736.6" y2="523.24" width="0.1524" layer="91"/>
 <label x="711.2" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="2"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="2"/>
 <wire x1="736.6" y1="469.9" x2="713.74" y2="469.9" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="2"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="2"/>
 <wire x1="713.74" y1="469.9" x2="713.74" y2="520.7" width="0.1524" layer="91"/>
 <wire x1="713.74" y1="520.7" x2="736.6" y2="520.7" width="0.1524" layer="91"/>
 <label x="713.74" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="3"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="3"/>
 <wire x1="736.6" y1="472.44" x2="716.28" y2="472.44" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="3"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="3"/>
 <wire x1="716.28" y1="472.44" x2="716.28" y2="518.16" width="0.1524" layer="91"/>
 <wire x1="716.28" y1="518.16" x2="736.6" y2="518.16" width="0.1524" layer="91"/>
 <label x="716.28" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="6"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="6"/>
 <wire x1="736.6" y1="480.06" x2="723.9" y2="480.06" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="6"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="6"/>
 <wire x1="723.9" y1="480.06" x2="723.9" y2="510.54" width="0.1524" layer="91"/>
 <wire x1="723.9" y1="510.54" x2="736.6" y2="510.54" width="0.1524" layer="91"/>
 <label x="723.9" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="7"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="7"/>
 <wire x1="736.6" y1="482.6" x2="726.44" y2="482.6" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="7"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="7"/>
 <wire x1="726.44" y1="482.6" x2="726.44" y2="508" width="0.1524" layer="91"/>
 <wire x1="726.44" y1="508" x2="736.6" y2="508" width="0.1524" layer="91"/>
 <label x="726.44" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="8"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="8"/>
 <wire x1="736.6" y1="485.14" x2="728.98" y2="485.14" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="8"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="8"/>
 <wire x1="728.98" y1="485.14" x2="728.98" y2="505.46" width="0.1524" layer="91"/>
 <wire x1="728.98" y1="505.46" x2="736.6" y2="505.46" width="0.1524" layer="91"/>
 <label x="728.98" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
-<pinref part="DTHRU_N1T" gate="G$1" pin="9"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="9"/>
 <wire x1="736.6" y1="487.68" x2="731.52" y2="487.68" width="0.1524" layer="91"/>
-<pinref part="DTHRU_N1B" gate="G$1" pin="9"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="9"/>
 <wire x1="731.52" y1="487.68" x2="731.52" y2="502.92" width="0.1524" layer="91"/>
 <wire x1="731.52" y1="502.92" x2="736.6" y2="502.92" width="0.1524" layer="91"/>
 <label x="731.52" y="490.22" size="1.778" layer="95" rot="R90"/>
@@ -6389,14 +6389,14 @@ by exp-lbrs.ulp</description>
 <wire x1="647.7" y1="449.58" x2="647.7" y2="266.7" width="0.1524" layer="91"/>
 <wire x1="736.6" y1="266.7" x2="731.52" y2="266.7" width="0.1524" layer="91"/>
 <label x="711.2" y="266.7" size="1.778" layer="95"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="34"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="34"/>
 <wire x1="736.6" y1="269.24" x2="731.52" y2="269.24" width="0.1524" layer="91"/>
 <wire x1="731.52" y1="269.24" x2="731.52" y2="266.7" width="0.1524" layer="91"/>
 <junction x="731.52" y="266.7"/>
 <wire x1="647.7" y1="266.7" x2="731.52" y2="266.7" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="34"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="35"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="35"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="34"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="35"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="35"/>
 </segment>
 </net>
 <net name="AGND_THRU_2" class="0">
@@ -6411,25 +6411,25 @@ by exp-lbrs.ulp</description>
 <junction x="759.46" y="363.22"/>
 <wire x1="759.46" y1="365.76" x2="751.84" y2="365.76" width="0.1524" layer="91"/>
 <label x="759.46" y="355.6" size="1.778" layer="95" rot="MR0"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="69"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="70"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="69"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="70"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="69"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="70"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="69"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="70"/>
 </segment>
 </net>
 <net name="AGND_THRU_3" class="1">
 <segment>
 <wire x1="645.16" y1="60.96" x2="645.16" y2="243.84" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="35"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="35"/>
 <wire x1="645.16" y1="243.84" x2="731.52" y2="243.84" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="34"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="34"/>
 <wire x1="731.52" y1="243.84" x2="736.6" y2="243.84" width="0.1524" layer="91"/>
 <wire x1="736.6" y1="241.3" x2="731.52" y2="241.3" width="0.1524" layer="91"/>
 <wire x1="731.52" y1="241.3" x2="731.52" y2="243.84" width="0.1524" layer="91"/>
 <junction x="731.52" y="243.84"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="35"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="35"/>
 <wire x1="645.16" y1="60.96" x2="731.52" y2="60.96" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="34"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="34"/>
 <wire x1="731.52" y1="60.96" x2="736.6" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="736.6" y1="63.5" x2="731.52" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="731.52" y1="63.5" x2="731.52" y2="60.96" width="0.1524" layer="91"/>
@@ -6440,28 +6440,28 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="N$230" class="0">
 <segment>
-<pinref part="ATHRU_W0T" gate="G$1" pin="2"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="2"/>
 <wire x1="736.6" y1="365.76" x2="728.98" y2="365.76" width="0.1524" layer="91"/>
 <wire x1="728.98" y1="365.76" x2="728.98" y2="350.52" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="2"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="2"/>
 <wire x1="728.98" y1="350.52" x2="736.6" y2="350.52" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="REF_THRU_2" class="0">
 <segment>
-<pinref part="ATHRU_W0B" gate="G$1" pin="1"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="1"/>
 <wire x1="736.6" y1="353.06" x2="731.52" y2="353.06" width="0.1524" layer="91"/>
 <wire x1="731.52" y1="353.06" x2="731.52" y2="363.22" width="0.1524" layer="91"/>
-<pinref part="ATHRU_W0T" gate="G$1" pin="1"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="1"/>
 <wire x1="731.52" y1="363.22" x2="736.6" y2="363.22" width="0.1524" layer="91"/>
 <label x="731.52" y="358.14" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="REF_THRU_1" class="0">
 <segment>
-<pinref part="ATHRU_W0T" gate="G$1" pin="36"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="36"/>
 <label x="754.38" y="449.58" size="1.778" layer="95"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="36"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="36"/>
 <label x="756.92" y="266.7" size="1.778" layer="95"/>
 <wire x1="751.84" y1="266.7" x2="845.82" y2="266.7" width="0.1524" layer="91"/>
 <wire x1="845.82" y1="266.7" x2="845.82" y2="449.58" width="0.1524" layer="91"/>
@@ -6470,19 +6470,19 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="N$262" class="0">
 <segment>
-<pinref part="ATHRU_E0T" gate="G$1" pin="37"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="37"/>
 <wire x1="751.84" y1="241.3" x2="843.28" y2="241.3" width="0.1524" layer="91"/>
 <wire x1="843.28" y1="241.3" x2="843.28" y2="63.5" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="37"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="37"/>
 <wire x1="843.28" y1="63.5" x2="751.84" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="REF_THRU_3" class="0">
 <segment>
-<pinref part="ATHRU_E0B" gate="G$1" pin="36"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="36"/>
 <wire x1="751.84" y1="60.96" x2="845.82" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="845.82" y1="60.96" x2="845.82" y2="243.84" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="36"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="36"/>
 <wire x1="845.82" y1="243.84" x2="751.84" y2="243.84" width="0.1524" layer="91"/>
 <label x="756.92" y="243.84" size="1.778" layer="95"/>
 <label x="754.38" y="60.96" size="1.778" layer="95"/>
@@ -6490,27 +6490,27 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="N$166" class="0">
 <segment>
-<pinref part="ATHRU_E0B" gate="G$1" pin="2"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="2"/>
 <wire x1="736.6" y1="144.78" x2="728.98" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="728.98" y1="144.78" x2="728.98" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0T" gate="G$1" pin="2"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="2"/>
 <wire x1="728.98" y1="160.02" x2="736.6" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="REF_THRU_4" class="0">
 <segment>
-<pinref part="ATHRU_E0T" gate="G$1" pin="1"/>
+<pinref part="ATHRU_TEB" gate="G$1" pin="1"/>
 <wire x1="736.6" y1="157.48" x2="731.52" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="731.52" y1="157.48" x2="731.52" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="ATHRU_E0B" gate="G$1" pin="1"/>
+<pinref part="ATHRU_BEB" gate="G$1" pin="1"/>
 <wire x1="731.52" y1="147.32" x2="736.6" y2="147.32" width="0.1524" layer="91"/>
 <label x="731.52" y="152.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$1000" class="0">
 <segment>
-<pinref part="ATHRU_W0T" gate="G$1" pin="37"/>
-<pinref part="ATHRU_W0B" gate="G$1" pin="37"/>
+<pinref part="ATHRU_TWB" gate="G$1" pin="37"/>
+<pinref part="ATHRU_BWB" gate="G$1" pin="37"/>
 <wire x1="751.84" y1="269.24" x2="843.28" y2="269.24" width="0.1524" layer="91"/>
 <wire x1="843.28" y1="269.24" x2="843.28" y2="447.04" width="0.1524" layer="91"/>
 <wire x1="843.28" y1="447.04" x2="751.84" y2="447.04" width="0.1524" layer="91"/>
@@ -6564,8 +6564,6 @@ by exp-lbrs.ulp</description>
 <approved hash="202,1,71.12,375.92,AMP_A,REF_ELEC1,,,,"/>
 <approved hash="202,1,548.64,375.92,AMP_B,REF_ELEC2,,,,"/>
 <approved hash="202,1,378.46,375.92,AMP_B,REF_ELEC1,,,,"/>
-<approved hash="113,1,431.8,279.296,FRAME2,,,,,"/>
-<approved hash="113,1,807.491,17.5578,FRAME1,,,,,"/>
 </errors>
 </schematic>
 </drawing>
