@@ -165,8 +165,8 @@
 <text x="-2.249996875" y="-18.62499375" size="0.8128" layer="21" font="vector" ratio="18" align="center">A</text>
 <text x="-4.301103125" y="-14.243265625" size="0.8128" layer="21" font="vector" ratio="18" rot="R304" align="center">G-S-A</text>
 <text x="10.37499375" y="-5.249996875" size="0.8128" layer="21" font="vector" ratio="18" rot="R304" align="center">A-S-G</text>
-<text x="10.999990625" y="-1.624996875" size="0.8128" layer="21" font="vector" ratio="18" align="center">S</text>
-<text x="10.99999375" y="-2.624996875" size="0.8128" layer="21" font="vector" ratio="18" align="center">R</text>
+<text x="10.999990625" y="-2.590196875" size="0.8128" layer="21" font="vector" ratio="18" align="center">S</text>
+<text x="10.99999375" y="-1.634396875" size="0.8128" layer="21" font="vector" ratio="18" align="center">R</text>
 <text x="10.99999375" y="-0.624996875" size="0.8128" layer="21" font="vector" ratio="18" align="center">A</text>
 <wire x1="18.37499375" y1="1.124996875" x2="18.37499375" y2="-1.12499375" width="0.1524" layer="21"/>
 <wire x1="18.37499375" y1="1.124996875" x2="17.75999375" y2="0.989996875" width="0.1524" layer="21"/>
@@ -507,10 +507,10 @@ JPN, MWL@MIT
 <wire x1="0" y1="18.9" x2="0" y2="19.1" width="0.0508" layer="52"/>
 <wire x1="-0.1" y1="19" x2="0.1" y2="19" width="0.0508" layer="52"/>
 <text x="-0.508" y="19.381" size="0.254" layer="52" font="vector" ratio="18" rot="MR180">0,-19mm</text>
-<text x="1.392478125" y="16.7330375" size="0.8128" layer="27" font="vector" ratio="18" rot="SR180" align="center">&gt;VALUE</text>
+<text x="1.392478125" y="16.4790375" size="1.016" layer="27" font="vector" ratio="18" rot="SR180" align="center">&gt;VALUE</text>
 <circle x="0.8492" y="18.4" radius="0.0832" width="0.2032" layer="21"/>
 <wire x1="0.8128" y1="18.3134" x2="0.889" y2="18.4404" width="0.127" layer="21"/>
-<text x="1.392478125" y="16.7330375" size="0.8128" layer="28" font="vector" ratio="18" rot="SR180" align="center">&gt;VALUE</text>
+<text x="1.392478125" y="16.4790375" size="1.016" layer="28" font="vector" ratio="18" rot="SR180" align="center">&gt;VALUE</text>
 <wire x1="-0.1016" y1="17.5006" x2="0.8128" y2="19.2278" width="0.127" layer="22"/>
 <wire x1="-0.1016" y1="17.5006" x2="0.8128" y2="19.2278" width="0.127" layer="21"/>
 <circle x="0.8492" y="18.4" radius="0.0832" width="0.2032" layer="22"/>
