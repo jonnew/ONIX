@@ -2871,6 +2871,10 @@ by exp-lbrs.ulp</description>
 <text x="596.9" y="543.56" size="6.4516" layer="97">PASS THROUGH</text>
 <text x="480.06" y="129.54" size="6.4516" layer="97">TEST POINTS</text>
 <wire x1="474.98" y1="139.7" x2="474.98" y2="0" width="0.6096" layer="94"/>
+<text x="416.56" y="38.1" size="2.54" layer="97">Pull-down nominal states:
+S1: ELEC_TEST1 --&gt; OPEN
+S2: ELEC_TEST2 --&gt; OPEN
+S3: REF --&gt; GND (if R4 is in place)</text>
 </plain>
 <instances>
 <instance part="C2" gate="C" x="259.08" y="353.06"/>
@@ -6204,26 +6208,26 @@ by exp-lbrs.ulp</description>
 <wire x1="373.38" y1="91.44" x2="363.22" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="MISO1-" class="0">
+<net name="MISO2-" class="0">
 <segment>
-<wire x1="185.42" y1="185.42" x2="185.42" y2="261.62" width="0.1524" layer="91"/>
-<wire x1="185.42" y1="261.62" x2="180.34" y2="261.62" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="261.62" x2="180.34" y2="335.28" width="0.1524" layer="91"/>
-<pinref part="AMP_A" gate="A" pin="MISO-"/>
+<wire x1="185.42" y1="185.42" x2="185.42" y2="243.84" width="0.1524" layer="91"/>
 <label x="185.42" y="190.5" size="1.778" layer="95" rot="R90"/>
-<label x="180.34" y="320.04" size="1.778" layer="95" rot="R90"/>
 <pinref part="DIO_TEA" gate="G$1" pin="19"/>
+<pinref part="AMP_B" gate="A" pin="MISO-"/>
+<wire x1="487.68" y1="243.84" x2="487.68" y2="335.28" width="0.1524" layer="91"/>
+<label x="487.68" y="322.58" size="1.778" layer="95" rot="R90"/>
+<wire x1="185.42" y1="243.84" x2="487.68" y2="243.84" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="MISO1+" class="0">
+<net name="MISO2+" class="0">
 <segment>
-<wire x1="182.88" y1="335.28" x2="182.88" y2="264.16" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="264.16" x2="187.96" y2="264.16" width="0.1524" layer="91"/>
-<wire x1="187.96" y1="264.16" x2="187.96" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="AMP_A" gate="A" pin="MISO+"/>
 <label x="187.96" y="190.5" size="1.778" layer="95" rot="R90"/>
-<label x="182.88" y="320.04" size="1.778" layer="95" rot="R90"/>
 <pinref part="DIO_TEA" gate="G$1" pin="20"/>
+<pinref part="AMP_B" gate="A" pin="MISO+"/>
+<wire x1="187.96" y1="241.3" x2="187.96" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="490.22" y1="241.3" x2="490.22" y2="335.28" width="0.1524" layer="91"/>
+<label x="490.22" y="322.58" size="1.778" layer="95" rot="R90"/>
+<wire x1="490.22" y1="241.3" x2="187.96" y2="241.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="AUXOUT_B" class="0">
@@ -6249,26 +6253,22 @@ by exp-lbrs.ulp</description>
 <label x="721.36" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="MISO2-" class="0">
+<net name="MISO1-" class="0">
 <segment>
-<wire x1="180.34" y1="243.84" x2="487.68" y2="243.84" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="185.42" x2="180.34" y2="243.84" width="0.1524" layer="91"/>
-<pinref part="AMP_B" gate="A" pin="MISO-"/>
-<label x="487.68" y="322.58" size="1.778" layer="95" rot="R90"/>
-<wire x1="487.68" y1="243.84" x2="487.68" y2="335.28" width="0.1524" layer="91"/>
 <label x="180.34" y="190.5" size="1.778" layer="95" rot="R90"/>
 <pinref part="DIO_TEA" gate="G$1" pin="17"/>
+<wire x1="180.34" y1="185.42" x2="180.34" y2="335.28" width="0.1524" layer="91"/>
+<pinref part="AMP_A" gate="A" pin="MISO-"/>
+<label x="180.34" y="320.04" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="MISO2+" class="0">
+<net name="MISO1+" class="0">
 <segment>
-<wire x1="490.22" y1="241.3" x2="182.88" y2="241.3" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="241.3" x2="182.88" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="AMP_B" gate="A" pin="MISO+"/>
-<label x="490.22" y="322.58" size="1.778" layer="95" rot="R90"/>
-<wire x1="490.22" y1="241.3" x2="490.22" y2="335.28" width="0.1524" layer="91"/>
 <label x="182.88" y="190.5" size="1.778" layer="95" rot="R90"/>
 <pinref part="DIO_TEA" gate="G$1" pin="18"/>
+<wire x1="182.88" y1="335.28" x2="182.88" y2="185.42" width="0.1524" layer="91"/>
+<pinref part="AMP_A" gate="A" pin="MISO+"/>
+<label x="182.88" y="320.04" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="REF" class="0">
@@ -6567,4 +6567,10 @@ by exp-lbrs.ulp</description>
 </errors>
 </schematic>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>

@@ -1019,10 +1019,10 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-2.28599375" y1="4.063984375" x2="-2.031990625" y2="3.809984375" width="0.127" layer="16" curve="90"/>
 <wire x1="-2.031990625" y1="3.809984375" x2="-1.777996875" y2="3.55598125" width="0.127" layer="16" curve="-90"/>
 <wire x1="-1.777996875" y1="3.55598125" x2="-2.031996875" y2="3.301978125" width="0.127" layer="16" curve="-90"/>
-<wire x1="-2.031996875" y1="3.301978125" x2="-2.285978125" y2="3.047990625" width="0.127" layer="16" curve="90"/>
-<wire x1="-2.285978125" y1="3.047990625" x2="-2.285984375" y2="2.7722" width="0.127" layer="16"/>
+<wire x1="-2.031996875" y1="3.301978125" x2="-2.235178125" y2="3.047990625" width="0.127" layer="16" curve="90"/>
+<wire x1="-2.235178125" y1="3.047990625" x2="-2.235184375" y2="2.7722" width="0.127" layer="16"/>
 <wire x1="-2.031984375" y1="2.41299375" x2="-2.2115875" y2="2.592596875" width="0.127" layer="16"/>
-<wire x1="-2.2115875" y1="2.592596875" x2="-2.285984375" y2="2.7722" width="0.127" layer="16" curve="-44.999295"/>
+<wire x1="-2.2115875" y1="2.592596875" x2="-2.235184375" y2="2.7722" width="0.127" layer="16" curve="-44.999295"/>
 <wire x1="3.659884375" y1="13.65145625" x2="3.82684375" y2="13.764078125" width="0.127" layer="16"/>
 <wire x1="3.82684375" y1="13.764078125" x2="3.8805" y2="13.8451375" width="0.127" layer="16" curve="45"/>
 <wire x1="3.8805" y1="13.8451375" x2="3.89555625" y2="13.9225875" width="0.127" layer="16"/>
@@ -1288,16 +1288,6 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-3.877984375" y1="-8.678571875" x2="-3.3273875" y2="-8.12798125" width="0.254" layer="1"/>
 </signal>
 </signals>
-<errors>
-<approved hash="18,30,b50e86eac4c3e46c"/>
-<approved hash="18,30,33d688b02acf3b42"/>
-<approved hash="18,30,b2fafb48fd257c31"/>
-<approved hash="18,30,34ebdb38c8ca6804"/>
-<approved hash="18,30,d81cc7de6a0208d3"/>
-<approved hash="18,30,fd2d7f33b7c4fb7f"/>
-<approved hash="18,30,2fca32414dd68abe"/>
-<approved hash="18,30,b40787e9bdc4f963"/>
-</errors>
 </board>
 </drawing>
 <compatibility>
