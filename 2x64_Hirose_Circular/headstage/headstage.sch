@@ -897,12 +897,9 @@
 <rectangle x1="-3" y1="-1.2" x2="3" y2="1.2" layer="39"/>
 </package>
 <package name="TESTPOINT_SMALL">
-<pad name="1" x="0" y="0" drill="0.8128" shape="octagon" rot="R90"/>
-<text x="-1.016" y="0.7874" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-</package>
-<package name="TESTPOINT">
-<pad name="1" x="0" y="0" drill="1.016" rot="R90"/>
-<text x="1.016" y="-0.4826" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<pad name="1" x="0" y="0" drill="0.8128" diameter="1.6002" shape="octagon" rot="R90"/>
+<text x="-0.889" y="-1.8796" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<text x="-0.889" y="1.0414" size="0.8128" layer="25" font="vector" ratio="18">&gt;NAME</text>
 </package>
 <package name="RHD2164_COB">
 <smd name="CENTER" x="0" y="0" dx="7.7216" dy="4.6736" layer="1" cream="no"/>
@@ -1319,6 +1316,11 @@
 <text x="-1.1938" y="-1.5748" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.3048" y1="-0.1524" x2="-0.1524" y2="0.1524" layer="51"/>
 <rectangle x1="0.1524" y1="-0.1524" x2="0.3048" y2="0.1524" layer="51"/>
+</package>
+<package name="TESTPOINT">
+<pad name="1" x="0" y="0" drill="1.016" rot="R90"/>
+<text x="1.016" y="-0.4826" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<text x="1.016" y="0.5334" size="0.8128" layer="25" font="vector" ratio="18">&gt;NAME</text>
 </package>
 </packages>
 <symbols>

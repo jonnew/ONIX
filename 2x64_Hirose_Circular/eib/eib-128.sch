@@ -431,10 +431,10 @@
 <wire x1="0" y1="18.9" x2="0" y2="19.1" width="0.0508" layer="52"/>
 <wire x1="-0.1" y1="19" x2="0.1" y2="19" width="0.0508" layer="52"/>
 <text x="-0.508" y="19.381" size="0.254" layer="52" font="vector" ratio="18" rot="MR180">0,-19mm</text>
-<text x="1.392478125" y="16.7330375" size="0.8128" layer="27" font="vector" ratio="18" rot="SR180" align="center">&gt;VALUE</text>
+<text x="1.392478125" y="16.4790375" size="1.016" layer="27" font="vector" ratio="18" rot="SR180" align="center">&gt;VALUE</text>
 <circle x="0.8492" y="18.4" radius="0.0832" width="0.2032" layer="21"/>
 <wire x1="0.8128" y1="18.3134" x2="0.889" y2="18.4404" width="0.127" layer="21"/>
-<text x="1.392478125" y="16.7330375" size="0.8128" layer="28" font="vector" ratio="18" rot="SR180" align="center">&gt;VALUE</text>
+<text x="1.392478125" y="16.4790375" size="1.016" layer="28" font="vector" ratio="18" rot="SR180" align="center">&gt;VALUE</text>
 <wire x1="-0.1016" y1="17.5006" x2="0.8128" y2="19.2278" width="0.127" layer="22"/>
 <wire x1="-0.1016" y1="17.5006" x2="0.8128" y2="19.2278" width="0.127" layer="21"/>
 <circle x="0.8492" y="18.4" radius="0.0832" width="0.2032" layer="22"/>
