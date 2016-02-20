@@ -2815,12 +2815,10 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <package name="TESTPOINT">
 <pad name="1" x="0" y="0" drill="1.016" rot="R90"/>
 <text x="1.016" y="-0.4826" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<text x="1.016" y="0.5334" size="0.8128" layer="25" font="vector" ratio="18">&gt;NAME</text>
 </package>
 <package name="TESTPOINT_SMALL">
-<pad name="1" x="0" y="0" drill="0.8128" diameter="1.6002" shape="octagon" rot="R90"/>
-<text x="-0.889" y="-1.8796" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<text x="-0.889" y="1.0414" size="0.8128" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<pad name="1" x="0" y="0" drill="0.8128" diameter="1.6764" shape="octagon" rot="R90"/>
+<text x="-1.016" y="0.7874" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
 <package name="0603">
 <wire x1="-0.762" y1="0.4064" x2="0.762" y2="0.4064" width="0.1016" layer="51"/>
@@ -2925,6 +2923,16 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <wire x1="-1.25" y1="-2.75" x2="-1.25" y2="2.75" width="0.1524" layer="21"/>
 <text x="-1" y="3" size="1.016" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="-1" y="-4" size="1.016" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
+<package name="0603_NO">
+<wire x1="-0.762" y1="0.4064" x2="0.762" y2="0.4064" width="0.1016" layer="51"/>
+<wire x1="0.762" y1="-0.4064" x2="-0.762" y2="-0.4064" width="0.1016" layer="51"/>
+<smd name="1" x="-0.8636" y="0" dx="0.889" dy="1.0668" layer="1"/>
+<smd name="2" x="0.8636" y="0" dx="0.889" dy="1.0668" layer="1"/>
+<text x="-1.397" y="1.397" size="1.016" layer="25" font="vector" ratio="18" rot="R180" align="center-right">&gt;NAME</text>
+<text x="-1.397" y="-1.397" size="1.016" layer="27" font="vector" ratio="18" align="center-left">&gt;VALUE</text>
+<rectangle x1="-0.8128" y1="-0.4064" x2="-0.508" y2="0.4064" layer="51"/>
+<rectangle x1="0.508" y1="-0.4064" x2="0.8128" y2="0.4064" layer="51"/>
 </package>
 </packages>
 <symbols>
@@ -4525,6 +4533,15 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_0603_NO" package="0603_NO">
+<connects>
+<connect gate="R" pin="1" pad="1"/>
+<connect gate="R" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 </devicesets>
@@ -4630,14 +4647,14 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <instance part="GND4" gate="1" x="238.76" y="218.44"/>
 <instance part="ANT" gate="D$1" x="165.1" y="228.6"/>
 <instance part="POST" gate="D$1" x="233.68" y="228.6"/>
-<instance part="TP1" gate="TP$1" x="93.98" y="261.62"/>
+<instance part="TP1" gate="TP$1" x="91.44" y="261.62"/>
 <instance part="TP2" gate="TP$1" x="101.6" y="261.62"/>
-<instance part="TP3" gate="TP$1" x="109.22" y="261.62"/>
-<instance part="TP4" gate="TP$1" x="116.84" y="261.62"/>
-<instance part="TP5" gate="TP$1" x="93.98" y="243.84"/>
+<instance part="TP3" gate="TP$1" x="111.76" y="261.62"/>
+<instance part="TP4" gate="TP$1" x="121.92" y="261.62"/>
+<instance part="TP5" gate="TP$1" x="91.44" y="243.84"/>
 <instance part="TP6" gate="TP$1" x="101.6" y="243.84"/>
-<instance part="TP7" gate="TP$1" x="109.22" y="243.84"/>
-<instance part="TP8" gate="TP$1" x="116.84" y="243.84"/>
+<instance part="TP7" gate="TP$1" x="111.76" y="243.84"/>
+<instance part="TP8" gate="TP$1" x="121.92" y="243.84"/>
 </instances>
 <busses>
 </busses>
@@ -4701,16 +4718,16 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <wire x1="68.58" y1="208.28" x2="68.58" y2="236.22" width="0.1524" layer="91"/>
 <label x="55.88" y="208.28" size="1.778" layer="95"/>
 <pinref part="TP5" gate="TP$1" pin="1"/>
-<wire x1="76.2" y1="236.22" x2="93.98" y2="236.22" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="236.22" x2="91.44" y2="236.22" width="0.1524" layer="91"/>
 <pinref part="TP6" gate="TP$1" pin="1"/>
-<wire x1="93.98" y1="236.22" x2="101.6" y2="236.22" width="0.1524" layer="91"/>
-<junction x="93.98" y="236.22"/>
+<wire x1="91.44" y1="236.22" x2="101.6" y2="236.22" width="0.1524" layer="91"/>
+<junction x="91.44" y="236.22"/>
 <pinref part="TP7" gate="TP$1" pin="1"/>
-<wire x1="101.6" y1="236.22" x2="109.22" y2="236.22" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="236.22" x2="111.76" y2="236.22" width="0.1524" layer="91"/>
 <junction x="101.6" y="236.22"/>
 <pinref part="TP8" gate="TP$1" pin="1"/>
-<wire x1="109.22" y1="236.22" x2="116.84" y2="236.22" width="0.1524" layer="91"/>
-<junction x="109.22" y="236.22"/>
+<wire x1="111.76" y1="236.22" x2="121.92" y2="236.22" width="0.1524" layer="91"/>
+<junction x="111.76" y="236.22"/>
 </segment>
 <segment>
 <pinref part="GND1" gate="1" pin="GND"/>
@@ -4828,16 +4845,16 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <wire x1="63.5" y1="210.82" x2="48.26" y2="210.82" width="0.1524" layer="91"/>
 <label x="55.88" y="210.82" size="1.778" layer="95"/>
 <pinref part="TP1" gate="TP$1" pin="1"/>
-<wire x1="76.2" y1="254" x2="93.98" y2="254" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="254" x2="91.44" y2="254" width="0.1524" layer="91"/>
 <pinref part="TP2" gate="TP$1" pin="1"/>
-<wire x1="93.98" y1="254" x2="101.6" y2="254" width="0.1524" layer="91"/>
-<junction x="93.98" y="254"/>
+<wire x1="91.44" y1="254" x2="101.6" y2="254" width="0.1524" layer="91"/>
+<junction x="91.44" y="254"/>
 <pinref part="TP3" gate="TP$1" pin="1"/>
-<wire x1="101.6" y1="254" x2="109.22" y2="254" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="254" x2="111.76" y2="254" width="0.1524" layer="91"/>
 <junction x="101.6" y="254"/>
 <pinref part="TP4" gate="TP$1" pin="1"/>
-<wire x1="109.22" y1="254" x2="116.84" y2="254" width="0.1524" layer="91"/>
-<junction x="109.22" y="254"/>
+<wire x1="111.76" y1="254" x2="121.92" y2="254" width="0.1524" layer="91"/>
+<junction x="111.76" y="254"/>
 </segment>
 <segment>
 <wire x1="170.18" y1="246.38" x2="172.72" y2="246.38" width="0.1524" layer="91"/>
