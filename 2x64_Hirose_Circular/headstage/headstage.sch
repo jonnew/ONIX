@@ -6027,8 +6027,24 @@ S3: REF --&gt; GND (if R4 is in place)</text>
 <wire x1="734.06" y1="500.38" x2="736.6" y2="500.38" width="0.1524" layer="91"/>
 <label x="734.06" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
+<segment>
+<pinref part="DTHRU_TNA" gate="G$1" pin="9"/>
+<wire x1="736.6" y1="487.68" x2="731.52" y2="487.68" width="0.1524" layer="91"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="9"/>
+<wire x1="731.52" y1="487.68" x2="731.52" y2="502.92" width="0.1524" layer="91"/>
+<wire x1="731.52" y1="502.92" x2="736.6" y2="502.92" width="0.1524" layer="91"/>
+<label x="731.52" y="490.22" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="DTHRU_TNA" gate="G$1" pin="8"/>
+<wire x1="736.6" y1="485.14" x2="728.98" y2="485.14" width="0.1524" layer="91"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="8"/>
+<wire x1="728.98" y1="485.14" x2="728.98" y2="505.46" width="0.1524" layer="91"/>
+<wire x1="728.98" y1="505.46" x2="736.6" y2="505.46" width="0.1524" layer="91"/>
+<label x="728.98" y="490.22" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
-<net name="AUXOUT_A_THRU" class="0">
+<net name="AUXOUT_B_THRU" class="0">
 <segment>
 <pinref part="DTHRU_TNA" gate="G$1" pin="4"/>
 <wire x1="736.6" y1="474.98" x2="718.82" y2="474.98" width="0.1524" layer="91"/>
@@ -6245,16 +6261,6 @@ S3: REF --&gt; GND (if R4 is in place)</text>
 <pinref part="DIO_TEA" gate="G$1" pin="4"/>
 </segment>
 </net>
-<net name="AUXOUT_B_THRU" class="0">
-<segment>
-<pinref part="DTHRU_TNA" gate="G$1" pin="5"/>
-<wire x1="736.6" y1="477.52" x2="721.36" y2="477.52" width="0.1524" layer="91"/>
-<pinref part="DTHRU_BNA" gate="G$1" pin="5"/>
-<wire x1="721.36" y1="477.52" x2="721.36" y2="513.08" width="0.1524" layer="91"/>
-<wire x1="721.36" y1="513.08" x2="736.6" y2="513.08" width="0.1524" layer="91"/>
-<label x="721.36" y="490.22" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
 <net name="MISO1-" class="0">
 <segment>
 <label x="180.34" y="190.5" size="1.778" layer="95" rot="R90"/>
@@ -6364,20 +6370,12 @@ S3: REF --&gt; GND (if R4 is in place)</text>
 <label x="726.44" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
-<pinref part="DTHRU_TNA" gate="G$1" pin="8"/>
-<wire x1="736.6" y1="485.14" x2="728.98" y2="485.14" width="0.1524" layer="91"/>
-<pinref part="DTHRU_BNA" gate="G$1" pin="8"/>
-<wire x1="728.98" y1="485.14" x2="728.98" y2="505.46" width="0.1524" layer="91"/>
-<wire x1="728.98" y1="505.46" x2="736.6" y2="505.46" width="0.1524" layer="91"/>
-<label x="728.98" y="490.22" size="1.778" layer="95" rot="R90"/>
-</segment>
-<segment>
-<pinref part="DTHRU_TNA" gate="G$1" pin="9"/>
-<wire x1="736.6" y1="487.68" x2="731.52" y2="487.68" width="0.1524" layer="91"/>
-<pinref part="DTHRU_BNA" gate="G$1" pin="9"/>
-<wire x1="731.52" y1="487.68" x2="731.52" y2="502.92" width="0.1524" layer="91"/>
-<wire x1="731.52" y1="502.92" x2="736.6" y2="502.92" width="0.1524" layer="91"/>
-<label x="731.52" y="490.22" size="1.778" layer="95" rot="R90"/>
+<pinref part="DTHRU_TNA" gate="G$1" pin="5"/>
+<wire x1="736.6" y1="477.52" x2="721.36" y2="477.52" width="0.1524" layer="91"/>
+<pinref part="DTHRU_BNA" gate="G$1" pin="5"/>
+<wire x1="721.36" y1="477.52" x2="721.36" y2="513.08" width="0.1524" layer="91"/>
+<wire x1="721.36" y1="513.08" x2="736.6" y2="513.08" width="0.1524" layer="91"/>
+<label x="721.36" y="490.22" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="AGND_THRU_1" class="0">
