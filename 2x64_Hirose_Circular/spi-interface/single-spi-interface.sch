@@ -4506,13 +4506,10 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <part name="C1" library="headstage" deviceset="C" device="_0805" value="10uF"/>
 <part name="FRAME1" library="jonnew" deviceset="FRAME" device=""/>
 <part name="U$1" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
-<part name="MECH_N1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC"/>
-<part name="MECH_W1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC"/>
 <part name="MECH_E0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC"/>
 <part name="MECH_S0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC"/>
 <part name="MECH_W0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC"/>
 <part name="MECH_N0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC"/>
-<part name="MECH_S1B" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC"/>
 <part name="SJ2" library="jonnew" deviceset="R" device="_0603" value="PASS"/>
 <part name="SJ4" library="jonnew" deviceset="R" device="_0603" value="PASS"/>
 <part name="SJ1" library="jonnew" deviceset="R" device="_0603" value="AUX"/>
@@ -4559,13 +4556,10 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <instance part="C1" gate="C" x="76.2" y="246.38"/>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
 <instance part="U$1" gate="G$1" x="274.32" y="0"/>
-<instance part="MECH_N1B" gate="G$1" x="160.02" y="27.94" rot="R90"/>
-<instance part="MECH_W1B" gate="G$1" x="180.34" y="27.94" rot="R90"/>
 <instance part="MECH_E0B" gate="G$1" x="63.5" y="15.24" rot="R90"/>
 <instance part="MECH_S0B" gate="G$1" x="83.82" y="15.24" rot="R90"/>
 <instance part="MECH_W0B" gate="G$1" x="104.14" y="15.24" rot="R90"/>
 <instance part="MECH_N0B" gate="G$1" x="124.46" y="15.24" rot="R90"/>
-<instance part="MECH_S1B" gate="G$1" x="142.24" y="27.94" rot="R90"/>
 <instance part="SJ2" gate="R" x="187.96" y="205.74" rot="R270"/>
 <instance part="SJ4" gate="R" x="256.54" y="205.74" rot="R270"/>
 <instance part="SJ1" gate="R" x="139.7" y="203.2"/>

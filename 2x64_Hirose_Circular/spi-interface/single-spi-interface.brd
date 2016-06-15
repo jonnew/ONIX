@@ -474,7 +474,6 @@ by exp-lbrs.ulp</description>
 </classes>
 <designrules name="seeed-studio-4-layer">
 <description language="en">
-
 &lt;b&gt;Seeed Fusion 4 Layer Design Rules&lt;/b&gt;</description>
 <param name="layerSetup" value="(1*2*15*16)"/>
 <param name="mtCopper" value="0.035mm 0.0175mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.0175mm 0.035mm"/>
@@ -664,14 +663,6 @@ by exp-lbrs.ulp</description>
 <attribute name="NAME" x="9.77899375" y="14.985984375" size="0.8128" layer="25" font="vector" ratio="20" align="bottom-center"/>
 <attribute name="VALUE" x="10.032990625" y="13.96998125" size="0.8128" layer="27" font="vector" ratio="20" align="bottom-center"/>
 </element>
-<element name="MECH_N1B" library="jonnew" package="DF40-20REC" value="" x="-15.260321875" y="5.4546375" smashed="yes" rot="MR326">
-<attribute name="NAME" x="-12.630371875" y="3.735846875" size="0.8128" layer="26" font="vector" ratio="20" rot="MR326" align="bottom-center"/>
-<attribute name="VALUE" x="-9.971153125" y="4.426525" size="0.889" layer="28" font="vector" ratio="18" rot="MR326"/>
-</element>
-<element name="MECH_W1B" library="jonnew" package="DF40-20REC" value="" x="-5.4546375" y="-15.260321875" smashed="yes" rot="MR56">
-<attribute name="NAME" x="-4.019903125" y="-12.20919375" size="0.8128" layer="26" font="vector" ratio="20" rot="MR236" align="bottom-center"/>
-<attribute name="VALUE" x="-6.482740625" y="-20.549478125" size="0.889" layer="28" font="vector" ratio="18" rot="MR56"/>
-</element>
 <element name="MECH_E0B" library="jonnew" package="DF40-70REC" value="" x="12.527959375" y="4.77368125" smashed="yes" rot="MR56">
 <attribute name="NAME" x="14.4231375" y="6.052" size="0.8128" layer="26" font="vector" ratio="20" rot="MR56" align="bottom-center"/>
 <attribute name="VALUE" x="14.340546875" y="-4.7269625" size="0.889" layer="28" font="vector" ratio="18" rot="MR56"/>
@@ -687,10 +678,6 @@ by exp-lbrs.ulp</description>
 <element name="MECH_N0B" library="jonnew" package="DF40-70REC" value="" x="-4.773678125" y="12.52795" smashed="yes" rot="MR326">
 <attribute name="NAME" x="-6.4212875" y="14.970646875" size="0.8128" layer="26" font="vector" ratio="20" rot="MR326" align="bottom-center"/>
 <attribute name="VALUE" x="4.72695" y="14.340525" size="0.889" layer="28" font="vector" ratio="18" rot="MR326"/>
-</element>
-<element name="MECH_S1B" library="jonnew" package="DF40-20REC" value="" x="15.26030625" y="-5.454628125" smashed="yes" rot="MR326">
-<attribute name="NAME" x="12.86056875" y="-4.62223125" size="0.8128" layer="26" font="vector" ratio="20" rot="MR326" align="bottom-center"/>
-<attribute name="VALUE" x="20.549459375" y="-6.4827375" size="0.889" layer="28" font="vector" ratio="18" rot="MR326"/>
 </element>
 <element name="SJ2" library="jonnew" package="0603" value="PASS" x="4.317978125" y="14.223959375" smashed="yes" rot="R270">
 <attribute name="NAME" x="4.063978125" y="16.2239625" size="0.8128" layer="25" font="vector" ratio="20" align="bottom-center"/>

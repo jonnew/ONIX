@@ -2831,8 +2831,6 @@ by exp-lbrs.ulp</description>
 <part name="GND37" library="headstage" deviceset="GND" device=""/>
 <part name="DTHRU_TNA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
 <part name="DTHRU_BNA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
-<part name="MECH_TSA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
-<part name="MECH_TWA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
 <part name="DIO_TEA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20HEAD" value="DF40HEAD"/>
 <part name="P+1" library="jonnew" deviceset="VCC" device=""/>
 <part name="P+3" library="jonnew" deviceset="VCC" device=""/>
@@ -2853,8 +2851,6 @@ by exp-lbrs.ulp</description>
 <part name="GND28" library="headstage" deviceset="GND" device=""/>
 <part name="VDD12" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND30" library="headstage" deviceset="GND" device=""/>
-<part name="MECH_BWA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
-<part name="MECH_BSA" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC" value="DF40REC"/>
 <part name="FRAME1" library="jonnew" deviceset="FRAME_D_L" device=""/>
 <part name="U$1" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
 </parts>
@@ -2925,8 +2921,6 @@ S3: REF --&gt; GND (if R4 is in place)</text>
 <instance part="GND37" gate="1" x="172.72" y="162.56"/>
 <instance part="DTHRU_TNA" gate="G$1" x="744.22" y="477.52" rot="MR90"/>
 <instance part="DTHRU_BNA" gate="G$1" x="744.22" y="513.08" rot="R270"/>
-<instance part="MECH_TSA" gate="G$1" x="152.4" y="45.72" rot="MR90"/>
-<instance part="MECH_TWA" gate="G$1" x="172.72" y="45.72" rot="MR90"/>
 <instance part="DIO_TEA" gate="G$1" x="177.8" y="177.8" rot="MR0"/>
 <instance part="P+1" gate="VCC" x="403.86" y="332.74"/>
 <instance part="P+3" gate="VCC" x="492.76" y="332.74"/>
@@ -2957,8 +2951,6 @@ S3: REF --&gt; GND (if R4 is in place)</text>
 <instance part="GND28" gate="1" x="347.98" y="271.78"/>
 <instance part="VDD12" gate="VCC" x="317.5" y="345.44"/>
 <instance part="GND30" gate="1" x="287.02" y="271.78"/>
-<instance part="MECH_BWA" gate="G$1" x="193.04" y="48.26" rot="R270"/>
-<instance part="MECH_BSA" gate="G$1" x="213.36" y="48.26" rot="R270"/>
 <instance part="FRAME1" gate="G$1" x="431.8" y="0"/>
 <instance part="U$1" gate="G$1" x="756.92" y="0"/>
 </instances>

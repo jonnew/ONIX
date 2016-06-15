@@ -1463,8 +1463,6 @@
 </classes>
 <parts>
 <part name="AIN_S0T" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD-EIB" value="DF40HEAD"/>
-<part name="MECH_W0T" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
-<part name="MECH_E0T" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD" value="DF40HEAD"/>
 <part name="AIN_N0T" library="jonnew" deviceset="PINHD-2X35" device="_DF40HEAD-EIB" value="DF40HEAD"/>
 <part name="TET0" library="jonnew" deviceset="TETRODE" device="_128_0.5ID_0.7OD" value="0"/>
 <part name="TET1" library="jonnew" deviceset="TETRODE" device="_128_0.5ID_0.7OD" value="1"/>
@@ -1527,8 +1525,6 @@
 </plain>
 <instances>
 <instance part="AIN_S0T" gate="G$1" x="139.7" y="53.34"/>
-<instance part="MECH_W0T" gate="G$1" x="78.74" y="193.04" rot="R270"/>
-<instance part="MECH_E0T" gate="G$1" x="289.56" y="106.68" rot="R90"/>
 <instance part="AIN_N0T" gate="G$1" x="226.06" y="243.84" rot="R180"/>
 <instance part="TET0" gate="G$1" x="218.44" y="274.32" rot="MR90"/>
 <instance part="TET1" gate="G$1" x="208.28" y="274.32" rot="MR90"/>
