@@ -28,7 +28,42 @@ The bill of materials for the headstage, EIBs, spacer boards, and SPI interface
 boards can be found on [this google
 doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit?usp=sharing).
 
+
 #### TODO
+- [ ] For the implants with VTA recordings -- where will these static
+  electrodes interface with the EIB. Will they just take an couple 'tetrode
+  spots', or is something more specialized needed?
+    - Edit: maybe make a special EIB with a connector coming from a flex pcb
+      from the VTA implants.
+- [ ] In talking to Jakob, I realized that I can share a single CS, MOSI, and
+  SCLK bus among all 4 intan chips assuming (1) I don't mind that all the chips
+  do the same thing (2) I make sure that the accumulating decrease in the
+  effective resistance of having 2X100 ohm resistors close to each other
+  (multidrop config) is not going to mess with the LVDS signal integrity.
+    - To implement this (in the simplest way possible) I should just be able to
+      jumper the CS, MOSI, and SCLK lines at the level of SPI interface board.
+      If this works without chaning any of the headstage terminations, then
+      great, I just saved 6 wires!
+    - Note that this strategy does not require a change to the headstages, just
+      the interface board. I will move forward with this idea because it will
+      allow me to use the headstages for 128 channel acquisition in the
+      meantime.
+- [ ] Experiments with the color based tracker indicate that a diffuser,
+  preferably something very similar to a tiny ping-pong ball is required on the
+  head-direction LEDS on the SPI interface. In general, the SPI interface
+  should accommodate whatever solution I come up with. Also, we can get rid of
+  the 'wings' on the SPI interface since the geometric tracking idea was
+  ill-conceived.
+    - [ ] LED choices: Use green and blue for the SPI interface board. The orange
+      LED matches the room lighting and is hard to track
+- [ ] I need to make sure that he DF40 headers are not going to short onto the
+  vias underneath the connectors on the EIB. This should be done empirically.
+  - EDIT: they do not short, but there is a different problem: one of the gold
+    pins on TT23 of the EIB hits the outer edge of the DF40 receptical above
+    it. This pin needs to be moved. More generally, I need to add vertical
+    keepouts to the DF40 parts to prevent this in the future.
+
+#### Completed TODOs
 - [x] Analog connections terminating at the inputs to an RHD chip do not need
   to feed through to the next board. However, digital connections __always__
   should feed through because they need to make it to the headstage interface
@@ -53,7 +88,7 @@ doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rl
   - Ask for Reid's opinion on the possibility of this chip introducing HF noise
     into the RHD chip sitting right below it.
   - Reid did not think it would be an issue
-- [ ] Stack height concerns __test empirically using mockups__
+- [x] Stack height concerns __test empirically using mockups__
  - The ADX is sitting right over an RHD. This leads to an effective stack
    height of their combined thickness. Solution: only populate the to ADX since
    thats all you need anyway. 
@@ -82,28 +117,8 @@ doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rl
  - I created a standard mounting fixture called EIB_MOUNT_A. This provides a
    center hole for a M2 or 2-56 screw and two alignment holes for tabs on the
    drive body's mounting plate.
-- [ ] I need to make sure that he DF40 headers are not going to short onto the
-  vias underneath the connectors on the EIB. This should be done empirically.
 - [x] The silkscreen on the tetrodes is too small. Make it bigger and move
   toward the inner part of the EIB.
-- [ ] For the implants with VTA recordings -- where will these static
-  electrodes interface with the EIB. Will they just take an couple 'tetrode
-  spots', or is something more specialized needed?
-    - Edit: maybe make a special EIB with a connector coming from a flex pcb
-      from the VTA implants.
-- [ ] In talking to Jakob, I realized that I can share a single CS, MOSI, and
-  SCLK bus among all 4 intan chips assuming (1) I don't mind that all the chips
-  do the same thing (2) I make sure that the accumulating decrease in the
-  effective resistance of having 2X100 ohm resistors close to each other
-  (multidrop config) is not going to mess with the LVDS signal integrity.
-    - To implement this (in the simplest way possible) I should just be able to
-      jumper the CS, MOSI, and SCLK lines at the level of SPI interface board.
-      If this works without chaning any of the headstage terminations, then
-      great, I just saved 6 wires!
-    - Note that this strategy does not require a change to the headstages, just
-      the interface board. I will move forward with this idea because it will
-      allow me to use the headstages for 128 channel acquisition in the
-      meantime.
 - [x] On the SPI interface, on the mock ups from OSH park, small vias failed to
   support distinctions between octagon style plated holes and round holes. This
   means that my clever way of distinguish SPI interface polarity was a bust. 
@@ -113,14 +128,6 @@ doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rl
 - [x] Add VDD and GND test points, with large vias, to the periphery of the
   SPI interface board to make for easy testing using a benchtop power supply.
   In fact, do this for all the boards that don't have it already.
-- [x] Experiments with the color based tracker indicate that a diffuser,
-  preferably something very similar to a tiny ping-pong ball is required on the
-  head-direction LEDS on the SPI interface. In general, the SPI interface
-  should accommodate whatever solution I come up with. Also, we can get rid of
-  the 'wings' on the SPI interface since the geometric tracking idea was
-  ill-conceived.
-    - [ ] LED choices: Use green and blue for the SPI interface board. The orange
-      LED matches the room lighting and is hard to track
 - [x] The SPI interface needs to be changed in the following ways.
   - Get rid of fins, they will never work
   - Move as many LEDs to as tight of an area as possible, in between the 2nd
