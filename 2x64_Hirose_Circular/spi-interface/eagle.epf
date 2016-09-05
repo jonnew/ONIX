@@ -341,14 +341,15 @@ UsedLibrary="/home/jon/.eagle/lbr/xilinx-xc9.lbr"
 UsedLibrary="/home/jon/.eagle/lbr/xilinx-xcv.lbr"
 UsedLibrary="/home/jon/.eagle/lbr/zetex.lbr"
 UsedLibrary="/home/jon/.eagle/lbr/zilog.lbr"
+UsedLibrary="/home/jon/public/jonnew-lbr/eagle/lib/jonnew.lbr"
 
 [Win_1]
 Type="Schematic Editor"
-Loc="0 27 1275 1435"
+Loc="1280 733 2555 1435"
 State=2
-Number=2
-File="single-spi-interface.sch"
-View="91.1259 72.8379 289.666 231.754"
+Number=3
+File="/home/jon/public/open-ephys/headstage-test-board/headstage-test-board-omnetics-32.sch"
+View="28.2168 -33.6271 271.379 231.281"
 WireWidths=" 0 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -387,16 +388,16 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
-Views=" 1: 91.1259 72.8379 289.666 231.754"
+Views=" 1: 28.2168 -33.6271 271.379 231.281"
 Sheet=1
 
 [Win_2]
 Type="Board Editor"
-Loc="1280 27 2555 728"
+Loc="0 27 1275 728"
 State=2
 Number=1
-File="single-spi-interface.brd"
-View="-4.71287 -4.08205 1.27035 1.90117"
+File="/home/jon/public/open-ephys/headstage-test-board/headstage-test-board-omnetics-32.brd"
+View="-1.6958 -17.8763 86.4858 89.4918"
 WireWidths=" 0 0.254 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -438,7 +439,7 @@ Layer=16
 
 [Win_3]
 Type="Control Panel"
-Loc="1280 733 2555 1435"
+Loc="1280 27 2555 1435"
 State=2
 Number=0
 

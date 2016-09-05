@@ -1108,14 +1108,6 @@
 <label x="152.4" y="162.56" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="MOSI+" class="0">
-<segment>
-<pinref part="MOSI+" gate="G$1" pin="TP"/>
-<pinref part="_MOSI+" gate="G$1" pin="TP"/>
-<wire x1="167.64" y1="129.54" x2="167.64" y2="116.84" width="0.1524" layer="91"/>
-<label x="167.64" y="119.38" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
 <net name="LED+2" class="0">
 <segment>
 <pinref part="LED+2" gate="G$1" pin="TP"/>
@@ -1138,14 +1130,6 @@
 <pinref part="_MISO3-" gate="G$1" pin="TP"/>
 <wire x1="218.44" y1="129.54" x2="218.44" y2="116.84" width="0.1524" layer="91"/>
 <label x="218.44" y="119.38" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
-<net name="MISO2+" class="0">
-<segment>
-<pinref part="MISO2+" gate="G$1" pin="TP"/>
-<pinref part="_MISO2+" gate="G$1" pin="TP"/>
-<wire x1="198.12" y1="129.54" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
-<label x="198.12" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="MISO3+" class="0">
@@ -1214,21 +1198,13 @@
 </net>
 <net name="MOSI-" class="0">
 <segment>
-<pinref part="MOSI-" gate="G$1" pin="TP"/>
-<pinref part="_MOSI-" gate="G$1" pin="TP"/>
-<wire x1="172.72" y1="129.54" x2="172.72" y2="116.84" width="0.1524" layer="91"/>
-<label x="172.72" y="119.38" size="1.778" layer="95" rot="R90"/>
+<pinref part="MOSI+" gate="G$1" pin="TP"/>
+<pinref part="_MOSI+" gate="G$1" pin="TP"/>
+<wire x1="167.64" y1="129.54" x2="167.64" y2="116.84" width="0.1524" layer="91"/>
+<label x="167.64" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="MISO1-" class="0">
-<segment>
-<pinref part="MISO-" gate="G$1" pin="TP"/>
-<pinref part="_MISO1-" gate="G$1" pin="TP"/>
-<wire x1="187.96" y1="129.54" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
-<label x="187.96" y="119.38" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
-<net name="MISO1+" class="0">
 <segment>
 <pinref part="MISO+" gate="G$1" pin="TP"/>
 <pinref part="_MISO1+" gate="G$1" pin="TP"/>
@@ -1238,10 +1214,10 @@
 </net>
 <net name="MISO2-" class="0">
 <segment>
-<pinref part="MISO2-" gate="G$1" pin="TP"/>
-<pinref part="_MISO2-" gate="G$1" pin="TP"/>
-<wire x1="203.2" y1="129.54" x2="203.2" y2="116.84" width="0.1524" layer="91"/>
-<label x="203.2" y="119.38" size="1.778" layer="95" rot="R90"/>
+<pinref part="MISO2+" gate="G$1" pin="TP"/>
+<pinref part="_MISO2+" gate="G$1" pin="TP"/>
+<wire x1="198.12" y1="129.54" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
+<label x="198.12" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="MISO4+" class="0">
@@ -1282,6 +1258,30 @@
 <pinref part="_CS-" gate="G$1" pin="TP"/>
 <wire x1="157.48" y1="129.54" x2="157.48" y2="116.84" width="0.1524" layer="91"/>
 <label x="157.48" y="119.38" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="MOSI+" class="0">
+<segment>
+<pinref part="MOSI-" gate="G$1" pin="TP"/>
+<pinref part="_MOSI-" gate="G$1" pin="TP"/>
+<wire x1="172.72" y1="129.54" x2="172.72" y2="116.84" width="0.1524" layer="91"/>
+<label x="172.72" y="119.38" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="MISO2+" class="0">
+<segment>
+<pinref part="MISO2-" gate="G$1" pin="TP"/>
+<pinref part="_MISO2-" gate="G$1" pin="TP"/>
+<wire x1="203.2" y1="129.54" x2="203.2" y2="116.84" width="0.1524" layer="91"/>
+<label x="203.2" y="119.38" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="MISO1+" class="0">
+<segment>
+<pinref part="MISO-" gate="G$1" pin="TP"/>
+<pinref part="_MISO1-" gate="G$1" pin="TP"/>
+<wire x1="187.96" y1="129.54" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
+<label x="187.96" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 </nets>
