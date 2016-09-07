@@ -7,14 +7,15 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
+UsedLibrary="/home/jon/public/jonnew-lbr/eagle/lib/jonnew.lbr"
 
 [Win_1]
 Type="Schematic Editor"
-Loc="0 0 1275 348"
-State=2
+Loc="1280 27 2555 1435"
+State=0
 Number=2
-File="cable-adapter-24.sch"
-View="-8.14416 -6.62016 388.936 311.212"
+File="/home/jon/private/headstage/cable-adapter-12/cable-adapter-12.sch"
+View="-108.687 -378.924 714.699 280.133"
 WireWidths=" 0 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -53,17 +54,17 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
-Views=" 1: -8.14416 -6.62016 388.936 311.212"
+Views=" 1: -108.687 -378.924 714.699 280.133"
 Sheet=1
 
 [Win_2]
 Type="Board Editor"
-Loc="0 0 1275 348"
-State=2
+Loc="0 27 1275 1435"
+State=0
 Number=1
-File="cable-adapter-24.brd"
-View="-14.2218 -14.5009 16.4287 16.1496"
-WireWidths=" 0 0.254 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064"
+File="/home/jon/private/headstage/cable-adapter-12/cable-adapter-12.brd"
+View="-12.7475 -13.049 12.784 13.5442"
+WireWidths=" 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.127 0.1778 0 0.1524"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
 ViaDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
@@ -81,7 +82,7 @@ SmdSizes=" 0.3048 0.1524 0.4064 0.2032 0.6096 0.3048 0.8128 0.4064 1.016 0.508 1
 WireBend=0
 WireBendSet=0
 WireCap=1
-MiterStyle=0
+MiterStyle=1
 PadShape=0
 ViaShape=0
 PolygonPour=0
@@ -100,11 +101,11 @@ SwapLevel=0
 ArcDirection=0
 AddLevel=2
 PadsSameType=0
-Layer=16
+Layer=1
 
 [Win_3]
 Type="Control Panel"
-Loc="0 27 1275 375"
+Loc="0 27 2559 1439"
 State=2
 Number=0
 

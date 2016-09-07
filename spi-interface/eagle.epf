@@ -346,10 +346,10 @@ UsedLibrary="/home/jon/public/jonnew-lbr/eagle/lib/jonnew.lbr"
 [Win_1]
 Type="Schematic Editor"
 Loc="1280 733 2555 1435"
-State=2
-Number=3
-File="/home/jon/public/open-ephys/headstage-test-board/headstage-test-board-omnetics-32.sch"
-View="28.2168 -33.6271 271.379 231.281"
+State=0
+Number=2
+File="single-spi-interface.sch"
+View="-27.8932 -76.0911 663.107 517.128"
 WireWidths=" 0 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -388,16 +388,16 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
-Views=" 1: 28.2168 -33.6271 271.379 231.281"
+Views=" 1: -27.8932 -76.0911 663.107 517.128"
 Sheet=1
 
 [Win_2]
 Type="Board Editor"
-Loc="0 27 1275 728"
-State=2
+Loc="1280 27 2555 728"
+State=0
 Number=1
-File="/home/jon/public/open-ephys/headstage-test-board/headstage-test-board-omnetics-32.brd"
-View="-1.6958 -17.8763 86.4858 89.4918"
+File="single-spi-interface.brd"
+View="-160.086 -180.878 48.0616 45.2271"
 WireWidths=" 0 0.254 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -439,7 +439,7 @@ Layer=16
 
 [Win_3]
 Type="Control Panel"
-Loc="1280 27 2555 1435"
+Loc="0 27 1275 1435"
 State=2
 Number=0
 

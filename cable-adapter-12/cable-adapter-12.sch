@@ -474,6 +474,44 @@
 <text x="0" y="1.27" size="1.778" layer="95" rot="R90" align="center-left">&gt;NAME</text>
 <pin name="TP" x="0" y="-2.54" visible="off" length="short" direction="in" rot="R90"/>
 </symbol>
+<symbol name="DOCFIELD-GEN">
+<wire x1="0" y1="0" x2="71.12" y2="0" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="15.24" x2="77.47" y2="15.24" width="0.1016" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="0" y1="5.08" x2="71.12" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="0" y1="5.08" x2="0" y2="15.24" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="15.24" x2="101.6" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="71.12" y1="5.08" x2="71.12" y2="0" width="0.1016" layer="94"/>
+<wire x1="71.12" y1="5.08" x2="77.47" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="71.12" y1="0" x2="101.6" y2="0" width="0.1016" layer="94"/>
+<wire x1="77.47" y1="15.24" x2="77.47" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="77.47" y1="15.24" x2="0" y2="15.24" width="0.1016" layer="94"/>
+<wire x1="77.47" y1="5.08" x2="101.6" y2="5.08" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="5.08" x2="101.6" y2="0" width="0.1016" layer="94"/>
+<wire x1="0" y1="15.24" x2="0" y2="22.86" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="35.56" x2="66.04" y2="35.56" width="0.1016" layer="94"/>
+<wire x1="66.04" y1="35.56" x2="0" y2="35.56" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="35.56" x2="101.6" y2="22.86" width="0.1016" layer="94"/>
+<wire x1="0" y1="22.86" x2="66.04" y2="22.86" width="0.1016" layer="94"/>
+<wire x1="66.04" y1="22.86" x2="101.6" y2="22.86" width="0.1016" layer="94"/>
+<wire x1="0" y1="22.86" x2="0" y2="35.56" width="0.1016" layer="94"/>
+<wire x1="101.6" y1="22.86" x2="101.6" y2="15.24" width="0.1016" layer="94"/>
+<text x="1.27" y="1.27" size="2.54" layer="94" font="vector">Date:</text>
+<text x="12.7" y="1.27" size="2.54" layer="94" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="72.39" y="1.27" size="2.54" layer="94" font="vector">Sheet:</text>
+<text x="86.36" y="1.27" size="2.54" layer="94" font="vector">&gt;SHEET</text>
+<text x="78.74" y="11.43" size="2.54" layer="94" font="vector">REV:</text>
+<text x="1.27" y="19.05" size="2.54" layer="94" font="vector">TITLE:</text>
+<text x="1.27" y="11.43" size="2.54" layer="94" font="vector">License:</text>
+<text x="15.24" y="19.05" size="2.54" layer="94" font="vector">&gt;DESIGN_NAME</text>
+<text x="1.27" y="6.35" size="2.54" layer="94" font="vector">&gt;LICENSE</text>
+<text x="78.74" y="6.35" size="2.54" layer="94" font="vector">&gt;REVISION</text>
+<text x="1.27" y="30.48" size="2.54" layer="94" font="vector">DESIGNED BY:</text>
+<text x="1.27" y="25.4" size="2.54" layer="94" font="vector">&gt;DESIGNER</text>
+</symbol>
+<symbol name="FRAME_A_L-1">
+<frame x1="0" y1="0" x2="381" y2="304.8" columns="6" rows="5" layer="94" border-bottom="no"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="TP" prefix="TP" uservalue="yes">
@@ -904,10 +942,38 @@
 </device>
 </devices>
 </deviceset>
+<deviceset name="DOCFIELD-GEN">
+<gates>
+<gate name="G$1" symbol="DOCFIELD-GEN" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="FRAME" prefix="FRAME" uservalue="yes">
+<description>&lt;b&gt;FRAME&lt;/b&gt; A Size , 8 1/2 x 11 INCH, Landscape&lt;p&gt;</description>
+<gates>
+<gate name="G$1" symbol="FRAME_A_L-1" x="2.54" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
 <attributes>
+<attribute name="DESIGNER" value="JONNEW, MWL@MIT"/>
+<attribute name="DESIGN_NAME" value="Cable adapter 24"/>
+<attribute name="LICENSE" value="(C) Jon Newman CC BY-SA-NC 4.0"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -916,236 +982,162 @@
 </class>
 </classes>
 <parts>
-<part name="T1M_CS+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_CS-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_CLK+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_CLK-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MISO1+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MIS01-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MISO2+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MIS02-\" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MOSI+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MOSI-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_VCC" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_GND" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_CS+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_CS-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_CLK+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_CLK-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MISO1+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MIS01-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MISO2+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MIS02-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MOSI+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MOSI-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_VCC" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_GND" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MISO3+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MIS03-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MISO4+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_MIS04-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_VLED1" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_VLED2" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_RLED1" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="T1M_RLED2" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MISO3+" library="jonnew" deviceset="TP" device="_SPI_WIRE+" value="MISO3+"/>
-<part name="COM_MIS03-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MISO4+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_MIS04-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_VLED1" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_VLED2" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_RLED1" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
-<part name="COM_RLED2" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="CS+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="CS-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="SCLK-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="MOSI+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="SCLK+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="MOSI-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_CS+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_CS-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_SCLK-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_MOSI+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_SCLK+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_MOSI-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="MISO1-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="MISO1+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="VCC" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="MISO2+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="MISO2-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="GND" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_MISO1-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_MISO1+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_VCC" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_MISO2+" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_MISO2-" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="_GND" library="jonnew" deviceset="TP" device="_SPI_WIRE+"/>
+<part name="U$2" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
+<part name="FRAME1" library="jonnew" deviceset="FRAME" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 </plain>
 <instances>
-<instance part="T1M_CS+" gate="G$1" x="7.62" y="15.24"/>
-<instance part="T1M_CS-" gate="G$1" x="10.16" y="15.24"/>
-<instance part="T1M_CLK+" gate="G$1" x="15.24" y="15.24"/>
-<instance part="T1M_CLK-" gate="G$1" x="17.78" y="15.24"/>
-<instance part="T1M_MISO1+" gate="G$1" x="22.86" y="15.24"/>
-<instance part="T1M_MIS01-" gate="G$1" x="25.4" y="15.24"/>
-<instance part="T1M_MISO2+" gate="G$1" x="30.48" y="15.24"/>
-<instance part="T1M_MIS02-\" gate="G$1" x="33.02" y="15.24"/>
-<instance part="T1M_MOSI+" gate="G$1" x="38.1" y="15.24"/>
-<instance part="T1M_MOSI-" gate="G$1" x="40.64" y="15.24"/>
-<instance part="T1M_VCC" gate="G$1" x="45.72" y="15.24"/>
-<instance part="T1M_GND" gate="G$1" x="48.26" y="15.24"/>
-<instance part="COM_CS+" gate="G$1" x="7.62" y="2.54" rot="MR180"/>
-<instance part="COM_CS-" gate="G$1" x="10.16" y="2.54" rot="MR180"/>
-<instance part="COM_CLK+" gate="G$1" x="15.24" y="2.54" rot="MR180"/>
-<instance part="COM_CLK-" gate="G$1" x="17.78" y="2.54" rot="MR180"/>
-<instance part="COM_MISO1+" gate="G$1" x="22.86" y="2.54" rot="MR180"/>
-<instance part="COM_MIS01-" gate="G$1" x="25.4" y="2.54" rot="MR180"/>
-<instance part="COM_MISO2+" gate="G$1" x="30.48" y="2.54" rot="MR180"/>
-<instance part="COM_MIS02-" gate="G$1" x="33.02" y="2.54" rot="MR180"/>
-<instance part="COM_MOSI+" gate="G$1" x="38.1" y="2.54" rot="MR180"/>
-<instance part="COM_MOSI-" gate="G$1" x="40.64" y="2.54" rot="MR180"/>
-<instance part="COM_VCC" gate="G$1" x="45.72" y="2.54" rot="MR180"/>
-<instance part="COM_GND" gate="G$1" x="48.26" y="2.54" rot="MR180"/>
-<instance part="T1M_MISO3+" gate="G$1" x="53.34" y="15.24"/>
-<instance part="T1M_MIS03-" gate="G$1" x="55.88" y="15.24"/>
-<instance part="T1M_MISO4+" gate="G$1" x="60.96" y="15.24"/>
-<instance part="T1M_MIS04-" gate="G$1" x="63.5" y="15.24"/>
-<instance part="T1M_VLED1" gate="G$1" x="68.58" y="15.24"/>
-<instance part="T1M_VLED2" gate="G$1" x="71.12" y="15.24"/>
-<instance part="T1M_RLED1" gate="G$1" x="76.2" y="15.24"/>
-<instance part="T1M_RLED2" gate="G$1" x="78.74" y="15.24"/>
-<instance part="COM_MISO3+" gate="G$1" x="53.34" y="2.54" rot="MR180"/>
-<instance part="COM_MIS03-" gate="G$1" x="55.88" y="2.54" rot="MR180"/>
-<instance part="COM_MISO4+" gate="G$1" x="60.96" y="2.54" rot="MR180"/>
-<instance part="COM_MIS04-" gate="G$1" x="63.5" y="2.54" rot="MR180"/>
-<instance part="COM_VLED1" gate="G$1" x="68.58" y="2.54" rot="MR180"/>
-<instance part="COM_VLED2" gate="G$1" x="71.12" y="2.54" rot="MR180"/>
-<instance part="COM_RLED1" gate="G$1" x="76.2" y="2.54" rot="MR180"/>
-<instance part="COM_RLED2" gate="G$1" x="78.74" y="2.54" rot="MR180"/>
+<instance part="CS+" gate="G$1" x="137.16" y="132.08"/>
+<instance part="CS-" gate="G$1" x="142.24" y="132.08"/>
+<instance part="SCLK-" gate="G$1" x="157.48" y="132.08"/>
+<instance part="MOSI+" gate="G$1" x="167.64" y="132.08"/>
+<instance part="SCLK+" gate="G$1" x="152.4" y="132.08"/>
+<instance part="MOSI-" gate="G$1" x="172.72" y="132.08"/>
+<instance part="_CS+" gate="G$1" x="137.16" y="114.3" rot="MR180"/>
+<instance part="_CS-" gate="G$1" x="142.24" y="114.3" rot="MR180"/>
+<instance part="_SCLK-" gate="G$1" x="157.48" y="114.3" rot="MR180"/>
+<instance part="_MOSI+" gate="G$1" x="167.64" y="114.3" rot="MR180"/>
+<instance part="_SCLK+" gate="G$1" x="152.4" y="114.3" rot="MR180"/>
+<instance part="_MOSI-" gate="G$1" x="172.72" y="114.3" rot="MR180"/>
+<instance part="MISO1-" gate="G$1" x="182.88" y="132.08"/>
+<instance part="MISO1+" gate="G$1" x="187.96" y="132.08"/>
+<instance part="VCC" gate="G$1" x="121.92" y="132.08"/>
+<instance part="MISO2+" gate="G$1" x="198.12" y="132.08"/>
+<instance part="MISO2-" gate="G$1" x="203.2" y="132.08"/>
+<instance part="GND" gate="G$1" x="127" y="132.08"/>
+<instance part="_MISO1-" gate="G$1" x="182.88" y="114.3" rot="MR180"/>
+<instance part="_MISO1+" gate="G$1" x="187.96" y="114.3" rot="MR180"/>
+<instance part="_VCC" gate="G$1" x="121.92" y="114.3" rot="MR180"/>
+<instance part="_MISO2+" gate="G$1" x="198.12" y="114.3" rot="MR180"/>
+<instance part="_MISO2-" gate="G$1" x="203.2" y="114.3" rot="MR180"/>
+<instance part="_GND" gate="G$1" x="127" y="114.3" rot="MR180"/>
+<instance part="U$2" gate="G$1" x="274.32" y="0"/>
+<instance part="FRAME1" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 </busses>
 <nets>
-<net name="CS+" class="0">
+<net name="GND" class="0">
 <segment>
-<pinref part="T1M_CS+" gate="G$1" pin="TP"/>
-<pinref part="COM_CS+" gate="G$1" pin="TP"/>
-<wire x1="7.62" y1="12.7" x2="7.62" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="CS-" class="0">
-<segment>
-<pinref part="T1M_CS-" gate="G$1" pin="TP"/>
-<pinref part="COM_CS-" gate="G$1" pin="TP"/>
-<wire x1="10.16" y1="12.7" x2="10.16" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="CLK+" class="0">
-<segment>
-<pinref part="T1M_CLK+" gate="G$1" pin="TP"/>
-<pinref part="COM_CLK+" gate="G$1" pin="TP"/>
-<wire x1="15.24" y1="12.7" x2="15.24" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="CLK-" class="0">
-<segment>
-<pinref part="T1M_CLK-" gate="G$1" pin="TP"/>
-<pinref part="COM_CLK-" gate="G$1" pin="TP"/>
-<wire x1="17.78" y1="12.7" x2="17.78" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="MISO1+" class="0">
-<segment>
-<pinref part="T1M_MISO1+" gate="G$1" pin="TP"/>
-<pinref part="COM_MISO1+" gate="G$1" pin="TP"/>
-<wire x1="22.86" y1="12.7" x2="22.86" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="MISO1-" class="0">
-<segment>
-<pinref part="T1M_MIS01-" gate="G$1" pin="TP"/>
-<pinref part="COM_MIS01-" gate="G$1" pin="TP"/>
-<wire x1="25.4" y1="12.7" x2="25.4" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="MISO2+" class="0">
-<segment>
-<pinref part="T1M_MISO2+" gate="G$1" pin="TP"/>
-<pinref part="COM_MISO2+" gate="G$1" pin="TP"/>
-<wire x1="30.48" y1="12.7" x2="30.48" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="MIS02-" class="0">
-<segment>
-<pinref part="T1M_MIS02-\" gate="G$1" pin="TP"/>
-<pinref part="COM_MIS02-" gate="G$1" pin="TP"/>
-<wire x1="33.02" y1="12.7" x2="33.02" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="MOSI+" class="0">
-<segment>
-<pinref part="T1M_MOSI+" gate="G$1" pin="TP"/>
-<pinref part="COM_MOSI+" gate="G$1" pin="TP"/>
-<wire x1="38.1" y1="12.7" x2="38.1" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="MOSI-" class="0">
-<segment>
-<pinref part="T1M_MOSI-" gate="G$1" pin="TP"/>
-<pinref part="COM_MOSI-" gate="G$1" pin="TP"/>
-<wire x1="40.64" y1="12.7" x2="40.64" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="GND" gate="G$1" pin="TP"/>
+<pinref part="_GND" gate="G$1" pin="TP"/>
+<wire x1="127" y1="129.54" x2="127" y2="116.84" width="0.1524" layer="91"/>
+<label x="127" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="VCC" class="0">
 <segment>
-<pinref part="T1M_VCC" gate="G$1" pin="TP"/>
-<pinref part="COM_VCC" gate="G$1" pin="TP"/>
-<wire x1="45.72" y1="12.7" x2="45.72" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="_VCC" gate="G$1" pin="TP"/>
+<pinref part="VCC" gate="G$1" pin="TP"/>
+<wire x1="121.92" y1="129.54" x2="121.92" y2="116.84" width="0.1524" layer="91"/>
+<label x="121.92" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="GND" class="0">
+<net name="SCLK+" class="0">
 <segment>
-<pinref part="T1M_GND" gate="G$1" pin="TP"/>
-<pinref part="COM_GND" gate="G$1" pin="TP"/>
-<wire x1="48.26" y1="12.7" x2="48.26" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="SCLK+" gate="G$1" pin="TP"/>
+<pinref part="_SCLK+" gate="G$1" pin="TP"/>
+<wire x1="152.4" y1="129.54" x2="152.4" y2="116.84" width="0.1524" layer="91"/>
+<label x="152.4" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="MISO1+1" class="0">
+<net name="MISO1-" class="0">
 <segment>
-<pinref part="T1M_MISO3+" gate="G$1" pin="TP"/>
-<pinref part="COM_MISO3+" gate="G$1" pin="TP"/>
-<wire x1="53.34" y1="12.7" x2="53.34" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="MISO1-" gate="G$1" pin="TP"/>
+<pinref part="_MISO1-" gate="G$1" pin="TP"/>
+<wire x1="182.88" y1="129.54" x2="182.88" y2="116.84" width="0.1524" layer="91"/>
+<label x="182.88" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="MISO1-1" class="0">
+<net name="CS+" class="0">
 <segment>
-<pinref part="T1M_MIS03-" gate="G$1" pin="TP"/>
-<pinref part="COM_MIS03-" gate="G$1" pin="TP"/>
-<wire x1="55.88" y1="12.7" x2="55.88" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="CS+" gate="G$1" pin="TP"/>
+<pinref part="_CS+" gate="G$1" pin="TP"/>
+<wire x1="137.16" y1="129.54" x2="137.16" y2="116.84" width="0.1524" layer="91"/>
+<label x="137.16" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="MISO2+1" class="0">
+<net name="MISO1+" class="0">
 <segment>
-<pinref part="T1M_MISO4+" gate="G$1" pin="TP"/>
-<pinref part="COM_MISO4+" gate="G$1" pin="TP"/>
-<wire x1="60.96" y1="12.7" x2="60.96" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="MISO1+" gate="G$1" pin="TP"/>
+<pinref part="_MISO1+" gate="G$1" pin="TP"/>
+<wire x1="187.96" y1="129.54" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
+<label x="187.96" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="MIS02-1" class="0">
+<net name="SCLK-" class="0">
 <segment>
-<pinref part="T1M_MIS04-" gate="G$1" pin="TP"/>
-<pinref part="COM_MIS04-" gate="G$1" pin="TP"/>
-<wire x1="63.5" y1="12.7" x2="63.5" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="SCLK-" gate="G$1" pin="TP"/>
+<pinref part="_SCLK-" gate="G$1" pin="TP"/>
+<wire x1="157.48" y1="129.54" x2="157.48" y2="116.84" width="0.1524" layer="91"/>
+<label x="157.48" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="+LED" class="0">
+<net name="CS-" class="0">
 <segment>
-<pinref part="T1M_VLED1" gate="G$1" pin="TP"/>
-<pinref part="COM_VLED1" gate="G$1" pin="TP"/>
-<wire x1="68.58" y1="12.7" x2="68.58" y2="10.16" width="0.1524" layer="91"/>
-<pinref part="T1M_VLED2" gate="G$1" pin="TP"/>
-<pinref part="COM_VLED2" gate="G$1" pin="TP"/>
-<wire x1="68.58" y1="10.16" x2="68.58" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="12.7" x2="71.12" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="10.16" x2="71.12" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="10.16" x2="71.12" y2="10.16" width="0.1524" layer="91"/>
-<junction x="68.58" y="10.16"/>
-<junction x="71.12" y="10.16"/>
+<pinref part="CS-" gate="G$1" pin="TP"/>
+<pinref part="_CS-" gate="G$1" pin="TP"/>
+<wire x1="142.24" y1="129.54" x2="142.24" y2="116.84" width="0.1524" layer="91"/>
+<label x="142.24" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="-LED" class="0">
+<net name="MOSI+" class="0">
 <segment>
-<pinref part="T1M_RLED1" gate="G$1" pin="TP"/>
-<pinref part="COM_RLED1" gate="G$1" pin="TP"/>
-<wire x1="76.2" y1="12.7" x2="76.2" y2="10.16" width="0.1524" layer="91"/>
-<pinref part="T1M_RLED2" gate="G$1" pin="TP"/>
-<pinref part="COM_RLED2" gate="G$1" pin="TP"/>
-<wire x1="76.2" y1="10.16" x2="76.2" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="12.7" x2="78.74" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="10.16" x2="78.74" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="10.16" x2="78.74" y2="10.16" width="0.1524" layer="91"/>
-<junction x="76.2" y="10.16"/>
-<junction x="78.74" y="10.16"/>
+<pinref part="MOSI+" gate="G$1" pin="TP"/>
+<pinref part="_MOSI+" gate="G$1" pin="TP"/>
+<wire x1="167.64" y1="129.54" x2="167.64" y2="116.84" width="0.1524" layer="91"/>
+<label x="167.64" y="119.38" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="MOSI-" class="0">
+<segment>
+<pinref part="MOSI-" gate="G$1" pin="TP"/>
+<pinref part="_MOSI-" gate="G$1" pin="TP"/>
+<wire x1="172.72" y1="129.54" x2="172.72" y2="116.84" width="0.1524" layer="91"/>
+<label x="172.72" y="119.38" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="MISO2+" class="0">
+<segment>
+<pinref part="MISO2+" gate="G$1" pin="TP"/>
+<pinref part="_MISO2+" gate="G$1" pin="TP"/>
+<wire x1="198.12" y1="129.54" x2="198.12" y2="116.84" width="0.1524" layer="91"/>
+<label x="198.12" y="119.38" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="MISO2-" class="0">
+<segment>
+<pinref part="_MISO2-" gate="G$1" pin="TP"/>
+<pinref part="MISO2-" gate="G$1" pin="TP"/>
+<wire x1="203.2" y1="129.54" x2="203.2" y2="116.84" width="0.1524" layer="91"/>
+<label x="203.2" y="119.38" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 </nets>
