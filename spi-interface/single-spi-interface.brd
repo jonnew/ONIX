@@ -935,23 +935,11 @@ by exp-lbrs.ulp</description>
 <element name="TP2" library="jonnew" package="TESTPOINT_SMALL" value="" x="14.477571875" y="-24.086453125" smashed="yes" rot="R34">
 <attribute name="VALUE" x="14.7916125" y="-26.1418375" size="0.8128" layer="27" font="vector" ratio="18" rot="R34"/>
 </element>
-<element name="TP3" library="jonnew" package="TESTPOINT_SMALL" value="" x="28.404453125" y="16.763571875" smashed="yes" rot="R34">
-<attribute name="VALUE" x="28.7185" y="14.708184375" size="0.8128" layer="27" font="vector" ratio="18" rot="R34"/>
-</element>
-<element name="TP4" library="jonnew" package="TESTPOINT_SMALL" value="" x="-23.367571875" y="25.610453125" smashed="yes" rot="R34">
-<attribute name="VALUE" x="-23.053521875" y="23.555075" size="0.8128" layer="27" font="vector" ratio="18" rot="R34"/>
-</element>
 <element name="TP5" library="jonnew" package="TESTPOINT_SMALL" value="" x="-25.206109375" y="-17.59931875" smashed="yes" rot="R34">
 <attribute name="VALUE" x="-24.892059375" y="-19.654696875" size="0.8128" layer="27" font="vector" ratio="18" rot="R34"/>
 </element>
 <element name="TP6" library="jonnew" package="TESTPOINT_SMALL" value="" x="16.58331875" y="-22.666109375" smashed="yes" rot="R34">
 <attribute name="VALUE" x="16.897365625" y="-24.721490625" size="0.8128" layer="27" font="vector" ratio="18" rot="R34"/>
-</element>
-<element name="TP7" library="jonnew" package="TESTPOINT_SMALL" value="" x="26.984109375" y="18.86931875" smashed="yes" rot="R34">
-<attribute name="VALUE" x="27.29815" y="16.81394375" size="0.8128" layer="27" font="vector" ratio="18" rot="R34"/>
-</element>
-<element name="TP8" library="jonnew" package="TESTPOINT_SMALL" value="" x="-26.48931875" y="25.206109375" smashed="yes" rot="R34">
-<attribute name="VALUE" x="-26.175275" y="23.150725" size="0.8128" layer="27" font="vector" ratio="18" rot="R34"/>
 </element>
 <element name="U$2" library="jonnew" package="T1M-10-T-DV" value="" x="0" y="0.572"/>
 <element name="U$3" library="jonnew" package="10-UMAX" value="MAX9174_UMAX" x="-8.89" y="8.382" rot="R90"/>
@@ -971,7 +959,7 @@ by exp-lbrs.ulp</description>
 <element name="U$7" library="jonnew" package="SOIC127P500X400-8N" value="SI822X" x="-44.069" y="-63.246" rot="R90"/>
 <element name="Q1" library="jonnew" package="SOT23-GSD" value="AO3402" x="-46.228" y="-57.912" rot="R180"/>
 <element name="D1" library="jonnew" package="SOD-323" value="PDZ10B,115" x="-46.228" y="-54.356"/>
-<element name="ANT1" library="jonnew" package="LED-MLE" value="MLE-V01" x="-53.34" y="-56.007" rot="R90"/>
+<element name="ANT1" library="jonnew" package="LED-MLE" value="MLE-V01" x="-53.34" y="-56.007" rot="MR90"/>
 <element name="C9" library="jonnew" package="0402" value="0.1uF" x="-40.259" y="-62.992" rot="R90"/>
 <element name="C10" library="jonnew" package="0805" value="10uF" x="-37.973" y="-62.484" rot="R270">
 <attribute name="MN" value="TDK Corp." x="-37.973" y="-62.484" size="1.778" layer="27" rot="R270" display="off"/>
@@ -981,7 +969,7 @@ by exp-lbrs.ulp</description>
 </element>
 <element name="R5" library="jonnew" package="0805" value="24, 1W" x="-38.481" y="-55.88" rot="R90"/>
 <element name="Q2" library="jonnew" package="SOT23-GSD" value="AO3402" x="-42.164" y="-57.912" rot="R180"/>
-<element name="ANT2" library="jonnew" package="LED-MLE" value="MLE-V01" x="-35.179" y="-55.626" rot="R90"/>
+<element name="ANT2" library="jonnew" package="LED-MLE" value="MLE-V01" x="-34.671" y="-55.626" rot="MR90"/>
 <element name="D2" library="jonnew" package="SOD-323" value="PDZ10B,115" x="-42.164" y="-54.356"/>
 <element name="U1" library="jonnew" package="LGA-10-COMPACT" value="LY3200" x="-60.833" y="-115.57"/>
 <element name="C11" library="jonnew" package="0201" value="10nF" x="-51.435" y="-125.349"/>
@@ -1039,10 +1027,12 @@ by exp-lbrs.ulp</description>
 <element name="AX" library="jonnew" package="TESTPOINT_0.035IN" value="" x="14.605" y="20.32"/>
 <element name="AY" library="jonnew" package="TESTPOINT_0.035IN" value="" x="16.51" y="20.32"/>
 <element name="AZ" library="jonnew" package="TESTPOINT_0.035IN" value="" x="18.415" y="20.32"/>
+<element name="R12" library="jonnew" package="0201" value="100" x="-10.795" y="5.08" rot="R90"/>
+<element name="R13" library="jonnew" package="0201" value="100" x="-6.35" y="5.08" rot="R90"/>
+<element name="R14" library="jonnew" package="0201" value="100" x="-1.905" y="5.08" rot="R90"/>
 </elements>
 <signals>
 <signal name="GND" airwireshidden="yes">
-<contactref element="C1" pad="2"/>
 <polygon width="0.3048" layer="2" thermals="no">
 <vertex x="-22.859984375" y="-22.859975"/>
 <vertex x="-22.859990625" y="22.859978125"/>
@@ -1067,14 +1057,8 @@ by exp-lbrs.ulp</description>
 <wire x1="0" y1="-17.001978125" x2="0.000003125" y2="-18.541965625" width="0.8128" layer="1"/>
 <via x="0" y="18.541996875" extent="1-16" drill="0.6"/>
 <wire x1="0" y1="17.001978125" x2="0" y2="18.541996875" width="0.8128" layer="1"/>
-<via x="40.17853125" y="4.523078125" extent="1-16" drill="0.6"/>
-<wire x1="40.17853125" y1="4.523078125" x2="39.326315625" y2="5.786525" width="0.6096" layer="1"/>
-<wire x1="39.326315625" y1="5.786525" x2="39.340925" y2="5.86166875" width="0.6096" layer="1"/>
-<wire x1="39.340925" y1="5.86166875" x2="39.578446875" y2="6.0218875" width="0.6096" layer="1"/>
 <contactref element="TP5" pad="1"/>
 <contactref element="TP6" pad="1"/>
-<contactref element="TP7" pad="1"/>
-<contactref element="TP8" pad="1"/>
 <contactref element="ANT" pad="C2"/>
 <contactref element="ANT" pad="C1"/>
 <wire x1="1.474975" y1="17.27195625" x2="1.4749875" y2="17.144984375" width="0.6096" layer="1"/>
@@ -1133,7 +1117,8 @@ by exp-lbrs.ulp</description>
 <contactref element="U4" pad="ST"/>
 <contactref element="U4" pad="COM1"/>
 <contactref element="U$2" pad="11"/>
-<contactref element="C24" pad="2"/>
+<contactref element="C24" pad="1"/>
+<contactref element="C1" pad="1"/>
 <wire x1="-57.5183" y1="-129.54" x2="-62.2173" y2="-129.54" width="0" layer="19" extent="1-1"/>
 <wire x1="-53.9623" y1="-129.54" x2="-57.5183" y2="-129.54" width="0" layer="19" extent="1-1"/>
 <wire x1="-50.4063" y1="-129.54" x2="-53.9623" y2="-129.54" width="0" layer="19" extent="1-1"/>
@@ -1158,19 +1143,21 @@ by exp-lbrs.ulp</description>
 <wire x1="-25.206109375" y1="-17.59931875" x2="-43.434" y2="-66.0654" width="0" layer="19" extent="1-1"/>
 <wire x1="-1.475" y1="-18.026978125" x2="-25.206109375" y2="-17.59931875" width="0" layer="19" extent="1-1"/>
 <wire x1="0.000003125" y1="-18.541965625" x2="-1.475" y2="-18.026978125" width="0" layer="19" extent="1-1"/>
-<wire x1="1.4749875" y1="17.144984375" x2="0" y2="17.001978125" width="0" layer="19" extent="1-1"/>
-<wire x1="-0.6604" y1="13.843" x2="1.475" y2="15.976978125" width="0" layer="19" extent="1-1"/>
-<wire x1="-0.6604" y1="12.319" x2="-0.6604" y2="13.843" width="0" layer="19" extent="1-1"/>
-<wire x1="5.641734375" y1="17.0752125" x2="1.474975" y2="17.27195625" width="0" layer="19" extent="1-16"/>
-<wire x1="5.865409375" y1="16.743596875" x2="5.641734375" y2="17.0752125" width="0" layer="19" extent="16-16"/>
-<wire x1="-4.9784" y1="13.843" x2="-0.6604" y2="13.843" width="0" layer="19" extent="1-1"/>
-<wire x1="-4.9784" y1="12.319" x2="-4.9784" y2="13.843" width="0" layer="19" extent="1-1"/>
+<wire x1="16.58331875" y1="-22.666109375" x2="0.000003125" y2="-18.541965625" width="0" layer="19" extent="1-1"/>
+<wire x1="4.5" y1="2.427" x2="-1.475" y2="-15.976978125" width="0" layer="19" extent="1-1"/>
+<wire x1="0" y1="6.132" x2="4.5" y2="2.427" width="0" layer="19" extent="1-1"/>
+<wire x1="-4.572" y1="6.132" x2="0" y2="6.132" width="0" layer="19" extent="1-1"/>
+<wire x1="-8.89" y1="6.132" x2="-4.572" y2="6.132" width="0" layer="19" extent="1-1"/>
+<wire x1="-4.9784" y1="12.319" x2="-4.572" y2="6.132" width="0" layer="19" extent="1-1"/>
+<wire x1="-4.9784" y1="13.843" x2="-4.9784" y2="12.319" width="0" layer="19" extent="1-1"/>
 <wire x1="-7.9756" y1="13.843" x2="-4.9784" y2="13.843" width="0" layer="19" extent="1-1"/>
 <wire x1="-7.9756" y1="12.319" x2="-7.9756" y2="13.843" width="0" layer="19" extent="1-1"/>
-<wire x1="-4.572" y1="6.132" x2="-4.9784" y2="12.319" width="0" layer="19" extent="1-1"/>
-<wire x1="-8.89" y1="6.132" x2="-4.572" y2="6.132" width="0" layer="19" extent="1-1"/>
-<wire x1="0" y1="6.132" x2="-4.572" y2="6.132" width="0" layer="19" extent="1-1"/>
-<wire x1="4.5" y1="2.427" x2="0" y2="6.132" width="0" layer="19" extent="1-1"/>
+<wire x1="-0.6604" y1="13.843" x2="-4.9784" y2="13.843" width="0" layer="19" extent="1-1"/>
+<wire x1="-0.6604" y1="12.319" x2="-0.6604" y2="13.843" width="0" layer="19" extent="1-1"/>
+<wire x1="1.475" y1="15.976978125" x2="-0.6604" y2="13.843" width="0" layer="19" extent="1-1"/>
+<wire x1="0" y1="17.001978125" x2="1.4749875" y2="17.144984375" width="0" layer="19" extent="1-1"/>
+<wire x1="5.641734375" y1="17.0752125" x2="1.474975" y2="17.27195625" width="0" layer="19" extent="1-16"/>
+<wire x1="5.865409375" y1="16.743596875" x2="5.641734375" y2="17.0752125" width="0" layer="19" extent="16-16"/>
 <wire x1="11.065" y1="6.48" x2="4.5" y2="2.427" width="0" layer="19" extent="1-1"/>
 <wire x1="11.715" y1="6.48" x2="11.065" y2="6.48" width="0" layer="19" extent="1-1"/>
 <wire x1="12.365" y1="6.48" x2="11.715" y2="6.48" width="0" layer="19" extent="1-1"/>
@@ -1182,11 +1169,8 @@ by exp-lbrs.ulp</description>
 <wire x1="15.8877" y1="8.89" x2="15.8877" y2="7.874" width="0" layer="19" extent="1-1"/>
 <wire x1="-16.7436" y1="5.86540625" x2="-8.89" y2="6.132" width="0" layer="19" extent="1-16"/>
 <wire x1="-17.075215625" y1="5.64173125" x2="-16.7436" y2="5.86540625" width="0" layer="19" extent="16-16"/>
-<wire x1="26.984109375" y1="18.86931875" x2="15.8877" y2="8.89" width="0" layer="19" extent="1-1"/>
-<wire x1="16.58331875" y1="-22.666109375" x2="0.000003125" y2="-18.541965625" width="0" layer="19" extent="1-1"/>
-<wire x1="39.340925" y1="5.86166875" x2="26.984109375" y2="18.86931875" width="0" layer="19" extent="1-1"/>
-<wire x1="-26.48931875" y1="25.206109375" x2="-16.7436" y2="5.86540625" width="0" layer="19" extent="16-16"/>
-<wire x1="-152.1206" y1="-173.736" x2="-62.2173" y2="-129.54" width="0" layer="19" extent="1-1"/>
+<wire x1="38.4137625" y1="7.748609375" x2="15.8877" y2="7.874" width="0" layer="19" extent="1-1"/>
+<wire x1="-154.2034" y1="-173.736" x2="-62.2173" y2="-129.54" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOSI-_HSA">
 <contactref element="DIO_E1B" pad="15"/>
@@ -1210,7 +1194,6 @@ by exp-lbrs.ulp</description>
 </signal>
 <signal name="VCC" airwireshidden="yes">
 <contactref element="DIO_E1B" pad="10"/>
-<contactref element="C1" pad="1"/>
 <polygon width="0.3048" layer="15" thermals="no">
 <vertex x="-22.859984375" y="-22.859975"/>
 <vertex x="-22.859990625" y="22.859978125"/>
@@ -1227,14 +1210,8 @@ by exp-lbrs.ulp</description>
 <contactref element="R4" pad="2"/>
 <contactref element="R2" pad="3"/>
 <contactref element="R4" pad="3"/>
-<via x="37.337828125" y="8.734584375" extent="1-16" drill="0.6"/>
-<wire x1="37.337828125" y1="8.734584375" x2="38.11901875" y2="7.576421875" width="0.6096" layer="1"/>
-<wire x1="38.11901875" y1="7.576421875" x2="38.149659375" y2="7.570465625" width="0.6096" layer="1"/>
-<wire x1="38.149659375" y1="7.570465625" x2="38.4137625" y2="7.748609375" width="0.6096" layer="1"/>
 <contactref element="TP1" pad="1"/>
 <contactref element="TP2" pad="1"/>
-<contactref element="TP3" pad="1"/>
-<contactref element="TP4" pad="1"/>
 <contactref element="C2" pad="1"/>
 <contactref element="U$3" pad="8"/>
 <contactref element="C3" pad="1"/>
@@ -1268,10 +1245,11 @@ by exp-lbrs.ulp</description>
 <contactref element="U3" pad="1"/>
 <contactref element="C19" pad="1"/>
 <contactref element="U$2" pad="12"/>
-<contactref element="C24" pad="1"/>
 <contactref element="R9" pad="1"/>
 <contactref element="R10" pad="1"/>
 <contactref element="R11" pad="1"/>
+<contactref element="C24" pad="2"/>
+<contactref element="C1" pad="2"/>
 <wire x1="-57.4167" y1="-121.158" x2="-57.4167" y2="-125.349" width="0" layer="19" extent="1-1"/>
 <wire x1="-58.783" y1="-116.67" x2="-57.4167" y2="-121.158" width="0" layer="19" extent="1-1"/>
 <wire x1="-58.783" y1="-115.57" x2="-58.783" y2="-116.67" width="0" layer="19" extent="1-1"/>
@@ -1312,10 +1290,8 @@ by exp-lbrs.ulp</description>
 <wire x1="10.976" y1="-4.646" x2="13.408" y2="-0.18" width="0" layer="19" extent="1-1"/>
 <wire x1="12.246" y1="-7.546" x2="10.976" y2="-4.646" width="0" layer="19" extent="1-1"/>
 <wire x1="14.477571875" y1="-24.086453125" x2="12.246" y2="-7.546" width="0" layer="19" extent="1-1"/>
-<wire x1="28.404453125" y1="16.763571875" x2="12.415" y2="10.03" width="0" layer="19" extent="1-1"/>
-<wire x1="37.337828125" y1="8.734584375" x2="28.404453125" y2="16.763571875" width="0" layer="19" extent="1-1"/>
-<wire x1="-23.367571875" y1="25.610453125" x2="-9.0424" y2="13.843" width="0" layer="19" extent="1-1"/>
-<wire x1="-154.2034" y1="-173.736" x2="-57.4167" y2="-125.349" width="0" layer="19" extent="1-1"/>
+<wire x1="39.578446875" y1="6.0218875" x2="13.408" y2="-0.18" width="0" layer="19" extent="1-1"/>
+<wire x1="-152.1206" y1="-173.736" x2="-57.4167" y2="-125.349" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MISO2-">
 <contactref element="DIO_E1B" pad="19"/>
@@ -1349,11 +1325,15 @@ by exp-lbrs.ulp</description>
 <signal name="CS+">
 <contactref element="U$3" pad="1"/>
 <contactref element="U$2" pad="20"/>
+<contactref element="R12" pad="2"/>
+<wire x1="-9.89" y1="6.132" x2="-10.795" y2="5.4737" width="0" layer="19" extent="1-1"/>
 <wire x1="-4.5" y1="2.427" x2="-9.89" y2="6.132" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="CS-">
 <contactref element="U$3" pad="2"/>
 <contactref element="U$2" pad="19"/>
+<contactref element="R12" pad="1"/>
+<wire x1="-9.39" y1="6.132" x2="-10.795" y2="4.6863" width="0" layer="19" extent="1-1"/>
 <wire x1="-3.5" y1="2.427" x2="-9.39" y2="6.132" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="CS+_HSA">
@@ -1379,12 +1359,16 @@ by exp-lbrs.ulp</description>
 <signal name="SCLK+">
 <contactref element="U$4" pad="1"/>
 <contactref element="U$2" pad="18"/>
-<wire x1="-2.5" y1="2.427" x2="-5.572" y2="6.132" width="0" layer="19" extent="1-1"/>
+<contactref element="R13" pad="2"/>
+<wire x1="-2.5" y1="2.427" x2="-6.35" y2="5.4737" width="0" layer="19" extent="1-1"/>
+<wire x1="-5.572" y1="6.132" x2="-2.5" y2="2.427" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="SCLK-">
 <contactref element="U$4" pad="2"/>
 <contactref element="U$2" pad="17"/>
-<wire x1="-1.5" y1="2.427" x2="-5.072" y2="6.132" width="0" layer="19" extent="1-1"/>
+<contactref element="R13" pad="1"/>
+<wire x1="-1.5" y1="2.427" x2="-6.35" y2="4.6863" width="0" layer="19" extent="1-1"/>
+<wire x1="-5.072" y1="6.132" x2="-1.5" y2="2.427" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="SCLK+_HSA">
 <contactref element="U$4" pad="7"/>
@@ -1439,12 +1423,16 @@ by exp-lbrs.ulp</description>
 <signal name="MOSI-">
 <contactref element="U$5" pad="2"/>
 <contactref element="U$2" pad="15"/>
-<wire x1="0.5" y1="2.427" x2="-0.5" y2="6.132" width="0" layer="19" extent="1-1"/>
+<contactref element="R14" pad="1"/>
+<wire x1="0.5" y1="2.427" x2="-1.905" y2="4.6863" width="0" layer="19" extent="1-1"/>
+<wire x1="-0.5" y1="6.132" x2="0.5" y2="2.427" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOSI+">
 <contactref element="U$5" pad="1"/>
 <contactref element="U$2" pad="16"/>
-<wire x1="-0.5" y1="2.427" x2="-1" y2="6.132" width="0" layer="19" extent="1-1"/>
+<contactref element="R14" pad="2"/>
+<wire x1="-0.5" y1="2.427" x2="-1.905" y2="5.4737" width="0" layer="19" extent="1-1"/>
+<wire x1="-1" y1="6.132" x2="-0.5" y2="2.427" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$5">
 <contactref element="U$6" pad="2"/>
@@ -1486,16 +1474,16 @@ by exp-lbrs.ulp</description>
 <contactref element="LED1-" pad="1"/>
 <contactref element="U$2" pad="5"/>
 <contactref element="U$2" pad="6"/>
-<wire x1="-54.365" y1="-54.532" x2="-53.34" y2="-56.007" width="0" layer="19" extent="1-1"/>
 <wire x1="-52.315" y1="-54.532" x2="-53.34" y2="-56.007" width="0" layer="19" extent="1-1"/>
-<wire x1="-55.372" y1="-51.689" x2="-54.365" y2="-54.532" width="0" layer="19" extent="1-1"/>
-<wire x1="-42.164" y1="-60.4266" x2="-52.315" y2="-54.532" width="0" layer="19" extent="1-1"/>
+<wire x1="-54.365" y1="-54.532" x2="-53.34" y2="-56.007" width="0" layer="19" extent="1-1"/>
+<wire x1="-55.372" y1="-51.689" x2="-52.315" y2="-54.532" width="0" layer="19" extent="1-1"/>
+<wire x1="-42.164" y1="-60.4266" x2="-54.365" y2="-54.532" width="0" layer="19" extent="1-1"/>
 <wire x1="-40.259" y1="-63.5254" x2="-42.164" y2="-60.4266" width="0" layer="19" extent="1-1"/>
 <wire x1="-37.973" y1="-63.5254" x2="-40.259" y2="-63.5254" width="0" layer="19" extent="1-1"/>
-<wire x1="-35.179" y1="-55.626" x2="-37.973" y2="-63.5254" width="0" layer="19" extent="1-1"/>
-<wire x1="-36.204" y1="-54.151" x2="-35.179" y2="-55.626" width="0" layer="19" extent="1-1"/>
-<wire x1="-34.154" y1="-54.151" x2="-35.179" y2="-55.626" width="0" layer="19" extent="1-1"/>
-<wire x1="-33.782" y1="-50.927" x2="-34.154" y2="-54.151" width="0" layer="19" extent="1-1"/>
+<wire x1="-34.671" y1="-55.626" x2="-37.973" y2="-63.5254" width="0" layer="19" extent="1-1"/>
+<wire x1="-33.646" y1="-54.151" x2="-34.671" y2="-55.626" width="0" layer="19" extent="1-1"/>
+<wire x1="-35.696" y1="-54.151" x2="-34.671" y2="-55.626" width="0" layer="19" extent="1-1"/>
+<wire x1="-33.782" y1="-50.927" x2="-35.696" y2="-54.151" width="0" layer="19" extent="1-1"/>
 <wire x1="-0.5" y1="-3.823" x2="-33.782" y2="-50.927" width="0" layer="19" extent="1-1"/>
 <wire x1="0.5" y1="-3.823" x2="-0.5" y2="-3.823" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -1511,8 +1499,8 @@ by exp-lbrs.ulp</description>
 <contactref element="ANT1" pad="A2"/>
 <contactref element="ANT1" pad="A1"/>
 <contactref element="LED1+" pad="1"/>
-<wire x1="-52.315" y1="-57.482" x2="-54.365" y2="-57.482" width="0" layer="19" extent="1-1"/>
-<wire x1="-49.403" y1="-57.0484" x2="-52.315" y2="-57.482" width="0" layer="19" extent="1-1"/>
+<wire x1="-54.365" y1="-57.482" x2="-52.315" y2="-57.482" width="0" layer="19" extent="1-1"/>
+<wire x1="-49.403" y1="-57.0484" x2="-54.365" y2="-57.482" width="0" layer="19" extent="1-1"/>
 <wire x1="-50.927" y1="-51.435" x2="-49.403" y2="-57.0484" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="VDD">
@@ -1542,8 +1530,8 @@ by exp-lbrs.ulp</description>
 <contactref element="ANT2" pad="A2"/>
 <contactref element="ANT2" pad="A1"/>
 <contactref element="LED2+" pad="1"/>
-<wire x1="-36.204" y1="-57.101" x2="-38.481" y2="-56.9214" width="0" layer="19" extent="1-1"/>
-<wire x1="-34.154" y1="-57.101" x2="-36.204" y2="-57.101" width="0" layer="19" extent="1-1"/>
+<wire x1="-33.646" y1="-57.101" x2="-38.481" y2="-56.9214" width="0" layer="19" extent="1-1"/>
+<wire x1="-35.696" y1="-57.101" x2="-33.646" y2="-57.101" width="0" layer="19" extent="1-1"/>
 <wire x1="-38.227" y1="-51.181" x2="-38.481" y2="-56.9214" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="AUXIN3_HSA_B">
