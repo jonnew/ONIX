@@ -1,0 +1,117 @@
+// This ULP automatically adds and places tetrodes for the 256 channel EIB.
+
+// Global parameters
+int n_tet = 64; 
+
+string cmd = "";
+string s = "";
+
+void check_schematic() {
+	
+	// Set the grid
+	sprintf(s, "grid inch 0.1;\n");
+	cmd +=s;
+}
+
+void goto_board() {
+
+	// Switch to board
+	sprintf(s, "board;\n");
+	cmd +=s;
+	
+	// Set the grid
+	sprintf(s, "grid mm 1;\n");
+	cmd +=s;
+}
+
+void make_tetrode(int tet_num, real x, real y) {
+
+	sprintf(s, "add TETRODE_0.3ID_LINEAR@jonnew TET%d R0 (%f %f);\n", tet_num, x, y);
+	cmd +=s;
+	
+	sprintf(s, "value 'TET%d' %d;\n", tet_num, tet_num);
+	cmd +=s;
+}
+
+void move_tetrode(int tet_num) {
+
+    real divisor = 150.0;
+    real offset = 0.5;
+
+	if (tet_num < 16) // Top half (two TT's moved in this branch)
+    { 
+		sprintf(s, "move 'TET%d' (0 0) ;\n", tet_num);
+		cmd +=s;
+		
+		sprintf(s, "mirror 'TET%d';\n", tet_num);
+		cmd +=s;
+		
+		sprintf(s, "rotate R%3.7f 'TET%d' ;\n", 2.0 * (tet_num + offset) * 360.0/divisor, tet_num);
+		cmd +=s;
+		
+		sprintf(s, "move 'TET%d' (0 0) ;\n",  n_tet - tet_num - 1);
+		cmd +=s;
+		
+		sprintf(s, "rotate R-%3.7f 'TET%d' ;\n", 2.0 * (tet_num + offset) * 360.0/divisor, n_tet - tet_num - 1);
+		cmd +=s;
+} // Just do bottom half with manual copy/mirror on the board
+	// else { // Bottom half (two TT's moved in this branch)
+	//
+	//	sprintf(s, "move 'TET%d' (0 0) ;\n", tet_num);
+	//	cmd +=s;
+	//	
+	//	//sprintf(s, "mirror 'TET%d';\n", tet_num);
+	//	//cmd +=s;
+	//	
+	//	sprintf(s, "rotate R%3.7f 'TET%d' ;\n", 2.0 * (tet_num + 6*offset) * 360.0/divisor, tet_num);
+	//	cmd +=s;
+	//	
+	//	sprintf(s, "mirror 'TET%d';\n", n_tet - tet_num - 1);
+	//	cmd +=s;
+
+	//	sprintf(s, "move 'TET%d' (0 0) ;\n",  n_tet - tet_num - 1);
+	//	cmd +=s;
+
+	//	sprintf(s, "rotate R-%3.7f 'TET%d' ;\n", 2.0 * (tet_num + 6*offset) * 360.0/divisor,  n_tet - tet_num - 1);
+	//	cmd +=s;
+	//	
+	//}
+
+}
+
+void doit() {
+
+	check_schematic();
+
+	// Make the tetrodes
+	for (int i = 0; i < n_tet; ++i) { 
+		make_tetrode(i, -1.0, i*0.4);
+	}
+	
+	goto_board();
+	
+	// Orient the tetrodes
+	for (int j = 0; j < n_tet/2; ++j) { 
+		move_tetrode(j);
+	}
+
+	exit(cmd);
+}
+	
+// *** main ***
+
+string ulp_path = filedir(argv[0]);
+
+dlgDialog("256 Tetrode Placer") {
+
+  dlgHBoxLayout {
+    dlgPushButton("+&OK")     { doit(); }
+    dlgPushButton("-&Cancel") { exit(0); }
+    //dlgStretch(1);
+    //dlgPushButton("&Help") dlgMessageBox(Help, "Ok");
+  }
+};
+
+
+
+
