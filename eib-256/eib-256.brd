@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -173,10 +173,10 @@ JPN, MWL@MIT
 <wire x1="-8.008190625" y1="-4.282103125" x2="-7.6244125" y2="-5.09399375" width="0.2286" layer="22" curve="90"/>
 <wire x1="-7.6244125" y1="-5.09399375" x2="-6.42874375" y2="-5.522103125" width="0.2286" layer="22"/>
 <wire x1="-6.42874375" y1="-5.522103125" x2="-5.61685625" y2="-5.138325" width="0.2286" layer="22" curve="90"/>
-<text x="-10.07186875" y="-6.379240625" size="1.27" layer="22" font="vector" ratio="19" rot="MR239.7" align="center">Welcome to
+<text x="10.50213125" y="6.828759375" size="1.27" layer="22" font="vector" ratio="19" rot="MR239.7" align="center">Welcome to
 TETRODEVILLE
 </text>
-<text x="10.499978125" y="7.57490625" size="1.27" layer="22" font="vector" ratio="19" rot="MR59.7" align="center">Population:
+<text x="-11.852021875" y="-6.14109375" size="1.27" layer="22" font="vector" ratio="19" rot="MR59.7" align="center">Population:
 64</text>
 </plain>
 <libraries>
