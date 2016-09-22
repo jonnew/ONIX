@@ -1,0 +1,8 @@
+* Cree ML-ES LED
+* Model valid for 20mA to 167mA & Tj=25C
+.MODEL ML-ES D
++ IS=4.9794E-09
++ N=22.05348656
++ RS=9.250833546
++ XTI=341.8074358
++ EG=2.5000
