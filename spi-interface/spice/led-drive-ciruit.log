@@ -1,0 +1,23 @@
+Circuit: * M:\private\headstage\spi-interface\spice\led-drive-ciruit.asc
+
+Instance "m:m2:2": Length shorter than recommended for a level 3 MOSFET.
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Sep 22 17:23:48 2016
+Total elapsed time: 0.190 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 4176
+traniter = 4156
+tranpoints = 2052
+accept = 1762
+rejected = 290
+matrix size = 14
+fillins = 4
+solver = Normal
+Matrix Compiler1: 1.05 KB object code size  0.7/0.3/[0.1]
+Matrix Compiler2: off  [0.2]/0.3/0.3
+
+

@@ -1,0 +1,50 @@
+*
+*******************************************
+*
+*PDZ10B
+*
+*NXP Semiconductors
+*
+*Voltage regulator diode
+*
+*
+*
+*
+* 
+*
+*IR    = 100nA  @ VR = 7V
+*IZSM  = 3,5A   @ tp = 100µs
+*VZmax = 10,21V @ IZ = 5mA
+*
+*
+*
+*
+* 
+*
+*
+*Package pinning does not match Spice model pinning.
+*Package: SOD323
+*
+*Package Pin 1: Cathode
+*Package Pin 2: Anode
+*
+*
+*
+*
+*Simulator: SPICE2
+*
+*******************************************
+*#
+.MODEL PDZ10B D
++ IS = 9.794E-15
++ N = 1.101
++ BV = 10
++ IBV = 0.005
++ RS = 0.3363
++ CJO = 6.004E-11
++ VJ = 0.6305
++ M = 0.3302
++ FC = 0.5
+*##
+*
+
