@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -172,15 +172,15 @@ JPN, MWL@MIT
 <wire x1="28.9936" y1="11.3218" x2="28.9682" y2="11.3218" width="0.1524" layer="21"/>
 <wire x1="28.9682" y1="11.3218" x2="28.7396" y2="11.0932" width="0.1524" layer="21"/>
 <wire x1="28.638" y1="10.128" x2="28.638" y2="11.128" width="0" layer="21"/>
-<wire x1="9.525" y1="10.922" x2="8.255" y2="10.922" width="0" layer="20"/>
+<wire x1="8.255" y1="10.922" x2="9.525" y2="10.922" width="0" layer="20"/>
+<wire x1="9.525" y1="10.922" x2="10.16" y2="10.287" width="0" layer="20" curve="-90"/>
+<wire x1="10.16" y1="10.287" x2="10.16" y2="9.525" width="0" layer="20"/>
 <wire x1="8.255" y1="10.922" x2="7.62" y2="10.287" width="0" layer="20" curve="90"/>
 <wire x1="33.782" y1="10.287" x2="33.782" y2="8.255" width="0" layer="20"/>
 <wire x1="33.782" y1="8.255" x2="33.147" y2="7.62" width="0" layer="20" curve="-90"/>
 <wire x1="33.147" y1="7.62" x2="8.255" y2="7.62" width="0" layer="20"/>
 <wire x1="8.255" y1="7.62" x2="7.62" y2="8.255" width="0" layer="20" curve="-90"/>
 <wire x1="7.62" y1="8.255" x2="7.62" y2="10.287" width="0" layer="20"/>
-<wire x1="9.525" y1="10.922" x2="10.16" y2="10.287" width="0" layer="20" curve="-90"/>
-<wire x1="10.16" y1="10.287" x2="10.16" y2="10.16" width="0" layer="20"/>
 <wire x1="9.525" y1="13.462" x2="8.255" y2="13.462" width="0" layer="20"/>
 <wire x1="8.255" y1="13.462" x2="7.62" y2="14.097" width="0" layer="20" curve="-90"/>
 <wire x1="7.62" y1="14.097" x2="7.62" y2="16.383" width="0" layer="20"/>
@@ -196,7 +196,7 @@ JPN, MWL@MIT
 <hole x="7.9248" y="13.1572" drill="0.6"/>
 <hole x="7.9248" y="12.192" drill="0.6"/>
 <hole x="7.9248" y="11.2268" drill="0.6"/>
-<wire x1="31.242" y1="10.16" x2="31.242" y2="10.287" width="0" layer="20"/>
+<wire x1="31.242" y1="9.525" x2="31.242" y2="10.287" width="0" layer="20"/>
 <wire x1="31.242" y1="10.287" x2="31.877" y2="10.922" width="0" layer="20" curve="-90"/>
 <wire x1="31.877" y1="10.922" x2="33.147" y2="10.922" width="0" layer="20"/>
 <wire x1="33.147" y1="10.922" x2="33.782" y2="10.287" width="0" layer="20" curve="-90"/>
@@ -211,12 +211,12 @@ JPN, MWL@MIT
 <hole x="31.5468" y="12.192" drill="0.6"/>
 <hole x="31.5468" y="11.2268" drill="0.6"/>
 <wire x1="10.16" y1="14.224" x2="15.494" y2="14.224" width="0" layer="20"/>
-<wire x1="15.494" y1="10.16" x2="10.16" y2="10.16" width="0" layer="20"/>
+<wire x1="15.494" y1="9.525" x2="10.16" y2="9.525" width="0" layer="20"/>
 <wire x1="16.129" y1="10.922" x2="17.399" y2="10.922" width="0" layer="20"/>
 <wire x1="17.399" y1="10.922" x2="18.034" y2="10.287" width="0" layer="20" curve="-90"/>
-<wire x1="18.034" y1="10.287" x2="18.034" y2="10.16" width="0" layer="20"/>
+<wire x1="18.034" y1="10.287" x2="18.034" y2="9.525" width="0" layer="20"/>
 <wire x1="16.129" y1="10.922" x2="15.494" y2="10.287" width="0" layer="20" curve="90"/>
-<wire x1="15.494" y1="10.287" x2="15.494" y2="10.16" width="0" layer="20"/>
+<wire x1="15.494" y1="10.287" x2="15.494" y2="9.525" width="0" layer="20"/>
 <wire x1="16.129" y1="13.462" x2="17.399" y2="13.462" width="0" layer="20"/>
 <wire x1="17.399" y1="13.462" x2="18.034" y2="14.097" width="0" layer="20" curve="90"/>
 <wire x1="18.034" y1="14.097" x2="18.034" y2="14.224" width="0" layer="20"/>
@@ -229,19 +229,19 @@ JPN, MWL@MIT
 <hole x="15.7988" y="12.192" drill="0.6"/>
 <hole x="15.7988" y="11.2268" drill="0.6"/>
 <wire x1="18.034" y1="14.224" x2="23.368" y2="14.224" width="0" layer="20"/>
-<wire x1="23.368" y1="10.16" x2="18.034" y2="10.16" width="0" layer="20"/>
-<wire x1="23.368" y1="10.16" x2="23.368" y2="10.287" width="0" layer="20"/>
-<wire x1="23.368" y1="10.287" x2="24.003" y2="10.922" width="0" layer="20" curve="-90"/>
-<wire x1="25.908" y1="10.16" x2="25.908" y2="10.287" width="0" layer="20"/>
+<wire x1="23.368" y1="9.525" x2="18.034" y2="9.525" width="0" layer="20"/>
+<wire x1="25.908" y1="9.525" x2="25.908" y2="10.287" width="0" layer="20"/>
 <wire x1="25.908" y1="10.287" x2="25.273" y2="10.922" width="0" layer="20" curve="90"/>
 <wire x1="25.273" y1="10.922" x2="24.003" y2="10.922" width="0" layer="20"/>
+<wire x1="24.003" y1="10.922" x2="23.368" y2="10.287" width="0" layer="20" curve="90"/>
+<wire x1="23.368" y1="10.287" x2="23.368" y2="9.525" width="0" layer="20"/>
 <wire x1="23.368" y1="14.224" x2="23.368" y2="14.097" width="0" layer="20"/>
 <wire x1="23.368" y1="14.097" x2="24.003" y2="13.462" width="0" layer="20" curve="90"/>
 <wire x1="24.003" y1="13.462" x2="25.273" y2="13.462" width="0" layer="20"/>
 <wire x1="25.273" y1="13.462" x2="25.908" y2="14.097" width="0" layer="20" curve="90"/>
 <wire x1="25.908" y1="14.097" x2="25.908" y2="14.224" width="0" layer="20"/>
 <wire x1="25.908" y1="14.224" x2="31.242" y2="14.224" width="0" layer="20"/>
-<wire x1="31.242" y1="10.16" x2="25.908" y2="10.16" width="0" layer="20"/>
+<wire x1="31.242" y1="9.525" x2="25.908" y2="9.525" width="0" layer="20"/>
 <hole x="25.6032" y="13.1572" drill="0.6"/>
 <hole x="25.6032" y="12.192" drill="0.6"/>
 <hole x="25.6032" y="11.2268" drill="0.6"/>
@@ -313,14 +313,10 @@ JPN, MWL@MIT
 <hole x="19.1008" y="39.6748" drill="0.6"/>
 <hole x="20.066" y="39.6748" drill="0.6"/>
 <hole x="21.0312" y="39.6748" drill="0.6"/>
-<wire x1="17.526" y1="29.972" x2="23.114" y2="29.972" width="0" layer="20"/>
+<wire x1="17.526" y1="30.099" x2="23.114" y2="30.099" width="0" layer="20"/>
 <wire x1="17.526" y1="28.956" x2="23.114" y2="28.956" width="0" layer="20"/>
-<wire x1="23.114" y1="29.972" x2="23.114" y2="28.956" width="0" layer="20" curve="-180"/>
-<wire x1="17.526" y1="28.956" x2="17.526" y2="29.972" width="0" layer="20" curve="-180"/>
-<wire x1="21.59" y1="31.242" x2="21.59" y2="36.83" width="0" layer="20"/>
+<wire x1="21.463" y1="31.242" x2="21.463" y2="36.83" width="0" layer="20"/>
 <wire x1="22.606" y1="31.242" x2="22.606" y2="36.83" width="0" layer="20"/>
-<wire x1="21.59" y1="36.83" x2="22.606" y2="36.83" width="0" layer="20" curve="-180"/>
-<wire x1="22.606" y1="31.242" x2="21.59" y2="31.242" width="0" layer="20" curve="-180"/>
 <wire x1="10.16" y1="41.275" x2="10.795" y2="41.91" width="0" layer="20" curve="-90"/>
 <wire x1="10.16" y1="24.765" x2="10.795" y2="24.13" width="0" layer="20" curve="90"/>
 <wire x1="29.845" y1="24.13" x2="30.48" y2="24.765" width="0" layer="20" curve="90"/>
@@ -333,6 +329,10 @@ JPN, MWL@MIT
 <text x="27.305" y="36.957" size="0.8128" layer="21" font="vector" ratio="18" rot="R90" align="center">X</text>
 <text x="27.305" y="31.75" size="0.8128" layer="21" font="vector" ratio="18" rot="R90" align="center">Y</text>
 <text x="27.305" y="29.337" size="0.8128" layer="21" font="vector" ratio="18" rot="R90" align="center">RY</text>
+<wire x1="17.526" y1="30.099" x2="17.526" y2="28.956" width="0" layer="20" curve="180"/>
+<wire x1="23.114" y1="30.099" x2="23.114" y2="28.956" width="0" layer="20" curve="-180"/>
+<wire x1="21.463" y1="31.242" x2="22.606" y2="31.242" width="0" layer="20" curve="180"/>
+<wire x1="21.463" y1="36.83" x2="22.606" y2="36.83" width="0" layer="20" curve="-180"/>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -707,9 +707,9 @@ JPN, MWL@MIT
 </element>
 <element name="U$2" library="jonnew" package="1X04" value="PINHD-1X4" x="15.24" y="33.02" smashed="yes" rot="R90"/>
 <element name="U$3" library="jonnew" package="1X04" value="PINHD-1X4" x="25.4" y="33.02" smashed="yes" rot="R270"/>
-<element name="TP13" library="jonnew" package="TP08SQ" value="" x="19.05" y="28.448" smashed="yes" rot="MR0">
-<attribute name="TP_SIGNAL_NAME" value="" x="19.05" y="26.543" size="1" layer="38" rot="MR0"/>
-<attribute name="VALUE" x="19.431" y="27.94" size="0.0254" layer="28" rot="MR0"/>
+<element name="TP13" library="jonnew" package="TP08SQ" value="" x="19.304" y="28.575" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="19.304" y="26.67" size="1" layer="38" rot="MR0"/>
+<attribute name="VALUE" x="19.685" y="28.067" size="0.0254" layer="28" rot="MR0"/>
 </element>
 <element name="U4" library="jonnew" package="LGA-10-COMPACT" value="LY3200" x="19.05" y="33.274" smashed="yes" rot="MR90"/>
 <element name="C10" library="jonnew" package="0201" value="10nF" x="19.05" y="33.528" smashed="yes" rot="R180">
@@ -724,65 +724,65 @@ JPN, MWL@MIT
 <element name="C12" library="jonnew" package="0201" value="470nF" x="19.05" y="35.306" smashed="yes" rot="R180">
 <attribute name="VALUE" x="17.6102" y="36.121" size="0.8128" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="TP14" library="jonnew" package="TP08SQ" value="" x="22.352" y="28.448" smashed="yes" rot="R90">
-<attribute name="TP_SIGNAL_NAME" value="" x="24.257" y="28.448" size="1" layer="37" rot="R90"/>
-<attribute name="VALUE" x="22.86" y="28.067" size="0.0254" layer="27" rot="R90"/>
+<element name="TP14" library="jonnew" package="TP08SQ" value="" x="22.352" y="28.575" smashed="yes" rot="R90">
+<attribute name="TP_SIGNAL_NAME" value="" x="24.257" y="28.575" size="1" layer="37" rot="R90"/>
+<attribute name="VALUE" x="22.86" y="28.194" size="0.0254" layer="27" rot="R90"/>
 </element>
-<element name="TP15" library="jonnew" package="TP08SQ" value="" x="22.352" y="28.448" smashed="yes" rot="MR270">
-<attribute name="TP_SIGNAL_NAME" value="" x="24.257" y="28.448" size="1" layer="38" rot="MR270"/>
-<attribute name="VALUE" x="22.86" y="28.829" size="0.0254" layer="28" rot="MR270"/>
+<element name="TP15" library="jonnew" package="TP08SQ" value="" x="22.352" y="28.575" smashed="yes" rot="MR270">
+<attribute name="TP_SIGNAL_NAME" value="" x="24.257" y="28.575" size="1" layer="38" rot="MR270"/>
+<attribute name="VALUE" x="22.86" y="28.956" size="0.0254" layer="28" rot="MR270"/>
 </element>
-<element name="TP16" library="jonnew" package="TP08SQ" value="" x="21.336" y="28.448" smashed="yes" rot="MR270">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.241" y="28.448" size="1" layer="38" rot="MR270"/>
-<attribute name="VALUE" x="21.844" y="28.829" size="0.0254" layer="28" rot="MR270"/>
+<element name="TP16" library="jonnew" package="TP08SQ" value="" x="21.336" y="28.575" smashed="yes" rot="MR270">
+<attribute name="TP_SIGNAL_NAME" value="" x="23.241" y="28.575" size="1" layer="38" rot="MR270"/>
+<attribute name="VALUE" x="21.844" y="28.956" size="0.0254" layer="28" rot="MR270"/>
 </element>
-<element name="TP17" library="jonnew" package="TP08SQ" value="" x="21.336" y="28.448" smashed="yes" rot="R90">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.241" y="28.448" size="1" layer="37" rot="R90"/>
-<attribute name="VALUE" x="21.844" y="28.067" size="0.0254" layer="27" rot="R90"/>
+<element name="TP17" library="jonnew" package="TP08SQ" value="" x="21.336" y="28.575" smashed="yes" rot="R90">
+<attribute name="TP_SIGNAL_NAME" value="" x="23.241" y="28.575" size="1" layer="37" rot="R90"/>
+<attribute name="VALUE" x="21.844" y="28.194" size="0.0254" layer="27" rot="R90"/>
 </element>
-<element name="TP18" library="jonnew" package="TP08SQ" value="" x="23.114" y="35.052" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.114" y="33.147" size="1" layer="37"/>
-<attribute name="VALUE" x="22.733" y="34.544" size="0.0254" layer="27"/>
+<element name="TP18" library="jonnew" package="TP08SQ" value="" x="22.987" y="35.052" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.987" y="33.147" size="1" layer="37"/>
+<attribute name="VALUE" x="22.606" y="34.544" size="0.0254" layer="27"/>
 </element>
-<element name="TP19" library="jonnew" package="TP08SQ" value="" x="23.114" y="35.052" smashed="yes" rot="MR0">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.114" y="33.147" size="1" layer="38" rot="MR0"/>
-<attribute name="VALUE" x="23.495" y="34.544" size="0.0254" layer="28" rot="MR0"/>
+<element name="TP19" library="jonnew" package="TP08SQ" value="" x="22.987" y="35.052" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.987" y="33.147" size="1" layer="38" rot="MR0"/>
+<attribute name="VALUE" x="23.368" y="34.544" size="0.0254" layer="28" rot="MR0"/>
 </element>
-<element name="TP20" library="jonnew" package="TP08SQ" value="" x="23.114" y="36.068" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.114" y="34.163" size="1" layer="37"/>
-<attribute name="VALUE" x="22.733" y="35.56" size="0.0254" layer="27"/>
+<element name="TP20" library="jonnew" package="TP08SQ" value="" x="22.987" y="36.068" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.987" y="34.163" size="1" layer="37"/>
+<attribute name="VALUE" x="22.606" y="35.56" size="0.0254" layer="27"/>
 </element>
-<element name="TP21" library="jonnew" package="TP08SQ" value="" x="23.114" y="36.068" smashed="yes" rot="MR0">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.114" y="34.163" size="1" layer="38" rot="MR0"/>
-<attribute name="VALUE" x="23.495" y="35.56" size="0.0254" layer="28" rot="MR0"/>
+<element name="TP21" library="jonnew" package="TP08SQ" value="" x="22.987" y="36.068" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.987" y="34.163" size="1" layer="38" rot="MR0"/>
+<attribute name="VALUE" x="23.368" y="35.56" size="0.0254" layer="28" rot="MR0"/>
 </element>
-<element name="TP22" library="jonnew" package="TP08SQ" value="" x="19.05" y="28.448" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="19.05" y="26.543" size="1" layer="37"/>
-<attribute name="VALUE" x="18.669" y="27.94" size="0.0254" layer="27"/>
+<element name="TP22" library="jonnew" package="TP08SQ" value="" x="19.304" y="28.575" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="19.304" y="26.67" size="1" layer="37"/>
+<attribute name="VALUE" x="18.923" y="28.067" size="0.0254" layer="27"/>
 </element>
-<element name="TP23" library="jonnew" package="TP08SQ" value="" x="23.114" y="33.02" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.114" y="31.115" size="1" layer="37"/>
-<attribute name="VALUE" x="22.733" y="32.512" size="0.0254" layer="27"/>
+<element name="TP23" library="jonnew" package="TP08SQ" value="" x="22.987" y="33.02" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.987" y="31.115" size="1" layer="37"/>
+<attribute name="VALUE" x="22.606" y="32.512" size="0.0254" layer="27"/>
 </element>
-<element name="TP24" library="jonnew" package="TP08SQ" value="" x="23.114" y="33.02" smashed="yes" rot="MR0">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.114" y="31.115" size="1" layer="38" rot="MR0"/>
-<attribute name="VALUE" x="23.495" y="32.512" size="0.0254" layer="28" rot="MR0"/>
+<element name="TP24" library="jonnew" package="TP08SQ" value="" x="22.987" y="33.02" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.987" y="31.115" size="1" layer="38" rot="MR0"/>
+<attribute name="VALUE" x="23.368" y="32.512" size="0.0254" layer="28" rot="MR0"/>
 </element>
-<element name="TP25" library="jonnew" package="TP08SQ" value="" x="18.034" y="28.448" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="18.034" y="26.543" size="1" layer="37"/>
-<attribute name="VALUE" x="17.653" y="27.94" size="0.0254" layer="27"/>
+<element name="TP25" library="jonnew" package="TP08SQ" value="" x="18.288" y="28.575" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="18.288" y="26.67" size="1" layer="37"/>
+<attribute name="VALUE" x="17.907" y="28.067" size="0.0254" layer="27"/>
 </element>
-<element name="TP26" library="jonnew" package="TP08SQ" value="" x="18.034" y="28.448" smashed="yes" rot="MR0">
-<attribute name="TP_SIGNAL_NAME" value="" x="18.034" y="26.543" size="1" layer="38" rot="MR0"/>
-<attribute name="VALUE" x="18.415" y="27.94" size="0.0254" layer="28" rot="MR0"/>
+<element name="TP26" library="jonnew" package="TP08SQ" value="" x="18.288" y="28.575" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="18.288" y="26.67" size="1" layer="38" rot="MR0"/>
+<attribute name="VALUE" x="18.669" y="28.067" size="0.0254" layer="28" rot="MR0"/>
 </element>
-<element name="TP27" library="jonnew" package="TP08SQ" value="" x="23.114" y="32.004" smashed="yes">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.114" y="30.099" size="1" layer="37"/>
-<attribute name="VALUE" x="22.733" y="31.496" size="0.0254" layer="27"/>
+<element name="TP27" library="jonnew" package="TP08SQ" value="" x="22.987" y="32.004" smashed="yes">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.987" y="30.099" size="1" layer="37"/>
+<attribute name="VALUE" x="22.606" y="31.496" size="0.0254" layer="27"/>
 </element>
-<element name="TP28" library="jonnew" package="TP08SQ" value="" x="23.114" y="32.004" smashed="yes" rot="MR0">
-<attribute name="TP_SIGNAL_NAME" value="" x="23.114" y="30.099" size="1" layer="38" rot="MR0"/>
-<attribute name="VALUE" x="23.495" y="31.496" size="0.0254" layer="28" rot="MR0"/>
+<element name="TP28" library="jonnew" package="TP08SQ" value="" x="22.987" y="32.004" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.987" y="30.099" size="1" layer="38" rot="MR0"/>
+<attribute name="VALUE" x="23.368" y="31.496" size="0.0254" layer="28" rot="MR0"/>
 </element>
 </elements>
 <signals>
@@ -849,12 +849,12 @@ JPN, MWL@MIT
 <contactref element="TP27" pad="TP"/>
 <contactref element="TP26" pad="TP"/>
 <contactref element="TP25" pad="TP"/>
-<via x="18.034" y="27.432" extent="1-16" drill="0.3302" shape="octagon"/>
+<via x="18.288" y="27.432" extent="1-16" drill="0.3302" shape="octagon"/>
 <via x="23.876" y="32.004" extent="1-16" drill="0.3302" shape="octagon"/>
-<wire x1="18.034" y1="27.432" x2="18.034" y2="28.448" width="0.3048" layer="1"/>
-<wire x1="18.034" y1="27.432" x2="18.034" y2="28.448" width="0.3048" layer="16"/>
-<wire x1="23.876" y1="32.004" x2="23.114" y2="32.004" width="0.3048" layer="16"/>
-<wire x1="23.876" y1="32.004" x2="23.114" y2="32.004" width="0.3048" layer="1"/>
+<wire x1="18.288" y1="27.432" x2="18.288" y2="28.575" width="0.3048" layer="1"/>
+<wire x1="18.288" y1="27.432" x2="18.288" y2="28.575" width="0.3048" layer="16"/>
+<wire x1="23.876" y1="32.004" x2="22.987" y2="32.004" width="0.3048" layer="16"/>
+<wire x1="23.876" y1="32.004" x2="22.987" y2="32.004" width="0.3048" layer="1"/>
 <via x="20.2626" y="34.6886" extent="1-16" drill="0.3"/>
 <wire x1="18.7184875" y1="35.324" x2="18.94299375" y2="35.41699375" width="0.3048" layer="16" curve="45"/>
 <wire x1="18.94299375" y1="35.41699375" x2="19.05" y2="35.324" width="0.3048" layer="16"/>
@@ -868,7 +868,7 @@ JPN, MWL@MIT
 <contactref element="U$2" pad="3"/>
 <wire x1="26.588" y1="13.728" x2="19.4134" y2="13.728" width="0" layer="19" extent="16-16"/>
 <wire x1="11.5394" y1="13.728" x2="18.714" y2="13.728" width="0" layer="19" extent="16-16"/>
-<wire x1="18.034" y1="27.432" x2="18.714" y2="13.728" width="0" layer="19" extent="1-16"/>
+<wire x1="18.288" y1="27.432" x2="18.714" y2="13.728" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="N$3">
 <contactref element="U1" pad="3"/>
@@ -979,12 +979,12 @@ JPN, MWL@MIT
 <contactref element="TP22" pad="TP"/>
 <contactref element="TP23" pad="TP"/>
 <contactref element="TP24" pad="TP"/>
-<via x="19.05" y="27.432" extent="1-16" drill="0.3302" shape="octagon"/>
+<via x="19.304" y="27.432" extent="1-16" drill="0.3302" shape="octagon"/>
 <via x="23.876" y="33.02" extent="1-16" drill="0.3302" shape="octagon"/>
-<wire x1="19.05" y1="27.432" x2="19.05" y2="28.448" width="0.3048" layer="1"/>
-<wire x1="19.05" y1="27.432" x2="19.05" y2="28.448" width="0.3048" layer="16"/>
-<wire x1="23.876" y1="33.02" x2="23.114" y2="33.02" width="0.3048" layer="16"/>
-<wire x1="23.114" y1="33.02" x2="23.876" y2="33.02" width="0.3048" layer="1"/>
+<wire x1="19.304" y1="27.432" x2="19.304" y2="28.575" width="0.3048" layer="1"/>
+<wire x1="19.304" y1="27.432" x2="19.304" y2="28.575" width="0.3048" layer="16"/>
+<wire x1="23.876" y1="33.02" x2="22.987" y2="33.02" width="0.3048" layer="16"/>
+<wire x1="22.987" y1="33.02" x2="23.876" y2="33.02" width="0.3048" layer="1"/>
 <via x="20.321" y="31.906" extent="1-16" drill="0.3"/>
 <via x="18.6654" y="34.418" extent="1-16" drill="0.3"/>
 <wire x1="18.6563" y1="35.306" x2="18.6654" y2="34.418" width="0.3048" layer="1"/>
@@ -998,7 +998,7 @@ JPN, MWL@MIT
 <wire x1="19.641" y1="34.418" x2="18.6654" y2="34.418" width="0.3048" layer="16"/>
 <contactref element="U$2" pad="4"/>
 <wire x1="19.8602" y1="31.4452" x2="20.15" y2="31.224" width="0" layer="19" extent="1-16"/>
-<wire x1="20.129" y1="13.728" x2="19.05" y2="27.432" width="0" layer="19" extent="1-16"/>
+<wire x1="20.129" y1="13.728" x2="19.304" y2="27.432" width="0" layer="19" extent="1-16"/>
 <wire x1="27.2548" y1="12.0163" x2="22.6486" y2="12.8191" width="0" layer="19" extent="1-1"/>
 <wire x1="14.7746" y1="12.8191" x2="19.3808" y2="12.0163" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -1128,17 +1128,17 @@ JPN, MWL@MIT
 <contactref element="U$3" pad="2"/>
 <contactref element="TP19" pad="TP"/>
 <contactref element="TP18" pad="TP"/>
-<wire x1="23.114" y1="35.052" x2="24.638" y2="35.052" width="0.3048" layer="1"/>
+<wire x1="22.987" y1="35.052" x2="24.638" y2="35.052" width="0.3048" layer="1"/>
 <wire x1="24.638" y1="35.052" x2="25.4" y2="34.29" width="0.3048" layer="1"/>
-<wire x1="23.114" y1="35.052" x2="23.114" y2="35.052" width="0" layer="19" extent="1-16"/>
+<wire x1="22.987" y1="35.052" x2="22.987" y2="35.052" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="OUT1_">
 <contactref element="U$3" pad="1"/>
 <contactref element="TP21" pad="TP"/>
 <contactref element="TP20" pad="TP"/>
-<wire x1="23.114" y1="36.068" x2="24.638" y2="36.068" width="0.3048" layer="1"/>
+<wire x1="22.987" y1="36.068" x2="24.638" y2="36.068" width="0.3048" layer="1"/>
 <wire x1="24.638" y1="36.068" x2="25.4" y2="36.83" width="0.3048" layer="1"/>
-<wire x1="23.114" y1="36.068" x2="23.114" y2="36.068" width="0" layer="19" extent="1-16"/>
+<wire x1="22.987" y1="36.068" x2="22.987" y2="36.068" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="OUT2_">
 <contactref element="U$3" pad="3"/>
@@ -1149,16 +1149,17 @@ JPN, MWL@MIT
 <wire x1="26.924" y1="28.321" x2="26.162" y2="27.559" width="0.3048" layer="1"/>
 <wire x1="26.162" y1="27.559" x2="21.59" y2="27.559" width="0.3048" layer="1"/>
 <wire x1="21.59" y1="27.559" x2="21.336" y2="27.813" width="0.3048" layer="1"/>
-<wire x1="21.336" y1="27.813" x2="21.336" y2="28.448" width="0.3048" layer="1"/>
-<wire x1="21.336" y1="28.448" x2="21.336" y2="28.448" width="0" layer="19" extent="1-16"/>
+<wire x1="21.336" y1="27.813" x2="21.336" y2="28.575" width="0.3048" layer="1"/>
+<wire x1="21.336" y1="28.575" x2="21.336" y2="28.575" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="REF2_">
 <contactref element="U$3" pad="4"/>
 <contactref element="TP14" pad="TP"/>
 <contactref element="TP15" pad="TP"/>
-<wire x1="22.352" y1="28.448" x2="24.638" y2="28.448" width="0.3048" layer="1"/>
+<wire x1="22.352" y1="28.575" x2="22.479" y2="28.448" width="0.3048" layer="1"/>
+<wire x1="22.479" y1="28.448" x2="24.638" y2="28.448" width="0.3048" layer="1"/>
 <wire x1="24.638" y1="28.448" x2="25.4" y2="29.21" width="0.3048" layer="1"/>
-<wire x1="22.352" y1="28.448" x2="22.352" y2="28.448" width="0" layer="19" extent="1-16"/>
+<wire x1="22.352" y1="28.575" x2="22.352" y2="28.575" width="0" layer="19" extent="1-16"/>
 </signal>
 </signals>
 </board>
