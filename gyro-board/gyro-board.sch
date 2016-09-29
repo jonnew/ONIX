@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -703,6 +703,16 @@
 <smd name="10" x="2.25" y="0" dx="0.7" dy="1" layer="1" rot="R90"/>
 <text x="-2.747" y="2.647" size="1.016" layer="25" font="vector" ratio="18" rot="R180" align="center-right">&gt;NAME</text>
 <text x="-3.047" y="-2.647" size="1.016" layer="27" font="vector" ratio="18" align="center-left">&gt;VALUE</text>
+</package>
+<package name="TESTPOINT_0.035IN">
+<pad name="1" x="0" y="0" drill="0.9" rot="R90"/>
+<text x="1.016" y="-0.4826" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<text x="1.016" y="0.5334" size="0.8128" layer="25" font="vector" ratio="18">&gt;NAME</text>
+</package>
+<package name="TESTPOINT_0.5MM">
+<pad name="1" x="0" y="0" drill="0.5" rot="R90"/>
+<text x="1.016" y="-0.4826" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<text x="1.016" y="0.5334" size="0.8128" layer="25" font="vector" ratio="18">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
@@ -1447,6 +1457,22 @@
 </technologies>
 </device>
 <device name="_RC0603" package="RC0603">
+<connects>
+<connect gate="G$1" pin="TP" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_0.035IN" package="TESTPOINT_0.035IN">
+<connects>
+<connect gate="G$1" pin="TP" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_0.5MM" package="TESTPOINT_0.5MM">
 <connects>
 <connect gate="G$1" pin="TP" pad="1"/>
 </connects>
