@@ -5920,17 +5920,17 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="TP6" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
 <part name="U$2" library="jonnew" deviceset="PINHD-2X10" device="_T1M"/>
 <part name="U$3" library="jonnew" deviceset="MAX9174" device="_UMAX"/>
-<part name="C2" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
+<part name="C2" library="jonnew" deviceset="C" device="_0201" value="1nF"/>
 <part name="C3" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="VDD6" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND6" library="headstage" deviceset="GND" device=""/>
 <part name="U$4" library="jonnew" deviceset="MAX9174" device="_UMAX"/>
-<part name="C4" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
+<part name="C4" library="jonnew" deviceset="C" device="_0201" value="1nF"/>
 <part name="C5" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="VDD3" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND8" library="headstage" deviceset="GND" device=""/>
 <part name="U$5" library="jonnew" deviceset="MAX9174" device="_UMAX"/>
-<part name="C6" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
+<part name="C6" library="jonnew" deviceset="C" device="_0201" value="1nF"/>
 <part name="C7" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="VDD7" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND9" library="headstage" deviceset="GND" device=""/>
@@ -5948,7 +5948,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="U$9" library="jonnew" deviceset="VSS" device="" value="LED-"/>
 <part name="U$10" library="jonnew" deviceset="VSS" device="" value="LED-"/>
 <part name="D1" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="PDZ10B,115"/>
-<part name="ANT1" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-V01"/>
+<part name="LED1" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-V01"/>
 <part name="VDD9" library="jonnew" deviceset="VDD" device="" value="+LED"/>
 <part name="VDD10" library="jonnew" deviceset="VDD" device="" value="+LED"/>
 <part name="C9" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
@@ -5957,7 +5957,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="R5" library="jonnew" deviceset="R" device="_0805" value="24, 1W"/>
 <part name="Q2" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="AO3402"/>
 <part name="U$11" library="jonnew" deviceset="VSS" device="" value="LED-"/>
-<part name="ANT2" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-V01"/>
+<part name="LED2" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-V01"/>
 <part name="VDD11" library="jonnew" deviceset="VDD" device="" value="+LED"/>
 <part name="D2" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="PDZ10B,115"/>
 <part name="VDD12" library="jonnew" deviceset="VCC" device=""/>
@@ -6125,7 +6125,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <instance part="U$9" gate="G$1" x="299.72" y="63.5"/>
 <instance part="U$10" gate="G$1" x="327.66" y="12.7"/>
 <instance part="D1" gate="G$1" x="317.5" y="60.96" rot="R90"/>
-<instance part="ANT1" gate="D$1" x="327.66" y="30.48"/>
+<instance part="LED1" gate="D$1" x="327.66" y="30.48"/>
 <instance part="VDD9" gate="G$1" x="297.18" y="101.6"/>
 <instance part="VDD10" gate="G$1" x="327.66" y="101.6"/>
 <instance part="C9" gate="C" x="304.8" y="86.36" rot="R270"/>
@@ -6134,7 +6134,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <instance part="R5" gate="R" x="358.14" y="45.72" rot="R90"/>
 <instance part="Q2" gate="G$1" x="355.6" y="83.82"/>
 <instance part="U$11" gate="G$1" x="358.14" y="12.7"/>
-<instance part="ANT2" gate="D$1" x="358.14" y="30.48"/>
+<instance part="LED2" gate="D$1" x="358.14" y="30.48"/>
 <instance part="VDD11" gate="G$1" x="358.14" y="101.6"/>
 <instance part="D2" gate="G$1" x="347.98" y="60.96" rot="R90"/>
 <instance part="VDD12" gate="VCC" x="350.52" y="132.08"/>
@@ -7102,9 +7102,9 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </segment>
 <segment>
 <pinref part="U$10" gate="G$1" pin="VSS"/>
-<pinref part="ANT1" gate="D$1" pin="C"/>
+<pinref part="LED1" gate="D$1" pin="C"/>
 <wire x1="327.66" y1="20.32" x2="327.66" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="ANT1" gate="D$1" pin="BODY"/>
+<pinref part="LED1" gate="D$1" pin="BODY"/>
 <wire x1="327.66" y1="15.24" x2="327.66" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="25.4" x2="332.74" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="20.32" x2="327.66" y2="20.32" width="0.1524" layer="91"/>
@@ -7126,9 +7126,9 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </segment>
 <segment>
 <pinref part="U$11" gate="G$1" pin="VSS"/>
-<pinref part="ANT2" gate="D$1" pin="C"/>
+<pinref part="LED2" gate="D$1" pin="C"/>
 <wire x1="358.14" y1="20.32" x2="358.14" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="ANT2" gate="D$1" pin="BODY"/>
+<pinref part="LED2" gate="D$1" pin="BODY"/>
 <wire x1="358.14" y1="15.24" x2="358.14" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="363.22" y1="25.4" x2="363.22" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="363.22" y1="20.32" x2="358.14" y2="20.32" width="0.1524" layer="91"/>
@@ -7169,7 +7169,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <net name="N$3" class="0">
 <segment>
 <pinref part="R3" gate="R" pin="1"/>
-<pinref part="ANT1" gate="D$1" pin="A"/>
+<pinref part="LED1" gate="D$1" pin="A"/>
 <wire x1="327.66" y1="40.64" x2="327.66" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="LED1+" gate="TP$1" pin="1"/>
 <wire x1="327.66" y1="38.1" x2="337.82" y2="38.1" width="0.1524" layer="91"/>
@@ -7232,7 +7232,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <net name="N$12" class="0">
 <segment>
 <pinref part="R5" gate="R" pin="1"/>
-<pinref part="ANT2" gate="D$1" pin="A"/>
+<pinref part="LED2" gate="D$1" pin="A"/>
 <wire x1="358.14" y1="40.64" x2="358.14" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="LED2+" gate="TP$1" pin="1"/>
 <wire x1="358.14" y1="38.1" x2="368.3" y2="38.1" width="0.1524" layer="91"/>
