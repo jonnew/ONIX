@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -5953,7 +5953,6 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="VDD10" library="jonnew" deviceset="VDD" device="" value="+LED"/>
 <part name="C9" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="U$8" library="jonnew" deviceset="VSS" device="" value="LED-"/>
-<part name="C10" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
 <part name="R5" library="jonnew" deviceset="R" device="_0805" value="24, 1W"/>
 <part name="Q2" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="AO3402"/>
 <part name="U$11" library="jonnew" deviceset="VSS" device="" value="LED-"/>
@@ -6130,7 +6129,6 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <instance part="VDD10" gate="G$1" x="327.66" y="101.6"/>
 <instance part="C9" gate="C" x="304.8" y="86.36" rot="R270"/>
 <instance part="U$8" gate="G$1" x="309.88" y="83.82"/>
-<instance part="C10" gate="C" x="302.26" y="93.98" rot="R90"/>
 <instance part="R5" gate="R" x="358.14" y="45.72" rot="R90"/>
 <instance part="Q2" gate="G$1" x="355.6" y="83.82"/>
 <instance part="U$11" gate="G$1" x="358.14" y="12.7"/>
@@ -7119,10 +7117,6 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="307.34" y1="86.36" x2="309.88" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="U$8" gate="G$1" pin="VSS"/>
 <wire x1="309.88" y1="86.36" x2="309.88" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="C10" gate="C" pin="2"/>
-<wire x1="307.34" y1="93.98" x2="309.88" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="309.88" y1="93.98" x2="309.88" y2="86.36" width="0.1524" layer="91"/>
-<junction x="309.88" y="86.36"/>
 </segment>
 <segment>
 <pinref part="U$11" gate="G$1" pin="VSS"/>
@@ -7181,15 +7175,11 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <segment>
 <wire x1="294.64" y1="86.36" x2="297.18" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="U$7" gate="G$1" pin="VDD"/>
-<wire x1="297.18" y1="99.06" x2="297.18" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="VDD9" gate="G$1" pin="VDD"/>
 <pinref part="C9" gate="C" pin="2"/>
-<wire x1="297.18" y1="93.98" x2="297.18" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="297.18" y1="99.06" x2="297.18" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="297.18" y1="86.36" x2="299.72" y2="86.36" width="0.1524" layer="91"/>
 <junction x="297.18" y="86.36"/>
-<pinref part="C10" gate="C" pin="1"/>
-<wire x1="297.18" y1="93.98" x2="299.72" y2="93.98" width="0.1524" layer="91"/>
-<junction x="297.18" y="93.98"/>
 </segment>
 <segment>
 <pinref part="Q1" gate="G$1" pin="D"/>
