@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -2248,7 +2248,7 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <wire x1="1.8" y1="1.9" x2="1.7" y2="1.9" width="0.127" layer="21"/>
 </package>
 <package name="TESTPOINT_SMALL">
-<pad name="1" x="0" y="0" drill="0.8128" diameter="1.6002" shape="octagon" rot="R90"/>
+<pad name="1" x="0" y="0" drill="0.9" diameter="1.6002" shape="octagon" rot="R90"/>
 <text x="-0.889" y="-1.8796" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <text x="-0.889" y="1.0414" size="0.8128" layer="25" font="vector" ratio="18">&gt;NAME</text>
 </package>
@@ -2395,16 +2395,16 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <rectangle x1="-2.5" y1="-0.125" x2="-1.5" y2="0.125" layer="51"/>
 <rectangle x1="-2.5" y1="0.375" x2="-1.5" y2="0.625" layer="51"/>
 <rectangle x1="-2.5" y1="0.875" x2="-1.5" y2="1.125" layer="51"/>
-<smd name="1" x="-2.25" y="1" dx="1.5" dy="0.35" layer="1" rot="R180"/>
-<smd name="2" x="-2.25" y="0.5" dx="1.5" dy="0.35" layer="1" rot="R180"/>
-<smd name="3" x="-2.25" y="0" dx="1.5" dy="0.35" layer="1" rot="R180"/>
-<smd name="4" x="-2.25" y="-0.5" dx="1.5" dy="0.35" layer="1" rot="R180"/>
-<smd name="5" x="-2.25" y="-1" dx="1.5" dy="0.35" layer="1" rot="R180"/>
-<smd name="6" x="2.25" y="-1" dx="1.5" dy="0.35" layer="1"/>
-<smd name="7" x="2.25" y="-0.5" dx="1.5" dy="0.35" layer="1"/>
-<smd name="8" x="2.25" y="0" dx="1.5" dy="0.35" layer="1"/>
-<smd name="9" x="2.25" y="0.5" dx="1.5" dy="0.35" layer="1"/>
-<smd name="10" x="2.25" y="1" dx="1.5" dy="0.35" layer="1"/>
+<smd name="1" x="-2.14" y="1" dx="1.4" dy="0.28" layer="1" rot="R180"/>
+<smd name="2" x="-2.14" y="0.5" dx="1.4" dy="0.28" layer="1" rot="R180"/>
+<smd name="3" x="-2.14" y="0" dx="1.4" dy="0.28" layer="1" rot="R180"/>
+<smd name="4" x="-2.14" y="-0.5" dx="1.4" dy="0.28" layer="1" rot="R180"/>
+<smd name="5" x="-2.14" y="-1" dx="1.4" dy="0.28" layer="1" rot="R180"/>
+<smd name="6" x="2.14" y="-1" dx="1.4" dy="0.28" layer="1"/>
+<smd name="7" x="2.14" y="-0.5" dx="1.4" dy="0.28" layer="1"/>
+<smd name="8" x="2.14" y="0" dx="1.4" dy="0.28" layer="1"/>
+<smd name="9" x="2.14" y="0.5" dx="1.4" dy="0.28" layer="1"/>
+<smd name="10" x="2.14" y="1" dx="1.4" dy="0.28" layer="1"/>
 </package>
 <package name="0201">
 <wire x1="-0.254" y1="0.1524" x2="0.254" y2="0.1524" width="0.1016" layer="51"/>
@@ -3922,7 +3922,7 @@ grid 2.54 mm</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="PINHD-2X10" uservalue="yes">
+<deviceset name="PINHD-2X10" prefix="U" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="PINHD2X10" x="0" y="0"/>
 </gates>
@@ -5905,37 +5905,37 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="GND7" library="headstage" deviceset="GND" device=""/>
 <part name="VDD5" library="jonnew" deviceset="VCC" device=""/>
 <part name="C1" library="headstage" deviceset="C" device="_0805" value="10uF"/>
-<part name="U$1" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
+<part name="X1" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
 <part name="MECH_E0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC"/>
 <part name="MECH_W0B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC"/>
 <part name="R2" library="jonnew" deviceset="TRIM_US-" device="SM-42/43W" value="20k"/>
 <part name="R4" library="jonnew" deviceset="TRIM_US-" device="SM-42/43W" value="20k"/>
 <part name="GND1" library="headstage" deviceset="GND" device=""/>
 <part name="GND4" library="headstage" deviceset="GND" device=""/>
-<part name="ANT" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-V01"/>
-<part name="POST" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-T01"/>
+<part name="RIGHT" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-V01"/>
+<part name="LEFT" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-T01"/>
 <part name="TP1" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
 <part name="TP2" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
 <part name="TP5" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
 <part name="TP6" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
-<part name="U$2" library="jonnew" deviceset="PINHD-2X10" device="_T1M"/>
-<part name="U$3" library="jonnew" deviceset="MAX9174" device="_UMAX"/>
+<part name="TETHER" library="jonnew" deviceset="PINHD-2X10" device="_T1M"/>
+<part name="U100" library="jonnew" deviceset="MAX9174" device="_UMAX" value="MAX9174"/>
 <part name="C2" library="jonnew" deviceset="C" device="_0201" value="1nF"/>
 <part name="C3" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="VDD6" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND6" library="headstage" deviceset="GND" device=""/>
-<part name="U$4" library="jonnew" deviceset="MAX9174" device="_UMAX"/>
+<part name="U101" library="jonnew" deviceset="MAX9174" device="_UMAX" value="MAX9174"/>
 <part name="C4" library="jonnew" deviceset="C" device="_0201" value="1nF"/>
 <part name="C5" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="VDD3" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND8" library="headstage" deviceset="GND" device=""/>
-<part name="U$5" library="jonnew" deviceset="MAX9174" device="_UMAX"/>
+<part name="U102" library="jonnew" deviceset="MAX9174" device="_UMAX" value="MAX9174"/>
 <part name="C6" library="jonnew" deviceset="C" device="_0201" value="1nF"/>
 <part name="C7" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="VDD7" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND9" library="headstage" deviceset="GND" device=""/>
 <part name="DIO_E1B1" library="jonnew" deviceset="PINHD-2X10" device="_DF40-20REC"/>
-<part name="U$6" library="jonnew" deviceset="NC7SZ125" device=""/>
+<part name="U106" library="jonnew" deviceset="NC7SZ125" device="" value="NC7SZ"/>
 <part name="C8" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="VDD8" library="jonnew" deviceset="VCC" device=""/>
 <part name="GND10" library="headstage" deviceset="GND" device=""/>
@@ -5943,19 +5943,19 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="R1" library="jonnew" deviceset="R" device="_0402" value="300"/>
 <part name="GND12" library="headstage" deviceset="GND" device=""/>
 <part name="R3" library="jonnew" deviceset="R" device="_0805" value="24, 1W"/>
-<part name="U$7" library="jonnew" deviceset="SI822X" device=""/>
+<part name="U107" library="jonnew" deviceset="SI822X" device=""/>
 <part name="Q1" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="AO3402"/>
-<part name="U$9" library="jonnew" deviceset="VSS" device="" value="LED-"/>
-<part name="U$10" library="jonnew" deviceset="VSS" device="" value="LED-"/>
-<part name="D1" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="PDZ10B,115"/>
+<part name="VSS" library="jonnew" deviceset="VSS" device="" value="LED-"/>
+<part name="VSS2" library="jonnew" deviceset="VSS" device="" value="LED-"/>
+<part name="D1" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="PDZ10B"/>
 <part name="LED1" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-V01"/>
 <part name="VDD9" library="jonnew" deviceset="VDD" device="" value="+LED"/>
 <part name="VDD10" library="jonnew" deviceset="VDD" device="" value="+LED"/>
 <part name="C9" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
-<part name="U$8" library="jonnew" deviceset="VSS" device="" value="LED-"/>
+<part name="VSS5" library="jonnew" deviceset="VSS" device="" value="LED-"/>
 <part name="R5" library="jonnew" deviceset="R" device="_0805" value="24, 1W"/>
 <part name="Q2" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="AO3402"/>
-<part name="U$11" library="jonnew" deviceset="VSS" device="" value="LED-"/>
+<part name="VSS3" library="jonnew" deviceset="VSS" device="" value="LED-"/>
 <part name="LED2" library="jonnew" deviceset="LED_PKG-BODY" device="" value="MLE-V01"/>
 <part name="VDD11" library="jonnew" deviceset="VDD" device="" value="+LED"/>
 <part name="D2" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="PDZ10B,115"/>
@@ -6013,13 +6013,13 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="R12" library="jonnew" deviceset="R" device="_0201" value="100"/>
 <part name="R13" library="jonnew" deviceset="R" device="_0201" value="100"/>
 <part name="R14" library="jonnew" deviceset="R" device="_0201" value="100"/>
-<part name="FRAME1" library="jonnew" deviceset="FRAME" device=""/>
+<part name="X2" library="jonnew" deviceset="FRAME" device=""/>
 <part name="R15" library="jonnew" deviceset="R" device="_0402" value="10"/>
 <part name="R16" library="jonnew" deviceset="R" device="_0402" value="10"/>
 <part name="C25" library="jonnew" deviceset="C" device="_1206" value="47uF"/>
 <part name="VDD17" library="jonnew" deviceset="VDD" device="" value="+LED"/>
-<part name="U$12" library="jonnew" deviceset="VSS" device="" value="LED-"/>
-<part name="LED_ACTIVATE" library="jonnew" deviceset="TP" device="_0.5MM"/>
+<part name="VSS1" library="jonnew" deviceset="VSS" device="" value="LED-"/>
+<part name="LED" library="jonnew" deviceset="TP" device="_0.5MM"/>
 <part name="U13" library="jonnew" deviceset="LY3200-VERT-MODULE" device=""/>
 <part name="U14" library="jonnew" deviceset="LY3200-VERT-MODULE" device=""/>
 <part name="SUPPLY7" library="jonnew" deviceset="GND" device=""/>
@@ -6050,6 +6050,12 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <part name="TP12" library="jonnew" deviceset="TP" device="TP08SQ"/>
 <part name="VDD14" library="jonnew" deviceset="VCC" device=""/>
 <part name="VDD15" library="jonnew" deviceset="VCC" device=""/>
+<part name="L-C" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
+<part name="L-A" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
+<part name="R-A" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
+<part name="R-C" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
+<part name="TP13" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
+<part name="TP14" library="jonnew" deviceset="TESTPOINT" device="_SMALL"/>
 </parts>
 <sheets>
 <sheet>
@@ -6073,45 +6079,45 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <instances>
 <instance part="DIO_E1B" gate="G$1" x="322.58" y="182.88" rot="MR270"/>
 <instance part="VDD1" gate="VCC" x="350.52" y="170.18"/>
-<instance part="GND3" gate="1" x="17.78" y="20.32"/>
+<instance part="GND3" gate="1" x="15.24" y="33.02"/>
 <instance part="GND5" gate="1" x="345.44" y="165.1"/>
-<instance part="VDD2" gate="VCC" x="25.4" y="71.12"/>
-<instance part="GND2" gate="1" x="40.64" y="20.32"/>
-<instance part="VDD4" gate="VCC" x="48.26" y="71.12"/>
+<instance part="VDD2" gate="VCC" x="22.86" y="83.82"/>
+<instance part="GND2" gate="1" x="45.72" y="33.02"/>
+<instance part="VDD4" gate="VCC" x="53.34" y="83.82"/>
 <instance part="GND7" gate="1" x="266.7" y="139.7"/>
 <instance part="VDD5" gate="VCC" x="266.7" y="182.88"/>
 <instance part="C1" gate="C" x="335.28" y="129.54"/>
-<instance part="U$1" gate="G$1" x="180.34" y="0"/>
-<instance part="MECH_E0B" gate="G$1" x="93.98" y="10.16" rot="R90"/>
-<instance part="MECH_W0B" gate="G$1" x="129.54" y="10.16" rot="R90"/>
-<instance part="R2" gate="1" x="17.78" y="55.88"/>
-<instance part="R4" gate="1" x="40.64" y="55.88"/>
-<instance part="GND1" gate="1" x="22.86" y="27.94"/>
-<instance part="GND4" gate="1" x="45.72" y="27.94"/>
-<instance part="ANT" gate="D$1" x="17.78" y="38.1"/>
-<instance part="POST" gate="D$1" x="40.64" y="38.1"/>
+<instance part="X1" gate="G$1" x="180.34" y="0"/>
+<instance part="MECH_E0B" gate="G$1" x="104.14" y="10.16" rot="R90"/>
+<instance part="MECH_W0B" gate="G$1" x="139.7" y="10.16" rot="R90"/>
+<instance part="R2" gate="1" x="15.24" y="68.58"/>
+<instance part="R4" gate="1" x="45.72" y="68.58"/>
+<instance part="GND1" gate="1" x="20.32" y="40.64"/>
+<instance part="GND4" gate="1" x="50.8" y="40.64"/>
+<instance part="RIGHT" gate="D$1" x="15.24" y="50.8"/>
+<instance part="LEFT" gate="D$1" x="45.72" y="50.8"/>
 <instance part="TP1" gate="TP$1" x="276.86" y="177.8"/>
 <instance part="TP2" gate="TP$1" x="281.94" y="177.8"/>
-<instance part="TP5" gate="TP$1" x="276.86" y="160.02"/>
-<instance part="TP6" gate="TP$1" x="281.94" y="160.02"/>
-<instance part="U$2" gate="G$1" x="172.72" y="193.04" rot="R270"/>
-<instance part="U$3" gate="G$1" x="60.96" y="187.96"/>
+<instance part="TP5" gate="TP$1" x="271.78" y="160.02"/>
+<instance part="TP6" gate="TP$1" x="276.86" y="160.02"/>
+<instance part="TETHER" gate="G$1" x="172.72" y="193.04" rot="R270"/>
+<instance part="U100" gate="G$1" x="60.96" y="187.96"/>
 <instance part="C2" gate="C" x="20.32" y="193.04"/>
 <instance part="C3" gate="C" x="12.7" y="193.04"/>
 <instance part="VDD6" gate="VCC" x="12.7" y="208.28"/>
 <instance part="GND6" gate="1" x="12.7" y="170.18"/>
-<instance part="U$4" gate="G$1" x="60.96" y="142.24"/>
+<instance part="U101" gate="G$1" x="60.96" y="142.24"/>
 <instance part="C4" gate="C" x="20.32" y="147.32"/>
 <instance part="C5" gate="C" x="12.7" y="147.32"/>
 <instance part="VDD3" gate="VCC" x="12.7" y="162.56"/>
 <instance part="GND8" gate="1" x="12.7" y="124.46"/>
-<instance part="U$5" gate="G$1" x="182.88" y="142.24"/>
+<instance part="U102" gate="G$1" x="182.88" y="142.24"/>
 <instance part="C6" gate="C" x="142.24" y="147.32"/>
 <instance part="C7" gate="C" x="134.62" y="147.32"/>
 <instance part="VDD7" gate="VCC" x="134.62" y="162.56"/>
 <instance part="GND9" gate="1" x="134.62" y="124.46"/>
 <instance part="DIO_E1B1" gate="G$1" x="322.58" y="144.78" rot="MR270"/>
-<instance part="U$6" gate="G$1" x="223.52" y="88.9"/>
+<instance part="U106" gate="G$1" x="223.52" y="88.9"/>
 <instance part="C8" gate="C" x="248.92" y="96.52" rot="R90"/>
 <instance part="VDD8" gate="VCC" x="241.3" y="101.6"/>
 <instance part="GND10" gate="1" x="256.54" y="88.9"/>
@@ -6119,19 +6125,19 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <instance part="R1" gate="R" x="248.92" y="81.28"/>
 <instance part="GND12" gate="1" x="256.54" y="68.58"/>
 <instance part="R3" gate="R" x="327.66" y="45.72" rot="R90"/>
-<instance part="U$7" gate="G$1" x="276.86" y="78.74"/>
+<instance part="U107" gate="G$1" x="276.86" y="78.74"/>
 <instance part="Q1" gate="G$1" x="325.12" y="83.82"/>
-<instance part="U$9" gate="G$1" x="299.72" y="63.5"/>
-<instance part="U$10" gate="G$1" x="327.66" y="12.7"/>
+<instance part="VSS" gate="G$1" x="299.72" y="63.5"/>
+<instance part="VSS2" gate="G$1" x="327.66" y="12.7"/>
 <instance part="D1" gate="G$1" x="317.5" y="60.96" rot="R90"/>
 <instance part="LED1" gate="D$1" x="327.66" y="30.48"/>
 <instance part="VDD9" gate="G$1" x="297.18" y="101.6"/>
 <instance part="VDD10" gate="G$1" x="327.66" y="101.6"/>
 <instance part="C9" gate="C" x="304.8" y="86.36" rot="R270"/>
-<instance part="U$8" gate="G$1" x="309.88" y="83.82"/>
+<instance part="VSS5" gate="G$1" x="309.88" y="83.82"/>
 <instance part="R5" gate="R" x="358.14" y="45.72" rot="R90"/>
 <instance part="Q2" gate="G$1" x="355.6" y="83.82"/>
-<instance part="U$11" gate="G$1" x="358.14" y="12.7"/>
+<instance part="VSS3" gate="G$1" x="358.14" y="12.7"/>
 <instance part="LED2" gate="D$1" x="358.14" y="30.48"/>
 <instance part="VDD11" gate="G$1" x="358.14" y="101.6"/>
 <instance part="D2" gate="G$1" x="347.98" y="60.96" rot="R90"/>
@@ -6189,13 +6195,13 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <instance part="R12" gate="R" x="25.4" y="182.88" rot="R90"/>
 <instance part="R13" gate="R" x="25.4" y="137.16" rot="R90"/>
 <instance part="R14" gate="R" x="147.32" y="137.16" rot="R90"/>
-<instance part="FRAME1" gate="G$1" x="0" y="0"/>
+<instance part="X2" gate="G$1" x="0" y="0"/>
 <instance part="R15" gate="R" x="307.34" y="76.2"/>
 <instance part="R16" gate="R" x="340.36" y="76.2"/>
 <instance part="C25" gate="C" x="304.8" y="33.02"/>
 <instance part="VDD17" gate="G$1" x="304.8" y="40.64"/>
-<instance part="U$12" gate="G$1" x="304.8" y="22.86"/>
-<instance part="LED_ACTIVATE" gate="G$1" x="190.5" y="91.44"/>
+<instance part="VSS1" gate="G$1" x="304.8" y="22.86"/>
+<instance part="LED" gate="G$1" x="190.5" y="91.44"/>
 <instance part="U13" gate="G$1" x="157.48" y="233.68"/>
 <instance part="U14" gate="G$1" x="66.04" y="233.68"/>
 <instance part="SUPPLY7" gate="PE" x="45.72" y="226.06"/>
@@ -6226,6 +6232,12 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <instance part="TP12" gate="G$1" x="152.4" y="279.4" smashed="yes"/>
 <instance part="VDD14" gate="VCC" x="20.32" y="289.56"/>
 <instance part="VDD15" gate="VCC" x="106.68" y="289.56"/>
+<instance part="L-C" gate="TP$1" x="60.96" y="53.34"/>
+<instance part="L-A" gate="TP$1" x="60.96" y="66.04"/>
+<instance part="R-A" gate="TP$1" x="27.94" y="66.04"/>
+<instance part="R-C" gate="TP$1" x="27.94" y="53.34"/>
+<instance part="TP13" gate="TP$1" x="281.94" y="160.02"/>
+<instance part="TP14" gate="TP$1" x="287.02" y="160.02"/>
 </instances>
 <busses>
 </busses>
@@ -6233,38 +6245,49 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND3" gate="1" pin="GND"/>
-<wire x1="17.78" y1="33.02" x2="17.78" y2="22.86" width="0.1524" layer="91"/>
-<pinref part="ANT" gate="D$1" pin="C"/>
+<wire x1="15.24" y1="45.72" x2="15.24" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="RIGHT" gate="D$1" pin="C"/>
 </segment>
 <segment>
 <pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="40.64" y1="33.02" x2="40.64" y2="22.86" width="0.1524" layer="91"/>
-<pinref part="POST" gate="D$1" pin="C"/>
+<wire x1="45.72" y1="45.72" x2="45.72" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="LEFT" gate="D$1" pin="C"/>
 </segment>
 <segment>
 <pinref part="GND7" gate="1" pin="GND"/>
 <wire x1="266.7" y1="152.4" x2="266.7" y2="142.24" width="0.1524" layer="91"/>
 <pinref part="TP5" gate="TP$1" pin="1"/>
-<wire x1="266.7" y1="152.4" x2="276.86" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="152.4" x2="271.78" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="TP6" gate="TP$1" pin="1"/>
+<junction x="271.78" y="152.4"/>
 <junction x="276.86" y="152.4"/>
+<wire x1="276.86" y1="152.4" x2="271.78" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="TP13" gate="TP$1" pin="1"/>
+<wire x1="276.86" y1="152.4" x2="281.94" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="TP14" gate="TP$1" pin="1"/>
+<wire x1="281.94" y1="152.4" x2="287.02" y2="152.4" width="0.1524" layer="91"/>
 <junction x="281.94" y="152.4"/>
-<wire x1="281.94" y1="152.4" x2="276.86" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="22.86" y1="33.02" x2="22.86" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="ANT" gate="D$1" pin="BODY"/>
+<wire x1="20.32" y1="45.72" x2="20.32" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="RIGHT" gate="D$1" pin="BODY"/>
+<wire x1="20.32" y1="45.72" x2="27.94" y2="45.72" width="0.1524" layer="91"/>
+<junction x="20.32" y="45.72"/>
+<pinref part="R-C" gate="TP$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
-<wire x1="45.72" y1="33.02" x2="45.72" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="POST" gate="D$1" pin="BODY"/>
+<wire x1="50.8" y1="45.72" x2="50.8" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="LEFT" gate="D$1" pin="BODY"/>
+<pinref part="L-C" gate="TP$1" pin="1"/>
+<wire x1="50.8" y1="45.72" x2="60.96" y2="45.72" width="0.1524" layer="91"/>
+<junction x="50.8" y="45.72"/>
 </segment>
 <segment>
 <pinref part="C2" gate="C" pin="2"/>
 <wire x1="20.32" y1="187.96" x2="20.32" y2="175.26" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="GND"/>
+<pinref part="U100" gate="G$1" pin="GND"/>
 <wire x1="20.32" y1="175.26" x2="43.18" y2="175.26" width="0.1524" layer="91"/>
 <pinref part="C3" gate="C" pin="2"/>
 <wire x1="12.7" y1="187.96" x2="12.7" y2="175.26" width="0.1524" layer="91"/>
@@ -6277,7 +6300,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <segment>
 <pinref part="C4" gate="C" pin="2"/>
 <wire x1="20.32" y1="142.24" x2="20.32" y2="129.54" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="GND"/>
+<pinref part="U101" gate="G$1" pin="GND"/>
 <wire x1="20.32" y1="129.54" x2="43.18" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="C5" gate="C" pin="2"/>
 <wire x1="12.7" y1="142.24" x2="12.7" y2="129.54" width="0.1524" layer="91"/>
@@ -6290,7 +6313,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <segment>
 <pinref part="C6" gate="C" pin="2"/>
 <wire x1="142.24" y1="142.24" x2="142.24" y2="129.54" width="0.1524" layer="91"/>
-<pinref part="U$5" gate="G$1" pin="GND"/>
+<pinref part="U102" gate="G$1" pin="GND"/>
 <wire x1="142.24" y1="129.54" x2="165.1" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="C7" gate="C" pin="2"/>
 <wire x1="134.62" y1="142.24" x2="134.62" y2="129.54" width="0.1524" layer="91"/>
@@ -6307,10 +6330,10 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="GND10" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="U$6" gate="G$1" pin="~OE"/>
+<pinref part="U106" gate="G$1" pin="~OE"/>
 <wire x1="208.28" y1="96.52" x2="203.2" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="96.52" x2="203.2" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="U$6" gate="G$1" pin="GND"/>
+<pinref part="U106" gate="G$1" pin="GND"/>
 <wire x1="203.2" y1="81.28" x2="208.28" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="81.28" x2="203.2" y2="76.2" width="0.1524" layer="91"/>
 <junction x="203.2" y="81.28"/>
@@ -6319,7 +6342,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <segment>
 <wire x1="256.54" y1="76.2" x2="256.54" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="GND12" gate="1" pin="GND"/>
-<pinref part="U$7" gate="G$1" pin="C"/>
+<pinref part="U107" gate="G$1" pin="C"/>
 <wire x1="259.08" y1="76.2" x2="256.54" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -6421,7 +6444,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <junction x="284.48" y="261.62"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="11"/>
+<pinref part="TETHER" gate="G$1" pin="11"/>
 <wire x1="180.34" y1="180.34" x2="193.04" y2="180.34" width="0.1524" layer="91"/>
 <label x="182.88" y="180.34" size="1.778" layer="95"/>
 </segment>
@@ -6503,7 +6526,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B" gate="G$1" pin="15"/>
 </segment>
 <segment>
-<pinref part="U$5" gate="G$1" pin="OUT1-"/>
+<pinref part="U102" gate="G$1" pin="OUT1-"/>
 <wire x1="200.66" y1="147.32" x2="213.36" y2="147.32" width="0.1524" layer="91"/>
 <label x="203.2" y="147.32" size="1.778" layer="95"/>
 </segment>
@@ -6515,7 +6538,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B" gate="G$1" pin="16"/>
 </segment>
 <segment>
-<pinref part="U$5" gate="G$1" pin="OUT1+"/>
+<pinref part="U102" gate="G$1" pin="OUT1+"/>
 <wire x1="200.66" y1="152.4" x2="213.36" y2="152.4" width="0.1524" layer="91"/>
 <label x="203.2" y="152.4" size="1.778" layer="95"/>
 </segment>
@@ -6527,7 +6550,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B" gate="G$1" pin="17"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="7"/>
+<pinref part="TETHER" gate="G$1" pin="7"/>
 <wire x1="165.1" y1="187.96" x2="154.94" y2="187.96" width="0.1524" layer="91"/>
 <label x="162.56" y="187.96" size="1.778" layer="95" rot="R180"/>
 </segment>
@@ -6539,7 +6562,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B" gate="G$1" pin="18"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="8"/>
+<pinref part="TETHER" gate="G$1" pin="8"/>
 <wire x1="165.1" y1="185.42" x2="154.94" y2="185.42" width="0.1524" layer="91"/>
 <label x="162.56" y="185.42" size="1.778" layer="95" rot="R180"/>
 </segment>
@@ -6567,31 +6590,31 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <junction x="281.94" y="170.18"/>
 </segment>
 <segment>
-<wire x1="22.86" y1="55.88" x2="25.4" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="55.88" x2="25.4" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="68.58" x2="22.86" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="68.58" x2="22.86" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="VDD2" gate="VCC" pin="VCC"/>
 <pinref part="R2" gate="1" pin="W"/>
 <pinref part="R2" gate="1" pin="E"/>
-<wire x1="25.4" y1="66.04" x2="25.4" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="63.5" x2="17.78" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="66.04" x2="25.4" y2="66.04" width="0.1524" layer="91"/>
-<junction x="25.4" y="66.04"/>
+<wire x1="22.86" y1="78.74" x2="22.86" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="76.2" x2="15.24" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="78.74" x2="22.86" y2="78.74" width="0.1524" layer="91"/>
+<junction x="22.86" y="78.74"/>
 </segment>
 <segment>
-<wire x1="45.72" y1="55.88" x2="48.26" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="55.88" x2="48.26" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="68.58" x2="53.34" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="68.58" x2="53.34" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="VDD4" gate="VCC" pin="VCC"/>
 <pinref part="R4" gate="1" pin="W"/>
 <pinref part="R4" gate="1" pin="E"/>
-<wire x1="48.26" y1="66.04" x2="48.26" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="63.5" x2="40.64" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="66.04" x2="48.26" y2="66.04" width="0.1524" layer="91"/>
-<junction x="48.26" y="66.04"/>
+<wire x1="53.34" y1="78.74" x2="53.34" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="76.2" x2="45.72" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="78.74" x2="53.34" y2="78.74" width="0.1524" layer="91"/>
+<junction x="53.34" y="78.74"/>
 </segment>
 <segment>
 <pinref part="C2" gate="C" pin="1"/>
 <wire x1="20.32" y1="195.58" x2="20.32" y2="200.66" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="VCC"/>
+<pinref part="U100" gate="G$1" pin="VCC"/>
 <wire x1="20.32" y1="200.66" x2="27.94" y2="200.66" width="0.1524" layer="91"/>
 <pinref part="C3" gate="C" pin="1"/>
 <wire x1="27.94" y1="200.66" x2="40.64" y2="200.66" width="0.1524" layer="91"/>
@@ -6601,7 +6624,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <junction x="20.32" y="200.66"/>
 <wire x1="12.7" y1="200.66" x2="12.7" y2="205.74" width="0.1524" layer="91"/>
 <junction x="12.7" y="200.66"/>
-<pinref part="U$3" gate="G$1" pin="~PD1"/>
+<pinref part="U100" gate="G$1" pin="~PD1"/>
 <wire x1="43.18" y1="195.58" x2="40.64" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="195.58" x2="40.64" y2="200.66" width="0.1524" layer="91"/>
 <junction x="40.64" y="200.66"/>
@@ -6614,7 +6637,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <segment>
 <pinref part="C4" gate="C" pin="1"/>
 <wire x1="20.32" y1="149.86" x2="20.32" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="VCC"/>
+<pinref part="U101" gate="G$1" pin="VCC"/>
 <wire x1="20.32" y1="154.94" x2="27.94" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="C5" gate="C" pin="1"/>
 <wire x1="27.94" y1="154.94" x2="40.64" y2="154.94" width="0.1524" layer="91"/>
@@ -6624,7 +6647,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <junction x="20.32" y="154.94"/>
 <wire x1="12.7" y1="154.94" x2="12.7" y2="160.02" width="0.1524" layer="91"/>
 <junction x="12.7" y="154.94"/>
-<pinref part="U$4" gate="G$1" pin="~PD1"/>
+<pinref part="U101" gate="G$1" pin="~PD1"/>
 <wire x1="43.18" y1="149.86" x2="40.64" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="149.86" x2="40.64" y2="154.94" width="0.1524" layer="91"/>
 <junction x="40.64" y="154.94"/>
@@ -6637,7 +6660,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <segment>
 <pinref part="C6" gate="C" pin="1"/>
 <wire x1="142.24" y1="149.86" x2="142.24" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="U$5" gate="G$1" pin="VCC"/>
+<pinref part="U102" gate="G$1" pin="VCC"/>
 <wire x1="142.24" y1="154.94" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="C7" gate="C" pin="1"/>
 <wire x1="149.86" y1="154.94" x2="162.56" y2="154.94" width="0.1524" layer="91"/>
@@ -6647,7 +6670,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <junction x="142.24" y="154.94"/>
 <wire x1="134.62" y1="154.94" x2="134.62" y2="160.02" width="0.1524" layer="91"/>
 <junction x="134.62" y="154.94"/>
-<pinref part="U$5" gate="G$1" pin="~PD1"/>
+<pinref part="U102" gate="G$1" pin="~PD1"/>
 <wire x1="165.1" y1="149.86" x2="162.56" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="149.86" x2="162.56" y2="154.94" width="0.1524" layer="91"/>
 <junction x="162.56" y="154.94"/>
@@ -6658,7 +6681,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <junction x="149.86" y="154.94"/>
 </segment>
 <segment>
-<pinref part="U$6" gate="G$1" pin="VCC"/>
+<pinref part="U106" gate="G$1" pin="VCC"/>
 <wire x1="238.76" y1="96.52" x2="241.3" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="C8" gate="C" pin="1"/>
 <wire x1="241.3" y1="96.52" x2="246.38" y2="96.52" width="0.1524" layer="91"/>
@@ -6706,7 +6729,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="187.96" y1="289.56" x2="187.96" y2="284.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="12"/>
+<pinref part="TETHER" gate="G$1" pin="12"/>
 <wire x1="180.34" y1="182.88" x2="193.04" y2="182.88" width="0.1524" layer="91"/>
 <label x="182.88" y="182.88" size="1.778" layer="95"/>
 </segment>
@@ -6760,7 +6783,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B" gate="G$1" pin="19"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="9"/>
+<pinref part="TETHER" gate="G$1" pin="9"/>
 <wire x1="165.1" y1="182.88" x2="154.94" y2="182.88" width="0.1524" layer="91"/>
 <label x="162.56" y="182.88" size="1.778" layer="95" rot="R180"/>
 </segment>
@@ -6772,7 +6795,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B" gate="G$1" pin="20"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="10"/>
+<pinref part="TETHER" gate="G$1" pin="10"/>
 <wire x1="165.1" y1="180.34" x2="154.94" y2="180.34" width="0.1524" layer="91"/>
 <label x="162.56" y="180.34" size="1.778" layer="95" rot="R180"/>
 </segment>
@@ -6780,15 +6803,21 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <net name="N$9" class="0">
 <segment>
 <pinref part="R2" gate="1" pin="A"/>
-<wire x1="17.78" y1="45.72" x2="17.78" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="ANT" gate="D$1" pin="A"/>
+<wire x1="15.24" y1="58.42" x2="15.24" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="RIGHT" gate="D$1" pin="A"/>
+<pinref part="R-A" gate="TP$1" pin="1"/>
+<wire x1="15.24" y1="58.42" x2="27.94" y2="58.42" width="0.1524" layer="91"/>
+<junction x="15.24" y="58.42"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="R4" gate="1" pin="A"/>
-<wire x1="40.64" y1="45.72" x2="40.64" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="POST" gate="D$1" pin="A"/>
+<wire x1="45.72" y1="58.42" x2="45.72" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="LEFT" gate="D$1" pin="A"/>
+<pinref part="L-A" gate="TP$1" pin="1"/>
+<wire x1="45.72" y1="58.42" x2="60.96" y2="58.42" width="0.1524" layer="91"/>
+<junction x="45.72" y="58.42"/>
 </segment>
 </net>
 <net name="AUXOUT_HSA_B" class="0">
@@ -6801,7 +6830,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="CS+" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="IN+"/>
+<pinref part="U100" gate="G$1" pin="IN+"/>
 <label x="35.56" y="185.42" size="1.778" layer="95"/>
 <wire x1="43.18" y1="185.42" x2="30.48" y2="185.42" width="0.1524" layer="91"/>
 <pinref part="R12" gate="R" pin="2"/>
@@ -6809,14 +6838,14 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="30.48" y1="187.96" x2="30.48" y2="185.42" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="20"/>
+<pinref part="TETHER" gate="G$1" pin="20"/>
 <wire x1="180.34" y1="203.2" x2="193.04" y2="203.2" width="0.1524" layer="91"/>
 <label x="182.88" y="203.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CS-" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="IN-"/>
+<pinref part="U100" gate="G$1" pin="IN-"/>
 <wire x1="43.18" y1="180.34" x2="30.48" y2="180.34" width="0.1524" layer="91"/>
 <label x="35.56" y="180.34" size="1.778" layer="95"/>
 <pinref part="R12" gate="R" pin="1"/>
@@ -6824,14 +6853,14 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="30.48" y1="177.8" x2="30.48" y2="180.34" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="19"/>
+<pinref part="TETHER" gate="G$1" pin="19"/>
 <wire x1="180.34" y1="200.66" x2="193.04" y2="200.66" width="0.1524" layer="91"/>
 <label x="182.88" y="200.66" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CS+_HSA" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="OUT1+"/>
+<pinref part="U100" gate="G$1" pin="OUT1+"/>
 <wire x1="78.74" y1="198.12" x2="91.44" y2="198.12" width="0.1524" layer="91"/>
 <label x="81.28" y="198.12" size="1.778" layer="95"/>
 </segment>
@@ -6843,7 +6872,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="CS-_HSA" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="OUT1-"/>
+<pinref part="U100" gate="G$1" pin="OUT1-"/>
 <wire x1="78.74" y1="193.04" x2="91.44" y2="193.04" width="0.1524" layer="91"/>
 <label x="81.28" y="193.04" size="1.778" layer="95"/>
 </segment>
@@ -6855,7 +6884,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="CS+_HSB" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="OUT2+"/>
+<pinref part="U100" gate="G$1" pin="OUT2+"/>
 <wire x1="78.74" y1="182.88" x2="91.44" y2="182.88" width="0.1524" layer="91"/>
 <label x="81.28" y="182.88" size="1.778" layer="95"/>
 </segment>
@@ -6867,7 +6896,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="CS-_HSB" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="OUT2-"/>
+<pinref part="U100" gate="G$1" pin="OUT2-"/>
 <wire x1="78.74" y1="177.8" x2="91.44" y2="177.8" width="0.1524" layer="91"/>
 <label x="81.28" y="177.8" size="1.778" layer="95"/>
 </segment>
@@ -6879,7 +6908,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="SCLK+" class="0">
 <segment>
-<pinref part="U$4" gate="G$1" pin="IN+"/>
+<pinref part="U101" gate="G$1" pin="IN+"/>
 <wire x1="43.18" y1="139.7" x2="30.48" y2="139.7" width="0.1524" layer="91"/>
 <label x="33.02" y="139.7" size="1.778" layer="95"/>
 <pinref part="R13" gate="R" pin="2"/>
@@ -6887,14 +6916,14 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="30.48" y1="142.24" x2="30.48" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="18"/>
+<pinref part="TETHER" gate="G$1" pin="18"/>
 <wire x1="180.34" y1="198.12" x2="193.04" y2="198.12" width="0.1524" layer="91"/>
 <label x="182.88" y="198.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCLK-" class="0">
 <segment>
-<pinref part="U$4" gate="G$1" pin="IN-"/>
+<pinref part="U101" gate="G$1" pin="IN-"/>
 <wire x1="43.18" y1="134.62" x2="30.48" y2="134.62" width="0.1524" layer="91"/>
 <label x="33.02" y="134.62" size="1.778" layer="95"/>
 <wire x1="30.48" y1="134.62" x2="30.48" y2="132.08" width="0.1524" layer="91"/>
@@ -6902,14 +6931,14 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="30.48" y1="132.08" x2="25.4" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="17"/>
+<pinref part="TETHER" gate="G$1" pin="17"/>
 <wire x1="180.34" y1="195.58" x2="193.04" y2="195.58" width="0.1524" layer="91"/>
 <label x="182.88" y="195.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCLK+_HSA" class="0">
 <segment>
-<pinref part="U$4" gate="G$1" pin="OUT1+"/>
+<pinref part="U101" gate="G$1" pin="OUT1+"/>
 <wire x1="78.74" y1="152.4" x2="91.44" y2="152.4" width="0.1524" layer="91"/>
 <label x="81.28" y="152.4" size="1.778" layer="95"/>
 </segment>
@@ -6921,7 +6950,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="SCLK-_HSA" class="0">
 <segment>
-<pinref part="U$4" gate="G$1" pin="OUT1-"/>
+<pinref part="U101" gate="G$1" pin="OUT1-"/>
 <wire x1="78.74" y1="147.32" x2="91.44" y2="147.32" width="0.1524" layer="91"/>
 <label x="81.28" y="147.32" size="1.778" layer="95"/>
 </segment>
@@ -6933,7 +6962,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="SCLK+_HSB" class="0">
 <segment>
-<pinref part="U$4" gate="G$1" pin="OUT2+"/>
+<pinref part="U101" gate="G$1" pin="OUT2+"/>
 <wire x1="78.74" y1="137.16" x2="91.44" y2="137.16" width="0.1524" layer="91"/>
 <label x="81.28" y="137.16" size="1.778" layer="95"/>
 </segment>
@@ -6945,7 +6974,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="SCLK-_HSB" class="0">
 <segment>
-<pinref part="U$4" gate="G$1" pin="OUT2-"/>
+<pinref part="U101" gate="G$1" pin="OUT2-"/>
 <wire x1="78.74" y1="132.08" x2="91.44" y2="132.08" width="0.1524" layer="91"/>
 <label x="81.28" y="132.08" size="1.778" layer="95"/>
 </segment>
@@ -6962,7 +6991,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B1" gate="G$1" pin="15"/>
 </segment>
 <segment>
-<pinref part="U$5" gate="G$1" pin="OUT2-"/>
+<pinref part="U102" gate="G$1" pin="OUT2-"/>
 <wire x1="200.66" y1="132.08" x2="213.36" y2="132.08" width="0.1524" layer="91"/>
 <label x="203.2" y="132.08" size="1.778" layer="95"/>
 </segment>
@@ -6974,7 +7003,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B1" gate="G$1" pin="16"/>
 </segment>
 <segment>
-<pinref part="U$5" gate="G$1" pin="OUT2+"/>
+<pinref part="U102" gate="G$1" pin="OUT2+"/>
 <wire x1="200.66" y1="137.16" x2="213.36" y2="137.16" width="0.1524" layer="91"/>
 <label x="203.2" y="137.16" size="1.778" layer="95"/>
 </segment>
@@ -6986,7 +7015,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B1" gate="G$1" pin="17"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="1"/>
+<pinref part="TETHER" gate="G$1" pin="1"/>
 <wire x1="165.1" y1="203.2" x2="154.94" y2="203.2" width="0.1524" layer="91"/>
 <label x="162.56" y="203.2" size="1.778" layer="95" rot="R180"/>
 </segment>
@@ -6998,7 +7027,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B1" gate="G$1" pin="18"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="2"/>
+<pinref part="TETHER" gate="G$1" pin="2"/>
 <wire x1="165.1" y1="200.66" x2="154.94" y2="200.66" width="0.1524" layer="91"/>
 <label x="162.56" y="200.66" size="1.778" layer="95" rot="R180"/>
 </segment>
@@ -7010,7 +7039,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B1" gate="G$1" pin="19"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="13"/>
+<pinref part="TETHER" gate="G$1" pin="13"/>
 <wire x1="180.34" y1="185.42" x2="193.04" y2="185.42" width="0.1524" layer="91"/>
 <label x="182.88" y="185.42" size="1.778" layer="95"/>
 </segment>
@@ -7022,14 +7051,14 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="DIO_E1B1" gate="G$1" pin="20"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="14"/>
+<pinref part="TETHER" gate="G$1" pin="14"/>
 <wire x1="180.34" y1="187.96" x2="193.04" y2="187.96" width="0.1524" layer="91"/>
 <label x="182.88" y="187.96" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MOSI-" class="0">
 <segment>
-<pinref part="U$5" gate="G$1" pin="IN-"/>
+<pinref part="U102" gate="G$1" pin="IN-"/>
 <wire x1="165.1" y1="134.62" x2="152.4" y2="134.62" width="0.1524" layer="91"/>
 <label x="154.94" y="134.62" size="1.778" layer="95"/>
 <wire x1="152.4" y1="134.62" x2="152.4" y2="132.08" width="0.1524" layer="91"/>
@@ -7037,14 +7066,14 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="152.4" y1="132.08" x2="147.32" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="15"/>
+<pinref part="TETHER" gate="G$1" pin="15"/>
 <wire x1="180.34" y1="190.5" x2="193.04" y2="190.5" width="0.1524" layer="91"/>
 <label x="182.88" y="190.5" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MOSI+" class="0">
 <segment>
-<pinref part="U$5" gate="G$1" pin="IN+"/>
+<pinref part="U102" gate="G$1" pin="IN+"/>
 <wire x1="165.1" y1="139.7" x2="152.4" y2="139.7" width="0.1524" layer="91"/>
 <label x="154.94" y="139.7" size="1.778" layer="95"/>
 <pinref part="R14" gate="R" pin="2"/>
@@ -7052,22 +7081,22 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <wire x1="152.4" y1="142.24" x2="152.4" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="16"/>
+<pinref part="TETHER" gate="G$1" pin="16"/>
 <wire x1="180.34" y1="193.04" x2="193.04" y2="193.04" width="0.1524" layer="91"/>
 <label x="182.88" y="193.04" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$5" class="0">
 <segment>
-<pinref part="U$6" gate="G$1" pin="A"/>
+<pinref part="U106" gate="G$1" pin="A"/>
 <wire x1="208.28" y1="88.9" x2="190.5" y2="88.9" width="0.1524" layer="91"/>
 <label x="195.58" y="88.9" size="1.778" layer="95"/>
-<pinref part="LED_ACTIVATE" gate="G$1" pin="TP"/>
+<pinref part="LED" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="N$6" class="0">
 <segment>
-<pinref part="U$6" gate="G$1" pin="Y"/>
+<pinref part="U106" gate="G$1" pin="Y"/>
 <wire x1="238.76" y1="81.28" x2="243.84" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="R1" gate="R" pin="1"/>
 </segment>
@@ -7075,7 +7104,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <net name="N$1" class="0">
 <segment>
 <pinref part="R1" gate="R" pin="2"/>
-<pinref part="U$7" gate="G$1" pin="A"/>
+<pinref part="U107" gate="G$1" pin="A"/>
 <wire x1="254" y1="81.28" x2="259.08" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -7094,12 +7123,12 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <net name="VSS" class="0">
 <segment>
 <wire x1="294.64" y1="71.12" x2="299.72" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="U$7" gate="G$1" pin="VSS"/>
-<pinref part="U$9" gate="G$1" pin="VSS"/>
+<pinref part="U107" gate="G$1" pin="VSS"/>
+<pinref part="VSS" gate="G$1" pin="VSS"/>
 <wire x1="299.72" y1="71.12" x2="299.72" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$10" gate="G$1" pin="VSS"/>
+<pinref part="VSS2" gate="G$1" pin="VSS"/>
 <pinref part="LED1" gate="D$1" pin="C"/>
 <wire x1="327.66" y1="20.32" x2="327.66" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="LED1" gate="D$1" pin="BODY"/>
@@ -7115,11 +7144,11 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <segment>
 <pinref part="C9" gate="C" pin="1"/>
 <wire x1="307.34" y1="86.36" x2="309.88" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="U$8" gate="G$1" pin="VSS"/>
+<pinref part="VSS5" gate="G$1" pin="VSS"/>
 <wire x1="309.88" y1="86.36" x2="309.88" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$11" gate="G$1" pin="VSS"/>
+<pinref part="VSS3" gate="G$1" pin="VSS"/>
 <pinref part="LED2" gate="D$1" pin="C"/>
 <wire x1="358.14" y1="20.32" x2="358.14" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="LED2" gate="D$1" pin="BODY"/>
@@ -7133,18 +7162,18 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <junction x="358.14" y="15.24"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="5"/>
+<pinref part="TETHER" gate="G$1" pin="5"/>
 <wire x1="165.1" y1="193.04" x2="154.94" y2="193.04" width="0.1524" layer="91"/>
 <label x="162.56" y="193.04" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="6"/>
+<pinref part="TETHER" gate="G$1" pin="6"/>
 <wire x1="165.1" y1="190.5" x2="154.94" y2="190.5" width="0.1524" layer="91"/>
 <label x="162.56" y="190.5" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="C25" gate="C" pin="2"/>
-<pinref part="U$12" gate="G$1" pin="VSS"/>
+<pinref part="VSS1" gate="G$1" pin="VSS"/>
 <wire x1="304.8" y1="27.94" x2="304.8" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -7174,7 +7203,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <net name="VDD" class="0">
 <segment>
 <wire x1="294.64" y1="86.36" x2="297.18" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="U$7" gate="G$1" pin="VDD"/>
+<pinref part="U107" gate="G$1" pin="VDD"/>
 <pinref part="VDD9" gate="G$1" pin="VDD"/>
 <pinref part="C9" gate="C" pin="2"/>
 <wire x1="297.18" y1="99.06" x2="297.18" y2="86.36" width="0.1524" layer="91"/>
@@ -7192,12 +7221,12 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 <pinref part="VDD11" gate="G$1" pin="VDD"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="3"/>
+<pinref part="TETHER" gate="G$1" pin="3"/>
 <wire x1="165.1" y1="198.12" x2="154.94" y2="198.12" width="0.1524" layer="91"/>
 <label x="162.56" y="198.12" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="4"/>
+<pinref part="TETHER" gate="G$1" pin="4"/>
 <wire x1="165.1" y1="195.58" x2="154.94" y2="195.58" width="0.1524" layer="91"/>
 <label x="162.56" y="195.58" size="1.778" layer="95" rot="R180"/>
 </segment>
@@ -7422,21 +7451,21 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="N$17" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="~PD2"/>
+<pinref part="U100" gate="G$1" pin="~PD2"/>
 <pinref part="R9" gate="R" pin="2"/>
 <wire x1="43.18" y1="190.5" x2="40.64" y2="190.5" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$19" class="0">
 <segment>
-<pinref part="U$4" gate="G$1" pin="~PD2"/>
+<pinref part="U101" gate="G$1" pin="~PD2"/>
 <wire x1="43.18" y1="144.78" x2="40.64" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="R10" gate="R" pin="2"/>
 </segment>
 </net>
 <net name="N$18" class="0">
 <segment>
-<pinref part="U$5" gate="G$1" pin="~PD2"/>
+<pinref part="U102" gate="G$1" pin="~PD2"/>
 <wire x1="165.1" y1="144.78" x2="162.56" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="R11" gate="R" pin="2"/>
 </segment>
@@ -7455,7 +7484,7 @@ of 0.5 Hz to 550 Hz for the Z axi</description>
 </net>
 <net name="N$22" class="0">
 <segment>
-<pinref part="U$7" gate="G$1" pin="VO"/>
+<pinref part="U107" gate="G$1" pin="VO"/>
 <pinref part="R15" gate="R" pin="1"/>
 <wire x1="294.64" y1="76.2" x2="299.72" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="299.72" y1="76.2" x2="302.26" y2="76.2" width="0.1524" layer="91"/>
