@@ -140,40 +140,40 @@
 </layers>
 <board>
 <plain>
-<text x="-143.50998125" y="23.876003125" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">128 Channel SPI
+<text x="-15.49398125" y="36.068003125" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">128 Channel SPI
 Interface
 Rev. 1.3</text>
-<text x="-150.621990625" y="34.670996875" size="0.8128" layer="21" font="vector" ratio="19" rot="R304" align="center">CC BY-SA-NC-4.0
+<text x="-22.605990625" y="46.862996875" size="0.8128" layer="21" font="vector" ratio="19" rot="R304" align="center">CC BY-SA-NC-4.0
 JPN, MWL@MIT
 2016</text>
-<wire x1="-149.6893125" y1="22.15215625" x2="-147.3127375" y2="18.62874375" width="0.127" layer="21"/>
-<wire x1="-147.3127375" y1="18.62874375" x2="-137.364296875" y2="25.33904375" width="0.127" layer="21"/>
-<wire x1="-137.364296875" y1="25.33904375" x2="-139.740878125" y2="28.86245" width="0.127" layer="21"/>
-<wire x1="-139.740878125" y1="28.86245" x2="-149.6893125" y2="22.15215625" width="0.127" layer="21"/>
-<wire x1="-152.18318125" y1="40.81544375" x2="-155.7065875" y2="38.43886875" width="0.127" layer="21"/>
-<wire x1="-155.7065875" y1="38.43886875" x2="-148.996278125" y2="28.49045" width="0.127" layer="21"/>
-<wire x1="-148.996278125" y1="28.49045" x2="-145.472871875" y2="30.86701875" width="0.127" layer="21"/>
-<wire x1="-145.472871875" y1="30.86701875" x2="-152.18318125" y2="40.81544375" width="0.127" layer="21"/>
+<wire x1="-21.6733125" y1="34.34415625" x2="-19.2967375" y2="30.82074375" width="0.127" layer="21"/>
+<wire x1="-19.2967375" y1="30.82074375" x2="-9.348296875" y2="37.53104375" width="0.127" layer="21"/>
+<wire x1="-9.348296875" y1="37.53104375" x2="-11.724878125" y2="41.05445" width="0.127" layer="21"/>
+<wire x1="-11.724878125" y1="41.05445" x2="-21.6733125" y2="34.34415625" width="0.127" layer="21"/>
+<wire x1="-24.16718125" y1="53.00744375" x2="-27.6905875" y2="50.63086875" width="0.127" layer="21"/>
+<wire x1="-27.6905875" y1="50.63086875" x2="-20.980278125" y2="40.68245" width="0.127" layer="21"/>
+<wire x1="-20.980278125" y1="40.68245" x2="-17.456871875" y2="43.05901875" width="0.127" layer="21"/>
+<wire x1="-17.456871875" y1="43.05901875" x2="-24.16718125" y2="53.00744375" width="0.127" layer="21"/>
 <circle x="0" y="0" radius="19.812" width="0.0254" layer="20"/>
 <hole x="12.8466875" y="-2.058009375" drill="1.27"/>
 <hole x="-2.058009375" y="-12.8466875" drill="1.27"/>
 <hole x="-12.8466875" y="2.058009375" drill="1.27"/>
-<text x="-153.970665625" y="31.48988125" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">VCC</text>
+<text x="-25.954665625" y="43.68188125" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">VCC</text>
 <text x="-28.494653125" y="-14.4841125" size="0.8128" layer="22" font="vector" ratio="19" rot="MR326" align="center">VCC</text>
-<text x="-150.84589375" y="26.857234375" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">GND</text>
+<text x="-22.82989375" y="39.049234375" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">GND</text>
 <text x="-24.099884375" y="-19.37074375" size="0.8128" layer="22" font="vector" ratio="19" rot="MR326" align="center">GND</text>
-<text x="-130.0013375" y="26.93011875" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">VCC</text>
+<text x="-1.9853375" y="39.12211875" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">VCC</text>
 <text x="29.25665" y="15.500115625" size="0.8128" layer="22" font="vector" ratio="19" rot="MR326" align="center">VCC</text>
 <text x="12.58238125" y="-25.36475625" size="0.8128" layer="22" font="vector" ratio="19" rot="MR326" align="center">VCC</text>
-<text x="-133.994384375" y="36.03276875" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">VCC</text>
+<text x="-5.978384375" y="48.22476875" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">VCC</text>
 <text x="-28.076371875" y="23.078759375" size="0.8128" layer="22" font="vector" ratio="19" rot="MR326" align="center">VCC</text>
-<text x="-139.8905" y="32.05579375" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">GND</text>
+<text x="-11.8745" y="44.24779375" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">GND</text>
 <text x="-32.1944875" y="22.6577875" size="0.8128" layer="22" font="vector" ratio="19" rot="MR326" align="center">GND</text>
 <text x="18.478475" y="-21.38778125" size="0.8128" layer="22" font="vector" ratio="19" rot="MR326" align="center">GND</text>
-<text x="-133.12610625" y="31.562765625" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">GND</text>
+<text x="-5.11010625" y="43.754765625" size="0.8128" layer="21" font="vector" ratio="19" rot="R34" align="center">GND</text>
 <text x="26.131884375" y="20.13274375" size="0.8128" layer="22" font="vector" ratio="19" rot="MR326" align="center">GND</text>
-<circle x="-154.432" y="23.662" radius="1.5875" width="0.127" layer="21"/>
-<text x="-142.74800625" y="34.691009375" size="0.8128" layer="21" font="vector" ratio="19" rot="SR0" align="center">(0,-2.5)
+<circle x="-26.416" y="35.854" radius="1.5875" width="0.127" layer="21"/>
+<text x="-14.73200625" y="46.883009375" size="0.8128" layer="21" font="vector" ratio="19" rot="SR0" align="center">(0,-2.5)
 mm</text>
 <wire x1="2.6669875" y1="5.587978125" x2="2.666990625" y2="4.8259875" width="0.1524" layer="22"/>
 <wire x1="3.04799375" y1="5.2069875" x2="2.28599375" y2="5.206984375" width="0.1524" layer="22"/>
