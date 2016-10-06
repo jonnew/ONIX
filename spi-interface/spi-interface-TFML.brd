@@ -283,8 +283,8 @@ HSA AUX IN</text>
 JPN, MWL@MIT
 2016</text>
 <text x="-16.51" y="30.48" size="0.8128" layer="21" font="vector" ratio="19" align="center">256 Channel 
-Headstage Module 
-with IMU and T1M
+SPI Interface
+with IMU and TFML
 Rev 1.0</text>
 <wire x1="-23.495" y1="26.035" x2="-23.495" y2="20.955" width="0.2032" layer="21"/>
 <wire x1="-23.495" y1="20.955" x2="-10.16" y2="20.955" width="0.2032" layer="21"/>
