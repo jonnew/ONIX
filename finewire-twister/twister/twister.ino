@@ -14,8 +14,8 @@
 #define STEPS_PER_REV 24
 
 AccelStepper stepper(1, STEP, DIR);
-int num_turns = 100;
-int usteps = 8;
+long num_turns = 100;
+long usteps = 8;
 volatile bool moving = false;
 volatile bool state_change = false;
 const int led = LED_BUILTIN; 
@@ -30,10 +30,9 @@ void setup(void) {
 
   // Trigger button
   pinMode(TRIG, INPUT);
-  digitalWrite(TRIG, LOW); // Pulldown
   attachInterrupt(0, trigPressed, RISING);
 
-  configureParameters();
+  configureParameters(true);
 }
 
 void loop(void) {
@@ -43,13 +42,14 @@ void loop(void) {
     stepper.setCurrentPosition(0);
     state_change = false;
     moving = false;
-    digitalWrite(LED_BUILTIN, LOW):
+    digitalWrite(LED_BUILTIN, LOW);
     Serial.println("Stopping motion");
   } else if (state_change) {
+    Serial.println(getNumSteps());
     stepper.move(getNumSteps());
     state_change = false;
     moving = true;
-    digitalWrite(LED_BUILTIN, HIGH):
+    digitalWrite(LED_BUILTIN, HIGH);
     Serial.println("Starting motion");
   }
 
@@ -81,9 +81,6 @@ int configureParameters(bool init) {
       stepper.setMaxSpeed(max_speed);
       stepper.setAcceleration(max_speed/5);
   }
-
-  // return num_steps
-  num_turns = 100; 
 }
 
 int setUStep(int us) {
@@ -121,4 +118,4 @@ int setUStep(int us) {
 }
 
 void trigPressed() { state_change = true; }
-int getNumSteps() { return usteps * STEPS_PER_REV * num_turns; }
+long getNumSteps() { return usteps * STEPS_PER_REV * num_turns; }
