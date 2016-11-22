@@ -13,3 +13,10 @@
 *.scr
 *.gpi
 *.dri
+
+# Altium craps
+History
+*.PrjPCBStructure
+Project Outputs for *
+Project Logs for *
+__Previews
