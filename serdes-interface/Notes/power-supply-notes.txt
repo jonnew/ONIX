@@ -1,0 +1,11 @@
+Max current draw of each intan chip is 16 mA. There are a max of 4 chips. So with a 2X safety factor to deal with other components:
+
+2 * (4 * 16) =~ 130 mA
+
+If we are dropping from a 12V supply, the dropout voltage will be
+
+12V - 3.5V = 8.5V
+
+So, thermal power dissipation is
+
+P_therm = 8.5V * 0.13A = 1.1 W.
