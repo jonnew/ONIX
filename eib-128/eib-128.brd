@@ -36,8 +36,8 @@
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -180,6 +180,12 @@ JPN, MWL@MIT
 <wire x1="4.743584375" y1="4.8174" x2="0.633725" y2="-6.66096875" width="0.1524" layer="22"/>
 <wire x1="0.633725" y1="-6.66096875" x2="5.41639375" y2="-8.3734125" width="0.1524" layer="22"/>
 <wire x1="5.41639375" y1="-8.3734125" x2="9.52625" y2="3.104978125" width="0.1524" layer="22"/>
+<circle x="-5.715" y="-12.065" radius="2.362334375" width="0" layer="30"/>
+<circle x="5.715" y="-12.065" radius="2.362334375" width="0" layer="30"/>
+<text x="-8.128" y="-9.398" size="0.8128" layer="22" font="vector" ratio="18" rot="MR320" align="center">Therm
+L</text>
+<text x="8.128" y="-9.398" size="0.8128" layer="22" font="vector" ratio="18" rot="MR40" align="center">Therm
+R</text>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -2012,6 +2018,14 @@ Please make sure your boards conform to these design rules.</description>
 <via x="-11.1819875" y="3.310003125" extent="1-16" drill="0.254" diameter="0.3048"/>
 </signal>
 </signals>
+<errors>
+<approved hash="18,29,a3aeef80c86ae1b0"/>
+<approved hash="18,29,6dd38dbcf3ee2df4"/>
+<approved hash="18,29,6dd38dbcf3ee2df4"/>
+<approved hash="18,29,d756758557987bf6"/>
+<approved hash="18,29,f0fb17a5b8e492a8"/>
+<approved hash="18,29,f7fef8c7f71f321d"/>
+</errors>
 </board>
 </drawing>
 <compatibility>
