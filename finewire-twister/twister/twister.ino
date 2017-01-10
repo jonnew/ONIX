@@ -11,11 +11,11 @@
 #define TRIG 2
 
 // Hardcoded number of steps in the motor I'm using
-#define STEPS_PER_REV 24
+#define STEPS_PER_REV 200
 
 AccelStepper stepper(1, STEP, DIR);
 long num_turns = 100;
-long usteps = 8;
+long usteps = 0;
 volatile bool moving = false;
 volatile bool state_change = false;
 const int led = LED_BUILTIN; 
@@ -77,7 +77,7 @@ int configureParameters(bool init) {
       usteps = setUStep(usteps);
 
       // Set max stepper speed in turns/sec
-      double max_speed = 10000;
+      double max_speed = 500;
       stepper.setMaxSpeed(max_speed);
       stepper.setAcceleration(max_speed/5);
   }
@@ -86,6 +86,13 @@ int configureParameters(bool init) {
 int setUStep(int us) {
 
   switch (us) {
+  case 0: {
+    digitalWrite(M0, LOW);
+    digitalWrite(M1, LOW);
+    digitalWrite(M2, LOW);
+    Serial.println("Set to no microsteps");
+    return 1;
+  }
   case 8: {
     digitalWrite(M0, HIGH);
     digitalWrite(M1, HIGH);
