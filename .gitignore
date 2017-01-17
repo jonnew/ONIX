@@ -19,5 +19,6 @@ History
 *.PrjPCBStructure
 Project Outputs for *
 Project Logs for *
+ProjectOutputs/
 __Previews
 *.$$$
