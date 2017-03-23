@@ -239,7 +239,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document14]
-DocumentPath=top_pcb_jon_4layers_positive_v2.PcbDoc
+DocumentPath=top_pcb_4layers_positive.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -255,26 +255,30 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [GeneratedDocument1]
-DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.EXTREP
+DocumentPath=ProjectOutputs\Design Rule Check - top_pcb_4layers_positive.html
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.GBP
+DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.GKO
+DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.GBP
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.GTP
+DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.REP
+DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.GTP
 DItemRevisionGUID=
 
 [GeneratedDocument6]
+DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.REP
+DItemRevisionGUID=
+
+[GeneratedDocument7]
 DocumentPath=ProjectOutputs\top_pcb_jon_4layers_positive_v2.RUL
 DItemRevisionGUID=
 
