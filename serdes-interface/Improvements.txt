@@ -1,0 +1,13 @@
+1. Pinout GPIO to the PCB
+
+2. Fix memory(EPROM) footprint
+
+3. align the edge pins so that it fits in a nice circle
+
+4. POT's SPI interface needs better renaming. Currently it is qutie confusing 
+
+5. use 100K pot for the LED driver
+
+6. reverse the sink/source polarity for LED
+
+7. Edit the foot print of the mechanical connectors to make sure they align well.
