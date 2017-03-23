@@ -341,11 +341,10 @@ UsedLibrary="/home/jon/.eagle/lbr/xilinx-xc9.lbr"
 UsedLibrary="/home/jon/.eagle/lbr/xilinx-xcv.lbr"
 UsedLibrary="/home/jon/.eagle/lbr/zetex.lbr"
 UsedLibrary="/home/jon/.eagle/lbr/zilog.lbr"
-UsedLibrary="/home/jon/public/jonnew-lbr/eagle/lib/jonnew.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="0 27 2559 1439"
+Loc="1280 27 2555 1435"
 State=2
 Number=0
 
