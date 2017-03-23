@@ -1031,10 +1031,10 @@ R</text>
 <rectangle x1="-8.4" y1="-1.7" x2="8.4" y2="1.7" layer="39"/>
 </package>
 <package name="TETRODE_0.3ID_LINEAR">
-<pad name="1" x="1.76" y="18.48" drill="0.3" diameter="0.51"/>
-<pad name="2" x="1.23" y="19" drill="0.3" diameter="0.51"/>
-<pad name="0" x="2" y="17.78" drill="0.3" diameter="0.51"/>
-<pad name="3" x="0.55" y="19.28" drill="0.3" diameter="0.51"/>
+<pad name="1" x="1.76" y="18.48" drill="0.3302" diameter="0.5334"/>
+<pad name="2" x="1.23" y="19" drill="0.3302" diameter="0.5334"/>
+<pad name="0" x="2" y="17.78" drill="0.3302" diameter="0.5334"/>
+<pad name="3" x="0.55" y="19.28" drill="0.3302" diameter="0.5334"/>
 <wire x1="0" y1="18.9" x2="0" y2="19.1" width="0.0508" layer="52"/>
 <wire x1="-0.1" y1="19" x2="0.1" y2="19" width="0.0508" layer="52"/>
 <text x="-0.508" y="19.381" size="0.254" layer="52" font="vector" ratio="18" rot="MR180">0,-19mm</text>
@@ -37244,8 +37244,6 @@ einem neuen Namen ab.</description>
 <approved hash="18,29,eff0d6855e591c18"/>
 <approved hash="18,29,bdf6222077b62406"/>
 <approved hash="18,29,bdf6222077b62406"/>
-<approved hash="18,29,a12d67489ed77cac"/>
-<approved hash="18,29,a12d67489ed77cac"/>
 <approved hash="18,29,9405d95f1bba5853"/>
 <approved hash="18,29,9b9957766089d5e6"/>
 <approved hash="18,29,d16677c465e2ac2a"/>
