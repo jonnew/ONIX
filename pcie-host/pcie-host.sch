@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -5550,7 +5550,7 @@ grid 2.54 mm</description>
 <part name="PWR15" library="jonnew" deviceset="+3V3" device=""/>
 <part name="C16" library="RHD2000_eval_board" deviceset="C" device="_0603" value="100nF"/>
 <part name="C15" library="RHD2000_eval_board" deviceset="C" device="_0603" value="100nF"/>
-<part name="R7" library="RHD2000_eval_board" deviceset="R" device="_0603" value="220"/>
+<part name="R7" library="jonnew" deviceset="R" device="_0603" value="220"/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
 <part name="DI0" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
 <part name="DO0" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
@@ -5686,10 +5686,10 @@ grid 2.54 mm</description>
 <part name="C51" library="jonnew" deviceset="C" device="_0402"/>
 <part name="C52" library="jonnew" deviceset="C" device="_0402"/>
 <part name="GND57" library="supply1" deviceset="GND" device=""/>
-<part name="TP_DI0" library="jonnew" deviceset="TP" device="TP06R" value="MISO1"/>
-<part name="TP_DI1" library="jonnew" deviceset="TP" device="TP06R" value="MISO1"/>
-<part name="TP_DO0" library="jonnew" deviceset="TP" device="TP06R" value="MISO1"/>
-<part name="TP_DO1" library="jonnew" deviceset="TP" device="TP06R" value="MISO1"/>
+<part name="TP_DI0" library="jonnew" deviceset="TP" device="_0.035IN" value="MISO1"/>
+<part name="TP_DI1" library="jonnew" deviceset="TP" device="_0.035IN" value="MISO1"/>
+<part name="TP_DO0" library="jonnew" deviceset="TP" device="_0.035IN" value="MISO1"/>
+<part name="TP_DO1" library="jonnew" deviceset="TP" device="_0.035IN" value="MISO1"/>
 <part name="U$10" library="jonnew" deviceset="MCP47FEBX2" device=""/>
 <part name="U104" library="jonnew" deviceset="DIGISO-4-0" device="" value="ISO7240M"/>
 <part name="C8" library="jonnew" deviceset="C" device="_0402"/>
@@ -5757,41 +5757,41 @@ grid 2.54 mm</description>
 <part name="C19" library="jonnew" deviceset="C" device="_0603" value="1uF"/>
 <part name="LINK" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
 <part name="GND76" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C38" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
-<part name="C67" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.1uF"/>
+<part name="C38" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C67" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="GND77" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C68" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
+<part name="C68" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
 <part name="C69" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="GND78" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C70" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
-<part name="C71" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.1uF"/>
+<part name="C70" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C71" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="GND79" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="PWR13" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
 <part name="PWR44" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
 <part name="PWR45" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
 <part name="PWR46" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
-<part name="C72" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
-<part name="C73" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.1uF"/>
-<part name="C74" library="RHD2000_eval_board" deviceset="C" device="_0603" value="4.7uF"/>
+<part name="C72" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C73" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
+<part name="C74" library="jonnew" deviceset="C" device="_0603" value="4.7uF"/>
 <part name="GND80" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="PWR47" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
-<part name="C75" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
-<part name="C76" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.1uF"/>
-<part name="C77" library="RHD2000_eval_board" deviceset="C" device="_0603" value="22uF"/>
+<part name="C75" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C76" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
+<part name="C77" library="jonnew" deviceset="C" device="_0603" value="22uF"/>
 <part name="GND81" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C78" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
-<part name="C79" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.1uF"/>
-<part name="C80" library="RHD2000_eval_board" deviceset="C" device="_0603" value="22uF"/>
+<part name="C78" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C79" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
+<part name="C80" library="jonnew" deviceset="C" device="_0603" value="22uF"/>
 <part name="GND82" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="PWR48" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
 <part name="GND83" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C81" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
-<part name="C82" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.1uF"/>
+<part name="C81" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C82" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="GND84" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C83" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
-<part name="C84" library="RHD2000_eval_board" deviceset="C" device="_0603" value="4.7uF"/>
+<part name="C83" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C84" library="jonnew" deviceset="C" device="_0603" value="4.7uF"/>
 <part name="GND85" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C85" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.01uF"/>
+<part name="C85" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
 <part name="GND86" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="R30" library="jonnew" deviceset="R" device="_0603" value="1K"/>
 <part name="R31" library="jonnew" deviceset="R" device="_0603" value="1K"/>
@@ -5814,7 +5814,7 @@ grid 2.54 mm</description>
 <part name="R41" library="jonnew" deviceset="R" device="_0402" value="10K"/>
 <part name="U$21" library="jonnew" deviceset="DIPSW-004" device="_SMD-0.05IN"/>
 <part name="GND94" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C92" library="RHD2000_eval_board" deviceset="C" device="_0603" value="10uF"/>
+<part name="C92" library="jonnew" deviceset="C" device="_0603" value="10uF"/>
 <part name="R42" library="jonnew" deviceset="R" device="_0402" value="10K"/>
 <part name="GND95" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="PWR55" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
@@ -5825,21 +5825,21 @@ grid 2.54 mm</description>
 <part name="R47" library="jonnew" deviceset="R" device="_0603" value="DNP"/>
 <part name="R48" library="jonnew" deviceset="R" device="_0603" value="DNP"/>
 <part name="GND96" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="R49" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R50" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R51" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R52" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R53" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R54" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R55" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R56" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R57" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R58" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R59" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R60" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R61" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R62" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R63" library="jonnew" deviceset="R" device="_0603" value="22"/>
+<part name="R49" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R50" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R51" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R52" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R53" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R54" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R55" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R56" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R57" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R58" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R59" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R60" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R61" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R62" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R63" library="jonnew" deviceset="R" device="_0402" value="22"/>
 <part name="GND97" library="supply1" deviceset="GND" device=""/>
 <part name="C93" library="RHD2000_eval_board" deviceset="C" device="_0603" value="100nF"/>
 <part name="GND98" library="jonnew" deviceset="GND_ISO" device=""/>
@@ -5847,11 +5847,11 @@ grid 2.54 mm</description>
 <part name="C94" library="RHD2000_eval_board" deviceset="C" device="_0603" value="100nF"/>
 <part name="GND99" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="GND100" library="supply1" deviceset="GND" device=""/>
-<part name="R64" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R65" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R66" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="R67" library="jonnew" deviceset="R" device="_0603" value="22"/>
-<part name="C87" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
+<part name="R64" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R65" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R66" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R67" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="C87" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="GND101" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="C95" library="jonnew" deviceset="C-POL" device="_1210" value="22uF"/>
 <part name="R35" library="cyclops" deviceset="R" device="_0603" value="220"/>
@@ -5859,7 +5859,6 @@ grid 2.54 mm</description>
 <part name="Q3" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="NDS351AN"/>
 <part name="R68" library="cyclops" deviceset="R" device="_0603" value="100k"/>
 <part name="GND91" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="USER1" library="jonnew" deviceset="LED_2X" device="_VERTICAL" value="569-011x"/>
 <part name="R69" library="cyclops" deviceset="R" device="_0603" value="220"/>
 <part name="R70" library="cyclops" deviceset="R" device="_0603" value="1k"/>
 <part name="Q4" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="NDS351AN"/>
@@ -5874,7 +5873,7 @@ grid 2.54 mm</description>
 <part name="L2" library="jonnew" deviceset="L" device="_1210" value="CBC3225T101MR"/>
 <part name="L3" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
 <part name="L4" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
-<part name="L5" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
+<part name="L5" library="jonnew" deviceset="C" device="_0603" value="BLM18KG601SN1D"/>
 <part name="L6" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
 <part name="TP1" library="jonnew" deviceset="TP" device="_0.035IN" value="+3V6"/>
 <part name="TP2" library="jonnew" deviceset="TP" device="TP06R" value="+3V6"/>
@@ -5917,12 +5916,10 @@ grid 2.54 mm</description>
 <part name="U$19" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$20" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$22" library="jonnew" deviceset="+3V3_ISO" device=""/>
-<part name="U$24" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$25" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$26" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$23" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$27" library="jonnew" deviceset="+3V3_ISO" device=""/>
-<part name="U$28" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$29" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$30" library="jonnew" deviceset="+3V3_ISO" device=""/>
 <part name="U$31" library="jonnew" deviceset="+3V3_ISO" device=""/>
@@ -5947,6 +5944,8 @@ grid 2.54 mm</description>
 <part name="D2" library="jonnew" deviceset="DIODE2" device="_SOT23" value="BAR66"/>
 <part name="D3" library="jonnew" deviceset="DIODE2" device="_SOT23" value="BAR66"/>
 <part name="D4" library="jonnew" deviceset="DIODE2" device="_SOT23" value="BAR66"/>
+<part name="C26" library="RHD2000_eval_board" deviceset="C" device="_0603" value="1uF"/>
+<part name="U$28" library="jonnew" deviceset="+3V3_ISO" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6274,13 +6273,13 @@ OVERVOLTAGE PROTECTION</text>
 <instance part="C91" gate="C" x="175.26" y="172.72" rot="MR90"/>
 <instance part="R37" gate="R" x="162.56" y="172.72" rot="MR0"/>
 <instance part="GND92" gate="G$1" x="152.4" y="170.18" rot="MR0"/>
-<instance part="GND93" gate="G$1" x="167.64" y="142.24" rot="MR0"/>
-<instance part="R38" gate="R" x="152.4" y="129.54" rot="MR0"/>
-<instance part="R39" gate="R" x="160.02" y="124.46" rot="MR0"/>
-<instance part="R40" gate="R" x="152.4" y="119.38" rot="MR0"/>
-<instance part="R41" gate="R" x="160.02" y="114.3" rot="MR0"/>
-<instance part="U$21" gate="G$1" x="162.56" y="101.6" rot="R270"/>
-<instance part="GND94" gate="G$1" x="177.8" y="91.44"/>
+<instance part="GND93" gate="G$1" x="160.02" y="142.24" rot="MR0"/>
+<instance part="R38" gate="R" x="91.44" y="129.54" rot="MR0"/>
+<instance part="R39" gate="R" x="99.06" y="124.46" rot="MR0"/>
+<instance part="R40" gate="R" x="91.44" y="119.38" rot="MR0"/>
+<instance part="R41" gate="R" x="99.06" y="114.3" rot="MR0"/>
+<instance part="U$21" gate="G$1" x="162.56" y="104.14" rot="R270"/>
+<instance part="GND94" gate="G$1" x="177.8" y="93.98"/>
 <instance part="C92" gate="C" x="129.54" y="142.24" rot="MR180"/>
 <instance part="R42" gate="R" x="121.92" y="149.86" rot="MR180"/>
 <instance part="GND95" gate="G$1" x="129.54" y="137.16" rot="MR0"/>
@@ -6324,16 +6323,15 @@ OVERVOLTAGE PROTECTION</text>
 <instance part="GND101" gate="G$1" x="256.54" y="340.36"/>
 <instance part="C95" gate="C" x="426.72" y="505.46"/>
 <instance part="R35" gate="R" x="27.94" y="320.04" rot="MR90"/>
-<instance part="R36" gate="R" x="45.72" y="297.18" rot="MR180"/>
+<instance part="R36" gate="R" x="99.06" y="330.2" rot="MR90"/>
 <instance part="Q3" gate="G$1" x="30.48" y="299.72" rot="MR0"/>
 <instance part="R68" gate="R" x="38.1" y="289.56" smashed="yes" rot="MR90">
 <attribute name="NAME" x="39.5986" y="285.75" size="1.27" layer="95" rot="MR90"/>
 <attribute name="VALUE" x="34.798" y="285.75" size="1.778" layer="96" rot="MR90"/>
 </instance>
 <instance part="GND91" gate="G$1" x="27.94" y="281.94" rot="MR0"/>
-<instance part="USER1" gate="1" x="27.94" y="241.3" rot="MR0"/>
 <instance part="R69" gate="R" x="27.94" y="248.92" rot="MR90"/>
-<instance part="R70" gate="R" x="45.72" y="226.06" rot="MR180"/>
+<instance part="R70" gate="R" x="96.52" y="259.08" rot="MR90"/>
 <instance part="Q4" gate="G$1" x="30.48" y="228.6" rot="MR0"/>
 <instance part="R71" gate="R" x="38.1" y="218.44" smashed="yes" rot="MR90">
 <attribute name="NAME" x="39.5986" y="214.63" size="1.27" layer="95" rot="MR90"/>
@@ -6352,7 +6350,7 @@ OVERVOLTAGE PROTECTION</text>
 <instance part="L2" gate="L" x="86.36" y="55.88" rot="R270"/>
 <instance part="L3" gate="L" x="137.16" y="66.04" rot="R270"/>
 <instance part="L4" gate="L" x="152.4" y="233.68" rot="R270"/>
-<instance part="L5" gate="L" x="152.4" y="261.62" rot="R270"/>
+<instance part="L5" gate="C" x="152.4" y="261.62" rot="R270"/>
 <instance part="L6" gate="L" x="276.86" y="261.62" rot="R270"/>
 <instance part="TP1" gate="G$1" x="264.16" y="345.44" rot="R180"/>
 <instance part="TP2" gate="G$1" x="243.84" y="104.14" rot="R270"/>
@@ -6409,12 +6407,10 @@ OVERVOLTAGE PROTECTION</text>
 <instance part="U$19" gate="G$1" x="167.64" y="533.4"/>
 <instance part="U$20" gate="G$1" x="27.94" y="327.66"/>
 <instance part="U$22" gate="G$1" x="27.94" y="256.54"/>
-<instance part="U$24" gate="G$1" x="132.08" y="325.12"/>
 <instance part="U$25" gate="G$1" x="190.5" y="325.12"/>
 <instance part="U$26" gate="G$1" x="200.66" y="325.12"/>
 <instance part="U$23" gate="G$1" x="284.48" y="327.66"/>
 <instance part="U$27" gate="G$1" x="281.94" y="350.52"/>
-<instance part="U$28" gate="G$1" x="200.66" y="340.36"/>
 <instance part="U$29" gate="G$1" x="276.86" y="431.8"/>
 <instance part="U$30" gate="G$1" x="322.58" y="431.8"/>
 <instance part="U$31" gate="G$1" x="279.4" y="541.02"/>
@@ -6434,11 +6430,14 @@ OVERVOLTAGE PROTECTION</text>
 <instance part="U$45" gate="G$1" x="167.64" y="444.5"/>
 <instance part="U$46" gate="G$1" x="81.28" y="505.46"/>
 <instance part="U$47" gate="G$1" x="81.28" y="416.56"/>
-<instance part="U$48" gate="G$1" x="142.24" y="137.16"/>
+<instance part="U$48" gate="G$1" x="81.28" y="137.16"/>
 <instance part="D1" gate="D1" x="71.12" y="515.62"/>
 <instance part="D2" gate="D1" x="71.12" y="426.72"/>
 <instance part="D3" gate="D1" x="60.96" y="340.36"/>
 <instance part="D4" gate="D1" x="60.96" y="269.24"/>
+<instance part="USER" gate="2" x="27.94" y="241.3"/>
+<instance part="C26" gate="C" x="124.46" y="302.26" rot="R180"/>
+<instance part="U$28" gate="G$1" x="124.46" y="325.12"/>
 </instances>
 <busses>
 </busses>
@@ -6572,6 +6571,8 @@ OVERVOLTAGE PROTECTION</text>
 <wire x1="132.08" y1="299.72" x2="132.08" y2="297.18" width="0.1524" layer="91"/>
 <junction x="132.08" y="299.72"/>
 <pinref part="GND41" gate="G$1" pin="GND_ISO"/>
+<pinref part="C26" gate="C" pin="1"/>
+<wire x1="124.46" y1="299.72" x2="132.08" y2="299.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C36" gate="C" pin="2"/>
@@ -6850,8 +6851,8 @@ OVERVOLTAGE PROTECTION</text>
 <wire x1="195.58" y1="147.32" x2="187.96" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="187.96" y1="147.32" x2="187.96" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="144.78" x2="187.96" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="187.96" y1="147.32" x2="167.64" y2="147.32" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="147.32" x2="167.64" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="147.32" x2="160.02" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="147.32" x2="160.02" y2="142.24" width="0.1524" layer="91"/>
 <junction x="187.96" y="147.32"/>
 <pinref part="GND93" gate="G$1" pin="GND_ISO"/>
 <pinref part="U$9" gate="G$1" pin="TESTEN"/>
@@ -6859,20 +6860,20 @@ OVERVOLTAGE PROTECTION</text>
 </segment>
 <segment>
 <pinref part="U$21" gate="G$1" pin="8"/>
-<wire x1="170.18" y1="104.14" x2="177.8" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="104.14" x2="177.8" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="106.68" x2="177.8" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="106.68" x2="177.8" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="U$21" gate="G$1" pin="7"/>
+<wire x1="177.8" y1="104.14" x2="177.8" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="101.6" x2="177.8" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="99.06" x2="177.8" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="96.52" x2="177.8" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="170.18" y1="101.6" x2="177.8" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="99.06" x2="177.8" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="104.14" x2="177.8" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="U$21" gate="G$1" pin="6"/>
-<wire x1="170.18" y1="99.06" x2="177.8" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="101.6" x2="177.8" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="U$21" gate="G$1" pin="5"/>
-<wire x1="170.18" y1="96.52" x2="177.8" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="99.06" x2="177.8" y2="99.06" width="0.1524" layer="91"/>
+<junction x="177.8" y="104.14"/>
 <junction x="177.8" y="101.6"/>
 <junction x="177.8" y="99.06"/>
-<junction x="177.8" y="96.52"/>
 <pinref part="GND94" gate="G$1" pin="GND_ISO"/>
 </segment>
 <segment>
@@ -7794,10 +7795,13 @@ OVERVOLTAGE PROTECTION</text>
 <segment>
 <pinref part="U$7" gate="G$1" pin="VCC"/>
 <wire x1="139.7" y1="307.34" x2="132.08" y2="307.34" width="0.1524" layer="91"/>
-<wire x1="132.08" y1="307.34" x2="132.08" y2="325.12" width="0.1524" layer="91"/>
 <pinref part="C35" gate="C" pin="2"/>
 <junction x="132.08" y="307.34"/>
-<pinref part="U$24" gate="G$1" pin="+3V3_ISO"/>
+<pinref part="C26" gate="C" pin="2"/>
+<wire x1="132.08" y1="307.34" x2="124.46" y2="307.34" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="307.34" x2="124.46" y2="325.12" width="0.1524" layer="91"/>
+<junction x="124.46" y="307.34"/>
+<pinref part="U$28" gate="G$1" pin="+3V3_ISO"/>
 </segment>
 <segment>
 <pinref part="C5" gate="C" pin="2"/>
@@ -7947,20 +7951,20 @@ OVERVOLTAGE PROTECTION</text>
 </segment>
 <segment>
 <pinref part="R38" gate="R" pin="2"/>
-<wire x1="147.32" y1="129.54" x2="142.24" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="129.54" x2="142.24" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="129.54" x2="81.28" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="129.54" x2="81.28" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="R39" gate="R" pin="2"/>
-<wire x1="154.94" y1="124.46" x2="142.24" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="124.46" x2="142.24" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="124.46" x2="81.28" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="124.46" x2="81.28" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="R40" gate="R" pin="2"/>
-<wire x1="147.32" y1="119.38" x2="142.24" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="119.38" x2="142.24" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="119.38" x2="81.28" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="119.38" x2="81.28" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="R41" gate="R" pin="2"/>
-<wire x1="142.24" y1="114.3" x2="154.94" y2="114.3" width="0.1524" layer="91"/>
-<junction x="142.24" y="124.46"/>
-<junction x="142.24" y="119.38"/>
-<wire x1="142.24" y1="137.16" x2="142.24" y2="129.54" width="0.1524" layer="91"/>
-<junction x="142.24" y="129.54"/>
+<wire x1="81.28" y1="114.3" x2="93.98" y2="114.3" width="0.1524" layer="91"/>
+<junction x="81.28" y="124.46"/>
+<junction x="81.28" y="119.38"/>
+<wire x1="81.28" y1="137.16" x2="81.28" y2="129.54" width="0.1524" layer="91"/>
+<junction x="81.28" y="129.54"/>
 <pinref part="U$48" gate="G$1" pin="+3V3_ISO"/>
 </segment>
 <segment>
@@ -8372,19 +8376,18 @@ OVERVOLTAGE PROTECTION</text>
 <segment>
 <pinref part="F1" gate="G$1" pin="2"/>
 <pinref part="U$7" gate="G$1" pin="1Y"/>
-<wire x1="139.7" y1="292.1" x2="121.92" y2="292.1" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="292.1" x2="121.92" y2="340.36" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="292.1" x2="109.22" y2="292.1" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="292.1" x2="109.22" y2="340.36" width="0.1524" layer="91"/>
 <pinref part="U$7" gate="G$1" pin="2Y"/>
-<wire x1="121.92" y1="340.36" x2="96.52" y2="340.36" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="340.36" x2="60.96" y2="340.36" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="340.36" x2="99.06" y2="340.36" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="340.36" x2="60.96" y2="340.36" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="340.36" x2="53.34" y2="340.36" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="289.56" x2="121.92" y2="289.56" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="289.56" x2="121.92" y2="292.1" width="0.1524" layer="91"/>
-<junction x="121.92" y="292.1"/>
+<wire x1="139.7" y1="289.56" x2="109.22" y2="289.56" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="289.56" x2="109.22" y2="292.1" width="0.1524" layer="91"/>
+<junction x="109.22" y="292.1"/>
 <pinref part="R36" gate="R" pin="2"/>
-<wire x1="96.52" y1="297.18" x2="50.8" y2="297.18" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="297.18" x2="96.52" y2="340.36" width="0.1524" layer="91"/>
-<junction x="96.52" y="340.36"/>
+<wire x1="99.06" y1="335.28" x2="99.06" y2="340.36" width="0.1524" layer="91"/>
+<junction x="99.06" y="340.36"/>
 <pinref part="D3" gate="D1" pin="COMM"/>
 <junction x="60.96" y="340.36"/>
 </segment>
@@ -9235,8 +9238,8 @@ OVERVOLTAGE PROTECTION</text>
 </segment>
 <segment>
 <wire x1="142.24" y1="266.7" x2="142.24" y2="261.62" width="0.1524" layer="91"/>
-<pinref part="L5" gate="L" pin="2"/>
-<wire x1="144.78" y1="261.62" x2="142.24" y2="261.62" width="0.1524" layer="91"/>
+<pinref part="L5" gate="C" pin="2"/>
+<wire x1="147.32" y1="261.62" x2="142.24" y2="261.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="195.58" y1="73.66" x2="195.58" y2="68.58" width="0.1524" layer="91"/>
@@ -9254,6 +9257,14 @@ OVERVOLTAGE PROTECTION</text>
 <segment>
 <wire x1="208.28" y1="218.44" x2="208.28" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="U$9" gate="G$1" pin="VDDSSCG"/>
+</segment>
+<segment>
+<pinref part="U$17" gate="G$1" pin="3"/>
+<wire x1="132.08" y1="381" x2="132.08" y2="386.08" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$18" gate="G$1" pin="3"/>
+<wire x1="132.08" y1="469.9" x2="132.08" y2="474.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+3V3_ISO_PG+" class="0">
@@ -9516,13 +9527,13 @@ OVERVOLTAGE PROTECTION</text>
 <wire x1="195.58" y1="261.62" x2="195.58" y2="256.54" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="261.62" x2="185.42" y2="261.62" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="261.62" x2="195.58" y2="261.62" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="261.62" x2="160.02" y2="261.62" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="261.62" x2="154.94" y2="261.62" width="0.1524" layer="91"/>
 <junction x="175.26" y="261.62"/>
 <junction x="185.42" y="261.62"/>
 <wire x1="195.58" y1="261.62" x2="218.44" y2="261.62" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="261.62" x2="218.44" y2="213.36" width="0.1524" layer="91"/>
 <junction x="195.58" y="261.62"/>
-<pinref part="L5" gate="L" pin="1"/>
+<pinref part="L5" gate="C" pin="1"/>
 <pinref part="U$9" gate="G$1" pin="VDDCML1"/>
 </segment>
 </net>
@@ -9651,62 +9662,62 @@ OVERVOLTAGE PROTECTION</text>
 </net>
 <net name="SEL" class="0">
 <segment>
-<wire x1="195.58" y1="142.24" x2="172.72" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="142.24" x2="172.72" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="129.54" x2="157.48" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="U$21" gate="G$1" pin="4"/>
+<wire x1="154.94" y1="99.06" x2="132.08" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="142.24" x2="165.1" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="142.24" x2="165.1" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="129.54" x2="132.08" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="R38" gate="R" pin="1"/>
 <label x="193.04" y="142.24" size="1.27" layer="95" rot="MR0"/>
 <pinref part="U$9" gate="G$1" pin="SEL"/>
-</segment>
-<segment>
-<pinref part="U$21" gate="G$1" pin="4"/>
-<wire x1="154.94" y1="96.52" x2="149.86" y2="96.52" width="0.1524" layer="91"/>
-<label x="149.86" y="96.52" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="132.08" y1="129.54" x2="96.52" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="99.06" x2="132.08" y2="129.54" width="0.1524" layer="91"/>
+<junction x="132.08" y="129.54"/>
 </segment>
 </net>
 <net name="OSS_SEL" class="0">
 <segment>
-<wire x1="195.58" y1="139.7" x2="175.26" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="139.7" x2="175.26" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="124.46" x2="165.1" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="U$21" gate="G$1" pin="3"/>
+<wire x1="154.94" y1="101.6" x2="137.16" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="139.7" x2="170.18" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="139.7" x2="170.18" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="124.46" x2="137.16" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="R39" gate="R" pin="1"/>
 <label x="193.04" y="139.7" size="1.27" layer="95" rot="MR0"/>
 <pinref part="U$9" gate="G$1" pin="OSS_SEL"/>
-</segment>
-<segment>
-<pinref part="U$21" gate="G$1" pin="3"/>
-<wire x1="154.94" y1="99.06" x2="149.86" y2="99.06" width="0.1524" layer="91"/>
-<label x="149.86" y="99.06" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="137.16" y1="124.46" x2="104.14" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="101.6" x2="137.16" y2="124.46" width="0.1524" layer="91"/>
+<junction x="137.16" y="124.46"/>
 </segment>
 </net>
 <net name="OEN" class="0">
 <segment>
-<wire x1="195.58" y1="137.16" x2="177.8" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="137.16" x2="177.8" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="119.38" x2="157.48" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="U$21" gate="G$1" pin="2"/>
+<wire x1="154.94" y1="104.14" x2="142.24" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="137.16" x2="175.26" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="137.16" x2="175.26" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="119.38" x2="142.24" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="R40" gate="R" pin="1"/>
 <label x="193.04" y="137.16" size="1.27" layer="95" rot="MR0"/>
 <pinref part="U$9" gate="G$1" pin="OEN"/>
-</segment>
-<segment>
-<pinref part="U$21" gate="G$1" pin="2"/>
-<wire x1="154.94" y1="101.6" x2="149.86" y2="101.6" width="0.1524" layer="91"/>
-<label x="149.86" y="101.6" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="142.24" y1="119.38" x2="96.52" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="104.14" x2="142.24" y2="119.38" width="0.1524" layer="91"/>
+<junction x="142.24" y="119.38"/>
 </segment>
 </net>
 <net name="BISTEN" class="0">
 <segment>
+<pinref part="U$21" gate="G$1" pin="1"/>
+<wire x1="154.94" y1="106.68" x2="147.32" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="134.62" x2="180.34" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="180.34" y1="134.62" x2="180.34" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="114.3" x2="165.1" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="114.3" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="R41" gate="R" pin="1"/>
 <label x="193.04" y="134.62" size="1.27" layer="95" rot="MR0"/>
 <pinref part="U$9" gate="G$1" pin="BISTEN"/>
-</segment>
-<segment>
-<pinref part="U$21" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="104.14" x2="149.86" y2="104.14" width="0.1524" layer="91"/>
-<label x="149.86" y="104.14" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="147.32" y1="114.3" x2="104.14" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="106.68" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
+<junction x="147.32" y="114.3"/>
 </segment>
 </net>
 <net name="PDN" class="0">
@@ -9958,7 +9969,8 @@ OVERVOLTAGE PROTECTION</text>
 <net name="N$39" class="0">
 <segment>
 <pinref part="R36" gate="R" pin="1"/>
-<wire x1="40.64" y1="297.18" x2="38.1" y2="297.18" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="325.12" x2="99.06" y2="297.18" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="297.18" x2="38.1" y2="297.18" width="0.1524" layer="91"/>
 <pinref part="Q3" gate="G$1" pin="G"/>
 <pinref part="R68" gate="R" pin="2"/>
 <wire x1="38.1" y1="297.18" x2="33.02" y2="297.18" width="0.1524" layer="91"/>
@@ -9980,30 +9992,24 @@ OVERVOLTAGE PROTECTION</text>
 <wire x1="139.7" y1="284.48" x2="121.92" y2="284.48" width="0.1524" layer="91"/>
 <junction x="121.92" y="284.48"/>
 <pinref part="R70" gate="R" pin="2"/>
-<wire x1="50.8" y1="226.06" x2="96.52" y2="226.06" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="226.06" x2="96.52" y2="269.24" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="264.16" x2="96.52" y2="269.24" width="0.1524" layer="91"/>
 <junction x="96.52" y="269.24"/>
 <pinref part="D4" gate="D1" pin="COMM"/>
 <junction x="60.96" y="269.24"/>
-</segment>
-</net>
-<net name="N$38" class="0">
-<segment>
-<pinref part="R69" gate="R" pin="1"/>
-<pinref part="USER1" gate="1" pin="A"/>
 </segment>
 </net>
 <net name="N$60" class="0">
 <segment>
 <wire x1="27.94" y1="236.22" x2="27.94" y2="233.68" width="0.1524" layer="91"/>
 <pinref part="Q4" gate="G$1" pin="D"/>
-<pinref part="USER1" gate="1" pin="C"/>
+<pinref part="USER" gate="2" pin="C"/>
 </segment>
 </net>
 <net name="N$61" class="0">
 <segment>
 <pinref part="R70" gate="R" pin="1"/>
-<wire x1="40.64" y1="226.06" x2="38.1" y2="226.06" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="254" x2="96.52" y2="226.06" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="226.06" x2="38.1" y2="226.06" width="0.1524" layer="91"/>
 <pinref part="Q4" gate="G$1" pin="G"/>
 <pinref part="R71" gate="R" pin="2"/>
 <wire x1="38.1" y1="226.06" x2="33.02" y2="226.06" width="0.1524" layer="91"/>
@@ -10741,12 +10747,6 @@ OVERVOLTAGE PROTECTION</text>
 <label x="629.92" y="292.1" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="N$9" class="0">
-<segment>
-<pinref part="U$17" gate="G$1" pin="3"/>
-<wire x1="132.08" y1="381" x2="132.08" y2="386.08" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$36" class="0">
 <segment>
 <pinref part="R23" gate="R" pin="1"/>
@@ -10754,17 +10754,17 @@ OVERVOLTAGE PROTECTION</text>
 <wire x1="134.62" y1="408.94" x2="134.62" y2="381" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$133" class="0">
-<segment>
-<pinref part="U$18" gate="G$1" pin="3"/>
-<wire x1="132.08" y1="469.9" x2="132.08" y2="474.98" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$136" class="0">
 <segment>
 <pinref part="U$18" gate="G$1" pin="2"/>
 <wire x1="134.62" y1="497.84" x2="134.62" y2="469.9" width="0.1524" layer="91"/>
 <pinref part="R16" gate="R" pin="1"/>
+</segment>
+</net>
+<net name="N$31" class="0">
+<segment>
+<pinref part="R69" gate="R" pin="1"/>
+<pinref part="USER" gate="2" pin="A"/>
 </segment>
 </net>
 </nets>
