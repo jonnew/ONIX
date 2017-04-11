@@ -11,3 +11,9 @@
 6. reverse the sink/source polarity for LED
 
 7. Edit the foot print of the mechanical connectors to make sure they align well.
+
+8. DC path needs to be changes to support current limits of LED driver
+
+9. LTM needs to produce 5.5V rails and 3.3V raile for LED driver and digital stuff, repectively. 3.3 is dropped to 1.2 via LDO.
+
+10. Potentially replace the SMA with Hirose MMCX 
