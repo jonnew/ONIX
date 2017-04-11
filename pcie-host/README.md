@@ -59,6 +59,7 @@ In order to meet approximately correct trace impedances, the design further is a
 
 
 ## TODO (Rev 1.0)
+- [ ] Switch headstage serdes interface coax connector to MMCX (e.g. CONMMCX001-ND)
 - [ ] Instead of conforming to VITA 57, PCB footprint should be made to fit in
   a PC expansion slot and be connected to the KC705 using a flex [FMC
   cable](http://suddendocs.samtec.com/prints/hdr-169472-xx-mkt.pdf). This will
