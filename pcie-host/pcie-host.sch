@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1155,7 +1155,7 @@ http://www.bccomponents.com/</description>
 <wire x1="0" y1="106.6546" x2="0" y2="0" width="0" layer="20"/>
 <hole x="7.493" y="4.8514" drill="3.175"/>
 <hole x="7.493" y="90.2462" drill="3.175"/>
-<polygon width="0" layer="42">
+<polygon width="0.127" layer="42">
 <vertex x="45.0088" y="9.2456"/>
 <vertex x="0" y="9.2456"/>
 <vertex x="0" y="0"/>
@@ -1165,7 +1165,7 @@ http://www.bccomponents.com/</description>
 <vertex x="32.4358" y="0"/>
 <vertex x="45.0088" y="0"/>
 </polygon>
-<polygon width="0" layer="41">
+<polygon width="0.127" layer="41">
 <vertex x="0" y="85.1916"/>
 <vertex x="13.97" y="85.1916"/>
 <vertex x="13.97" y="105.664"/>
@@ -1185,7 +1185,7 @@ http://www.bccomponents.com/</description>
 <vertex x="167.64" y="106.6546"/>
 <vertex x="0" y="106.6546"/>
 </polygon>
-<polygon width="0" layer="41">
+<polygon width="0.127" layer="41">
 <vertex x="45.0088" y="9.2456"/>
 <vertex x="0" y="9.2456"/>
 <vertex x="0" y="0"/>
@@ -1195,7 +1195,7 @@ http://www.bccomponents.com/</description>
 <vertex x="32.4358" y="0"/>
 <vertex x="45.0088" y="0"/>
 </polygon>
-<polygon width="0" layer="42">
+<polygon width="0.127" layer="42">
 <vertex x="0" y="85.1916"/>
 <vertex x="13.97" y="85.1916"/>
 <vertex x="13.97" y="105.664"/>
@@ -1209,7 +1209,7 @@ http://www.bccomponents.com/</description>
 <vertex x="167.64" y="106.6546"/>
 <vertex x="0" y="106.6546"/>
 </polygon>
-<polygon width="0" layer="43">
+<polygon width="0.127" layer="43">
 <vertex x="0" y="85.1916"/>
 <vertex x="13.97" y="85.1916"/>
 <vertex x="13.97" y="105.664"/>
@@ -1223,7 +1223,7 @@ http://www.bccomponents.com/</description>
 <vertex x="167.64" y="106.6546"/>
 <vertex x="0" y="106.6546"/>
 </polygon>
-<polygon width="0" layer="43">
+<polygon width="0.127" layer="43">
 <vertex x="45.0088" y="9.2456"/>
 <vertex x="0" y="9.2456"/>
 <vertex x="0" y="0"/>
@@ -1233,19 +1233,19 @@ http://www.bccomponents.com/</description>
 <vertex x="32.4358" y="0"/>
 <vertex x="45.0088" y="0"/>
 </polygon>
-<polygon width="0" layer="43">
+<polygon width="0.127" layer="43">
 <vertex x="0" y="86.36"/>
 <vertex x="5.08" y="86.36"/>
 <vertex x="5.08" y="8.89"/>
 <vertex x="0" y="8.89"/>
 </polygon>
-<polygon width="0" layer="41">
+<polygon width="0.127" layer="41">
 <vertex x="0" y="87.63"/>
 <vertex x="5.08" y="86.36"/>
 <vertex x="5.08" y="8.89"/>
 <vertex x="0" y="8.89"/>
 </polygon>
-<polygon width="0" layer="42">
+<polygon width="0.127" layer="42">
 <vertex x="0" y="86.36"/>
 <vertex x="5.08" y="86.36"/>
 <vertex x="5.08" y="8.89"/>
@@ -5605,7 +5605,7 @@ grid 2.54 mm</description>
 <part name="PWR7" library="jonnew" deviceset="+3V3" device=""/>
 <part name="PWR8" library="jonnew" deviceset="+3V3" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
-<part name="TP2" library="jonnew" deviceset="TP" device="_0.035IN" value="+1.8V ISO"/>
+<part name="TP2" library="jonnew" deviceset="TP" device="_0.035IN" value="+1.8V(ISO)"/>
 <part name="TP3" library="jonnew" deviceset="TP" device="_0.035IN" value="+3.3V(ISO)"/>
 <part name="TP4" library="jonnew" deviceset="TP" device="_0.035IN" value="+12V(ISO)"/>
 <part name="X1" library="jonnew" deviceset="PCI-MECH" device="_STD-H_HALF-W"/>
@@ -5736,12 +5736,12 @@ grid 2.54 mm</description>
 <part name="PWR44" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
 <part name="PWR45" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
 <part name="PWR46" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
-<part name="C26" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C26" library="jonnew" deviceset="C" device="_0402" value="10nF"/>
 <part name="C23" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="C22" library="jonnew" deviceset="C" device="_1206" value="4.7uF"/>
 <part name="GND80" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="PWR47" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
-<part name="C11" library="jonnew" deviceset="C" device="_0402" value="0.01uF"/>
+<part name="C11" library="jonnew" deviceset="C" device="_0402" value="10nF"/>
 <part name="C15" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="C19" library="jonnew" deviceset="C" device="_1206" value="4.7F"/>
 <part name="GND81" library="jonnew" deviceset="GND_ISO" device=""/>
@@ -5832,10 +5832,10 @@ grid 2.54 mm</description>
 <part name="L1" library="jonnew" deviceset="L" device="_1008PS" value="1008PS-472KLB"/>
 <part name="L2" library="jonnew" deviceset="L" device="_SRN6045TA" value="SRN6045TA-101M"/>
 <part name="L3" library="jonnew" deviceset="L" device="_0805" value="MPZ2012S102AT000"/>
-<part name="L5" library="jonnew" deviceset="C" device="_0603" value="BLM18KG601SN1D"/>
+<part name="L5" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
 <part name="L4" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
-<part name="L6" library="jonnew" deviceset="C" device="_0603" value="BLM18KG601SN1D"/>
-<part name="TP1" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="L6" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
+<part name="TP1" library="jonnew" deviceset="TP" device="_0.035IN" value="GND(ISO)"/>
 <part name="TP5" library="jonnew" deviceset="TP" device="TP06R" value="PASS"/>
 <part name="U9" library="jonnew" deviceset="DS90UB914A-Q1" device=""/>
 <part name="C90" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
@@ -5981,6 +5981,19 @@ grid 2.54 mm</description>
 <part name="PWR25" library="jonnew" deviceset="+5V" device="" value="+12V_ISO"/>
 <part name="GND69" library="supply1" deviceset="GND" device=""/>
 <part name="TP8" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="TP14" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="TP15" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="TP16" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="TP17" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="GND111" library="jonnew" deviceset="GND_ISO" device=""/>
+<part name="TP18" library="jonnew" deviceset="TP" device="_0.035IN" value="GND(ISO)"/>
+<part name="GND112" library="jonnew" deviceset="GND_ISO" device=""/>
+<part name="TP19" library="jonnew" deviceset="TP" device="_0.035IN" value="GND(ISO)"/>
+<part name="GND113" library="jonnew" deviceset="GND_ISO" device=""/>
+<part name="TP20" library="jonnew" deviceset="TP" device="_0.035IN" value="GND(ISO)"/>
+<part name="TP21" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="PWR37" library="jonnew" deviceset="+3V3" device=""/>
+<part name="TP22" library="jonnew" deviceset="TP" device="_0.035IN" value="+3.3V"/>
 </parts>
 <sheets>
 <sheet>
@@ -5992,7 +6005,7 @@ grid 2.54 mm</description>
 <wire x1="7.62" y1="447.04" x2="467.36" y2="447.04" width="0.1524" layer="97" style="shortdash"/>
 <wire x1="467.36" y1="447.04" x2="467.36" y2="0" width="0.1524" layer="97" style="shortdash"/>
 <text x="467.36" y="762" size="2.54" layer="97">FMC HEADER</text>
-<text x="551.18" y="596.9" size="2.54" layer="97">PCI ADD IN CARD</text>
+<text x="617.22" y="594.36" size="2.54" layer="97">PCI ADD IN CARD</text>
 <text x="38.1" y="828.04" size="2.54" layer="97">INPUT PROTECTION BIAS VOLTAGE ~4.6V</text>
 <text x="533.4" y="124.46" size="2.54" layer="97">DNP</text>
 <text x="533.4" y="175.26" size="2.54" layer="97">DNP</text>
@@ -6035,8 +6048,8 @@ XX mil FR4 core
 <instance part="C58" gate="C" x="497.84" y="213.36" rot="MR180"/>
 <instance part="C57" gate="C" x="497.84" y="269.24" rot="MR180"/>
 <instance part="GND14" gate="1" x="337.82" y="650.24"/>
-<instance part="PWR12" gate="PWR1" x="505.46" y="586.74"/>
-<instance part="GND23" gate="1" x="490.22" y="576.58" rot="MR0"/>
+<instance part="PWR12" gate="PWR1" x="558.8" y="586.74"/>
+<instance part="GND23" gate="1" x="508" y="576.58" rot="MR0"/>
 <instance part="GND25" gate="1" x="525.78" y="312.42"/>
 <instance part="GND51" gate="G$1" x="436.88" y="312.42"/>
 <instance part="GND104" gate="G$1" x="441.96" y="208.28"/>
@@ -6067,7 +6080,7 @@ XX mil FR4 core
 <instance part="TP2" gate="G$1" x="68.58" y="327.66" rot="R180"/>
 <instance part="TP3" gate="G$1" x="76.2" y="327.66" rot="R180"/>
 <instance part="TP4" gate="G$1" x="83.82" y="327.66" rot="R180"/>
-<instance part="X1" gate="G$1" x="548.64" y="574.04"/>
+<instance part="X1" gate="G$1" x="614.68" y="571.5"/>
 <instance part="F3" gate="G$1" x="38.1" y="622.3"/>
 <instance part="F1" gate="G$1" x="38.1" y="797.56"/>
 <instance part="F4" gate="G$1" x="38.1" y="520.7"/>
@@ -6325,9 +6338,9 @@ XX mil FR4 core
 <instance part="L1" gate="L" x="71.12" y="55.88" rot="R270"/>
 <instance part="L2" gate="L" x="99.06" y="55.88" rot="R270"/>
 <instance part="L3" gate="L" x="149.86" y="66.04" rot="R270"/>
-<instance part="L5" gate="C" x="152.4" y="233.68" rot="R270"/>
+<instance part="L5" gate="L" x="152.4" y="233.68" rot="R270"/>
 <instance part="L4" gate="L" x="152.4" y="261.62" rot="R270"/>
-<instance part="L6" gate="C" x="276.86" y="261.62" rot="R270"/>
+<instance part="L6" gate="L" x="276.86" y="261.62" rot="R270"/>
 <instance part="TP1" gate="G$1" x="58.42" y="327.66" rot="R180"/>
 <instance part="TP5" gate="G$1" x="243.84" y="104.14" rot="R270"/>
 <instance part="U9" gate="G$1" x="236.22" y="177.8" rot="MR0"/>
@@ -6342,15 +6355,15 @@ XX mil FR4 core
 <instance part="PWR58" gate="PWR1" x="568.96" y="335.28"/>
 <instance part="GND107" gate="1" x="591.82" y="254"/>
 <instance part="FMC_LPC" gate="G$1" x="480.06" y="759.46"/>
-<instance part="TP10" gate="G$1" x="500.38" y="574.04" rot="R180"/>
-<instance part="TP11" gate="G$1" x="505.46" y="574.04" rot="R180"/>
-<instance part="TP12" gate="G$1" x="510.54" y="574.04" rot="R180"/>
-<instance part="TP13" gate="G$1" x="515.62" y="574.04" rot="R180"/>
-<instance part="PWR1" gate="1" x="515.62" y="589.28" smashed="yes">
-<attribute name="VALUE" x="518.795" y="582.93" size="1.27" layer="96" font="vector" ratio="18" rot="R90"/>
+<instance part="TP10" gate="G$1" x="518.16" y="574.04" rot="R180"/>
+<instance part="TP11" gate="G$1" x="558.8" y="574.04" rot="R180"/>
+<instance part="TP12" gate="G$1" x="563.88" y="574.04" rot="R180"/>
+<instance part="TP13" gate="G$1" x="568.96" y="574.04" rot="R180"/>
+<instance part="PWR1" gate="1" x="568.96" y="589.28" smashed="yes">
+<attribute name="VALUE" x="572.135" y="582.93" size="1.27" layer="96" font="vector" ratio="18" rot="R90"/>
 </instance>
-<instance part="PWR5" gate="1" x="510.54" y="589.28" smashed="yes">
-<attribute name="VALUE" x="513.715" y="582.93" size="1.27" layer="96" font="vector" ratio="18" rot="R90"/>
+<instance part="PWR5" gate="1" x="563.88" y="589.28" smashed="yes">
+<attribute name="VALUE" x="567.055" y="582.93" size="1.27" layer="96" font="vector" ratio="18" rot="R90"/>
 </instance>
 <instance part="U19" gate="G$1" x="609.6" y="309.88"/>
 <instance part="U21" gate="G$1" x="609.6" y="35.56"/>
@@ -6497,6 +6510,19 @@ XX mil FR4 core
 </instance>
 <instance part="GND69" gate="1" x="274.32" y="640.08"/>
 <instance part="TP8" gate="G$1" x="256.54" y="647.7" rot="MR0"/>
+<instance part="TP14" gate="G$1" x="523.24" y="574.04" rot="R180"/>
+<instance part="TP15" gate="G$1" x="528.32" y="574.04" rot="R180"/>
+<instance part="TP16" gate="G$1" x="533.4" y="574.04" rot="R180"/>
+<instance part="TP17" gate="G$1" x="538.48" y="574.04" rot="R180"/>
+<instance part="GND111" gate="G$1" x="93.98" y="322.58"/>
+<instance part="TP18" gate="G$1" x="101.6" y="327.66" rot="R180"/>
+<instance part="GND112" gate="G$1" x="109.22" y="322.58"/>
+<instance part="TP19" gate="G$1" x="116.84" y="327.66" rot="R180"/>
+<instance part="GND113" gate="G$1" x="124.46" y="322.58"/>
+<instance part="TP20" gate="G$1" x="132.08" y="327.66" rot="R180"/>
+<instance part="TP21" gate="G$1" x="543.56" y="574.04" rot="R180"/>
+<instance part="PWR37" gate="PWR1" x="553.72" y="586.74"/>
+<instance part="TP22" gate="G$1" x="553.72" y="574.04" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -6837,6 +6863,27 @@ XX mil FR4 core
 <pinref part="U1" gate="G$1" pin="4"/>
 <wire x1="83.82" y1="304.8" x2="83.82" y2="299.72" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="GND111" gate="G$1" pin="GND_ISO"/>
+<wire x1="93.98" y1="322.58" x2="93.98" y2="335.28" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="335.28" x2="101.6" y2="335.28" width="0.1524" layer="91"/>
+<pinref part="TP18" gate="G$1" pin="TP"/>
+<wire x1="101.6" y1="335.28" x2="101.6" y2="330.2" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND112" gate="G$1" pin="GND_ISO"/>
+<wire x1="109.22" y1="322.58" x2="109.22" y2="335.28" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="335.28" x2="116.84" y2="335.28" width="0.1524" layer="91"/>
+<pinref part="TP19" gate="G$1" pin="TP"/>
+<wire x1="116.84" y1="335.28" x2="116.84" y2="330.2" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND113" gate="G$1" pin="GND_ISO"/>
+<wire x1="124.46" y1="322.58" x2="124.46" y2="335.28" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="335.28" x2="132.08" y2="335.28" width="0.1524" layer="91"/>
+<pinref part="TP20" gate="G$1" pin="TP"/>
+<wire x1="132.08" y1="335.28" x2="132.08" y2="330.2" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -6851,11 +6898,31 @@ XX mil FR4 core
 <wire x1="497.84" y1="210.82" x2="497.84" y2="208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="500.38" y1="584.2" x2="490.22" y2="584.2" width="0.1524" layer="91"/>
-<wire x1="490.22" y1="584.2" x2="490.22" y2="579.12" width="0.1524" layer="91"/>
+<wire x1="518.16" y1="584.2" x2="508" y2="584.2" width="0.1524" layer="91"/>
+<wire x1="508" y1="584.2" x2="508" y2="579.12" width="0.1524" layer="91"/>
 <pinref part="GND23" gate="1" pin="GND"/>
-<wire x1="500.38" y1="576.58" x2="500.38" y2="584.2" width="0.1524" layer="91"/>
+<wire x1="518.16" y1="576.58" x2="518.16" y2="584.2" width="0.1524" layer="91"/>
 <pinref part="TP10" gate="G$1" pin="TP"/>
+<wire x1="523.24" y1="584.2" x2="518.16" y2="584.2" width="0.1524" layer="91"/>
+<wire x1="523.24" y1="576.58" x2="523.24" y2="584.2" width="0.1524" layer="91"/>
+<pinref part="TP14" gate="G$1" pin="TP"/>
+<junction x="518.16" y="584.2"/>
+<wire x1="528.32" y1="576.58" x2="528.32" y2="584.2" width="0.1524" layer="91"/>
+<pinref part="TP15" gate="G$1" pin="TP"/>
+<wire x1="523.24" y1="584.2" x2="528.32" y2="584.2" width="0.1524" layer="91"/>
+<junction x="523.24" y="584.2"/>
+<wire x1="533.4" y1="576.58" x2="533.4" y2="584.2" width="0.1524" layer="91"/>
+<pinref part="TP16" gate="G$1" pin="TP"/>
+<wire x1="528.32" y1="584.2" x2="533.4" y2="584.2" width="0.1524" layer="91"/>
+<junction x="528.32" y="584.2"/>
+<wire x1="538.48" y1="576.58" x2="538.48" y2="584.2" width="0.1524" layer="91"/>
+<pinref part="TP17" gate="G$1" pin="TP"/>
+<wire x1="533.4" y1="584.2" x2="538.48" y2="584.2" width="0.1524" layer="91"/>
+<junction x="533.4" y="584.2"/>
+<pinref part="TP21" gate="G$1" pin="TP"/>
+<wire x1="538.48" y1="584.2" x2="543.56" y2="584.2" width="0.1524" layer="91"/>
+<wire x1="543.56" y1="584.2" x2="543.56" y2="576.58" width="0.1524" layer="91"/>
+<junction x="538.48" y="584.2"/>
 </segment>
 <segment>
 <pinref part="GND14" gate="1" pin="GND"/>
@@ -7582,7 +7649,7 @@ XX mil FR4 core
 </segment>
 <segment>
 <pinref part="PWR12" gate="PWR1" pin="+3V3"/>
-<wire x1="505.46" y1="576.58" x2="505.46" y2="586.74" width="0.1524" layer="91"/>
+<wire x1="558.8" y1="576.58" x2="558.8" y2="586.74" width="0.1524" layer="91"/>
 <pinref part="TP11" gate="G$1" pin="TP"/>
 </segment>
 <segment>
@@ -7913,6 +7980,11 @@ XX mil FR4 core
 <pinref part="R1" gate="R" pin="2"/>
 <wire x1="17.78" y1="607.06" x2="17.78" y2="609.6" width="0.1524" layer="91"/>
 <pinref part="PWR16" gate="PWR1" pin="+3V3"/>
+</segment>
+<segment>
+<pinref part="PWR37" gate="PWR1" pin="+3V3"/>
+<wire x1="553.72" y1="576.58" x2="553.72" y2="586.74" width="0.1524" layer="91"/>
+<pinref part="TP22" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="+3V3_ISO" class="0">
@@ -8388,7 +8460,7 @@ XX mil FR4 core
 </segment>
 <segment>
 <pinref part="TP13" gate="G$1" pin="TP"/>
-<wire x1="515.62" y1="576.58" x2="515.62" y2="586.74" width="0.1524" layer="91"/>
+<wire x1="568.96" y1="576.58" x2="568.96" y2="586.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PCLK" class="0">
@@ -8884,13 +8956,13 @@ XX mil FR4 core
 </segment>
 <segment>
 <wire x1="287.02" y1="266.7" x2="287.02" y2="261.62" width="0.1524" layer="91"/>
-<pinref part="L6" gate="C" pin="1"/>
-<wire x1="279.4" y1="261.62" x2="287.02" y2="261.62" width="0.1524" layer="91"/>
+<pinref part="L6" gate="L" pin="1"/>
+<wire x1="284.48" y1="261.62" x2="287.02" y2="261.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="142.24" y1="241.3" x2="142.24" y2="233.68" width="0.1524" layer="91"/>
-<pinref part="L5" gate="C" pin="2"/>
-<wire x1="142.24" y1="233.68" x2="147.32" y2="233.68" width="0.1524" layer="91"/>
+<pinref part="L5" gate="L" pin="2"/>
+<wire x1="142.24" y1="233.68" x2="144.78" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="142.24" y1="266.7" x2="142.24" y2="261.62" width="0.1524" layer="91"/>
@@ -9291,7 +9363,7 @@ XX mil FR4 core
 <net name="VDDPLL" class="0">
 <segment>
 <pinref part="C26" gate="C" pin="2"/>
-<wire x1="271.78" y1="261.62" x2="261.62" y2="261.62" width="0.1524" layer="91"/>
+<wire x1="269.24" y1="261.62" x2="261.62" y2="261.62" width="0.1524" layer="91"/>
 <wire x1="261.62" y1="261.62" x2="261.62" y2="256.54" width="0.1524" layer="91"/>
 <wire x1="261.62" y1="261.62" x2="251.46" y2="261.62" width="0.1524" layer="91"/>
 <pinref part="C23" gate="C" pin="2"/>
@@ -9304,13 +9376,13 @@ XX mil FR4 core
 <junction x="241.3" y="261.62"/>
 <wire x1="241.3" y1="261.62" x2="223.52" y2="261.62" width="0.1524" layer="91"/>
 <wire x1="223.52" y1="261.62" x2="223.52" y2="213.36" width="0.1524" layer="91"/>
-<pinref part="L6" gate="C" pin="2"/>
+<pinref part="L6" gate="L" pin="2"/>
 <pinref part="U9" gate="G$1" pin="VDDPLL"/>
 </segment>
 </net>
 <net name="VDDCML0" class="0">
 <segment>
-<wire x1="154.94" y1="233.68" x2="175.26" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="233.68" x2="175.26" y2="233.68" width="0.1524" layer="91"/>
 <pinref part="C11" gate="C" pin="2"/>
 <wire x1="175.26" y1="228.6" x2="175.26" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="233.68" x2="185.42" y2="233.68" width="0.1524" layer="91"/>
@@ -9324,7 +9396,7 @@ XX mil FR4 core
 <junction x="195.58" y="233.68"/>
 <wire x1="195.58" y1="233.68" x2="213.36" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="233.68" x2="213.36" y2="213.36" width="0.1524" layer="91"/>
-<pinref part="L5" gate="C" pin="1"/>
+<pinref part="L5" gate="L" pin="1"/>
 <pinref part="U9" gate="G$1" pin="VDDCML0"/>
 </segment>
 </net>
@@ -10320,7 +10392,7 @@ XX mil FR4 core
 </segment>
 <segment>
 <pinref part="TP12" gate="G$1" pin="TP"/>
-<wire x1="510.54" y1="576.58" x2="510.54" y2="586.74" width="0.1524" layer="91"/>
+<wire x1="563.88" y1="576.58" x2="563.88" y2="586.74" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U18" gate="G$1" pin="3"/>
