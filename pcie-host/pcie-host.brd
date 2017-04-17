@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -26,7 +26,7 @@
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="19" name="Unrouted" color="14" fill="1" visible="no" active="yes"/>
+<layer number="19" name="Unrouted" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="15" fill="1" visible="yes" active="yes"/>
@@ -36,30 +36,30 @@
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
-<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
-<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
-<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
-<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
-<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
-<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="5" fill="1" visible="no" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="15" fill="1" visible="no" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -73,57 +73,57 @@
 <layer number="97" name="Info" color="7" fill="1" visible="no" active="no"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
 <layer number="99" name="SpiceOrder" color="5" fill="1" visible="no" active="no"/>
-<layer number="100" name="help" color="7" fill="1" visible="no" active="yes"/>
-<layer number="101" name="DOC" color="7" fill="1" visible="no" active="yes"/>
-<layer number="102" name="bot_pads" color="7" fill="1" visible="no" active="yes"/>
-<layer number="103" name="fp3" color="7" fill="1" visible="no" active="yes"/>
-<layer number="104" name="S_DOKU" color="7" fill="1" visible="no" active="yes"/>
-<layer number="105" name="Beschreib" color="9" fill="1" visible="no" active="yes"/>
-<layer number="106" name="BGA-Top" color="4" fill="1" visible="no" active="yes"/>
-<layer number="107" name="BD-Top" color="5" fill="1" visible="no" active="yes"/>
-<layer number="108" name="fp8" color="7" fill="1" visible="no" active="yes"/>
-<layer number="109" name="fp9" color="7" fill="1" visible="no" active="yes"/>
-<layer number="110" name="fp0" color="7" fill="1" visible="no" active="yes"/>
-<layer number="111" name="LPC17xx" color="7" fill="1" visible="no" active="yes"/>
-<layer number="112" name="tSilk" color="7" fill="1" visible="no" active="yes"/>
-<layer number="113" name="IDFDebug" color="4" fill="1" visible="no" active="yes"/>
-<layer number="116" name="Patch_BOT" color="7" fill="1" visible="no" active="yes"/>
+<layer number="100" name="help" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="101" name="DOC" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="102" name="bot_pads" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="103" name="fp3" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="104" name="S_DOKU" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="105" name="Beschreib" color="9" fill="1" visible="yes" active="yes"/>
+<layer number="106" name="BGA-Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="107" name="BD-Top" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="108" name="fp8" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="109" name="fp9" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="110" name="fp0" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="111" name="LPC17xx" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="112" name="tSilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="113" name="IDFDebug" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="116" name="Patch_BOT" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="no"/>
-<layer number="121" name="_tsilk" color="7" fill="1" visible="no" active="yes"/>
-<layer number="122" name="_bsilk" color="7" fill="1" visible="no" active="yes"/>
-<layer number="123" name="tTestmark" color="7" fill="1" visible="no" active="yes"/>
-<layer number="124" name="bTestmark" color="7" fill="1" visible="no" active="yes"/>
-<layer number="125" name="_tNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="126" name="_bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="127" name="_tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="128" name="_bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="131" name="tAdjust" color="7" fill="1" visible="no" active="yes"/>
-<layer number="132" name="bAdjust" color="7" fill="1" visible="no" active="yes"/>
-<layer number="144" name="Drill_legend" color="7" fill="1" visible="no" active="yes"/>
-<layer number="150" name="Notes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="151" name="HeatSink" color="7" fill="1" visible="no" active="yes"/>
-<layer number="152" name="_bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="121" name="_tsilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="122" name="_bsilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="123" name="tTestmark" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="124" name="bTestmark" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="125" name="_tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="126" name="_bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="127" name="_tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="128" name="_bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="144" name="Drill_legend" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="150" name="Notes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="151" name="HeatSink" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="152" name="_bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="153" name="FabDoc1" color="6" fill="1" visible="no" active="no"/>
 <layer number="154" name="FabDoc2" color="2" fill="1" visible="no" active="no"/>
 <layer number="155" name="FabDoc3" color="7" fill="15" visible="no" active="no"/>
-<layer number="199" name="Contour" color="7" fill="1" visible="no" active="yes"/>
-<layer number="200" name="200bmp" color="1" fill="10" visible="no" active="yes"/>
-<layer number="201" name="201bmp" color="2" fill="10" visible="no" active="yes"/>
-<layer number="202" name="202bmp" color="3" fill="10" visible="no" active="yes"/>
-<layer number="203" name="203bmp" color="4" fill="10" visible="no" active="yes"/>
-<layer number="204" name="204bmp" color="5" fill="10" visible="no" active="yes"/>
-<layer number="205" name="205bmp" color="6" fill="10" visible="no" active="yes"/>
-<layer number="206" name="206bmp" color="7" fill="10" visible="no" active="yes"/>
-<layer number="207" name="207bmp" color="8" fill="10" visible="no" active="yes"/>
-<layer number="208" name="208bmp" color="9" fill="10" visible="no" active="yes"/>
-<layer number="209" name="209bmp" color="10" fill="10" visible="no" active="yes"/>
-<layer number="210" name="210bmp" color="11" fill="10" visible="no" active="yes"/>
-<layer number="211" name="211bmp" color="12" fill="10" visible="no" active="yes"/>
-<layer number="212" name="212bmp" color="13" fill="10" visible="no" active="yes"/>
-<layer number="213" name="213bmp" color="14" fill="10" visible="no" active="yes"/>
-<layer number="214" name="214bmp" color="15" fill="10" visible="no" active="yes"/>
-<layer number="215" name="215bmp" color="16" fill="10" visible="no" active="yes"/>
-<layer number="216" name="216bmp" color="17" fill="10" visible="no" active="yes"/>
+<layer number="199" name="Contour" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="200" name="200bmp" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="201" name="201bmp" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="202" name="202bmp" color="3" fill="10" visible="yes" active="yes"/>
+<layer number="203" name="203bmp" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="204" name="204bmp" color="5" fill="10" visible="yes" active="yes"/>
+<layer number="205" name="205bmp" color="6" fill="10" visible="yes" active="yes"/>
+<layer number="206" name="206bmp" color="7" fill="10" visible="yes" active="yes"/>
+<layer number="207" name="207bmp" color="8" fill="10" visible="yes" active="yes"/>
+<layer number="208" name="208bmp" color="9" fill="10" visible="yes" active="yes"/>
+<layer number="209" name="209bmp" color="10" fill="10" visible="yes" active="yes"/>
+<layer number="210" name="210bmp" color="11" fill="10" visible="yes" active="yes"/>
+<layer number="211" name="211bmp" color="12" fill="10" visible="yes" active="yes"/>
+<layer number="212" name="212bmp" color="13" fill="10" visible="yes" active="yes"/>
+<layer number="213" name="213bmp" color="14" fill="10" visible="yes" active="yes"/>
+<layer number="214" name="214bmp" color="15" fill="10" visible="yes" active="yes"/>
+<layer number="215" name="215bmp" color="16" fill="10" visible="yes" active="yes"/>
+<layer number="216" name="216bmp" color="17" fill="10" visible="yes" active="yes"/>
 <layer number="217" name="217bmp" color="18" fill="1" visible="no" active="no"/>
 <layer number="218" name="218bmp" color="19" fill="1" visible="no" active="no"/>
 <layer number="219" name="219bmp" color="20" fill="1" visible="no" active="no"/>
@@ -132,11 +132,11 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
-<layer number="248" name="Housing" color="7" fill="1" visible="no" active="yes"/>
-<layer number="249" name="Edge" color="7" fill="1" visible="no" active="yes"/>
+<layer number="248" name="Housing" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="249" name="Edge" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
 <layer number="251" name="SMDround" color="12" fill="11" visible="no" active="no"/>
-<layer number="254" name="OrgLBR" color="7" fill="1" visible="no" active="yes"/>
+<layer number="254" name="OrgLBR" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
 <plain>
@@ -152,7 +152,7 @@
 <wire x1="21" y1="72.875" x2="20.625" y2="73.125" width="0.254" layer="21"/>
 <wire x1="20.625" y1="73.125" x2="11.375" y2="73.125" width="0.254" layer="21"/>
 <wire x1="11.375" y1="73.125" x2="10.5" y2="72.25" width="0.254" layer="21"/>
-<wire x1="96.5" y1="10.875" x2="100.5" y2="12.125" width="0.254" layer="21"/>
+<wire x1="96.5" y1="10.75" x2="100.375" y2="12" width="0.254" layer="21"/>
 <text x="57.375" y="97" size="1.4224" layer="21" font="vector" ratio="19" rot="R90" align="center-right">GND</text>
 <text x="44" y="21.25" size="1.4224" layer="21" font="vector" ratio="19" rot="R180" align="center-left">GND(ISO)</text>
 <text x="44" y="26.375" size="1.4224" layer="21" font="vector" ratio="19" rot="R180" align="center-left">+1.8V(ISO)</text>
@@ -454,7 +454,7 @@ THRESHOLDS</text>
 <wire x1="0" y1="106.6546" x2="0" y2="0" width="0" layer="20"/>
 <hole x="7.493" y="4.8514" drill="3.175"/>
 <hole x="7.493" y="90.2462" drill="3.175"/>
-<polygon width="0" layer="42">
+<polygon width="0.127" layer="42">
 <vertex x="45.0088" y="9.2456"/>
 <vertex x="0" y="9.2456"/>
 <vertex x="0" y="0"/>
@@ -464,7 +464,7 @@ THRESHOLDS</text>
 <vertex x="32.4358" y="0"/>
 <vertex x="45.0088" y="0"/>
 </polygon>
-<polygon width="0" layer="41">
+<polygon width="0.127" layer="41">
 <vertex x="0" y="85.1916"/>
 <vertex x="13.97" y="85.1916"/>
 <vertex x="13.97" y="105.664"/>
@@ -484,7 +484,7 @@ THRESHOLDS</text>
 <vertex x="167.64" y="106.6546"/>
 <vertex x="0" y="106.6546"/>
 </polygon>
-<polygon width="0" layer="41">
+<polygon width="0.127" layer="41">
 <vertex x="45.0088" y="9.2456"/>
 <vertex x="0" y="9.2456"/>
 <vertex x="0" y="0"/>
@@ -494,7 +494,7 @@ THRESHOLDS</text>
 <vertex x="32.4358" y="0"/>
 <vertex x="45.0088" y="0"/>
 </polygon>
-<polygon width="0" layer="42">
+<polygon width="0.127" layer="42">
 <vertex x="0" y="85.1916"/>
 <vertex x="13.97" y="85.1916"/>
 <vertex x="13.97" y="105.664"/>
@@ -508,7 +508,7 @@ THRESHOLDS</text>
 <vertex x="167.64" y="106.6546"/>
 <vertex x="0" y="106.6546"/>
 </polygon>
-<polygon width="0" layer="43">
+<polygon width="0.127" layer="43">
 <vertex x="0" y="85.1916"/>
 <vertex x="13.97" y="85.1916"/>
 <vertex x="13.97" y="105.664"/>
@@ -522,7 +522,7 @@ THRESHOLDS</text>
 <vertex x="167.64" y="106.6546"/>
 <vertex x="0" y="106.6546"/>
 </polygon>
-<polygon width="0" layer="43">
+<polygon width="0.127" layer="43">
 <vertex x="45.0088" y="9.2456"/>
 <vertex x="0" y="9.2456"/>
 <vertex x="0" y="0"/>
@@ -532,19 +532,19 @@ THRESHOLDS</text>
 <vertex x="32.4358" y="0"/>
 <vertex x="45.0088" y="0"/>
 </polygon>
-<polygon width="0" layer="43">
+<polygon width="0.127" layer="43">
 <vertex x="0" y="86.36"/>
 <vertex x="5.08" y="86.36"/>
 <vertex x="5.08" y="8.89"/>
 <vertex x="0" y="8.89"/>
 </polygon>
-<polygon width="0" layer="41">
+<polygon width="0.127" layer="41">
 <vertex x="0" y="87.63"/>
 <vertex x="5.08" y="86.36"/>
 <vertex x="5.08" y="8.89"/>
 <vertex x="0" y="8.89"/>
 </polygon>
-<polygon width="0" layer="42">
+<polygon width="0.127" layer="42">
 <vertex x="0" y="86.36"/>
 <vertex x="5.08" y="86.36"/>
 <vertex x="5.08" y="8.89"/>
@@ -1401,7 +1401,7 @@ http://www.bccomponents.com/</description>
 <clearance class="1" value="0.127"/>
 </class>
 </classes>
-<designrules name="ohs-park-4-layer">
+<designrules name="ohs-park-4-layer *">
 <description language="de">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
 &lt;p&gt;
 Die Standard-Design-Rules sind so gewählt, dass sie für 
@@ -1430,7 +1430,7 @@ Please make sure your boards conform to these design rules.</description>
 <param name="mdDrill" value="5mil"/>
 <param name="mdSmdStop" value="0mil"/>
 <param name="msWidth" value="5mil"/>
-<param name="msDrill" value="10mil"/>
+<param name="msDrill" value="0.3mm"/>
 <param name="msMicroVia" value="10mil"/>
 <param name="msBlindViaRatio" value="0.5"/>
 <param name="rvPadTop" value="0.25"/>
@@ -1587,8 +1587,8 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="55.75" y="36.75" size="1.016" layer="28" font="vector" ratio="19" rot="MR180" align="center-left"/>
 </element>
 <element name="C51" library="jonnew" package="0603" value="0.1uF" x="66.25" y="37.5" smashed="yes" rot="MR0">
-<attribute name="NAME" x="68.125" y="37" size="1.016" layer="26" font="vector" ratio="19" rot="MR180" align="center-left"/>
-<attribute name="VALUE" x="68.125" y="38.125" size="1.016" layer="28" font="vector" ratio="19" rot="MR180" align="center-left"/>
+<attribute name="NAME" x="68.125" y="38.125" size="1.016" layer="26" font="vector" ratio="19" rot="MR180" align="center-left"/>
+<attribute name="VALUE" x="68.125" y="36.875" size="1.016" layer="28" font="vector" ratio="19" rot="MR180" align="center-left"/>
 </element>
 <element name="DI1" library="jonnew" package="SMA_JACK_CONREVSMA002-G" value="SMA002" x="5.198684375" y="76.376796875" smashed="yes">
 <attribute name="NAME" x="2.75" y="71.625" size="1.778" layer="25" font="vector" ratio="19" align="center"/>
@@ -1609,8 +1609,8 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="9.75" y="35.375" size="1.016" layer="25" font="vector" ratio="19" align="center"/>
 <attribute name="VALUE" x="9.75" y="30.625" size="1.016" layer="27" font="vector" ratio="19" align="center"/>
 </element>
-<element name="TP2" library="jonnew" package="TESTPOINT_0.035IN" value="+1.8V ISO" x="80.553684375" y="16.2268" smashed="yes" rot="R270">
-<attribute name="VALUE" x="77" y="14.625" size="1.016" layer="27" font="vector" ratio="19" align="center-left"/>
+<element name="TP2" library="jonnew" package="TESTPOINT_0.035IN" value="+1.8V(ISO)" x="80.553684375" y="16.2268" smashed="yes" rot="R270">
+<attribute name="VALUE" x="79.25" y="15.25" size="1.4224" layer="27" font="vector" ratio="19" rot="R335" align="center-left"/>
 </element>
 <element name="TP3" library="jonnew" package="TESTPOINT_0.035IN" value="+3.3V(ISO)" x="109" y="36.5" smashed="yes" rot="R270">
 <attribute name="VALUE" x="110.054" y="35.75535" size="1.4224" layer="27" font="vector" ratio="19"/>
@@ -1809,8 +1809,8 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="134.5" y="49" size="1.016" layer="27" font="vector" ratio="19"/>
 </element>
 <element name="C46" library="jonnew" package="153CLV-0807" value="47uF" x="149.95631875" y="32.9532" smashed="yes">
-<attribute name="NAME" x="155.5" y="31.125" size="1.016" layer="25" font="vector" ratio="19" rot="R90"/>
-<attribute name="VALUE" x="156.875" y="31.125" size="1.016" layer="27" font="vector" ratio="19" rot="R90"/>
+<attribute name="NAME" x="156.375" y="31.5" size="1.016" layer="25" font="vector" ratio="19" rot="R90"/>
+<attribute name="VALUE" x="157.625" y="31" size="1.016" layer="27" font="vector" ratio="19" rot="R90"/>
 </element>
 <element name="PCIE-PWR" library="jonnew" package="PCIE-POWER-6PIN" value="0455580003" x="153.348684375" y="44.9868" smashed="yes" rot="R270"/>
 <element name="U13" library="jonnew" package="SOIC_WIDE_16" value="ISO7240M" x="57.81575" y="45.0792125" smashed="yes">
@@ -1938,8 +1938,8 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="109.382315625" y="42.4382" size="1.016" layer="27" font="vector" ratio="18" rot="SR0"/>
 </element>
 <element name="C56" library="jonnew" package="0603" value="0.1uF" x="106.135" y="47.551" smashed="yes" rot="MR180">
-<attribute name="NAME" x="108" y="48.125" size="1.016" layer="26" font="vector" ratio="19" rot="MR0" align="center-right"/>
-<attribute name="VALUE" x="108" y="46.875" size="1.016" layer="28" font="vector" ratio="19" rot="MR180" align="center-left"/>
+<attribute name="NAME" x="108.25" y="48.125" size="1.016" layer="26" font="vector" ratio="19" rot="MR0" align="center-right"/>
+<attribute name="VALUE" x="108.25" y="46.875" size="1.016" layer="28" font="vector" ratio="19" rot="MR180" align="center-left"/>
 </element>
 <element name="R71" library="jonnew" package="0603" value="1k" x="105.531" y="49.216" smashed="yes" rot="R180">
 <attribute name="MN" value="Panasonic" x="105.531" y="49.216" size="1.778" layer="27" rot="R180" display="off"/>
@@ -1970,8 +1970,8 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="103.197" y="36.431" size="1.016" layer="27" font="vector" ratio="19" align="center-left"/>
 </element>
 <element name="C49" library="jonnew" package="0603" value="0.1uF" x="106.176315625" y="38.1368" smashed="yes" rot="MR180">
-<attribute name="NAME" x="104.25" y="38.625" size="1.016" layer="26" font="vector" ratio="19" rot="MR180" align="center-right"/>
-<attribute name="VALUE" x="104.25" y="37.5" size="1.016" layer="28" font="vector" ratio="19" rot="MR0" align="center-left"/>
+<attribute name="NAME" x="104" y="38.75" size="1.016" layer="26" font="vector" ratio="19" rot="MR180" align="center-right"/>
+<attribute name="VALUE" x="104" y="37.5" size="1.016" layer="28" font="vector" ratio="19" rot="MR0" align="center-left"/>
 </element>
 <element name="R9" library="RHD2000_eval_board" package="0603" value="820" x="17.2982" y="86.2636875" smashed="yes" rot="R270">
 <attribute name="NAME" x="17.25" y="88.25" size="1.016" layer="25" font="vector" ratio="19" rot="R270" align="center-right"/>
@@ -2028,7 +2028,7 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="58.25" y="27.625" size="1.016" layer="26" font="vector" ratio="19" rot="MR0"/>
 <attribute name="VALUE" x="55.125" y="27.75" size="1.016" layer="28" font="vector" ratio="19" rot="MR0"/>
 </element>
-<element name="C26" library="jonnew" package="0402" value="0.01uF" x="71.57368125" y="20.1232" smashed="yes" rot="MR270">
+<element name="C26" library="jonnew" package="0402" value="10nF" x="71.57368125" y="20.1232" smashed="yes" rot="MR270">
 <attribute name="NAME" x="87.25" y="20.875" size="1.016" layer="26" font="vector" ratio="19" rot="MR270"/>
 <attribute name="VALUE" x="87.25" y="17.75" size="1.016" layer="28" font="vector" ratio="19" rot="MR270"/>
 </element>
@@ -2040,7 +2040,7 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="76.524" y="13.085" size="1.016" layer="26" font="vector" ratio="19" rot="MR90"/>
 <attribute name="VALUE" x="75.21" y="13.085" size="1.016" layer="28" font="vector" ratio="19" rot="MR90"/>
 </element>
-<element name="C11" library="jonnew" package="0402" value="0.01uF" x="68.625" y="20.125" smashed="yes" rot="MR270">
+<element name="C11" library="jonnew" package="0402" value="10nF" x="68.625" y="20.125" smashed="yes" rot="MR270">
 <attribute name="NAME" x="84.25" y="20.875" size="1.016" layer="26" font="vector" ratio="19" rot="MR270"/>
 <attribute name="VALUE" x="84.25" y="17.75" size="1.016" layer="28" font="vector" ratio="19" rot="MR270"/>
 </element>
@@ -2333,8 +2333,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="L6" library="jonnew" package="0603" value="BLM18KG601SN1D" x="71.125" y="16.25" smashed="yes" rot="MR90">
 <attribute name="NAME" x="71.772" y="13.522" size="1.016" layer="26" font="vector" ratio="19" rot="MR180" align="center-right"/>
 </element>
-<element name="TP1" library="jonnew" package="TESTPOINT_0.035IN" value="GND" x="104.99168125" y="11.0938" smashed="yes" rot="R180">
-<attribute name="VALUE" x="103.25" y="8.625" size="1.4224" layer="27" font="vector" ratio="19"/>
+<element name="TP1" library="jonnew" package="TESTPOINT_0.035IN" value="GND(ISO)" x="104.99168125" y="11.0938" smashed="yes" rot="R180">
+<attribute name="VALUE" x="100.375" y="8.5" size="1.4224" layer="27" font="vector" ratio="19"/>
 </element>
 <element name="TP5" library="jonnew" package="TP06R" value="PASS" x="71.72868125" y="18.4618" smashed="yes">
 <attribute name="TP_SIGNAL_NAME" value="" x="71.72868125" y="18.4618" size="1.778" layer="27" display="off"/>
@@ -2371,8 +2371,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="TP11" library="jonnew" package="TESTPOINT_0.035IN" value="+3.3V" x="132" y="58" smashed="yes">
 <attribute name="VALUE" x="133" y="58" size="1.4224" layer="27" font="vector" ratio="18" align="center-left"/>
 </element>
-<element name="TP12" library="jonnew" package="TESTPOINT_0.035IN" value="+12V(FPGA)" x="72.875" y="101" smashed="yes">
-<attribute name="VALUE" x="74" y="101" size="1.4224" layer="27" font="vector" ratio="18" align="center-left"/>
+<element name="TP12" library="jonnew" package="TESTPOINT_0.035IN" value="+12V(FPGA)" x="68.375" y="101" smashed="yes">
+<attribute name="VALUE" x="68.375" y="99.625" size="1.4224" layer="27" font="vector" ratio="18" rot="R270" align="center-left"/>
 </element>
 <element name="TP13" library="jonnew" package="TESTPOINT_0.035IN" value="+12V(ATX)" x="132" y="54" smashed="yes">
 <attribute name="VALUE" x="133" y="54" size="1.4224" layer="27" font="vector" ratio="18" align="center-left"/>
@@ -2445,8 +2445,8 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="148.125" y="20.375" size="1.016" layer="27" font="vector" ratio="19"/>
 </element>
 <element name="C42" library="jonnew" package="1206" value="10uF" x="103.35" y="13.375" smashed="yes" rot="R180">
-<attribute name="NAME" x="96.375" y="12.875" size="1.016" layer="25" font="vector" ratio="19" rot="R180"/>
-<attribute name="VALUE" x="96.375" y="11.625" size="1.016" layer="27" font="vector" ratio="19" rot="R180"/>
+<attribute name="NAME" x="96.25" y="12.375" size="1.016" layer="25" font="vector" ratio="19" rot="R180"/>
+<attribute name="VALUE" x="96.25" y="11.125" size="1.016" layer="27" font="vector" ratio="19" rot="R180"/>
 </element>
 <element name="C39" library="jonnew" package="0603" value="0.1uF" x="99" y="24.4" smashed="yes" rot="R270">
 <attribute name="NAME" x="99" y="26.25" size="1.016" layer="25" font="vector" ratio="19" rot="R270" align="center-right"/>
@@ -2559,6 +2559,33 @@ Please make sure your boards conform to these design rules.</description>
 </element>
 <element name="TP8" library="jonnew" package="TESTPOINT_0.035IN" value="GND" x="37.625" y="72.5" smashed="yes">
 <attribute name="VALUE" x="38.641" y="72.5174" size="1.4224" layer="27" font="vector" ratio="18" align="center-left"/>
+</element>
+<element name="TP14" library="jonnew" package="TESTPOINT_0.035IN" value="GND" x="64.5" y="101" smashed="yes">
+<attribute name="VALUE" x="64.5" y="99.75" size="1.4224" layer="27" font="vector" ratio="18" rot="R270" align="center-left"/>
+</element>
+<element name="TP15" library="jonnew" package="TESTPOINT_0.035IN" value="GND" x="161.875" y="10.625" smashed="yes">
+<attribute name="VALUE" x="161.875" y="11.75" size="1.4224" layer="27" font="vector" ratio="18" rot="R90" align="center-left"/>
+</element>
+<element name="TP16" library="jonnew" package="TESTPOINT_0.035IN" value="GND" x="161.75" y="102.5" smashed="yes">
+<attribute name="VALUE" x="161.75" y="101.375" size="1.4224" layer="27" font="vector" ratio="18" rot="R270" align="center-left"/>
+</element>
+<element name="TP17" library="jonnew" package="TESTPOINT_0.035IN" value="GND" x="15.125" y="104.625" smashed="yes">
+<attribute name="VALUE" x="15.125" y="103.625" size="1.4224" layer="27" font="vector" ratio="18" rot="R270" align="center-left"/>
+</element>
+<element name="TP18" library="jonnew" package="TESTPOINT_0.035IN" value="GND(ISO)" x="6.375" y="10.5" smashed="yes">
+<attribute name="VALUE" x="5.375" y="8.625" size="1.4224" layer="27" font="vector" ratio="18" align="center-left"/>
+</element>
+<element name="TP19" library="jonnew" package="TESTPOINT_0.035IN" value="GND(ISO)" x="39.125" y="33.25" smashed="yes">
+<attribute name="VALUE" x="40.25" y="33.25" size="1.4224" layer="27" font="vector" ratio="18" align="center-left"/>
+</element>
+<element name="TP20" library="jonnew" package="TESTPOINT_0.035IN" value="GND(ISO)" x="76.125" y="16.125" smashed="yes">
+<attribute name="VALUE" x="74.7674" y="14.859" size="1.4224" layer="27" font="vector" ratio="18" rot="R335" align="center-left"/>
+</element>
+<element name="TP21" library="jonnew" package="TESTPOINT_0.035IN" value="GND" x="27" y="56.625" smashed="yes">
+<attribute name="VALUE" x="28" y="56.625" size="1.4224" layer="27" font="vector" ratio="18" align="center-left"/>
+</element>
+<element name="TP22" library="jonnew" package="TESTPOINT_0.035IN" value="+3.3V" x="72.25" y="101" smashed="yes" rot="R270">
+<attribute name="VALUE" x="72.25" y="99.875" size="1.4224" layer="27" font="vector" ratio="18" rot="R270" align="center-left"/>
 </element>
 </elements>
 <signals>
@@ -3199,11 +3226,11 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="TP8" pad="1"/>
 <via x="135.369" y="94.383" extent="1-16" drill="0.3302"/>
 <wire x1="135.589" y1="93.853" x2="135.369" y2="94.383" width="0.254" layer="1"/>
-<via x="145.191" y="103.102" extent="1-16" drill="0.3302"/>
-<via x="147.816" y="103.102" extent="1-16" drill="0.3302"/>
+<via x="145.191" y="102.977" extent="1-16" drill="0.3302"/>
+<via x="147.941" y="102.977" extent="1-16" drill="0.3302"/>
 <via x="151.441" y="103.102" extent="1-16" drill="0.3302"/>
-<via x="154.941" y="103.227" extent="1-16" drill="0.3302"/>
-<via x="139.941" y="103.102" extent="1-16" drill="0.3302"/>
+<via x="154.941" y="103.102" extent="1-16" drill="0.3302"/>
+<via x="139.941" y="102.977" extent="1-16" drill="0.3302"/>
 <via x="135.191" y="103.227" extent="1-16" drill="0.3302"/>
 <via x="131.441" y="103.227" extent="1-16" drill="0.3302"/>
 <via x="128.941" y="103.227" extent="1-16" drill="0.3302"/>
@@ -3214,6 +3241,11 @@ Please make sure your boards conform to these design rules.</description>
 <via x="157.863" y="99.514" extent="1-16" drill="0.3302"/>
 <via x="157.863" y="102.764" extent="1-16" drill="0.3302"/>
 <contactref element="C44" pad="-"/>
+<contactref element="TP14" pad="1"/>
+<contactref element="TP15" pad="1"/>
+<contactref element="TP16" pad="1"/>
+<contactref element="TP17" pad="1"/>
+<contactref element="TP21" pad="1"/>
 </signal>
 <signal name="GND_ISO">
 <contactref element="C51" pad="1"/>
@@ -3658,6 +3690,9 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="70" y1="19.375" x2="70.125" y2="19.25" width="0.152" layer="1"/>
 <wire x1="70.125" y1="19.25" x2="70.125" y2="16.625" width="0.152" layer="1"/>
 <wire x1="70" y1="20.475" x2="70" y2="19.375" width="0.152" layer="1"/>
+<contactref element="TP18" pad="1"/>
+<contactref element="TP19" pad="1"/>
+<contactref element="TP20" pad="1"/>
 </signal>
 <signal name="+3V3">
 <contactref element="C58" pad="2"/>
@@ -3837,9 +3872,9 @@ Please make sure your boards conform to these design rules.</description>
 <via x="68.75" y="59.375" extent="1-16" drill="0.3"/>
 <contactref element="C87" pad="+"/>
 <polygon width="0.152" layer="16" thermals="no">
-<vertex x="66.875" y="59.625"/>
+<vertex x="66.875" y="59.75"/>
 <vertex x="66.875" y="58.5"/>
-<vertex x="85.375" y="58.625"/>
+<vertex x="85.375" y="58.5"/>
 <vertex x="85.375" y="59.75"/>
 </polygon>
 <contactref element="C93" pad="2"/>
@@ -3962,6 +3997,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="83.315753125" y1="59.315753125" x2="83.315753125" y2="58.0292125" width="0.254" layer="1"/>
 <wire x1="68.75" y1="59.375" x2="68.815753125" y2="59.309246875" width="0.254" layer="1"/>
 <wire x1="68.815753125" y1="59.309246875" x2="68.815753125" y2="58.0292125" width="0.254" layer="1"/>
+<contactref element="TP22" pad="1"/>
 </signal>
 <signal name="+3V3_ISO">
 <contactref element="C51" pad="2"/>
@@ -4695,10 +4731,11 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="77.25" y1="39.875" x2="76.75" y2="40.375" width="0.152" layer="1" curve="90"/>
 <wire x1="76.75" y1="40.375" x2="75.655328125" y2="40.375" width="0.152" layer="1"/>
 <wire x1="75.655328125" y1="40.375" x2="75.125" y2="39.844671875" width="0.152" layer="1" curve="90"/>
-<wire x1="75.125" y1="37.875" x2="72.47075" y2="37.875" width="0.152" layer="1"/>
+<wire x1="75.125" y1="39.844671875" x2="75.125" y2="38.58210625" width="0.152" layer="1"/>
+<wire x1="75.125" y1="38.58210625" x2="74.41789375" y2="37.875" width="0.152" layer="1" curve="-90"/>
+<wire x1="74.41789375" y1="37.875" x2="72.47075" y2="37.875" width="0.152" layer="1"/>
 <wire x1="72.47075" y1="37.875" x2="71.97075" y2="38.375" width="0.152" layer="1" curve="-90"/>
 <wire x1="71.97075" y1="38.375" x2="71.97075" y2="39.9992125" width="0.152" layer="1"/>
-<wire x1="75.125" y1="39.844671875" x2="75.125" y2="37.875" width="0.152" layer="1"/>
 </signal>
 <signal name="D6_ISO">
 <contactref element="R52" pad="1"/>
@@ -4709,15 +4746,19 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="72.353553125" y1="34.853553125" x2="72.70710625" y2="35" width="0.152" layer="1" curve="-45"/>
 <wire x1="72.70710625" y1="35" x2="73.782496875" y2="35" width="0.152" layer="1"/>
 <wire x1="73.782496875" y1="35" x2="74.13605" y2="35.146446875" width="0.152" layer="1" curve="45"/>
-<wire x1="74.13605" y1="35.146446875" x2="76.603553125" y2="37.61395" width="0.152" layer="1"/>
-<wire x1="75.625" y1="37.375" x2="71.146446875" y2="37.375" width="0.152" layer="1"/>
+<wire x1="74.13605" y1="35.146446875" x2="76.423465625" y2="37.4338625" width="0.152" layer="1"/>
+<wire x1="76.423465625" y1="37.4338625" x2="76.603553125" y2="37.86863125" width="0.152" layer="1" curve="45.000291"/>
+<wire x1="76.603553125" y1="37.86863125" x2="76.603553125" y2="39.441990625" width="0.152" layer="1"/>
+<wire x1="76.603553125" y1="39.441990625" x2="76.17054375" y2="39.875" width="0.152" layer="1" curve="90"/>
+<wire x1="76.17054375" y1="39.875" x2="76.07569375" y2="39.875" width="0.152" layer="1"/>
+<wire x1="76.07569375" y1="39.875" x2="75.625" y2="39.42430625" width="0.152" layer="1" curve="90"/>
+<wire x1="75.625" y1="39.42430625" x2="75.625" y2="37.905328125" width="0.152" layer="1"/>
+<wire x1="75.625" y1="37.905328125" x2="75.094671875" y2="37.375" width="0.152" layer="1" curve="-90"/>
+<wire x1="75.094671875" y1="37.375" x2="71.146446875" y2="37.375" width="0.152" layer="1"/>
 <wire x1="71.146446875" y1="37.375" x2="70.896446875" y2="37.478553125" width="0.152" layer="1" curve="-45"/>
 <wire x1="70.896446875" y1="37.478553125" x2="70.75" y2="37.83210625" width="0.152" layer="1" curve="-45"/>
 <wire x1="70.75" y1="37.83210625" x2="70.75" y2="39.9499625" width="0.152" layer="1"/>
 <wire x1="70.75" y1="39.9499625" x2="70.70075" y2="39.9992125" width="0.152" layer="1"/>
-<wire x1="76.603553125" y1="37.61395" x2="76.603553125" y2="39.875" width="0.152" layer="1"/>
-<wire x1="76.603553125" y1="39.875" x2="75.625" y2="39.875" width="0.152" layer="1"/>
-<wire x1="75.625" y1="39.875" x2="75.625" y2="37.375" width="0.152" layer="1"/>
 </signal>
 <signal name="D5_ISO">
 <contactref element="R44" pad="1"/>
@@ -5100,7 +5141,7 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="62.0503875" y="22.375"/>
 </polygon>
 <wire x1="65.85" y1="23.625" x2="64.125" y2="23.625" width="0.254" layer="1"/>
-<via x="63.875" y="23.375" extent="1-16" drill="0.254"/>
+<via x="63.875" y="23.375" extent="1-16" drill="0.3"/>
 <wire x1="64.125" y1="23.625" x2="63.875" y2="23.375" width="0.254" layer="1"/>
 </signal>
 <signal name="N$4">
@@ -6172,13 +6213,13 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="108.9" y1="103.905" x2="108.03" y2="104.775" width="0.6096" layer="16"/>
 <wire x1="108.03" y1="104.775" x2="107.014" y2="104.775" width="0.6096" layer="16"/>
 <via x="107.014" y="104.775" extent="1-16" drill="0.6"/>
-<wire x1="107.014" y1="104.775" x2="72.875" y2="104.775" width="0.6096" layer="1"/>
-<wire x1="72.875" y1="104.775" x2="52.303" y2="104.775" width="0.6096" layer="1"/>
+<wire x1="107.014" y1="104.775" x2="68.375" y2="104.775" width="0.6096" layer="1"/>
+<wire x1="68.375" y1="104.775" x2="52.303" y2="104.775" width="0.6096" layer="1"/>
 <wire x1="52.303" y1="104.775" x2="29.4093125" y2="104.775" width="0.6096" layer="1"/>
 <wire x1="29.4093125" y1="104.775" x2="24.875" y2="100.2406875" width="0.6096" layer="1"/>
 <wire x1="24.875" y1="100.2406875" x2="24.875" y2="86.9886" width="0.6096" layer="1"/>
 <wire x1="52.303" y1="100.87" x2="52.303" y2="104.775" width="0.6096" layer="1"/>
-<wire x1="72.875" y1="101" x2="72.875" y2="104.775" width="0.254" layer="1"/>
+<wire x1="68.375" y1="101" x2="68.375" y2="104.775" width="0.254" layer="1"/>
 </signal>
 <signal name="2V5_REF">
 <contactref element="R67" pad="1"/>
@@ -7469,60 +7510,51 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 </signals>
 <errors>
-<approved hash="3,1,09b9d181d1c909f1"/>
-<approved hash="3,1,f6b22e8a2e8af6b2"/>
-<approved hash="4,1,bb2de466aff701c3"/>
-<approved hash="4,1,98a4b745201911ea"/>
-<approved hash="4,1,2375d3948f617e21"/>
-<approved hash="4,1,b11e93d8797c1f8c"/>
-<approved hash="4,1,cc744ae3a539d752"/>
-<approved hash="4,16,db29d338735af2a1"/>
-<approved hash="4,16,885ec31991d04bdc"/>
-<approved hash="19,1,1518c3d0c2481480"/>
-<approved hash="19,1,11dec716c44c1284"/>
 <approved hash="19,1,10b8c670c47012b8"/>
-<approved hash="19,1,ad1a9fd29e49ac81"/>
-<approved hash="19,1,a8ba9a729871aab9"/>
+<approved hash="19,1,11dec716c44c1284"/>
+<approved hash="19,1,1518c3d0c2481480"/>
 <approved hash="19,1,a9dc9b14984daa85"/>
-<approved hash="19,1,09d28b1a88410a89"/>
+<approved hash="19,1,a8ba9a729871aab9"/>
+<approved hash="19,1,ad1a9fd29e49ac81"/>
 <approved hash="19,1,0d148fdc8e450c8d"/>
 <approved hash="19,1,08b48a7c887d0ab5"/>
+<approved hash="19,1,09d28b1a88410a89"/>
 <approved hash="19,1,ae1ed2dd50f3a4f2"/>
-<approved hash="6,1,2296f201eff4345f"/>
-<approved hash="6,1,df3c251c00c0fae0"/>
-<approved hash="6,1,298c274c02900c50"/>
-<approved hash="6,1,3c02f21dfc4c3a27"/>
-<approved hash="6,1,275c265c07800680"/>
-<approved hash="6,1,29fc2b9c0a400820"/>
-<approved hash="6,1,3121e451e2b82604"/>
-<approved hash="6,1,20c423c406140514"/>
-<approved hash="6,1,5bd459547c847e04"/>
-<approved hash="6,1,3b2efbe184d4392f"/>
-<approved hash="6,1,315c2f5c0e801080"/>
-<approved hash="6,1,263c29fc082007e0"/>
-<approved hash="6,1,302e06c104d4326f"/>
-<approved hash="6,1,3abc2cfc0d201b60"/>
-<approved hash="6,1,27dc215c00800600"/>
-<approved hash="6,1,5cdd2d6d99cf1d52"/>
-<approved hash="6,1,5d58a7462dc52b7e"/>
-<approved hash="6,1,5c6e9224249f1c08"/>
-<approved hash="6,1,5e4d1b01ae832b8a"/>
-<approved hash="6,1,a16c2170abd3d48a"/>
-<approved hash="6,16,2296f201eff4345f"/>
-<approved hash="6,16,df3c251c00c0fae0"/>
-<approved hash="6,16,298c274c02900c50"/>
-<approved hash="6,16,3c02f21dfc4c3a27"/>
-<approved hash="6,16,275c265c07800680"/>
-<approved hash="6,16,29fc2b9c0a400820"/>
-<approved hash="6,16,3121e451e2b82604"/>
-<approved hash="6,16,20c423c406140514"/>
-<approved hash="6,16,5bd459547c847e04"/>
-<approved hash="6,16,3b2efbe184d4392f"/>
-<approved hash="6,16,315c2f5c0e801080"/>
-<approved hash="6,16,263c29fc082007e0"/>
-<approved hash="6,16,302e06c104d4326f"/>
-<approved hash="6,16,3abc2cfc0d201b60"/>
-<approved hash="6,16,27dc215c00800600"/>
+<approved hash="6,1,529ac5e4089f1225"/>
+<approved hash="6,1,c3383cb5bb154498"/>
+<approved hash="6,1,34983b05bca5b338"/>
+<approved hash="6,1,fd60900e69000c02"/>
+<approved hash="6,1,07a80014b7b4b008"/>
+<approved hash="6,1,0cb80d34ba94bb18"/>
+<approved hash="6,1,ed657194b32bb1de"/>
+<approved hash="6,1,38743969bec9bfd4"/>
+<approved hash="6,1,455446f9c159c2f4"/>
+<approved hash="6,1,3016a6b85b0bb299"/>
+<approved hash="6,1,16980ef4b954a138"/>
+<approved hash="6,1,00880c34bb94b728"/>
+<approved hash="6,1,7f47eaa9173a8208"/>
+<approved hash="6,1,1a980f14b8b4ad38"/>
+<approved hash="6,1,1a280e54b9f4ad88"/>
+<approved hash="6,1,5694c911ac2fdec7"/>
+<approved hash="6,1,d9b6de055602ae14"/>
+<approved hash="6,1,efc3c9fcac956497"/>
+<approved hash="6,1,6370de81a98714d3"/>
+<approved hash="6,1,a700da0152062c22"/>
+<approved hash="6,16,529ac5e4089f1225"/>
+<approved hash="6,16,c3383cb5bb154498"/>
+<approved hash="6,16,34983b05bca5b338"/>
+<approved hash="6,16,fd60900e69000c02"/>
+<approved hash="6,16,07a80014b7b4b008"/>
+<approved hash="6,16,0cb80d34ba94bb18"/>
+<approved hash="6,16,ed657194b32bb1de"/>
+<approved hash="6,16,38743969bec9bfd4"/>
+<approved hash="6,16,455446f9c159c2f4"/>
+<approved hash="6,16,3016a6b85b0bb299"/>
+<approved hash="6,16,16980ef4b954a138"/>
+<approved hash="6,16,00880c34bb94b728"/>
+<approved hash="6,16,7f47eaa9173a8208"/>
+<approved hash="6,16,1a980f14b8b4ad38"/>
+<approved hash="6,16,1a280e54b9f4ad88"/>
 </errors>
 </board>
 </drawing>
