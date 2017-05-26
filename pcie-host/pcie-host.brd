@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -5463,7 +5463,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="64.5" y1="25.125" x2="59.375" y2="30.25" width="0.152" layer="1"/>
 <wire x1="59.375" y1="30.25" x2="59.375" y2="31.2166" width="0.152" layer="1"/>
 </signal>
-<signal name="GPI1_ISO">
+<signal name="GPI0_ISO">
 <contactref element="U17" pad="P4"/>
 <contactref element="R40" pad="1"/>
 <wire x1="60.5" y1="32.2834" x2="60.5" y2="32.5" width="0.152" layer="1"/>
@@ -5476,17 +5476,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="45" y1="38.6694625" x2="45" y2="39.9299625" width="0.152" layer="1"/>
 <wire x1="44.93075" y1="39.9992125" x2="45" y2="39.9299625" width="0.152" layer="1"/>
 </signal>
-<signal name="GPI0_ISO">
-<contactref element="U17" pad="P3"/>
-<contactref element="R48" pad="1"/>
-<wire x1="59.375" y1="32.2834" x2="59.1584" y2="32.5" width="0.152" layer="1"/>
-<wire x1="59.1584" y1="32.5" x2="49.9483125" y2="32.5" width="0.152" layer="1"/>
-<wire x1="49.9483125" y1="32.5" x2="49.594759375" y2="32.646446875" width="0.152" layer="1" curve="-45"/>
-<wire x1="49.594759375" y1="32.646446875" x2="43.807196875" y2="38.434009375" width="0.152" layer="1"/>
-<wire x1="43.807196875" y1="38.434009375" x2="43.66075" y2="38.7875625" width="0.152" layer="1" curve="-45"/>
-<wire x1="43.66075" y1="39.9992125" x2="43.66075" y2="38.7875625" width="0.152" layer="1"/>
-</signal>
-<signal name="GPO1_ISO">
+<signal name="GPO0_ISO">
 <contactref element="U17" pad="P6"/>
 <contactref element="R39" pad="1"/>
 <wire x1="62.75" y1="32.2834" x2="62.75" y2="32.79289375" width="0.152" layer="1"/>
@@ -6026,7 +6016,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="13.9286875" y1="57.8768" x2="14.9286875" y2="58.8768" width="0.254" layer="1"/>
 <wire x1="14.9286875" y1="58.8768" x2="17.0850875" y2="58.8768" width="0.254" layer="1"/>
 </signal>
-<signal name="GPO0_ISO">
+<signal name="GPO1_ISO">
 <contactref element="U17" pad="P5"/>
 <contactref element="R47" pad="1"/>
 <wire x1="61.625" y1="32.2834" x2="61.625" y2="32.66789375" width="0.152" layer="1"/>
@@ -7507,6 +7497,16 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="120.095" y1="94.488" x2="119.714" y2="94.107" width="0.2286" layer="1"/>
 <wire x1="119.714" y1="94.107" x2="119.714" y2="92.964" width="0.2286" layer="1"/>
 <wire x1="119.714" y1="92.964" x2="120.1712" y2="92.5068" width="0.2286" layer="1"/>
+</signal>
+<signal name="GPI1_ISO">
+<contactref element="R48" pad="1"/>
+<contactref element="U17" pad="P3"/>
+<wire x1="59.1584" y1="32.5" x2="49.9483125" y2="32.5" width="0.152" layer="1"/>
+<wire x1="49.9483125" y1="32.5" x2="49.594759375" y2="32.646446875" width="0.152" layer="1" curve="-45"/>
+<wire x1="49.594759375" y1="32.646446875" x2="43.807196875" y2="38.434009375" width="0.152" layer="1"/>
+<wire x1="43.807196875" y1="38.434009375" x2="43.66075" y2="38.7875625" width="0.152" layer="1" curve="-45"/>
+<wire x1="43.66075" y1="39.9992125" x2="43.66075" y2="38.7875625" width="0.152" layer="1"/>
+<wire x1="59.1584" y1="32.5" x2="59.375" y2="32.2834" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <errors>
