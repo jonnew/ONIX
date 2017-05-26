@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9748,7 +9748,7 @@ XX mil FR4 core
 <pinref part="U9" gate="G$1" pin="GPIO0"/>
 </segment>
 </net>
-<net name="GPI1_ISO" class="0">
+<net name="GPI0_ISO" class="0">
 <segment>
 <pinref part="U17" gate="G$1" pin="VIB"/>
 <wire x1="406.4" y1="33.02" x2="449.58" y2="33.02" width="0.1524" layer="91"/>
@@ -9760,19 +9760,7 @@ XX mil FR4 core
 <wire x1="269.24" y1="144.78" x2="345.44" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="GPI0_ISO" class="0">
-<segment>
-<pinref part="U17" gate="G$1" pin="VIA"/>
-<wire x1="449.58" y1="35.56" x2="406.4" y2="35.56" width="0.1524" layer="91"/>
-<label x="406.4" y="35.56" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
-<pinref part="R48" gate="R" pin="1"/>
-<wire x1="345.44" y1="142.24" x2="279.4" y2="142.24" width="0.1524" layer="91"/>
-<label x="345.44" y="142.24" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="GPO1_ISO" class="0">
+<net name="GPO0_ISO" class="0">
 <segment>
 <wire x1="449.58" y1="27.94" x2="406.4" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="U17" gate="G$1" pin="VOD"/>
@@ -10245,7 +10233,7 @@ XX mil FR4 core
 <pinref part="OUT" gate="2" pin="A"/>
 </segment>
 </net>
-<net name="GPO0_ISO" class="0">
+<net name="GPO1_ISO" class="0">
 <segment>
 <pinref part="U17" gate="G$1" pin="VOC"/>
 <wire x1="449.58" y1="30.48" x2="406.4" y2="30.48" width="0.1524" layer="91"/>
@@ -10633,6 +10621,18 @@ XX mil FR4 core
 <wire x1="523.24" y1="698.5" x2="525.78" y2="698.5" width="0.1524" layer="91"/>
 <label x="523.24" y="698.5" size="1.27" layer="95" rot="MR0" xref="yes"/>
 <pinref part="FMC_LPC" gate="G$1" pin="LA23_P"/>
+</segment>
+</net>
+<net name="GPI1_ISO" class="0">
+<segment>
+<pinref part="R48" gate="R" pin="1"/>
+<wire x1="345.44" y1="142.24" x2="279.4" y2="142.24" width="0.1524" layer="91"/>
+<label x="345.44" y="142.24" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U17" gate="G$1" pin="VIA"/>
+<wire x1="449.58" y1="35.56" x2="406.4" y2="35.56" width="0.1524" layer="91"/>
+<label x="406.4" y="35.56" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
