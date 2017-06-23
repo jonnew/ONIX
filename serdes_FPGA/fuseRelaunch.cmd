@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "C:/X/serdes_FPGA/TB_main_sm_isim_beh.exe" -prj "C:/X/serdes_FPGA/TB_main_sm_beh.prj" "work.TB_main_sm" 

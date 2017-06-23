@@ -1,0 +1,55 @@
+#general UCF file 
+#serdes input 
+NET "dout(0)"   LOC = "F11";
+NET "dout(1)"   LOC = "F12";
+NET "dout(2)"   LOC = "G14";
+NET "dout(3)"   LOC = "G13";
+NET "dout(4)"   LOC = "F14";
+NET "dout(5)"   LOC = "F13";
+NET "dout(6)"   LOC = "E14";
+NET "dout(7)"   LOC = "E13";
+NET "dout(8)"   LOC = "D14";
+NET "dout(9)"   LOC = "D13";
+NET "dout(10)"  LOC = "C13";
+NET "dout(11)"  LOC = "C12";
+NET "pclk"      LOC = "H13";
+NET "vsync_o"   LOC = "J12";
+NET "hsync_o"   LOC = "J11";
+
+#reset signal
+NET "reset"   LOC = "K1";
+
+# clock pin for Atlys rev C board
+NET "clk_in"   LOC = "F1"; 
+NET clk_in TNM_NET = clk_in;
+TIMESPEC TS_clock = PERIOD clk_in 10 ns;
+ 
+# LVDS signals 
+NET  "cs_n"     LOC="A7"   | IOSTANDARD="LVDS_33";
+NET  "cs_p"     LOC="B7"   | IOSTANDARD="LVDS_33";
+NET  "sclk_n"   LOC="A6"  | IOSTANDARD="LVDS_33";
+NET  "sclk_p"   LOC="B6"  | IOSTANDARD="LVDS_33";
+NET  "mosi_n"   LOC="A5"  | IOSTANDARD="LVDS_33";
+NET  "mosi_p"   LOC="B5"  | IOSTANDARD="LVDS_33";
+NET  "miso_chip1_n"    LOC="A4"  | IOSTANDARD="LVDS_33" | DIFF_TERM = TRUE;
+NET  "miso_chip1_p"    LOC="B4"  | IOSTANDARD="LVDS_33" | DIFF_TERM = TRUE;
+
+NET  "miso_chip2_n"    LOC="A3"  | IOSTANDARD="LVDS_33" | DIFF_TERM = TRUE;
+NET  "miso_chip2_p"    LOC="B3"  | IOSTANDARD="LVDS_33" | DIFF_TERM = TRUE;
+
+# POT SPI signals 
+NET "cs_pot_o"    LOC = "N5";
+NET "sclk_pot_o"  LOC = "N4";
+NET "din_pot_o"   LOC = "P5";
+
+# LED SPI signals 
+NET "led_clk_o"    LOC = "P3";  #--LED2
+NET "led_data_o"  LOC = "N3";   #--LED0
+NET "led_latch_o"   LOC = "M4"; #--LED1
+
+NET "LED0_active"  LOC = "L4";   #--LED Active 0
+NET "LED1_active"   LOC = "P4";  #--LED active 1
+
+#LED enable from serdes'
+NET "LED_GPO_0"   LOC = "H11";  #--LED enable 1
+	
