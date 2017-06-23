@@ -1,8 +1,8 @@
-# A set of hardware for serialized, very-high channel count electrophysiology (recording and stimulation)
+## A set of hardware, firmware, and host APIs for serialized, very-high channel count electrophysiology (recording and stimulation)
 
-__Maintainer__ jonnew 
+- __Maintainer__: jonnew 
 
-__Note__This work is a second-order fork. It is based on the following open source
+__Note__ This work is a second-order fork. It is based on the following open source
 designs:
 
 1. [Intan's headstages](http://intantech.com/index.html): no license provided
@@ -32,10 +32,10 @@ hardware and firmware required to seamlessly integrate our headstage system
 with several widely used free and open-source data equations platforms (The
 Open Ephys GUI and Bonsai). Unlike previous designs, our device makes use of
 the PCIe bus to transfer data and therefore achieves submillisecond round-trip
-latencies to host-PC main memory.  Finally, we provide example recordings and
-designs for a fully integrated system in the form of 60-tetrode/4-optetrode
-microdrive array targeting recordings in hippocampus and optical recording and
-stimulation of freely moving TH-Cre rats.
+latencies to host-PC main memory.  Finally, we (aim to) provide example
+recordings and designs for a fully integrated system in the form of
+60-tetrode/4-optetrode microdrive array targeting recordings in hippocampus and
+optical recording and stimulation of freely moving TH-Cre rats.
 
 __Major Features__
 
@@ -49,18 +49,12 @@ __Major Features__
 - _Application example_: battle-tested, 64-tetrode optogenetics-capable
   microdrive that froms the basis for rat recordings in the [Wilson Lab at
   MIT](http://web.mit.edu/wilsonlab/).
+- Low profile, circular form factor allowing stacked connectorization using 0.4mm pitch [Hirose DF40](http://www.digikey.com/product-search/en?FV=ffec4097) mezzanine headers
 
-- Circular form factor is 
- - Low profile, stacked connectorization using 0.4mm pitch [Hirose DF40](http://www.digikey.com/product-search/en?FV=ffec4097) mezzanine headers
-- SPI interface options for:
- - 128 channels using a single double data-rate LVDS bus (32 tetrodes)
- - 256 channels using two double data-rate LVDS busses (64 tetrodes)
-
-that are aimed at rat
-electrophysiology. The designs in this project acquisition from up to 256
-recording electrodes, 12 auxiliary inputs (which can be user specified or
-dedicated to onboard 6-axis pose sensing system), and integrated LED driver for
-optogenetic stimulation (no fiber optic tether required). These designs are the
+The designs in this project enable acquisition from up to 256 recording
+electrodes, 12 auxiliary inputs (which can be user specified or dedicated to
+onboard 9-axis pose sensing system), integrated LED driver for optogenetic
+stimulation and/or constant current electrical stimulation (no fiber optic tether required). 
 
 ## Components
 The modules of this repository, each corresponding to a top-level directory of the same name, is described below.
@@ -115,3 +109,6 @@ rel="dct:source">https://github.com/jonnew/headstage</a>.
     pins on TT23 of the EIB hits the outer edge of the DF40 receptical above
     it. This pin needs to be moved. More generally, I need to add vertical
     keepouts to the DF40 parts to prevent this in the future.
+- [ ] It is very hard to get the fab to make the right via size on the 256
+  channel EIB. These need to be precisely as specified or the gold pins will
+  not fit or fall through.
