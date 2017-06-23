@@ -65,6 +65,8 @@ The modules of this repository, each corresponding to a top-level directory of t
 #### EIB-256
 256 Channel electrode interface board
 
+#### Spacer
+Spacer to raise the stack height between board layers.
 #### Headstage-128
 A low profile 128-channel digital headstage module for amplifying, filtering, and digitizing
 microelectrode voltage data from a microdrive implant. Up to 256 wires (64 tetrodes)
@@ -79,11 +81,14 @@ Test board for headstage modules.
 #### SERDES Interface Board
 Data serailization board.
 
-#### Cable Adapter
-Adapter for commutator
 
-#### Base FMC module
-VITA-57 Complient base board for facilitating PCIe communication with host computer.
+#### PCIe Host
+Base board for facilitating PCIe communication, via KC705 or similar, with host
+computer. This board fits into an empty PCIe slot and communicates with KC705
+via an FMC ribbon cable.
+
+#### Drive CAD
+CAD designs for microdrive arrays that work with this system.
 
 ## Bill of materials
 The bill of materials for all components can be found on [this google
