@@ -41,6 +41,7 @@ int main()
 
             std::cout << buffer[0][0] << "\n\n";
         }
+
     } catch (const std::runtime_error &ex) {
         std::cerr << ex.what() << std::endl;
         return -1;
