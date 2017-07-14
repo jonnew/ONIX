@@ -304,34 +304,32 @@ the size of the option value in bytes.
 
 The following socket options can be set:
 
-**OE_HEADER_STREAMPATH**
-Set URI specifying hardware header data stream.
+|`OE_HEADERSTREAMPATH`\*  	| Set URI specifying hardware header data stream |
+|-|-|
+| option value type 	    | char * |
+| option value unit 	    | N/A |
+| default value     	    | file:///dev/xillybus_oe_header_32 |
 
-| option value type | char * |
-| option value unit | N/A |
-| default value     | file:///dev/xillybus_oe_header_32 |
+|`OE_CONFIGSTREAMPATH`\*  	| Set URI specifying config data stream. |
+|-|-|
+| option value type         | char * |
+| option value unit         | N/A |
+| default value             | file:///dev/xillybus_oe_config_32 |
 
+|`OE_DATASTEAMPATH`\*  	    | Set URI specifying input data stream.  |
+|-|-|
+| option value type         | char * |
+| option value unit         | N/A |
+| default value             | file:///dev/xillybus_oe_input_32 |
 
-**OE_CONFIG_STREAMPATH**
-Set URI specifying config data stream.
-
-| option value type | char * |
-| option value unit | N/A |
-| default value     | file:///dev/xillybus_oe_config_32 |
-
-**OE_DATA_STEAMPATH**
-Set URI specifying input data stream.
-
-| option value type | char * |
-| option value unit | N/A |
-| default value     | file:///dev/xillybus_oe_input_32 |
+\* Invalid after a call to `oe_init()`. Will return with error code `OE_ECANTSET`.
 
 ### oe_get_option
 Get context options. NB: This follows the pattern of
 [zmq_getsockopt()](http://api.zeromq.org/4-1:zmq-getsockopt).
 
 ``` {.c}
-int oe_get_option (const oe_ctx *c, int option_name, void *option_value, size_t *option_len);
+int oe_get_option(const oe_ctx *c, int option_name, void *option_value, size_t *option_len);
 ```
 
 #### Arguments
@@ -348,37 +346,33 @@ the size of the option value in bytes. Upon successful completion
 `oe_get_option` shall modify the `option_len` argument to indicate the actual
 size of the option value stored in the buffer.
 
-The following socket options can be set:
+The following socket options can be read:
 
-**OE_HEADER_STREAMPATH**
-Set URI specifying hardware header data stream.
+|`OE_HEADERSTREAMPATH*`  	| Set URI specifying hardware header data stream |
+|-|-|
+| option value type 	    | char * |
+| option value unit 	    | N/A |
+| default value     	    | file:///dev/xillybus_oe_header_32 |
 
-| option value type | char * |
-| option value unit | N/A |
-| default value     | file:///dev/xillybus_oe_header_32 |
+|`OE_CONFIGSTREAMPATH`  	| Set URI specifying config data stream. |
+|-|-|
+| option value type         | char * |
+| option value unit         | N/A |
+| default value             | file:///dev/xillybus_oe_config_32 |
 
+|`OE_DATASTEAMPATH`  	    | Set URI specifying input data stream.  |
+|-|-|
+| option value type         | char * |
+| option value unit         | N/A |
+| default value             | file:///dev/xillybus_oe_input_32 |
 
-**OE_CONFIG_STREAMPATH**
-Set URI specifying config data stream.
+|`OE_HARDWARECONFIG`\*\*    | Read the hardware configuration as specified on the hardware header stream.|
+|-|-|
+| option value type         | void * |
+| option value unit         | something like a std::vector of devices. Not sure how implement |
+| default value             | N/A |
 
-| option value type | char * |
-| option value unit | N/A |
-| default value     | file:///dev/xillybus_oe_config_32 |
-
-**OE_DATA_STEAMPATH**
-Set URI specifying input data stream.
-
-| option value type | char * |
-| option value unit | N/A |
-| default value     | file:///dev/xillybus_oe_input_32 |
-
-**OE_HARDWARECONFIG**
-Read the hardware configuration as specified on the hardware header stream.
-Invalid until a call to `oe_init`
-
-| option value type | void * |
-| option value unit | something like a std::vector of devices. Not sure how implement |
-| default value     | N/A |
+\*\* Invalid until a call to `oe_init()`
 
 ### oe_init
 Initialize a context, opening all file streams etc.
@@ -534,9 +528,10 @@ struct oe_device {
 ### oe_error_t
 ``` {.c}
 typedef enum error {
-    ETERMATE,
-    EATTEMPT_WRITE_TO_INPUT_STREAM,
-    EATTEMPT_READ_FROM_OUTPUT_STREAM,
-    ECONTEXT_DOES_NOT_EXIST,
+    OE_ETERMATE,
+    OE_EATTEMPT_WRITE_TO_INPUT_STREAM,
+    OE_EATTEMPT_READ_FROM_OUTPUT_STREAM,
+    OE_ECONTEXT_DOES_NOT_EXIST,
+    OE_ECANTSET
 } oe_error_t;
 ```
