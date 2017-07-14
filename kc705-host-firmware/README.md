@@ -1,13 +1,13 @@
-## KC705 Firmware
+## KC705 Host Firmware
 
-Verilog code for the driving the acquisition system using a [KC705 evaluation board](https://www.xilinx.com/products/boards-and-kits/ek-k7-kc705-g.html)
+Verilog code for the driving acquisition using a [KC705 evaluation board](https://www.xilinx.com/products/boards-and-kits/ek-k7-kc705-g.html)
 
 ### File hierarchy
 
--Sources/Verilog: Verilog source files
--Sources/IP: IP template files
--Sources/Constraints: Constraints files
--Other: Other files that might be needed in the project. The extra search paths of the project includes this one.
+- Sources/Verilog: Verilog source files
+- Sources/IP: IP template files
+- Sources/Constraints: Constraints files
+- Other: Other files that might be needed in the project. The extra search paths of the project includes this one.
 
 
 ### Notes
