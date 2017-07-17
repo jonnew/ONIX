@@ -7,7 +7,9 @@ typedef enum stream_opts{
 	OE_HEADER_STREAMPATH,
 	OE_CONFIG_STREAMPATH,
 	OE_DATA_STREAMPATH,
-	OE_HARDWARECONFIG
+	OE_HARDWARECONFIG,
+	OE_HARDWAREOFFSET,
+	OE_NUMDEVICES
 } stream_opt_t;
 
 /*
@@ -26,7 +28,7 @@ typedef struct dev_map{
 	device_t* devs;
 } dev_map_t;
 
-typedef enum init{
+typedef enum initial{
  	INITIALIZED,
  	UNINITIALIZED
 } init_t;
@@ -38,7 +40,7 @@ typedef struct oe_ctx_impl{
 	stream_fid_t data;
 	dev_map_t map;
 
-	init_t initial;
+	init_t init;
 	int config_id;
 } oe_ctx_impl_t;
 
@@ -66,5 +68,7 @@ int oe_read_reg(const oe_ctx* state, int device_id, int addr, int* value);
 int oe_read(const oe_ctx* state, void *data, size_t size);
 
 // int oe_write(const oe_ctx* state, void* data, size_t size);
+
+static int oe_reg_prep(oe_ctx ctx, int device_id, int addr);
 
 #endif
