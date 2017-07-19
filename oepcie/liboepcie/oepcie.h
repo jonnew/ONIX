@@ -16,7 +16,7 @@ typedef enum oe_error{
 	OE_EHPATHINVALID = -1, // Invalid header path, fail on open
 	OE_ECPATHINVALID = -2, // '' config
 	OE_EDPATHINVALID = -3, // '' data
-	OE_ENOTINIT, // Invalid operation on non-initialized ctx
+	OE_ENOTINIT = -11, // Invalid operation on non-initialized ctx
 	OE_EPREINIT = -4, // Double initialization attempt
 	OE_EIDINVALID = -5, // Invalid device ID on init or reg op
 	OE_EREADFAILURE = -6, // Failure to read from a stream/register
@@ -48,10 +48,5 @@ int oe_read(const oe_ctx* state, void *data, size_t size);
 
 static int oe_all_read(int fd, void* data, size_t size);
 static int oe_reg_prep(oe_ctx ctx, int device_id, int addr);
-
-// DEBUGGING FUNCTIONALITY - These are here for only debug purposes, since
-// the impl information isn't provided to the user.
-
-void OEDEBUG_print(oe_ctx* state);
 
 #endif
