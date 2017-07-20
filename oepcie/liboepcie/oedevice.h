@@ -10,8 +10,8 @@
 #include <errno.h>
 #include <string.h>
 
-#define MAX_DEVICE_ID 3
-#define DEVICE_TYPES 4
+#define NUM_DEVICE_TYPES 4
+#define MAX_DEVICE_ID (NUM_DEVICE_TYPES - 1)
 
 typedef struct device{
 	size_t read_offset;
@@ -29,7 +29,7 @@ typedef struct device{
  * with the devices id. In practice, this will be read by the header file.
  */
 
-static const device_t DEVICES[DEVICE_TYPES] = {
+static const device_t devices[NUM_DEVICE_TYPES] = {
 	{.read_offset = 0, .read_size = (16 * (32 + 3)), 
 		.write_offset = 0, .write_size = 0, .id = 0}, // RHD2032
 	{.read_offset = 0, .read_size = (16 * (64 + 3)), 
