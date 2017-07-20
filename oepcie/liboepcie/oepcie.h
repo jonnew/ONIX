@@ -1,52 +1,58 @@
 #ifndef OEPCIE_H
 #define OEPCIE_H
 
-#include "oedevices.h"
-
-typedef enum oe_stream_opts{
-	OE_HEADER_STREAMPATH,
-	OE_CONFIG_STREAMPATH,
-	OE_DATA_STREAMPATH,
-	OE_HARDWARECONFIG,
-	OE_HARDWAREOFFSET,
+typedef enum oe_ctx_opt {
+	OE_HEADERSTREAMPATH,
+	OE_CONFIGSTREAMPATH,
+	OE_DATASTREAMPATH,
+	OE_SIGNALSTREAMPATH,
+    OE_DEVIDS,
+    OE_DEVREADOFFSETS,
 	OE_NUMDEVICES
-} oe_stream_opt_t;
+} oe_ctx_opt_t;
 
-typedef enum oe_error{
-	OE_EHPATHINVALID = -1, // Invalid header path, fail on open
-	OE_ECPATHINVALID = -2, // '' config
-	OE_EDPATHINVALID = -3, // '' data
-	OE_ENOTINIT = -11, // Invalid operation on non-initialized ctx
-	OE_EPREINIT = -4, // Double initialization attempt
-	OE_EIDINVALID = -5, // Invalid device ID on init or reg op
-	OE_EREADFAILURE = -6, // Failure to read from a stream/register
-	OE_EWRITEFAILURE = -7, // Failure to write to a stream/register
-	OE_ENULLCTX = -8, // Attempt to call function w null state
-	OE_ENOOP = -9, // Invalid flag pass to get/set opt
-	OE_ESEEKFAILURE = - 10 // Failure to seek on stream
+typedef enum oe_signal {
+    OE_NULLSIG,
+ 	OE_CONFIGNACK,            // Configuration no-acknowledgement
+ 	OE_CONFIGWACK,            // Configuration write-acknowledgement
+ 	OE_CONFIGRACK,            // Configuration read-acknowledgement
+ 	OE_CONFIGWSTART,          // Configuration write-start
+ 	OE_CONFIGRSTART,          // Configuration read-start
+
+} oe_signal_t;
+
+typedef enum oe_error {
+    OE_EPATHINVALID     = -1,  // Invalid stream path, fail on open
+    OE_EREINITCTX       = -2,  // Double initialization attempt
+    OE_EDEVID           = -3,  // Invalid device ID on init or reg op
+    OE_EREADFAILURE     = -4,  // Failure to read from a stream/register
+    OE_EWRITEFAILURE    = -5,  // Failure to write to a stream/register
+    OE_ENULLCTX         = -6,  // Attempt to call function w null ctx
+    OE_ESEEKFAILURE     = -7,  // Failure to seek on stream
+    OE_ENOTINIT         = -8,  // Invalid operation on non-initialized ctx
+    OE_EDEVIDX          = -9,  // Invalid device index
+    OE_EINVALOPT        = -10, // Invalid context option
+    OE_EINVALARG        = -11, // Invalid function arguements
+    OE_ECANTSETOPT      = -12, // Option cannot be set in current context state
 } oe_error_t;
 
+// Context
 typedef struct oe_ctx_impl *oe_ctx;
+oe_ctx oe_create_ctx();
+int oe_init_ctx(oe_ctx ctx);
+int oe_close_ctx(oe_ctx ctx);
+int oe_destroy_ctx(oe_ctx ctx);
+int oe_set_ctx_opt(oe_ctx ctx, int option, const void* option_value, size_t option_len);
+int oe_get_ctx_opt(const oe_ctx ctx, int option, void* option_value, size_t *option_len);
 
-int oe_init(oe_ctx* state);
+// Hardware manipulation
+int oe_write_reg(const oe_ctx ctx, int device_idx, int addr, int value, int *ack);
+int oe_read_reg(const oe_ctx ctx, int device_idx, int addr, int* value, int *ack);
+int oe_read(const oe_ctx ctx, void *data, size_t size);
+// int oe_write(const oe_ctx* ctx, void* data, size_t size);
 
-oe_ctx* oe_create_ctx();
-
-int oe_destroy_ctx(oe_ctx* state);
-
-int oe_set_opt(oe_ctx* state, int option, const void* option_value, size_t option_len);
-
-int oe_get_opt(const oe_ctx* state, int option, void* option_value, size_t *option_len);
-
-int oe_write_reg(const oe_ctx* state, int device_idx, int addr, int value);
-
-int oe_read_reg(const oe_ctx* state, int device_idx, int addr, int* value);
-
-int oe_read(const oe_ctx* state, void *data, size_t size);
-
-// int oe_write(const oe_ctx* state, void* data, size_t size);
-
-static int oe_all_read(int fd, void* data, size_t size);
-static int oe_reg_prep(oe_ctx ctx, int device_id, int addr);
+// Helpers
+static inline int oe_all_read(int fd, void* data, size_t size);
+static inline int oe_signal_read(const oe_ctx ctx, int *sig);
 
 #endif
