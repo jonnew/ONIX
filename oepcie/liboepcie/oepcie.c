@@ -1,4 +1,7 @@
+#include "errno.h"
 #include "fcntl.h"
+#include "stdlib.h"
+#include "string.h"
 #include "unistd.h"
 
 #include "oepcie.h"
@@ -6,28 +9,28 @@
 
 typedef struct stream_fid {
     char* path;
-	int fid;
+    int fid;
 } stream_fid_t;
 
 typedef struct dev_map {
     int num_dev;
-	device_t* devs;
+    device_t* devs;
 } dev_map_t;
 
 typedef enum run_state {
- 	INITIALIZED,
- 	UNINITIALIZED
+    INITIALIZED,
+    UNINITIALIZED
 } run_state_t;
 
 typedef struct oe_ctx_impl {
     stream_fid_t header;
-	stream_fid_t config;
-	stream_fid_t data;
-	stream_fid_t signal;
-	dev_map_t map;
+    stream_fid_t config;
+    stream_fid_t data;
+    stream_fid_t signal;
+    dev_map_t map;
 
-	run_state_t init;
-	int config_id;
+    run_state_t init;
+    int config_id;
 } oe_ctx_impl_t;
 
 oe_ctx oe_create_ctx()
@@ -276,6 +279,8 @@ int oe_get_ctx_opt(const oe_ctx ctx,
     return OE_EINVALARG;
 }
 
+// TODO: Page 31 of xillybus programming manual
+// Also, look at OE code
 int oe_write_reg(const oe_ctx ctx, int device_idx, int addr, int value, int *ack)
 {
     // Checks that the device index is valid

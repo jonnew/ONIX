@@ -2,22 +2,22 @@
 #define OEPCIE_H
 
 typedef enum oe_ctx_opt {
-	OE_HEADERSTREAMPATH,
-	OE_CONFIGSTREAMPATH,
-	OE_DATASTREAMPATH,
-	OE_SIGNALSTREAMPATH,
+    OE_HEADERSTREAMPATH,
+    OE_CONFIGSTREAMPATH,
+    OE_DATASTREAMPATH,
+    OE_SIGNALSTREAMPATH,
     OE_DEVIDS,
     OE_DEVREADOFFSETS,
-	OE_NUMDEVICES
+    OE_NUMDEVICES
 } oe_ctx_opt_t;
 
 typedef enum oe_signal {
     OE_NULLSIG,
- 	OE_CONFIGNACK,            // Configuration no-acknowledgement
- 	OE_CONFIGWACK,            // Configuration write-acknowledgement
- 	OE_CONFIGRACK,            // Configuration read-acknowledgement
- 	OE_CONFIGWSTART,          // Configuration write-start
- 	OE_CONFIGRSTART,          // Configuration read-start
+    OE_CONFIGNACK,            // Configuration no-acknowledgement
+    OE_CONFIGWACK,            // Configuration write-acknowledgement
+    OE_CONFIGRACK,            // Configuration read-acknowledgement
+    OE_CONFIGWSTART,          // Configuration write-start
+    OE_CONFIGRSTART,          // Configuration read-start
 
 } oe_signal_t;
 
