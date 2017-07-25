@@ -287,19 +287,19 @@ Set context options. NB: This follows the pattern of
 [zmq_setsockopt()](http://api.zeromq.org/4-1:zmq-setsockopt).
 
 ``` {.c}
-int oe_set_option(oe_ctx *c, int option_name, const void * option_value, size_t option_len)
+int oe_set_option(oe_ctx *c, int option_name, const void * option_value, size_t option_size)
 ```
 
 #### Arguments
 - `c` context
 - `option_name` name of option to set
 - `option_value` value to set `option_name` to
-- `option_len` length of `option_value` in bytes
+- `option_size` length of `option_value` in bytes
 
 #### Description
 The `oe_set_option`() function shall set the option specified by the
 `option_name` argument to the value pointed to by the `option_value` argument
-for the context pointed to by the `c` argument. The `option_len` argument is
+for the context pointed to by the `c` argument. The `option_size` argument is
 the size of the option value in bytes.
 
 The following socket options can be set:
@@ -329,48 +329,52 @@ Get context options. NB: This follows the pattern of
 [zmq_getsockopt()](http://api.zeromq.org/4-1:zmq-getsockopt).
 
 ``` {.c}
-int oe_get_option(const oe_ctx *c, int option_name, void *option_value, size_t *option_len);
+int oe_get_option(const oe_ctx *c, int option_name, void *option_value, size_t *option_size);
 ```
 
 #### Arguments
 - `c` context to read from
 - `option_name` name of option to read
 - `option_value` buffer to store value at `option_name`
-- `option_len` points to the length of `option_value` buffer in bytes.
+- `option_size` size of `option_value` (including terminating null character, if applicable) in bytes
 
 #### Description
 The `oe_get_option`() function shall set the option specified by the
 `option_name` argument to the value pointed to by the `option_value` argument
-for the context pointed to by the `c` argument. The `option_len` argument is
+for the context pointed to by the `c` argument. The `option_size` argument is
 the size of the option value in bytes. Upon successful completion
-`oe_get_option` shall modify the `option_len` argument to indicate the actual
+`oe_get_option` shall modify the `option_size` argument to indicate the actual
 size of the option value stored in the buffer.
 
 The following socket options can be read:
 
 |`OE_HEADERSTREAMPATH*`  	| Set URI specifying hardware header data stream |
 |-|-|
-| option value type 	    | char * |
-| option value unit 	    | N/A |
+| `option_value` type 	    | NULL-terminated character string |
+| `option_value` unit 	    | Pointer to pre-allocated character buffer |
+| `option_size` unit        | Length of `option_value` buffer in bytes, returns length of internal address character string |
 | default value     	    | file:///dev/xillybus_oe_header_32 |
 
 |`OE_CONFIGSTREAMPATH`  	| Set URI specifying config data stream. |
 |-|-|
-| option value type         | char * |
-| option value unit         | N/A |
-| default value             | file:///dev/xillybus_oe_config_32 |
+| `option_value` type 	    | NULL-terminated character string |
+| `option_value` unit 	    | Pointer to pre-allocated character buffer |
+| `option_size` unit        | Length of `option_value` buffer in bytes, returns length of internal address character string |
+| default value     	    | file:///dev/xillybus_oe_config_32 |
 
 |`OE_DATASTEAMPATH`  	    | Set URI specifying input data stream.  |
 |-|-|
-| option value type         | char * |
-| option value unit         | N/A |
-| default value             | file:///dev/xillybus_oe_input_32 |
+| `option_value` type 	    | NULL-terminated character string |
+| `option_value` unit 	    | Pointer to pre-allocated character buffer |
+| `option_size` unit        | Length of `option_value` buffer in bytes, returns length of internal address character string |
+| default value     	    | file:///dev/xillybus_oe_input_32 |
 
-|`OE_HARDWARECONFIG`\*\*    | Read the hardware configuration as specified on the hardware header stream.|
+|`OE_DEVREADOFFSET`\*\*     | Obtain the read-offset value for a particular device index. |
 |-|-|
-| option value type         | void * |
-| option value unit         | something like a std::vector of devices. Not sure how implement |
-| default value             | N/A |
+| `option_value` type 	    | device_t * |
+| `option_value` unit 	    | Pointer to a pre-allocated `device_t` struct |
+| `option_size` unit        | Device index to examine, returns the maximal device index in the configuration |
+| default option value      | N/A |
 
 \*\* Invalid until a call to `oe_init()`
 
