@@ -281,10 +281,10 @@
 <wire x1="0.1984" y1="18.0006" x2="0.9128" y2="19.2278" width="0.127" layer="21"/>
 </package>
 <package name="TETRODE_0.3ID_LINEAR">
-<pad name="1" x="1.76" y="18.48" drill="0.3302" diameter="0.5334"/>
-<pad name="2" x="1.23" y="19" drill="0.3302" diameter="0.5334"/>
-<pad name="0" x="2" y="17.78" drill="0.3302" diameter="0.5334"/>
-<pad name="3" x="0.55" y="19.28" drill="0.3302" diameter="0.5334"/>
+<pad name="1" x="1.76" y="18.48" drill="0.3048" diameter="0.5334"/>
+<pad name="2" x="1.23" y="19" drill="0.3048" diameter="0.5334"/>
+<pad name="0" x="2" y="17.78" drill="0.3048" diameter="0.5334"/>
+<pad name="3" x="0.55" y="19.28" drill="0.3048" diameter="0.5334"/>
 <wire x1="0" y1="18.9" x2="0" y2="19.1" width="0.0508" layer="52"/>
 <wire x1="-0.1" y1="19" x2="0.1" y2="19" width="0.0508" layer="52"/>
 <text x="-0.508" y="19.381" size="0.254" layer="52" font="vector" ratio="18" rot="MR180">0,-19mm</text>
