@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1375,6 +1375,14 @@
 <vertex x="-3.25" y="4"/>
 </polygon>
 </package>
+<package name="X_FL_R_SMT_1(02)">
+<smd name="P$4" x="1" y="0" dx="1.5" dy="0.6" layer="1" rot="R90"/>
+<smd name="P$2" x="-1" y="0" dx="1.5" dy="0.6" layer="1" rot="R90"/>
+<smd name="P$3" x="0" y="1" dx="0.5" dy="0.6" layer="1" rot="R180"/>
+<smd name="P$1" x="0" y="-1.1" dx="0.5" dy="0.7" layer="1" rot="R180"/>
+<circle x="-0.7" y="-1.2" radius="0.22360625" width="0.127" layer="21"/>
+<circle x="0.7" y="-1.2" radius="0.22360625" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="TS4231">
@@ -2012,6 +2020,16 @@
 <pin name="IO_L53N_VREF_1" x="25.4" y="-27.94" length="middle" rot="R180"/>
 <pin name="IO_L74P_AWAKE_1" x="25.4" y="-30.48" length="middle" rot="R180"/>
 <pin name="IO_L74N_DOUT_BUSY_1" x="25.4" y="-33.02" length="middle" rot="R180"/>
+</symbol>
+<symbol name="X_FL_R_SMT_1(02)">
+<circle x="-2.54" y="2.54" radius="2.54" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="10.16" x2="5.08" y2="10.16" width="0.254" layer="94"/>
+<wire x1="5.08" y1="10.16" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="-10.16" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-5.08" x2="-10.16" y2="10.16" width="0.254" layer="94"/>
+<pin name="SIGNAL" x="-2.54" y="-10.16" length="middle" rot="R90"/>
+<pin name="SHIELD" x="2.54" y="-10.16" length="middle" rot="R90"/>
+<text x="-10.16" y="-7.62" size="1.27" layer="94">&gt;NAME</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -3165,6 +3183,22 @@
 </device>
 </devices>
 </deviceset>
+<deviceset name="X_FL_R_SMT_1(02)">
+<gates>
+<gate name="G$1" symbol="X_FL_R_SMT_1(02)" x="2.54" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="X_FL_R_SMT_1(02)">
+<connects>
+<connect gate="G$1" pin="SHIELD" pad="P$2 P$3 P$4"/>
+<connect gate="G$1" pin="SIGNAL" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -3280,6 +3314,7 @@
 <part name="U$18" library="jonnew" deviceset="VCC" device="" value="-15V"/>
 <part name="SUPPLY30" library="jonnew" deviceset="GND" device=""/>
 <part name="U9" library="jonnew" deviceset="XC6SLX16" device="_CPG196"/>
+<part name="U$19" library="jonnew" deviceset="X_FL_R_SMT_1(02)" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3411,6 +3446,7 @@ The CBC2012T100M saturates at
 <instance part="U$18" gate="VCC" x="157.48" y="106.68" rot="R180"/>
 <instance part="SUPPLY30" gate="PE" x="139.7" y="109.22" rot="MR0"/>
 <instance part="U9" gate="G$1" x="563.88" y="-55.88"/>
+<instance part="U$19" gate="G$1" x="208.28" y="5.08"/>
 </instances>
 <busses>
 </busses>
