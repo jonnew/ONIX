@@ -1396,10 +1396,10 @@
 <rectangle x1="0.508" y1="-0.4064" x2="0.8128" y2="0.4064" layer="51"/>
 </package>
 <package name="1210T">
-<smd name="1" x="-1.2" y="0" dx="1.5" dy="2.5" layer="1"/>
+<smd name="1" x="-1.3" y="0" dx="1.5" dy="2.5" layer="1"/>
 <text x="-2.413" y="1.889" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.54" y="-2.905" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<smd name="2" x="1.2" y="0" dx="1.5" dy="2.5" layer="1"/>
+<smd name="2" x="1.3" y="0" dx="1.5" dy="2.5" layer="1"/>
 <rectangle x1="-1.6" y1="-1.2" x2="-0.8" y2="1.2" layer="51"/>
 <rectangle x1="0.8" y1="-1.2" x2="1.6" y2="1.2" layer="51" rot="R180"/>
 <wire x1="-1.6" y1="1.2" x2="1.6" y2="1.2" width="0.127" layer="51"/>
@@ -3243,6 +3243,24 @@
 <technology name=""/>
 </technologies>
 </device>
+<device name="_0402" package="0402">
+<connects>
+<connect gate="G$1" pin="A" pad="1"/>
+<connect gate="G$1" pin="C" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_0402T" package="0402T">
+<connects>
+<connect gate="G$1" pin="A" pad="1"/>
+<connect gate="G$1" pin="C" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="ADG140X" prefix="U" uservalue="yes">
@@ -3522,7 +3540,7 @@
 <part name="SUPPLY22" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY23" library="jonnew" deviceset="GND" device=""/>
 <part name="C16" library="jonnew" deviceset="C" device="_0402T" value="1uF"/>
-<part name="D4" library="jonnew" deviceset="S-DIODE" device="SOD-123" value="something like B0540W"/>
+<part name="D4" library="jonnew" deviceset="S-DIODE" device="_0402T" value="VSKY05401006"/>
 <part name="C17" library="jonnew" deviceset="C" device="_0402T" value="0.22uF"/>
 <part name="C18" library="jonnew" deviceset="C" device="_0402T" value="0.22uF"/>
 <part name="SUPPLY24" library="jonnew" deviceset="GND" device=""/>
@@ -3670,13 +3688,13 @@ The CBC2012T100M saturates at
 <instance part="U$5" gate="VCC" x="505.46" y="208.28"/>
 <instance part="U$6" gate="VCC" x="589.28" y="218.44"/>
 <instance part="U$12" gate="U1" x="60.96" y="-365.76"/>
-<instance part="L1" gate="L" x="58.42" y="-327.66" rot="R270"/>
+<instance part="L1" gate="L" x="40.64" y="-327.66" rot="R270"/>
 <instance part="L2" gate="L" x="40.64" y="-403.86" rot="R270"/>
 <instance part="C14" gate="C" x="15.24" y="-332.74"/>
 <instance part="SUPPLY22" gate="PE" x="53.34" y="-393.7"/>
 <instance part="SUPPLY23" gate="PE" x="15.24" y="-342.9"/>
 <instance part="C16" gate="C" x="63.5" y="-403.86" rot="R90"/>
-<instance part="D4" gate="G$1" x="81.28" y="-408.94" rot="MR0"/>
+<instance part="D4" gate="G$1" x="86.36" y="-403.86" rot="MR0"/>
 <instance part="C17" gate="C" x="109.22" y="-408.94"/>
 <instance part="C18" gate="C" x="109.22" y="-332.74"/>
 <instance part="SUPPLY24" gate="PE" x="109.22" y="-342.9"/>
@@ -4135,7 +4153,7 @@ The CBC2012T100M saturates at
 <pinref part="R11" gate="R" pin="1"/>
 <wire x1="109.22" y1="-398.78" x2="93.98" y2="-398.78" width="0.1524" layer="91"/>
 <pinref part="D4" gate="G$1" pin="A"/>
-<wire x1="86.36" y1="-408.94" x2="93.98" y2="-403.86" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="-403.86" x2="93.98" y2="-403.86" width="0.1524" layer="91"/>
 <pinref part="C17" gate="C" pin="1"/>
 <wire x1="93.98" y1="-403.86" x2="109.22" y2="-403.86" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="-403.86" x2="121.92" y2="-403.86" width="0.1524" layer="91"/>
@@ -4420,16 +4438,16 @@ The CBC2012T100M saturates at
 </segment>
 <segment>
 <pinref part="U$12" gate="U1" pin="VIN"/>
-<wire x1="53.34" y1="-347.98" x2="53.34" y2="-335.28" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="-335.28" x2="50.8" y2="-332.74" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="-347.98" x2="53.34" y2="-337.82" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="-337.82" x2="33.02" y2="-337.82" width="0.1524" layer="91"/>
 <pinref part="L1" gate="L" pin="2"/>
-<wire x1="50.8" y1="-332.74" x2="50.8" y2="-327.66" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="-337.82" x2="33.02" y2="-327.66" width="0.1524" layer="91"/>
 <pinref part="C14" gate="C" pin="1"/>
 <wire x1="15.24" y1="-330.2" x2="15.24" y2="-327.66" width="0.1524" layer="91"/>
 <wire x1="15.24" y1="-327.66" x2="25.4" y2="-327.66" width="0.1524" layer="91"/>
-<junction x="50.8" y="-327.66"/>
+<junction x="33.02" y="-327.66"/>
 <pinref part="L2" gate="L" pin="2"/>
-<wire x1="25.4" y1="-327.66" x2="50.8" y2="-327.66" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="-327.66" x2="33.02" y2="-327.66" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="-403.86" x2="25.4" y2="-403.86" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="-327.66" x2="25.4" y2="-403.86" width="0.1524" layer="91"/>
 <junction x="25.4" y="-327.66"/>
@@ -4497,6 +4515,7 @@ The CBC2012T100M saturates at
 <pinref part="U$12" gate="U1" pin="SW1"/>
 <pinref part="L1" gate="L" pin="1"/>
 <wire x1="66.04" y1="-347.98" x2="66.04" y2="-327.66" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="-327.66" x2="48.26" y2="-327.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$19" class="0">
@@ -4505,7 +4524,7 @@ The CBC2012T100M saturates at
 <wire x1="71.12" y1="-386.08" x2="71.12" y2="-403.86" width="0.1524" layer="91"/>
 <pinref part="C16" gate="C" pin="2"/>
 <wire x1="71.12" y1="-403.86" x2="68.58" y2="-403.86" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="-403.86" x2="78.74" y2="-408.94" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="-403.86" x2="83.82" y2="-403.86" width="0.1524" layer="91"/>
 <junction x="71.12" y="-403.86"/>
 <pinref part="D4" gate="G$1" pin="C"/>
 </segment>
