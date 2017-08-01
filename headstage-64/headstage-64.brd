@@ -215,10 +215,10 @@
 <text x="-1.4478" y="-2.0574" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
 <package name="1210T">
-<smd name="1" x="-1.2" y="0" dx="1.5" dy="2.5" layer="1"/>
+<smd name="1" x="-1.3" y="0" dx="1.5" dy="2.5" layer="1"/>
 <text x="-2.413" y="1.889" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.54" y="-2.905" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<smd name="2" x="1.2" y="0" dx="1.5" dy="2.5" layer="1"/>
+<smd name="2" x="1.3" y="0" dx="1.5" dy="2.5" layer="1"/>
 <rectangle x1="-1.6" y1="-1.2" x2="-0.8" y2="1.2" layer="51"/>
 <rectangle x1="0.8" y1="-1.2" x2="1.6" y2="1.2" layer="51" rot="R180"/>
 <wire x1="-1.6" y1="1.2" x2="1.6" y2="1.2" width="0.127" layer="51"/>
@@ -703,22 +703,6 @@
 <smd name="9" x="1.4" y="0.5" dx="0.7" dy="0.25" layer="1" rot="R180"/>
 <smd name="10" x="1.4" y="1" dx="0.7" dy="0.25" layer="1" rot="R180"/>
 </package>
-<package name="SOD123">
-<wire x1="-2.6" y1="0.9" x2="2.6" y2="0.9" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="-0.79375" y2="0.63505" width="0.127" layer="21"/>
-<wire x1="-0.79375" y1="0.63505" x2="-0.79375" y2="-0.63505" width="0.127" layer="21"/>
-<wire x1="-0.79375" y1="-0.63505" x2="0.15875" y2="0" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="0.15875" y2="0.63505" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="0.15875" y2="-0.63505" width="0.127" layer="21"/>
-<smd name="A" x="-1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
-<smd name="C" x="1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
-<text x="-2.54" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-2.54" y="-2.54" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<wire x1="-2.6" y1="0.9" x2="-2.6" y2="-0.9" width="0.127" layer="21"/>
-<wire x1="-2.6" y1="-0.9" x2="2.6" y2="-0.9" width="0.127" layer="21"/>
-<wire x1="2.6" y1="-0.9" x2="2.6" y2="0.9" width="0.127" layer="21"/>
-<rectangle x1="0.635" y1="-0.9525" x2="0.9525" y2="0.9525" layer="21"/>
-</package>
 <package name="LFCSP8-2X3">
 <smd name="PAD" x="0" y="0" dx="1.65" dy="1.8" layer="1" rot="R90"/>
 <smd name="1" x="-1.35" y="0.75" dx="0.3" dy="0.55" layer="1" rot="R90"/>
@@ -1176,7 +1160,7 @@ einem neuen Namen ab.</description>
 <element name="L2" library="jonnew" package="0805T" value="MLZ2012M100WT000" x="-4.3" y="14.9" rot="MR0"/>
 <element name="C14" library="jonnew" package="0402T" value="1uF" x="-31" y="-34"/>
 <element name="C16" library="jonnew" package="0402T" value="1uF" x="-31" y="-44"/>
-<element name="D4" library="jonnew" package="SOD123" value="something like B0540W" x="-29.6" y="-28.3"/>
+<element name="D4" library="jonnew" package="0402T" value="VSKY05401006" x="-29.6" y="-28.3"/>
 <element name="C17" library="jonnew" package="0402T" value="0.22uF" x="-31" y="-53"/>
 <element name="C18" library="jonnew" package="0402T" value="0.22uF" x="-31" y="-58"/>
 <element name="R9" library="jonnew" package="0201T" value="1M" x="-31" y="-63"/>
@@ -1561,7 +1545,7 @@ einem neuen Namen ab.</description>
 <contactref element="U4" pad="2"/>
 <contactref element="C19" pad="2"/>
 <contactref element="R11" pad="1"/>
-<contactref element="D4" pad="A"/>
+<contactref element="D4" pad="1"/>
 <contactref element="C17" pad="1"/>
 <contactref element="U8" pad="7"/>
 <contactref element="U8" pad="PAD"/>
@@ -1571,8 +1555,8 @@ einem neuen Namen ab.</description>
 <wire x1="-30.7" y1="-83" x2="-32.2532" y2="-103.9495" width="0" layer="19" extent="1-1"/>
 <wire x1="-31.3" y1="-73" x2="-30.7" y2="-83" width="0" layer="19" extent="1-1"/>
 <wire x1="-31.5334" y1="-53" x2="-31.3" y2="-73" width="0" layer="19" extent="1-1"/>
-<wire x1="-31.4" y1="-28.3" x2="-31.5334" y2="-53" width="0" layer="19" extent="1-1"/>
-<wire x1="-6.8" y1="5.45" x2="-31.4" y2="-28.3" width="0" layer="19" extent="1-16"/>
+<wire x1="-30.1334" y1="-28.3" x2="-31.5334" y2="-53" width="0" layer="19" extent="1-1"/>
+<wire x1="-6.8" y1="5.45" x2="-30.1334" y2="-28.3" width="0" layer="19" extent="1-16"/>
 <wire x1="-3.6" y1="7.5" x2="-6.8" y2="5.45" width="0" layer="19" extent="16-16"/>
 <wire x1="-3.1" y1="7.6" x2="-3.6" y2="7.5" width="0" layer="19" extent="16-16"/>
 <wire x1="-2.8" y1="6.35" x2="-3.1" y2="7.6" width="0" layer="19" extent="16-16"/>
@@ -1744,9 +1728,9 @@ einem neuen Namen ab.</description>
 <signal name="N$19">
 <contactref element="U$12" pad="5"/>
 <contactref element="C16" pad="2"/>
-<contactref element="D4" pad="C"/>
-<wire x1="-27.8" y1="-28.3" x2="-30.4666" y2="-44" width="0" layer="19" extent="1-1"/>
-<wire x1="-7.4" y1="1.4" x2="-27.8" y2="-28.3" width="0" layer="19" extent="1-16"/>
+<contactref element="D4" pad="2"/>
+<wire x1="-29.0666" y1="-28.3" x2="-30.4666" y2="-44" width="0" layer="19" extent="1-1"/>
+<wire x1="-7.4" y1="1.4" x2="-29.0666" y2="-28.3" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="N$3">
 <contactref element="R10" pad="1"/>
@@ -2394,7 +2378,7 @@ einem neuen Namen ab.</description>
 <wire x1="-32.8334" y1="-141.1" x2="-32.7" y2="-145.2" width="0" layer="19" extent="1-1"/>
 <wire x1="-32.1" y1="-132.8" x2="-32.8334" y2="-141.1" width="0" layer="19" extent="1-1"/>
 <wire x1="-10.22" y1="9.1" x2="-32.1" y2="-132.8" width="0" layer="19" extent="1-1"/>
-<wire x1="-1" y1="16" x2="-10.22" y2="9.1" width="0" layer="19" extent="1-1"/>
+<wire x1="-1.1" y1="16" x2="-10.22" y2="9.1" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$26">
 <contactref element="R14" pad="1"/>
@@ -2402,8 +2386,8 @@ einem neuen Namen ab.</description>
 <contactref element="L3" pad="2"/>
 <contactref element="L4" pad="1"/>
 <wire x1="-32.7" y1="-132.8" x2="-32.1" y2="-136.9" width="0" layer="19" extent="1-1"/>
-<wire x1="1.4" y1="16" x2="-32.7" y2="-132.8" width="0" layer="19" extent="1-1"/>
-<wire x1="-5.3" y1="16.4" x2="1.4" y2="16" width="0" layer="19" extent="1-1"/>
+<wire x1="1.5" y1="16" x2="-32.7" y2="-132.8" width="0" layer="19" extent="1-1"/>
+<wire x1="-5.3" y1="16.4" x2="1.5" y2="16" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="SIGOUT">
 <contactref element="R15" pad="1"/>
