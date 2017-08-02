@@ -3773,6 +3773,64 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="mezzanine_library">
+<packages>
+<package name="MEZZANINE_PADS">
+<smd name="P$1" x="-2" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<wire x1="-2.4" y1="0.8" x2="3.5" y2="0.8" width="0.127" layer="21"/>
+<wire x1="-2.4" y1="0.8" x2="-2.4" y2="0" width="0.127" layer="21"/>
+<wire x1="-2.4" y1="0" x2="3.5" y2="0" width="0.127" layer="21"/>
+<wire x1="3.5" y1="0" x2="3.5" y2="0.8" width="0.127" layer="21"/>
+<smd name="P$2" x="-1.4" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$3" x="-0.6" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$4" x="0.2" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$5" x="1" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$6" x="1.8" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$7" x="2.6" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$8" x="3.2" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+</package>
+</packages>
+<symbols>
+<symbol name="MEZZANINE_PADS">
+<pin name="P$1" x="-12.7" y="0" length="middle" rot="R90"/>
+<pin name="P$2" x="-7.62" y="0" length="middle" rot="R90"/>
+<pin name="P$3" x="-2.54" y="0" length="middle" rot="R90"/>
+<pin name="P$4" x="2.54" y="0" length="middle" rot="R90"/>
+<pin name="P$5" x="7.62" y="0" length="middle" rot="R90"/>
+<pin name="P$6" x="12.7" y="0" length="middle" rot="R90"/>
+<wire x1="-15.24" y1="5.08" x2="-15.24" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="7.62" x2="25.4" y2="7.62" width="0.254" layer="94"/>
+<wire x1="25.4" y1="7.62" x2="25.4" y2="5.08" width="0.254" layer="94"/>
+<wire x1="25.4" y1="5.08" x2="-15.24" y2="5.08" width="0.254" layer="94"/>
+<pin name="P$7" x="17.78" y="0" length="middle" rot="R90"/>
+<pin name="P$8" x="22.86" y="0" length="middle" rot="R90"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="MEZZANINE_PEAK">
+<gates>
+<gate name="G$1" symbol="MEZZANINE_PADS" x="0" y="-5.08"/>
+</gates>
+<devices>
+<device name="" package="MEZZANINE_PADS">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+<connect gate="G$1" pin="P$2" pad="P$2"/>
+<connect gate="G$1" pin="P$3" pad="P$3"/>
+<connect gate="G$1" pin="P$4" pad="P$4"/>
+<connect gate="G$1" pin="P$5" pad="P$5"/>
+<connect gate="G$1" pin="P$6" pad="P$6"/>
+<connect gate="G$1" pin="P$7" pad="P$7"/>
+<connect gate="G$1" pin="P$8" pad="P$8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -3847,7 +3905,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="U$2" library="jonnew" deviceset="+3V3" device=""/>
 <part name="U$3" library="jonnew" deviceset="+3V3" device=""/>
 <part name="U$4" library="jonnew" deviceset="+3V3" device=""/>
-<part name="R8" library="jonnew" deviceset="R" device="_0201T" value="600"/>
 <part name="SUPPLY20" library="jonnew" deviceset="GND" device=""/>
 <part name="C13" library="jonnew" deviceset="C" device="_0402T" value="1uF"/>
 <part name="SUPPLY21" library="jonnew" deviceset="GND" device=""/>
@@ -3909,6 +3966,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="SUPPLY34" library="jonnew" deviceset="GND" device=""/>
 <part name="U$24" library="jonnew" deviceset="LED" device=""/>
 <part name="U$25" library="jonnew" deviceset="TPL0501" device=""/>
+<part name="U$26" library="mezzanine_library" deviceset="MEZZANINE_PEAK" device=""/>
+<part name="R8" library="jonnew" deviceset="R" device="_0201T" value="600"/>
+<part name="U$27" library="jonnew" deviceset="LED" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4003,8 +4063,7 @@ The CBC2012T100M saturates at
 <instance part="U$2" gate="PWR1" x="93.98" y="76.2"/>
 <instance part="U$3" gate="PWR1" x="93.98" y="15.24"/>
 <instance part="U$4" gate="PWR1" x="93.98" y="-45.72"/>
-<instance part="R8" gate="R" x="594.36" y="149.86" rot="R90"/>
-<instance part="SUPPLY20" gate="PE" x="594.36" y="139.7"/>
+<instance part="SUPPLY20" gate="PE" x="604.52" y="134.62"/>
 <instance part="C13" gate="C" x="523.24" y="198.12"/>
 <instance part="SUPPLY21" gate="PE" x="505.46" y="185.42"/>
 <instance part="U$5" gate="VCC" x="505.46" y="208.28"/>
@@ -4069,7 +4128,10 @@ The CBC2012T100M saturates at
 <instance part="R17" gate="R" x="15.24" y="-383.54" rot="R270"/>
 <instance part="SUPPLY34" gate="PE" x="15.24" y="-419.1"/>
 <instance part="U$24" gate="G$1" x="335.28" y="-81.28"/>
-<instance part="U$25" gate="G$1" x="513.08" y="157.48"/>
+<instance part="U$25" gate="G$1" x="612.14" y="157.48" rot="R180"/>
+<instance part="U$26" gate="G$1" x="223.52" y="68.58"/>
+<instance part="R8" gate="R" x="581.66" y="157.48"/>
+<instance part="U$27" gate="G$1" x="345.44" y="-81.28"/>
 </instances>
 <busses>
 </busses>
@@ -4195,9 +4257,8 @@ The CBC2012T100M saturates at
 <junction x="73.66" y="162.56"/>
 </segment>
 <segment>
-<pinref part="R8" gate="R" pin="1"/>
 <pinref part="SUPPLY20" gate="PE" pin="GND"/>
-<wire x1="594.36" y1="144.78" x2="594.36" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="604.52" y1="139.7" x2="604.52" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="GND"/>
@@ -4739,14 +4800,6 @@ The CBC2012T100M saturates at
 <wire x1="576.58" y1="203.2" x2="599.44" y2="203.2" width="0.1524" layer="91"/>
 <junction x="576.58" y="203.2"/>
 <label x="599.44" y="203.2" size="1.778" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="N$1" class="0">
-<segment>
-<pinref part="U3" gate="G$1" pin="RSET"/>
-<wire x1="574.04" y1="157.48" x2="594.36" y2="157.48" width="0.1524" layer="91"/>
-<pinref part="R8" gate="R" pin="2"/>
-<wire x1="594.36" y1="157.48" x2="594.36" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCOAX" class="0">
@@ -5749,6 +5802,20 @@ The CBC2012T100M saturates at
 <wire x1="15.24" y1="-360.68" x2="-5.08" y2="-360.68" width="0.1524" layer="91"/>
 <junction x="15.24" y="-360.68"/>
 <label x="-5.08" y="-360.68" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="U$25" gate="G$1" pin="WA"/>
+<pinref part="R8" gate="R" pin="2"/>
+<wire x1="586.74" y1="157.48" x2="594.36" y2="157.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$14" class="0">
+<segment>
+<pinref part="U3" gate="G$1" pin="RSET"/>
+<pinref part="R8" gate="R" pin="1"/>
+<wire x1="576.58" y1="157.48" x2="574.04" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
