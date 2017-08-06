@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -2289,6 +2289,12 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="-12.7" y="-60.96" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
 <text x="-17.78" y="-63.5" size="2.0828" layer="94" ratio="10" rot="SR0">Power</text>
 </symbol>
+<symbol name="+2V5">
+<wire x1="1.27" y1="0.635" x2="0" y2="2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="-1.27" y2="0.635" width="0.254" layer="94"/>
+<pin name="+3V3" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+<text x="1.27" y="1.905" size="1.27" layer="94" font="vector" ratio="18">2.5</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="TS4231" uservalue="yes">
@@ -3702,6 +3708,18 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="+2V5">
+<gates>
+<gate name="G$1" symbol="+2V5" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="mezzanine_library">
@@ -4039,6 +4057,12 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="SJ1" library="jonnew" deviceset="SJ" device=""/>
 <part name="U$43" library="jonnew" deviceset="VCC" device="" value="VCoax"/>
 <part name="U11" library="jonnew" deviceset="10M08DC" device="_VBGA"/>
+<part name="U9" library="jonnew" deviceset="TLV707" device="" value="TLV70725"/>
+<part name="C69" library="jonnew" deviceset="C" device="_0402T" value="1uF"/>
+<part name="SUPPLY48" library="jonnew" deviceset="GND" device=""/>
+<part name="U$44" library="jonnew" deviceset="VCC" device="" value="VCoax"/>
+<part name="C70" library="jonnew" deviceset="C" device="_0402T" value="1uF"/>
+<part name="U$45" library="jonnew" deviceset="+2V5" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4348,6 +4372,12 @@ NB: In anycase, bulk capacitors can be combined into single equivalent parallel 
 <instance part="U11" gate="G$5" x="1191.26" y="-142.24"/>
 <instance part="U11" gate="G$6" x="1282.7" y="-142.24"/>
 <instance part="U11" gate="G$7" x="629.92" y="-238.76"/>
+<instance part="U9" gate="G$1" x="226.06" y="-485.14"/>
+<instance part="C69" gate="C" x="195.58" y="-485.14"/>
+<instance part="SUPPLY48" gate="PE" x="226.06" y="-510.54"/>
+<instance part="U$44" gate="VCC" x="185.42" y="-474.98"/>
+<instance part="C70" gate="C" x="254" y="-485.14"/>
+<instance part="U$45" gate="G$1" x="269.24" y="-472.44"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -4813,6 +4843,31 @@ NB: In anycase, bulk capacitors can be combined into single equivalent parallel 
 <pinref part="SUPPLY47" gate="PE" pin="GND"/>
 <wire x1="640.08" y1="180.34" x2="640.08" y2="177.8" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="C70" gate="C" pin="2"/>
+<wire x1="254" y1="-490.22" x2="254" y2="-505.46" width="0.1524" layer="91"/>
+<pinref part="C69" gate="C" pin="2"/>
+<pinref part="SUPPLY48" gate="PE" pin="GND"/>
+<wire x1="195.58" y1="-490.22" x2="195.58" y2="-505.46" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="-505.46" x2="226.06" y2="-505.46" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="-505.46" x2="226.06" y2="-508" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="-500.38" x2="226.06" y2="-505.46" width="0.1524" layer="91"/>
+<junction x="226.06" y="-505.46"/>
+<wire x1="254" y1="-505.46" x2="226.06" y2="-505.46" width="0.1524" layer="91"/>
+<pinref part="U9" gate="G$1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="36"/>
+<wire x1="424.18" y1="58.42" x2="424.18" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="424.18" y1="60.96" x2="426.72" y2="63.5" width="0.1524" layer="91"/>
+<label x="426.72" y="63.5" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="70"/>
+<wire x1="337.82" y1="58.42" x2="337.82" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="337.82" y1="60.96" x2="335.28" y2="63.5" width="0.1524" layer="91"/>
+<label x="335.28" y="63.5" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
 <net name="DATA1" class="0">
 <segment>
@@ -5094,6 +5149,7 @@ NB: In anycase, bulk capacitors can be combined into single equivalent parallel 
 <junction x="193.04" y="137.16"/>
 <pinref part="U8" gate="G$1" pin="S"/>
 <wire x1="193.04" y1="127" x2="187.96" y2="127" width="0.1524" layer="91"/>
+<label x="337.82" y="38.1" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="VI" class="0">
@@ -5299,6 +5355,16 @@ NB: In anycase, bulk capacitors can be combined into single equivalent parallel 
 <junction x="617.22" y="180.34"/>
 <pinref part="U$25" gate="PWR1" pin="+3V3"/>
 </segment>
+<segment>
+<pinref part="C70" gate="C" pin="1"/>
+<wire x1="254" y1="-482.6" x2="254" y2="-480.06" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="-480.06" x2="254" y2="-480.06" width="0.1524" layer="91"/>
+<junction x="254" y="-480.06"/>
+<wire x1="254" y1="-480.06" x2="269.24" y2="-480.06" width="0.1524" layer="91"/>
+<wire x1="269.24" y1="-472.44" x2="269.24" y2="-480.06" width="0.1524" layer="91"/>
+<pinref part="U9" gate="G$1" pin="OUT"/>
+<pinref part="U$45" gate="G$1" pin="+3V3"/>
+</segment>
 </net>
 <net name="LED-2" class="0">
 <segment>
@@ -5332,8 +5398,9 @@ NB: In anycase, bulk capacitors can be combined into single equivalent parallel 
 <pinref part="U3" gate="G$1" pin="LED15"/>
 <wire x1="576.58" y1="167.64" x2="574.04" y2="167.64" width="0.1524" layer="91"/>
 <junction x="576.58" y="167.64"/>
-<wire x1="576.58" y1="182.88" x2="599.44" y2="182.88" width="0.1524" layer="91"/>
 <label x="599.44" y="182.88" size="1.27" layer="95" xref="yes"/>
+<wire x1="576.58" y1="182.88" x2="599.44" y2="182.88" width="0.1524" layer="91"/>
+<label x="424.18" y="38.1" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="VCOAX" class="0">
@@ -5417,6 +5484,21 @@ NB: In anycase, bulk capacitors can be combined into single equivalent parallel 
 <wire x1="210.82" y1="-439.42" x2="213.36" y2="-439.42" width="0.1524" layer="91"/>
 <pinref part="U10" gate="G$1" pin="IN"/>
 <pinref part="U10" gate="G$1" pin="EN"/>
+</segment>
+<segment>
+<pinref part="C69" gate="C" pin="1"/>
+<wire x1="195.58" y1="-482.6" x2="195.58" y2="-480.06" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="-480.06" x2="208.28" y2="-480.06" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="-480.06" x2="210.82" y2="-480.06" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="-480.06" x2="185.42" y2="-480.06" width="0.1524" layer="91"/>
+<junction x="195.58" y="-480.06"/>
+<wire x1="185.42" y1="-480.06" x2="185.42" y2="-477.52" width="0.1524" layer="91"/>
+<pinref part="U$44" gate="VCC" pin="VCC"/>
+<wire x1="208.28" y1="-480.06" x2="208.28" y2="-490.22" width="0.1524" layer="91"/>
+<junction x="208.28" y="-480.06"/>
+<wire x1="208.28" y1="-490.22" x2="210.82" y2="-490.22" width="0.1524" layer="91"/>
+<pinref part="U9" gate="G$1" pin="IN"/>
+<pinref part="U9" gate="G$1" pin="EN"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -6764,6 +6846,33 @@ NB: In anycase, bulk capacitors can be combined into single equivalent parallel 
 <pinref part="U3" gate="G$1" pin="LED8"/>
 <wire x1="574.04" y1="185.42" x2="576.58" y2="185.42" width="0.1524" layer="91"/>
 <label x="599.44" y="203.2" size="1.778" layer="95" xref="yes"/>
+<label x="421.64" y="38.1" size="1.778" layer="95" rot="R270" xref="yes"/>
+</segment>
+</net>
+<net name="REF" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="69"/>
+<wire x1="340.36" y1="58.42" x2="340.36" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="340.36" y1="68.58" x2="337.82" y2="71.12" width="0.1524" layer="91"/>
+<label x="337.82" y="71.12" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="N$39" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="1"/>
+<wire x1="337.82" y1="40.64" x2="337.82" y2="43.18" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$41" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="34"/>
+<wire x1="421.64" y1="40.64" x2="421.64" y2="43.18" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$42" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="35"/>
+<wire x1="424.18" y1="43.18" x2="424.18" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
