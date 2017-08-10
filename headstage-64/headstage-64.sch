@@ -4943,8 +4943,8 @@ Source: amp_227161.pdf</description>
 <part name="R4" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="R5" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="R6" library="jonnew" deviceset="R" device="_0201T" value="5.49k"/>
-<part name="R7" library="jonnew" deviceset="R" device="_0201T" value="300"/>
-<part name="C9" library="jonnew" deviceset="C" device="_0201T" value="220pF"/>
+<part name="R7" library="jonnew" deviceset="R" device="_0201T" value="220"/>
+<part name="C9" library="jonnew" deviceset="C" device="_0201T" value="470pF"/>
 <part name="C10" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
 <attribute name="PARTNP" value="CL03A104KA3NNNC"/>
 </part>
@@ -4995,7 +4995,7 @@ Source: amp_227161.pdf</description>
 <attribute name="PARTNO" value="ADG1401BCPZ"/>
 </part>
 <part name="SUPPLY28" library="jonnew" deviceset="GND" device=""/>
-<part name="R13" library="jonnew" deviceset="R" device="_0201T" value="100"/>
+<part name="R13" library="jonnew" deviceset="R" device="_0201T" value="50"/>
 <part name="C20" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
 <attribute name="PARTNO" value="CL03A104KA3NNNC"/>
 </part>
@@ -5221,10 +5221,10 @@ Source: amp_227161.pdf</description>
 noise since this is also 
 VREF.</text>
 <text x="467.36" y="121.92" size="1.778" layer="97">NB:
-ISTIM = (VDAC  - 1.65)/1500.
+ISTIM = (VDAC  - 1.65)/1100.
 e.g. 
 VDAC = 1.65 -&gt; ISTIM = 0
-VDAC = 3.0   -&gt; ISTIM = 1.5 mA
+VDAC = 3.3   -&gt; ISTIM = 1.5 mA
 VDAC = 0.0   -&gt; ISTIM = -1.5mA</text>
 <text x="101.6" y="-383.54" size="1.778" layer="97">NB: Inductors pass 250mA DC max
 before they are used to generate a
