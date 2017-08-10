@@ -1318,19 +1318,16 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="-1.27" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.27" y="-2.54" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
-<package name="LED-0201T">
-<wire x1="-0.254" y1="0.1524" x2="0.254" y2="0.1524" width="0.1016" layer="51"/>
-<wire x1="0.254" y1="-0.1524" x2="-0.254" y2="-0.1524" width="0.1016" layer="51"/>
-<smd name="1" x="-0.3" y="0" dx="0.3" dy="0.4" layer="1"/>
-<smd name="2" x="0.3" y="0" dx="0.3" dy="0.4" layer="1"/>
+<package name="NANOPOINT-0201">
+<smd name="1" x="-0.2" y="0" dx="0.2" dy="0.35" layer="1"/>
+<smd name="2" x="0.2" y="0" dx="0.2" dy="0.35" layer="1"/>
 <text x="-1.0668" y="0.5588" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.1938" y="-1.5748" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<rectangle x1="-0.3048" y1="-0.1524" x2="-0.1524" y2="0.1524" layer="51"/>
-<rectangle x1="0.1524" y1="-0.1524" x2="0.3048" y2="0.1524" layer="51"/>
-<wire x1="0.7" y1="0" x2="1" y2="0.2" width="0.127" layer="21"/>
-<wire x1="0.7" y1="0" x2="1" y2="-0.2" width="0.127" layer="21"/>
-<wire x1="1" y1="0.2" x2="1" y2="-0.2" width="0.127" layer="21"/>
-<wire x1="0.6" y1="0.3" x2="0.6" y2="-0.3" width="0.127" layer="21"/>
+<wire x1="0.47" y1="0" x2="0.77" y2="0.2" width="0.127" layer="51"/>
+<wire x1="0.47" y1="0" x2="0.77" y2="-0.2" width="0.127" layer="51"/>
+<wire x1="0.77" y1="0.2" x2="0.77" y2="-0.2" width="0.127" layer="51"/>
+<rectangle x1="-0.35" y1="-0.18" x2="0.35" y2="0.18" layer="39"/>
+<rectangle x1="-0.35" y1="-0.18" x2="0.35" y2="0.18" layer="51"/>
 </package>
 <package name="UQFN">
 <circle x="-0.68" y="1.11" radius="0.25" width="0" layer="21"/>
@@ -3822,7 +3819,7 @@ Source: amp_227161.pdf</description>
 <technology name=""/>
 </technologies>
 </device>
-<device name="_0201T" package="LED-0201T">
+<device name="_0201T" package="NANOPOINT-0201">
 <connects>
 <connect gate="G$1" pin="A" pad="2"/>
 <connect gate="G$1" pin="C" pad="1"/>
@@ -4255,9 +4252,8 @@ Source: amp_227161.pdf</description>
 <part name="U$23" library="jonnew" deviceset="VCC" device="" value="VCoax"/>
 <part name="R17" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="SUPPLY34" library="jonnew" deviceset="GND" device=""/>
-<part name="U$24" library="jonnew" deviceset="LED" device="_0201T"/>
 <part name="R8" library="jonnew" deviceset="R" device="_0201T" value="600"/>
-<part name="U$27" library="jonnew" deviceset="LED" device="_0201T"/>
+<part name="U$27" library="jonnew" deviceset="LED" device="_0201T" value="XZVGR155W"/>
 <part name="C48" library="jonnew" deviceset="C" device="_0201T" value="0.1uF"/>
 <part name="C50" library="jonnew" deviceset="C" device="_0201T" value="10nF"/>
 <part name="C51" library="jonnew" deviceset="C" device="_0402T" value="0.1uF">
@@ -4351,15 +4347,18 @@ Source: amp_227161.pdf</description>
 <part name="C37" library="jonnew" deviceset="C" device="_0201T" value="4.7nF"/>
 <part name="C38" library="jonnew" deviceset="C" device="_0201T" value="10nF"/>
 <part name="C39" library="jonnew" deviceset="C" device="_0201T" value="22nF"/>
-<part name="C40" library="jonnew" deviceset="C" device="_0201T" value="0.47uF"/>
-<part name="C41" library="jonnew" deviceset="C" device="_0201T" value="1uF"/>
+<part name="C40" library="jonnew" deviceset="C" device="_0201T" value="0.47uF">
+<attribute name="PARTNO" value="GRM033R60J474KE90D"/>
+</part>
 <part name="C42" library="jonnew" deviceset="C" device="_0603T" value="10uF">
 <attribute name="PARTNO" value="CL05A106MQ5NUNC"/>
 </part>
 <part name="C31" library="jonnew" deviceset="C" device="_0201T" value="4.7nF"/>
 <part name="C43" library="jonnew" deviceset="C" device="_0201T" value="10nF"/>
 <part name="C44" library="jonnew" deviceset="C" device="_0201T" value="22nF"/>
-<part name="C45" library="jonnew" deviceset="C" device="_0201T" value="0.47uF"/>
+<part name="C45" library="jonnew" deviceset="C" device="_0201T" value="0.47uF">
+<attribute name="PARTNO" value="GRM033R60J474KE90D"/>
+</part>
 <part name="C46" library="jonnew" deviceset="C" device="_0603T" value="10uF">
 <attribute name="PARTNO" value="CL05A106MQ5NUNC"/>
 </part>
@@ -4368,7 +4367,9 @@ Source: amp_227161.pdf</description>
 <part name="C32" library="jonnew" deviceset="C" device="_0201T" value="4.7nF"/>
 <part name="C47" library="jonnew" deviceset="C" device="_0201T" value="10nF"/>
 <part name="C71" library="jonnew" deviceset="C" device="_0201T" value="22nF"/>
-<part name="C72" library="jonnew" deviceset="C" device="_0201T" value="0.47uF"/>
+<part name="C72" library="jonnew" deviceset="C" device="_0201T" value="0.47uF">
+<attribute name="PARTNO" value="GRM033R60J474KE90D"/>
+</part>
 <part name="C73" library="jonnew" deviceset="C" device="_0603T" value="10uF">
 <attribute name="PARTNO" value="CL05A106MQ5NUNC"/>
 </part>
@@ -4377,7 +4378,7 @@ Source: amp_227161.pdf</description>
 <part name="SUPPLY46" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY49" library="jonnew" deviceset="GND" device=""/>
 <part name="U28" library="jonnew" deviceset="PINHD-1X8" device="_UCAST" value="IOBOARD"/>
-<part name="X1" library="jonnew" deviceset="COAX" device="_XFL" value="XFLRSMT"/>
+<part name="X1" library="jonnew" deviceset="COAX" device="_XFL" value="X.FL-R-SMT-1"/>
 <part name="R23" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="SUPPLY50" library="jonnew" deviceset="GND" device=""/>
 <part name="U$12" library="jonnew" deviceset="+3V3" device=""/>
@@ -4431,6 +4432,14 @@ Source: amp_227161.pdf</description>
 </part>
 <part name="C13" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
 <attribute name="PARTNO" value="C0603X5R1C104K030BC"/>
+</part>
+<part name="R24" library="jonnew" deviceset="R" device="_0201T"/>
+<part name="SUPPLY16" library="jonnew" deviceset="GND" device=""/>
+<part name="U$6" library="jonnew" deviceset="LED" device="_0201T" value="XZVGR155W"/>
+<part name="R25" library="jonnew" deviceset="R" device="_0201T"/>
+<part name="SUPPLY51" library="jonnew" deviceset="GND" device=""/>
+<part name="C68" library="jonnew" deviceset="C" device="_0201T" value="1uF">
+<attribute name="PARTNO" value="CL03A105MP3ZSNH"/>
 </part>
 </parts>
 <sheets>
@@ -4604,7 +4613,6 @@ The CBC2012T100M saturates at
 <instance part="U$23" gate="VCC" x="411.48" y="-355.6"/>
 <instance part="R17" gate="R" x="15.24" y="-383.54" rot="R270"/>
 <instance part="SUPPLY34" gate="PE" x="15.24" y="-419.1"/>
-<instance part="U$24" gate="G$1" x="1097.28" y="-248.92"/>
 <instance part="R8" gate="R" x="581.66" y="157.48"/>
 <instance part="U$27" gate="G$1" x="612.14" y="-386.08"/>
 <instance part="C48" gate="C" x="830.58" y="96.52"/>
@@ -4706,15 +4714,18 @@ The CBC2012T100M saturates at
 <instance part="C37" gate="C" x="993.14" y="-368.3"/>
 <instance part="C38" gate="C" x="1003.3" y="-368.3"/>
 <instance part="C39" gate="C" x="1013.46" y="-368.3"/>
-<instance part="C40" gate="C" x="1023.62" y="-368.3"/>
-<instance part="C41" gate="C" x="1054.1" y="-347.98"/>
+<instance part="C40" gate="C" x="1023.62" y="-368.3">
+<attribute name="PARTNO" x="1023.62" y="-368.3" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="C42" gate="C" x="1033.78" y="-368.3">
 <attribute name="PARTNO" x="1033.78" y="-368.3" size="1.27" layer="96" display="off"/>
 </instance>
 <instance part="C31" gate="C" x="993.14" y="-388.62"/>
 <instance part="C43" gate="C" x="1003.3" y="-388.62"/>
 <instance part="C44" gate="C" x="1013.46" y="-388.62"/>
-<instance part="C45" gate="C" x="1033.78" y="-388.62"/>
+<instance part="C45" gate="C" x="1033.78" y="-388.62">
+<attribute name="PARTNO" x="1033.78" y="-388.62" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="C46" gate="C" x="1043.94" y="-388.62">
 <attribute name="PARTNO" x="1043.94" y="-388.62" size="1.27" layer="96" display="off"/>
 </instance>
@@ -4723,7 +4734,9 @@ The CBC2012T100M saturates at
 <instance part="C32" gate="C" x="993.14" y="-416.56"/>
 <instance part="C47" gate="C" x="1003.3" y="-416.56"/>
 <instance part="C71" gate="C" x="1013.46" y="-416.56"/>
-<instance part="C72" gate="C" x="1023.62" y="-416.56"/>
+<instance part="C72" gate="C" x="1023.62" y="-416.56">
+<attribute name="PARTNO" x="1023.62" y="-416.56" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="C73" gate="C" x="1033.78" y="-416.56">
 <attribute name="PARTNO" x="1033.78" y="-416.56" size="1.27" layer="96" display="off"/>
 </instance>
@@ -4786,6 +4799,14 @@ The CBC2012T100M saturates at
 </instance>
 <instance part="C13" gate="C" x="624.84" y="180.34" rot="R90">
 <attribute name="PARTNO" x="624.84" y="180.34" size="1.27" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R24" gate="R" x="612.14" y="-370.84" rot="R270"/>
+<instance part="SUPPLY16" gate="PE" x="612.14" y="-398.78"/>
+<instance part="U$6" gate="G$1" x="1076.96" y="-251.46"/>
+<instance part="R25" gate="R" x="1076.96" y="-236.22" rot="R270"/>
+<instance part="SUPPLY51" gate="PE" x="1076.96" y="-264.16"/>
+<instance part="C68" gate="C" x="1054.1" y="-347.98">
+<attribute name="PARTNO" x="1054.1" y="-347.98" size="1.27" layer="96" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -5215,7 +5236,6 @@ The CBC2012T100M saturates at
 <pinref part="C27" gate="C" pin="2"/>
 <wire x1="1013.46" y1="-353.06" x2="1013.46" y2="-355.6" width="0.1524" layer="91"/>
 <junction x="1013.46" y="-355.6"/>
-<pinref part="C41" gate="C" pin="2"/>
 <wire x1="1054.1" y1="-353.06" x2="1054.1" y2="-355.6" width="0.1524" layer="91"/>
 <junction x="1054.1" y="-355.6"/>
 <wire x1="1023.62" y1="-375.92" x2="1013.46" y2="-375.92" width="0.1524" layer="91"/>
@@ -5282,6 +5302,7 @@ The CBC2012T100M saturates at
 <pinref part="C28" gate="C" pin="2"/>
 <wire x1="1023.62" y1="-393.7" x2="1023.62" y2="-396.24" width="0.1524" layer="91"/>
 <junction x="1023.62" y="-396.24"/>
+<pinref part="C68" gate="C" pin="2"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="M3"/>
@@ -5297,6 +5318,16 @@ The CBC2012T100M saturates at
 <pinref part="SUPPLY50" gate="PE" pin="GND"/>
 <pinref part="R23" gate="R" pin="2"/>
 <wire x1="373.38" y1="91.44" x2="373.38" y2="93.98" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$27" gate="G$1" pin="C"/>
+<wire x1="612.14" y1="-391.16" x2="612.14" y2="-396.24" width="0.1524" layer="91"/>
+<pinref part="SUPPLY16" gate="PE" pin="GND"/>
+</segment>
+<segment>
+<pinref part="U$6" gate="G$1" pin="C"/>
+<wire x1="1076.96" y1="-256.54" x2="1076.96" y2="-261.62" width="0.1524" layer="91"/>
+<pinref part="SUPPLY51" gate="PE" pin="GND"/>
 </segment>
 </net>
 <net name="DATA1" class="0">
@@ -6828,9 +6859,9 @@ The CBC2012T100M saturates at
 <pinref part="C36" gate="C" pin="1"/>
 <wire x1="1043.94" y1="-342.9" x2="1043.94" y2="-345.44" width="0.1524" layer="91"/>
 <junction x="1043.94" y="-342.9"/>
-<pinref part="C41" gate="C" pin="1"/>
 <wire x1="1054.1" y1="-342.9" x2="1054.1" y2="-345.44" width="0.1524" layer="91"/>
 <junction x="1054.1" y="-342.9"/>
+<pinref part="C68" gate="C" pin="1"/>
 </segment>
 </net>
 <net name="N$13" class="0">
@@ -7337,6 +7368,20 @@ The CBC2012T100M saturates at
 <junction x="988.06" y="-416.56"/>
 <wire x1="988.06" y1="-416.56" x2="988.06" y2="-419.1" width="0.1524" layer="91"/>
 <wire x1="988.06" y1="-419.1" x2="982.98" y2="-419.1" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$29" class="0">
+<segment>
+<pinref part="R24" gate="R" pin="2"/>
+<pinref part="U$27" gate="G$1" pin="A"/>
+<wire x1="612.14" y1="-375.92" x2="612.14" y2="-383.54" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$39" class="0">
+<segment>
+<pinref part="R25" gate="R" pin="2"/>
+<pinref part="U$6" gate="G$1" pin="A"/>
+<wire x1="1076.96" y1="-241.3" x2="1076.96" y2="-248.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
