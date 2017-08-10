@@ -1085,8 +1085,8 @@ einem neuen Namen ab.</description>
 <element name="R4" library="jonnew" package="0201T" value="10k" x="-4.9" y="14.1" rot="R180"/>
 <element name="R5" library="jonnew" package="0201T" value="10k" x="-4.9" y="14.7"/>
 <element name="R6" library="jonnew" package="0201T" value="5.49k" x="-6.3" y="6.8" rot="MR270"/>
-<element name="R7" library="jonnew" package="0201T" value="300" x="-2" y="6.5" rot="MR90"/>
-<element name="C9" library="jonnew" package="0201T" value="220pF" x="-2" y="5.5" rot="MR90"/>
+<element name="R7" library="jonnew" package="0201T" value="220" x="-2" y="6.5" rot="MR90"/>
+<element name="C9" library="jonnew" package="0201T" value="470pF" x="-2" y="5.5" rot="MR90"/>
 <element name="C10" library="jonnew" package="0201T" value="0.1uF" x="-8.1" y="2.8" rot="MR270">
 <attribute name="PARTNP" value="CL03A104KA3NNNC" x="-8.1" y="2.8" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
@@ -1114,7 +1114,7 @@ einem neuen Namen ab.</description>
 <element name="U8" library="jonnew" package="LFCSP8-2X3" value="ADG1401" x="3.9765" y="6.5497" rot="MR90">
 <attribute name="PARTNO" value="ADG1401BCPZ" x="3.9765" y="6.5497" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
-<element name="R13" library="jonnew" package="0201T" value="100" x="-18.7532" y="-14.3961"/>
+<element name="R13" library="jonnew" package="0201T" value="50" x="-18.7532" y="-14.3961"/>
 <element name="C20" library="jonnew" package="0201T" value="0.1uF" x="-10.4532" y="10.9272">
 <attribute name="PARTNO" value="CL03A104KA3NNNC" x="-10.4532" y="10.9272" size="1.778" layer="27" display="off"/>
 </element>
