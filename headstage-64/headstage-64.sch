@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -8069,6 +8069,20 @@ The CBC2012T100M saturates at
 <junction x="993.14" y="-411.48"/>
 <pinref part="U$48" gate="G$1" pin="+2V5"/>
 <wire x1="1071.88" y1="-408.94" x2="1071.88" y2="-411.48" width="0.1524" layer="91"/>
+<wire x1="988.06" y1="-411.48" x2="988.06" y2="-414.02" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$7" pin="VCCA1"/>
+<wire x1="988.06" y1="-414.02" x2="988.06" y2="-416.56" width="0.1524" layer="91"/>
+<wire x1="988.06" y1="-416.56" x2="988.06" y2="-419.1" width="0.1524" layer="91"/>
+<wire x1="982.98" y1="-411.48" x2="988.06" y2="-411.48" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$7" pin="VCCA2"/>
+<wire x1="982.98" y1="-414.02" x2="988.06" y2="-414.02" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$7" pin="VCCA3"/>
+<wire x1="982.98" y1="-416.56" x2="988.06" y2="-416.56" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$7" pin="VCCA4"/>
+<wire x1="988.06" y1="-419.1" x2="982.98" y2="-419.1" width="0.1524" layer="91"/>
+<junction x="988.06" y="-411.48"/>
+<junction x="988.06" y="-414.02"/>
+<junction x="988.06" y="-416.56"/>
 </segment>
 </net>
 <net name="$N324" class="0">
@@ -8096,23 +8110,6 @@ The CBC2012T100M saturates at
 <pinref part="U11" gate="G$7" pin="VCCD_PLL2"/>
 <wire x1="982.98" y1="-363.22" x2="993.14" y2="-363.22" width="0.1524" layer="91"/>
 <junction x="993.14" y="-363.22"/>
-</segment>
-</net>
-<net name="N$43" class="0">
-<segment>
-<pinref part="U11" gate="G$7" pin="VCCA4"/>
-<pinref part="U11" gate="G$7" pin="VCCA2"/>
-<pinref part="U11" gate="G$7" pin="VCCA1"/>
-<wire x1="982.98" y1="-411.48" x2="988.06" y2="-411.48" width="0.1524" layer="91"/>
-<wire x1="988.06" y1="-411.48" x2="988.06" y2="-414.02" width="0.1524" layer="91"/>
-<wire x1="988.06" y1="-414.02" x2="982.98" y2="-414.02" width="0.1524" layer="91"/>
-<junction x="988.06" y="-414.02"/>
-<wire x1="988.06" y1="-414.02" x2="988.06" y2="-416.56" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$7" pin="VCCA3"/>
-<wire x1="982.98" y1="-416.56" x2="988.06" y2="-416.56" width="0.1524" layer="91"/>
-<junction x="988.06" y="-416.56"/>
-<wire x1="988.06" y1="-416.56" x2="988.06" y2="-419.1" width="0.1524" layer="91"/>
-<wire x1="988.06" y1="-419.1" x2="982.98" y2="-419.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$29" class="0">
