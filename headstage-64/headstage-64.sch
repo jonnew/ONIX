@@ -8126,6 +8126,18 @@ The CBC2012T100M saturates at
 <wire x1="1076.96" y1="-241.3" x2="1076.96" y2="-248.92" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="AGND" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="GND1"/>
+<wire x1="312.42" y1="-144.78" x2="312.42" y2="-152.4" width="0.1524" layer="91"/>
+<pinref part="U7" gate="A" pin="GND2"/>
+<wire x1="312.42" y1="-152.4" x2="368.3" y2="-152.4" width="0.1524" layer="91"/>
+<wire x1="368.3" y1="-152.4" x2="368.3" y2="-144.78" width="0.1524" layer="91"/>
+<wire x1="368.3" y1="-152.4" x2="368.3" y2="-157.48" width="0.1524" layer="91"/>
+<junction x="368.3" y="-152.4"/>
+<label x="368.3" y="-157.48" size="1.778" layer="95" rot="R270"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
