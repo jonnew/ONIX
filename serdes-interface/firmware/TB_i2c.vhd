@@ -1,11 +1,9 @@
---------------------------------------------------------------------------------
+--Test bench for i2c interface
+--by: Jie (Jack) Zhang MWL-MIT
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 use ieee.numeric_std.all;
- 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
  
 ENTITY TB_i2c IS
 END TB_i2c;
@@ -29,6 +27,7 @@ ARCHITECTURE behavior OF TB_i2c IS
          busy : OUT  std_logic;
          data_rd : OUT  std_logic_vector(7 downto 0);
          ack_error : BUFFER  std_logic;
+			rd_from_remote : in std_logic; 
          sda : INOUT  std_logic;
          scl : INOUT  std_logic
         );
@@ -38,7 +37,8 @@ ARCHITECTURE behavior OF TB_i2c IS
 	 component i2c_slave is
 	  generic(
 			input_clk : INTEGER := 50_000_000; --input clock speed from user logic in Hz
-			bus_clk   : INTEGER := 500_000);   --speed the i2c bus (scl) will run at in Hz
+			bus_clk   : INTEGER := 500_000;   --speed the i2c bus (scl) will run at in Hz
+			ID        : std_logic_vector(6 downto 0) := "1010101"); --Device specific ID
 		port (
 			clk       : IN     STD_LOGIC;                    --system clock
 			reset   : IN     STD_LOGIC;                      --active high reset
@@ -52,6 +52,23 @@ ARCHITECTURE behavior OF TB_i2c IS
 			); 
 		end component;
     
+	 component i2c_master_init is
+		port(
+				clk 	: in std_logic; 	--same clock for the i2c interface	
+				reset : in std_logic; 
+				busy  : in std_logic;
+				ack_error : in std_logic;
+				i2c_ena_o : out std_logic;
+				rw_o      : out std_logic; 
+				device_id_o : out std_logic_vector(6 downto 0);
+				addr_o  : out std_logic_vector(7 downto 0); 
+				value_o : out std_logic_vector(7 downto 0);
+				user_rw : in std_logic; 
+				user_device_id : in std_logic_vector(6 downto 0); 
+				user_addr : in std_logic_vector(7 downto 0);
+				user_value : in std_logic_vector(7 downto 0)
+		);
+	 end component;
 
    --Inputs
    signal clk : std_logic := '0';
@@ -94,12 +111,44 @@ BEGIN
           busy => busy,
           data_rd => data_rd,
           ack_error => ack_error,
+			 rd_from_remote => '0',
           sda => sda,
           scl => scl
         );
 
 	-- slave module 
-	uut_i2c_slave : i2c_slave port map (		
+	uut_i2c_slave_des : i2c_slave generic map (
+			ID => "1100000"
+	)port map (		
+			clk      => clk,
+			reset    => reset,                       --active high reset
+			sda      => sda,                   --serial data i2c bus
+			scl      => scl, 						 --serial clock i2c bus
+			wr_enb   => wr_enb,   
+			rd_enb   => rd_enb,  
+			addrout  => open,  
+			regin    => "10111001", 
+			regout   => open              
+			); 
+    
+
+	uut_i2c_slave_ser : i2c_slave generic map (
+			ID => "1011000"
+	)port map (		
+			clk      => clk,
+			reset    => reset,                       --active high reset
+			sda      => sda,                   --serial data i2c bus
+			scl      => scl, 						 --serial clock i2c bus
+			wr_enb   => wr_enb,   
+			rd_enb   => rd_enb,  
+			addrout  => open,  
+			regin    => regin, 
+			regout   => open              
+			); 
+			
+	uut_i2c_slave_remote : i2c_slave generic map (
+			ID => "1010000"
+	)port map (		
 			clk      => clk,
 			reset    => reset,                       --active high reset
 			sda      => sda,                   --serial data i2c bus
@@ -107,10 +156,26 @@ BEGIN
 			wr_enb   => wr_enb,   
 			rd_enb   => rd_enb,  
 			addrout  => addrout,  
-			regin    => regin, 
+			regin    => "10111001", 
 			regout   => regout              
 			); 
-    
+
+	control_init : i2c_master_init port map(
+			clk 	=> clk, 	
+			reset => reset,  
+			busy  => busy,
+			ack_error => ack_error, 
+			i2c_ena_o => ena,
+			rw_o => rw,
+			device_id_o => devid,
+			addr_o => addr,
+			value_o => data_wr,
+			user_rw => '1',
+			user_device_id => "1010000", 
+			user_addr => "00110110", 
+			user_value => "01110100"
+	);
+
 
    -- Clock process definitions
    clk_process :process
@@ -129,18 +194,17 @@ BEGIN
 		scl <= 'H'; 
 		sda <= 'H';
 		reset <= '1'; 
-		addr <= "11001011";
-		devid <= "1010101";
-		data_wr <= "01011100";
-		ena <= '0';
       wait for 100 ns;
 		reset <= '0'; 
+		regin <= "10101100";
       wait for clk_period*10;
-		ena <= '1'; 
+		
 		wait for clk_period*100;
-		ena <= '0'; 
       -- insert stimulus here 
-
+		wait for 200 us; 
+		scl <= '0';
+		wait for 200 us; 
+		scl <= 'H';
       wait;
    end process;
 
