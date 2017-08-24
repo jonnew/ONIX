@@ -725,7 +725,6 @@
 <part name="SUPPLY1" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY2" library="jonnew" deviceset="GND" device=""/>
 <part name="SHLD_D" library="jonnew" deviceset="GOLDPIN" device="_0.5ID_0.7OD" value="LRG_GP"/>
-<part name="AGND_D" library="jonnew" deviceset="GOLDPIN" device="_0.5ID_0.7OD" value="LRG_GP"/>
 <part name="SUPPLY3" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="jonnew" deviceset="GND" device=""/>
 <part name="REF_D" library="jonnew" deviceset="GOLDPIN" device="_0.5ID_0.7OD" value="LRG_GP"/>
@@ -733,7 +732,6 @@
 <part name="AGND_B" library="jonnew" deviceset="GOLDPIN" device="_0.5ID_0.7OD" value="LRG_GP"/>
 <part name="SUPPLY5" library="jonnew" deviceset="GND" device=""/>
 <part name="SHLD_C" library="jonnew" deviceset="GOLDPIN" device="_0.5ID_0.7OD" value="LRG_GP"/>
-<part name="AGND_C" library="jonnew" deviceset="GOLDPIN" device="_0.5ID_0.7OD" value="LRG_GP"/>
 <part name="SUPPLY6" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY7" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY8" library="jonnew" deviceset="GND" device=""/>
@@ -817,7 +815,6 @@
 <instance part="SUPPLY1" gate="PE" x="226.06" y="223.52"/>
 <instance part="SUPPLY2" gate="PE" x="109.22" y="248.92"/>
 <instance part="SHLD_D" gate="G$1" x="246.38" y="114.3" rot="MR0"/>
-<instance part="AGND_D" gate="G$1" x="246.38" y="116.84" rot="R180"/>
 <instance part="SUPPLY3" gate="PE" x="264.16" y="99.06"/>
 <instance part="SUPPLY4" gate="PE" x="327.66" y="193.04"/>
 <instance part="REF_D" gate="G$1" x="307.34" y="114.3"/>
@@ -825,7 +822,6 @@
 <instance part="AGND_B" gate="G$1" x="129.54" y="91.44" rot="R90"/>
 <instance part="SUPPLY5" gate="PE" x="106.68" y="58.42"/>
 <instance part="SHLD_C" gate="G$1" x="96.52" y="200.66" rot="MR180"/>
-<instance part="AGND_C" gate="G$1" x="96.52" y="198.12"/>
 <instance part="SUPPLY6" gate="PE" x="116.84" y="195.58"/>
 <instance part="SUPPLY7" gate="PE" x="213.36" y="27.94"/>
 <instance part="SUPPLY8" gate="PE" x="35.56" y="106.68"/>
@@ -2730,14 +2726,11 @@
 <wire x1="274.32" y1="106.68" x2="264.16" y2="106.68" width="0.1524" layer="91"/>
 <junction x="274.32" y="106.68"/>
 <junction x="264.16" y="106.68"/>
-<wire x1="264.16" y1="116.84" x2="246.38" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="264.16" y1="114.3" x2="264.16" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="D" gate="G$1" pin="69"/>
 <wire x1="264.16" y1="116.84" x2="269.24" y2="116.84" width="0.1524" layer="91"/>
-<junction x="264.16" y="116.84"/>
 <pinref part="D" gate="G$1" pin="70"/>
 <wire x1="264.16" y1="114.3" x2="269.24" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="AGND_D" gate="G$1" pin="0"/>
 </segment>
 <segment>
 <wire x1="289.56" y1="198.12" x2="284.48" y2="198.12" width="0.1524" layer="91"/>
@@ -2781,11 +2774,8 @@
 <wire x1="73.66" y1="200.66" x2="81.28" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="200.66" x2="81.28" y2="198.12" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="198.12" x2="73.66" y2="198.12" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="198.12" x2="96.52" y2="198.12" width="0.1524" layer="91"/>
-<junction x="81.28" y="198.12"/>
 <pinref part="C" gate="G$1" pin="69"/>
 <pinref part="C" gate="G$1" pin="70"/>
-<pinref part="AGND_C" gate="G$1" pin="0"/>
 <pinref part="SHLD_C" gate="G$1" pin="0"/>
 <wire x1="81.28" y1="200.66" x2="96.52" y2="200.66" width="0.1524" layer="91"/>
 <junction x="81.28" y="200.66"/>
