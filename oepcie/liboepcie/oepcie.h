@@ -1,8 +1,10 @@
 #ifndef OEPCIE_H
 #define OEPCIE_H
 
+#include <stddef.h>
+
 typedef enum oe_ctx_opt {
-    OE_HEADERSTREAMPATH,
+    //OE_HEADERSTREAMPATH,
     OE_CONFIGSTREAMPATH,
     OE_DATASTREAMPATH,
     OE_SIGNALSTREAMPATH,
@@ -18,7 +20,6 @@ typedef enum oe_signal {
     OE_CONFIGRACK,            // Configuration read-acknowledgement
     OE_CONFIGWSTART,          // Configuration write-start
     OE_CONFIGRSTART,          // Configuration read-start
-
 } oe_signal_t;
 
 typedef enum oe_error {
@@ -34,6 +35,7 @@ typedef enum oe_error {
     OE_EINVALOPT        = -10, // Invalid context option
     OE_EINVALARG        = -11, // Invalid function arguements
     OE_ECANTSETOPT      = -12, // Option cannot be set in current context state
+    OE_ECOBSPACK        = -13, // Invalid COBS packet
 } oe_error_t;
 
 // Context
@@ -52,7 +54,7 @@ int oe_read(const oe_ctx ctx, void *data, size_t size);
 // int oe_write(const oe_ctx* ctx, void* data, size_t size);
 
 // Helpers
-static inline int oe_all_read(int fd, void* data, size_t size);
-static inline int oe_signal_read(const oe_ctx ctx, int *sig);
+static inline int _oe_read(int fd, void* data, size_t size);
+static inline int _oe_signal_read(const oe_ctx ctx, int *sig);
 
 #endif
