@@ -23,7 +23,7 @@ typedef enum run_state {
 } run_state_t;
 
 typedef struct oe_ctx_impl {
-    stream_fid_t header;
+    //stream_fid_t header;
     stream_fid_t config;
     stream_fid_t data;
     stream_fid_t signal;
@@ -37,7 +37,7 @@ oe_ctx oe_create_ctx()
 {
     oe_ctx ctx = calloc(1, sizeof(struct oe_ctx_impl));
 
-    ctx->header.path = calloc(0, sizeof(char));
+    //ctx->header.path = calloc(0, sizeof(char));
     ctx->config.path = calloc(0, sizeof(char));
     ctx->data.path = calloc(0, sizeof(char));
     ctx->signal.path = calloc(0, sizeof(char));
@@ -54,9 +54,9 @@ int oe_init_ctx(oe_ctx ctx)
         return OE_EREINITCTX;
 
     // Open all filestreams
-    ctx->header.fid = open(ctx->header.path, O_RDONLY);
-    if (ctx->header.fid == -1)
-        return OE_EPATHINVALID;
+    //ctx->header.fid = open(ctx->header.path, O_RDONLY);
+    //if (ctx->header.fid == -1)
+    //    return OE_EPATHINVALID;
 
     ctx->config.fid = open(ctx->config.path, O_RDWR);
     if (ctx->config.fid == -1)
@@ -71,43 +71,43 @@ int oe_init_ctx(oe_ctx ctx)
         return OE_EPATHINVALID;
 
     // Get general configuration magic number
-    read(ctx->header.fid, &(ctx->config_id), sizeof(int));
+    //read(ctx->header.fid, &(ctx->config_id), sizeof(int));
 
-    int device_id = 0;
-    int num_dev = 0;
+    //int device_id = 0;
+    //int num_dev = 0;
 
-    // TODO: This for loop will not terminate if the header file is empty,
-    // must have terminating -1... consider defining MAX_num_dev
-    while (device_id != -1) {
+    //// TODO: This for loop will not terminate if the header file is empty,
+    //// must have terminating -1... consider defining MAX_num_dev
+    //while (device_id != -1) {
 
-        read(ctx->header.fid, &device_id, sizeof(int));
+    //    read(ctx->header.fid, &device_id, sizeof(int));
 
-        if (device_id > MAX_DEVICE_ID || device_id < -1)
-            return OE_EDEVID;
-        if (device_id != -1)
-            num_dev++;
-    }
+    //    if (device_id > MAX_DEVICE_ID || device_id < -1)
+    //        return OE_EDEVID;
+    //    if (device_id != -1)
+    //        num_dev++;
+    //}
 
-    ctx->map.num_dev = num_dev;
-    ctx->map.devs = calloc(num_dev, sizeof(device_t));
+    //ctx->map.num_dev = num_dev;
+    //ctx->map.devs = calloc(num_dev, sizeof(device_t));
 
-    // return to start of device_ids
-    lseek(ctx->header.fid, 4, SEEK_SET);
+    //// return to start of device_ids
+    //lseek(ctx->header.fid, 4, SEEK_SET);
 
-    int i;
-    for (i = 0; i < num_dev; i++) {
-        int id = -1;
-        if (read(ctx->header.fid, &id, sizeof(int)) == -1)
-            return OE_EREADFAILURE;
-        ctx->map.devs[i] = devices[id];
-    }
+    //int i;
+    //for (i = 0; i < num_dev; i++) {
+    //    int id = -1;
+    //    if (read(ctx->header.fid, &id, sizeof(int)) == -1)
+    //        return OE_EREADFAILURE;
+    //    ctx->map.devs[i] = devices[id];
+    //}
 
-    // Calculate read offsets
-    ctx->map.devs[0].read_offset = 0;
-    for (i = 1; i < num_dev; i++) {
-        ctx->map.devs[i].read_offset
-            = ctx->map.devs[i - 1].read_offset + ctx->map.devs[i - 1].read_size;
-    }
+    //// Calculate read offsets
+    //ctx->map.devs[0].read_offset = 0;
+    //for (i = 1; i < num_dev; i++) {
+    //    ctx->map.devs[i].read_offset
+    //        = ctx->map.devs[i - 1].read_offset + ctx->map.devs[i - 1].read_size;
+    //}
 
     // TODO: Calculate write offsets
     // Not implemented - Write Offsets... Aren't exactly sure what/if these are
@@ -122,7 +122,7 @@ int oe_close_ctx(oe_ctx ctx) {
 
     // TODO: Action if close returns -1?
     if (ctx->init == INITIALIZED) {
-        close(ctx->header.fid);
+        //close(ctx->header.fid);
         close(ctx->config.fid);
         close(ctx->data.fid);
         close(ctx->signal.fid);
@@ -141,7 +141,7 @@ int oe_destroy_ctx(oe_ctx ctx)
     // Close potentially option streams
     oe_close_ctx(ctx);
 
-    free(ctx->header.path);
+    //free(ctx->header.path);
     free(ctx->config.path);
     free(ctx->data.path);
     free(ctx->signal.path);
@@ -158,12 +158,12 @@ int oe_set_ctx_opt(oe_ctx ctx,
 {
 
     switch (option) {
-        case OE_HEADERSTREAMPATH:
-            if (ctx->init == INITIALIZED)
-                return OE_ECANTSETOPT;
-            ctx->header.path = realloc(ctx->header.path, option_len);
-            memcpy(ctx->header.path, option_value, option_len);
-            return 0;
+        //case OE_HEADERSTREAMPATH:
+        //    if (ctx->init == INITIALIZED)
+        //        return OE_ECANTSETOPT;
+        //    ctx->header.path = realloc(ctx->header.path, option_len);
+        //    memcpy(ctx->header.path, option_value, option_len);
+        //    return 0;
 
         case OE_CONFIGSTREAMPATH:
             if (ctx->init == INITIALIZED)
@@ -202,14 +202,14 @@ int oe_get_ctx_opt(const oe_ctx ctx,
 {
 
     switch (option) {
-        case OE_HEADERSTREAMPATH:
-            if (*option_len >= strlen(ctx->header.path) + 1) {
-                size_t n = strlen(ctx->header.path) + 1;
-                memcpy(option_value, ctx->header.path, *option_len);
-                *option_len = n;
-                return 0;
-            }
-            break;
+        //case OE_HEADERSTREAMPATH:
+        //    if (*option_len >= strlen(ctx->header.path) + 1) {
+        //        size_t n = strlen(ctx->header.path) + 1;
+        //        memcpy(option_value, ctx->header.path, *option_len);
+        //        *option_len = n;
+        //        return 0;
+        //    }
+        //    break;
 
         case OE_CONFIGSTREAMPATH:
             if (*option_len >= strlen(ctx->config.path) + 1) {
@@ -293,7 +293,7 @@ int oe_write_reg(const oe_ctx ctx, int device_idx, int addr, int value, int *ack
     // Pump the signal stream unil firmware provide config write start
     int sig;
     do {
-        int rc = oe_signal_read(ctx, &sig);
+        int rc = _oe_signal_read(ctx, &sig);
         if (rc < 0) return rc;
 
     } while (sig != OE_CONFIGWSTART);
@@ -325,7 +325,7 @@ int oe_read_reg(const oe_ctx ctx, int device_idx, int addr, int *value, int *ack
     // Pump the signal stream unil firmware provide config read start
     int sig;
     do {
-        int rc = oe_signal_read(ctx, &sig);
+        int rc = _oe_signal_read(ctx, &sig);
         if (rc < 0) return rc;
 
     } while (sig != OE_CONFIGWSTART);
@@ -353,12 +353,17 @@ int oe_read_reg(const oe_ctx ctx, int device_idx, int addr, int *value, int *ack
 
 int oe_read(const oe_ctx ctx, void *data, size_t size)
 {
-    return oe_all_read(ctx->data.fid, data, size);
+    return _oe_read(ctx->data.fid, data, size);
+}
+
+static int _oe_signal_read(const oe_ctx ctx, int *sig)
+{
+    return _oe_read(ctx->signal.fid, sig, sizeof(int));
 }
 
 // TODO: int oe_write(const oe_ctx* state, void* data, size_t size){}
 
-static int oe_all_read(int fd, void *data, size_t size)
+static int _oe_read(int fd, void *data, size_t size)
 {
     int received = 0;
 
@@ -378,9 +383,4 @@ static int oe_all_read(int fd, void *data, size_t size)
         received += rc;
     }
     return 0;
-}
-
-static int oe_signal_read(const oe_ctx ctx, int *sig)
-{
-    return oe_all_read(ctx->signal.fid, sig, sizeof(int));
 }
