@@ -300,7 +300,6 @@ GOOD</text>
 <circle x="1.5" y="5" radius="1" width="0.127" layer="21"/>
 <circle x="-1.5" y="-5" radius="1" width="0.127" layer="21"/>
 <circle x="0" y="0" radius="1.38066875" width="0.127" layer="21"/>
-<circle x="0" y="0" radius="10" width="0.127" layer="22"/>
 <circle x="1.5" y="5" radius="1" width="0.127" layer="22"/>
 <circle x="0" y="0" radius="1.38066875" width="0.127" layer="22"/>
 <circle x="-1.5" y="-5" radius="1" width="0.127" layer="22"/>

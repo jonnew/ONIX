@@ -1,0 +1,22 @@
+Speedy circuits
+Assembly instructions for eib-256-panel-assembly
+
+## Bill of Materials
+Assembly requires only one part:
+
+    - Part number: Hirose DF40C-70DP-0.4V(51)
+    - This is a 70 pin header
+    - This is placed 4x per board
+    - There are 12 boards per panel, so each panel requires 48 parts.
+
+## Part placement
+With respect to the center of each circular PCB, the _center_ locations of each
+header, with A, B, C, D labels in silkscreen layer, are as follows:
+
+    - A: -4.773 mm, 12.528 mm @ 34 deg
+    - B: 4.773 mm, -12.528 mm @ 214 deg
+    - C: -12.528 mm, -4.773 mm,  @ 124 deg
+    - D: 12.528 mm, 4.773 mm, @ 304 deg
+
+Each PCB in the panel is spaced on 50 mm grid, and this can be used to obtain
+the positions of all the headers.
