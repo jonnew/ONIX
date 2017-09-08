@@ -1,46 +1,49 @@
 #include "oepcie.h"
 #include "oepcieutil.h"
 
-#define FinishBlock(X) (*code_ptr = (X), code_ptr = buffer++, code = 0x01)
+#define FINISHBLOCK(X) (*code_ptr = (X), code_ptr = dst++, code = 0x01)
 
-// TODO: Set ack appropriately
-int oe_cobs_stuff(uint8_t *ack, size_t length, uint8_t *buffer)
+// TODO: What if sizeof(dst) is smaller than len + 2?
+int oe_cobs_stuff(const uint8_t *src, size_t len, uint8_t *dst)
 {
-    if (length > 254)
+    if (len > 254)
         return OE_ECOBSPACK;
 
-    const uint8_t *end = ack + length;
-    uint8_t *code_ptr = buffer++;
+    const uint8_t *end = src + len;
+    uint8_t *code_ptr = dst++; // First value is len of packet
     uint8_t code = 0x01;
 
-    while (ack < end) {
-        if (*ack == 0)
-            FinishBlock(code);
-        else {
-            *buffer++ = *ack;
-            if (++code == 0xFF)
-                FinishBlock(code);
+    while (src < end) {
+        if (*src == 0) // Encoding required
+            FINISHBLOCK(code);
+        else { // No encoding required
+            *dst++ = *src;
+            if (++code == 0xFF) //Data exceeds 254 byte len
+                return OE_ECOBSPACK;
         }
-        ack++;
+        src++;
     }
 
-    FinishBlock(code);
+    FINISHBLOCK(code);
 
     return 0;
 }
 
-int oe_cobs_unstuff(uint8_t *ack, size_t length, uint8_t *buffer)
+int oe_cobs_unstuff(const uint8_t *src, size_t len, uint8_t *dst)
 {
-    if (length > 254)
+    // Minimal COBS packet is [size, payload]. 
+    // Maximal payload size is is 254 bytes.
+    if (len < 2 || len > 255)
         return OE_ECOBSPACK;
 
-    const uint8_t *end = ack + length;
-    while (ack < end) {
-        int code = *ack++;
-        for (int i = 1; ack < end && i < code; i++)
-            *buffer++ = *ack++;
+    const uint8_t *end = src + len;
+    while (src < end) {
+        int code = *src++;
+        int i; 
+        for (i = 1; src < end && i < code; i++)
+            *dst++ = *src++;
         if (code < 0xFF)
-            *buffer++ = 0;
+            *dst++ = 0;
     }
 
     return 0;

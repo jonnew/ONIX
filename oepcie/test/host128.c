@@ -11,8 +11,7 @@
 // TODO: This should be retrieved from header packet 
 // Params
 const size_t num_chan  = 128;
-const size_t run_time_sec = 10;
-const size_t samp_per_chan_per_block = 10;
+const size_t samp_per_chan_per_block = 1000;
 const size_t fs_hz = 30e3;
 
 int main()
@@ -35,15 +34,14 @@ int main()
     oe_set_ctx_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
     oe_set_ctx_opt(ctx, OE_DATASTREAMPATH, data_path, strlen(data_path) + 1);
 
-    // TODO: Build from header packet
-    // Constants
+    // TODO: Build from header packet constants
+    oe_write_config();    
     const size_t block_bytes = num_chan * samp_per_chan_per_block * 2;
 
     assert(oe_init_ctx(ctx) == 0);
 
     char buffer[8 + block_bytes];
-    while (oe_read(ctx, &buffer, 1)  >= 0) { //8 + block_bytes)
-        // for (i = 0; i < num_blocks; i++) {
+    while (oe_read(ctx, &buffer, 8 + block_bytes)  >= 0)  {
 
         // Get sample number and print
         uint64_t sample = *(uint64_t *)buffer;
@@ -51,6 +49,11 @@ int main()
 
         // LFP data
         int16_t *lfp = (int16_t *)(buffer + 8);
+        int i;
+        printf("LFP: [");
+        for (i =0; i < 10; i++)
+            printf("%" PRId16 " ", *(lfp + i));
+        printf("...]\n");
 
     }
 

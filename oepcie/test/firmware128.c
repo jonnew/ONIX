@@ -13,7 +13,7 @@
 #include "../liboepcie/oepcieutil.h"
 
 // Params
-const size_t num_chan  = 128;
+const size_t num_chan = 128;
 const size_t run_time_sec = 10;
 const size_t samp_per_chan_per_block = 1000;
 const size_t fs_hz = 30e3;
@@ -105,7 +105,7 @@ int main()
     // Constants
     const size_t samp_per_block = num_chan * samp_per_chan_per_block;
     const size_t num_blocks = (run_time_sec * fs_hz) / samp_per_chan_per_block;
-    //const size_t sample_time_us = (1e6 * samp_per_chan_per_block ) / fs_hz;
+    const size_t sample_time_us = (1e6 * samp_per_chan_per_block ) / fs_hz;
 
     // FIFO file path
     const char *config_path = "/tmp/rat128_config";
@@ -113,31 +113,33 @@ int main()
     const char *data_path = "/tmp/rat128_data";
 
     // Start fresh
-    //unlink(sig_path);
+    unlink(sig_path);
     unlink(data_path);
     unlink(config_path);
 
     // Async streams are similar to pipes
     mkfifo(data_path, 0666);
-    //mkfifo(sig_path, 0666);
+    mkfifo(sig_path, 0666);
 
-    // Open FIFOs for write only and config file for read/write
+    // Open FIFOs for write only and config file for read/write 
     // NB: Must respect this ordering when opening files in host or the two
-    // programs will deadlock
+    // programs will deadlock. The ordering is hidden in oe_init_ctx(), so its
+    // up to firmware to do it correctly. I need to make sure this won't be an
+    // issue when using xillybus
     int config_fd = open(config_path, O_RDWR | O_CREAT, 0666);
     int data_fd = open(data_path, O_WRONLY);
-    //int sig_fd = open(sig_path, O_WRONLY);
+    int sig_fd = open(sig_path, O_WRONLY);
 
     // Generate config file content
     generate_config(config_fd);
 
     // Set data pipe capacity
     // Sample number, LFP data, ...
-    //fcntl(data_fd, F_SETPIPE_SZ, sizeof(uint64_t) + samp_per_block * sizeof(int16_t));
+    fcntl(data_fd, F_SETPIPE_SZ, sizeof(uint64_t) + samp_per_block * sizeof(int16_t));
 
     // Populate config file
 
-    // Start signal thread
+    // TODO: Start signal thread
 
     // Start data generation loop
     int i;
@@ -150,14 +152,16 @@ int main()
         write(data_fd, &sample, 8);
 
         // 2. LFP data
-        //int16_t lfp_block[samp_per_block];
+        int16_t lfp_block[samp_per_block];
         int j;
         for (j = 0; j < samp_per_block; j++) {
-            int16_t tmp = (int16_t)randn(0, 500);
-            size_t rc = write(data_fd, &tmp, sizeof(int16_t));
+            lfp_block[j] = (int16_t)randn(0, 500);
+            //int16_t tmp = (int16_t)randn(0, 500);
+            //size_t rc = write(data_fd, &tmp, sizeof(int16_t));
         }
-            //lfp_block[j] = (int16_t)randn(0, 500);
-        //size_t rc = write(data_fd, lfp_block, samp_per_block * sizeof(int16_t));
+
+        size_t rc = write(data_fd, lfp_block, samp_per_block * sizeof(int16_t));
+        printf("Write %zu bytes\n", rc);
 
         // Increment sample count
         sample += samp_per_chan_per_block;
@@ -180,18 +184,15 @@ int main()
             //send_signal(sig_fd, CONFIG_WRITE_ACK, &result, sizeof(result));
 
         }
-
-        // Simulate hardware pause
-        //usleep(sample_time_us / 2);
     }
 
     // Close pipes/files
-    //close(sig_fd);
+    close(sig_fd);
     close(data_fd);
     close(config_fd);
 
     // Delete files
-    //unlink(sig_path);
+    unlink(sig_path);
     unlink(data_path);
     unlink(config_path);
 

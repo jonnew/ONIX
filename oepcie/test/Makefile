@@ -11,31 +11,31 @@ LDFLAGS=
 LIBOEPCIE_SOURCES=$(wildcard ../liboepcie/*.c) #../liboepcie/oeutil.c
 LIBOEPCIE_OBJS=$(LIBOEPCIE_SOURCES:../liboepcie/%.c=%.o)
 
-all: bin/firmware
+all: bin/firmware bin/host bin/writer bin/reader
 
-liboepcie: $(LIBOEPCIE_SOURCES)
+liboepcie.a: $(LIBOEPCIE_SOURCES)
 	echo $(LIBOEPCIE_SOURCES)
-	$(CC) -c $(CFLAGS) $^ -c #-o $(@:../liboepcie/%=%)
-	ar -r -c -s  liboepcie.a $?
+	$(CC) -c $(CFLAGS) $? -c
+	ar -r -c -s liboepcie.a $(LIBOEPCIE_OBJS)
 
 bin/firmware: firmware128.c liboepcie.a
 	@[ -d bin ] || mkdir bin
-	$(CC) $(CFLAGS) $^ -lm $(LDFLAGS) -o $@
+	$(CC) $(CFLAGS) $? -lm -loepcie $(LDFLAGS) -o $@
 
-#bin/host128: host128.c $(OBJECTS)
-#	@[ -d bin ] || mkdir bin
-#	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
-#
+bin/host: host128.c liboepcie.a
+	@[ -d bin ] || mkdir bin
+	$(CC) $(CFLAGS) $? $(LDFLAGS) -o $@
+
 #bin/writer: writer.c $(OBJECTS)
 #	@[ -d bin ] || mkdir bin
-#	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
+#	$(CC) $(CFLAGS) $? $(LDFLAGS) -o $@
 #
 #bin/reader: reader.c $(OBJECTS)
 #	@[ -d bin ] || mkdir bin
-#	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
-#
+#	$(CC) $(CFLAGS) $? $(LDFLAGS) -o $@
+
 clean:
-	echo "rm -rf bin liboepcie.a $(LIBOEPCIE_OBJS)"
+	rm -rf bin liboepcie.a $(LIBOEPCIE_OBJS)
 
 .PHONY: liboepcie clean
 #.PHONY: bin/firmware128 bin/host128 .c.o clean bin/reader bin/writer

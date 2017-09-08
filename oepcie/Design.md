@@ -51,14 +51,14 @@ the following elements:
 
 1. `enum config_device_id`: Device ID number which is globally enumerated for the
    entire project
-    - e.g. Intan RHD2032 could 0, Intan RHD2064 could 1, etc.
+    - e.g. Intan RHD2032 could be 0, Intan RHD2064 could 1, etc.
     - e.g. MWL001GPIOMUX is a MUX implemented in the headstage FPGA that is
       used to route SERDES GPIO lines
     - This enum grows with the number of devices supported by the library.
       There is a single enum for the entire library which enumerates all
       possible devices that are controlled across `context` configurations.
-      Each `context` is only responsible for controlling a subset of these
-      devices.
+    - Each `context` is only responsible for controlling a subset of all
+      supported devices.
 
     ```
     typedef enum device_id {
