@@ -58,15 +58,15 @@ int oe_init_ctx(oe_ctx ctx)
     //if (ctx->header.fid == -1)
     //    return OE_EPATHINVALID;
 
-    ctx->config.fid = open(ctx->config.path, O_RDWR);
+    ctx->config.fid = open(ctx->config.path, O_RDWR | O_CREAT);
     if (ctx->config.fid == -1)
         return OE_EPATHINVALID;
 
-    ctx->data.fid = open(ctx->data.path, O_RDONLY);
+    ctx->data.fid = open(ctx->data.path, O_RDONLY | O_CREAT);
     if (ctx->data.fid == -1)
         return OE_EPATHINVALID;
 
-    ctx->data.fid = open(ctx->signal.path, O_RDONLY);
+    ctx->signal.fid = open(ctx->signal.path, O_RDONLY | O_CREAT);
     if (ctx->signal.fid == -1)
         return OE_EPATHINVALID;
 
@@ -362,7 +362,6 @@ static int _oe_signal_read(const oe_ctx ctx, int *sig)
 }
 
 // TODO: int oe_write(const oe_ctx* state, void* data, size_t size){}
-
 static int _oe_read(int fd, void *data, size_t size)
 {
     int received = 0;
