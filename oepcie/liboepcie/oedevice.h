@@ -1,34 +1,35 @@
 #ifndef OEPCIE_DEVICES_H
 #define OEPCIE_DEVICES_H
 
-// Supported devices/IDs
-#define RHD2032              0
-#define RHD2064              1
-#define MPU950               2
+#include <stdint.h>
 
 // NB: Changed each time a device is added
+#define OEPCIEMASTER        -1 // Must be negative
+#define MIN_DEVICE_ID        OESERDESGPIOV1
 #define MAX_DEVICE_ID        MPU950
-#define NUM_DEVICE_TYPES     3
 
-typedef struct device {
-    size_t read_offset;
-    size_t read_size;
-    size_t write_offset;
-    size_t write_size;
-    int id;
-} device_t;
+// Supported devices/IDs
+typedef enum oe_device_id {
+    OESERDESGPIOV1    = 1,
+    RHD2032           = 100,
+    RHD2064           = 101,
+    MPU950            = 102
+} oe_device_id_t;
 
-// Static device map
-// Global array of devices structs with hardcoded read, write, and ID
-// information for every device supported by this library.  Device ID numbers
-// obtained from the header stream is used to index into this array.
-static const device_t devices[NUM_DEVICE_TYPES] = {
-    {.read_offset = 0, .read_size = (16 * (32 + 3)),
-        .write_offset = 0, .write_size = 0, .id = RHD2032},
-    {.read_offset = 0, .read_size = (16 * (64 + 3)),
-        .write_offset = 0, .write_size = 0, .id = RHD2064},
-    {.read_offset = 0, .read_size = (32 * 6),
-        .write_offset = 0, .write_size = 0, .id = MPU950}
-};
+typedef enum oe_pcie_master_regs {
+    OEPCIEMASTER_HEADER = 0,
+    OEPCIEMASTER_RUNNING = 1
+} oe_pcie_master_regs_t;
+
+typedef int32_t oe_id_t;
+typedef uint32_t oe_size_t;
+
+typedef struct oe_device {
+    oe_id_t id; // Cannot use oe_device_id_t because this must be fixed width
+    oe_size_t read_offset;
+    oe_size_t read_size;
+    oe_size_t write_offset;
+    oe_size_t write_size;
+} oe_device_t;
 
 #endif
