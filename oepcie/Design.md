@@ -142,58 +142,71 @@ int oe_api_function(oe_ctx *ctx, ...);
 #### FPGA/Host Communication Channels
 The library must supports communication over the following channels
 
-1. Header channel (synchronous, read only) (NOTE: This may not be implemented
-   on the first go since it's function can be accomplished by hard coding a
-   configuration map on the host side.)
+~~1. Header channel (synchronous, read only) (NOTE: This may not be implemented ~~
+~~   on the first go since it's function can be accomplished by hard coding a ~~
+~~   configuration map on the host side.) ~~
+~~ ~~
+~~    1. 0, int32: is configuration ID, which should correspond to a struct ID in the c library ~~
+~~    2. 4, int32: Device ID, which is a particular configurable element ~~
+~~      within a configuration. This could be an Intan Chip, an IMU, or a ~~
+~~      microcontroller. -1 indicates end of header. ~~
+~~    3. 8, int32: Device ID, which is a particular configurable element ~~
+~~      within a configuration. This could be an Intan Chip, an IMU, or a ~~
+~~      microcontroller. -1 indicates end of header. ~~
+~~    4. 12, int32: Specifies number of bytes to read (N) in configuration ~~
+~~      description string ~~
+~~    5. Repease starting at 2. ~~
 
-    1. 0, int32: is configuration ID, which should correspond to a struct ID in the c library
-    2. 4, int32: Device ID, which is a particular configurable element
-      within a configuration. This could be an Intan Chip, an IMU, or a
-      microcontroller. -1 indicates end of header.
-    3. 8, int32: Device ID, which is a particular configurable element
-      within a configuration. This could be an Intan Chip, an IMU, or a
-      microcontroller. -1 indicates end of header.
-    4. 12, int32: Specifies number of bytes to read (N) in configuration
-      description string
-    5. Repease starting at 2.
+1. Signal channel (asynchronous, read only)
+    - Provides a way for the firmware to inform host of configuration results and available devices
+    - Communicates with host using a
+      [COBS](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)
+      stream.
+    - Should generally be used on a separate thread from high-bandwidth communication
 
 2. Configuration channel (synchronous, read and write)
-    - Supports seeing to, reading, and writing the following registers:
+    - Supports seeking to, reading, and writing the following registers:
 
-        - `input [31:0] config_device_id`: Device ID register. Specify a device endpoint as
+        - `uint32_t config_device_id`: Device ID register. Specify a device endpoint as
           enumerated by the firmware (e.g. an Intan chip, or a IMU chip)  and
           to which communication will be directed using `config_reg_addr` and
           `config_reg_value`.
 
-        - `input [31:0] config_reg_addr`: register address of configuration to be
+        - `uint32_t config_reg_addr`: register address of configuration to be
           written
 
-        - `input [31:0] config_reg_value`: configuration value to be written to
-          `config_reg_addr` on device `config_device_id`
+        - `int32_t config_reg_value`: configuration value to be written to or
+          read from and that corresponds to `config_reg_addr` on device
+          `config_device_id`
 
-        - `input config_write_trig`: set high to trigger write of `config_reg_value` to
-          `config_reg_addr` on device `config_device_id`. This register is always set low by the
-          firmware following transmission even if it is not successful or does not
-          make sense given the address register values.
+        - `uint8_t config_rw`: bit indicating if a read or write should be
+          performed. 0 indicates read operation. 1 indicates write operation.
 
-        - `output [31:0] config_write_ack`: Write acknowledgement register. Set to
-          1 on successful tranmission of `config_reg_value`. Set to 2 on
-          unsuccessful tranmission. Must be set to 0 by host at start of write
-          handshake.
+        - `uint8_t config_trig`: set high to trigger either register read or
+          write operation depending on the state of `config_rw`. If `config_rw`
+          is 0, a read is performed. In this case `config_reg_value` is updated
+          with value stored at `config_reg_addr` on device at
+          `config_device_id`. If the specified register is not readable,
+          `config_reg_value` is populated with a magic number (`OE_REGMAGIC`).
+          If `config_rw`is 1, `config_reg_value` is written to register at
+          `config_reg_addr` on device `config_device_id`. The `config_trig`
+          register shall always be set low by the firmware following
+          transmission even if it is not successful or does not make sense
+          given the address register values.
 
-        - `output [31:0] config_read_value`: Register holds value of stored at
-          `config_reg_addr` on device at `config_device_id` after a configuration
-          read has taken place by triggering `config_read_trig`.
+        ~~ - `output [31:0] config_write_ack`: Write acknowledgement register. Set to ~~
+        ~~   1 on successful tranmission of `config_reg_value`. Set to 2 on ~~
+        ~~   unsuccessful tranmission. Must be set to 0 by host at start of write ~~
+        ~~   handshake. ~~
 
-        - `input config_read_trig`: Read trigger. Causes `config_reg_value` to be
-          updated with value stored at `config_reg_addr` on device at
-          `config_device_id`. If the specified register is
-          not readable, `config_reg_value` is populated with a magic number (123456).
+        ~~ - `output [31:0] config_read_value`: Register holds value of stored at ~~
+        ~~   `config_reg_addr` on device at `config_device_id` after a configuration ~~
+        ~~   read has taken place by triggering `config_read_trig`. ~~
 
-        - `output [31:0] config_read_ack`: Read acknowledgement register. Set to
-          1 on successful setting of `config_reg_value`. Set to 2 on
-          unsuccessful setting. Must be set to 0 by host at start of write
-          handshake.
+        ~~- `output [31:0] config_read_ack`: Read acknowledgement register. Set to ~~
+        ~~  1 on successful setting of `config_reg_value`. Set to 2 on ~~
+        ~~  unsuccessful setting. Must be set to 0 by host at start of write ~~
+        ~~  handshake. ~~
 
     - Appropriate values of `config_reg_addr` and `config_reg_value` are determined by:
         - Looking at a device's data sheet if the device is an integrated circuit
@@ -205,8 +218,12 @@ The library must supports communication over the following channels
     - `config_reg_addr` and `config_reg_value` are always 32-bit unsigned
       integers. A device module must implement methods for appropriately
       translatting these values into data that is properly fomatted for a a
-      particular device (e.g. chaning endianness or removing significant
+      particular device (e.g. changing endianness or removing significant
       bits).
+    
+    - Registers in the configuration stream are ordered in accordance with the
+      above enumeraiton. `SEEK` loations, relative to the start of the stream,
+      are provided by the `oe_config_reg` enum.
 
 3. Data input channel (asynchronous, read-only)
     - High-bandwidth communication channel from firmware to host.
@@ -248,19 +265,19 @@ oe_ctx *oe_create_ctx();
 ```
 
 #### Returns `oe_ctx *`
-
 - An opaque handle to the newly created context if successful. Otherwise it
   shall return NULL and set errno to `EAGAIN`
 
 #### Description
-
-During successful context creation the following actions take place
-
-1.  TODO
+On success a context struct is created, and its handle is passed to the user. The
+context holds all state used to communicate with a set of hardware devices. It
+holds paths to FIFOs and configuration communication channels and knowledge of
+the hardware's run state. It is configured through calls to `oe_set_ctx_opt`.
+It can be examined through calls to `oe_get_ctx_opt`. Its run-state can be
+manipulated through calls to `oe_ctx_init` and `oe_ctx_close`.
 
 ### oe_destroy_ctx
-
-Terminate a context and free bound resources. All blocking calls with exit
+Terminate a context and free bound resources. All blocking calls exit
 immediately.
 
 ``` {.c}
@@ -271,12 +288,10 @@ int oe_destroy_ctx(oe_ctx *c)
 - `c` context
 
 #### Returns `int`
-
 - O: success
 - Less than 0: `oe_error_t`
 
 #### Description
-
 Context termination is performed in the following steps:
 
 1. An interrupt signal (TODO: Which?) is raised and any blocking operations will return immediately
@@ -389,6 +404,7 @@ int oe_init(oe_ctx *c)
 - `c` context
 
 #### Returns `int`
+- O: success
 - Less than 0: `oe_error_t`
 
 #### Description
@@ -402,62 +418,77 @@ Upon a call to `oe_init`, the following actions take place
 Set a configuration register on a specific device.
 
 ``` {.c}
-int oe_write_reg(const oe_ctx *c, size_t dev_idx, int reg_addr, int reg_value, int *ack);
+int oe_write_reg(const oe_ctx ctx, int device_idx, uint32_t addr, uint32_t value)
 ```
 
 #### Arguments
-- `c` context
-- `dev_idx` the device index read from
-- `reg_addr` register address within the device specified by `dev_idx` to read
-- `reg_value` buffer for to place the value stored at `reg_addr` on the
-  selected device
-- `ack` set to the acknowledgement return code by the host FPGA
-  following transmission
+- `ctx` context
+- `device_idx` the device index to read from
+- `addr` register address within the device specified by `device_idx` to write
+  to
+- `value` value with which to set the register at `addr` on the device
+  specified by `device_idx`
 
 #### Returns `int`
+- 0: success
 - Less than 0: `oe_error_t`
 
 #### Description
-Upon a call to `oe_write_reg`, the following actions take place
+Upon a call to `oe_write_reg`, the following actions take place:
 
-1. The `config_write_ack` register is set to 0x0000 on the host FPGA.
-1. `dev_idx` is used to set the `config_device_id` register on the host FPGA.
-1. `reg_addr` is used to set the `config_reg_addr` register on the host FPGA.
-1. `reg_value` is used to set the `config_reg_value` register on the host FPGA.
-1. The `config_write_trig` register is set to high, triggering configuration transmission.
-1. The call blocks until `config_write_ack` is set to a value other than 0x0000
-   by the host FPGA.
-1. The function returns, setting `ack` to the current `config_write_ack` value.
+1. The value of `config_trig` is checked.
+    - If it is 0x00, the function call proceeds.
+    - Else, the function call returns with OE_ERETRIG.
+1. `device_idx` is copied to the `config_device_id` register on the host FPGA.
+1. `addr` is copied to the `config_reg_addr` register on the host FPGA.
+1. `value` is copied to the `config_reg_value` register on the host FPGA.
+1. The `config_rw` register on the host FPGA is set to 0x01.
+1. The `config_trig` register on the host FPGA is set to 0x01, triggering
+   configuration transmission by the firmware.
+1. (Firmware) A configuration write is performed by the firmware.
+1. (Firmware) `config_trig` is set to 0x00 by the firmware.
+1. (Firmware) `OE_CONFIGWACK` is pushed onto the signal stream by the firmware.
+1. The signal stream is pumped until `OE_CONFIGWACK` is received indicating
+   that the host FPGA has attempted to write to the specified device register.
+
+Note that successful return from this function does not guarantee that the
+register has been properly set. Confirmation of the register value can be made
+using a call to `oe_read_reg`.
 
 ### oe_read_reg
-Read a configuration register from a device on a connected index.
+Read a configuration register on a specific device.
 
 ``` {.c}
-int oe_read_reg(const oe_ctx *c, size_t dev_idx, int reg_addr, int reg_value, int *ack);
+int oe_read_reg(const oe_ctx ctx, int device_idx, uint32_t addr, uint32_t* value)
 ```
 
 #### Arguments
-- `c` context
-- `index` physical index number
-- `key` key of register to write to
-- `value` value to write to register
-- `mask` bit mask applied to value before it is written
+- `ctx` context
+- `device_idx` physical index number
+- `addr` Thekey of register to write to
+- `value` pointer to an int that will store the value of the register at `addr` on `device_idx`
 
 #### Returns `int`
+- 0: success
 - Less than 0: `oe_error_t`
 
 #### Description
-Upon a call to `oe_write_reg`, the following actions take place
+Upon a call to `oe_write_reg`, the following actions take place:
 
-1. The `config_read_ack` register is set to 0x0000 on the host FPGA.
-1. `dev_idx` is used to set the `config_device_id` register on the host FPGA.
-1. `reg_addr` is used to set the `config_reg_addr` register on the host FPGA.
-1. `reg_value` is used to set the `config_reg_value` register on the host FPGA.
-1. The `config_read_trig` register is set to high, the host firmware to write
-   the target register into `config_reg_value`
-1. The call blocks until `config_read_ack` is set to a value other than 0x0000
-   by the host FPGA.
-1. The function returns, setting `ack` to the current `config_read_ack` value.
+1. The value of `config_trig` is checked.
+    - If it is 0x00, the function call proceeds.
+    - Else, the function call returns with OE_ERETRIG.
+1. `device_idx` is copied to the `config_device_id` register on the host FPGA.
+1. `addr` is copied to the `config_reg_addr` register on the host FPGA.
+1. The `config_rw` register on the host FPGA is set to 0x00.
+1. The `config_read_trig` register on the host FPGA is set to 0x01, triggering
+   configuration transmission by the firmware.
+1. (Firmware) A configuration read is performed by the firmware.
+1. (Firmware) `config_trig` is set to 0x00 by the firmware.
+1. (Firmware) `OE_CONFIGRACK` is pushed onto the signal stream by the firmware.
+1. The signal stream is pumped until `OE_CONFIGRACK` is received indicating
+   that the host FPGA has completed reading the specified device register and
+   copied its value to the `config_reg_value` register.
 
 ### oe_read
 Read high-bandwidth input data stream.
@@ -504,13 +535,14 @@ which is queried using the `oe_header_read` function.  On successful write,
 buffer.
 
 ## Public Types
+TODO: This is not complete or correct. 
 
 ### oe_ctx
 TODO
 
 ### oe_device
 ``` {.c}
-typedef enum device_id {
+typedef enum oe_device_id {
     RHD2032,
     RHD2064
     MPU9250,
@@ -520,13 +552,13 @@ typedef enum device_id {
 ```
 
 ``` {.c}
-struct oe_device {
-    device_id_t id;
-    int         read_offset;
+typdef struct oe_device {
+    oe_device_id_t id;
+    size_t         read_offset;
     size_t      read_size;
-    int         write_offset;
+    size_t         write_offset;
     size_t      write_size;
-};
+} oe_device_t;
 ```
 
 ### oe_error_t

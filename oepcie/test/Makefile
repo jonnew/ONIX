@@ -1,28 +1,26 @@
 CC=cc
 CFLAGS=-g -O0 -Wall
 LDFLAGS=
-#SOURCES=../liboepcie/oepcie.c ../liboepcie/oeutil.c
-#OBJECTS=$(SOURCES:.c=.o)
-
-#.c.o:
-#	$(CC) -c $(CFLAGS) $< -o $@
 
 #liboepcie
-LIBOEPCIE_SOURCES=$(wildcard ../liboepcie/*.c) #../liboepcie/oeutil.c
+LIBOEPCIE_SOURCES=$(wildcard ../liboepcie/*.c) 
 LIBOEPCIE_OBJS=$(LIBOEPCIE_SOURCES:../liboepcie/%.c=%.o)
 
-all: bin/firmware bin/host bin/writer bin/reader
+all: bin/firmware bin/host bin/signal_test #bin/writer bin/reader
 
 liboepcie.a: $(LIBOEPCIE_SOURCES)
-	echo $(LIBOEPCIE_SOURCES)
+	@echo Found liboepcie source files: $(LIBOEPCIE_SOURCES)
 	$(CC) -c $(CFLAGS) $? -c
+	@echo Generating liboepcie archive
 	ar -r -c -s liboepcie.a $(LIBOEPCIE_OBJS)
 
-bin/firmware: firmware128.c liboepcie.a
+bin/firmware: firmware128.c testfunc.c liboepcie.a
+	@echo Making $@
 	@[ -d bin ] || mkdir bin
-	$(CC) $(CFLAGS) $? -lm -loepcie $(LDFLAGS) -o $@
+	$(CC) $(CFLAGS) $? -lm -lpthread -loepcie $(LDFLAGS) -o $@
 
 bin/host: host128.c liboepcie.a
+	@echo Making $@
 	@[ -d bin ] || mkdir bin
 	$(CC) $(CFLAGS) $? $(LDFLAGS) -o $@
 
@@ -34,51 +32,12 @@ bin/host: host128.c liboepcie.a
 #	@[ -d bin ] || mkdir bin
 #	$(CC) $(CFLAGS) $? $(LDFLAGS) -o $@
 
+bin/signal_test: signal_test.c testfunc.c liboepcie.a
+	@echo Making $@
+	@[ -d bin ] || mkdir bin
+	$(CC) $(CFLAGS) $? $(LDFLAGS) -o $@
+
 clean:
 	rm -rf bin liboepcie.a $(LIBOEPCIE_OBJS)
 
 .PHONY: liboepcie clean
-#.PHONY: bin/firmware128 bin/host128 .c.o clean bin/reader bin/writer
-
-#CC=cc
-#CFLAGS=-g -O0 -Wall
-#LDFLAGS=-lm
-#
-##liboepcie
-#LIBOEPCIE_SOURCES=$(wildcard ../../liboepcie/*.c) #../liboepcie/oeutil.c
-#LIBOEPCIE_OBJS=$(LIBOEPCIE_SOURCES:../liboepcie/%.c=%.o)
-
-#all: bin/firmware bin/host
-#
-#libobjs: $(LIBOEPCIE_SOURCES)
-#	echo $(LIBOEPCIE_SOURCES)
-#	$(CC) -c $(CFLAGS) $^ -c #-o $(@:../liboepcie/%=%)
-#
-#liboepcie: $(LIBOEPCIE_OBJS) libobjs
-#	ar r liboepcie $?
-
-#bin/firmware: firmware128.c liboepcie
-#	@[ -d bin ] || mkdir bin
-#	$(CC) $(CFLAGS) $< -L liboepcie -lm -o $@
-#
-#bin/host: host128.c liboepcie
-#	@[ -d bin ] || mkdir bin
-#	$(CC) $(CFLAGS) $< -L liboepcie -o $@
-
-#bin/host: host128.c $(LIBOEPCIE_OBJS)
-#	@[ -d bin ] || mkdir bin
-#	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
-#
-#bin/writer: writer.c $(LIBOEPCIE_OBJS)
-#	@[ -d bin ] || mkdir bin
-#	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
-#
-#bin/reader: reader.c $(LIBOEPCIE_OBJS)
-#	@[ -d bin ] || mkdir bin
-#	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
-
-
-#clean:
-#	rm -rf bin $(LIBOEPCIE_OBJS) liboepcie
-#
-#.PHONY: libobjs clean

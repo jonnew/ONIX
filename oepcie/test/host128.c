@@ -35,10 +35,37 @@ int main()
     oe_set_ctx_opt(ctx, OE_DATASTREAMPATH, data_path, strlen(data_path) + 1);
 
     // TODO: Build from header packet constants
-    oe_write_config();    
+    //oe_write_config();    
     const size_t block_bytes = num_chan * samp_per_chan_per_block * 2;
 
-    assert(oe_init_ctx(ctx) == 0);
+    // Initialize context and discover hardware
+    int rc = oe_init_ctx(ctx);
+    printf("Return %d\n", rc);
+
+    //assert(oe_init_ctx(ctx) == 0);
+
+    // Examine device map
+    oe_size_t num_devs = 0;
+    size_t num_devs_sz = sizeof(num_devs);
+    oe_get_ctx_opt(ctx, OE_NUMDEVICES, &num_devs, &num_devs_sz); 
+
+    oe_device_t devices[num_devs];
+    size_t devices_sz = sizeof(devices);
+    oe_get_ctx_opt(ctx, OE_DEVICEMAP, devices, &devices_sz);
+
+    printf("Found the following devices:\n");
+    int dev_idx;
+    for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
+
+        printf("\t%d) ID: %d, Offset: %zu, Read size:%zu\n",
+               dev_idx,
+               devices[dev_idx].id,
+               devices[dev_idx].read_offset,
+               devices[dev_idx].read_size);
+    }
+
+    // Start acquisition
+    oe_write_reg(ctx, OEPCIEMASTER, OEPCIEMASTER_RUNNING, 1);
 
     char buffer[8 + block_bytes];
     while (oe_read(ctx, &buffer, 8 + block_bytes)  >= 0)  {
