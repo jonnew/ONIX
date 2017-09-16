@@ -1,23 +1,26 @@
-#include "stdio.h"
+#include "assert.h"
 #include "errno.h"
 #include "fcntl.h"
+#include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
 #include "unistd.h"
 
-#include "oedevice.h"
 #include "oepcie.h"
+
+const char *oe_device_string[]
+    = {"Invalid", "SERDES-GPIO", "RHD2032", "RHD2064", "MPU9250"};
 
 const char *oe_error_string[]
     = {"Success",
        "Invalid stream path, fail on open",
        "Double initialization attempt",
-       "Invalid device ID on init or reg op",
+       "Invalid device ID",
        "Failure to read from a stream/register",
        "Failure to write to a stream/register",
-       "Attempt to call function w null ctx",
+       "Attempt to call function with null context",
        "Failure to seek on stream",
-       "Invalid operation on non-initialized ctx",
+       "Invalid operation on non-initialized context",
        "Invalid device index",
        "Invalid context option",
        "Invalid function arguments",
@@ -26,10 +29,13 @@ const char *oe_error_string[]
        "Attempt to trigger an already triggered operation",
        "Supplied buffer is too small",
        "Badly formatted device map supplied by firmware",
-       "Bad dynamic memory allocation"};
+       "Bad dynamic memory allocation",
+       "File descriptor close failure (check errno)",
+       "Invalid underlying data types",
+       "Attempted write to read only object (register, context option, etc)"};
 
 typedef struct stream_fid {
-    char* path;
+    char *path;
     int fid;
 } stream_fid_t;
 
@@ -46,17 +52,47 @@ typedef struct oe_ctx_impl {
     stream_fid_t signal;
 
     // Devices
-    size_t num_dev;
+    oe_size_t num_dev;
     oe_device_t* dev_map;
+
+    // Frame sizes (bytes)
+    oe_size_t read_frame_size;
+    oe_size_t write_frame_size;
 
     // Acqusition state
     run_state_t run_state;
 
 } oe_ctx_impl_t;
 
+typedef enum oe_signal {
+    NULLSIG        = (1u << 0),
+    CONFIGWACK     = (1u << 1), // Configuration write-acknowledgement
+    CONFIGWNACK    = (1u << 2), // Configuration no-write-acknowledgement
+    CONFIGRACK     = (1u << 3), // Configuration read-acknowledgement
+    CONFIGRNACK    = (1u << 4), // Configuration no-read-acknowledgement
+    DEVICEINST     = (1u << 5), // Deivce instance
+} oe_signal_t;
+
+typedef enum oe_config_reg_offset {
+    CONFDEVIDOFFSET        = 0,   // Configuration device id register byte offset
+    CONFADDROFFSET         = 4,   // Configuration register address register byte offset
+    CONFVALUEOFFSET        = 8,   // Configuration register value register byte offset
+    CONFRWOFFSET           = 12,  // Configuration register read/write register byte offset
+    CONFTRIGOFFSET         = 13,  // Configuration read/write trigger register byte offset
+} oe_config_reg_offset_t;
+
+// Static helpers
+static inline int _oe_read(int data_fd, void* data, size_t size);
+static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer);
+static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, size_t *size);
+static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type);
+static int _oe_pump_signal_data(int signal_fd, int flags, oe_signal_t *type, void *data, size_t *size);
+static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size);
+
 oe_ctx oe_create_ctx()
 {
     oe_ctx ctx = calloc(1, sizeof(struct oe_ctx_impl));
+
     if (ctx == NULL)
         goto oe_create_ctx_err;
 
@@ -85,6 +121,8 @@ oe_create_ctx_err:
 
 int oe_init_ctx(oe_ctx ctx)
 {
+    assert(ctx != NULL && "Context is NULL");
+
     // Open all data streams
     if (ctx->run_state == INITIALIZED)
         return OE_EREINITCTX;
@@ -105,83 +143,75 @@ int oe_init_ctx(oe_ctx ctx)
     ctx->run_state = INITIALIZED;
 
     // Get device map from signal stream
-    int rc = oe_write_reg(ctx, OEPCIEMASTER, OEPCIEMASTER_HEADER, 0);
+    int rc = oe_read_reg(ctx, OE_PCIEMASTERDEVIDX, OE_PCIEMASTERDEV_HEADER, &(ctx->num_dev));
     if (rc) return rc;
 
-    // Pump for header start
-    rc = _oe_pump_signal_type(ctx->signal.fid, OE_HEADERSTART);
-    if (rc) return rc;
+    // Make space for the device map
+    oe_device_t *new_map
+        = realloc(ctx->dev_map, ctx->num_dev * sizeof(oe_device_t));
+    if (new_map)
+        ctx->dev_map = new_map;
+    else
+        return OE_EBADALLOC;
 
-    ctx->num_dev = 0;
-    while(1) {
+    int i;
+    int max_roff_idx = 0;
+    int max_woff_idx = 0;
+    for (i= 0; i < ctx->num_dev; i++) {
 
-        oe_signal_t sig_type = OE_NULLSIG;
+        oe_signal_t sig_type = NULLSIG;
         size_t b_size = 255;
         uint8_t buffer[b_size];
         int rc = _oe_read_signal_data(ctx->signal.fid, &sig_type, buffer, &b_size);
         if (rc) return rc;
 
-        // Following a HEADERSTART, these are the only two signals that should
-        // appear
-        if (sig_type != OE_HEADEREND && sig_type != OE_DEVICEINST)
+        // We should see num_dev device instances appear on the signal stream
+        if (sig_type != DEVICEINST)
             return OE_EBADDEVMAP;
 
-        // All done
-        if (sig_type == OE_HEADEREND) {
-            break;
-        } else if (sig_type == OE_DEVICEINST) {
+        int32_t device_id = (int32_t)(*buffer);
 
-            int32_t device_id = (int32_t)(*buffer);
-
-            if (device_id >= MIN_DEVICE_ID && device_id <= MAX_DEVICE_ID) {
-
-                // Insert space for new device in the map
-                ctx->num_dev++;
-                oe_device_t *new_map
-                    = realloc(ctx->dev_map, ctx->num_dev * sizeof(oe_device_t));
-                if (new_map)
-                    ctx->dev_map = new_map;
-                else
-                    return OE_EBADALLOC;
-
-                // Append the device onto the map
-                ctx->dev_map[ctx->num_dev - 1] = *(oe_device_t *)buffer;
-
-            } else {
-                return OE_EDEVID;
-            }
-
+        if (device_id > OE_MINDEVICEID && device_id < OE_MAXDEVICEID) {
+            ctx->dev_map[i] = *(oe_device_t *)buffer; // Append the device onto the map
+            if (ctx->dev_map[i].read_offset > ctx->dev_map[max_roff_idx].read_offset)
+                max_roff_idx = i;
+            if (ctx->dev_map[i].write_offset > ctx->dev_map[max_woff_idx].write_offset)
+                max_woff_idx = i;
         } else {
-
-            // Following a HEADERSTART, these are the only two signals that
-            // should appear
-            return OE_EBADDEVMAP;
+            return OE_EDEVID;
         }
     }
 
+    // Calculate frame size
+    ctx->read_frame_size = ctx->dev_map[max_roff_idx].read_offset
+                           + ctx->dev_map[max_roff_idx].read_size;
+    ctx->write_frame_size = ctx->dev_map[max_woff_idx].write_offset
+                            + ctx->dev_map[max_woff_idx].write_size;
     return 0;
 }
 
 int oe_close_ctx(oe_ctx ctx)
 {
-    // TODO: Action if close returns -1?
+    assert(ctx != NULL && "Context is NULL");
+
     if (ctx->run_state > UNINITIALIZED) {
-        close(ctx->config.fid);
-        close(ctx->data.fid);
-        close(ctx->signal.fid);
+        if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
+        if (close(ctx->data.fid) == -1) goto oe_close_ctx_fail;
+        if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
         ctx->run_state = UNINITIALIZED;
     } else {
-
         return OE_ENOTINIT;
     }
 
     return 0;
+
+oe_close_ctx_fail:
+    return OE_ECLOSEFAIL;
 }
 
 int oe_destroy_ctx(oe_ctx ctx)
 {
-    if (ctx == NULL)
-        return OE_ENULLCTX;
+    assert(ctx != NULL && "Context is NULL");
 
     // Close potentially open streams
     oe_close_ctx(ctx);
@@ -196,12 +226,11 @@ int oe_destroy_ctx(oe_ctx ctx)
 }
 
 int oe_set_ctx_opt(oe_ctx ctx,
-                   oe_ctx_opt_t option,
+                   const oe_ctx_opt_t option,
                    const void *option_value,
-                   size_t option_len)
+                   const size_t option_len)
 {
-    if (ctx == NULL)
-        return OE_ENULLCTX;
+    assert(ctx != NULL && "Context is NULL");
 
     switch (option) {
 
@@ -235,13 +264,11 @@ int oe_set_ctx_opt(oe_ctx ctx,
 
 // TODO: In case of error, should the true option_len still be set?
 int oe_get_ctx_opt(const oe_ctx ctx,
-                   oe_ctx_opt_t option,
+                   const oe_ctx_opt_t option,
                    void *option_value,
                    size_t *option_len)
 {
-
-    if (ctx == NULL)
-        return OE_ENULLCTX;
+    assert(ctx != NULL && "Context is NULL");
 
     switch (option) {
 
@@ -273,6 +300,7 @@ int oe_get_ctx_opt(const oe_ctx ctx,
             break;
         }
         case OE_DEVICEMAP: {
+            assert(ctx->run_state == INITIALIZED && "Context must be initialized.");
             size_t required_bytes = sizeof(oe_device_t) * ctx->num_dev;
             if (*option_len >= required_bytes) {
 
@@ -282,9 +310,28 @@ int oe_get_ctx_opt(const oe_ctx ctx,
             break;
         }
         case OE_NUMDEVICES: {
+            assert(ctx->run_state == INITIALIZED && "Context must be initialized.");
             size_t required_bytes = sizeof(oe_size_t);
             if (*option_len >= required_bytes) {
                 *(oe_size_t *)option_value = ctx->num_dev;
+                *option_len = required_bytes;
+            }
+            break;
+        }
+        case OE_READFRAMESIZE: {
+            assert(ctx->run_state == INITIALIZED && "Context must be initialized.");
+            size_t required_bytes = sizeof(oe_size_t);
+            if (*option_len >= required_bytes) {
+                *(oe_size_t *)option_value = ctx->read_frame_size;
+                *option_len = required_bytes;
+            }
+            break;
+        }
+        case OE_WRITEFRAMESIZE: {
+            assert(ctx->run_state == INITIALIZED && "Context must be initialized.");
+            size_t required_bytes = sizeof(oe_size_t);
+            if (*option_len >= required_bytes) {
+                *(oe_size_t *)option_value = ctx->write_frame_size;
                 *option_len = required_bytes;
             }
             break;
@@ -297,22 +344,19 @@ int oe_get_ctx_opt(const oe_ctx ctx,
     return OE_EINVALARG;
 }
 
-int oe_write_reg(const oe_ctx ctx, int32_t device_idx, uint32_t addr, uint32_t value)
+int oe_write_reg(const oe_ctx ctx,
+                 const oe_dev_idx_t device_idx,
+                 const oe_reg_addr_t addr,
+                 const oe_reg_val_t value)
 {
-    // TODO: This should be an assert, probably
-    if (ctx == NULL)
-        return OE_ENULLCTX;
-
-    // TODO: This should be an assert, probably
-    if (ctx->run_state == UNINITIALIZED)
-        return OE_ENOTINIT;
+    assert(ctx != NULL && "Context is NULL");
+    assert(ctx->run_state == INITIALIZED && "Context is not initialized.");
 
     // Checks that the device index is valid
-    // TODO: This should be an assert, probably
-    if (device_idx >= ctx->num_dev && device_idx != OEPCIEMASTER)
+    if (device_idx >= ctx->num_dev && device_idx != OE_PCIEMASTERDEVIDX)
         return OE_EDEVIDX;
 
-    if (lseek(ctx->config.fid, OE_CONFTRIG, SEEK_SET) < 0)
+    if (lseek(ctx->config.fid, CONFTRIGOFFSET, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
     // Make sure we are not already in config triggered state
@@ -324,7 +368,7 @@ int oe_write_reg(const oe_ctx ctx, int32_t device_idx, uint32_t addr, uint32_t v
         return OE_ERETRIG;
 
     // Set config registers and trigger a write
-    if (lseek(ctx->config.fid, OE_CONFDEVID, SEEK_SET) < 0)
+    if (lseek(ctx->config.fid, CONFDEVIDOFFSET, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
     if (write(ctx->config.fid, &device_idx, sizeof(uint32_t)) <= 0)
@@ -344,25 +388,30 @@ int oe_write_reg(const oe_ctx ctx, int32_t device_idx, uint32_t addr, uint32_t v
     if (write(ctx->config.fid, &trig, sizeof(uint8_t)) <= 0)
         return OE_EWRITEFAILURE;
 
-    return _oe_pump_signal_type(ctx->signal.fid, OE_CONFIGWACK);
+    oe_signal_t type;
+    int rc = _oe_pump_signal_type(ctx->signal.fid, CONFIGWACK | CONFIGWNACK, &type);
+    if (rc) return rc;
+
+    if (type == CONFIGWNACK)
+        return OE_EREADONLY;
+
+    return 0;
 }
 
-int oe_read_reg(const oe_ctx ctx, int device_idx, uint32_t addr, uint32_t *value)
+int oe_read_reg(const oe_ctx ctx,
+                const oe_dev_idx_t device_idx,
+                const oe_reg_addr_t addr,
+                oe_reg_val_t *value)
 {
-    // TODO: This should be an assert, probably
-    if (ctx == NULL)
-        return OE_ENULLCTX;
-
-    // TODO: This should be an assert, probably
-    if (ctx->run_state == UNINITIALIZED)
-        return OE_ENOTINIT;
+    assert(ctx != NULL && "Context is NULL");
+    assert(ctx->run_state == INITIALIZED && "Context is not initialized.");
 
     // Checks that the device index is valid
-    // TODO: This should be an assert, probably
-    if (device_idx >= ctx->num_dev && device_idx != OEPCIEMASTER)
+    // TODO: This should be an assert, perhaps
+    if (device_idx >= ctx->num_dev && device_idx != OE_PCIEMASTERDEVIDX)
         return OE_EDEVIDX;
 
-    if (lseek(ctx->config.fid, OE_CONFTRIG, SEEK_SET) < 0)
+    if (lseek(ctx->config.fid, CONFTRIGOFFSET, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
     // Make sure we are not already in config triggered state
@@ -370,44 +419,76 @@ int oe_read_reg(const oe_ctx ctx, int device_idx, uint32_t addr, uint32_t *value
     if (read(ctx->config.fid, &trig, 1) == 0)
         return OE_EREADFAILURE;
 
-    if (trig > 0)
+    if (trig != 0)
         return OE_ERETRIG;
 
     // Set config registers and trigger a write
-    if (lseek(ctx->config.fid, OE_CONFDEVID, SEEK_SET) < 0)
+    if (lseek(ctx->config.fid, CONFDEVIDOFFSET, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
-    if (write(ctx->config.fid, &device_idx, 4) <= 0)
+    if (write(ctx->config.fid, &device_idx, sizeof(uint32_t)) <= 0)
         return OE_EWRITEFAILURE;
 
-    if (write(ctx->config.fid, &addr, 4) <= 0)
+    if (write(ctx->config.fid, &addr, sizeof(uint32_t)) <= 0)
+        return OE_EWRITEFAILURE;
+
+    if (write(ctx->config.fid, &value, sizeof(uint32_t)) <= 0)
         return OE_EWRITEFAILURE;
 
     uint8_t rw = 0x00;
-    if (write(ctx->config.fid, &rw, 1) <= 0)
+    if (write(ctx->config.fid, &rw, sizeof(uint8_t)) <= 0)
         return OE_EWRITEFAILURE;
 
     trig = 0x01;
-    if (write(ctx->config.fid, &trig, 1) <= 0)
+    if (write(ctx->config.fid, &trig, sizeof(uint8_t)) <= 0)
         return OE_EWRITEFAILURE;
 
-    // Pump the signal stream until firmware provide config read ack and retreive value
-    size_t size = 4;
-    return _oe_pump_signal_data(ctx->signal.fid, OE_CONFIGRACK, value, &size);
+    size_t size = sizeof(*value);
+    oe_signal_t type;
+    int rc = _oe_pump_signal_data(
+        ctx->signal.fid, CONFIGRACK | CONFIGRNACK, &type, value, &size);
+    if (rc) return rc;
+
+    if (type == CONFIGRNACK)
+        return OE_EREADONLY;
+
+    return 0;
 }
 
 int oe_read(const oe_ctx ctx, void *data, size_t size)
 {
+    assert(ctx != NULL && "Context is NULL");
+    assert(ctx->run_state == INITIALIZED && "Context is not initialized.");
+
     return _oe_read(ctx->data.fid, data, size);
 }
 
-static inline int _oe_read(int fd, void *data, size_t size)
+void oe_error(oe_error_t err, char *str, size_t str_len)
+{
+    if (err > OE_MINERRORNUM && err < 0)
+        snprintf(str, str_len, "%s", oe_error_string[-err]);
+    else
+        snprintf(str, str_len, "Unknown error %d", err);
+}
+
+int oe_device(oe_device_id_t dev_id, char *str, size_t str_len)
+{
+    assert(dev_id > OE_MINDEVICEID && dev_id < OE_MAXDEVICEID && "Invalid device ID.");
+
+    if (dev_id <= OE_MINDEVICEID || dev_id >= OE_MAXDEVICEID)
+        return OE_EDEVID;
+
+    snprintf(str, str_len, "%s", oe_device_string[dev_id]);
+    return 0;
+}
+
+static inline int _oe_read(int data_fd, void *data, size_t size)
 {
     int received = 0;
 
     while (received < size) {
 
-        int rc = read(fd, (char *)data + received, size - received);
+        int rc = read(data_fd, (char *)data + received, size - received);
 
         if ((rc < 0) && (errno == EINTR))
             continue;
@@ -419,14 +500,6 @@ static inline int _oe_read(int fd, void *data, size_t size)
     }
 
     return received;
-}
-
-void oe_error(oe_error_t err, char *str, size_t str_len)
-{
-    if (err > OE_MINERRORNUM && err < 0)
-        snprintf(str, str_len, "%s", oe_error_string[err]);
-    else
-        snprintf(str, str_len, "Unknown error %d", err);
 }
 
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer)
@@ -450,27 +523,7 @@ static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer)
     if (bad_delim)
         return OE_ECOBSPACK;
     else
-        return i;
-}
-
-static int _oe_read_signal_type(int signal_fd, oe_signal_t *type)
-{
-    if (type == NULL)
-        return OE_EINVALARG;
-
-    uint8_t buffer[255] = {0};
-
-    int pack_size = _oe_read_signal_packet(signal_fd, buffer);
-    if (pack_size < 0) return pack_size;
-
-    // Unstuff the packet (last byte is the 0, so we decrement
-    int rc = _oe_cobs_unstuff(buffer, buffer, pack_size);
-    if (rc < 0) return rc;
-
-    // Get the type, which occupies first 4 bytes of buffer
-    *type = *(oe_signal_t *)buffer;
-
-    return 0;
+        return --i; // Length of packet without 0 delimeter
 }
 
 static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, size_t *size)
@@ -507,9 +560,9 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
     return 0;
 }
 
-static int _oe_pump_signal_type(int signal_fd, const oe_signal_t type)
+static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type)
 {
-    oe_signal_t packet_type = OE_NULLSIG;
+    oe_signal_t packet_type = NULLSIG;
     uint8_t buffer[255] = {0};
 
     do {
@@ -526,19 +579,19 @@ static int _oe_pump_signal_type(int signal_fd, const oe_signal_t type)
         // Get the type, which occupies first 4 bytes of buffer
         packet_type = *(oe_signal_t *)buffer;
 
-    } while (packet_type != type);
+    } while (!(packet_type & flags));
+
+    *type = packet_type;
 
     return 0;
 }
 
-static int _oe_pump_signal_data(int signal_fd,
-                                const oe_signal_t type,
-                                void *data,
-                                size_t *size)
+static int _oe_pump_signal_data(
+    int signal_fd, int flags, oe_signal_t *type, void *data,  size_t *size)
 {
-    oe_signal_t packet_type = OE_NULLSIG;
+    oe_signal_t packet_type = NULLSIG;
     int pack_size = 0;
-    uint8_t buffer[255];
+    uint8_t buffer[255] = {0};
 
     do {
         pack_size = _oe_read_signal_packet(signal_fd, buffer);
@@ -553,7 +606,10 @@ static int _oe_pump_signal_data(int signal_fd,
 
         // Get the type, which occupies first 4 bytes of buffer
         packet_type = *(oe_signal_t *)buffer;
-    } while (packet_type != type);
+
+    } while (!(packet_type & flags));
+
+    *type = packet_type;
 
     // pack_size still has overhead byte and header, so we remove those
     size_t data_size = pack_size - 1 - sizeof(oe_signal_t);
@@ -571,10 +627,9 @@ static int _oe_pump_signal_data(int signal_fd,
 
 static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size)
 {
-    // Minimal COBS packet is 1 byte + delimiter
-    // Maximal COBS packet is 254 bytes + delimiter
-    if (size < 2 || size > 255)
-        return OE_ECOBSPACK;
+    // Minimal COBS packet is 1 overhead byte + 1 data byte
+    // Maximal COBS packet is 1 overhead byte + 254 datate bytes
+    assert(size >= 2 && size <= 255 && "Invalid COBS packet buffer size.");
 
     const uint8_t *end = src + size;
     while (src < end) {

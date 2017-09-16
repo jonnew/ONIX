@@ -10,23 +10,20 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#include "../liboepcie/oedevice.h"
 #include "../liboepcie/oepcie.h"
 #include "testfunc.h"
 
-// Params
-const size_t num_chan = 128;
-const size_t run_time_sec = 10;
-const size_t samp_per_chan_per_block = 1000;
-const size_t fs_hz = 30e3;
-
-// Should we enter the data production loop
-volatile int running = 0;
-volatile int data_gen_complete = 0;
-
 // Data acq. params
-size_t samp_per_block;
-size_t num_blocks;
-//const size_t sample_time_us = (1e6 * samp_per_chan_per_block ) / fs_hz;
+const size_t base_clock_hz= 100e6;
+const size_t fifo_buffer_samples = 100; 
+
+// Config registers
+volatile uint32_t clock_m = 30;
+volatile uint32_t clock_d = 100;
+volatile uint32_t fs_hz;
+volatile int acquiring = 0;
+volatile int quit = 0;
 
 // FIFO file path and desciptor handles
 const char *config_path = "/tmp/rat128_config";
@@ -35,6 +32,42 @@ const char *data_path = "/tmp/rat128_data";
 int config_fd = -1;
 int data_fd = -1;
 int sig_fd = -1;
+
+// These enums are REDEFINED here (from oepcie.c) because they are static there.
+typedef enum oe_signal {
+    NULLSIG        = (1u << 0),
+    CONFIGWACK     = (1u << 1), // Configuration write-acknowledgement
+    CONFIGWNACK    = (1u << 2), // Configuration no-write-acknowledgement
+    CONFIGRACK     = (1u << 3), // Configuration read-acknowledgement
+    CONFIGRNACK    = (1u << 4), // Configuration no-read-acknowledgement
+    DEVICEINST     = (1u << 5), // Deivce instance
+} oe_signal_t;
+
+typedef enum oe_config_reg_offset {
+    CONFDEVIDOFFSET        = 0,   // Configuration device id register byte offset
+    CONFADDROFFSET         = 4,   // Configuration register address register byte offset
+    CONFVALUEOFFSET        = 8,   // Configuration register value register byte offset
+    CONFRWOFFSET           = 12,  // Configuration register read/write register byte offset
+    CONFTRIGOFFSET         = 13,  // Configuration read/write trigger register byte offset
+} oe_config_reg_offset_t;
+
+// Devices handled by this firmware
+static oe_device_t my_devices[]
+    = {{.id = OE_RHD2064,
+        .read_offset = OE_READFRAMEOVERHEAD,
+        .read_size = 66 * sizeof(uint16_t),
+        .write_offset = 0,
+        .write_size = 0},
+       {.id = OE_RHD2064,
+        .read_offset = OE_READFRAMEOVERHEAD + 66 * sizeof(uint16_t),
+        .read_size = 66 * sizeof(uint16_t),
+        .write_offset = 0,
+        .write_size = 0},
+       {.id = OE_MPU9250,
+        .read_offset = OE_READFRAMEOVERHEAD + 2 * (66 * sizeof(uint16_t)),
+        .read_size = 4 * 6,
+        .write_offset = 0,
+        .write_size = 0}};
 
 // Normal distribution
 double randn(double mu, double sigma)
@@ -61,6 +94,14 @@ double randn(double mu, double sigma)
     call = !call;
 
     return (mu + sigma * (double)X1);
+}
+
+size_t div_clock(size_t base_freq_hz, uint32_t M, uint32_t D) 
+{
+    if (M >= D)
+        return base_freq_hz;
+    else
+        return (M * base_freq_hz)/D;
 }
 
 void generate_config(int config_fd)
@@ -123,47 +164,60 @@ int send_data_signal(int sig_fd, oe_signal_t type, void *data, size_t n)
     return 0;
 }
 
+void send_header(int sig_fd) {
+
+    // Loop through devices
+    int i;
+    for (i = 0; i < sizeof(my_devices)/sizeof(oe_device_t); i++)
+        send_data_signal(sig_fd, DEVICEINST, &my_devices[i], sizeof(oe_device_t));
+}
+
 void *data_loop(void *vargp)
 {
-    // Data generation parameters
-    samp_per_block = num_chan * samp_per_chan_per_block;
-    num_blocks = (run_time_sec * fs_hz) / samp_per_chan_per_block;
+    // Initial clock conifig
+    fs_hz = div_clock(base_clock_hz, clock_m, clock_d);
+
+    // Number of devices
+    const size_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
+
+    // Sample number + total bytes in samples
+    // NB: This fragile because it assumes that the devices are in order of
+    // read offsets
+    const size_t sample_size = my_devices[num_dev - 1].read_offset
+                               + my_devices[num_dev - 1].read_size;
 
     // Set data pipe capacity
     // Sample number, LFP data, ...
-    fcntl(data_fd, F_SETPIPE_SZ, sizeof(uint64_t) + samp_per_block * sizeof(int16_t));
+    fcntl(data_fd, F_SETPIPE_SZ, sample_size * fifo_buffer_samples);
 
     // Start data generation loop
-    int i = 0;
-    uint64_t sample = 0;
+    uint64_t sample_tick = 0;
 
-    while (i < num_blocks) {
+    while (!quit) {
 
-        if (!running) {
-            usleep(10000);
-            continue;
+        usleep(1e6 / fs_hz); // Simulate finite sampling time
+
+        if (acquiring) {
+        // Buffer for data
+        uint8_t sample[sample_size];
+
+        // Leading sample_tick
+        *(uint64_t *)sample = sample_tick;
+
+        // Generate sample (frame)
+        int j;
+        for (j = 8; j < sample_size; j+=2)
+            *(uint16_t *)(sample + j) = (uint16_t)randn(32768, 50);
+
+            size_t rc = write(data_fd, sample, sample_size);
+            printf("Write %zu bytes\n", rc);
         }
 
-        // Generate data block
-        // 1. Sample number
-        write(data_fd, &sample, 8);
-
-        // 2. LFP data
-        int16_t lfp_block[samp_per_block];
-        int j;
-        for (j = 0; j < samp_per_block; j++)
-            lfp_block[j] = (int16_t)randn(0, 500);
-
-        size_t rc
-            = write(data_fd, lfp_block, samp_per_block * sizeof(int16_t));
-        printf("Write %zu bytes\n", rc);
-
         // Increment sample count
-        sample += samp_per_chan_per_block;
-        i++;
+        sample_tick += 1;
     }
 
-    data_gen_complete = 1;
+    return NULL;
 }
 
 int main()
@@ -197,9 +251,9 @@ int main()
     pthread_create(&tid, NULL, data_loop, NULL);
 
     // Config loop
-    while (!data_gen_complete) {
+    while (!quit) {
 
-        // Slow loop
+        // Slow loop. In FPGA, this would be purely async.
         usleep(100000);
 
         // Poll configuration registers
@@ -207,98 +261,135 @@ int main()
         // because (I think) they are cast to void * in read_config and
         // this is bad for some reason
         int32_t dev_id;
-        read_config(config_fd, OE_CONFDEVID, &dev_id, 4);
+        read_config(config_fd, CONFDEVIDOFFSET, &dev_id, 4);
         // printf("Dev ID: %d\n", dev_id);
 
         uint32_t reg_addr;
-        read_config(config_fd, OE_CONFADDR, &reg_addr, 4);
+        read_config(config_fd, CONFADDROFFSET, &reg_addr, 4);
         // printf("Reg. Addr: %u\n", reg_addr);
 
         uint32_t reg_val;
-        read_config(config_fd, OE_CONFVALUE, &reg_val, 4);
+        read_config(config_fd, CONFVALUEOFFSET, &reg_val, 4);
         // printf("Reg. val.: %u\n", reg_val);
 
         uint8_t reg_rw;
-        read_config(config_fd, OE_CONFRW, &reg_rw, 1);
+        read_config(config_fd, CONFRWOFFSET, &reg_rw, 1);
         // printf("Reg. RW: %hhu\n", reg_rw);
 
         uint8_t trig_value;
-        read_config(config_fd, OE_CONFTRIG, &trig_value, 1);
+        read_config(config_fd, CONFTRIGOFFSET, &trig_value, 1);
         // printf("Trig val.: %hhu\n", trig_value);
 
         if (trig_value && !reg_rw) { // Read operation requested by host
 
             printf("Register read requested.\n");
 
-            // TODO: Go get the value. For now, we are just mirror the value
-            // in reg_val
-            uint32_t read_reg = reg_val;
+            // Are we targetting master device?
+            if (dev_id == OE_PCIEMASTERDEVIDX) { // Thats me!
+                switch (reg_addr) {
+                    case OE_PCIEMASTERDEV_HEADER: {
+                        // Num dev, dev 0, dev 1, dev 2, ...
+                        uint32_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
+                        send_data_signal(sig_fd, CONFIGRACK, &num_dev, sizeof(num_dev));
+                        send_header(sig_fd);
+                        break;
+                    }
+                    case OE_PCIEMASTERDEV_RUNNING: {
+                        // Num dev, dev 0, dev 1, dev 2, ...
+                        uint32_t is_running = acquiring;
+                        send_data_signal(sig_fd, CONFIGRACK, &is_running, sizeof(is_running));
+                        break;
+                    }
+                    case OE_PCIEMASTERDEV_RESET: { 
+                        uint32_t reset = quit;
+                        send_data_signal(sig_fd, CONFIGRACK, &reset, sizeof(reset));
+                        break;
+                    }
+                    case OE_PCIEMASTERDEV_BASECLKHZ: {
+                        uint32_t hz = base_clock_hz;
+                        send_data_signal(sig_fd, CONFIGRACK, &hz, sizeof(hz));
+                        break;
+                    }
+                    case OE_PCIEMASTERDEV_FSCLKHZ: {
+                        uint32_t hz = fs_hz;
+                        send_data_signal(sig_fd, CONFIGRACK, &hz, sizeof(hz));
+                        break;
+                    }
+                    case OE_PCIEMASTERDEV_CLKM:{
+                        uint32_t m = clock_m;
+                        send_data_signal(sig_fd, CONFIGRACK, &m, sizeof(m));
+                        break;
+                    }
+                    case OE_PCIEMASTERDEV_CLKD: {
+                        uint32_t d = clock_d;
+                        send_data_signal(sig_fd, CONFIGRACK, &d, sizeof(d));
+                        break;
+                    }
+                }
+
+            } else { // Other devices (not implemented here)
+
+                // TODO: Go get the value. For now, we are just mirror
+                // the value in reg_val
+                uint32_t read_reg = reg_val;
+
+                // Send the result back
+                send_data_signal(
+                    sig_fd, CONFIGRACK, &read_reg, sizeof(read_reg));
+            }
 
             // Untrigger
             trig_value = 0x00;
-            write_config(config_fd, OE_CONFTRIG, &trig_value, 1);
-
-            // Send the result back
-            send_data_signal(
-                sig_fd, OE_CONFIGRACK, &read_reg, sizeof(read_reg));
+            write_config(config_fd, CONFTRIGOFFSET, &trig_value, 1);
 
         } else if (trig_value && reg_rw) { // write operation requested by host
 
             printf("Register write requested.\n");
 
-            // TODO: Use the value register to program device register
+            // Are we targetting master device?
+            if (dev_id == OE_PCIEMASTERDEVIDX) { // Thats me!
+                switch (reg_addr) {
+
+                    case OE_PCIEMASTERDEV_HEADER:
+                        send_msg_signal(sig_fd, CONFIGWNACK); // Send nack since this read only
+                        break;
+                    case OE_PCIEMASTERDEV_RUNNING: // Set acquiring
+                        acquiring = reg_val;
+                        send_msg_signal(sig_fd, CONFIGWACK); 
+                        break;
+                    case OE_PCIEMASTERDEV_RESET: // Set quit
+                        quit = reg_val;
+                        send_msg_signal(sig_fd, CONFIGWACK);
+                        break;
+                    case OE_PCIEMASTERDEV_BASECLKHZ:
+                        send_msg_signal(sig_fd, CONFIGWNACK); // Send nack since this read only
+                        break;
+                    case OE_PCIEMASTERDEV_FSCLKHZ:
+                        send_msg_signal(sig_fd, CONFIGWNACK); // Send nack since this read only
+                        break;
+                    case OE_PCIEMASTERDEV_CLKM:
+                        clock_m = reg_val; // Set clock multiply
+                        fs_hz = div_clock(base_clock_hz, clock_m, clock_d);
+                        send_msg_signal(sig_fd, CONFIGWACK);
+                        break;
+                    case OE_PCIEMASTERDEV_CLKD:
+                        clock_d = reg_val; // Set clock divide
+                        fs_hz = div_clock(base_clock_hz, clock_m, clock_d);
+                        send_msg_signal(sig_fd, CONFIGWACK);
+                        break;
+                }
+
+            } else { // Other devices (not implemented here)
+
+                // TODO: Use the value register to program device register
+
+                // Send read acknowledge back to host
+                send_msg_signal(sig_fd, CONFIGWACK);
+            }
 
             // Untrigger
             trig_value = 0x00;
-            write_config(config_fd, OE_CONFTRIG, &trig_value, 1);
-
-            // Are we targetting master device?
-            int header_requested = 0;
-            if (dev_id == OEPCIEMASTER) { // Thats me!
-                switch (reg_addr) {
-
-                    case OEPCIEMASTER_HEADER: // Header request
-                        header_requested = 1;
-                        break;
-                    case OEPCIEMASTER_RUNNING: // Set running
-                        running = reg_val;
-                        break;
-                }
-            }
-
-            // Send read acknowledge back to host
-            send_msg_signal(sig_fd, OE_CONFIGWACK);
-
-            // Push the header into the singal FIFO
-            if (header_requested) {
-
-                send_msg_signal(sig_fd, OE_HEADERSTART);
-
-                // Two intan chips and an IMU
-                oe_device_t this_dev;
-                this_dev.id = RHD2064;
-                this_dev.read_offset = 0;
-                this_dev.read_size = 66 * sizeof(uint16_t);
-                this_dev.write_offset = 0;
-                this_dev.write_size = 0;
-                send_data_signal(sig_fd, OE_DEVICEINST, &this_dev, sizeof(oe_device_t));
-
-                this_dev.id = RHD2064;
-                this_dev.read_offset = 66 * sizeof(uint16_t);
-                this_dev.read_size = 66 * sizeof(uint16_t);
-                this_dev.write_offset = 0;
-                this_dev.write_size = 0;
-                send_data_signal(sig_fd, OE_DEVICEINST, &this_dev, sizeof(oe_device_t));
-
-                this_dev.id = MPU950;
-                this_dev.read_offset = 2 * (66 * sizeof(uint16_t));
-                this_dev.read_size = 4 * 6;
-                this_dev.write_offset = 0;
-                this_dev.write_size = 0;
-                send_data_signal(sig_fd, OE_DEVICEINST, &this_dev, sizeof(oe_device_t));
-                
-                send_msg_signal(sig_fd, OE_HEADEREND);
-            }
+            write_config(config_fd, CONFTRIGOFFSET, &trig_value, 1);
         }
     }
 
