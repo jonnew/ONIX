@@ -10,19 +10,23 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "../liboepcie/oedevice.h"
 #include "../liboepcie/oepcie.h"
 #include "testfunc.h"
 
 // Data acq. params
-const size_t base_clock_hz= 100e6;
 const size_t fifo_buffer_samples = 100; 
 
 // Config registers
-volatile uint32_t clock_m = 30;
-volatile uint32_t clock_d = 100;
-volatile uint32_t fs_hz;
-volatile int acquiring = 0;
+volatile oe_reg_val_t running = 0;
+const oe_reg_val_t sys_clock_hz = 100e6;
+oe_reg_val_t clock_m = 30;
+oe_reg_val_t clock_d = 100;
+volatile oe_reg_val_t fs_hz;
+
+// Global state
+volatile uint64_t sample_tick = 0;
+
+// Thread control 
 volatile int quit = 0;
 
 // FIFO file path and desciptor handles
@@ -35,21 +39,36 @@ int sig_fd = -1;
 
 // These enums are REDEFINED here (from oepcie.c) because they are static there.
 typedef enum oe_signal {
-    NULLSIG        = (1u << 0),
-    CONFIGWACK     = (1u << 1), // Configuration write-acknowledgement
-    CONFIGWNACK    = (1u << 2), // Configuration no-write-acknowledgement
-    CONFIGRACK     = (1u << 3), // Configuration read-acknowledgement
-    CONFIGRNACK    = (1u << 4), // Configuration no-read-acknowledgement
-    DEVICEINST     = (1u << 5), // Deivce instance
+    NULLSIG             = (1u << 0),
+    CONFIGWACK          = (1u << 1), // Configuration write-acknowledgement
+    CONFIGWNACK         = (1u << 2), // Configuration no-write-acknowledgement
+    CONFIGRACK          = (1u << 3), // Configuration read-acknowledgement
+    CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgement
+    DEVICEMAPACK        = (1u << 5), // Device map start acnknowledgement
+    DEVICEINST          = (1u << 6), // Deivce map instance
+    RUNSTATE            = (1u << 7), // Hardware run state change message
 } oe_signal_t;
 
-typedef enum oe_config_reg_offset {
-    CONFDEVIDOFFSET        = 0,   // Configuration device id register byte offset
-    CONFADDROFFSET         = 4,   // Configuration register address register byte offset
-    CONFVALUEOFFSET        = 8,   // Configuration register value register byte offset
-    CONFRWOFFSET           = 12,  // Configuration register read/write register byte offset
-    CONFTRIGOFFSET         = 13,  // Configuration read/write trigger register byte offset
-} oe_config_reg_offset_t;
+// Configuration file offsets
+typedef enum oe_conf_reg_off {
+
+    // Register R/W interface
+    CONFDEVIDOFFSET     = 0,   // Configuration device id register byte offset
+    CONFADDROFFSET      = 4,   // Configuration register address register byte offset
+    CONFVALUEOFFSET     = 8,   // Configuration register value register byte offset
+    CONFRWOFFSET        = 12,  // Configuration register read/write register byte offset
+    CONFTRIGOFFSET      = 16,  // Configuration read/write trigger register byte offset
+
+    // Global configuration
+    // NB: I don't think we can memory map these because read/write operaitons
+    // on xillybus sychronous streams
+    CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
+    CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
+    CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
+    CONFFSCLKHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
+    CONFFSCLKMOFFSET    = 36,  // Configuration run hardware register byte offset
+    CONFFSCLKDOFFSET    = 40,  // Configuration run hardware register byte offset
+} oe_conf_reg_off_t;
 
 // Devices handled by this firmware
 static oe_device_t my_devices[]
@@ -104,26 +123,41 @@ size_t div_clock(size_t base_freq_hz, uint32_t M, uint32_t D)
         return (M * base_freq_hz)/D;
 }
 
-void generate_config(int config_fd)
-{
-    // Just put a bunch of 0s in there
-    lseek(config_fd, 0, SEEK_SET);
-    uint8_t regs[100] = {0};
-    write(config_fd, regs, sizeof(regs));
-}
 
-int read_config(int config_fd, oe_config_reg_offset_t offset, void *result, size_t size)
+int read_config(int config_fd, oe_conf_reg_off_t offset, void *result, size_t size)
 {
     lseek(config_fd, offset, SEEK_SET);
     read(config_fd, result, size);
     return 0;
 }
 
-int write_config(int config_fd, oe_config_reg_offset_t offset, void *value, size_t size)
+int write_config(int config_fd, oe_conf_reg_off_t offset, void *value, size_t size)
 {
     lseek(config_fd, offset, SEEK_SET);
     write(config_fd, value, size);
     return 0;
+}
+
+void generate_default_config(int config_fd)
+{
+    // Default config
+    running = 0;
+    clock_m = 30;
+    clock_d = 100;
+    fs_hz = div_clock(sys_clock_hz, clock_m, clock_d);
+    sample_tick = 0;
+
+    // Just put a bunch of 0s in there
+    lseek(config_fd, 0, SEEK_SET);
+    oe_reg_val_t regs[100] = {0};
+    write(config_fd, regs, 100 * sizeof(oe_reg_val_t));
+
+    // Write defaults for registers that need it
+    write_config(config_fd, CONFRUNNINGOFFSET, (void *)&running, sizeof(oe_reg_val_t)); 
+    write_config(config_fd, CONFSYSCLKHZOFFSET, (void *)&sys_clock_hz, sizeof(oe_reg_val_t)); 
+    write_config(config_fd, CONFFSCLKHZOFFSET, (void *)&fs_hz, sizeof(oe_reg_val_t)); 
+    write_config(config_fd, CONFFSCLKMOFFSET, (void *)&clock_m, sizeof(oe_reg_val_t)); 
+    write_config(config_fd, CONFFSCLKDOFFSET, (void *)&clock_d, sizeof(oe_reg_val_t)); 
 }
 
 int send_msg_signal(int sig_fd, oe_signal_t type)
@@ -175,7 +209,7 @@ void send_header(int sig_fd) {
 void *data_loop(void *vargp)
 {
     // Initial clock conifig
-    fs_hz = div_clock(base_clock_hz, clock_m, clock_d);
+    fs_hz = div_clock(sys_clock_hz, clock_m, clock_d);
 
     // Number of devices
     const size_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
@@ -190,31 +224,28 @@ void *data_loop(void *vargp)
     // Sample number, LFP data, ...
     fcntl(data_fd, F_SETPIPE_SZ, sample_size * fifo_buffer_samples);
 
-    // Start data generation loop
-    uint64_t sample_tick = 0;
-
     while (!quit) {
+        if (running) {
 
-        usleep(1e6 / fs_hz); // Simulate finite sampling time
+            usleep(1e6 / fs_hz); // Simulate finite sampling time
 
-        if (acquiring) {
-        // Buffer for data
-        uint8_t sample[sample_size];
+            // Buffer for data
+            uint8_t sample[sample_size];
 
-        // Leading sample_tick
-        *(uint64_t *)sample = sample_tick;
+            // Leading sample_tick
+            *(uint64_t *)sample = sample_tick;
 
-        // Generate sample (frame)
-        int j;
-        for (j = 8; j < sample_size; j+=2)
-            *(uint16_t *)(sample + j) = (uint16_t)randn(32768, 50);
+            // Generate sample (frame)
+            int j;
+            for (j = 8; j < sample_size; j += 2)
+                *(uint16_t *)(sample + j) = (uint16_t)randn(32768, 50);
 
             size_t rc = write(data_fd, sample, sample_size);
             printf("Write %zu bytes\n", rc);
-        }
 
-        // Increment sample count
-        sample_tick += 1;
+            // Increment sample count
+            sample_tick += 1;
+        }
     }
 
     return NULL;
@@ -237,7 +268,6 @@ int main()
     // to read noexistant file if fifos are opened before this. This should not
     // be an issue with xillybus.
     config_fd = open(config_path, O_RDWR | O_CREAT, 0666);
-    generate_config(config_fd); // Generate config file content
 
     // NB: Must respect this ordering when opening files in host or the two
     // programs will deadlock. The ordering is hidden in oe_init_ctx(), so its
@@ -250,33 +280,63 @@ int main()
     pthread_t tid;
     pthread_create(&tid, NULL, data_loop, NULL);
 
+reset:
+    
+    // Reset run state by generating default configuration
+    generate_default_config(config_fd); // Generate config file content
+
+    // Send device map
+    uint32_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
+    send_data_signal(sig_fd, DEVICEMAPACK, &num_dev, sizeof(num_dev));
+    send_header(sig_fd);
+
     // Config loop
     while (!quit) {
 
         // Slow loop. In FPGA, this would be purely async.
-        usleep(100000);
+        usleep(1000);
 
+        // --  Global registers --
+        oe_reg_val_t run;
+        read_config(config_fd, CONFRUNNINGOFFSET, &run, 4);
+        running = run;
+
+        oe_reg_val_t reset;
+        read_config(config_fd, CONFRESETOFFSET, &reset, 4);
+        if (reset) {
+            reset = 0; // untrigger
+            write_config(config_fd, CONFRESETOFFSET, &reset, 4);
+            goto reset;
+        }
+
+        // Sample rate
+        read_config(config_fd, CONFFSCLKMOFFSET, &clock_m, 4);
+        read_config(config_fd, CONFFSCLKDOFFSET, &clock_d, 4);
+        fs_hz = div_clock(sys_clock_hz, clock_m, clock_d);
+        write_config(config_fd, CONFFSCLKHZOFFSET, (void *)&fs_hz, 4);
+
+        // -- Device configuration Interface --
         // Poll configuration registers
         // NB: It is very important to 0-initalize the register values here
         // because (I think) they are cast to void * in read_config and
         // this is bad for some reason
-        int32_t dev_id;
+        oe_reg_val_t dev_id;
         read_config(config_fd, CONFDEVIDOFFSET, &dev_id, 4);
         // printf("Dev ID: %d\n", dev_id);
 
-        uint32_t reg_addr;
+        oe_reg_val_t reg_addr;
         read_config(config_fd, CONFADDROFFSET, &reg_addr, 4);
         // printf("Reg. Addr: %u\n", reg_addr);
 
-        uint32_t reg_val;
+        oe_reg_val_t reg_val;
         read_config(config_fd, CONFVALUEOFFSET, &reg_val, 4);
         // printf("Reg. val.: %u\n", reg_val);
 
-        uint8_t reg_rw;
+        oe_reg_val_t reg_rw;
         read_config(config_fd, CONFRWOFFSET, &reg_rw, 1);
         // printf("Reg. RW: %hhu\n", reg_rw);
 
-        uint8_t trig_value;
+        oe_reg_val_t trig_value;
         read_config(config_fd, CONFTRIGOFFSET, &trig_value, 1);
         // printf("Trig val.: %hhu\n", trig_value);
 
@@ -284,59 +344,13 @@ int main()
 
             printf("Register read requested.\n");
 
-            // Are we targetting master device?
-            if (dev_id == OE_PCIEMASTERDEVIDX) { // Thats me!
-                switch (reg_addr) {
-                    case OE_PCIEMASTERDEV_HEADER: {
-                        // Num dev, dev 0, dev 1, dev 2, ...
-                        uint32_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
-                        send_data_signal(sig_fd, CONFIGRACK, &num_dev, sizeof(num_dev));
-                        send_header(sig_fd);
-                        break;
-                    }
-                    case OE_PCIEMASTERDEV_RUNNING: {
-                        // Num dev, dev 0, dev 1, dev 2, ...
-                        uint32_t is_running = acquiring;
-                        send_data_signal(sig_fd, CONFIGRACK, &is_running, sizeof(is_running));
-                        break;
-                    }
-                    case OE_PCIEMASTERDEV_RESET: { 
-                        uint32_t reset = quit;
-                        send_data_signal(sig_fd, CONFIGRACK, &reset, sizeof(reset));
-                        break;
-                    }
-                    case OE_PCIEMASTERDEV_BASECLKHZ: {
-                        uint32_t hz = base_clock_hz;
-                        send_data_signal(sig_fd, CONFIGRACK, &hz, sizeof(hz));
-                        break;
-                    }
-                    case OE_PCIEMASTERDEV_FSCLKHZ: {
-                        uint32_t hz = fs_hz;
-                        send_data_signal(sig_fd, CONFIGRACK, &hz, sizeof(hz));
-                        break;
-                    }
-                    case OE_PCIEMASTERDEV_CLKM:{
-                        uint32_t m = clock_m;
-                        send_data_signal(sig_fd, CONFIGRACK, &m, sizeof(m));
-                        break;
-                    }
-                    case OE_PCIEMASTERDEV_CLKD: {
-                        uint32_t d = clock_d;
-                        send_data_signal(sig_fd, CONFIGRACK, &d, sizeof(d));
-                        break;
-                    }
-                }
+            // TODO: Go get the value. For now, we are just mirror
+            // the value in reg_val
+            uint32_t read_reg = reg_val;
 
-            } else { // Other devices (not implemented here)
-
-                // TODO: Go get the value. For now, we are just mirror
-                // the value in reg_val
-                uint32_t read_reg = reg_val;
-
-                // Send the result back
-                send_data_signal(
-                    sig_fd, CONFIGRACK, &read_reg, sizeof(read_reg));
-            }
+            // Send the result back
+            send_data_signal(
+                sig_fd, CONFIGRACK, &read_reg, sizeof(read_reg));
 
             // Untrigger
             trig_value = 0x00;
@@ -344,48 +358,11 @@ int main()
 
         } else if (trig_value && reg_rw) { // write operation requested by host
 
-            printf("Register write requested.\n");
+            // TODO: Use the value register to program device register
+            // (not impelemented here)
 
-            // Are we targetting master device?
-            if (dev_id == OE_PCIEMASTERDEVIDX) { // Thats me!
-                switch (reg_addr) {
-
-                    case OE_PCIEMASTERDEV_HEADER:
-                        send_msg_signal(sig_fd, CONFIGWNACK); // Send nack since this read only
-                        break;
-                    case OE_PCIEMASTERDEV_RUNNING: // Set acquiring
-                        acquiring = reg_val;
-                        send_msg_signal(sig_fd, CONFIGWACK); 
-                        break;
-                    case OE_PCIEMASTERDEV_RESET: // Set quit
-                        quit = reg_val;
-                        send_msg_signal(sig_fd, CONFIGWACK);
-                        break;
-                    case OE_PCIEMASTERDEV_BASECLKHZ:
-                        send_msg_signal(sig_fd, CONFIGWNACK); // Send nack since this read only
-                        break;
-                    case OE_PCIEMASTERDEV_FSCLKHZ:
-                        send_msg_signal(sig_fd, CONFIGWNACK); // Send nack since this read only
-                        break;
-                    case OE_PCIEMASTERDEV_CLKM:
-                        clock_m = reg_val; // Set clock multiply
-                        fs_hz = div_clock(base_clock_hz, clock_m, clock_d);
-                        send_msg_signal(sig_fd, CONFIGWACK);
-                        break;
-                    case OE_PCIEMASTERDEV_CLKD:
-                        clock_d = reg_val; // Set clock divide
-                        fs_hz = div_clock(base_clock_hz, clock_m, clock_d);
-                        send_msg_signal(sig_fd, CONFIGWACK);
-                        break;
-                }
-
-            } else { // Other devices (not implemented here)
-
-                // TODO: Use the value register to program device register
-
-                // Send read acknowledge back to host
-                send_msg_signal(sig_fd, CONFIGWACK);
-            }
+            // Send read acknowledge back to host
+            send_msg_signal(sig_fd, CONFIGWACK);
 
             // Untrigger
             trig_value = 0x00;
