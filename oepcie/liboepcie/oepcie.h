@@ -4,8 +4,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#define OE_READFRAMEOVERHEAD     32 // [uint64_t sample number, (24 reserved bytes), ...]
-#define OE_WRITEFRAMEOVERHEAD    32 // [( 32 reserved bytes), ...]
+#define OE_RFRAMEHEADERSZ     32 // [uint64_t sample number, (24 reserved bytes), ...]
+#define OE_WFRAMEHEADERSZ     32 // [( 32 reserved bytes), ...]
 
 // Supported devices/IDs
 // NB: If you add a device here, make sure to update the oe_device_string array
