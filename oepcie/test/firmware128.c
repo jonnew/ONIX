@@ -14,7 +14,7 @@
 #include "testfunc.h"
 
 // Data acq. params
-const size_t fifo_buffer_samples = 100; 
+const size_t fifo_buffer_samples = 100;
 
 // Config registers
 volatile oe_reg_val_t running = 0;
@@ -26,7 +26,7 @@ volatile oe_reg_val_t fs_hz;
 // Global state
 volatile uint64_t sample_tick = 0;
 
-// Thread control 
+// Thread control
 volatile int quit = 0;
 
 // FIFO file path and desciptor handles
@@ -45,8 +45,9 @@ typedef enum oe_signal {
     CONFIGRACK          = (1u << 3), // Configuration read-acknowledgement
     CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgement
     DEVICEMAPACK        = (1u << 5), // Device map start acnknowledgement
-    DEVICEINST          = (1u << 6), // Deivce map instance
-    RUNSTATE            = (1u << 7), // Hardware run state change message
+    FRAMERSIZE          = (1u << 6), // Frame read size in bytes
+    FRAMEWSIZE          = (1u << 7), // Frame write size in bytes
+    DEVICEINST          = (1u << 8), // Deivce map instance
 } oe_signal_t;
 
 // Configuration file offsets
@@ -60,8 +61,6 @@ typedef enum oe_conf_reg_off {
     CONFTRIGOFFSET      = 16,  // Configuration read/write trigger register byte offset
 
     // Global configuration
-    // NB: I don't think we can memory map these because read/write operaitons
-    // on xillybus sychronous streams
     CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
@@ -73,19 +72,19 @@ typedef enum oe_conf_reg_off {
 // Devices handled by this firmware
 static oe_device_t my_devices[]
     = {{.id = OE_RHD2064,
-        .read_offset = OE_READFRAMEOVERHEAD,
+        .read_offset = OE_RFRAMEHEADERSZ,
         .read_size = 66 * sizeof(uint16_t),
-        .write_offset = 0,
+        .write_offset = OE_WFRAMEHEADERSZ,
         .write_size = 0},
        {.id = OE_RHD2064,
-        .read_offset = OE_READFRAMEOVERHEAD + 66 * sizeof(uint16_t),
+        .read_offset = OE_RFRAMEHEADERSZ + 66 * sizeof(uint16_t),
         .read_size = 66 * sizeof(uint16_t),
-        .write_offset = 0,
+        .write_offset = OE_WFRAMEHEADERSZ,
         .write_size = 0},
        {.id = OE_MPU9250,
-        .read_offset = OE_READFRAMEOVERHEAD + 2 * (66 * sizeof(uint16_t)),
+        .read_offset = OE_RFRAMEHEADERSZ + 2 * (66 * sizeof(uint16_t)),
         .read_size = 4 * 6,
-        .write_offset = 0,
+        .write_offset = OE_WFRAMEHEADERSZ,
         .write_size = 0}};
 
 // Normal distribution
@@ -115,14 +114,47 @@ double randn(double mu, double sigma)
     return (mu + sigma * (double)X1);
 }
 
-size_t div_clock(size_t base_freq_hz, uint32_t M, uint32_t D) 
+uint32_t get_read_frame_size(oe_device_t *dev_map, size_t n_devs)
+{
+    int i;
+    int max_idx = 0;
+    for (i = 0; i < n_devs; i++) {
+
+        oe_device_t cur_dev = dev_map[i];
+        if (cur_dev.read_offset > dev_map[max_idx].read_offset)
+            max_idx = i;
+    }
+
+    size_t read_frame_size = dev_map[max_idx].read_offset + dev_map[max_idx].read_size;
+    read_frame_size += read_frame_size % 32; // padding
+
+    return read_frame_size;
+}
+
+uint32_t get_write_frame_size(oe_device_t *dev_map, size_t n_devs)
+{
+    int i;
+    int max_idx = 0;
+    for (i = 0; i < n_devs; i++) {
+
+        oe_device_t cur_dev = dev_map[i];
+        if (cur_dev.write_offset > dev_map[max_idx].write_offset)
+            max_idx = i;
+    }
+
+    size_t write_frame_size = dev_map[max_idx].write_offset + dev_map[max_idx].write_size;
+    write_frame_size += write_frame_size % 32; // padding
+
+    return write_frame_size;
+}
+
+size_t div_clock(size_t base_freq_hz, uint32_t M, uint32_t D)
 {
     if (M >= D)
         return base_freq_hz;
     else
         return (M * base_freq_hz)/D;
 }
-
 
 int read_config(int config_fd, oe_conf_reg_off_t offset, void *result, size_t size)
 {
@@ -153,11 +185,11 @@ void generate_default_config(int config_fd)
     write(config_fd, regs, 100 * sizeof(oe_reg_val_t));
 
     // Write defaults for registers that need it
-    write_config(config_fd, CONFRUNNINGOFFSET, (void *)&running, sizeof(oe_reg_val_t)); 
-    write_config(config_fd, CONFSYSCLKHZOFFSET, (void *)&sys_clock_hz, sizeof(oe_reg_val_t)); 
-    write_config(config_fd, CONFFSCLKHZOFFSET, (void *)&fs_hz, sizeof(oe_reg_val_t)); 
-    write_config(config_fd, CONFFSCLKMOFFSET, (void *)&clock_m, sizeof(oe_reg_val_t)); 
-    write_config(config_fd, CONFFSCLKDOFFSET, (void *)&clock_d, sizeof(oe_reg_val_t)); 
+    write_config(config_fd, CONFRUNNINGOFFSET, (void *)&running, sizeof(oe_reg_val_t));
+    write_config(config_fd, CONFSYSCLKHZOFFSET, (void *)&sys_clock_hz, sizeof(oe_reg_val_t));
+    write_config(config_fd, CONFFSCLKHZOFFSET, (void *)&fs_hz, sizeof(oe_reg_val_t));
+    write_config(config_fd, CONFFSCLKMOFFSET, (void *)&clock_m, sizeof(oe_reg_val_t));
+    write_config(config_fd, CONFFSCLKDOFFSET, (void *)&clock_d, sizeof(oe_reg_val_t));
 }
 
 int send_msg_signal(int sig_fd, oe_signal_t type)
@@ -198,7 +230,16 @@ int send_data_signal(int sig_fd, oe_signal_t type, void *data, size_t n)
     return 0;
 }
 
-void send_header(int sig_fd) {
+void send_device_map(int sig_fd)
+{
+    uint32_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
+    send_data_signal(sig_fd, DEVICEMAPACK, &num_dev, sizeof(num_dev));
+
+    uint32_t r_size = get_read_frame_size(my_devices, num_dev);
+    send_data_signal(sig_fd, FRAMERSIZE, &r_size, sizeof(r_size));
+
+    uint32_t w_size = get_write_frame_size(my_devices, num_dev);
+    send_data_signal(sig_fd, FRAMEWSIZE, &w_size, sizeof(w_size));
 
     // Loop through devices
     int i;
@@ -281,14 +322,12 @@ int main()
     pthread_create(&tid, NULL, data_loop, NULL);
 
 reset:
-    
+
     // Reset run state by generating default configuration
     generate_default_config(config_fd); // Generate config file content
 
     // Send device map
-    uint32_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
-    send_data_signal(sig_fd, DEVICEMAPACK, &num_dev, sizeof(num_dev));
-    send_header(sig_fd);
+    send_device_map(sig_fd);
 
     // Config loop
     while (!quit) {
