@@ -5,7 +5,8 @@
 [MIT](https://en.wikipedia.org/wiki/MIT_License)
 
 ## Purpose
-Configure hardware and read and write streaming data from and to a host applications.
+Configure hardware and read and write streaming data from and to a host
+applications.
 
 ## Design Requirements
 - Low latency (sub millisecond)
@@ -24,7 +25,6 @@ Implementation shall be in C to facilitate cross platform and cross-language
 use.
 
 ## Scope and External Dependencies
-
 - This is a low level library used by high-level library and or application
   plugin developers. It is not meant to be used by neuroscientists directly.
 
@@ -39,14 +39,77 @@ use.
 
 ## Types and Definitions
 
-#### Device
+### Context
+A _context_ (`oe_ctx`) holds all required state for a devices associated with
+one PCIe bus in the following hierarchy:
+
+``` {.c}
+typedef struct stream_fid {
+    char *path;
+    int fid;
+} stream_fid_t;
+
+typedef struct oe_ctx_impl {
+    // Communication channels
+    stream_fid_t config;
+    stream_fid_t data;
+    stream_fid_t signal;
+
+    // Devices
+    oe_size_t num_dev;
+    oe_device_t* dev_map;
+
+    // Frame sizes (bytes)
+    oe_size_t read_frame_size;
+    oe_size_t write_frame_size;
+
+    // Acqusition state
+    enum run_state {
+        CTXNULL = 0,
+        UNINITIALIZED,
+        IDLE,
+        RUNNING
+    } run_state;
+
+} oe_ctx_impl_t;
+```
+
+State details should be hidden in implementation file (.c). A pointer to opaque
+type (handle) is exposed publicly in header (.h)
+
+```
+// .h
+typedef struct oe_ctx_impl *oe_ctx;
+```
+
+API calls will typically take a context handle as the first argument and use it
+to look up required state information to enable communication, or to add mutate
+the context to reflect some function side effect (e.g. add device map
+information).
+
+```
+int oe_api_function(oe_ctx ctx, ...);
+```
+
+### Device
 A _device_ (`oe_device_t`) is defined as configurable piece of hardware with
 its own register address space (e.g. an integrated circuit) or something
 programmed within the firmware to emulate this (e.g. a MUX or microcontroller
 implemented in the FPGA's logic). On the FPGA firmware, each device corresponds
-to a module with several standard methods (TODO: Elaborate on this!). Host
+to a module with several standard methods (TOD0: Elaborate on this!). Host
 interaction with a device is facilitated using a description, which is provided
-by a `struct` with the following elements:
+by a `struct` as follows:
+
+``` {.c}
+typedef struct oe_device {
+    device_id_t id;
+    int         read_offset;
+    size_t      read_size;
+    int         write_offset;
+    size_t      write_size;
+} oe_device_t;
+```
+The definition of each member of `oe_device_t` is provided below:
 
 1. `enum config_device_id`: Device ID number which is globally enumerated for the
    entire project
@@ -69,134 +132,238 @@ by a `struct` with the following elements:
     } oe_device_id_t
     ```
 
-2. `int read_offset`: Byte count offset within data packet that this
+2. `int read_offset`: Byte count offset within a data frame that this
    device's data can be found
     - -1 indicates that no data is sent by the device
-3. `size_t read_size`:  bytes of each transmitted data packet from this device.
+3. `size_t read_size`:  bytes of each transmitted data frame from this device.
     - 0 indicates that it does not send data.
-4. `int write_offset`: Byte count offset within data packet that this
+4. `int write_offset`: Byte count offset within data frame that this
    device's write data can be written
     - -1 indicates that no data can be written to the device
-5. `size_t write_size`:  bytes within the output packet transmitted data packet
+5. `size_t write_size`:  bytes within the output frame transmitted data packet
    to this device.
     - 0 indicates that it does not send data.
 
-So, a `device` struct looks like this:
+Following a hardware reset which is triggered either by a call to `oe_init_ctx`
+or to `oe_set_ctx` with the appropriate option, the device map is pushed onto
+the singal stream by the FPGA as COBS encoded packets. The device map looks
+like this on the signal stream, where | represents '0' packet delimiters.
 
+... | DEVICEMAPACK, uint32_t num_devices | FRAMERSIZE, uint32_t read_frame_size
+    | FRAMEWSIZE, uint32_t write_frame_size | DEVICEINST oe_device_t dev_0
+    | DEVICEINST oe_device_t dev_1 | ... | DEVICEINST oe_device_t dev_n| ...
+
+During a call to `oe_init_ctx`, the device map is decoded from the singal stream and used to populate the appropriate files in the current context. Here, packet contains a flag header defined as
+
+
+
+### Frame
+A _frame_ is a flat byte array containing a single sample's worth of read
+or write data for an entire device map. This is the data format produced by
+`oe_read` and sent to `oe_write`. Data within a frame is arranged as follows:
+
+```
+[32 byte header, dev_0 data, dev_1 data, ... , dev_n data, padding]
+```
+
+Read-frames and write-frames have different structures since some devices
+produce data and some do not. Read-frame and write-frame information for a
+particular hardware configuration is provided by the FPGA firmware. It is
+captured by the host during `oe_init_ctx` and can be examined via calls to
+`oe_get_opt`, e.g. to find device read and write offsets and sizes within each
+frame.  Ideally, calls to `oe_read` and `oe_write` should provide buffers  of
+appropriate size to to fit an integer number of full frames, although this is
+not necessary. A frame is divided into three data sections:
+
+1. Header
+    - Frame metadata containing sample numbers and (TODO) error correction codes
+    - For read-frames (`oe_read`) header contains
+        - bytes 0-8: uint64_t frame number
+        - bytes 9-32: reserved
+    - For write-frames (`oe_write`) header contains
+        - bytes 0-32: reserved
+2. Data
+    - Raw data blocks from each device in the device map.
+    - The ordering of device-specific blocks is the same as the device index
+      within the map
+    - The read/write offsets for each device-specific block is provided in the
+      device map
+    - Data block type information is provided in device specific manual file,
+      in this repository (TODO)
+    - Perhaps in the future, data type casting information can be provided in
+      the device map, but this is not currently implemented
+
+3. Padding
+    - The read and write frame may require padding 0's at the end of the frame
+      in order to make the frame size a multiple of 32-bits, which is the width
+      of the FIFO that is used. This allows frames to fall on the FIFO's
+      natural data boundaries for effecient reading and writing.
+
+### FPGA/Host Communication Channels
+The library supports communication over the following channels
+
+#### Signal channel (8-bit, asynchronous, read only)
+
+- Provides a way for the firmware to inform host of configuration results and
+  the device map  available devices
+- Communicates with host using a
+  [COBS](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)
+  stream.
+    - Packets are delimited using 0's
+    - Packets always have the following format: [PACKET-FLAG, data...]
+    - Packet flags are defined as follows
 ``` {.c}
-struct device {
-    device_id_t id;
-    int         read_offset;
-    size_t      read_size;
-    int         write_offset;
-    size_t      write_size;
-};
+typedef enum oe_signal {
+    NULLSIG             = (1u << 0),
+    CONFIGWACK          = (1u << 1), // Configuration write-acknowledgement
+    CONFIGWNACK         = (1u << 2), // Configuration no-write-acknowledgement
+    CONFIGRACK          = (1u << 3), // Configuration read-acknowledgement
+    CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgement
+    DEVICEMAPACK        = (1u << 5), // Device map start acnknowledgement
+    FRAMERSIZE          = (1u << 6), // Frame read size in bytes
+    FRAMEWSIZE          = (1u << 7), // Frame write size in bytes
+    DEVICEINST          = (1u << 8), // Deivce map instance
+} oe_signal_t;
 ```
+- The signal stream details are not exposed to the programmer, and so these
+  definitions are private.
+- Following a hardware reset, the signal channel is used to provide the device
+  map and frame information to the host using the following packet sequence:
 
-#### Context
+... | DEVICEMAPACK, uint32_t num_devices | FRAMERSIZE, uint32_t read_frame_size
+    | FRAMEWSIZE, uint32_t write_frame_size | DEVICEINST oe_device_t dev_0
+    | DEVICEINST oe_device_t dev_1 | ... | DEVICEINST oe_device_t dev_n| ...
 
-A _context_ (`oe_ctx`) holds all required configuration and state information for a
-devices associated with one PCIe bus in the following hierarchy:
+- Following a device register read or write, ACK or NACK signals are pushed
+  onto the signal stream by the firmware. e.g. on a successful register read:
 
-1. `struct stream_fids`: communication stream file descriptor structure
-    - `char * header_path`:  Header stream path
-    - `int header_fid`:  Header stream file descriptor
-    - `char * config_path`:  Config stream path
-    - `int config_fid`:  Config stream file descriptor
-    - `char * data_in_path`:  Data input stream path
-    - `int data_in_fid`:  Data input stream file descriptor
-2. `struct dev_map` : Device map
-    - `int num_dev`: Number of devices in this map
-    - `device devs[num_dev]`: Array of device object handles
-        - `struct device`: device object (see [Device](#device))
-        - The device's index within this array is how it is accessed in the
-          function calls specified below.
+... | CONFIGRACK, uint32_t register value | ...
 
-State details should be hidden in implementation file (.c). Pointer to opaque
-type is exposed publicly in header (.h)
+#### Configuration channel (32-bit, synchronous, read and write)
 
-```
-// .h
-typedef struct oe_ctx_impl *oe_ctx;
-int oe_make_ctx(oe_ctx **ctx);
+- This channel supports seeking to, reading, and writing the following
+  registers, which form a device register programming interface. On the host
+  side, these registers are used through calls to `oe_reg_read` and
+  `oe_reg_write`
 
-// .c
-struct oe_ctx_impl {
-    // state
-}
-```
+    - `uint32_t config_device_id`: Device ID register. Specify a device endpoint as
+      enumerated by the firmware (e.g. an Intan chip, or a IMU chip)  and
+      to which communication will be directed using `config_reg_addr` and
+      `config_reg_value`.
 
-API calls will typically take a pointer to a context as the first argument and
-use it to look up required state information to enable communication, or to add
-there own information to the context (e.g. add device information).
+    - `uint32_t config_reg_addr`: register address of configuration to be
+      written
 
-```
-int oe_api_function(oe_ctx *ctx, ...);
-```
+    - `uint32_t config_reg_value`: configuration value to be written to or
+      read from and that corresponds to `config_reg_addr` on device
+      `config_device_id`
 
-#### FPGA/Host Communication Channels
-The library must supports communication over the following channels
+    - `uint32_t config_rw`: bit indicating if a read or write should be
+      performed. 0 indicates read operation. >0 indicates write operation.
 
-1. Signal channel (asynchronous, read only)
-    - Provides a way for the firmware to inform host of configuration results and available devices
-    - Communicates with host using a
-      [COBS](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)
-      stream.
-    - Should generally be used on a separate thread from high-bandwidth communication
+    - `uint32_t config_trig`: set >0 to trigger either register read or
+      write operation depending on the state of `config_rw`. If `config_rw`
+      is 0, a read is performed. In this case `config_reg_value` is updated
+      with value stored at `config_reg_addr` on device at
+      `config_device_id`. If the specified register is not readable,
+      `config_reg_value` is populated with a magic number (`OE_REGMAGIC`).
+      If `config_rw`is 1, `config_reg_value` is written to register at
+      `config_reg_addr` on device `config_device_id`. The `config_trig`
+      register shall always be set low by the firmware following
+      transmission even if it is not successful or does not make sense
+      given the address register values.
 
-2. Configuration channel (synchronous, read and write)
-    - Supports seeking to, reading, and writing the following registers:
+- This channel also supports seeking to, reading, and writing the following
+  registers, which form are provide access to acquisition parameters and state
+  control.
 
-        - `uint32_t config_device_id`: Device ID register. Specify a device endpoint as
-          enumerated by the firmware (e.g. an Intan chip, or a IMU chip)  and
-          to which communication will be directed using `config_reg_addr` and
-          `config_reg_value`.
+    - `uint32_t running`: set to >0 to run the system clock and produce data
 
-        - `uint32_t config_reg_addr`: register address of configuration to be
-          written
+    - `uint32_t reset`: set to >0 to trigger hardware reset
 
-        - `int32_t config_reg_value`: configuration value to be written to or
-          read from and that corresponds to `config_reg_addr` on device
-          `config_device_id`
+    - `uint32_t sys_clock_hz`: the frequency of the system clock from which all
+      others (including the frame clock) are derived.
 
-        - `uint8_t config_rw`: bit indicating if a read or write should be
-          performed. 0 indicates read operation. 1 indicates write operation.
+    - `uint32_t frame_clock_hz`: the data frame frequency at which data frames
+      are pushed to and frame the data input and output FIFOs.
 
-        - `uint8_t config_trig`: set high to trigger either register read or
-          write operation depending on the state of `config_rw`. If `config_rw`
-          is 0, a read is performed. In this case `config_reg_value` is updated
-          with value stored at `config_reg_addr` on device at
-          `config_device_id`. If the specified register is not readable,
-          `config_reg_value` is populated with a magic number (`OE_REGMAGIC`).
-          If `config_rw`is 1, `config_reg_value` is written to register at
-          `config_reg_addr` on device `config_device_id`. The `config_trig`
-          register shall always be set low by the firmware following
-          transmission even if it is not successful or does not make sense
-          given the address register values.
+    - `uint32_t running`: set to > 0 to run the system clock and produce data
 
-    - Appropriate values of `config_reg_addr` and `config_reg_value` are determined by:
-        - Looking at a device's data sheet if the device is an integrated circuit
-        - Looking at the verilog source code comments if the device exists as a
-          module that is implemented within the FPGA (e.g a MUX) or as a
-          verilog module that abstracts a PCB or sub-circuit (e.g. a
-          digital IO port).
+    - `uint32_t reset`: set to > 0 to trigger a hardware reset and send a fresh
+      device map to the host
 
-    - `config_reg_addr` and `config_reg_value` are always 32-bit unsigned
-      integers. A device module must implement methods for appropriately
-      translatting these values into data that is properly fomatted for a a
-      particular device (e.g. changing endianness or removing significant
-      bits).
+    - `uint32_t sys_clock_hz`: A read-only register specifying the base
+      hardware clock frequency in Hz.
 
-    - Registers in the configuration stream are ordered in accordance with the
-      above enumeraiton. `SEEK` loations, relative to the start of the stream,
-      are provided by the `oe_config_reg` enum.
+    - `uint32_t frame_clock_hz`: A read-only register specifying the frame clock
+      frequency in Hz. This is a function of the current value of clock muliply
+      and divide registers specified below.
+      device map to the host
 
-3. Data input channel (asynchronous, read-only)
+    - `uint32_t frame_clock_m`: Frame clock divider numerator value.
+
+    - `uint32_t frame_clock_d`: Frame clock divider denominator value.
+
+- Appropriate values of `config_reg_addr` and `config_reg_value` are determined
+  by:
+    - Looking at a device's data sheet if the device is an integrated circuit
+    - Looking at the verilog source code comments if the device exists as a
+      module that is implemented within the FPGA (e.g a MUX) or as a
+      verilog module that abstracts a PCB or sub-circuit (e.g. a
+      digital IO port).
+
+- `config_reg_addr` and `config_reg_value` are always 32-bit unsigned
+  integers. A device module must implement methods for appropriately
+  translating these values into data that is properly fomatted for a a
+  particular device (e.g. changing endianness or removing significant
+  bits).
+
+- `SEEK` locations of each configuration register, relative to the start of the
+  stream, are provided by the `oe_config_reg` enum.
+
+- Upon a call to `oe_write_reg`, the following actions take place:
+
+    1. The value of `config_trig` is checked.
+        - If it is 0x00, the function call proceeds.
+        - Else, the function call returns with OE_ERETRIG.
+    1. `dev_idx` is copied to the `config_device_id` register on the host FPGA.
+    1. `addr` is copied to the `config_reg_addr` register on the host FPGA.
+    1. `value` is copied to the `config_reg_value` register on the host FPGA.
+    1. The `config_rw` register on the host FPGA is set to 0x01.
+    1. The `config_trig` register on the host FPGA is set to 0x01, triggering
+       configuration transmission by the firmware.
+    1. (Firmware) A configuration write is performed by the firmware.
+    1. (Firmware) `config_trig` is set to 0x00 by the firmware.
+    1. (Firmware) `OE_CONFIGWACK` is pushed onto the signal stream by the firmware.
+    1. The signal stream is pumped until `OE_CONFIGWACK` is received indicating
+       that the host FPGA has attempted to write to the specified device
+       register.
+
+- Upon a call to `oe_write_reg`, the following actions take place:
+
+    1. The value of `config_trig` is checked.
+        - If it is 0x00, the function call proceeds.
+        - Else, the function call returns with OE_ERETRIG.
+    1. `dev_idx` is copied to the `config_device_id` register on the host FPGA.
+    1. `addr` is copied to the `config_reg_addr` register on the host FPGA.
+    1. The `config_rw` register on the host FPGA is set to 0x00.
+    1. The `config_read_trig` register on the host FPGA is set to 0x01, triggering
+       configuration transmission by the firmware.
+    1. (Firmware) A configuration read is performed by the firmware.
+    1. (Firmware) `config_trig` is set to 0x00 by the firmware.
+    1. (Firmware) `OE_CONFIGRACK` is pushed onto the signal stream by the firmware.
+    1. The signal stream is pumped until `OE_CONFIGRACK` is received indicating
+       that the host FPGA has completed reading the specified device register
+       and copied its value to the `config_reg_value` register.
+
+- Following successful or unsuccessful device register read or write, the COBS encoded ACK or NACK packets must be passed to the signal stream.
+
+#### Data input channel (32-bit, asynchronous, read-only)
     - High-bandwidth communication channel from firmware to host.
     - FIFO is filled with untyped data once per master clock cycle
     - Packet size is determined by the attached device IDs and the device Data Map
 
-4. TODO: Data output channel (asynchronous, write-only)
+#### TODO: Data output channel (32-bit, asynchronous, write-only)
     - High-bandwidth  communication channel from host to firmware
     - FIFO is filled with untyped data once per master clock cycle
 
@@ -310,13 +477,13 @@ int oe_destroy_ctx(oe_ctx ctx)
 - `ctx` context
 
 #### Returns `int`
-- O: success
+- 0: success
 - Less than 0: `oe_error_t`
 
 #### Description
 During context destruction, all resources allocated by `oe_create_ctx` are
 freed. This function can be called from any context run state. When called, an
-interrupt signal (TODO: Which?) is raised and any blocking operations will
+interrupt signal (TOD0: Which?) is raised and any blocking operations will
 return immediately. Attached resources (e.g. file descriptors and allocated
 memory) are closed and their resources freed.
 
@@ -331,7 +498,7 @@ int oe_init_ctx(oe_ctx *c)
 - `c` context
 
 #### Returns `int`
-- O: success
+- 0: success
 - Less than 0: `oe_error_t`
 
 #### Description
@@ -360,7 +527,7 @@ int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void* value, size_t *siz
   if applicable) in bytes
 
 #### Returns `int`
-- O: success
+- 0: success
 - Less than 0: `oe_error_t`
 
 #### Description
@@ -460,7 +627,7 @@ int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void* value, size_t size
 - `size` length of `value` in bytes
 
 #### Returns `int`
-- O: success
+- 0: success
 - Less than 0: `oe_error_t`
 
 #### Description
@@ -493,6 +660,7 @@ The following socket options can be set:
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | True or false (i.e. 0 or not 0) |
 | default value     	    | False |
+
 Any value greater than 0 will start acqusition. Writing 0 to this option will stop acqusition, but will not reset context options or the sample counter.
 
 |`OE_RESET`\*\*  	        | Trigger global hardware reset |
@@ -500,6 +668,7 @@ Any value greater than 0 will start acqusition. Writing 0 to this option will st
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | Trigger (i.e. any value greater than 0) |
 | default value     	    | Untriggered |
+
 Any value great than 0 will trigger a hardware reset. In this case, acqusition
 is stopped and all global hardware parameters (clock multipliers, sample
 counters, etc) are defaulted.
@@ -509,6 +678,7 @@ counters, etc) are defaulted.
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | Sample clock ratio numerator |
 | default value     	    | 3 |
+
 Used to derive the sample clock frequency from the system clock. The sample
 clock frequncy = M * system clock frequency / D;
 
@@ -517,6 +687,7 @@ clock frequncy = M * system clock frequency / D;
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | Sample clock ratio denominator |
 | default value     	    | 10000 |
+
 Used to derive the sample clock frequency from the system clock. The sample
 clock frequncy = M * system clock frequency / D;
 
@@ -541,22 +712,10 @@ int oe_read_reg(const oe_ctx ctx, const oe_dev_idx_t dev_idx, const oe_reg_addr_
 - Less than 0: `oe_error_t`
 
 #### Description
-Upon a call to `oe_write_reg`, the following actions take place:
-
-1. The value of `config_trig` is checked.
-    - If it is 0x00, the function call proceeds.
-    - Else, the function call returns with OE_ERETRIG.
-1. `dev_idx` is copied to the `config_device_id` register on the host FPGA.
-1. `addr` is copied to the `config_reg_addr` register on the host FPGA.
-1. The `config_rw` register on the host FPGA is set to 0x00.
-1. The `config_read_trig` register on the host FPGA is set to 0x01, triggering
-   configuration transmission by the firmware.
-1. (Firmware) A configuration read is performed by the firmware.
-1. (Firmware) `config_trig` is set to 0x00 by the firmware.
-1. (Firmware) `OE_CONFIGRACK` is pushed onto the signal stream by the firmware.
-1. The signal stream is pumped until `OE_CONFIGRACK` is received indicating
-   that the host FPGA has completed reading the specified device register and
-   copied its value to the `config_reg_value` register.
+`oe_read_reg` is used to read the value of configuration registers from devices
+within the current device map. This can be used to verify the success of calls
+to `oe_read_reg` or to obtain state information about devices managed by the
+current context.
 
 ### oe_write_reg
 Set a configuration register on a specific device.
@@ -578,26 +737,13 @@ int oe_write_reg(const oe_ctx ctx, const oe_dev_idx_t dev_idx, const oe_reg_addr
 - Less than 0: `oe_error_t`
 
 #### Description
-Upon a call to `oe_write_reg`, the following actions take place:
-
-1. The value of `config_trig` is checked.
-    - If it is 0x00, the function call proceeds.
-    - Else, the function call returns with OE_ERETRIG.
-1. `dev_idx` is copied to the `config_device_id` register on the host FPGA.
-1. `addr` is copied to the `config_reg_addr` register on the host FPGA.
-1. `value` is copied to the `config_reg_value` register on the host FPGA.
-1. The `config_rw` register on the host FPGA is set to 0x01.
-1. The `config_trig` register on the host FPGA is set to 0x01, triggering
-   configuration transmission by the firmware.
-1. (Firmware) A configuration write is performed by the firmware.
-1. (Firmware) `config_trig` is set to 0x00 by the firmware.
-1. (Firmware) `OE_CONFIGWACK` is pushed onto the signal stream by the firmware.
-1. The signal stream is pumped until `OE_CONFIGWACK` is received indicating
-   that the host FPGA has attempted to write to the specified device register.
-
-Note that successful return from this function does not guarantee that the
-register has been properly set. Confirmation of the register value can be made
-using a call to `oe_read_reg`.
+`oe_write_reg` is used to write the value of configuration registers from
+devices within the current device map. This can be used to set configuraiton
+registers for devices managed by the current context. For example, this is used
+to perform configuration of ADCs that exist in a device map. Note that
+successful return from this function does not guarantee that the register has
+been properly set. Confirmation of the register value can be made using a call
+to `oe_read_reg`.
 
 ### oe_read
 Read high-bandwidth input data stream.

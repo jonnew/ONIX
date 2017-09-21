@@ -74,8 +74,9 @@ typedef enum oe_signal {
     CONFIGRACK          = (1u << 3), // Configuration read-acknowledgement
     CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgement
     DEVICEMAPACK        = (1u << 5), // Device map start acnknowledgement
-    DEVICEINST          = (1u << 6), // Deivce map instance
-    RUNSTATE            = (1u << 7), // Hardware run state change message
+    FRAMERSIZE          = (1u << 6), // Frame read size in bytes
+    FRAMEWSIZE          = (1u << 7), // Frame write size in bytes
+    DEVICEINST          = (1u << 8), // Deivce map instance
 } oe_signal_t;
 
 // Configuration file offsets
@@ -94,9 +95,9 @@ typedef enum oe_conf_reg_off {
     CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
-    CONFFSCLKHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
-    CONFFSCLKMOFFSET    = 36,  // Configuration run hardware register byte offset
-    CONFFSCLKDOFFSET    = 40,  // Configuration run hardware register byte offset
+    CONFFRAMEHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
+    CONFFRAMEHZMOFFSET    = 36,  // Configuration run hardware register byte offset
+    CONFFRAMEHZDOFFSET    = 40,  // Configuration run hardware register byte offset
 } oe_conf_reg_off_t;
 
 // Static helpers
@@ -160,6 +161,19 @@ int oe_init_ctx(oe_ctx ctx)
         ctx->signal.fid, DEVICEMAPACK, &sig_type, &(ctx->num_dev), sizeof(ctx->num_dev));
     if (rc) return rc;
 
+    rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
+            &(ctx->read_frame_size), sizeof(ctx->read_frame_size));
+    if (rc) return rc;
+    if (sig_type != FRAMERSIZE)
+        return OE_EBADDEVMAP;
+
+    rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
+            &(ctx->write_frame_size), sizeof(ctx->write_frame_size));
+    if (rc) return rc;
+
+    if (sig_type != FRAMEWSIZE)
+        return OE_EBADDEVMAP;
+
     // Make space for the device map
     oe_device_t *new_map
         = realloc(ctx->dev_map, ctx->num_dev * sizeof(oe_device_t));
@@ -169,8 +183,8 @@ int oe_init_ctx(oe_ctx ctx)
         return OE_EBADALLOC;
 
     int i;
-    int max_roff_idx = 0;
-    int max_woff_idx = 0;
+    //int max_roff_idx = 0;
+    //int max_woff_idx = 0;
     for (i= 0; i < ctx->num_dev; i++) {
 
         sig_type = NULLSIG;
@@ -187,20 +201,22 @@ int oe_init_ctx(oe_ctx ctx)
 
         if (device_id >= 0 && device_id < OE_MAXDEVICEID) {
             ctx->dev_map[i] = *(oe_device_t *)buffer; // Append the device onto the map
-            if (ctx->dev_map[i].read_offset > ctx->dev_map[max_roff_idx].read_offset)
-                max_roff_idx = i;
-            if (ctx->dev_map[i].write_offset > ctx->dev_map[max_woff_idx].write_offset)
-                max_woff_idx = i;
+            //if (ctx->dev_map[i].read_offset > ctx->dev_map[max_roff_idx].read_offset)
+            //    max_roff_idx = i;
+            //if (ctx->dev_map[i].write_offset > ctx->dev_map[max_woff_idx].write_offset)
+            //    max_woff_idx = i;
         } else {
             return OE_EDEVID;
         }
     }
 
-    // Calculate frame size
-    ctx->read_frame_size = ctx->dev_map[max_roff_idx].read_offset
-                           + ctx->dev_map[max_roff_idx].read_size;
-    ctx->write_frame_size = ctx->dev_map[max_woff_idx].write_offset
-                            + ctx->dev_map[max_woff_idx].write_size;
+    // Assert frame sizes, which may include padding
+    //assert(ctx->read_frame_size >= ctx->dev_map[max_roff_idx].read_offset
+    //                       + ctx->dev_map[max_roff_idx].read_size 
+    //                       && "Read frame size is too small for device map.");
+    //assert(ctx->write_frame_size >= ctx->dev_map[max_woff_idx].write_offset
+    //                        + ctx->dev_map[max_woff_idx].write_size
+    //                       && "Write frame size is too small for device map.");
 
     // We are now initialized and idle
     ctx->run_state = IDLE;
@@ -341,7 +357,7 @@ int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void *value, size_t *opt
                 return OE_EBUFFERSIZE;
 
             int rc = _oe_read_config(
-                ctx->config.fid, CONFFSCLKHZOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFFRAMEHZOFFSET, value, OE_REGSZ);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
@@ -352,7 +368,7 @@ int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void *value, size_t *opt
                 return OE_EBUFFERSIZE;
 
             int rc = _oe_read_config(
-                ctx->config.fid, CONFFSCLKMOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFFRAMEHZMOFFSET, value, OE_REGSZ);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
@@ -363,7 +379,7 @@ int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void *value, size_t *opt
                 return OE_EBUFFERSIZE;
 
             int rc = _oe_read_config(
-                ctx->config.fid, CONFFSCLKDOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFFRAMEHZDOFFSET, value, OE_REGSZ);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
@@ -459,7 +475,7 @@ int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void *value, size_t opti
             // TODO: Read FSD value, make sure this is OK.
 
             int rc = _oe_write_config(
-                ctx->config.fid, CONFFSCLKMOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFFRAMEHZMOFFSET, value, OE_REGSZ);
             if (rc) return rc;
 
             break;
@@ -475,7 +491,7 @@ int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void *value, size_t opti
             // TODO: Read FSM value, make sure this is OK.
 
             int rc = _oe_write_config(
-                ctx->config.fid, CONFFSCLKDOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFFRAMEHZDOFFSET, value, OE_REGSZ);
             if (rc) return rc;
 
             break;
@@ -614,6 +630,8 @@ int oe_error(oe_error_t err, char *str, size_t size)
     
     if (rc >= size)
         return OE_EBUFFERSIZE;
+
+    return 0;
 }
 
 int oe_device(oe_device_id_t dev_id, char *str, size_t size)
