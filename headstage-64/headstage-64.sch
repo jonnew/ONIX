@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.3">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -66,7 +67,7 @@
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
@@ -5212,6 +5213,10 @@ Source: amp_227161.pdf</description>
 <part name="TP5" library="jonnew" deviceset="TP" device="B0.2MM"/>
 <part name="TP6" library="jonnew" deviceset="TP" device="B0.2MM"/>
 <part name="TP7" library="jonnew" deviceset="TP" device="B0.2MM"/>
+<part name="R27" library="jonnew" deviceset="R" device="_0201T" value="100"/>
+<part name="R26" library="jonnew" deviceset="R" device="_0201T" value="100"/>
+<part name="R28" library="jonnew" deviceset="R" device="_0201T" value="100"/>
+<part name="R29" library="jonnew" deviceset="R" device="_0201T" value="100"/>
 </parts>
 <sheets>
 <sheet>
@@ -5459,9 +5464,9 @@ The CBC2012T100M saturates at
 <instance part="U$25" gate="PWR1" x="617.22" y="190.5"/>
 <instance part="U11" gate="G$1" x="876.3" y="-129.54"/>
 <instance part="U11" gate="G$2" x="957.58" y="-139.7"/>
-<instance part="U11" gate="G$3" x="1041.4" y="-134.62"/>
-<instance part="U11" gate="G$4" x="873.76" y="-248.92"/>
-<instance part="U11" gate="G$5" x="937.26" y="-254"/>
+<instance part="U11" gate="G$3" x="772.16" y="91.44"/>
+<instance part="U11" gate="G$4" x="772.16" y="27.94"/>
+<instance part="U11" gate="G$5" x="304.8" y="-218.44"/>
 <instance part="U11" gate="G$6" x="1028.7" y="-254"/>
 <instance part="U11" gate="G$7" x="957.58" y="-378.46"/>
 <instance part="U9" gate="G$1" x="226.06" y="-485.14"/>
@@ -5577,6 +5582,10 @@ The CBC2012T100M saturates at
 <instance part="TP5" gate="G$1" x="881.38" y="-93.98"/>
 <instance part="TP6" gate="G$1" x="886.46" y="-93.98"/>
 <instance part="TP7" gate="G$1" x="891.54" y="-93.98"/>
+<instance part="R27" gate="R" x="360.68" y="-213.36" rot="R180"/>
+<instance part="R26" gate="R" x="373.38" y="-160.02" rot="R270"/>
+<instance part="R28" gate="R" x="378.46" y="-175.26" rot="R270"/>
+<instance part="R29" gate="R" x="383.54" y="-185.42" rot="R270"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -5585,10 +5594,26 @@ The CBC2012T100M saturates at
 <label x="830.58" y="30.48" size="1.6764" layer="95" rot="R90"/>
 </segment>
 </bus>
-<bus name="GPO[0..3]">
+<bus name="GPO[1..3]">
 <segment>
 <wire x1="830.58" y1="22.86" x2="830.58" y2="15.24" width="0.762" layer="92"/>
 <label x="830.58" y="12.7" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<wire x1="802.64" y1="111.76" x2="802.64" y2="106.68" width="0.762" layer="92"/>
+<label x="802.64" y="109.22" size="1.778" layer="95"/>
+</segment>
+</bus>
+<bus name="DIN[0..5]">
+<segment>
+<wire x1="802.64" y1="91.44" x2="802.64" y2="78.74" width="0.762" layer="92"/>
+<label x="802.64" y="78.74" size="1.778" layer="95"/>
+</segment>
+</bus>
+<bus name="DIN[6..11]">
+<segment>
+<wire x1="802.64" y1="48.26" x2="802.64" y2="35.56" width="0.762" layer="92"/>
+<label x="802.64" y="35.56" size="1.778" layer="95"/>
 </segment>
 </bus>
 </busses>
@@ -7707,11 +7732,19 @@ The CBC2012T100M saturates at
 <pinref part="U19" gate="G$1" pin="DIN10"/>
 <wire x1="830.58" y1="55.88" x2="838.2" y2="55.88" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R10P/F8"/>
+<wire x1="802.64" y1="38.1" x2="797.56" y2="38.1" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="DIN9" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="DIN9"/>
 <wire x1="830.58" y1="53.34" x2="838.2" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R7N/G9"/>
+<wire x1="797.56" y1="40.64" x2="802.64" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DIN8" class="0">
@@ -7719,11 +7752,19 @@ The CBC2012T100M saturates at
 <pinref part="U19" gate="G$1" pin="DIN8"/>
 <wire x1="830.58" y1="50.8" x2="838.2" y2="50.8" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R7P/G8"/>
+<wire x1="797.56" y1="43.18" x2="802.64" y2="43.18" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="DIN7" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="DIN7"/>
 <wire x1="830.58" y1="48.26" x2="838.2" y2="48.26" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R1N/F7"/>
+<wire x1="797.56" y1="45.72" x2="802.64" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DIN6" class="0">
@@ -7731,11 +7772,19 @@ The CBC2012T100M saturates at
 <pinref part="U19" gate="G$1" pin="DIN6"/>
 <wire x1="830.58" y1="45.72" x2="838.2" y2="45.72" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R1P/G7"/>
+<wire x1="797.56" y1="48.26" x2="802.64" y2="48.26" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="DIN5" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="DIN5"/>
 <wire x1="830.58" y1="43.18" x2="838.2" y2="43.18" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B16P/J8"/>
+<wire x1="797.56" y1="78.74" x2="802.64" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DIN4" class="0">
@@ -7743,11 +7792,19 @@ The CBC2012T100M saturates at
 <pinref part="U19" gate="G$1" pin="DIN4"/>
 <wire x1="830.58" y1="40.64" x2="838.2" y2="40.64" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B16N/J7"/>
+<wire x1="797.56" y1="81.28" x2="802.64" y2="81.28" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="DIN3" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="DIN3"/>
 <wire x1="830.58" y1="38.1" x2="838.2" y2="38.1" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B14P/H7"/>
+<wire x1="797.56" y1="83.82" x2="802.64" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DIN2" class="0">
@@ -7755,11 +7812,19 @@ The CBC2012T100M saturates at
 <pinref part="U19" gate="G$1" pin="DIN2"/>
 <wire x1="830.58" y1="35.56" x2="838.2" y2="35.56" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B14N/G6"/>
+<wire x1="797.56" y1="86.36" x2="802.64" y2="86.36" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="DIN1" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="DIN1"/>
 <wire x1="830.58" y1="33.02" x2="838.2" y2="33.02" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B12P/J6"/>
+<wire x1="797.56" y1="88.9" x2="802.64" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DIN0" class="0">
@@ -7767,11 +7832,20 @@ The CBC2012T100M saturates at
 <pinref part="U19" gate="G$1" pin="DIN0"/>
 <wire x1="830.58" y1="30.48" x2="838.2" y2="30.48" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B12N/H6"/>
+<wire x1="797.56" y1="91.44" x2="802.64" y2="91.44" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="PCLK" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="PCLK1"/>
 <wire x1="830.58" y1="66.04" x2="838.2" y2="66.04" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B5P/H4"/>
+<wire x1="797.56" y1="99.06" x2="802.64" y2="99.06" width="0.1524" layer="91"/>
+<label x="802.64" y="99.06" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VSYNC" class="0">
@@ -7779,17 +7853,31 @@ The CBC2012T100M saturates at
 <pinref part="U19" gate="G$1" pin="VSYNC"/>
 <wire x1="830.58" y1="63.5" x2="838.2" y2="63.5" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B9N/J4"/>
+<wire x1="797.56" y1="96.52" x2="802.64" y2="96.52" width="0.1524" layer="91"/>
+<label x="802.64" y="96.52" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="HSYNC" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="HSYNC"/>
 <wire x1="830.58" y1="60.96" x2="838.2" y2="60.96" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B9P/J5"/>
+<wire x1="797.56" y1="93.98" x2="802.64" y2="93.98" width="0.1524" layer="91"/>
+<label x="802.64" y="93.98" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="DIN11" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="DIN11"/>
 <wire x1="830.58" y1="58.42" x2="838.2" y2="58.42" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R10N/F9"/>
+<wire x1="797.56" y1="35.56" x2="802.64" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$28" class="0">
@@ -7824,17 +7912,29 @@ The CBC2012T100M saturates at
 <pinref part="U19" gate="G$1" pin="GPIO1"/>
 <wire x1="838.2" y1="17.78" x2="830.58" y2="17.78" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B1N/H3"/>
+<wire x1="797.56" y1="111.76" x2="802.64" y2="111.76" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GPO2" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="GPIO2/CLKOUT"/>
 <wire x1="838.2" y1="20.32" x2="830.58" y2="20.32" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B1P/J2"/>
+<wire x1="797.56" y1="109.22" x2="802.64" y2="109.22" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GPO3" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="GPO3/CLKIN"/>
 <wire x1="838.2" y1="22.86" x2="830.58" y2="22.86" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B3N/G4"/>
+<wire x1="797.56" y1="106.68" x2="802.64" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$30" class="0">
@@ -7909,6 +8009,11 @@ The CBC2012T100M saturates at
 <junction x="815.34" y="5.08"/>
 <label x="800.1" y="5.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B5N/J3"/>
+<wire x1="797.56" y1="101.6" x2="802.64" y2="101.6" width="0.1524" layer="91"/>
+<label x="802.64" y="101.6" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="SDA" class="0">
 <segment>
@@ -7919,6 +8024,11 @@ The CBC2012T100M saturates at
 <wire x1="807.72" y1="10.16" x2="807.72" y2="7.62" width="0.1524" layer="91"/>
 <junction x="807.72" y="7.62"/>
 <label x="800.1" y="7.62" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B3P/G5"/>
+<wire x1="797.56" y1="104.14" x2="802.64" y2="104.14" width="0.1524" layer="91"/>
+<label x="802.64" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$34" class="0">
@@ -8136,6 +8246,135 @@ The CBC2012T100M saturates at
 <wire x1="368.3" y1="-152.4" x2="368.3" y2="-157.48" width="0.1524" layer="91"/>
 <junction x="368.3" y="-152.4"/>
 <label x="368.3" y="-157.48" size="1.778" layer="95" rot="R270"/>
+</segment>
+</net>
+<net name="RHD_CS_N" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="!CS!-"/>
+<label x="370.84" y="-187.96" size="1.778" layer="95" rot="R270"/>
+<pinref part="R26" gate="R" pin="1"/>
+<wire x1="373.38" y1="-144.78" x2="373.38" y2="-154.94" width="0.1524" layer="91"/>
+<wire x1="373.38" y1="-154.94" x2="370.84" y2="-157.48" width="0.1524" layer="91"/>
+<junction x="373.38" y="-154.94"/>
+<wire x1="370.84" y1="-157.48" x2="370.84" y2="-187.96" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R14N/CLK2N/E7"/>
+<label x="332.74" y="-200.66" size="1.778" layer="95"/>
+<wire x1="330.2" y1="-200.66" x2="350.52" y2="-200.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RHD_CS_P" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="!CS!+"/>
+<label x="373.38" y="-187.96" size="1.778" layer="95" rot="R270"/>
+<pinref part="R26" gate="R" pin="2"/>
+<wire x1="375.92" y1="-144.78" x2="375.92" y2="-162.56" width="0.1524" layer="91"/>
+<wire x1="375.92" y1="-162.56" x2="373.38" y2="-165.1" width="0.1524" layer="91"/>
+<wire x1="373.38" y1="-165.1" x2="373.38" y2="-187.96" width="0.1524" layer="91"/>
+<junction x="373.38" y="-165.1"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R14P/CLK2P/E8"/>
+<label x="332.74" y="-198.12" size="1.778" layer="95"/>
+<wire x1="330.2" y1="-198.12" x2="350.52" y2="-198.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RHD_CLK_N" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="SCLK-"/>
+<label x="375.92" y="-187.96" size="1.778" layer="95" rot="R270"/>
+<pinref part="R28" gate="R" pin="1"/>
+<wire x1="378.46" y1="-144.78" x2="378.46" y2="-170.18" width="0.1524" layer="91"/>
+<wire x1="375.92" y1="-172.72" x2="378.46" y2="-170.18" width="0.1524" layer="91"/>
+<junction x="378.46" y="-170.18"/>
+<wire x1="375.92" y1="-172.72" x2="375.92" y2="-187.96" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R16N/CLK3N/D9"/>
+<label x="332.74" y="-205.74" size="1.778" layer="95"/>
+<wire x1="330.2" y1="-205.74" x2="350.52" y2="-205.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RHD_CLK_P" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="SCLK+"/>
+<label x="378.46" y="-187.96" size="1.778" layer="95" rot="R270"/>
+<pinref part="R28" gate="R" pin="2"/>
+<wire x1="381" y1="-144.78" x2="381" y2="-177.8" width="0.1524" layer="91"/>
+<wire x1="381" y1="-177.8" x2="378.46" y2="-180.34" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="-180.34" x2="378.46" y2="-187.96" width="0.1524" layer="91"/>
+<junction x="378.46" y="-180.34"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R16P/CLK3P/D8"/>
+<label x="332.74" y="-203.2" size="1.778" layer="95"/>
+<wire x1="350.52" y1="-203.2" x2="330.2" y2="-203.2" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RHD_MOSI_N" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="MOSI-"/>
+<label x="381" y="-190.5" size="1.778" layer="95" rot="R270"/>
+<pinref part="R29" gate="R" pin="1"/>
+<wire x1="383.54" y1="-144.78" x2="383.54" y2="-180.34" width="0.1524" layer="91"/>
+<wire x1="383.54" y1="-180.34" x2="381" y2="-182.88" width="0.1524" layer="91"/>
+<junction x="383.54" y="-180.34"/>
+<wire x1="381" y1="-182.88" x2="381" y2="-190.5" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R27N/C9"/>
+<label x="332.74" y="-210.82" size="1.778" layer="95"/>
+<wire x1="330.2" y1="-210.82" x2="350.52" y2="-210.82" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RHD_MOSI_P" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="MOSI+"/>
+<label x="383.54" y="-190.5" size="1.778" layer="95" rot="R270"/>
+<pinref part="R29" gate="R" pin="2"/>
+<wire x1="383.54" y1="-190.5" x2="386.08" y2="-187.96" width="0.1524" layer="91"/>
+<wire x1="386.08" y1="-187.96" x2="386.08" y2="-144.78" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R27P/C8"/>
+<label x="332.74" y="-208.28" size="1.778" layer="95"/>
+<wire x1="330.2" y1="-208.28" x2="350.52" y2="-208.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RHD_MISO_N" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="MISO-"/>
+<wire x1="388.62" y1="-144.78" x2="388.62" y2="-152.4" width="0.1524" layer="91"/>
+<label x="388.62" y="-152.4" size="1.778" layer="95" rot="R270"/>
+<label x="398.78" y="-160.02" size="1.778" layer="95" rot="R270"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33N/PLL_R_CLKOUTN/B7"/>
+<label x="332.74" y="-215.9" size="1.778" layer="95"/>
+<pinref part="R27" gate="R" pin="1"/>
+<wire x1="330.2" y1="-215.9" x2="363.22" y2="-215.9" width="0.1524" layer="91"/>
+<wire x1="363.22" y1="-215.9" x2="365.76" y2="-213.36" width="0.1524" layer="91"/>
+<wire x1="365.76" y1="-213.36" x2="381" y2="-213.36" width="0.1524" layer="91"/>
+<junction x="365.76" y="-213.36"/>
+<label x="381" y="-213.36" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RHD_MISO_P" class="0">
+<segment>
+<pinref part="U7" gate="A" pin="MISO+"/>
+<label x="391.16" y="-154.94" size="1.778" layer="95" rot="R270"/>
+<wire x1="391.16" y1="-144.78" x2="391.16" y2="-152.4" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33P/PLL_R_CLKOUTP/C7"/>
+<wire x1="330.2" y1="-213.36" x2="355.6" y2="-213.36" width="0.1524" layer="91"/>
+<label x="332.74" y="-213.36" size="1.778" layer="95"/>
+<pinref part="R27" gate="R" pin="2"/>
+<wire x1="355.6" y1="-213.36" x2="358.14" y2="-210.82" width="0.1524" layer="91"/>
+<junction x="355.6" y="-213.36"/>
+<wire x1="358.14" y1="-210.82" x2="381" y2="-210.82" width="0.1524" layer="91"/>
+<label x="381" y="-210.82" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
