@@ -1438,98 +1438,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="-2.25" y="2.5" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.25" y="-3.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
-<package name="1X08">
-<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="0.635" x2="1.905" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="1.27" x2="3.175" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="1.27" x2="3.81" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="3.81" y1="0.635" x2="3.81" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="3.81" y1="-0.635" x2="3.175" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="-1.27" x2="1.905" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="-1.27" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="3.81" y1="0.635" x2="4.445" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="4.445" y1="1.27" x2="5.715" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="5.715" y1="1.27" x2="6.35" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="6.35" y1="0.635" x2="6.35" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="6.35" y1="-0.635" x2="5.715" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="5.715" y1="-1.27" x2="4.445" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="4.445" y1="-1.27" x2="3.81" y2="-0.635" width="0.1524" layer="21"/>
-<pad name="1" x="0" y="0" drill="1.016" shape="octagon" rot="R90"/>
-<pad name="2" x="2.54" y="0" drill="1.016" shape="octagon" rot="R90"/>
-<pad name="3" x="5.08" y="0" drill="1.016" shape="octagon" rot="R90"/>
-<text x="-1.27" y="2.54" size="1.27" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-1.27" y="-3.81" size="1.27" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
-<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
-<rectangle x1="4.826" y1="-0.254" x2="5.334" y2="0.254" layer="51"/>
-<wire x1="6.35" y1="0.635" x2="6.985" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="6.985" y1="1.27" x2="8.255" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="8.255" y1="1.27" x2="8.89" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="8.89" y1="0.635" x2="8.89" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="8.89" y1="-0.635" x2="8.255" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="8.255" y1="-1.27" x2="6.985" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="6.985" y1="-1.27" x2="6.35" y2="-0.635" width="0.1524" layer="21"/>
-<pad name="4" x="7.62" y="0" drill="1.016" shape="octagon" rot="R90"/>
-<rectangle x1="7.366" y1="-0.254" x2="7.874" y2="0.254" layer="51"/>
-<wire x1="9.525" y1="1.27" x2="10.795" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="10.795" y1="1.27" x2="11.43" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="11.43" y1="0.635" x2="11.43" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="11.43" y1="-0.635" x2="10.795" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="11.43" y1="0.635" x2="12.065" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="12.065" y1="1.27" x2="13.335" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="13.335" y1="1.27" x2="13.97" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="13.97" y1="0.635" x2="13.97" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="13.97" y1="-0.635" x2="13.335" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="13.335" y1="-1.27" x2="12.065" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="12.065" y1="-1.27" x2="11.43" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="8.89" y1="0.635" x2="8.89" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="9.525" y1="1.27" x2="8.89" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="8.89" y1="-0.635" x2="9.525" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="10.795" y1="-1.27" x2="9.525" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="13.97" y1="0.635" x2="14.605" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="14.605" y1="1.27" x2="15.875" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="15.875" y1="1.27" x2="16.51" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="16.51" y1="0.635" x2="16.51" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="16.51" y1="-0.635" x2="15.875" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="15.875" y1="-1.27" x2="14.605" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="14.605" y1="-1.27" x2="13.97" y2="-0.635" width="0.1524" layer="21"/>
-<pad name="5" x="10.16" y="0" drill="1.016" shape="octagon" rot="R90"/>
-<pad name="6" x="12.7" y="0" drill="1.016" shape="octagon" rot="R90"/>
-<pad name="7" x="15.24" y="0" drill="1.016" shape="octagon" rot="R90"/>
-<rectangle x1="12.446" y1="-0.254" x2="12.954" y2="0.254" layer="51"/>
-<rectangle x1="9.906" y1="-0.254" x2="10.414" y2="0.254" layer="51"/>
-<rectangle x1="14.986" y1="-0.254" x2="15.494" y2="0.254" layer="51"/>
-<wire x1="16.51" y1="0.635" x2="17.145" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="17.145" y1="1.27" x2="18.415" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="18.415" y1="1.27" x2="19.05" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="19.05" y1="0.635" x2="19.05" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="19.05" y1="-0.635" x2="18.415" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="18.415" y1="-1.27" x2="17.145" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="17.145" y1="-1.27" x2="16.51" y2="-0.635" width="0.1524" layer="21"/>
-<pad name="8" x="17.78" y="0" drill="1.016" shape="octagon" rot="R90"/>
-<rectangle x1="17.526" y1="-0.254" x2="18.034" y2="0.254" layer="51"/>
-</package>
-<package name="UCAST8">
-<circle x="-3.11" y="0.61" radius="0.160309375" width="0" layer="21"/>
-<wire x1="-3" y1="0.4" x2="-3" y2="-0.4" width="0.127" layer="21"/>
-<wire x1="3" y1="-0.4" x2="3" y2="0.4" width="0.127" layer="21"/>
-<rectangle x1="-3" y1="-0.5" x2="2.9" y2="0.5" layer="39"/>
-<smd name="1" x="-2.6" y="0" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
-<smd name="2" x="-2" y="0" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
-<smd name="3" x="-1.2" y="0" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
-<smd name="4" x="-0.4" y="0" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
-<smd name="5" x="0.4" y="0" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
-<smd name="6" x="1.2" y="0" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
-<smd name="7" x="2" y="0" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
-<smd name="8" x="2.6" y="0" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
-</package>
 <package name="B35N61">
 <description>&lt;b&gt;BNC CONNECTOR&lt;/b&gt;&lt;p&gt;
 M/A COM&lt;p&gt;
@@ -2881,24 +2789,6 @@ Source: amp_227161.pdf</description>
 <wire x1="0" y1="2.54" x2="-1.27" y2="0.635" width="0.254" layer="94"/>
 <pin name="+2V5" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
 <text x="1.27" y="1.905" size="1.27" layer="94" font="vector" ratio="18">2.5</text>
-</symbol>
-<symbol name="PINH1X8">
-<wire x1="8.89" y1="-10.16" x2="8.89" y2="2.54" width="0.4064" layer="94"/>
-<wire x1="8.89" y1="2.54" x2="2.54" y2="2.54" width="0.4064" layer="94"/>
-<wire x1="2.54" y1="2.54" x2="2.54" y2="-10.16" width="0.4064" layer="94"/>
-<text x="1.27" y="3.175" size="1.778" layer="95">&gt;NAME</text>
-<pin name="1" x="0" y="0" visible="pad" direction="pas" function="dot"/>
-<pin name="2" x="0" y="-2.54" visible="pad" direction="pas" function="dot"/>
-<pin name="3" x="0" y="-5.08" visible="pad" direction="pas" function="dot"/>
-<pin name="4" x="0" y="-7.62" visible="pad" direction="pas" function="dot"/>
-<wire x1="2.54" y1="-20.32" x2="8.89" y2="-20.32" width="0.4064" layer="94"/>
-<wire x1="8.89" y1="-20.32" x2="8.89" y2="-7.62" width="0.4064" layer="94"/>
-<wire x1="2.54" y1="-7.62" x2="2.54" y2="-20.32" width="0.4064" layer="94"/>
-<text x="1.27" y="-22.86" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="5" x="0" y="-10.16" visible="pad" direction="pas" function="dot"/>
-<pin name="6" x="0" y="-12.7" visible="pad" direction="pas" function="dot"/>
-<pin name="7" x="0" y="-15.24" visible="pad" direction="pas" function="dot"/>
-<pin name="8" x="0" y="-17.78" visible="pad" direction="pas" function="dot"/>
 </symbol>
 <symbol name="BU-BNC-1-1">
 <wire x1="-2.54" y1="2.54" x2="0" y2="0" width="0.254" layer="94" curve="-90" cap="flat"/>
@@ -4339,43 +4229,6 @@ Source: amp_227161.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="PINHD-1X8" uservalue="yes">
-<gates>
-<gate name="G$1" symbol="PINH1X8" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="1X08">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-<connect gate="G$1" pin="4" pad="4"/>
-<connect gate="G$1" pin="5" pad="5"/>
-<connect gate="G$1" pin="6" pad="6"/>
-<connect gate="G$1" pin="7" pad="7"/>
-<connect gate="G$1" pin="8" pad="8"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_UCAST" package="UCAST8">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-<connect gate="G$1" pin="4" pad="4"/>
-<connect gate="G$1" pin="5" pad="5"/>
-<connect gate="G$1" pin="6" pad="6"/>
-<connect gate="G$1" pin="7" pad="7"/>
-<connect gate="G$1" pin="8" pad="8"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="COAX" prefix="X" uservalue="yes">
 <description>&lt;b&gt;COAX CONNECTOR&lt;/b&gt;&lt;p&gt;
 
@@ -4958,6 +4811,93 @@ Source: amp_227161.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="mezzanine_library">
+<packages>
+<package name="MEZZANINE_PADS">
+<smd name="P$1" x="-2" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<wire x1="-2.4" y1="0.8" x2="3.5" y2="0.8" width="0.127" layer="21"/>
+<wire x1="-2.4" y1="0.8" x2="-2.4" y2="0" width="0.127" layer="21"/>
+<wire x1="-2.4" y1="0" x2="3.5" y2="0" width="0.127" layer="21"/>
+<wire x1="3.5" y1="0" x2="3.5" y2="0.8" width="0.127" layer="21"/>
+<smd name="P$2" x="-1.4" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$3" x="-0.6" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$4" x="0.2" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$5" x="1" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$6" x="1.8" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$7" x="2.6" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+<smd name="P$8" x="3.2" y="0.4" dx="0.4" dy="1.4" layer="1" roundness="50" rot="R180"/>
+</package>
+<package name="MEZZANINE_CASTELLATED">
+<wire x1="-5.5" y1="1.7" x2="0.4" y2="1.7" width="0.127" layer="21"/>
+<wire x1="-5.5" y1="1.7" x2="-5.5" y2="1.3" width="0.127" layer="21"/>
+<wire x1="-5.5" y1="1.3" x2="0.4" y2="1.3" width="0.127" layer="21"/>
+<wire x1="0.4" y1="1.3" x2="0.4" y2="1.7" width="0.127" layer="21"/>
+<pad name="P$9" x="-5.1" y="1.3" drill="0.2" diameter="0.4064" rot="R90"/>
+<pad name="P$10" x="-4.5" y="1.3" drill="0.2" diameter="0.4064" rot="R90"/>
+<pad name="P$11" x="-3.7" y="1.3" drill="0.2" diameter="0.4064" rot="R90"/>
+<pad name="P$12" x="-2.9" y="1.3" drill="0.2" diameter="0.4064" rot="R90"/>
+<pad name="P$13" x="-2.1" y="1.3" drill="0.2" diameter="0.4064" rot="R90"/>
+<pad name="P$14" x="-1.3" y="1.3" drill="0.2" diameter="0.4064" rot="R90"/>
+<pad name="P$15" x="-0.5" y="1.3" drill="0.2" diameter="0.4064" rot="R90"/>
+<pad name="P$16" x="0.1" y="1.3" drill="0.2" diameter="0.4064" rot="R90"/>
+</package>
+</packages>
+<symbols>
+<symbol name="MEZZANINE_PADS">
+<pin name="P$1" x="-12.7" y="0" length="middle" rot="R90"/>
+<pin name="P$2" x="-7.62" y="0" length="middle" rot="R90"/>
+<pin name="P$3" x="-2.54" y="0" length="middle" rot="R90"/>
+<pin name="P$4" x="2.54" y="0" length="middle" rot="R90"/>
+<pin name="P$5" x="7.62" y="0" length="middle" rot="R90"/>
+<pin name="P$6" x="12.7" y="0" length="middle" rot="R90"/>
+<wire x1="-15.24" y1="5.08" x2="-15.24" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="7.62" x2="25.4" y2="7.62" width="0.254" layer="94"/>
+<wire x1="25.4" y1="7.62" x2="25.4" y2="5.08" width="0.254" layer="94"/>
+<wire x1="25.4" y1="5.08" x2="-15.24" y2="5.08" width="0.254" layer="94"/>
+<pin name="P$7" x="17.78" y="0" length="middle" rot="R90"/>
+<pin name="P$8" x="22.86" y="0" length="middle" rot="R90"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="MEZZANINE_PEAK">
+<gates>
+<gate name="G$1" symbol="MEZZANINE_PADS" x="0" y="-5.08"/>
+</gates>
+<devices>
+<device name="" package="MEZZANINE_PADS">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+<connect gate="G$1" pin="P$2" pad="P$2"/>
+<connect gate="G$1" pin="P$3" pad="P$3"/>
+<connect gate="G$1" pin="P$4" pad="P$4"/>
+<connect gate="G$1" pin="P$5" pad="P$5"/>
+<connect gate="G$1" pin="P$6" pad="P$6"/>
+<connect gate="G$1" pin="P$7" pad="P$7"/>
+<connect gate="G$1" pin="P$8" pad="P$8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_CASTELLATED" package="MEZZANINE_CASTELLATED">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$9"/>
+<connect gate="G$1" pin="P$2" pad="P$10"/>
+<connect gate="G$1" pin="P$3" pad="P$11"/>
+<connect gate="G$1" pin="P$4" pad="P$12"/>
+<connect gate="G$1" pin="P$5" pad="P$13"/>
+<connect gate="G$1" pin="P$6" pad="P$14"/>
+<connect gate="G$1" pin="P$7" pad="P$15"/>
+<connect gate="G$1" pin="P$8" pad="P$16"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -5225,7 +5165,6 @@ Source: amp_227161.pdf</description>
 <part name="C28" library="jonnew" deviceset="C" device="_0201T" value="47nF"/>
 <part name="SUPPLY46" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY49" library="jonnew" deviceset="GND" device=""/>
-<part name="U28" library="jonnew" deviceset="PINHD-1X8" device="_UCAST" value="IOBOARD"/>
 <part name="X1" library="jonnew" deviceset="COAX" device="_XFL" value="X.FL-R-SMT-1"/>
 <part name="R23" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="SUPPLY50" library="jonnew" deviceset="GND" device=""/>
@@ -5321,6 +5260,12 @@ Source: amp_227161.pdf</description>
 <part name="U$29" library="jonnew" deviceset="+3V3" device=""/>
 <part name="SUPPLY57" library="jonnew" deviceset="GND" device=""/>
 <part name="R34" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
+<part name="U$43" library="mezzanine_library" deviceset="MEZZANINE_PEAK" device="_CASTELLATED"/>
+<part name="U$49" library="mezzanine_library" deviceset="MEZZANINE_PEAK" device=""/>
+<part name="SUPPLY59" library="jonnew" deviceset="GND" device=""/>
+<part name="SUPPLY60" library="jonnew" deviceset="GND" device=""/>
+<part name="SUPPLY61" library="jonnew" deviceset="GND" device=""/>
+<part name="SUPPLY62" library="jonnew" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5615,7 +5560,6 @@ The CBC2012T100M saturates at
 <instance part="C28" gate="C" x="1023.62" y="-388.62"/>
 <instance part="SUPPLY46" gate="PE" x="307.34" y="-63.5"/>
 <instance part="SUPPLY49" gate="PE" x="421.64" y="-63.5"/>
-<instance part="U28" gate="G$1" x="650.24" y="-370.84" rot="R90"/>
 <instance part="X1" gate="G$1" x="558.8" y="-365.76" rot="MR0"/>
 <instance part="R23" gate="R" x="373.38" y="99.06" rot="R270"/>
 <instance part="SUPPLY50" gate="PE" x="373.38" y="88.9"/>
@@ -5664,9 +5608,9 @@ The CBC2012T100M saturates at
 </instance>
 <instance part="R24" gate="R" x="612.14" y="-370.84" rot="R270"/>
 <instance part="SUPPLY16" gate="PE" x="612.14" y="-398.78"/>
-<instance part="U$6" gate="G$1" x="731.52" y="-88.9"/>
-<instance part="R25" gate="R" x="731.52" y="-73.66" rot="R270"/>
-<instance part="SUPPLY51" gate="PE" x="731.52" y="-101.6"/>
+<instance part="U$6" gate="G$1" x="632.46" y="-386.08"/>
+<instance part="R25" gate="R" x="632.46" y="-370.84" rot="R270"/>
+<instance part="SUPPLY51" gate="PE" x="632.46" y="-398.78"/>
 <instance part="C68" gate="C" x="1054.1" y="-347.98">
 <attribute name="PARTNO" x="1054.1" y="-347.98" size="1.27" layer="96" display="off"/>
 </instance>
@@ -5711,6 +5655,12 @@ The CBC2012T100M saturates at
 <instance part="U$29" gate="PWR1" x="876.3" y="-66.04"/>
 <instance part="SUPPLY57" gate="PE" x="881.38" y="-104.14"/>
 <instance part="R34" gate="R" x="894.08" y="-99.06" rot="R270"/>
+<instance part="U$43" gate="G$1" x="487.68" y="-312.42"/>
+<instance part="U$49" gate="G$1" x="487.68" y="-287.02"/>
+<instance part="SUPPLY59" gate="PE" x="510.54" y="-292.1"/>
+<instance part="SUPPLY60" gate="PE" x="510.54" y="-317.5"/>
+<instance part="SUPPLY61" gate="PE" x="480.06" y="-289.56"/>
+<instance part="SUPPLY62" gate="PE" x="480.06" y="-314.96"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -6233,13 +6183,31 @@ The CBC2012T100M saturates at
 </segment>
 <segment>
 <pinref part="U$6" gate="G$1" pin="C"/>
-<wire x1="731.52" y1="-93.98" x2="731.52" y2="-99.06" width="0.1524" layer="91"/>
+<wire x1="632.46" y1="-391.16" x2="632.46" y2="-396.24" width="0.1524" layer="91"/>
 <pinref part="SUPPLY51" gate="PE" pin="GND"/>
 </segment>
 <segment>
 <pinref part="R33" gate="R" pin="2"/>
 <pinref part="SUPPLY57" gate="PE" pin="GND"/>
 <wire x1="881.38" y1="-99.06" x2="881.38" y2="-101.6" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$49" gate="G$1" pin="P$8"/>
+<pinref part="SUPPLY59" gate="PE" pin="GND"/>
+<wire x1="510.54" y1="-287.02" x2="510.54" y2="-289.56" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$43" gate="G$1" pin="P$8"/>
+<pinref part="SUPPLY60" gate="PE" pin="GND"/>
+<wire x1="510.54" y1="-312.42" x2="510.54" y2="-314.96" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$49" gate="G$1" pin="P$2"/>
+<pinref part="SUPPLY61" gate="PE" pin="GND"/>
+</segment>
+<segment>
+<pinref part="U$43" gate="G$1" pin="P$2"/>
+<pinref part="SUPPLY62" gate="PE" pin="GND"/>
 </segment>
 </net>
 <net name="DATA1" class="0">
@@ -7851,6 +7819,11 @@ The CBC2012T100M saturates at
 <pinref part="L4" gate="L" pin="1"/>
 <wire x1="497.84" y1="-383.54" x2="495.3" y2="-383.54" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U$43" gate="G$1" pin="P$1"/>
+<wire x1="474.98" y1="-312.42" x2="474.98" y2="-314.96" width="0.1524" layer="91"/>
+<label x="474.98" y="-314.96" size="1.778" layer="95" rot="R270"/>
+</segment>
 </net>
 <net name="SIGOUT" class="0">
 <segment>
@@ -7867,11 +7840,21 @@ The CBC2012T100M saturates at
 <wire x1="541.02" y1="-353.06" x2="528.32" y2="-353.06" width="0.1524" layer="91"/>
 <label x="528.32" y="-353.06" size="1.778" layer="95" rot="R180" xref="yes"/>
 <pinref part="X1" gate="G$1" pin="1"/>
+<label x="485.14" y="-314.96" size="1.778" layer="95" rot="R270" xref="yes"/>
+<label x="485.14" y="-289.56" size="1.778" layer="95" rot="R270" xref="yes"/>
 </segment>
 <segment>
 <pinref part="C51" gate="C" pin="1"/>
 <wire x1="906.78" y1="66.04" x2="922.02" y2="66.04" width="0.1524" layer="91"/>
 <label x="922.02" y="66.04" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U$49" gate="G$1" pin="P$3"/>
+<wire x1="485.14" y1="-289.56" x2="485.14" y2="-287.02" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$43" gate="G$1" pin="P$3"/>
+<wire x1="485.14" y1="-314.96" x2="485.14" y2="-312.42" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ESTIM_POW_EN" class="0">
@@ -8415,7 +8398,7 @@ The CBC2012T100M saturates at
 <segment>
 <pinref part="R25" gate="R" pin="2"/>
 <pinref part="U$6" gate="G$1" pin="A"/>
-<wire x1="731.52" y1="-78.74" x2="731.52" y2="-86.36" width="0.1524" layer="91"/>
+<wire x1="632.46" y1="-375.92" x2="632.46" y2="-383.54" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="AGND" class="0">
@@ -8778,6 +8761,47 @@ The CBC2012T100M saturates at
 <pinref part="U13" gate="G$1" pin="SCLK"/>
 <wire x1="269.24" y1="144.78" x2="264.16" y2="144.78" width="0.1524" layer="91"/>
 <label x="264.16" y="144.78" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N&amp;26" class="0">
+<segment>
+<pinref part="U$49" gate="G$1" pin="P$1"/>
+<wire x1="474.98" y1="-287.02" x2="474.98" y2="-289.56" width="0.1524" layer="91"/>
+<label x="474.98" y="-289.56" size="1.778" layer="95" rot="R270"/>
+</segment>
+</net>
+<net name="STATUS_LED_A" class="0">
+<segment>
+<pinref part="R24" gate="R" pin="1"/>
+<wire x1="612.14" y1="-365.76" x2="612.14" y2="-360.68" width="0.1524" layer="91"/>
+<label x="612.14" y="-360.68" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="U$49" gate="G$1" pin="P$4"/>
+<wire x1="490.22" y1="-287.02" x2="490.22" y2="-289.56" width="0.1524" layer="91"/>
+<label x="490.22" y="-289.56" size="1.778" layer="95" rot="R270"/>
+</segment>
+<segment>
+<pinref part="U$43" gate="G$1" pin="P$4"/>
+<wire x1="490.22" y1="-312.42" x2="490.22" y2="-314.96" width="0.1524" layer="91"/>
+<label x="490.22" y="-314.96" size="1.778" layer="95" rot="R270"/>
+</segment>
+</net>
+<net name="STATUS_LED_B" class="0">
+<segment>
+<pinref part="R25" gate="R" pin="1"/>
+<wire x1="632.46" y1="-365.76" x2="632.46" y2="-360.68" width="0.1524" layer="91"/>
+<label x="632.46" y="-360.68" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="U$43" gate="G$1" pin="P$5"/>
+<wire x1="495.3" y1="-312.42" x2="495.3" y2="-314.96" width="0.1524" layer="91"/>
+<label x="495.3" y="-314.96" size="1.778" layer="95" rot="R270"/>
+</segment>
+<segment>
+<pinref part="U$49" gate="G$1" pin="P$5"/>
+<wire x1="495.3" y1="-287.02" x2="495.3" y2="-289.56" width="0.1524" layer="91"/>
+<label x="495.3" y="-289.56" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 </nets>
