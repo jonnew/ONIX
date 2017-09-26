@@ -6223,6 +6223,11 @@ The CBC2012T100M saturates at
 <wire x1="96.52" y1="-20.32" x2="114.3" y2="-20.32" width="0.1524" layer="91"/>
 <label x="114.3" y="-20.32" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$6" pin="A3"/>
+<wire x1="901.7" y1="-228.6" x2="919.48" y2="-228.6" width="0.1524" layer="91"/>
+<label x="919.48" y="-228.6" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="N$4" class="0">
 <segment>
@@ -6271,6 +6276,11 @@ The CBC2012T100M saturates at
 <wire x1="96.52" y1="-81.28" x2="114.3" y2="-81.28" width="0.1524" layer="91"/>
 <label x="114.3" y="-81.28" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$6" pin="DIFFIO_RX_T26P/C4"/>
+<wire x1="901.7" y1="-236.22" x2="919.48" y2="-236.22" width="0.1524" layer="91"/>
+<label x="919.48" y="-236.22" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="N$9" class="0">
 <segment>
@@ -6318,6 +6328,11 @@ The CBC2012T100M saturates at
 <pinref part="U6" gate="G$1" pin="E/CFGCLK"/>
 <wire x1="96.52" y1="-142.24" x2="114.3" y2="-142.24" width="0.1524" layer="91"/>
 <label x="114.3" y="-142.24" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$6" pin="DIFFIO_RX_T26N/C3"/>
+<wire x1="901.7" y1="-238.76" x2="919.48" y2="-238.76" width="0.1524" layer="91"/>
+<label x="919.48" y="-238.76" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -8709,13 +8724,6 @@ The CBC2012T100M saturates at
 <label x="919.48" y="-226.06" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="N$53" class="0">
-<segment>
-<pinref part="U11" gate="G$6" pin="A3"/>
-<wire x1="901.7" y1="-228.6" x2="919.48" y2="-228.6" width="0.1524" layer="91"/>
-<label x="919.48" y="-228.6" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
 <net name="N$54" class="0">
 <segment>
 <pinref part="U11" gate="G$6" pin="DIFFIO_RX_T24P/NSTATUS/B3"/>
@@ -8728,20 +8736,6 @@ The CBC2012T100M saturates at
 <pinref part="U11" gate="G$6" pin="DIFFIO_RX_T24N/CONF_DONE/A2"/>
 <wire x1="901.7" y1="-233.68" x2="919.48" y2="-233.68" width="0.1524" layer="91"/>
 <label x="919.48" y="-233.68" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="N$56" class="0">
-<segment>
-<pinref part="U11" gate="G$6" pin="DIFFIO_RX_T26P/C4"/>
-<wire x1="901.7" y1="-236.22" x2="919.48" y2="-236.22" width="0.1524" layer="91"/>
-<label x="919.48" y="-236.22" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="N$57" class="0">
-<segment>
-<pinref part="U11" gate="G$6" pin="DIFFIO_RX_T26N/C3"/>
-<wire x1="901.7" y1="-238.76" x2="919.48" y2="-238.76" width="0.1524" layer="91"/>
-<label x="919.48" y="-238.76" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="DAC_CS" class="0">
