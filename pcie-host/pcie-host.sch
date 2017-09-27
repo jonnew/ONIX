@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -64,6 +65,7 @@
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -2589,6 +2591,11 @@ grid 2.54 mm</description>
 <vertex x="0.26" y="-2.4"/>
 </polygon>
 </package>
+<package name="TESTPOINT_2MM">
+<text x="-1" y="-3" size="0.8128" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<text x="-1" y="2" size="0.8128" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<pad name="1" x="0" y="0" drill="2" shape="octagon"/>
+</package>
 </packages>
 <symbols>
 <symbol name="+3V3">
@@ -4549,6 +4556,14 @@ grid 2.54 mm</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_2MM" package="TESTPOINT_2MM">
+<connects>
+<connect gate="G$1" pin="TP" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="PCI-MECH">
@@ -5930,7 +5945,8 @@ grid 2.54 mm</description>
 <attributes>
 <attribute name="DESIGNER" value="JON NEWMAN, JACK ZHANG"/>
 <attribute name="DESIGN_NAME" value="PCIE HOST BOARD"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="LICENSE" value="CC-BY-SA-4.0"/>
+<attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -5973,9 +5989,9 @@ grid 2.54 mm</description>
 <part name="PWR7" library="jonnew" deviceset="+3V3" device=""/>
 <part name="PWR8" library="jonnew" deviceset="+3V3" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
-<part name="TP2" library="jonnew" deviceset="TP" device="_0.035IN" value="+1.8V(ISO)"/>
-<part name="TP3" library="jonnew" deviceset="TP" device="_0.035IN" value="+3.3V(ISO)"/>
-<part name="TP4" library="jonnew" deviceset="TP" device="_0.035IN" value="+12V(ISO)"/>
+<part name="TP2" library="jonnew" deviceset="TP" device="_1MM" value="+1.8V(ISO)"/>
+<part name="TP3" library="jonnew" deviceset="TP" device="_2MM" value="+3.3V(ISO)"/>
+<part name="TP4" library="jonnew" deviceset="TP" device="_2MM" value="+5.5V(ISO)"/>
 <part name="X1" library="jonnew" deviceset="PCI-MECH" device="_STD-H_HALF-W"/>
 <part name="F3" library="jonnew" deviceset="FUSE" device="_1812" value="C014F-2"/>
 <part name="F1" library="jonnew" deviceset="FUSE" device="_1812" value="C014F-2"/>
@@ -6013,7 +6029,7 @@ grid 2.54 mm</description>
 <part name="R70" library="jonnew" deviceset="R" device="_0603" value="2.2k"/>
 <part name="C55" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="TP9" library="jonnew" deviceset="TP" device="_0.035IN" value="VPROTECT(+4.3V)"/>
-<part name="U12" library="jonnew" deviceset="DC-DC-CONVERTER-ADJ" device="_UEI15" value="S24SE12002"/>
+<part name="U12" library="jonnew" deviceset="DC-DC-CONVERTER-ADJ" device="_UEI15" value="UEI15-050-Q12P-C"/>
 <part name="R68" library="jonnew" deviceset="R" device="_0603" value="9.53k"/>
 <part name="C44" library="jonnew" deviceset="C-POL" device="_0807" value="100uF"/>
 <part name="C46" library="jonnew" deviceset="C-POL" device="_0807" value="47uF"/>
@@ -6021,7 +6037,7 @@ grid 2.54 mm</description>
 <part name="PWR2" library="jonnew" deviceset="+5V" device="" value="12V_ATX"/>
 <part name="GND45" library="supply1" deviceset="GND" device=""/>
 <part name="U13" library="jonnew" deviceset="DIGISO-4-0" device="" value="ISO7240M"/>
-<part name="PWR11" library="jonnew" deviceset="+5V" device="" value="+12V_ISO"/>
+<part name="PWR11" library="jonnew" deviceset="+5V" device="" value="+12V_FPGA"/>
 <part name="GND1" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="U14" library="jonnew" deviceset="DIGISO-4-0" device="" value="ISO7240M"/>
 <part name="GND5" library="jonnew" deviceset="GND_ISO" device=""/>
@@ -6044,7 +6060,7 @@ grid 2.54 mm</description>
 <part name="U16" library="jonnew" deviceset="DIGISO-4-0" device="" value="ISO7240M"/>
 <part name="C20" library="jonnew" deviceset="C" device="_0805" value="1uF"/>
 <part name="C25" library="RHD2000_eval_board" deviceset="C" device="_0603" value="0.1uF"/>
-<part name="U11" library="jonnew" deviceset="DIGISO-I2C" device="_SOIC" value="ISO1541DR"/>
+<part name="U11" library="jonnew" deviceset="DIGISO-I2C" device="_SOIC" value="ISO1540DR"/>
 <part name="GND64" library="supply1" deviceset="GND" device=""/>
 <part name="C56" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="PWR35" library="jonnew" deviceset="+3V3" device=""/>
@@ -6112,7 +6128,7 @@ grid 2.54 mm</description>
 <part name="C3" library="jonnew" deviceset="C" device="_0805" value="4.7uF"/>
 <part name="GND87" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="GND88" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="PWR50" library="jonnew" deviceset="+5V" device="" value="+12V_ISO"/>
+<part name="PWR50" library="jonnew" deviceset="+5V" device="" value="+5.5V_ISO"/>
 <part name="C16" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="C12" library="jonnew" deviceset="C" device="_0402" value="47nF"/>
 <part name="R30" library="jonnew" deviceset="R" device="_0402" value="49.9"/>
@@ -6183,7 +6199,7 @@ grid 2.54 mm</description>
 <part name="L5" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
 <part name="L4" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
 <part name="L6" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
-<part name="TP1" library="jonnew" deviceset="TP" device="_0.035IN" value="GND(ISO)"/>
+<part name="TP1" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
 <part name="TP5" library="jonnew" deviceset="TP" device="TP06R" value="PASS"/>
 <part name="U9" library="jonnew" deviceset="DS90UB914A-Q1" device=""/>
 <part name="C90" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
@@ -6197,10 +6213,10 @@ grid 2.54 mm</description>
 <part name="PWR58" library="jonnew" deviceset="+3V3" device=""/>
 <part name="GND107" library="supply1" deviceset="GND" device=""/>
 <part name="FMC_LPC" library="jonnew" deviceset="FMC_LPC_160_PIN" device=""/>
-<part name="TP10" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
-<part name="TP11" library="jonnew" deviceset="TP" device="_0.035IN" value="+3.3V"/>
-<part name="TP12" library="jonnew" deviceset="TP" device="_0.035IN" value="+12V(FPGA)"/>
-<part name="TP13" library="jonnew" deviceset="TP" device="_0.035IN" value="+12V(ATX)"/>
+<part name="TP10" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
+<part name="TP11" library="jonnew" deviceset="TP" device="_2MM" value="+3.3V"/>
+<part name="TP12" library="jonnew" deviceset="TP" device="_2MM" value="+12V(FPGA)"/>
+<part name="TP13" library="jonnew" deviceset="TP" device="_2MM" value="+12V(ATX)"/>
 <part name="PWR1" library="jonnew" deviceset="+5V" device="" value="12V_ATX"/>
 <part name="PWR5" library="jonnew" deviceset="+5V" device="" value="12V_FPGA"/>
 <part name="U19" library="jonnew" deviceset="SN65LVDS388A" device="" value="SN65LVDT388A"/>
@@ -6244,7 +6260,7 @@ grid 2.54 mm</description>
 <part name="U10" library="jonnew" deviceset="LTM4622" device="_BGA"/>
 <part name="GND30" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="PWR3" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
-<part name="PWR6" library="jonnew" deviceset="+5V" device="" value="+12V_ISO"/>
+<part name="PWR6" library="jonnew" deviceset="+5V" device="" value="+5.5V_ISO"/>
 <part name="L7/0R" library="jonnew" deviceset="L" device="_4020" value="74438356010"/>
 <part name="C42" library="jonnew" deviceset="C" device="_1206" value="10uF"/>
 <part name="C39" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
@@ -6322,27 +6338,33 @@ grid 2.54 mm</description>
 <part name="C80" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="GND58" library="supply1" deviceset="GND" device=""/>
-<part name="PWR25" library="jonnew" deviceset="+5V" device="" value="+12V_ISO"/>
+<part name="PWR25" library="jonnew" deviceset="+5V" device="" value="+5.5V_ISO"/>
 <part name="GND69" library="supply1" deviceset="GND" device=""/>
 <part name="TP8" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
-<part name="TP14" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
-<part name="TP15" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
-<part name="TP16" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
-<part name="TP17" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="TP14" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
+<part name="TP15" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
+<part name="TP16" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
+<part name="TP17" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
 <part name="GND111" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="TP18" library="jonnew" deviceset="TP" device="_0.035IN" value="GND(ISO)"/>
+<part name="TP18" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
 <part name="GND112" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="TP19" library="jonnew" deviceset="TP" device="_0.035IN" value="GND(ISO)"/>
+<part name="TP19" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
 <part name="GND113" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="TP20" library="jonnew" deviceset="TP" device="_0.035IN" value="GND(ISO)"/>
-<part name="TP21" library="jonnew" deviceset="TP" device="_0.035IN" value="GND"/>
+<part name="TP20" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
+<part name="TP21" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
 <part name="PWR37" library="jonnew" deviceset="+3V3" device=""/>
-<part name="TP22" library="jonnew" deviceset="TP" device="_0.035IN" value="+3.3V"/>
+<part name="TP22" library="jonnew" deviceset="TP" device="_2MM" value="+3.3V"/>
 <part name="R73" library="jonnew" deviceset="R" device="_0603" value="1k"/>
 <part name="R74" library="jonnew" deviceset="R" device="_0603" value="1k"/>
 <part name="R75" library="cyclops" deviceset="R" device="_0603" value="1k"/>
 <part name="GND22" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="U$1" library="jonnew" deviceset="+3V3_ISO" device=""/>
+<part name="TP23" library="jonnew" deviceset="TP" device="_1MM" value="GND"/>
+<part name="TP24" library="jonnew" deviceset="TP" device="_1MM" value="SDA"/>
+<part name="TP25" library="jonnew" deviceset="TP" device="_1MM" value="SCL"/>
+<part name="TP26" library="jonnew" deviceset="TP" device="_1MM" value="SCL(ISO)"/>
+<part name="TP27" library="jonnew" deviceset="TP" device="_1MM" value="SDA(ISO)"/>
+<part name="TP28" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
 </parts>
 <sheets>
 <sheet>
@@ -6366,9 +6388,8 @@ requriements. An 8x8mm device that is
 probably safer is the Bourns SRN8040TA
 series.</text>
 <text x="398.78" y="292.1" size="2.54" layer="97">UEI15 Choices:
-12V:S24SE12002 
-5.5V:UEI15-050-Q12P-C w/ 9.53k resistor</text>
-<text x="434.34" y="337.82" size="2.54" layer="97" rot="R90">DNP</text>
+12V: S24SE12002 w/ Rtrim = Inf
+5.5V: UEI15-050-Q12P-C w/ Rtrm = 9.53k resistor</text>
 <text x="27.94" y="73.66" size="2.54" layer="97" rot="R90">Power: ~1.3A DC at 12V; 15.6W. With
 90% efficiency regulation to 5.5V at
 serializer, this translates to 2.55A
@@ -6850,6 +6871,12 @@ XX mil FR4 core
 <instance part="R75" gate="R" x="149.86" y="327.66" rot="MR90"/>
 <instance part="GND22" gate="G$1" x="149.86" y="302.26"/>
 <instance part="U$1" gate="G$1" x="149.86" y="335.28"/>
+<instance part="TP23" gate="G$1" x="508" y="386.08" rot="R180"/>
+<instance part="TP24" gate="G$1" x="515.62" y="386.08" rot="R180"/>
+<instance part="TP25" gate="G$1" x="523.24" y="386.08" rot="R180"/>
+<instance part="TP26" gate="G$1" x="401.32" y="388.62" rot="R180"/>
+<instance part="TP27" gate="G$1" x="408.94" y="388.62" rot="R180"/>
+<instance part="TP28" gate="G$1" x="416.56" y="388.62" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -6931,6 +6958,10 @@ XX mil FR4 core
 <pinref part="U11" gate="G$1" pin="GND2"/>
 <wire x1="447.04" y1="396.24" x2="444.5" y2="396.24" width="0.1524" layer="91"/>
 <pinref part="GND67" gate="G$1" pin="GND_ISO"/>
+<pinref part="TP28" gate="G$1" pin="TP"/>
+<wire x1="416.56" y1="391.16" x2="416.56" y2="396.24" width="0.1524" layer="91"/>
+<wire x1="416.56" y1="396.24" x2="444.5" y2="396.24" width="0.1524" layer="91"/>
+<junction x="444.5" y="396.24"/>
 </segment>
 <segment>
 <wire x1="17.78" y1="63.5" x2="27.94" y2="63.5" width="0.1524" layer="91"/>
@@ -7487,6 +7518,10 @@ XX mil FR4 core
 <wire x1="490.22" y1="396.24" x2="490.22" y2="388.62" width="0.1524" layer="91"/>
 <wire x1="487.68" y1="396.24" x2="490.22" y2="396.24" width="0.1524" layer="91"/>
 <pinref part="U11" gate="G$1" pin="GND1"/>
+<pinref part="TP23" gate="G$1" pin="TP"/>
+<wire x1="490.22" y1="396.24" x2="508" y2="396.24" width="0.1524" layer="91"/>
+<wire x1="508" y1="396.24" x2="508" y2="388.62" width="0.1524" layer="91"/>
+<junction x="490.22" y="396.24"/>
 </segment>
 <segment>
 <pinref part="U16" gate="G$1" pin="GND2"/>
@@ -8846,6 +8881,8 @@ XX mil FR4 core
 <pinref part="U11" gate="G$1" pin="SCL2"/>
 <wire x1="401.32" y1="401.32" x2="393.7" y2="401.32" width="0.1524" layer="91"/>
 <label x="393.7" y="401.32" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="TP26" gate="G$1" pin="TP"/>
+<wire x1="401.32" y1="401.32" x2="401.32" y2="391.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="208.28" y1="114.3" x2="208.28" y2="109.22" width="0.1524" layer="91"/>
@@ -8862,6 +8899,8 @@ XX mil FR4 core
 <pinref part="U11" gate="G$1" pin="SDA2"/>
 <wire x1="393.7" y1="406.4" x2="408.94" y2="406.4" width="0.1524" layer="91"/>
 <label x="393.7" y="406.4" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="TP27" gate="G$1" pin="TP"/>
+<wire x1="408.94" y1="406.4" x2="408.94" y2="391.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="210.82" y1="114.3" x2="210.82" y2="109.22" width="0.1524" layer="91"/>
@@ -8878,6 +8917,8 @@ XX mil FR4 core
 <wire x1="515.62" y1="406.4" x2="525.78" y2="406.4" width="0.1524" layer="91"/>
 <junction x="515.62" y="406.4"/>
 <label x="525.78" y="406.4" size="1.27" layer="95" xref="yes"/>
+<wire x1="515.62" y1="406.4" x2="515.62" y2="388.62" width="0.1524" layer="91"/>
+<pinref part="TP24" gate="G$1" pin="TP"/>
 </segment>
 <segment>
 <pinref part="FMC_LPC" gate="G$1" pin="SDA"/>
@@ -8899,6 +8940,8 @@ XX mil FR4 core
 <wire x1="523.24" y1="401.32" x2="525.78" y2="401.32" width="0.1524" layer="91"/>
 <junction x="523.24" y="401.32"/>
 <label x="525.78" y="401.32" size="1.27" layer="95" xref="yes"/>
+<pinref part="TP25" gate="G$1" pin="TP"/>
+<wire x1="523.24" y1="401.32" x2="523.24" y2="388.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="FMC_LPC" gate="G$1" pin="SCL"/>
@@ -9111,6 +9154,7 @@ XX mil FR4 core
 <wire x1="50.8" y1="762" x2="71.12" y2="762" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="762" x2="50.8" y2="759.46" width="0.1524" layer="91"/>
 <junction x="50.8" y="762"/>
+<label x="35.56" y="762" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="DI1_TERM" class="0">
@@ -10488,7 +10532,7 @@ XX mil FR4 core
 <wire x1="345.44" y1="147.32" x2="279.4" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="+12V_ISO" class="0">
+<net name="+5.5V_ISO" class="0">
 <segment>
 <pinref part="U12" gate="G$1" pin="+VO"/>
 <wire x1="447.04" y1="353.06" x2="421.64" y2="353.06" width="0.1524" layer="91"/>
