@@ -1,0 +1,8 @@
+Designator Footprint               Mid X         Mid Y         Ref X         Ref Y       Pad 1 X       Pad 1 Y  TB      Rotation   Comment        
+
+MECH_W0T   HIROSE DF40-70    -493.227mil   -187.940mil   -493.227mil   -187.940mil   -705.123mil     14.616mil   T	 124.00deg HIROSE CONNECTOR
+AIN_N0T    HIROSE DF40-70    -187.940mil    493.227mil   -187.940mil    493.227mil     14.616mil    705.123mil   T	  34.00deg HIROSE CONNECTOR
+MECH_E0T   HIROSE DF40-70     493.227mil    187.940mil    493.227mil    187.940mil    705.123mil    -14.616mil   T	 304.00deg HIROSE CONNECTOR
+AIN_S0T    HIROSE DF40-70     187.940mil   -493.227mil    187.940mil   -493.227mil    -14.616mil   -705.123mil   T	 214.00deg HIROSE CONNECTOR
+
+NOTE: Coordinates are in reference to the center of each PCB. Rotation: Counter clockwise is positive.
