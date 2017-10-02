@@ -597,7 +597,7 @@
 <package name="X2SON">
 <smd name="5" x="0" y="0" dx="0.48" dy="0.48" layer="1" rot="R45"/>
 <smd name="2" x="-0.45" y="-0.4" dx="0.21" dy="0.21" layer="1" roundness="100"/>
-<polygon width="0.05" layer="1">
+<polygon width="0.053340625" layer="1">
 <vertex x="-0.6" y="-0.25"/>
 <vertex x="-0.45" y="-0.25"/>
 <vertex x="-0.25" y="-0.45"/>
@@ -607,28 +607,28 @@
 <smd name="1" x="-0.45" y="0.4" dx="0.21" dy="0.21" layer="1" roundness="100"/>
 <smd name="4" x="0.45" y="0.4" dx="0.21" dy="0.21" layer="1" roundness="100"/>
 <smd name="3" x="0.45" y="-0.4" dx="0.21" dy="0.21" layer="1" roundness="100"/>
-<polygon width="0.05" layer="1">
+<polygon width="0.053340625" layer="1">
 <vertex x="-0.6" y="0.5"/>
 <vertex x="-0.6" y="0.25"/>
 <vertex x="-0.45" y="0.25"/>
 <vertex x="-0.25" y="0.45"/>
 <vertex x="-0.25" y="0.5"/>
 </polygon>
-<polygon width="0.05" layer="1">
+<polygon width="0.053340625" layer="1">
 <vertex x="0.6" y="0.5"/>
 <vertex x="0.6" y="0.25"/>
 <vertex x="0.45" y="0.25"/>
 <vertex x="0.25" y="0.45"/>
 <vertex x="0.25" y="0.5"/>
 </polygon>
-<polygon width="0.05" layer="1">
+<polygon width="0.053340625" layer="1">
 <vertex x="0.6" y="-0.5"/>
 <vertex x="0.6" y="-0.25"/>
 <vertex x="0.45" y="-0.25"/>
 <vertex x="0.25" y="-0.45"/>
 <vertex x="0.25" y="-0.5"/>
 </polygon>
-<polygon width="0.1" layer="39">
+<polygon width="0.1016" layer="39">
 <vertex x="-0.6" y="0.5"/>
 <vertex x="-0.6" y="0.25"/>
 <vertex x="-0.45" y="0.25"/>
@@ -5414,8 +5414,8 @@ Source: amp_227161.pdf</description>
 <part name="U$24" library="jonnew" deviceset="+3V3" device=""/>
 <part name="SUPPLY55" library="jonnew" deviceset="AGND" device=""/>
 <part name="SUPPLY56" library="jonnew" deviceset="AGND" device=""/>
-<part name="TP10" library="jonnew" deviceset="TP" device="TP06R" value="VCC"/>
-<part name="TP8" library="jonnew" deviceset="TP" device="TP06R" value="VCC"/>
+<part name="TP10" library="jonnew" deviceset="TP" device="B0.2MM" value="VCC"/>
+<part name="TP8" library="jonnew" deviceset="TP" device="B0.2MM" value="VCC"/>
 <part name="R30" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="R31" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="R32" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
@@ -5439,7 +5439,7 @@ Source: amp_227161.pdf</description>
 <part name="J1" library="jonnew" deviceset="HEADSTAGE64_EDGE-MOUNT" device=""/>
 <part name="J2" library="jonnew" deviceset="HEADSTAGE64_EDGE-MOUNT" device="_CASTELLATED"/>
 <part name="U$6" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
-<part name="TP7" library="jonnew" deviceset="TP" device="TP06R" value="VCC"/>
+<part name="TP7" library="jonnew" deviceset="TP" device="TP06R"/>
 <part name="SUPPLY16" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY51" library="jonnew" deviceset="GND" device=""/>
 <part name="U$43" library="jonnew" deviceset="+3V3" device=""/>
@@ -5460,6 +5460,8 @@ Source: amp_227161.pdf</description>
 <part name="C70" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
 <attribute name="PARTNO" value="C0603X5R1C104K030BC"/>
 </part>
+<part name="TP9" library="jonnew" deviceset="TP" device="TP06R"/>
+<part name="TP11" library="jonnew" deviceset="TP" device="TP06R"/>
 </parts>
 <sheets>
 <sheet>
@@ -5890,6 +5892,8 @@ and switcher that does not care.</text>
 <instance part="C70" gate="C" x="449.58" y="294.64">
 <attribute name="PARTNO" x="449.58" y="294.64" size="1.27" layer="96" display="off"/>
 </instance>
+<instance part="TP9" gate="G$1" x="358.14" y="299.72" rot="R90"/>
+<instance part="TP11" gate="G$1" x="358.14" y="294.64" rot="R90"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -9165,12 +9169,14 @@ and switcher that does not care.</text>
 <segment>
 <pinref part="U14" gate="G$1" pin="IIN-"/>
 <wire x1="375.92" y1="299.72" x2="360.68" y2="299.72" width="0.1524" layer="91"/>
+<pinref part="TP9" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="N$38" class="0">
 <segment>
 <pinref part="U14" gate="G$1" pin="IIN+"/>
 <wire x1="360.68" y1="294.64" x2="375.92" y2="294.64" width="0.1524" layer="91"/>
+<pinref part="TP11" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="N$41" class="0">
