@@ -586,7 +586,7 @@
 <smd name="5" x="0" y="0.9" dx="0.85" dy="0.35" layer="1" rot="R90"/>
 <smd name="6" x="-0.65" y="0.9" dx="0.85" dy="0.35" layer="1" rot="R90"/>
 <smd name="4" x="0.65" y="0.9" dx="0.85" dy="0.35" layer="1" rot="R90"/>
-<circle x="-1.2" y="-1.1" radius="0.14141875" width="0.127" layer="21"/>
+<circle x="-1.2" y="-1.1" radius="0.25" width="0" layer="21"/>
 <wire x1="-1" y1="1" x2="-1.2" y2="1" width="0.127" layer="21"/>
 <wire x1="-1.2" y1="1" x2="-1.2" y2="-0.7" width="0.127" layer="21"/>
 <wire x1="1" y1="1" x2="1.2" y2="1" width="0.127" layer="21"/>
@@ -1329,7 +1329,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="0.6" y1="0.3" x2="0.6" y2="-0.3" width="0.127" layer="21"/>
 </package>
 <package name="UQFN">
-<circle x="-1" y="1" radius="0.1" width="0.127" layer="21"/>
+<circle x="-1" y="1.1" radius="0.25" width="0" layer="21"/>
 <wire x1="0.8" y1="0.9" x2="0.4" y2="0.9" width="0.127" layer="21"/>
 <wire x1="-0.8" y1="0.9" x2="-0.4" y2="0.9" width="0.127" layer="21"/>
 <wire x1="-0.8" y1="-0.9" x2="-0.4" y2="-0.9" width="0.127" layer="21"/>
@@ -1665,7 +1665,7 @@ Source: amp_227161.pdf</description>
 <circle x="1.2" y="-1.9" radius="0.360553125" width="0.127" layer="21"/>
 </package>
 <package name="X_FL_R_SMT_1(02)">
-<circle x="-0.6873" y="-1.2635" radius="0.22360625" width="0.127" layer="21"/>
+<circle x="-0.6873" y="-1.2635" radius="0.25" width="0" layer="21"/>
 <wire x1="-1" y1="1" x2="-0.5" y2="1" width="0.127" layer="21"/>
 <wire x1="0.5" y1="1" x2="1" y2="1" width="0.127" layer="21"/>
 <wire x1="1" y1="-1" x2="0.51" y2="-1" width="0.127" layer="21"/>
@@ -5462,6 +5462,8 @@ Source: amp_227161.pdf</description>
 </part>
 <part name="TP9" library="jonnew" deviceset="TP" device="TP06R"/>
 <part name="TP11" library="jonnew" deviceset="TP" device="TP06R"/>
+<part name="R38" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
+<part name="U$55" library="jonnew" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5502,6 +5504,7 @@ and switcher that does not care.</text>
 <text x="325.12" y="619.76" size="6.4516" layer="97">TRACKING</text>
 <text x="528.32" y="281.94" size="6.4516" layer="97">POWER</text>
 <frame x1="0" y1="0" x2="835.66" y2="858.52" columns="8" rows="5" layer="94"/>
+<text x="149.86" y="205.74" size="1.778" layer="97" rot="R90">TODO: ENV inputs</text>
 </plain>
 <instances>
 <instance part="U1" gate="G$1" x="393.7" y="482.6"/>
@@ -5860,10 +5863,10 @@ and switcher that does not care.</text>
 <instance part="SUPPLY58" gate="PE" x="165.1" y="254" rot="MR0"/>
 <instance part="U$51" gate="VCC" x="165.1" y="287.02" rot="MR0"/>
 <instance part="SUPPLY63" gate="PE" x="104.14" y="20.32"/>
-<instance part="R35" gate="R" x="114.3" y="78.74" rot="R270"/>
-<instance part="R36" gate="R" x="121.92" y="78.74" rot="R270"/>
-<instance part="U$50" gate="PWR1" x="114.3" y="86.36"/>
-<instance part="U$52" gate="PWR1" x="121.92" y="86.36"/>
+<instance part="R35" gate="R" x="127" y="78.74" rot="R270"/>
+<instance part="R36" gate="R" x="134.62" y="78.74" rot="R270"/>
+<instance part="U$50" gate="PWR1" x="127" y="86.36"/>
+<instance part="U$52" gate="PWR1" x="134.62" y="86.36"/>
 <instance part="SUPPLY46" gate="G$1" x="594.36" y="558.8"/>
 <instance part="SUPPLY49" gate="G$1" x="708.66" y="558.8"/>
 <instance part="U$53" gate="PWR1" x="144.78" y="825.5"/>
@@ -5894,6 +5897,8 @@ and switcher that does not care.</text>
 </instance>
 <instance part="TP9" gate="G$1" x="358.14" y="299.72" rot="R90"/>
 <instance part="TP11" gate="G$1" x="358.14" y="294.64" rot="R90"/>
+<instance part="R38" gate="R" x="119.38" y="78.74" rot="R270"/>
+<instance part="U$55" gate="PWR1" x="119.38" y="86.36"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -6989,12 +6994,12 @@ and switcher that does not care.</text>
 <segment>
 <pinref part="U$50" gate="PWR1" pin="+3V3"/>
 <pinref part="R35" gate="R" pin="1"/>
-<wire x1="114.3" y1="86.36" x2="114.3" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="127" y1="86.36" x2="127" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$52" gate="PWR1" pin="+3V3"/>
 <pinref part="R36" gate="R" pin="1"/>
-<wire x1="121.92" y1="86.36" x2="121.92" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="86.36" x2="134.62" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R24" gate="R" pin="1"/>
@@ -7028,6 +7033,11 @@ and switcher that does not care.</text>
 <wire x1="449.58" y1="309.88" x2="449.58" y2="304.8" width="0.1524" layer="91"/>
 <junction x="449.58" y="304.8"/>
 <pinref part="C70" gate="C" pin="1"/>
+</segment>
+<segment>
+<pinref part="U$55" gate="PWR1" pin="+3V3"/>
+<pinref part="R38" gate="R" pin="1"/>
+<wire x1="119.38" y1="86.36" x2="119.38" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LED-2" class="0">
@@ -9004,17 +9014,17 @@ and switcher that does not care.</text>
 <net name="NSTATUS" class="0">
 <segment>
 <pinref part="U11" gate="G$6" pin="DIFFIO_RX_T24P/NSTATUS/B3"/>
-<wire x1="93.98" y1="45.72" x2="114.3" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="45.72" x2="127" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="R35" gate="R" pin="2"/>
-<wire x1="114.3" y1="73.66" x2="114.3" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="127" y1="73.66" x2="127" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CONF_DONE" class="0">
 <segment>
 <pinref part="U11" gate="G$6" pin="DIFFIO_RX_T24N/CONF_DONE/A2"/>
-<wire x1="93.98" y1="43.18" x2="121.92" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="43.18" x2="134.62" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="R36" gate="R" pin="2"/>
-<wire x1="121.92" y1="73.66" x2="121.92" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="73.66" x2="134.62" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DAC_CS" class="0">
@@ -9207,6 +9217,38 @@ and switcher that does not care.</text>
 <pinref part="U14" gate="G$1" pin="E/CFGCLK"/>
 <wire x1="411.48" y1="299.72" x2="429.26" y2="299.72" width="0.1524" layer="91"/>
 <label x="429.26" y="299.72" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$47" class="0">
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B3P/G5"/>
+<wire x1="93.98" y1="200.66" x2="106.68" y2="200.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$46" class="0">
+<segment>
+<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L27P/G3"/>
+<wire x1="93.98" y1="228.6" x2="106.68" y2="228.6" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$50" class="0">
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B1N/H3"/>
+<wire x1="93.98" y1="208.28" x2="106.68" y2="208.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$51" class="0">
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B3N/G4"/>
+<wire x1="93.98" y1="203.2" x2="106.68" y2="203.2" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$45" class="0">
+<segment>
+<pinref part="U11" gate="G$6" pin="NCONFIG/D6"/>
+<pinref part="R38" gate="R" pin="2"/>
+<wire x1="93.98" y1="55.88" x2="119.38" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="55.88" x2="119.38" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
