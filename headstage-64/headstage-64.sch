@@ -6482,6 +6482,11 @@ and switcher that does not care.</text>
 <wire x1="411.48" y1="485.14" x2="429.26" y2="485.14" width="0.1524" layer="91"/>
 <label x="429.26" y="485.14" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B1N/H3"/>
+<wire x1="93.98" y1="208.28" x2="106.68" y2="208.28" width="0.1524" layer="91"/>
+<label x="106.68" y="208.28" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="N$4" class="0">
 <segment>
@@ -6535,6 +6540,11 @@ and switcher that does not care.</text>
 <wire x1="411.48" y1="424.18" x2="429.26" y2="424.18" width="0.1524" layer="91"/>
 <label x="429.26" y="424.18" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B3N/G4"/>
+<wire x1="93.98" y1="203.2" x2="106.68" y2="203.2" width="0.1524" layer="91"/>
+<label x="106.68" y="203.2" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="N$9" class="0">
 <segment>
@@ -6587,6 +6597,11 @@ and switcher that does not care.</text>
 <pinref part="U6" gate="G$1" pin="E/CFGCLK"/>
 <wire x1="411.48" y1="363.22" x2="429.26" y2="363.22" width="0.1524" layer="91"/>
 <label x="429.26" y="363.22" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B3P/G5"/>
+<wire x1="93.98" y1="200.66" x2="106.68" y2="200.66" width="0.1524" layer="91"/>
+<label x="106.68" y="200.66" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -9211,36 +9226,17 @@ and switcher that does not care.</text>
 <wire x1="411.48" y1="294.64" x2="429.26" y2="294.64" width="0.1524" layer="91"/>
 <label x="429.26" y="294.64" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L27P/G3"/>
+<wire x1="93.98" y1="228.6" x2="106.68" y2="228.6" width="0.1524" layer="91"/>
+<label x="106.68" y="228.6" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="ENV4" class="0">
 <segment>
 <pinref part="U14" gate="G$1" pin="E/CFGCLK"/>
 <wire x1="411.48" y1="299.72" x2="429.26" y2="299.72" width="0.1524" layer="91"/>
 <label x="429.26" y="299.72" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="N$47" class="0">
-<segment>
-<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B3P/G5"/>
-<wire x1="93.98" y1="200.66" x2="106.68" y2="200.66" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$46" class="0">
-<segment>
-<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L27P/G3"/>
-<wire x1="93.98" y1="228.6" x2="106.68" y2="228.6" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$50" class="0">
-<segment>
-<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B1N/H3"/>
-<wire x1="93.98" y1="208.28" x2="106.68" y2="208.28" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$51" class="0">
-<segment>
-<pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B3N/G4"/>
-<wire x1="93.98" y1="203.2" x2="106.68" y2="203.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$45" class="0">
