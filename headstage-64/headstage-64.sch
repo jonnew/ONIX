@@ -5464,6 +5464,7 @@ Source: amp_227161.pdf</description>
 <part name="TP11" library="jonnew" deviceset="TP" device="TP06R"/>
 <part name="R38" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="U$55" library="jonnew" deviceset="+3V3" device=""/>
+<part name="TP12" library="jonnew" deviceset="TP" device="B0.2MM"/>
 </parts>
 <sheets>
 <sheet>
@@ -5899,6 +5900,7 @@ and switcher that does not care.</text>
 <instance part="TP11" gate="G$1" x="358.14" y="294.64" rot="R90"/>
 <instance part="R38" gate="R" x="119.38" y="78.74" rot="R270"/>
 <instance part="U$55" gate="PWR1" x="119.38" y="86.36"/>
+<instance part="TP12" gate="G$1" x="35.56" y="718.82" rot="MR180"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -7162,6 +7164,8 @@ and switcher that does not care.</text>
 <wire x1="43.18" y1="721.36" x2="35.56" y2="721.36" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="721.36" x2="35.56" y2="728.98" width="0.1524" layer="91"/>
 <pinref part="U$23" gate="VCC" pin="VCC"/>
+<pinref part="TP12" gate="G$1" pin="TP"/>
+<junction x="35.56" y="721.36"/>
 </segment>
 <segment>
 <wire x1="703.58" y1="127" x2="703.58" y2="129.54" width="0.1524" layer="91"/>
