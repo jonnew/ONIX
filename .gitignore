@@ -13,6 +13,7 @@
 *.scr
 *.gpi
 *.dri
+*.lck
 
 # Altium craps
 History
