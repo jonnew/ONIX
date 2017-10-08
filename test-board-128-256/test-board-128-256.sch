@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -2945,8 +2945,8 @@ by exp-lbrs.ulp</description>
 </libraries>
 <attributes>
 <attribute name="DESIGNER" value="JONNEW, MWL@MIT"/>
-<attribute name="DESIGN_NAME" value="test-board (2x64_hirose-circular)"/>
-<attribute name="LICENSE" value="(c) Jon Newman CC-BY-SA-NC 4.0"/>
+<attribute name="DESIGN_NAME" value="128/256 Channel Headstage Test Board"/>
+<attribute name="LICENSE" value="(c) Jon Newman CC-BY-SA 4.0"/>
 <attribute name="REVISION" value="1.0"/>
 </attributes>
 <variantdefs>
