@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -1121,15 +1122,23 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <smd name="C2" x="1.475" y="-1.025" dx="1.3" dy="1.15" layer="1"/>
 <smd name="A1" x="-1.475" y="1.025" dx="1.3" dy="1.15" layer="1"/>
 <smd name="A2" x="-1.475" y="-1.025" dx="1.3" dy="1.15" layer="1"/>
-<wire x1="-1.8" y1="2" x2="1.5" y2="2" width="0.127" layer="21"/>
-<wire x1="1.5" y1="2" x2="1.8" y2="2" width="0.127" layer="21"/>
-<wire x1="1.8" y1="2" x2="1.8" y2="1.9" width="0.127" layer="21"/>
-<wire x1="1.8" y1="1.7" x2="1.8" y2="-2" width="0.127" layer="21"/>
-<wire x1="1.8" y1="-2" x2="-1.8" y2="-2" width="0.127" layer="21"/>
-<wire x1="-1.8" y1="-2" x2="-1.8" y2="2" width="0.127" layer="21"/>
-<wire x1="1.5" y1="2" x2="1.8" y2="1.7" width="0.127" layer="21"/>
-<wire x1="1.8" y1="1.7" x2="1.8" y2="1.9" width="0.127" layer="21"/>
-<wire x1="1.8" y1="1.9" x2="1.7" y2="1.9" width="0.127" layer="21"/>
+<wire x1="-1.8" y1="2" x2="1.5" y2="2" width="0.127" layer="51"/>
+<wire x1="1.5" y1="2" x2="1.8" y2="2" width="0.127" layer="51"/>
+<wire x1="1.8" y1="2" x2="1.8" y2="1.9" width="0.127" layer="51"/>
+<wire x1="1.8" y1="1.7" x2="1.8" y2="-2" width="0.127" layer="51"/>
+<wire x1="1.8" y1="-2" x2="-1.8" y2="-2" width="0.127" layer="51"/>
+<wire x1="-1.8" y1="-2" x2="-1.8" y2="2" width="0.127" layer="51"/>
+<wire x1="1.5" y1="2" x2="1.8" y2="1.7" width="0.127" layer="51"/>
+<wire x1="1.8" y1="1.7" x2="1.8" y2="1.9" width="0.127" layer="51"/>
+<wire x1="1.8" y1="1.9" x2="1.7" y2="1.9" width="0.127" layer="51"/>
+<text x="-2.905" y="2.975" size="1.016" layer="25" font="vector" ratio="18" rot="R180" align="center-right">&gt;NAME</text>
+<text x="-2.905" y="-3.029" size="1.016" layer="27" font="vector" ratio="18" align="center-left">&gt;VALUE</text>
+<wire x1="-1.8" y1="1.8" x2="-1.8" y2="2.1" width="0.15" layer="21"/>
+<wire x1="-1.8" y1="2.1" x2="1.5" y2="2.1" width="0.15" layer="21"/>
+<wire x1="-1.8" y1="-1.8" x2="-1.8" y2="-2.1" width="0.15" layer="21"/>
+<wire x1="-1.8" y1="-2.1" x2="1.8" y2="-2.1" width="0.15" layer="21"/>
+<wire x1="1.8" y1="-2.1" x2="1.8" y2="-1.8" width="0.15" layer="21"/>
+<circle x="2" y="2.2" radius="0.360553125" width="0" layer="21"/>
 </package>
 <package name="LXZ1">
 <smd name="A" x="0.5" y="0" dx="2" dy="0.45" layer="1" rot="R90"/>
@@ -1154,6 +1163,244 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="0.7" y1="0" x2="1" y2="-0.2" width="0.127" layer="21"/>
 <wire x1="1" y1="0.2" x2="1" y2="-0.2" width="0.127" layer="21"/>
 <wire x1="0.6" y1="0.3" x2="0.6" y2="-0.3" width="0.127" layer="21"/>
+</package>
+<package name="1020-AAA-HOLDER">
+<smd name="-" x="0" y="-27.6" dx="5" dy="6.4" layer="1"/>
+<smd name="+" x="0" y="27.6" dx="5" dy="6.4" layer="1"/>
+<hole x="5.31" y="24.4" drill="2"/>
+<wire x1="-3.81" y1="26.67" x2="-5.08" y2="26.67" width="0.4064" layer="21"/>
+<wire x1="-5.08" y1="26.67" x2="-5.08" y2="-26.67" width="0.4064" layer="21"/>
+<wire x1="-5.08" y1="-26.67" x2="-3.81" y2="-26.67" width="0.4064" layer="21"/>
+<wire x1="3.81" y1="-26.67" x2="5.08" y2="-26.67" width="0.4064" layer="21"/>
+<wire x1="5.08" y1="-26.67" x2="5.08" y2="21.59" width="0.4064" layer="21"/>
+<wire x1="3.81" y1="26.67" x2="5.08" y2="26.67" width="0.4064" layer="21"/>
+<wire x1="0" y1="22.86" x2="0" y2="17.78" width="0.4064" layer="21"/>
+<wire x1="-2.54" y1="20.32" x2="2.54" y2="20.32" width="0.4064" layer="21"/>
+<wire x1="-2.54" y1="-21.59" x2="2.54" y2="-21.59" width="0.4064" layer="21"/>
+</package>
+<package name="SOD123">
+<wire x1="-2.6" y1="0.9" x2="2.6" y2="0.9" width="0.127" layer="21"/>
+<wire x1="0.15875" y1="0" x2="-0.79375" y2="0.63505" width="0.127" layer="21"/>
+<wire x1="-0.79375" y1="0.63505" x2="-0.79375" y2="-0.63505" width="0.127" layer="21"/>
+<wire x1="-0.79375" y1="-0.63505" x2="0.15875" y2="0" width="0.127" layer="21"/>
+<wire x1="0.15875" y1="0" x2="0.15875" y2="0.63505" width="0.127" layer="21"/>
+<wire x1="0.15875" y1="0" x2="0.15875" y2="-0.63505" width="0.127" layer="21"/>
+<smd name="A" x="-1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
+<smd name="C" x="1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
+<text x="-2.54" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.54" y="-2.54" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<wire x1="-2.6" y1="0.9" x2="-2.6" y2="-0.9" width="0.127" layer="21"/>
+<wire x1="-2.6" y1="-0.9" x2="2.6" y2="-0.9" width="0.127" layer="21"/>
+<wire x1="2.6" y1="-0.9" x2="2.6" y2="0.9" width="0.127" layer="21"/>
+<rectangle x1="0.635" y1="-0.9525" x2="0.9525" y2="0.9525" layer="21"/>
+</package>
+<package name="SOD-323">
+<wire x1="-1.778" y1="0.762" x2="1.778" y2="0.762" width="0.127" layer="21"/>
+<wire x1="0" y1="0" x2="-0.381" y2="0.4763" width="0.127" layer="21"/>
+<wire x1="-0.381" y1="0.4763" x2="-0.381" y2="-0.4763" width="0.127" layer="21"/>
+<wire x1="-0.381" y1="-0.4763" x2="0" y2="0" width="0.127" layer="21"/>
+<smd name="A" x="-1.1176" y="0" dx="0.762" dy="1.016" layer="1"/>
+<smd name="C" x="1.1176" y="0" dx="0.762" dy="1.016" layer="1"/>
+<text x="-2.286" y="1.016" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.286" y="-2.032" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<wire x1="-1.778" y1="0.762" x2="-1.778" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="-1.778" y1="-0.762" x2="1.778" y2="-0.762" width="0.127" layer="21"/>
+<wire x1="1.778" y1="-0.762" x2="1.778" y2="0.762" width="0.127" layer="21"/>
+<rectangle x1="0.0635" y1="-0.762" x2="0.381" y2="0.762" layer="21"/>
+</package>
+<package name="SOT23">
+<wire x1="1.4224" y1="0.6604" x2="1.4224" y2="-0.2032" width="0.1524" layer="21"/>
+<wire x1="-1.4224" y1="-0.2032" x2="-1.4224" y2="0.6604" width="0.1524" layer="21"/>
+<wire x1="-1.4224" y1="0.6604" x2="1.4224" y2="0.6604" width="0.1524" layer="21"/>
+<smd name="3" x="0" y="1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="2" x="0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="1" x="-0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<text x="-1.905" y="1.905" size="1.27" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.905" y="-3.175" size="1.27" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-0.2286" y1="0.7112" x2="0.2286" y2="1.2954" layer="51"/>
+<rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
+<rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
+<wire x1="-0.2794" y1="-0.9398" x2="0.2794" y2="-0.9398" width="0.127" layer="21"/>
+</package>
+<package name="SOT23-GSD">
+<smd name="D" x="0" y="0" dx="0.8" dy="0.9" layer="1"/>
+<smd name="G" x="-0.95" y="-2.1" dx="0.8" dy="0.9" layer="1"/>
+<smd name="S" x="0.95" y="-2.1" dx="0.8" dy="0.9" layer="1"/>
+<wire x1="-0.6" y1="0.05" x2="-1.5" y2="0.05" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="0.05" x2="-1.5" y2="-1.45" width="0.127" layer="21"/>
+<wire x1="0.6" y1="0.05" x2="1.5" y2="0.05" width="0.127" layer="21"/>
+<wire x1="1.5" y1="0.05" x2="1.5" y2="-1.45" width="0.127" layer="21"/>
+<wire x1="0.35" y1="-2" x2="-0.35" y2="-2" width="0.127" layer="21"/>
+<text x="-1.397" y="0.762" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.397" y="-3.937" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="597/591_AAA-HOLDER">
+<pad name="+2" x="0" y="0" drill="1.3208" shape="octagon"/>
+<pad name="+3" x="4.445" y="3.048" drill="1.3208" shape="octagon"/>
+<pad name="+1" x="-4.445" y="3.048" drill="1.3208" shape="octagon"/>
+<pad name="-2" x="0" y="-46.482" drill="1.3208" shape="octagon" rot="R180"/>
+<pad name="-1" x="-4.445" y="-49.53" drill="1.3208" shape="octagon" rot="R180"/>
+<pad name="-3" x="4.445" y="-49.53" drill="1.3208" shape="octagon" rot="R180"/>
+<wire x1="0" y1="-5.08" x2="0" y2="-10.16" width="0.4064" layer="21"/>
+<wire x1="-2.54" y1="-7.62" x2="2.54" y2="-7.62" width="0.4064" layer="21"/>
+<wire x1="-2.54" y1="-40.64" x2="2.54" y2="-40.64" width="0.4064" layer="21"/>
+<wire x1="-1.27" y1="-3.81" x2="-3.81" y2="-3.81" width="0.4064" layer="21"/>
+<wire x1="-3.81" y1="-3.81" x2="-5.08" y2="-5.08" width="0.4064" layer="21" curve="90"/>
+<wire x1="-5.08" y1="-5.08" x2="-5.08" y2="-43.18" width="0.4064" layer="21"/>
+<wire x1="-5.08" y1="-43.18" x2="-3.81" y2="-44.45" width="0.4064" layer="21" curve="90"/>
+<wire x1="-3.81" y1="-44.45" x2="3.81" y2="-44.45" width="0.4064" layer="21"/>
+<wire x1="3.81" y1="-44.45" x2="5.08" y2="-43.18" width="0.4064" layer="21" curve="90"/>
+<wire x1="5.08" y1="-43.18" x2="5.08" y2="-5.08" width="0.4064" layer="21"/>
+<wire x1="5.08" y1="-5.08" x2="3.81" y2="-3.81" width="0.4064" layer="21" curve="90"/>
+<wire x1="3.81" y1="-3.81" x2="1.27" y2="-3.81" width="0.4064" layer="21"/>
+<wire x1="1.27" y1="-3.81" x2="-1.27" y2="-3.81" width="0.4064" layer="21"/>
+<wire x1="-1.27" y1="-3.81" x2="-1.27" y2="-2.54" width="0.4064" layer="21"/>
+<wire x1="-1.27" y1="-2.54" x2="1.27" y2="-2.54" width="0.4064" layer="21"/>
+<wire x1="1.27" y1="-2.54" x2="1.27" y2="-3.81" width="0.4064" layer="21"/>
+<rectangle x1="-5.08" y1="-49.53" x2="5.08" y2="3.81" layer="39"/>
+</package>
+<package name="PCM12">
+<hole x="1.5" y="0" drill="0.9"/>
+<hole x="-1.5" y="0" drill="0.9"/>
+<smd name="2" x="0.75" y="1.75" dx="0.7" dy="1.5" layer="1" rot="R180"/>
+<smd name="3" x="2.25" y="1.75" dx="0.7" dy="1.5" layer="1" rot="R180"/>
+<smd name="1" x="-2.25" y="1.75" dx="0.7" dy="1.5" layer="1" rot="R180"/>
+<smd name="NC2" x="-3.65" y="-1.1" dx="1" dy="0.8" layer="1"/>
+<smd name="NC1" x="-3.65" y="1.1" dx="1" dy="0.8" layer="1"/>
+<smd name="NC4" x="3.65" y="1.1" dx="1" dy="0.8" layer="1"/>
+<smd name="NC3" x="3.65" y="-1.1" dx="1" dy="0.8" layer="1"/>
+<wire x1="4.4" y1="-1.7" x2="4.4" y2="1.7" width="0.1524" layer="21"/>
+<wire x1="4.4" y1="1.7" x2="-4.4" y2="1.7" width="0.1524" layer="21"/>
+<wire x1="-4.4" y1="-1.7" x2="4.4" y2="-1.7" width="0.1524" layer="21"/>
+<polygon width="0.127" layer="51">
+<vertex x="0.1" y="-1.7"/>
+<vertex x="0.1" y="-2.8"/>
+<vertex x="0.4" y="-3.1"/>
+<vertex x="1.1" y="-3.1"/>
+<vertex x="1.4" y="-2.8"/>
+<vertex x="1.4" y="-1.7"/>
+</polygon>
+<wire x1="-4.4" y1="1.7" x2="-4.4" y2="-1.7" width="0.1524" layer="21"/>
+<rectangle x1="-4.572" y1="-2.032" x2="-4.318" y2="1.778" layer="39"/>
+<rectangle x1="-4.572" y1="-2.032" x2="4.572" y2="-1.778" layer="39"/>
+<rectangle x1="4.318" y1="-1.778" x2="4.572" y2="2.032" layer="39"/>
+<rectangle x1="-4.572" y1="1.778" x2="4.572" y2="2.032" layer="39"/>
+<rectangle x1="-4.572" y1="1.524" x2="-4.318" y2="2.032" layer="39"/>
+<text x="-5.08" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="6.35" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+</package>
+<package name="CFPA">
+<smd name="1" x="3.85" y="1.9" dx="1.7" dy="0.7" layer="1"/>
+<smd name="2" x="3.85" y="-0.64" dx="1.7" dy="0.7" layer="1"/>
+<smd name="3" x="3.85" y="-3.18" dx="1.7" dy="0.7" layer="1"/>
+<smd name="NC4" x="1.905" y="4.875" dx="1.1" dy="1.55" layer="1"/>
+<smd name="NC3" x="1.905" y="-4.875" dx="1.1" dy="1.55" layer="1"/>
+<smd name="NC1" x="-1.905" y="4.875" dx="1.1" dy="1.55" layer="1"/>
+<smd name="NC2" x="-1.905" y="-4.875" dx="1.1" dy="1.55" layer="1"/>
+<wire x1="-3.246" y1="4.238" x2="3.5" y2="4.238" width="0.127" layer="21"/>
+<wire x1="3.5" y1="4.238" x2="3.5" y2="-4.238" width="0.127" layer="21"/>
+<wire x1="3.5" y1="-4.238" x2="-3.246" y2="-4.238" width="0.127" layer="21"/>
+<wire x1="-3.246" y1="-4.238" x2="-3.246" y2="4.238" width="0.127" layer="21"/>
+<wire x1="-3.246" y1="-2.25" x2="-4.496" y2="-2.25" width="0.127" layer="21"/>
+<wire x1="-4.496" y1="-2.25" x2="-4.672778125" y2="-2.073221875" width="0.127" layer="21"/>
+<wire x1="-4.672778125" y1="-2.073221875" x2="-4.746" y2="-1.896446875" width="0.127" layer="21" curve="-44.999284"/>
+<wire x1="-4.746" y1="-1.896446875" x2="-4.746" y2="1.896446875" width="0.127" layer="21"/>
+<wire x1="-4.746" y1="1.896446875" x2="-4.672778125" y2="2.073221875" width="0.127" layer="21" curve="-44.999494"/>
+<wire x1="-4.672778125" y1="2.073221875" x2="-4.496" y2="2.25" width="0.127" layer="21"/>
+<wire x1="-4.496" y1="2.25" x2="-3.246" y2="2.25" width="0.127" layer="21"/>
+<wire x1="-3.246" y1="2.25" x2="-3.246" y2="-2.25" width="0.127" layer="51"/>
+<wire x1="-4.496" y1="-2.25" x2="-4.496" y2="2.25" width="0.127" layer="21"/>
+<polygon width="0.127" layer="21">
+<vertex x="-4.746" y="-0.75"/>
+<vertex x="-7.996" y="-0.75"/>
+<vertex x="-8.246" y="-0.5"/>
+<vertex x="-8.246" y="0.5"/>
+<vertex x="-7.996" y="0.75"/>
+<vertex x="-4.746" y="0.75"/>
+</polygon>
+<rectangle x1="-3.246" y1="-4.318" x2="3.5" y2="4.318" layer="39"/>
+<text x="-3.048" y="6.096" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-3.048" y="-7.112" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="JS102011SAQN">
+<smd name="2" x="0" y="2.75" dx="2.5" dy="1.2" layer="1" rot="R270"/>
+<smd name="3" x="2.5" y="2.75" dx="2.5" dy="1.2" layer="1" rot="R270"/>
+<smd name="1" x="-2.5" y="2.75" dx="2.5" dy="1.2" layer="1" rot="R270"/>
+<hole x="-3.4" y="0" drill="0.9"/>
+<hole x="3.4" y="0" drill="0.9"/>
+<wire x1="-4.5" y1="-1.8" x2="0" y2="-1.8" width="0.127" layer="21"/>
+<wire x1="0" y1="-1.8" x2="1.4" y2="-1.8" width="0.127" layer="21"/>
+<wire x1="1.4" y1="-1.8" x2="4.5" y2="-1.8" width="0.127" layer="21"/>
+<wire x1="-4.5" y1="1.8" x2="-3.5" y2="1.8" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="1.8" x2="-1" y2="1.8" width="0.127" layer="21"/>
+<wire x1="1" y1="1.8" x2="1.5" y2="1.8" width="0.127" layer="21"/>
+<wire x1="3.5" y1="1.8" x2="4.5" y2="1.8" width="0.127" layer="21"/>
+<wire x1="-4.5" y1="1.8" x2="-4.5" y2="-1.8" width="0.127" layer="21"/>
+<wire x1="4.5" y1="1.8" x2="4.5" y2="-1.8" width="0.127" layer="21"/>
+<wire x1="1.4" y1="-3.8" x2="1.4" y2="-1.8" width="0.127" layer="21"/>
+<wire x1="1.4" y1="-3.8" x2="0" y2="-3.8" width="0.127" layer="21"/>
+<wire x1="0" y1="-3.8" x2="0" y2="-1.8" width="0.127" layer="21"/>
+<rectangle x1="0" y1="-3.8" x2="1.4" y2="-1.8" layer="21"/>
+<rectangle x1="-4.4" y1="-1.8" x2="4.4" y2="1.8" layer="39"/>
+<text x="-5.08" y="4.572" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-5.08" y="-3.556" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="2M1-SP1-T2-B4-M6RE">
+<pad name="2" x="12.192" y="0" drill="1.8542" shape="octagon"/>
+<pad name="1" x="12.192" y="4.699" drill="1.8542" shape="octagon"/>
+<pad name="3" x="12.192" y="-4.699" drill="1.8542" shape="octagon"/>
+<pad name="M2" x="-0.508" y="2.54" drill="1.8542" shape="octagon"/>
+<pad name="M1" x="-0.508" y="-2.54" drill="1.8542" shape="octagon"/>
+<wire x1="-0.508" y1="1.27" x2="-0.508" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-0.508" y1="-3.81" x2="-0.508" y2="-6.35" width="0.1524" layer="21"/>
+<wire x1="-0.508" y1="-6.35" x2="9.144" y2="-6.35" width="0.1524" layer="21"/>
+<wire x1="9.144" y1="-6.35" x2="9.144" y2="6.35" width="0.1524" layer="21"/>
+<wire x1="9.144" y1="6.35" x2="-0.508" y2="6.35" width="0.1524" layer="21"/>
+<wire x1="-0.508" y1="6.35" x2="-0.508" y2="3.81" width="0.1524" layer="21"/>
+<rectangle x1="9.144" y1="4.064" x2="10.414" y2="5.334" layer="21"/>
+<rectangle x1="10.414" y1="4.318" x2="11.43" y2="5.08" layer="21"/>
+<rectangle x1="9.144" y1="-0.635" x2="10.414" y2="0.635" layer="21"/>
+<rectangle x1="10.414" y1="-0.381" x2="11.43" y2="0.381" layer="21"/>
+<rectangle x1="9.144" y1="-5.334" x2="10.414" y2="-4.064" layer="21"/>
+<rectangle x1="10.414" y1="-5.08" x2="11.43" y2="-4.318" layer="21"/>
+<wire x1="-7.62" y1="3.048" x2="-1.27" y2="3.048" width="0.1524" layer="21"/>
+<wire x1="-7.62" y1="3.048" x2="-7.62" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-7.62" y1="0.762" x2="-7.62" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="-7.62" y1="-0.762" x2="-7.62" y2="-3.048" width="0.1524" layer="21"/>
+<wire x1="-7.62" y1="-3.048" x2="-1.27" y2="-3.048" width="0.1524" layer="21"/>
+<wire x1="-7.62" y1="0.762" x2="-11.707084375" y2="1.701028125" width="0.1524" layer="21"/>
+<wire x1="-11.707084375" y1="1.701028125" x2="-12.95384375" y2="1.016625" width="0.1524" layer="21" curve="94.398616"/>
+<wire x1="-12.95384375" y1="1.016625" x2="-12.184009375" y2="-0.22260625" width="0.1524" layer="21" curve="91.77133"/>
+<wire x1="-12.184009375" y1="-0.22260625" x2="-7.62" y2="-0.762" width="0.1524" layer="21"/>
+</package>
+<package name="AS12A*_SPDT">
+<pad name="MECH1" x="-10.16" y="0.9906" drill="0.8" shape="octagon"/>
+<pad name="P3" x="-5.08" y="0.9906" drill="0.8" shape="octagon"/>
+<pad name="P2" x="-2.54" y="0.9906" drill="0.8" shape="octagon"/>
+<pad name="P1" x="0" y="0.9906" drill="0.8" shape="octagon"/>
+<pad name="MECH2" x="-7.62" y="-1.5494" drill="0.8" shape="octagon"/>
+<wire x1="-6.4262" y1="2.8448" x2="-14.9606" y2="2.8448" width="0.127" layer="21"/>
+<wire x1="-14.9606" y1="2.8448" x2="-14.9606" y2="-2.8448" width="0.127" layer="21"/>
+<wire x1="-14.9606" y1="-2.8448" x2="-6.4262" y2="-2.8448" width="0.127" layer="21"/>
+<wire x1="-6.4262" y1="-2.8448" x2="-6.4262" y2="2.8448" width="0.127" layer="21"/>
+<wire x1="-14.9606" y1="3.81" x2="-14.9606" y2="-3.81" width="0.127" layer="51" style="shortdash"/>
+<text x="-15.24" y="-3.81" size="1.016" layer="51" font="vector" ratio="18" rot="R90">PCB Edge</text>
+<wire x1="-14.9606" y1="1.1938" x2="-16.9672" y2="1.1938" width="0.127" layer="21"/>
+<wire x1="-16.9672" y1="1.1938" x2="-17.3482" y2="1.1938" width="0.127" layer="21"/>
+<wire x1="-17.3482" y1="1.1938" x2="-17.3482" y2="-1.1938" width="0.127" layer="21"/>
+<wire x1="-17.3482" y1="-1.1938" x2="-16.9672" y2="-1.1938" width="0.127" layer="21"/>
+<wire x1="-16.9672" y1="-1.1938" x2="-14.9606" y2="-1.1938" width="0.127" layer="21"/>
+<wire x1="-14.9606" y1="-1.1938" x2="-14.9606" y2="1.1938" width="0.127" layer="49"/>
+<wire x1="-16.9672" y1="1.1938" x2="-16.9672" y2="-1.1938" width="0.127" layer="21"/>
+<wire x1="-12.446" y1="2.794" x2="-12.446" y2="2.54" width="0.127" layer="21"/>
+<wire x1="-12.446" y1="2.54" x2="-8.89" y2="2.54" width="0.127" layer="21"/>
+<wire x1="-8.89" y1="2.54" x2="-8.89" y2="2.794" width="0.127" layer="21"/>
+<wire x1="-12.446" y1="-2.794" x2="-12.446" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-12.446" y1="-2.54" x2="-8.89" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-8.89" y1="-2.54" x2="-8.89" y2="-2.794" width="0.127" layer="21"/>
+<rectangle x1="-15.0368" y1="-2.921" x2="-6.35" y2="2.921" layer="39"/>
+<text x="-13.97" y="4.572" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-13.97" y="3.302" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
@@ -1307,6 +1554,79 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="78.74" y="6.35" size="2.54" layer="94" font="vector">&gt;REVISION</text>
 <text x="1.27" y="30.48" size="2.54" layer="94" font="vector">DESIGNED BY:</text>
 <text x="1.27" y="25.4" size="2.54" layer="94" font="vector">&gt;DESIGNER</text>
+</symbol>
+<symbol name="BATTERY">
+<description>&lt;h3&gt;Battery (Single-Cell)&lt;/h3&gt;</description>
+<wire x1="-1.27" y1="3.81" x2="-1.27" y2="-3.81" width="0.4064" layer="94"/>
+<wire x1="0" y1="1.27" x2="0" y2="-1.27" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="3.81" x2="1.27" y2="-3.81" width="0.4064" layer="94"/>
+<wire x1="2.54" y1="1.27" x2="2.54" y2="-1.27" width="0.4064" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.524" y2="0" width="0.1524" layer="94"/>
+<text x="0" y="4.318" size="1.778" layer="95" font="vector" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-4.318" size="1.778" layer="96" font="vector" align="top-center">&gt;VALUE</text>
+<pin name="-" x="5.08" y="0" visible="off" length="short" direction="pwr" rot="R180"/>
+<pin name="+" x="-5.08" y="0" visible="off" length="short" direction="pwr"/>
+</symbol>
+<symbol name="Z-DIODE">
+<wire x1="-2.54" y1="1.27" x2="-2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-1.27" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-2.54" y2="1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="1.11125" x2="0" y2="-1.11125" width="0.254" layer="94"/>
+<pin name="A" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
+<pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
+<text x="-1.27" y="2.54" size="1.778" layer="95">&gt;NAME</text>
+<text x="-1.27" y="-3.81" size="1.778" layer="96">&gt;VALUE</text>
+<wire x1="0" y1="-1.11125" x2="0.47625" y2="-1.5875" width="0.254" layer="94"/>
+<wire x1="0" y1="1.11125" x2="-0.47625" y2="1.5875" width="0.254" layer="94"/>
+</symbol>
+<symbol name="P-MOSFET">
+<wire x1="-3.6576" y1="2.413" x2="-3.6576" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="1.905" x2="-2.0066" y2="1.905" width="0.1524" layer="94"/>
+<wire x1="-2.032" y1="-1.905" x2="0" y2="-1.905" width="0.1524" layer="94"/>
+<wire x1="0" y1="-5.08" x2="0" y2="-1.905" width="0.1524" layer="94"/>
+<wire x1="-5.08" y1="-2.54" x2="-3.6576" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="0" y1="5.08" x2="0" y2="1.905" width="0.1524" layer="94"/>
+<wire x1="0.127" y1="0" x2="-1.143" y2="0.508" width="0.1524" layer="94"/>
+<wire x1="-1.143" y1="0.508" x2="-1.143" y2="-0.508" width="0.1524" layer="94"/>
+<wire x1="-1.143" y1="-0.508" x2="0.127" y2="0" width="0.1524" layer="94"/>
+<wire x1="-1.016" y1="0" x2="0" y2="0" width="0.1524" layer="94"/>
+<wire x1="-1.016" y1="-0.254" x2="-0.127" y2="0" width="0.3048" layer="94"/>
+<wire x1="-0.127" y1="0" x2="-1.016" y2="0.254" width="0.3048" layer="94"/>
+<wire x1="-1.016" y1="0.254" x2="-1.016" y2="0" width="0.3048" layer="94"/>
+<wire x1="-1.016" y1="0" x2="-0.762" y2="0" width="0.3048" layer="94"/>
+<circle x="0" y="1.905" radius="0.127" width="0.4064" layer="94"/>
+<text x="2.54" y="2.54" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="0" size="1.778" layer="96">&gt;VALUE</text>
+<rectangle x1="-2.794" y1="-2.54" x2="-2.032" y2="-1.27" layer="94"/>
+<rectangle x1="-2.794" y1="1.27" x2="-2.032" y2="2.54" layer="94"/>
+<rectangle x1="-2.794" y1="-0.889" x2="-2.032" y2="0.889" layer="94"/>
+<pin name="D" x="0" y="-5.08" visible="pad" length="point"/>
+<pin name="G" x="-5.08" y="-2.54" visible="pad" length="point"/>
+<pin name="S" x="0" y="5.08" visible="pad" length="point"/>
+<wire x1="-1.016" y1="0" x2="-2.0066" y2="0" width="0.1524" layer="94"/>
+<wire x1="0" y1="1.905" x2="0" y2="0" width="0.1524" layer="94"/>
+<wire x1="0" y1="-1.905" x2="1.27" y2="-1.905" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="1.905" x2="1.27" y2="-1.905" width="0.1524" layer="94"/>
+<wire x1="0" y1="1.905" x2="1.27" y2="1.905" width="0.1524" layer="94"/>
+<polygon width="0.254" layer="94">
+<vertex x="0.762" y="-0.508"/>
+<vertex x="1.27" y="0.508"/>
+<vertex x="1.778" y="-0.508"/>
+</polygon>
+<wire x1="0.762" y1="0.508" x2="1.778" y2="0.508" width="0.254" layer="94"/>
+</symbol>
+<symbol name="SPDT">
+<wire x1="-0.635" y1="0" x2="0.635" y2="0" width="0.254" layer="94"/>
+<wire x1="0.635" y1="0" x2="5.715" y2="1.905" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-1.27" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.54" x2="5.715" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="1.27" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.715" y2="2.54" width="0.254" layer="94"/>
+<text x="0" y="-6.35" size="1.778" layer="95">&gt;NAME</text>
+<text x="0" y="-8.89" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="2" x="-2.54" y="0" visible="pad" length="short" direction="pas"/>
+<pin name="3" x="7.62" y="-2.54" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="1" x="7.62" y="2.54" visible="pad" length="short" direction="pas" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -2408,6 +2728,15 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_MLE-HS-CAT" package="LED-MLE">
+<connects>
+<connect gate="G$1" pin="A" pad="A1 A2"/>
+<connect gate="G$1" pin="C" pad="C1 C2 HS"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="DOCFIELD-GEN">
@@ -2422,736 +2751,156 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </device>
 </devices>
 </deviceset>
-</devicesets>
-</library>
-<library name="SparkFun-Batteries">
-<description>&lt;h3&gt;SparkFun Batteries&lt;/h3&gt;
-This library contains battery clips, connectors, and appropriately sized silk outlines for LiPo batteries. 
-&lt;br&gt;
-&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
-&lt;br&gt;
-&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
-&lt;br&gt;
-&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
-&lt;br&gt;
-&lt;br&gt;
-You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="BATTERY-AAA">
-<description>&lt;h3&gt;AAA Battery Clips&lt;/h3&gt;
-&lt;p&gt;PCB mount clips properly spaced to hold a AAA battery.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://cdn.sparkfun.com/datasheets/Prototyping/M60-2p9.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-13.97" y1="3.81" x2="-13.97" y2="-3.81" width="0.127" layer="51"/>
-<wire x1="-13.97" y1="-3.81" x2="-23.495" y2="-3.81" width="0.127" layer="51"/>
-<wire x1="-23.495" y1="-3.81" x2="-23.495" y2="3.81" width="0.127" layer="51"/>
-<wire x1="-23.495" y1="3.81" x2="-13.97" y2="3.81" width="0.127" layer="51"/>
-<wire x1="23.368" y1="3.81" x2="13.97" y2="3.81" width="0.127" layer="51"/>
-<wire x1="13.97" y1="3.81" x2="13.97" y2="-3.81" width="0.127" layer="51"/>
-<wire x1="13.97" y1="-3.81" x2="23.368" y2="-3.81" width="0.127" layer="51"/>
-<wire x1="23.368" y1="-3.81" x2="23.368" y2="3.81" width="0.127" layer="51"/>
-<wire x1="-12.7" y1="3.81" x2="12.7" y2="3.81" width="0.127" layer="51"/>
-<wire x1="12.7" y1="-3.81" x2="-12.7" y2="-3.81" width="0.127" layer="51"/>
-<pad name="PWR@2" x="-13.97" y="0" drill="1.7018"/>
-<pad name="PWR@1" x="-21.59" y="0" drill="1.7018"/>
-<pad name="GND@2" x="13.97" y="0" drill="1.7018"/>
-<pad name="GND@1" x="21.59" y="0" drill="1.7018"/>
-<text x="-11.43" y="-1.27" size="2.54" layer="21" ratio="12">+</text>
-<text x="8.89" y="-1.27" size="2.54" layer="21" ratio="12">-</text>
-<text x="-23.749" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
-<text x="-19.05" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTERY-AA">
-<description>&lt;h3&gt;AA Battery Clips&lt;/h3&gt;
-&lt;p&gt;PCB mount clips properly spaced to hold a AA battery&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://cdn.sparkfun.com/datasheets/Prototyping/M60-2p9.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-17.526" y1="-4.826" x2="-27.051" y2="-4.826" width="0.254" layer="41"/>
-<wire x1="-27.051" y1="-4.826" x2="-27.051" y2="4.826" width="0.254" layer="41"/>
-<wire x1="-27.051" y1="4.826" x2="-17.526" y2="4.826" width="0.254" layer="41"/>
-<wire x1="27.051" y1="4.826" x2="17.526" y2="4.826" width="0.2032" layer="21"/>
-<wire x1="17.526" y1="-4.826" x2="27.051" y2="-4.826" width="0.2032" layer="21"/>
-<wire x1="27.051" y1="-4.826" x2="27.051" y2="4.826" width="0.2032" layer="21"/>
-<wire x1="-26.67" y1="7.62" x2="26.67" y2="7.62" width="0.127" layer="51"/>
-<wire x1="26.67" y1="-7.62" x2="-26.67" y2="-7.62" width="0.127" layer="51"/>
-<wire x1="-17.526" y1="4.826" x2="-17.526" y2="-4.826" width="0.2032" layer="41"/>
-<wire x1="17.526" y1="4.826" x2="17.526" y2="2.159" width="0.2032" layer="21"/>
-<wire x1="17.526" y1="-2.159" x2="17.526" y2="-4.826" width="0.2032" layer="21"/>
-<wire x1="-17.526" y1="-4.826" x2="-27.051" y2="-4.826" width="0.2032" layer="21"/>
-<wire x1="-27.051" y1="-4.826" x2="-27.051" y2="4.826" width="0.2032" layer="21"/>
-<wire x1="-27.051" y1="4.826" x2="-17.526" y2="4.826" width="0.2032" layer="21"/>
-<wire x1="-17.526" y1="4.826" x2="-17.526" y2="2.159" width="0.2032" layer="21"/>
-<wire x1="-17.526" y1="-2.159" x2="-17.526" y2="-4.826" width="0.254" layer="21"/>
-<wire x1="17.526" y1="4.826" x2="27.051" y2="4.826" width="0.254" layer="41"/>
-<wire x1="27.051" y1="4.826" x2="27.051" y2="-4.826" width="0.254" layer="41"/>
-<wire x1="27.051" y1="-4.826" x2="17.526" y2="-4.826" width="0.254" layer="41"/>
-<wire x1="17.526" y1="-4.826" x2="17.526" y2="4.826" width="0.254" layer="41"/>
-<pad name="PWR@2" x="-17.78" y="0" drill="1.8542" rot="R90"/>
-<pad name="PWR@1" x="-25.146" y="0" drill="1.8542"/>
-<pad name="GND@2" x="17.78" y="0" drill="1.8542"/>
-<pad name="GND@1" x="25.146" y="0" drill="1.8542"/>
-<text x="-14.732" y="-1.27" size="2.54" layer="21" ratio="12">+</text>
-<text x="12.7" y="-1.27" size="2.54" layer="21" ratio="12">-</text>
-<text x="-27.305" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
-<text x="-21.971" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCON_12MM_PTH">
-<description>&lt;h3&gt;12mm Coin Cell Battery (CR1225) Holder - PTH&lt;/h3&gt;
-&lt;p&gt;This is a through hole 12mm coin cell battery holder. Holds battery in place with friction. Metal housing is +, PCB pad underneath is -.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cdn.sparkfun.com/datasheets/Prototyping/KEY-3001.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-6.35" y1="-3.81" x2="-3.81" y2="-6.35" width="0.2032" layer="21"/>
-<wire x1="-3.81" y1="-6.35" x2="3.81" y2="-6.35" width="0.2032" layer="21"/>
-<wire x1="3.81" y1="-6.35" x2="6.35" y2="-3.81" width="0.2032" layer="21"/>
-<wire x1="6.35" y1="-3.81" x2="6.35" y2="-2.54" width="0.2032" layer="21"/>
-<wire x1="-6.35" y1="-3.81" x2="-6.35" y2="-2.54" width="0.2032" layer="21"/>
-<wire x1="-6.35" y1="2.54" x2="-6.35" y2="4.064" width="0.2032" layer="21"/>
-<wire x1="6.35" y1="2.54" x2="6.35" y2="4.064" width="0.2032" layer="21"/>
-<wire x1="-3.175" y1="5.588" x2="3.175" y2="5.588" width="0.2032" layer="21" curve="102.56384"/>
-<wire x1="-6.35" y1="4.064" x2="-3.175" y2="5.588" width="0.2032" layer="21" curve="-123.398919"/>
-<wire x1="6.35" y1="4.064" x2="3.175" y2="5.588" width="0.2032" layer="21" curve="128.77667"/>
-<pad name="VCC@2" x="-6.604" y="0" drill="1.8542" shape="square"/>
-<pad name="VCC@1" x="6.604" y="0" drill="1.8542" shape="square"/>
-<smd name="GND" x="0" y="0" dx="9" dy="9" layer="1" roundness="100" cream="no"/>
-<circle x="0" y="0" radius="1" width="2" layer="31"/>
-<text x="0" y="-6.477" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-6.223" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCON_20MM">
-<description>&lt;h3&gt;20mm Coin Cell Battery (CR2032) Holder - SMD (Single Pad)&lt;/h3&gt;
-&lt;p&gt;Part number: CR2032-THM&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-3.7" y1="-10.57" x2="3.7" y2="-10.57" width="0.2032" layer="21"/>
-<wire x1="-3.7" y1="-10.57" x2="-10.5" y2="-4.5" width="0.2032" layer="21"/>
-<wire x1="3.7" y1="-10.57" x2="10.5" y2="-4.5" width="0.2032" layer="21"/>
-<wire x1="-5.3" y1="8.3" x2="5.3" y2="8.3" width="0.2032" layer="21" curve="69.999889"/>
-<wire x1="10.5" y1="-4.5" x2="10.5" y2="-3.4" width="0.2032" layer="21"/>
-<wire x1="-10.5" y1="-4.5" x2="-10.5" y2="-3.4" width="0.2032" layer="21"/>
-<wire x1="-10.5" y1="6.3" x2="-5.3" y2="8.3" width="0.2032" layer="21" curve="-139.635474"/>
-<wire x1="10.5" y1="6.3" x2="5.3" y2="8.3" width="0.2032" layer="21" curve="136.99875"/>
-<wire x1="-10.5" y1="6.3" x2="-10.5" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="10.5" y1="6.3" x2="10.5" y2="3.4" width="0.2032" layer="21"/>
-<circle x="0" y="0" radius="10" width="0.2032" layer="51"/>
-<smd name="2" x="0" y="0" dx="6.07" dy="6.07" layer="1"/>
-<smd name="1" x="-12.5" y="0" dx="6.07" dy="6.07" layer="1"/>
-<smd name="3" x="12.5" y="0" dx="6.07" dy="6.07" layer="1"/>
-<text x="0" y="-10.795" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-10.287" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCOM_20MM_PTH">
-<description>&lt;h3&gt;20mm (CR2032) Coin Cell Battery Holder - PTH&lt;/h3&gt;
-&lt;p&gt;Basic 20mm coin cell holder. Posts can be inserted into 0.1" perf board! Holds the common CR2032 type batteries.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.sparkfun.com/datasheets/Prototyping/CoinCellHolder-20mm.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="10.34" y1="3.8" x2="13.32" y2="3.8" width="0.2032" layer="21"/>
-<wire x1="13.32" y1="3.8" x2="13.32" y2="-3.8" width="0.2032" layer="21"/>
-<wire x1="13.32" y1="-3.8" x2="10.34" y2="-3.8" width="0.2032" layer="21"/>
-<circle x="0.06" y="0.1" radius="10" width="0.127" layer="51"/>
-<pad name="2" x="-8.15" y="0" drill="1.3" rot="R90"/>
-<pad name="1" x="11.85" y="0" drill="1.3" rot="R90"/>
-<text x="8.6" y="-0.7" size="1.27" layer="51">+</text>
-<text x="-6.4" y="-0.7" size="1.27" layer="51">-</text>
-<wire x1="-10.54" y1="3.8" x2="-10.54" y2="-3.8" width="0.2032" layer="21"/>
-<wire x1="10.34" y1="3.8" x2="-10.54" y2="3.8" width="0.2032" layer="21" curve="139.856795"/>
-<wire x1="10.34" y1="-3.8" x2="-10.54" y2="-3.8" width="0.2032" layer="21" curve="-139.856795"/>
-<text x="-10.795" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
-<text x="0" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCON_24.5MM_PTH">
-<description>&lt;h3&gt;24.5mm Coin Cell Battery (CR2450) Holder - PTH&lt;/h3&gt;
-&lt;p&gt;Through hole 24.5 mm coin cell holder. Holds battery in place with friction. Metal housing is +, PCB pad underneath is -.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.sparkfun.com/datasheets/Batteries/Coin_Cell_Holder_245mm-3009.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-3.81" y1="-12.7" x2="3.81" y2="-12.7" width="0.2032" layer="21"/>
-<wire x1="-3.81" y1="-12.7" x2="-12.7" y2="-6.35" width="0.2032" layer="21"/>
-<wire x1="3.81" y1="-12.7" x2="12.7" y2="-6.35" width="0.2032" layer="21"/>
-<wire x1="-7.62" y1="9.779" x2="7.62" y2="9.779" width="0.2032" layer="21" curve="63.785901"/>
-<wire x1="12.7" y1="-6.35" x2="12.7" y2="-2.54" width="0.2032" layer="21"/>
-<wire x1="-12.7" y1="-6.35" x2="-12.7" y2="-2.54" width="0.2032" layer="21"/>
-<wire x1="-12.7" y1="6.35" x2="-7.62" y2="9.779" width="0.2032" layer="21" curve="-123.780121"/>
-<wire x1="12.7" y1="6.35" x2="7.62" y2="9.779" width="0.2032" layer="21" curve="123.773101"/>
-<wire x1="-12.7" y1="6.35" x2="-12.7" y2="2.54" width="0.2032" layer="21"/>
-<wire x1="12.7" y1="6.35" x2="12.7" y2="2.54" width="0.2032" layer="21"/>
-<circle x="0" y="0" radius="12.25" width="0.2032" layer="51"/>
-<pad name="1" x="-12.7" y="0" drill="1.8542" shape="square"/>
-<pad name="3" x="12.7" y="0" drill="1.8542" shape="square"/>
-<smd name="2" x="0" y="0" dx="4.064" dy="4.064" layer="1"/>
-<text x="0" y="-12.954" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-12.446" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCON_12MM">
-<description>&lt;h3&gt;12mm Coin Cell (CR1225) Battery Holder - SMD&lt;/h3&gt;
-&lt;p&gt;Holds battery in place with friction. The metal housing connects to the positive side of the battery and the PCB pad underneath is connected to the negative side.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cdn.sparkfun.com/datasheets/Prototyping/KEY-3000.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-6.096" y1="4.318" x2="-3.81" y2="5.334" width="0.2032" layer="21" curve="-90"/>
-<wire x1="3.81" y1="5.334" x2="6.096" y2="4.318" width="0.2032" layer="21" curve="-90"/>
-<wire x1="6.096" y1="4.318" x2="6.096" y2="-3.302" width="0.2032" layer="21"/>
-<wire x1="6.096" y1="-3.302" x2="3.048" y2="-6.35" width="0.2032" layer="21"/>
-<wire x1="3.048" y1="-6.35" x2="-3.048" y2="-6.35" width="0.2032" layer="21"/>
-<wire x1="-3.048" y1="-6.35" x2="-6.096" y2="-3.302" width="0.2032" layer="21"/>
-<wire x1="-6.096" y1="-3.302" x2="-6.096" y2="4.318" width="0.2032" layer="21"/>
-<wire x1="3.81" y1="5.334" x2="-3.81" y2="5.334" width="0.2032" layer="21" curve="-90"/>
-<smd name="GND" x="0" y="0" dx="8" dy="8" layer="1" roundness="100" cream="no"/>
-<smd name="PWR@1" x="-7.874" y="0" dx="3.175" dy="3.175" layer="1"/>
-<smd name="PWR@2" x="7.874" y="0" dx="3.175" dy="3.175" layer="1"/>
-<circle x="0" y="0" radius="6" width="0.127" layer="51"/>
-<circle x="0" y="0" radius="6" width="0.127" layer="39"/>
-<circle x="0" y="0" radius="1" width="2" layer="31"/>
-<text x="0" y="-6.477" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-4.953" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCON_20MM_4LEGS">
-<description>&lt;h3&gt;20mm Coin Cell Battery (CR2032) Holder - SMD (Dual Pad)&lt;/h3&gt;
-&lt;p&gt;This holder fits 20mm Lithium coin cell batteries and holds the battery in place with friction. The metal housing connects to the positive (+) side of the battery and the PCB pad underneath is connected to the negative (-) side.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://cdn.sparkfun.com/datasheets/Prototyping/BAT-BLH-001.jpg"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-7.5" y1="7.35" x2="7.5" y2="7.35" width="0.2032" layer="21"/>
-<wire x1="-7.5" y1="7.35" x2="-10.55" y2="4.65" width="0.2032" layer="21"/>
-<wire x1="7.5" y1="7.35" x2="10.55" y2="4.65" width="0.2032" layer="21"/>
-<wire x1="10.55" y1="2.55" x2="10.55" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="10.55" y1="-0.55" x2="10.55" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="-10.55" y1="2.55" x2="-10.55" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="-10.55" y1="-0.55" x2="-10.55" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="10.55" y1="2.55" x2="11.45" y2="2.55" width="0.2032" layer="51"/>
-<wire x1="11.45" y1="2.55" x2="11.45" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="11.45" y1="0.55" x2="10.55" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="10.55" y1="-0.55" x2="11.45" y2="-0.55" width="0.2032" layer="51"/>
-<wire x1="11.45" y1="-0.55" x2="11.45" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="11.45" y1="-2.55" x2="10.55" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="-10.55" y1="-2.55" x2="-11.45" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="-11.45" y1="-2.55" x2="-11.45" y2="-0.55" width="0.2032" layer="51"/>
-<wire x1="-11.45" y1="-0.55" x2="-10.55" y2="-0.55" width="0.2032" layer="51"/>
-<wire x1="-10.55" y1="0.55" x2="-11.45" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="-11.45" y1="0.55" x2="-11.45" y2="2.55" width="0.2032" layer="51"/>
-<wire x1="-11.45" y1="2.55" x2="-10.55" y2="2.55" width="0.2032" layer="51"/>
-<wire x1="10.55" y1="-4.55" x2="5.55" y2="-7.95" width="0.2032" layer="21"/>
-<wire x1="5.55" y1="-7.95" x2="-5.55" y2="-7.95" width="0.2032" layer="21" curve="62.415735"/>
-<wire x1="-5.55" y1="-7.95" x2="-10.55" y2="-4.55" width="0.2032" layer="21"/>
-<wire x1="10.55" y1="4.65" x2="10.55" y2="3.2" width="0.2032" layer="21"/>
-<wire x1="-10.55" y1="3.581" x2="-10.55" y2="4.65" width="0.2032" layer="21"/>
-<wire x1="-10.55" y1="-4.55" x2="-10.55" y2="-3.581" width="0.2032" layer="21"/>
-<wire x1="10.55" y1="-4.55" x2="10.55" y2="-3.581" width="0.2032" layer="21"/>
-<circle x="0" y="0" radius="10" width="0.2032" layer="51"/>
-<smd name="POSITIVE@1" x="-11.176" y="1.651" dx="2.032" dy="3.175" layer="1" rot="R180" cream="no"/>
-<smd name="NEGATIVE" x="0" y="0" dx="13" dy="8" layer="1" roundness="100" cream="no"/>
-<smd name="POSITIVE@4" x="11.176" y="-1.651" dx="2.032" dy="3.175" layer="1" cream="no"/>
-<smd name="POSITIVE@2" x="-11.176" y="-1.524" dx="2.032" dy="3.175" layer="1" cream="no"/>
-<smd name="POSITIVE@3" x="11.176" y="1.524" dx="2.032" dy="3.175" layer="1" rot="R180" cream="no"/>
-<rectangle x1="-2" y1="-2" x2="2" y2="2" layer="31"/>
-<rectangle x1="-13.462" y1="-3.429" x2="-9.906" y2="3.683" layer="31"/>
-<rectangle x1="9.906" y1="-3.556" x2="13.462" y2="3.556" layer="31"/>
-<text x="0" y="7.493" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
-<text x="0" y="7.112" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTERY-AA-KIT">
-<description>&lt;h3&gt;AA Battery Clips (KIT Variant)&lt;/h3&gt;
-&lt;p&gt;PCB mount clips properly spaced to hold a AA battery&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Warning:&lt;/b&gt; This is the KIT version of this package. This package has a smaller diameter top stop mask, which doesn't cover the diameter of the pad. This means only the bottom side of the pads' copper will be exposed. You'll only be able to solder to the bottom side.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://cdn.sparkfun.com/datasheets/Prototyping/M60-2p9.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-17.526" y1="-4.826" x2="-27.051" y2="-4.826" width="0.254" layer="41"/>
-<wire x1="-27.051" y1="-4.826" x2="-27.051" y2="4.826" width="0.254" layer="41"/>
-<wire x1="-27.051" y1="4.826" x2="-17.526" y2="4.826" width="0.254" layer="41"/>
-<wire x1="27.051" y1="4.826" x2="17.526" y2="4.826" width="0.2032" layer="21"/>
-<wire x1="17.526" y1="-4.826" x2="27.051" y2="-4.826" width="0.2032" layer="21"/>
-<wire x1="27.051" y1="-4.826" x2="27.051" y2="4.826" width="0.2032" layer="21"/>
-<wire x1="-26.67" y1="7.62" x2="26.67" y2="7.62" width="0.127" layer="51"/>
-<wire x1="26.67" y1="-7.62" x2="-26.67" y2="-7.62" width="0.127" layer="51"/>
-<wire x1="-17.526" y1="4.826" x2="-17.526" y2="-4.826" width="0.254" layer="41"/>
-<wire x1="-17.526" y1="-4.826" x2="-27.051" y2="-4.826" width="0.2032" layer="21"/>
-<wire x1="-27.051" y1="-4.826" x2="-27.051" y2="4.826" width="0.2032" layer="21"/>
-<wire x1="-27.051" y1="4.826" x2="-17.526" y2="4.826" width="0.2032" layer="21"/>
-<wire x1="17.526" y1="4.826" x2="27.051" y2="4.826" width="0.254" layer="41"/>
-<wire x1="27.051" y1="4.826" x2="27.051" y2="-4.826" width="0.254" layer="41"/>
-<wire x1="27.051" y1="-4.826" x2="17.526" y2="-4.826" width="0.254" layer="41"/>
-<wire x1="17.526" y1="-4.826" x2="17.526" y2="4.826" width="0.254" layer="41"/>
-<wire x1="-24.0157" y1="-0.0482" x2="-18.9129" y2="-0.0457" width="0.4064" layer="49"/>
-<wire x1="18.9103" y1="-0.0482" x2="24.0131" y2="-0.0457" width="0.4064" layer="49"/>
-<wire x1="13.97" y1="2.54" x2="-12.7" y2="2.54" width="0.4064" layer="21"/>
-<wire x1="-12.7" y1="2.54" x2="-12.7" y2="0.5842" width="0.4064" layer="21"/>
-<wire x1="-12.7" y1="0.5842" x2="-12.7" y2="-0.6858" width="0.4064" layer="21"/>
-<wire x1="-12.7" y1="-0.6858" x2="-12.7" y2="-2.54" width="0.4064" layer="21"/>
-<wire x1="-12.7" y1="-2.54" x2="13.97" y2="-2.54" width="0.4064" layer="21"/>
-<wire x1="13.97" y1="-2.54" x2="13.97" y2="2.54" width="0.4064" layer="21"/>
-<wire x1="-12.7" y1="0.5842" x2="-13.97" y2="0.5842" width="0.4064" layer="21"/>
-<wire x1="-13.97" y1="0.5842" x2="-13.97" y2="-0.6858" width="0.4064" layer="21"/>
-<wire x1="-13.97" y1="-0.6858" x2="-12.7" y2="-0.6858" width="0.4064" layer="21"/>
-<wire x1="12.065" y1="0" x2="10.795" y2="0" width="0.4064" layer="21"/>
-<wire x1="-9.525" y1="0" x2="-10.795" y2="0" width="0.4064" layer="21"/>
-<wire x1="-10.16" y1="0.635" x2="-10.16" y2="-0.635" width="0.4064" layer="21"/>
-<pad name="GND@1" x="25.146" y="0" drill="1.8542" stop="no"/>
-<pad name="GND@2" x="18.034" y="0" drill="1.8542" stop="no"/>
-<pad name="PWR@1" x="-25.146" y="0" drill="1.8542" stop="no"/>
-<pad name="PWR@2" x="-18.034" y="0" drill="1.8542" rot="R90" stop="no"/>
-<polygon width="0.127" layer="30">
-<vertex x="-23.8252" y="-0.0508" curve="90"/>
-<vertex x="-25.146" y="1.3462" curve="90"/>
-<vertex x="-26.4668" y="-0.0762" curve="90"/>
-<vertex x="-25.146" y="-1.3462" curve="90"/>
-</polygon>
-<polygon width="0.127" layer="29">
-<vertex x="-25.1206" y="-0.8636" curve="-90.090301"/>
-<vertex x="-26.0096" y="-0.0508" curve="-90"/>
-<vertex x="-25.1714" y="0.8636" curve="-89.987112"/>
-<vertex x="-24.2824" y="0" curve="-90"/>
-</polygon>
-<polygon width="0.127" layer="30">
-<vertex x="26.4668" y="-0.0508" curve="90"/>
-<vertex x="25.146" y="1.3462" curve="90"/>
-<vertex x="23.8252" y="-0.0762" curve="90"/>
-<vertex x="25.146" y="-1.3462" curve="90"/>
-</polygon>
-<polygon width="0.127" layer="29">
-<vertex x="25.1714" y="-0.8636" curve="-90.090301"/>
-<vertex x="24.2824" y="-0.0508" curve="-90"/>
-<vertex x="25.1206" y="0.8636" curve="-89.987112"/>
-<vertex x="26.0096" y="0" curve="-90"/>
-</polygon>
-<polygon width="0.127" layer="30">
-<vertex x="-16.7132" y="-0.0508" curve="90"/>
-<vertex x="-18.034" y="1.3462" curve="90"/>
-<vertex x="-19.3548" y="-0.0762" curve="90"/>
-<vertex x="-18.034" y="-1.3462" curve="90"/>
-</polygon>
-<polygon width="0.127" layer="29">
-<vertex x="-18.0086" y="-0.8636" curve="-90.090301"/>
-<vertex x="-18.8976" y="-0.0508" curve="-90"/>
-<vertex x="-18.0594" y="0.8636" curve="-89.987112"/>
-<vertex x="-17.1704" y="0" curve="-90"/>
-</polygon>
-<polygon width="0.127" layer="30">
-<vertex x="19.3548" y="-0.0508" curve="90"/>
-<vertex x="18.034" y="1.3462" curve="90"/>
-<vertex x="16.7132" y="-0.0762" curve="90"/>
-<vertex x="18.034" y="-1.3462" curve="90"/>
-</polygon>
-<polygon width="0.127" layer="29">
-<vertex x="18.0594" y="-0.8636" curve="-90.090301"/>
-<vertex x="17.1704" y="-0.0508" curve="-90"/>
-<vertex x="18.0086" y="0.8636" curve="-89.987112"/>
-<vertex x="18.8976" y="0" curve="-90"/>
-</polygon>
-<text x="-27.305" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
-<text x="-23.241" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCON_9V">
-<description>&lt;h3&gt;PCMOUNT 9V Battery Holder&lt;/h3&gt;
-&lt;p&gt;&lt;a href="http://www.memoryprotectiondevices.com/datasheets/BC9VPC-datasheet.pdf"&gt;Datasheet&lt;/a&gt; (MPD BC9VPC)&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<pad name="+" x="0" y="0" drill="1.905"/>
-<pad name="-" x="0" y="-12.954" drill="1.905"/>
-<wire x1="-53.0098" y1="8.5598" x2="1.9304" y2="8.5598" width="0.2032" layer="21"/>
-<wire x1="1.9304" y1="8.5598" x2="1.9304" y2="-21.4122" width="0.2032" layer="21"/>
-<wire x1="1.9304" y1="-21.4122" x2="-53.0098" y2="-21.4122" width="0.2032" layer="21"/>
-<wire x1="-53.0098" y1="-21.4122" x2="-53.0098" y2="8.5598" width="0.2032" layer="21"/>
-<circle x="-39.2684" y="4.7498" radius="1.27" width="0.127" layer="51"/>
-<circle x="-12.2936" y="4.7498" radius="1.27" width="0.127" layer="51"/>
-<circle x="-25.781" y="-17.6022" radius="1.27" width="0.127" layer="51"/>
-<text x="-53.34" y="-6.35" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
-<text x="-25.4" y="-6.35" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCON_20MM_4LEGS_OVERPASTE">
-<description>&lt;h3&gt;20mm Coin Cell Battery (CR2032) Holder - SMD (Dual Pad) (Overpaste on pads)&lt;/h3&gt;
-&lt;p&gt;This holder fits 20mm Lithium coin cell batteries and holds the battery in place with friction. The metal housing connects to the positive (+) side of the battery and the PCB pad underneath is connected to the negative (-) side.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://cdn.sparkfun.com/datasheets/Prototyping/BAT-BLH-001.jpg"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-7.5" y1="7.35" x2="7.5" y2="7.35" width="0.2032" layer="21"/>
-<wire x1="-7.5" y1="7.35" x2="-10.55" y2="4.65" width="0.2032" layer="21"/>
-<wire x1="7.5" y1="7.35" x2="10.55" y2="4.65" width="0.2032" layer="21"/>
-<wire x1="10.55" y1="2.55" x2="10.55" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="10.55" y1="-0.55" x2="10.55" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="-10.55" y1="2.55" x2="-10.55" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="-10.55" y1="-0.55" x2="-10.55" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="10.55" y1="2.55" x2="11.45" y2="2.55" width="0.2032" layer="51"/>
-<wire x1="11.45" y1="2.55" x2="11.45" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="11.45" y1="0.55" x2="10.55" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="10.55" y1="-0.55" x2="11.45" y2="-0.55" width="0.2032" layer="51"/>
-<wire x1="11.45" y1="-0.55" x2="11.45" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="11.45" y1="-2.55" x2="10.55" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="-10.55" y1="-2.55" x2="-11.45" y2="-2.55" width="0.2032" layer="51"/>
-<wire x1="-11.45" y1="-2.55" x2="-11.45" y2="-0.55" width="0.2032" layer="51"/>
-<wire x1="-11.45" y1="-0.55" x2="-10.55" y2="-0.55" width="0.2032" layer="51"/>
-<wire x1="-10.55" y1="0.55" x2="-11.45" y2="0.55" width="0.2032" layer="51"/>
-<wire x1="-11.45" y1="0.55" x2="-11.45" y2="2.55" width="0.2032" layer="51"/>
-<wire x1="-11.45" y1="2.55" x2="-10.55" y2="2.55" width="0.2032" layer="51"/>
-<wire x1="10.55" y1="-4.55" x2="5.55" y2="-7.95" width="0.2032" layer="21"/>
-<wire x1="5.55" y1="-7.95" x2="-5.55" y2="-7.95" width="0.2032" layer="21" curve="62.415735"/>
-<wire x1="-5.55" y1="-7.95" x2="-10.55" y2="-4.55" width="0.2032" layer="21"/>
-<wire x1="10.55" y1="4.65" x2="10.55" y2="3.2" width="0.2032" layer="21"/>
-<wire x1="-10.55" y1="3.2" x2="-10.55" y2="4.65" width="0.2032" layer="21"/>
-<wire x1="-10.55" y1="-4.55" x2="-10.55" y2="-3.2" width="0.2032" layer="21"/>
-<wire x1="10.55" y1="-4.55" x2="10.55" y2="-3.2" width="0.2032" layer="21"/>
-<circle x="0" y="0" radius="10" width="0.2032" layer="51"/>
-<smd name="1" x="-11" y="1.55" dx="2.54" dy="1.778" layer="1" rot="R90" cream="no"/>
-<smd name="2" x="0" y="0" dx="13" dy="8" layer="1" roundness="100" cream="no"/>
-<smd name="3" x="11" y="1.55" dx="2.54" dy="1.778" layer="1" rot="R90" cream="no"/>
-<smd name="P$1" x="-11" y="-1.55" dx="2.54" dy="1.778" layer="1" rot="R90" cream="no"/>
-<smd name="P$2" x="11" y="-1.55" dx="2.54" dy="1.778" layer="1" rot="R90" cream="no"/>
-<rectangle x1="-2" y1="-2" x2="2" y2="2" layer="31"/>
-<rectangle x1="-13.97" y1="-3.048" x2="-9.906" y2="3.048" layer="31"/>
-<rectangle x1="9.906" y1="-3.048" x2="13.97" y2="3.048" layer="31"/>
-<text x="0" y="7.62" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
-<text x="0" y="7.112" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTERY-AAA-KIT">
-<description>&lt;h3&gt;AAA Battery Clips (KIT Variant)&lt;/h3&gt;
-&lt;p&gt;PCB mount clips properly spaced to hold a AAA battery.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Warning:&lt;/b&gt; This is the KIT version of this package. This package has a smaller diameter top stop mask, which doesn't cover the diameter of the pad. This means only the bottom side of the pads' copper will be exposed. You'll only be able to solder to the bottom side.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://cdn.sparkfun.com/datasheets/Prototyping/M60-2p9.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-13.97" y1="3.81" x2="-13.97" y2="-3.81" width="0.127" layer="51"/>
-<wire x1="-13.97" y1="-3.81" x2="-23.495" y2="-3.81" width="0.2032" layer="51"/>
-<wire x1="-23.495" y1="-3.81" x2="-23.495" y2="3.81" width="0.127" layer="51"/>
-<wire x1="-23.495" y1="3.81" x2="-13.97" y2="3.81" width="0.2032" layer="51"/>
-<wire x1="23.4442" y1="3.81" x2="13.97" y2="3.81" width="0.127" layer="51"/>
-<wire x1="13.97" y1="3.81" x2="13.97" y2="-3.81" width="0.127" layer="51"/>
-<wire x1="13.97" y1="-3.81" x2="23.4442" y2="-3.81" width="0.127" layer="51"/>
-<wire x1="23.4442" y1="-3.81" x2="23.4442" y2="3.81" width="0.127" layer="51"/>
-<pad name="PWR@2" x="-13.97" y="0" drill="1.7018" stop="no"/>
-<pad name="PWR@1" x="-21.59" y="0" drill="1.7018" stop="no"/>
-<pad name="GND@2" x="13.97" y="0" drill="1.7018" stop="no"/>
-<pad name="GND@1" x="21.59" y="0" drill="1.7018" stop="no"/>
-<wire x1="-13.97" y1="-3.81" x2="-23.4442" y2="-3.81" width="0.254" layer="41"/>
-<wire x1="-23.4442" y1="-3.81" x2="-23.4442" y2="3.81" width="0.2032" layer="41"/>
-<wire x1="-23.4442" y1="3.81" x2="-13.97" y2="3.81" width="0.254" layer="41"/>
-<wire x1="23.4442" y1="3.81" x2="13.97" y2="3.81" width="0.2032" layer="21"/>
-<wire x1="13.97" y1="-3.81" x2="23.4442" y2="-3.81" width="0.2032" layer="21"/>
-<wire x1="23.4442" y1="-3.81" x2="23.4442" y2="3.81" width="0.2032" layer="21"/>
-<wire x1="-13.97" y1="3.81" x2="-13.97" y2="-3.81" width="0.254" layer="41"/>
-<wire x1="-13.97" y1="-3.81" x2="-23.4442" y2="-3.81" width="0.2032" layer="21"/>
-<wire x1="-23.4442" y1="-3.81" x2="-23.4442" y2="3.81" width="0.2032" layer="21"/>
-<wire x1="-23.4442" y1="3.81" x2="-13.97" y2="3.81" width="0.2032" layer="21"/>
-<wire x1="13.97" y1="3.81" x2="23.4442" y2="3.81" width="0.254" layer="41"/>
-<wire x1="23.4442" y1="3.81" x2="23.4442" y2="-3.81" width="0.254" layer="41"/>
-<wire x1="23.4442" y1="-3.81" x2="13.97" y2="-3.81" width="0.254" layer="41"/>
-<wire x1="13.97" y1="-3.81" x2="13.97" y2="3.81" width="0.254" layer="41"/>
-<wire x1="-21.59" y1="0" x2="-13.97" y2="0" width="0.4064" layer="49"/>
-<wire x1="13.97" y1="0" x2="21.59" y2="0" width="0.4064" layer="49"/>
-<wire x1="11.43" y1="2.54" x2="-10.16" y2="2.54" width="0.4064" layer="21"/>
-<wire x1="-10.16" y1="2.54" x2="-10.16" y2="0.5842" width="0.4064" layer="21"/>
-<wire x1="-10.16" y1="0.5842" x2="-10.16" y2="-0.6858" width="0.4064" layer="21"/>
-<wire x1="-10.16" y1="-0.6858" x2="-10.16" y2="-2.54" width="0.4064" layer="21"/>
-<wire x1="-10.16" y1="-2.54" x2="11.43" y2="-2.54" width="0.4064" layer="21"/>
-<wire x1="11.43" y1="-2.54" x2="11.43" y2="2.54" width="0.4064" layer="21"/>
-<wire x1="-10.16" y1="0.5842" x2="-11.43" y2="0.5842" width="0.4064" layer="21"/>
-<wire x1="-11.43" y1="0.5842" x2="-11.43" y2="-0.6858" width="0.4064" layer="21"/>
-<wire x1="-11.43" y1="-0.6858" x2="-10.16" y2="-0.6858" width="0.4064" layer="21"/>
-<wire x1="9.525" y1="0" x2="8.255" y2="0" width="0.4064" layer="21"/>
-<wire x1="-6.985" y1="0" x2="-8.255" y2="0" width="0.4064" layer="21"/>
-<wire x1="-7.62" y1="0.635" x2="-7.62" y2="-0.635" width="0.4064" layer="21"/>
-<circle x="13.97" y="0" radius="0.40160625" width="0.889" layer="29"/>
-<circle x="13.97" y="0" radius="0.40160625" width="1.778" layer="30"/>
-<circle x="21.59" y="0" radius="0.40160625" width="0.889" layer="29"/>
-<circle x="21.59" y="0" radius="0.40160625" width="1.778" layer="30"/>
-<circle x="-13.97" y="0" radius="0.40160625" width="0.889" layer="29"/>
-<circle x="-13.97" y="0" radius="0.40160625" width="1.778" layer="30"/>
-<circle x="-21.59" y="0" radius="0.40160625" width="1.778" layer="30"/>
-<circle x="-21.59" y="0" radius="0.40160625" width="0.889" layer="29"/>
-<wire x1="-22.86" y1="5.08" x2="22.86" y2="5.08" width="0.127" layer="51"/>
-<wire x1="-22.86" y1="-5.08" x2="22.86" y2="-5.08" width="0.127" layer="51"/>
-<text x="-23.749" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
-<text x="-19.05" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTERY_18650-HOLDER">
-<description>&lt;h3&gt;18650 Lithium Ion Cell Battery Holders&lt;/h3&gt;
-&lt;p&gt;PCB mount clips properly spaced to hold a 18650 Lithium Ion Cell battery.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cdn.sparkfun.com/datasheets/Prototyping/54.PDF"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Devices Using&lt;/h4&gt;
-&lt;ul&gt;&lt;li&gt;BATTERY&lt;/li&gt;&lt;/ul&gt;</description>
-<wire x1="-33" y1="9" x2="33" y2="9" width="0.127" layer="51"/>
-<wire x1="33" y1="-9" x2="-33" y2="-9" width="0.127" layer="51"/>
-<text x="-18.542" y="-1.27" size="2.54" layer="21" ratio="12">+</text>
-<text x="16.51" y="-1.27" size="2.54" layer="21" ratio="12">-</text>
-<wire x1="-33" y1="9" x2="-33" y2="-9" width="0.127" layer="51"/>
-<wire x1="33" y1="9" x2="33" y2="-9" width="0.127" layer="51"/>
-<wire x1="-21.32" y1="5.5626" x2="-21.32" y2="-5.5626" width="0.2032" layer="41"/>
-<wire x1="-21.32" y1="-5.5626" x2="-30.845" y2="-5.5626" width="0.2032" layer="41"/>
-<wire x1="-30.845" y1="-5.5626" x2="-30.845" y2="-4.445" width="0.2032" layer="41"/>
-<wire x1="-30.845" y1="-4.445" x2="-34.3248" y2="-4.445" width="0.2032" layer="41"/>
-<wire x1="-34.3248" y1="-4.445" x2="-34.3248" y2="4.445" width="0.2032" layer="41"/>
-<wire x1="-34.3248" y1="4.445" x2="-30.845" y2="4.445" width="0.2032" layer="41"/>
-<wire x1="-30.845" y1="4.445" x2="-30.845" y2="5.5626" width="0.2032" layer="41"/>
-<wire x1="-30.845" y1="5.5626" x2="-21.32" y2="5.5626" width="0.2032" layer="41"/>
-<wire x1="21.32" y1="-5.5626" x2="21.32" y2="5.5626" width="0.2032" layer="41"/>
-<wire x1="21.32" y1="5.5626" x2="30.845" y2="5.5626" width="0.2032" layer="41"/>
-<wire x1="30.845" y1="5.5626" x2="30.845" y2="4.445" width="0.2032" layer="41"/>
-<wire x1="30.845" y1="4.445" x2="34.3248" y2="4.445" width="0.2032" layer="41"/>
-<wire x1="34.3248" y1="4.445" x2="34.3248" y2="-4.445" width="0.2032" layer="41"/>
-<wire x1="34.3248" y1="-4.445" x2="30.845" y2="-4.445" width="0.2032" layer="41"/>
-<wire x1="30.845" y1="-4.445" x2="30.845" y2="-5.5626" width="0.2032" layer="41"/>
-<wire x1="30.845" y1="-5.5626" x2="21.32" y2="-5.5626" width="0.2032" layer="41"/>
-<pad name="PWR@3" x="-23.88" y="-2.55" drill="1.8288" rot="R90"/>
-<pad name="PWR@1" x="-30.628" y="-0.01" drill="1.8288"/>
-<pad name="PWR@2" x="-23.88" y="2.53" drill="1.8288" rot="R90"/>
-<wire x1="-21.23" y1="5.5526" x2="-21.23" y2="-5.5726" width="0.2032" layer="21"/>
-<wire x1="-21.23" y1="-5.5726" x2="-30.765" y2="-5.5726" width="0.2032" layer="21"/>
-<wire x1="-30.765" y1="-5.5726" x2="-30.765" y2="-4.455" width="0.2032" layer="21"/>
-<wire x1="-30.765" y1="-4.455" x2="-34.2448" y2="-4.455" width="0.2032" layer="21"/>
-<wire x1="-34.2448" y1="-4.455" x2="-34.2448" y2="4.435" width="0.2032" layer="21"/>
-<wire x1="-34.2448" y1="4.435" x2="-30.765" y2="4.435" width="0.2032" layer="21"/>
-<wire x1="-30.765" y1="4.435" x2="-30.765" y2="5.5526" width="0.2032" layer="21"/>
-<wire x1="-30.765" y1="5.5526" x2="-21.23" y2="5.5526" width="0.2032" layer="21"/>
-<pad name="GND@2" x="23.88" y="2.55" drill="1.8288" rot="R270"/>
-<pad name="GND@1" x="30.628" y="0.01" drill="1.8288" rot="R180"/>
-<pad name="GND@3" x="23.88" y="-2.53" drill="1.8288" rot="R270"/>
-<wire x1="21.23" y1="-5.5526" x2="21.23" y2="5.5726" width="0.2032" layer="41"/>
-<wire x1="21.23" y1="5.5726" x2="30.765" y2="5.5726" width="0.2032" layer="41"/>
-<wire x1="30.765" y1="5.5726" x2="30.765" y2="4.455" width="0.2032" layer="41"/>
-<wire x1="30.765" y1="4.455" x2="34.2448" y2="4.455" width="0.2032" layer="41"/>
-<wire x1="34.2448" y1="4.455" x2="34.2448" y2="-4.435" width="0.2032" layer="41"/>
-<wire x1="34.2448" y1="-4.435" x2="30.765" y2="-4.435" width="0.2032" layer="41"/>
-<wire x1="30.765" y1="-4.435" x2="30.765" y2="-5.5526" width="0.2032" layer="41"/>
-<wire x1="30.765" y1="-5.5526" x2="21.23" y2="-5.5526" width="0.2032" layer="41"/>
-<wire x1="21.23" y1="-5.5526" x2="21.23" y2="5.5726" width="0.2032" layer="21"/>
-<wire x1="21.23" y1="5.5726" x2="30.765" y2="5.5726" width="0.2032" layer="21"/>
-<wire x1="30.765" y1="5.5726" x2="30.765" y2="4.455" width="0.2032" layer="21"/>
-<wire x1="30.765" y1="4.455" x2="34.2448" y2="4.455" width="0.2032" layer="21"/>
-<wire x1="34.2448" y1="4.455" x2="34.2448" y2="-4.435" width="0.2032" layer="21"/>
-<wire x1="34.2448" y1="-4.435" x2="30.765" y2="-4.435" width="0.2032" layer="21"/>
-<wire x1="30.765" y1="-4.435" x2="30.765" y2="-5.5526" width="0.2032" layer="21"/>
-<wire x1="30.765" y1="-5.5526" x2="21.23" y2="-5.5526" width="0.2032" layer="21"/>
-<text x="-34.417" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
-<text x="-27.94" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center">&gt;VALUE</text>
-</package>
-<package name="BATTCON-6.8MM">
-<description>Part#: MS621FE-FL11E</description>
-<circle x="0" y="0" radius="3.4" width="0.2032" layer="21"/>
-<smd name="+" x="4.87" y="0.75" dx="2.25" dy="0.85" layer="1" rot="R180"/>
-<smd name="-" x="4.87" y="-0.75" dx="2.25" dy="0.85" layer="1" rot="R180"/>
-<circle x="0" y="0" radius="3.4" width="0.2032" layer="39"/>
-<wire x1="5.9" y1="1" x2="5.9" y2="0.5" width="0.0762" layer="51"/>
-<wire x1="5.9" y1="0.5" x2="3.6" y2="0.5" width="0.0762" layer="51"/>
-<wire x1="3.6" y1="-0.5" x2="5.9" y2="-0.5" width="0.0762" layer="51"/>
-<wire x1="5.9" y1="-0.5" x2="5.9" y2="-1" width="0.0762" layer="51"/>
-<wire x1="3.6" y1="-0.5" x2="3.6" y2="0.5" width="0.0762" layer="51"/>
-<wire x1="5.9" y1="1" x2="-3" y2="1" width="0.0762" layer="51"/>
-<wire x1="-3" y1="1" x2="-3" y2="-1" width="0.0762" layer="51"/>
-<wire x1="-3" y1="-1" x2="5.9" y2="-1" width="0.0762" layer="51"/>
-<text x="-1.905" y="1.27" size="0.6096" layer="25" font="vector" ratio="20">&gt;Name</text>
-<text x="-1.905" y="0" size="0.6096" layer="27" font="vector" ratio="20">&gt;Value</text>
-</package>
-</packages>
-<symbols>
-<symbol name="BATTERY">
-<description>&lt;h3&gt;Battery (Single-Cell)&lt;/h3&gt;</description>
-<wire x1="-1.27" y1="3.81" x2="-1.27" y2="-3.81" width="0.4064" layer="94"/>
-<wire x1="0" y1="1.27" x2="0" y2="-1.27" width="0.4064" layer="94"/>
-<wire x1="1.27" y1="3.81" x2="1.27" y2="-3.81" width="0.4064" layer="94"/>
-<wire x1="2.54" y1="1.27" x2="2.54" y2="-1.27" width="0.4064" layer="94"/>
-<wire x1="-2.54" y1="0" x2="-1.524" y2="0" width="0.1524" layer="94"/>
-<text x="0" y="4.318" size="1.778" layer="95" font="vector" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-4.318" size="1.778" layer="96" font="vector" align="top-center">&gt;VALUE</text>
-<pin name="-" x="5.08" y="0" visible="off" length="short" direction="pwr" rot="R180"/>
-<pin name="+" x="-5.08" y="0" visible="off" length="short" direction="pwr"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="BATTERY" prefix="BT" uservalue="yes">
-<description>&lt;h3&gt;Battery - Single Cell&lt;/h3&gt;
-&lt;p&gt;A variety of battery chemistries, sizes, and footprints.&lt;/p&gt;
-&lt;p&gt;Device List:
-&lt;ul&gt;
-&lt;li&gt;&lt;b&gt;20MM_PTH - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/783"&gt;Coin Cell Battery Holder - 20mm (PTH)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;6.8MM_PTH - &lt;/b&gt; &lt;a href="https://www.digikey.com/product-detail/en/seiko-instruments/MS621FE-FL11E/728-1057-ND/1889208?WT.srch=1&amp;gclid=CNOQ5a6LzdQCFZS2wAodXCkE0g"&gt;Coin Cell Battery Holder - 6.8MM(SMD)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;12MM_SMD - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/10592"&gt;Coin Cell Battery Holder - 12mm (SMD)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;12MM_PTH - &lt;/b&gt;&lt;a href="https://www.sparkfun.com/products/7948"&gt;Coin Cell Battery Holder - 12mm (PTH)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;20MM_SMD - &lt;/b&gt; 20mm Coin Cell Battery Holder (SMD) (2 legs)&lt;/li&gt;
-&lt;ul&gt;&lt;li&gt;Used on the &lt;a href="https://www.sparkfun.com/products/11734"&gt;Big Time Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-&lt;li&gt;&lt;b&gt;20MM_SMD_4LEGS - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/11892"&gt;Coin Cell Battery Holder - 20mm (SMD)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;20MM_SMD_4LEGS_OVERPASTE - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/11892"&gt;Coin Cell Battery Holder - 20mm (SMD)&lt;/a&gt; (Over-paste on the legs)&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;24.5MM_PTH - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/8863"&gt;Coin Cell Battery Holder - 24.5mm (PTH)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;9V - &lt;/b&gt; 9V Battery Holder - PC Mount &lt;/li&gt;
-&lt;ul&gt;&lt;li&gt;Used on the &lt;a href="https://www.sparkfun.com/products/11177"&gt;SparkFun SparkPunk Sound Kit &lt;/a&gt; and &lt;a href="https://www.sparkfun.com/products/12707"&gt;SparkFun SparkPunk Sequencer Kit &lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-&lt;li&gt;&lt;b&gt;18650 - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/13113"&gt;Battery Holder - 18650 (PTH)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;AA - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/7949"&gt;Battery Holder - 1xAA (PTH)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;AAA - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/12718"&gt;Battery Holder - 1xAAA (PTH)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;AA_KIT - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/7949"&gt;Battery Holder - 1xAA (PTH)&lt;/a&gt;&lt;/li&gt;
-&lt;ul&gt;&lt;li&gt;Special kit package - pads only have exposed copper on one side of the board.&lt;/li&gt;&lt;/ul&gt;
-&lt;li&gt;&lt;b&gt;AAA_KIT - &lt;/b&gt; &lt;a href="https://www.sparkfun.com/products/12718"&gt;Battery Holder - 1xAAA (PTH)&lt;/a&gt;&lt;/li&gt;
-&lt;ul&gt;&lt;li&gt;Special kit package - pads only have exposed copper on one side of the board.&lt;/li&gt;&lt;/ul&gt;
-&lt;/ul&gt;&lt;/p&gt;</description>
+<deviceset name="BATTERY" prefix="U" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="BATTERY" x="0" y="0"/>
 </gates>
 <devices>
-<device name="-AAA" package="BATTERY-AAA">
-<connects>
-<connect gate="G$1" pin="+" pad="PWR@1"/>
-<connect gate="G$1" pin="-" pad="GND@1"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-08571"/>
-<attribute name="SF_SKU" value="PRT-12718"/>
-</technology>
-</technologies>
-</device>
-<device name="-AA" package="BATTERY-AA">
-<connects>
-<connect gate="G$1" pin="+" pad="PWR@1"/>
-<connect gate="G$1" pin="-" pad="GND@1"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-08316"/>
-<attribute name="SF_SKU" value="PRT-07949"/>
-</technology>
-</technologies>
-</device>
-<device name="-12MM_PTH" package="BATTCON_12MM_PTH">
-<connects>
-<connect gate="G$1" pin="+" pad="VCC@1"/>
-<connect gate="G$1" pin="-" pad="GND"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-08315"/>
-<attribute name="SF_SKU" value="PRT-07948"/>
-</technology>
-</technologies>
-</device>
-<device name="-20MM_SMD" package="BATTCON_20MM">
-<connects>
-<connect gate="G$1" pin="+" pad="1"/>
-<connect gate="G$1" pin="-" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-11519"/>
-</technology>
-</technologies>
-</device>
-<device name="-20MM_PTH" package="BATTCOM_20MM_PTH">
-<connects>
-<connect gate="G$1" pin="+" pad="1"/>
-<connect gate="G$1" pin="-" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-09031"/>
-<attribute name="SF_SKU" value="PRT-00783"/>
-</technology>
-</technologies>
-</device>
-<device name="-24.5MM_PTH" package="BATTCON_24.5MM_PTH">
-<connects>
-<connect gate="G$1" pin="+" pad="3"/>
-<connect gate="G$1" pin="-" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="SF_SKU" value="PRT-08863"/>
-</technology>
-</technologies>
-</device>
-<device name="-12MM_SMD" package="BATTCON_12MM">
-<connects>
-<connect gate="G$1" pin="+" pad="PWR@1"/>
-<connect gate="G$1" pin="-" pad="GND"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-08044"/>
-<attribute name="SF_SKU" value="PRT-10592"/>
-</technology>
-</technologies>
-</device>
-<device name="-20MM_SMD_4LEGS" package="BATTCON_20MM_4LEGS">
-<connects>
-<connect gate="G$1" pin="+" pad="POSITIVE@1 POSITIVE@2 POSITIVE@3 POSITIVE@4"/>
-<connect gate="G$1" pin="-" pad="NEGATIVE"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-10373"/>
-<attribute name="SF_SKU" value="PRT-11892"/>
-</technology>
-</technologies>
-</device>
-<device name="-AA_KIT" package="BATTERY-AA-KIT">
-<connects>
-<connect gate="G$1" pin="+" pad="PWR@1"/>
-<connect gate="G$1" pin="-" pad="GND@1"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-08316"/>
-<attribute name="SF_SKU" value="PRT-07949"/>
-</technology>
-</technologies>
-</device>
-<device name="-9V" package="BATTCON_9V">
+<device name="_1020" package="1020-AAA-HOLDER">
 <connects>
 <connect gate="G$1" pin="+" pad="+"/>
 <connect gate="G$1" pin="-" pad="-"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-10855"/>
-</technology>
+<technology name=""/>
 </technologies>
 </device>
-<device name="-20MM_SMD_4LEGS_OVERPASTE" package="BATTCON_20MM_4LEGS_OVERPASTE">
+<device name="_597/591" package="597/591_AAA-HOLDER">
 <connects>
-<connect gate="G$1" pin="+" pad="1"/>
-<connect gate="G$1" pin="-" pad="2"/>
+<connect gate="G$1" pin="+" pad="+1 +2 +3"/>
+<connect gate="G$1" pin="-" pad="-1 -2 -3"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="PROD_ID" value="PRT-11892 "/>
-<attribute name="SF_SKU" value="BATT-10373"/>
-</technology>
+<technology name=""/>
 </technologies>
 </device>
-<device name="-AAA_KIT" package="BATTERY-AAA-KIT">
+</devices>
+</deviceset>
+<deviceset name="Z-DIODE" prefix="D" uservalue="yes">
+<description>&lt;b&gt;Zener Diode&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="Z-DIODE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="_MMSZ" package="SOD123">
 <connects>
-<connect gate="G$1" pin="+" pad="PWR@1"/>
-<connect gate="G$1" pin="-" pad="GND@1"/>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-08571"/>
-<attribute name="SF_SKU" value="PRT-12718"/>
-</technology>
+<technology name=""/>
 </technologies>
 </device>
-<device name="-18650" package="BATTERY_18650-HOLDER">
+<device name="_SOD-323" package="SOD-323">
 <connects>
-<connect gate="G$1" pin="+" pad="PWR@1"/>
-<connect gate="G$1" pin="-" pad="GND@1"/>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-12327"/>
-<attribute name="SF_SKU" value="PRT-13113"/>
-</technology>
+<technology name=""/>
 </technologies>
 </device>
-<device name="-6.8MM_SMD" package="BATTCON-6.8MM">
+<device name="_SOD123" package="SOD123">
 <connects>
-<connect gate="G$1" pin="+" pad="+"/>
-<connect gate="G$1" pin="-" pad="-"/>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="PROD_ID" value="BATT-13734" constant="no"/>
-<attribute name="VALUE" value="6.8MM_COIN_CELL" constant="no"/>
-</technology>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_SOT23" package="SOT23">
+<connects>
+<connect gate="G$1" pin="A" pad="2"/>
+<connect gate="G$1" pin="C" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="P-MOSFET" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="P-MOSFET" x="0" y="0"/>
+</gates>
+<devices>
+<device name="_SOT23-GSD" package="SOT23-GSD">
+<connects>
+<connect gate="G$1" pin="D" pad="D"/>
+<connect gate="G$1" pin="G" pad="G"/>
+<connect gate="G$1" pin="S" pad="S"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SPDT" prefix="S" uservalue="yes">
+<description>&lt;b&gt;SPDT Switch&lt;\b&gt;</description>
+<gates>
+<gate name="G$1" symbol="SPDT" x="-2.54" y="0"/>
+</gates>
+<devices>
+<device name="_PCM12" package="PCM12">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_CFPA" package="CFPA">
+<connects>
+<connect gate="G$1" pin="1" pad="3"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_JS" package="JS102011SAQN">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_2M-NOOFF" package="2M1-SP1-T2-B4-M6RE">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_2M-WITHOFF" package="2M1-SP1-T2-B4-M6RE">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_AS12A*" package="AS12A*_SPDT">
+<connects>
+<connect gate="G$1" pin="1" pad="P1"/>
+<connect gate="G$1" pin="2" pad="P2"/>
+<connect gate="G$1" pin="3" pad="P3"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -3180,7 +2929,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="VCOAX" library="jonnew" deviceset="TP" device="_S500-6350-P2"/>
 <part name="TMS" library="jonnew" deviceset="TP" device="_S500-6350-P2"/>
 <part name="U1" library="jonnew" deviceset="TPS61200" device="" value="TPS61202"/>
-<part name="BT1" library="SparkFun-Batteries" deviceset="BATTERY" device="-12MM_PTH"/>
 <part name="L1" library="jonnew" deviceset="L" device="_LPS3015" value="LPS3015"/>
 <part name="C1" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
 <part name="C3" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
@@ -3203,6 +2951,19 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="D1" library="jonnew" deviceset="LED" device="_0603" value="LTST-C191KGKT"/>
 <part name="SUPPLY11" library="jonnew" deviceset="GND" device=""/>
 <part name="U$1" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
+<part name="U2" library="jonnew" deviceset="BATTERY" device="_597/591"/>
+<part name="D2" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="UDZ10B-7">
+<attribute name="PARTNO" value="UDZ10B-7"/>
+</part>
+<part name="R2" library="jonnew" deviceset="R" device="_0603" value="1k"/>
+<part name="Q1" library="jonnew" deviceset="P-MOSFET" device="_SOT23-GSD" value="DMP3056L">
+<attribute name="PARTNO" value="DMP3056L-7"/>
+</part>
+<part name="SUPPLY27" library="jonnew" deviceset="GND" device=""/>
+<part name="R3" library="jonnew" deviceset="R" device="_0805" value="220"/>
+<part name="D3" library="jonnew" deviceset="LED" device="_MLE-HS-CAT" value="MLEAWT-A1"/>
+<part name="SUPPLY12" library="jonnew" deviceset="GND" device=""/>
+<part name="S1" library="jonnew" deviceset="SPDT" device="_JS"/>
 </parts>
 <sheets>
 <sheet>
@@ -3215,32 +2976,44 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="TDI" gate="G$1" x="93.98" y="71.12" rot="R90"/>
 <instance part="VCC" gate="G$1" x="144.78" y="78.74" rot="R270"/>
 <instance part="TDO" gate="G$1" x="93.98" y="78.74" rot="R90"/>
-<instance part="VCOAX" gate="G$1" x="200.66" y="152.4"/>
+<instance part="VCOAX" gate="G$1" x="231.14" y="152.4"/>
 <instance part="TMS" gate="G$1" x="93.98" y="76.2" rot="R90"/>
 <instance part="U1" gate="G$1" x="116.84" y="139.7"/>
-<instance part="BT1" gate="G$1" x="35.56" y="132.08" rot="R270"/>
 <instance part="L1" gate="L" x="116.84" y="167.64" rot="R270"/>
 <instance part="C1" gate="C" x="66.04" y="132.08"/>
-<instance part="C3" gate="C" x="180.34" y="132.08"/>
-<instance part="C4" gate="C" x="193.04" y="132.08"/>
+<instance part="C3" gate="C" x="165.1" y="132.08"/>
+<instance part="C4" gate="C" x="177.8" y="132.08"/>
 <instance part="C2" gate="C" x="147.32" y="132.08"/>
 <instance part="SUPPLY6" gate="PE" x="147.32" y="111.76"/>
 <instance part="SUPPLY2" gate="PE" x="66.04" y="111.76"/>
-<instance part="SUPPLY7" gate="PE" x="180.34" y="111.76"/>
-<instance part="SUPPLY8" gate="PE" x="193.04" y="111.76"/>
+<instance part="SUPPLY7" gate="PE" x="165.1" y="111.76"/>
+<instance part="SUPPLY8" gate="PE" x="177.8" y="111.76"/>
 <instance part="SUPPLY3" gate="PE" x="96.52" y="111.76"/>
 <instance part="SUPPLY4" gate="PE" x="134.62" y="111.76"/>
 <instance part="SUPPLY1" gate="PE" x="35.56" y="111.76"/>
 <instance part="SUPPLY5" gate="PE" x="134.62" y="66.04"/>
 <instance part="GND" gate="G$1" x="144.78" y="71.12" rot="R270"/>
-<instance part="TP1" gate="G$1" x="213.36" y="152.4"/>
-<instance part="TP2" gate="G$1" x="226.06" y="152.4"/>
-<instance part="SUPPLY9" gate="PE" x="226.06" y="142.24"/>
+<instance part="TP1" gate="G$1" x="193.04" y="137.16" rot="R180"/>
+<instance part="TP2" gate="G$1" x="193.04" y="121.92"/>
+<instance part="SUPPLY9" gate="PE" x="193.04" y="111.76"/>
 <instance part="SUPPLY10" gate="PE" x="81.28" y="111.76"/>
 <instance part="R1" gate="R" x="175.26" y="73.66" rot="R90"/>
 <instance part="D1" gate="G$1" x="175.26" y="60.96"/>
 <instance part="SUPPLY11" gate="PE" x="175.26" y="48.26"/>
 <instance part="U$1" gate="G$1" x="7.62" y="7.62"/>
+<instance part="U2" gate="G$1" x="35.56" y="132.08" rot="R270"/>
+<instance part="D2" gate="G$1" x="220.98" y="139.7" rot="R90">
+<attribute name="PARTNO" x="220.98" y="139.7" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R2" gate="R" x="208.28" y="127" rot="R90"/>
+<instance part="Q1" gate="G$1" x="210.82" y="144.78" rot="MR90">
+<attribute name="PARTNO" x="210.82" y="144.78" size="1.778" layer="96" rot="MR90" display="off"/>
+</instance>
+<instance part="SUPPLY27" gate="PE" x="208.28" y="114.3"/>
+<instance part="R3" gate="R" x="195.58" y="73.66" rot="R90"/>
+<instance part="D3" gate="G$1" x="195.58" y="60.96"/>
+<instance part="SUPPLY12" gate="PE" x="195.58" y="48.26"/>
+<instance part="S1" gate="G$1" x="50.8" y="149.86" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -3269,30 +3042,29 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="TDO" gate="G$1" pin="TP"/>
 </segment>
 </net>
-<net name="VCOAX" class="0">
+<net name="VO" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="FB"/>
 <wire x1="129.54" y1="134.62" x2="134.62" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="134.62" x2="134.62" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="VO"/>
 <wire x1="134.62" y1="144.78" x2="129.54" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="144.78" x2="180.34" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="144.78" x2="165.1" y2="144.78" width="0.1524" layer="91"/>
 <junction x="134.62" y="144.78"/>
 <pinref part="C3" gate="C" pin="1"/>
-<wire x1="180.34" y1="144.78" x2="193.04" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="134.62" x2="180.34" y2="144.78" width="0.1524" layer="91"/>
-<junction x="180.34" y="144.78"/>
+<wire x1="165.1" y1="144.78" x2="177.8" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="134.62" x2="165.1" y2="144.78" width="0.1524" layer="91"/>
+<junction x="165.1" y="144.78"/>
 <pinref part="C4" gate="C" pin="1"/>
-<wire x1="193.04" y1="144.78" x2="193.04" y2="134.62" width="0.1524" layer="91"/>
-<junction x="193.04" y="144.78"/>
-<pinref part="VCOAX" gate="G$1" pin="TP"/>
-<wire x1="200.66" y1="149.86" x2="200.66" y2="144.78" width="0.1524" layer="91"/>
-<label x="200.66" y="149.86" size="1.778" layer="95"/>
-<wire x1="193.04" y1="144.78" x2="200.66" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="144.78" x2="177.8" y2="134.62" width="0.1524" layer="91"/>
+<junction x="177.8" y="144.78"/>
+<label x="139.7" y="144.78" size="1.778" layer="95"/>
 <pinref part="TP1" gate="G$1" pin="TP"/>
-<wire x1="200.66" y1="144.78" x2="213.36" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="213.36" y1="144.78" x2="213.36" y2="149.86" width="0.1524" layer="91"/>
-<junction x="200.66" y="144.78"/>
+<wire x1="177.8" y1="144.78" x2="193.04" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="144.78" x2="193.04" y2="139.7" width="0.1524" layer="91"/>
+<pinref part="Q1" gate="G$1" pin="D"/>
+<wire x1="193.04" y1="144.78" x2="205.74" y2="144.78" width="0.1524" layer="91"/>
+<junction x="193.04" y="144.78"/>
 </segment>
 </net>
 <net name="TMS" class="0">
@@ -3318,7 +3090,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </segment>
 <segment>
 <pinref part="VCC" gate="G$1" pin="TP"/>
-<wire x1="142.24" y1="78.74" x2="139.7" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="4"/>
 <wire x1="124.46" y1="78.74" x2="142.24" y2="78.74" width="0.1524" layer="91"/>
 <label x="124.46" y="78.74" size="1.27" layer="95"/>
@@ -3362,24 +3133,24 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="66.04" y1="127" x2="66.04" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="BT1" gate="G$1" pin="-"/>
 <pinref part="SUPPLY1" gate="PE" pin="GND"/>
 <wire x1="35.56" y1="127" x2="35.56" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="U2" gate="G$1" pin="-"/>
 </segment>
 <segment>
 <pinref part="C3" gate="C" pin="2"/>
 <pinref part="SUPPLY7" gate="PE" pin="GND"/>
-<wire x1="180.34" y1="127" x2="180.34" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="127" x2="165.1" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C4" gate="C" pin="2"/>
-<wire x1="193.04" y1="127" x2="193.04" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="127" x2="177.8" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="SUPPLY8" gate="PE" pin="GND"/>
 </segment>
 <segment>
 <pinref part="TP2" gate="G$1" pin="TP"/>
 <pinref part="SUPPLY9" gate="PE" pin="GND"/>
-<wire x1="226.06" y1="149.86" x2="226.06" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="119.38" x2="193.04" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="PS"/>
@@ -3392,6 +3163,16 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="175.26" y1="55.88" x2="175.26" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="SUPPLY11" gate="PE" pin="GND"/>
 </segment>
+<segment>
+<pinref part="R2" gate="R" pin="1"/>
+<pinref part="SUPPLY27" gate="PE" pin="GND"/>
+<wire x1="208.28" y1="121.92" x2="208.28" y2="116.84" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="D3" gate="G$1" pin="C"/>
+<wire x1="195.58" y1="55.88" x2="195.58" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="SUPPLY12" gate="PE" pin="GND"/>
+</segment>
 </net>
 <net name="VIN" class="0">
 <segment>
@@ -3401,18 +3182,17 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="96.52" y1="144.78" x2="96.52" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="EN"/>
 <wire x1="104.14" y1="144.78" x2="96.52" y2="144.78" width="0.1524" layer="91"/>
-<pinref part="BT1" gate="G$1" pin="+"/>
-<wire x1="35.56" y1="137.16" x2="35.56" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="149.86" x2="66.04" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="C1" gate="C" pin="1"/>
 <wire x1="66.04" y1="149.86" x2="91.44" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="149.86" x2="96.52" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="149.86" x2="66.04" y2="134.62" width="0.1524" layer="91"/>
-<junction x="66.04" y="149.86"/>
 <wire x1="91.44" y1="149.86" x2="91.44" y2="167.64" width="0.1524" layer="91"/>
 <junction x="91.44" y="149.86"/>
 <pinref part="L1" gate="L" pin="2"/>
 <wire x1="91.44" y1="167.64" x2="109.22" y2="167.64" width="0.1524" layer="91"/>
+<pinref part="S1" gate="G$1" pin="2"/>
+<wire x1="53.34" y1="149.86" x2="66.04" y2="149.86" width="0.1524" layer="91"/>
+<junction x="66.04" y="149.86"/>
 </segment>
 </net>
 <net name="VAUX" class="0">
@@ -3447,9 +3227,73 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="175.26" y1="68.58" x2="175.26" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$450" class="0">
+<segment>
+<pinref part="Q1" gate="G$1" pin="G"/>
+<pinref part="R2" gate="R" pin="2"/>
+<wire x1="208.28" y1="139.7" x2="208.28" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="A"/>
+<wire x1="208.28" y1="134.62" x2="208.28" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="134.62" x2="220.98" y2="134.62" width="0.1524" layer="91"/>
+<junction x="208.28" y="134.62"/>
+</segment>
+</net>
+<net name="VCOAX" class="0">
+<segment>
+<pinref part="Q1" gate="G$1" pin="S"/>
+<wire x1="215.9" y1="144.78" x2="220.98" y2="144.78" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="C"/>
+<wire x1="220.98" y1="144.78" x2="220.98" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="220.98" y1="144.78" x2="231.14" y2="144.78" width="0.1524" layer="91"/>
+<junction x="220.98" y="144.78"/>
+<label x="233.68" y="144.78" size="1.27" layer="95" xref="yes"/>
+<pinref part="VCOAX" gate="G$1" pin="TP"/>
+<wire x1="231.14" y1="144.78" x2="233.68" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="149.86" x2="231.14" y2="144.78" width="0.1524" layer="91"/>
+<junction x="231.14" y="144.78"/>
+</segment>
+<segment>
+<pinref part="R3" gate="R" pin="2"/>
+<wire x1="195.58" y1="83.82" x2="195.58" y2="78.74" width="0.1524" layer="91"/>
+<label x="195.58" y="83.82" size="1.27" layer="95" rot="R90" xref="yes"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="R3" gate="R" pin="1"/>
+<pinref part="D3" gate="G$1" pin="A"/>
+<wire x1="195.58" y1="68.58" x2="195.58" y2="63.5" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<wire x1="35.56" y1="137.16" x2="35.56" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="U2" gate="G$1" pin="+"/>
+<pinref part="S1" gate="G$1" pin="3"/>
+<wire x1="35.56" y1="152.4" x2="43.18" y2="152.4" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,104.14,149.86,U1,VI,VIN,,,"/>
+<approved hash="104,1,129.54,124.46,U1,PGND,GND,,,"/>
+<approved hash="104,1,35.56,127,U2,-,GND,,,"/>
+<approved hash="104,1,35.56,137.16,U2,+,N$4,,,"/>
+<approved hash="106,1,124.46,76.2,PROC_RST,,,,,"/>
+<approved hash="113,1,93.9338,81.28,TCK,,,,,"/>
+<approved hash="113,1,94.4292,71.12,TDI,,,,,"/>
+<approved hash="113,1,144.969,78.74,VCC,,,,,"/>
+<approved hash="113,1,93.791,78.74,TDO,,,,,"/>
+<approved hash="113,1,231.14,154.356,VCOAX,,,,,"/>
+<approved hash="113,1,93.791,76.2,TMS,,,,,"/>
+<approved hash="113,1,145.107,71.12,GND,,,,,"/>
+<approved hash="113,1,193.04,137.324,TP1,,,,,"/>
+<approved hash="113,1,193.04,121.756,TP2,,,,,"/>
+<approved hash="113,1,36.8977,132.08,U2,,,,,"/>
+<approved hash="113,1,48.26,151.122,S1,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
