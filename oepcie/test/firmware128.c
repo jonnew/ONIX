@@ -14,7 +14,7 @@
 #include "testfunc.h"
 
 // Data acq. params
-const size_t fifo_buffer_samples = 100;
+const size_t fifo_buffer_samples = 1000;
 
 // Config registers
 volatile oe_reg_val_t running = 0;
@@ -32,7 +32,7 @@ volatile int quit = 0;
 // FIFO file path and desciptor handles
 const char *config_path = "/tmp/rat128_config";
 const char *sig_path = "/tmp/rat128_signal";
-const char *data_path = "/tmp/rat128_data";
+const char *data_path = "/tmp/rat128_read";
 int config_fd = -1;
 int data_fd = -1;
 int sig_fd = -1;
@@ -71,12 +71,12 @@ typedef enum oe_conf_reg_off {
 
 // Devices handled by this firmware
 static oe_device_t my_devices[]
-    = {{.id = OE_RHD2064,
+    = {{.id = OE_RHD2164,
         .read_offset = OE_RFRAMEHEADERSZ,
         .read_size = 66 * sizeof(uint16_t),
         .write_offset = OE_WFRAMEHEADERSZ,
         .write_size = 0},
-       {.id = OE_RHD2064,
+       {.id = OE_RHD2164,
         .read_offset = OE_RFRAMEHEADERSZ + 66 * sizeof(uint16_t),
         .read_size = 66 * sizeof(uint16_t),
         .write_offset = OE_WFRAMEHEADERSZ,
@@ -278,7 +278,7 @@ void *data_loop(void *vargp)
 
             // Generate sample (frame)
             int j;
-            for (j = 8; j < sample_size; j += 2)
+            for (j = OE_RFRAMEHEADERSZ; j < sample_size; j += 2)
                 *(uint16_t *)(sample + j) = (uint16_t)randn(32768, 50);
 
             size_t rc = write(data_fd, sample, sample_size);
@@ -286,6 +286,8 @@ void *data_loop(void *vargp)
 
             // Increment sample count
             sample_tick += 1;
+        } else {
+            usleep(1000); // Prevent CPU tacking
         }
     }
 

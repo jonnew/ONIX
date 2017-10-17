@@ -10,33 +10,6 @@
 
 #define OE_REGSZ   sizeof(oe_reg_val_t)
 
-const char *oe_device_string[]
-    = {"Invalid", "SERDES-GPIO", "RHD2032", "RHD2064", "MPU9250"};
-
-const char *oe_error_string[]
-    = {"Success",
-       "Invalid stream path, fail on open",
-       "Double initialization attempt",
-       "Invalid device ID",
-       "Failure to read from a stream/register",
-       "Failure to write to a stream/register",
-       "Attempt to call function with null context",
-       "Failure to seek on stream",
-       "Invalid operation for the current context run state",
-       "Invalid device index",
-       "Invalid context option",
-       "Invalid function arguments",
-       "Option cannot be set in current context state",
-       "Invalid COBS packet",
-       "Attempt to trigger an already triggered operation",
-       "Supplied buffer is too small",
-       "Badly formatted device map supplied by firmware",
-       "Bad dynamic memory allocation",
-       "File descriptor close failure (check errno)",
-       "Invalid underlying data types",
-       "Attempted write to read only object (register, context option, etc)",
-       "Software and hardware run state out of sync"};
-
 typedef struct stream_fid {
     char *path;
     int fid;
@@ -45,7 +18,7 @@ typedef struct stream_fid {
 typedef struct oe_ctx_impl {
     // Communication channels
     stream_fid_t config;
-    stream_fid_t data;
+    stream_fid_t read;
     stream_fid_t signal;
 
     // Devices
@@ -96,8 +69,8 @@ typedef enum oe_conf_reg_off {
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
     CONFFRAMEHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
-    CONFFRAMEHZMOFFSET    = 36,  // Configuration run hardware register byte offset
-    CONFFRAMEHZDOFFSET    = 40,  // Configuration run hardware register byte offset
+    CONFFRAMEHZMOFFSET  = 36,  // Configuration run hardware register byte offset
+    CONFFRAMEHZDOFFSET  = 40,  // Configuration run hardware register byte offset
 } oe_conf_reg_off_t;
 
 // Static helpers
@@ -121,7 +94,7 @@ oe_ctx oe_create_ctx()
 
     // NB: Setting pointers to NULL Enables downstream use of realloc()
     ctx->config.path = NULL;
-    ctx->data.path = NULL;
+    ctx->read.path = NULL;
     ctx->signal.path = NULL;
     ctx->num_dev = 0;
     ctx->dev_map = NULL;
@@ -142,8 +115,8 @@ int oe_init_ctx(oe_ctx ctx)
     if (ctx->config.fid == -1)
         return OE_EPATHINVALID;
 
-    ctx->data.fid = open(ctx->data.path, O_RDONLY);
-    if (ctx->data.fid == -1)
+    ctx->read.fid = open(ctx->read.path, O_RDONLY);
+    if (ctx->read.fid == -1)
         return OE_EPATHINVALID;
 
     ctx->signal.fid = open(ctx->signal.path, O_RDONLY);
@@ -182,9 +155,7 @@ int oe_init_ctx(oe_ctx ctx)
     else
         return OE_EBADALLOC;
 
-    int i;
-    //int max_roff_idx = 0;
-    //int max_woff_idx = 0;
+    oe_size_t i;
     for (i= 0; i < ctx->num_dev; i++) {
 
         sig_type = NULLSIG;
@@ -197,26 +168,14 @@ int oe_init_ctx(oe_ctx ctx)
         if (sig_type != DEVICEINST)
             return OE_EBADDEVMAP;
 
-        int32_t device_id = (int32_t)(*buffer);
+        oe_dev_id_t device_id = (oe_dev_id_t)(*buffer);
 
         if (device_id >= 0 && device_id < OE_MAXDEVICEID) {
             ctx->dev_map[i] = *(oe_device_t *)buffer; // Append the device onto the map
-            //if (ctx->dev_map[i].read_offset > ctx->dev_map[max_roff_idx].read_offset)
-            //    max_roff_idx = i;
-            //if (ctx->dev_map[i].write_offset > ctx->dev_map[max_woff_idx].write_offset)
-            //    max_woff_idx = i;
         } else {
             return OE_EDEVID;
         }
     }
-
-    // Assert frame sizes, which may include padding
-    //assert(ctx->read_frame_size >= ctx->dev_map[max_roff_idx].read_offset
-    //                       + ctx->dev_map[max_roff_idx].read_size 
-    //                       && "Read frame size is too small for device map.");
-    //assert(ctx->write_frame_size >= ctx->dev_map[max_woff_idx].write_offset
-    //                        + ctx->dev_map[max_woff_idx].write_size
-    //                       && "Write frame size is too small for device map.");
 
     // We are now initialized and idle
     ctx->run_state = IDLE;
@@ -231,12 +190,12 @@ int oe_destroy_ctx(oe_ctx ctx)
     if (ctx->run_state >= IDLE) {
 
         if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
-        if (close(ctx->data.fid) == -1) goto oe_close_ctx_fail;
+        if (close(ctx->read.fid) == -1) goto oe_close_ctx_fail;
         if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
     }
 
     free(ctx->config.path);
-    free(ctx->data.path);
+    free(ctx->read.path);
     free(ctx->signal.path);
     free(ctx->dev_map);
     free(ctx);
@@ -247,7 +206,7 @@ oe_close_ctx_fail:
     return OE_ECLOSEFAIL;
 }
 
-int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void *value, size_t *option_len)
+int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
 {
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state > UNINITIALIZED && "Context state must INITIALIZED.");
@@ -265,12 +224,12 @@ int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void *value, size_t *opt
             *option_len = n;
             break;
         }
-        case OE_DATASTREAMPATH: {
-            if (*option_len < (strlen(ctx->data.path) + 1))
+        case OE_READSTREAMPATH: {
+            if (*option_len < (strlen(ctx->read.path) + 1))
                 return OE_EBUFFERSIZE;
 
-            size_t n = strlen(ctx->data.path) + 1;
-            memcpy(value, ctx->data.path, n);
+            size_t n = strlen(ctx->read.path) + 1;
+            memcpy(value, ctx->read.path, n);
             *option_len = n;
             break;
         }
@@ -393,7 +352,7 @@ int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void *value, size_t *opt
     return 0;
 }
 
-int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void *value, size_t option_len)
+int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
 {
     assert(ctx != NULL && "Context is NULL");
 
@@ -407,12 +366,12 @@ int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void *value, size_t opti
             memcpy(ctx->config.path, value, option_len);
             break;
         }
-        case OE_DATASTREAMPATH: {
+        case OE_READSTREAMPATH: {
             assert(ctx->run_state == UNINITIALIZED && "Context state must be UNINITIALIZED.");
             if (ctx->run_state != UNINITIALIZED)
                 return OE_EINVALSTATE;
-            ctx->data.path = realloc(ctx->data.path, option_len);
-            memcpy(ctx->data.path, value, option_len);
+            ctx->read.path = realloc(ctx->read.path, option_len);
+            memcpy(ctx->read.path, value, option_len);
             break;
         }
         case OE_SIGNALSTREAMPATH: {
@@ -504,9 +463,9 @@ int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void *value, size_t opti
 }
 
 int oe_write_reg(const oe_ctx ctx,
-                 const oe_dev_idx_t dev_idx,
-                 const oe_reg_addr_t addr,
-                 const oe_reg_val_t value)
+                 size_t dev_idx,
+                 oe_reg_addr_t addr,
+                 oe_reg_val_t value)
 {
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state > UNINITIALIZED && "Context must be INITIALIZED.");
@@ -558,8 +517,8 @@ int oe_write_reg(const oe_ctx ctx,
 }
 
 int oe_read_reg(const oe_ctx ctx,
-                const oe_dev_idx_t dev_idx,
-                const oe_reg_addr_t addr,
+                size_t dev_idx,
+                oe_reg_addr_t addr,
                 oe_reg_val_t *value)
 {
     assert(ctx != NULL && "Context is NULL");
@@ -617,40 +576,119 @@ int oe_read(const oe_ctx ctx, void *data, size_t size)
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state == RUNNING && "Context is not acquiring.");
 
-    return _oe_read(ctx->data.fid, data, size);
+    return _oe_read(ctx->read.fid, data, size);
 }
 
-int oe_error(oe_error_t err, char *str, size_t size)
+void oe_version(int *major, int *minor, int *patch)
 {
-    int rc = 0;
-    if (err > OE_MINERRORNUM && err < 0)
-        rc = snprintf(str, size, "%s", oe_error_string[-err]);
-    else
-        rc = snprintf(str, size, "Unknown error %d", err);
-    
-    if (rc >= size)
-        return OE_EBUFFERSIZE;
-
-    return 0;
+    *major = OE_VERSION_MAJOR;
+    *minor = OE_VERSION_MINOR;
+    *patch = OE_VERSION_PATCH;
 }
 
-int oe_device(oe_device_id_t dev_id, char *str, size_t size)
+const char *oe_error_str(int err)
+{
+    assert(err > OE_MINERRORNUM && "Invalid error number.");
+    assert(err <= 0 && "Invalid error number.");
+
+    switch (err) {
+        case OE_ESUCCESS: {
+            return "Success";
+        }
+        case OE_EPATHINVALID: {
+            return "Invalid stream path";
+        }
+        case OE_EREINITCTX: {
+            return "Double initialization attempt";
+        }
+        case OE_EDEVID: {
+            return "Invalid device ID";
+        }
+        case OE_EREADFAILURE: {
+            return "Failure to read from a stream or register";
+        }
+        case OE_EWRITEFAILURE: {
+            return "Failure to write to a stream or register";
+        }
+        case OE_ENULLCTX: {
+            return "Null context";
+        }
+        case OE_ESEEKFAILURE: {
+            return "Failure to seek on stream";
+        }
+        case OE_EINVALSTATE: {
+            return "Invalid operation for the current context run state";
+        }
+        case OE_EDEVIDX: {
+            return "Invalid device index";
+        }
+        case OE_EINVALOPT: {
+            return "Invalid context option";
+        }
+        case OE_EINVALARG: {
+            return "Invalid function arguments";
+        }
+        case OE_ECANTSETOPT: {
+            return "Option cannot be set in current context state";
+        }
+        case OE_ECOBSPACK: {
+            return "Invalid COBS packet";
+        }
+        case OE_ERETRIG: {
+            return "Attempt to trigger an already triggered operation";
+        }
+        case OE_EBUFFERSIZE: {
+            return "Supplied buffer is too small";
+        }
+        case OE_EBADDEVMAP: {
+            return "Badly formatted device map supplied by firmware";
+        }
+        case OE_EBADALLOC: {
+            return "Bad dynamic memory allocation";
+        }
+        case OE_ECLOSEFAIL: {
+            return "File descriptor close failure (check errno)";
+        }
+        case OE_EDATATYPE: {
+            return "Invalid underlying data types";
+        }
+        case OE_EREADONLY: {
+            return "Attempted write to read only object (register, context "
+                   "option, etc)";
+        }
+        case OE_ERUNSTATESYNC: {
+            return "Software and hardware run state out of sync";
+        }
+        default:
+            return "Unknown error";
+    }
+}
+
+const char *oe_device_str(int dev_id)
 {
     assert(dev_id < OE_MAXDEVICEID && "Invalid device ID.");
-
-    if (dev_id >= OE_MAXDEVICEID)
-        return OE_EDEVID;
-
-    int rc = snprintf(str, size, "%s", oe_device_string[dev_id]);
-    if (rc >= size)
-        return OE_EBUFFERSIZE;
-
-    return 0;
+    
+    switch (dev_id) {
+        case OE_IMMEDIATEIO: {
+            return "IMMEDIATEIO";
+        }
+        case OE_RHD2132: {
+            return "RHD2132";
+        }
+        case OE_RHD2164: {
+            return "RHD2164";
+        }
+        case OE_MPU9250: {
+            return "MPU9250";
+        }
+        default:
+            return "Uknown device";
+    }
 }
 
 static inline int _oe_read(int data_fd, void *data, size_t size)
 {
-    int received = 0;
+    size_t received = 0;
 
     while (received < size) {
 
@@ -706,7 +744,7 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
     int rc = _oe_cobs_unstuff(buffer, buffer, pack_size);
     if (rc < 0) return rc;
 
-    if (size < (--pack_size - 4))
+    if ((int)size < (--pack_size - 4))
         return OE_EBUFFERSIZE;
 
     // Get the type, which occupies first 4 bytes of buffer
@@ -814,7 +852,7 @@ static int _oe_write_config(int config_fd,
     if (lseek(config_fd, write_offset, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
-    if (write(config_fd, data, size) != size)
+    if (write(config_fd, data, size) != (int)size)
         return OE_EWRITEFAILURE;
 
     return 0;
@@ -828,7 +866,7 @@ static int _oe_read_config(int config_fd,
     if (lseek(config_fd, read_offset, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
-    if (read(config_fd, data, size) != size)
+    if (read(config_fd, data, size) != (int)size)
         return OE_EREADFAILURE;
 
     return 0;

@@ -1,29 +1,51 @@
-#ifndef OEPCIE_OEPCIE_H
-#define OEPCIE_OEPCIE_H
+#ifndef __OEPCIE_H__
+#define __OEPCIE_H__
+
+// Version macros for compile-time API version detection
+#define OE_VERSION_MAJOR 1
+#define OE_VERSION_MINOR 0
+#define OE_VERSION_PATCH 0
+
+#define OE_MAKE_VERSION(major, minor, patch) \
+    ((major) * 10000 + (minor) * 100 + (patch))
+#define OE_VERSION \
+    OE_MAKE_VERSION(OE_VERSION_MAJOR, OE_VERSION_MINOR, OE_VERSION_PATCH)
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stddef.h>
 #include <stdint.h>
 
 #define OE_RFRAMEHEADERSZ     32 // [uint64_t sample number, (24 reserved bytes), ...]
+#define OE_RFRAMESAMPLEOFF    0  // Read frame sample number offset
+//...
+
 #define OE_WFRAMEHEADERSZ     32 // [( 32 reserved bytes), ...]
+//...
+
+// TODO: Cross platform and xillybus
+#define OE_DEFAULTCONFIGPATH  "/tmp/rat128_config"
+#define OE_DEFAULTREADPATH    "/tmp/rat128_read"
+#define OE_DEFAULTSINGALPATH  "/tmp/rat128_signal"
 
 // Supported devices/IDs
-// NB: If you add a device here, make sure to update the oe_device_string array
-// in oepcie.c
-typedef enum oe_device_id {
+// NB: If you add an error here, make sure to update oe_device_str()
+enum oe_device_id {
     OE_IMMEDIATEIO = 0,
-    OE_RHD2032,
-    OE_RHD2064,
+    OE_RHD2132,
+    OE_RHD2164,
     OE_MPU9250,
 
     // NB: Always on bottom
     OE_MAXDEVICEID
-} oe_device_id_t;
+};
 
 // Fixed width device types
 typedef uint32_t oe_size_t;
 typedef uint32_t oe_dev_idx_t;
-typedef uint32_t oe_dev_id_t;
+typedef int32_t oe_dev_id_t;
 typedef uint32_t oe_reg_addr_t;
 typedef uint32_t oe_reg_val_t;
 
@@ -37,9 +59,9 @@ typedef struct oe_device {
     oe_size_t write_size;
 } oe_device_t;
 
-typedef enum oe_opt {
+enum oe_opt {
     OE_CONFIGSTREAMPATH,
-    OE_DATASTREAMPATH,
+    OE_READSTREAMPATH,
     OE_SIGNALSTREAMPATH,
     OE_DEVICEMAP,
     OE_NUMDEVICES,
@@ -51,11 +73,10 @@ typedef enum oe_opt {
     OE_FSCLKHZ,
     OE_FSCLKM,
     OE_FSCLKD,
-} oe_opt_t;
+};
 
-// NB: If you add an error here, make sure to update the oe_error_string array
-// in oepcie.c
-typedef enum oe_error {
+// NB: If you add an error here, make sure to update oe_error_str()
+enum oe_error {
     OE_ESUCCESS         =  0,  // Success
     OE_EPATHINVALID     = -1,  // Invalid stream path, fail on open
     OE_EREINITCTX       = -2,  // Double initialization attempt
@@ -81,7 +102,7 @@ typedef enum oe_error {
 
     // NB: Always at bottom
     OE_MINERRORNUM      = -22
-} oe_error_t;
+};
 
 // Context
 typedef struct oe_ctx_impl *oe_ctx;
@@ -92,17 +113,22 @@ int oe_init_ctx(oe_ctx ctx);
 int oe_destroy_ctx(oe_ctx ctx);
 
 // Option getting/setting
-int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void* value, size_t *size);
-int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void* value, size_t size);
+int oe_get_opt(const oe_ctx ctx, int option, void* value, size_t *size);
+int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size);
 
 // Hardware inspection and manipulation
-int oe_read_reg(const oe_ctx ctx, const oe_dev_idx_t dev_idx, const oe_reg_addr_t addr, oe_reg_val_t *value);
-int oe_write_reg(const oe_ctx ctx, const oe_dev_idx_t dev_idx, const oe_reg_addr_t addr, const oe_reg_val_t value);
+int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t *value);
+int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
 int oe_read(const oe_ctx ctx, void *data, size_t size);
 //int oe_write(const oe_ctx ctx, void *data, size_t size);
 
 // Internal type conversion
-int oe_error(oe_error_t err, char *str, size_t size);
-int oe_device(const oe_device_id_t dev_id, char *str, size_t size);
+void oe_version(int *major, int *minor, int *patch);
+const char *oe_error_str(int err);
+const char *oe_device_str(int dev_id);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
