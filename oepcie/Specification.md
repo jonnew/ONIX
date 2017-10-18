@@ -1,4 +1,4 @@
-# liboepcie Specification
+# `liboepcie` Design Specification
 
 ## License
 
@@ -367,25 +367,25 @@ typedef enum oe_signal {
     - High-bandwidth  communication channel from host to firmware
     - FIFO is filled with untyped data once per master clock cycle
 
-## API Spec
+# `liboepcie` API Specification
 
-### Types
+## Types
 
-#### Integer types
+### Integer types
 - `oe_dev_idx_t`: Fixed width device index integer type.
 - `oe_dev_id_t`: Fixed width device identity integer type.
 - `oe_reg_addr_t`: Fixed width device register address integer type.
 - `oe_reg_value_t`: Fixed width device register value integer type.
 - `oe_device_t
 
-#### `oe_ctx`
+### `oe_ctx`
 Opaque handle to a structure which contains hardware and device state
 information. There is generally one context per process using the library.
 
-#### `oe_opt_t`
+### `oe_opt_t`
 Context option enumeration. See `oe_set_opt` and `oe_get_opt` for valid values.
 
-#### `oe_device_id_t`
+### `oe_device_id_t`
 Device identiy enumeration. Provides agreed-upon, liboepcie-specific IDs for
 all devices supported by the firmware.
 
@@ -398,7 +398,7 @@ typedef enum oe_device_id {
 } oe_device_id_t;
 ```
 
-#### `oe_device_t`
+### `oe_device_t`
 One of potentially many pieces of hardware within a context. Examples include
 Intan chips, IMU, stimulators, immediate IO circuit, auxiliary ADC, etc. Each
 valid device type has a unqique ID which is enumerated in `oe_device_id_t`. A
@@ -415,7 +415,7 @@ typedef struct oe_device {
 } oe_device_t;
 ```
 
-#### `oe_error_t`
+### `oe_error_t`
 Error code enumeration.
 
 ``` {.c}
@@ -445,7 +445,7 @@ typedef enum oe_error {
 } oe_error_t;
 ```
 
-### oe_create_ctx
+## oe_create_ctx
 Create a hardware context. A context is an opaque handle to a structure which
 contains hardware and device state information, configuration capabilities, and
 data format information. It can be modified via calls to `oe_set_opt`. Its
@@ -455,82 +455,84 @@ state can be examined by `oe_get_opt`.
 oe_ctx oe_create_ctx();
 ```
 
-#### Returns `oe_ctx`
-- An opaque handle to the newly created context if successful. Otherwise it
-  shall return NULL and set errno to `EAGAIN`
+### Returns `oe_ctx`
+An opaque handle to the newly created context if successful. Otherwise it shall
+return NULL and set errno to `EAGAIN`
 
-#### Description
+### Description
 On success a context struct is allocated and created, and its handle is passed
 to the user. The context holds all state used to communicate with a set of
 hardware devices. It holds paths to FIFOs and configuration communication
 channels and knowledge of the hardware's run state. It is configured through
 calls to `oe_set_opt`. It can be examined through calls to `oe_get_opt`.
 
-### oe_destroy_ctx
+## oe_destroy_ctx
 Terminate a context and free bound resources.
 
 ``` {.c}
 int oe_destroy_ctx(oe_ctx ctx)
 ```
 
-#### Arguments
+### Arguments
 - `ctx` context
 
-#### Returns `int`
+### Returns `int`
 - 0: success
 - Less than 0: `oe_error_t`
 
-#### Description
+### Description
 During context destruction, all resources allocated by `oe_create_ctx` are
 freed. This function can be called from any context run state. When called, an
 interrupt signal (TOD0: Which?) is raised and any blocking operations will
 return immediately. Attached resources (e.g. file descriptors and allocated
 memory) are closed and their resources freed.
 
-### oe_init
+## oe_init_ctx
 Initialize a context, opening all file streams etc.
 
 ``` {.c}
-int oe_init_ctx(oe_ctx *c)
+int oe_init_ctx(oe_ctx ctx)
 ```
 
-#### Arguments
-- `c` context
+### Arguments
+- `ctx` context
 
-#### Returns `int`
+### Returns `int`
 - 0: success
 - Less than 0: `oe_error_t`
 
-#### Description
+### Description
 Upon a call to `oe_init_ctx`, the following actions take place
 
 1. All required data streams are opened.
 2. A device map is read from the firmware. It can be examined via calls t
    `oe_get_opt`.
+3. The data transmission packet size is calculated and stored. It can be
+   examined via calls t `oe_get_opt`.
 
 Following a successful call to `oe_init_ctx`, the hardware's acqusition
 parameters and run state can be manipulated using calls to `oe_get_opt`.
 
-### oe_get_opt
+## oe_get_opt
 Get context options. NB: This follows the pattern of
 [zmq_getsockopt()](http://api.zeromq.org/4-1:zmq-getsockopt).
 
 ``` {.c}
-int oe_get_opt(const oe_ctx ctx, const oe_opt_t option, void* value, size_t *size);
+int oe_get_opt(const oe_ctx ctx, int option, void* value, size_t *size);
 ```
 
-#### Arguments
+### Arguments
 - `ctx` context to read from
 - `option` option to read
 - `value` buffer to store value of `option`
 - `size` pointer to the size of `value` (including terminating null character,
   if applicable) in bytes
 
-#### Returns `int`
+### Returns `int`
 - 0: success
 - Less than 0: `oe_error_t`
 
-#### Description
+### Description
 The `oe_get_opt`() function shall set the option specified by the `option`
 argument to the value pointed to by the `value` argument for the context
 pointed to by the `ctx` argument. The `size` provides a pointer to the size of
@@ -538,81 +540,117 @@ the option value in bytes. Upon successful completion `oe_get_opt` shall modify
 the value pointed to by `size` to indicate the actual size of the option value
 stored in the buffer.
 
-Following a succesful call to `oe_init`, the following socket options can be read:
+Following a succesful call to `oe_init_ctx`, the following socket options can be read:
 
-|`OE_CONFIGSTREAMPATH`  	| URI specifying config data stream. |
-|-|-|
+#### `OE_CONFIGSTREAMPATH`  	 
+URI specifying config data stream. 
+
+| | | |
+|-|-|-|
 | option value type         | char * |
 | option value unit         | N/A |
 | default value             | file:///dev/xillybus_oe_config_32 |
 
-|`OE_DATASTEAMPATH`  	    | URI specifying input data stream.  |
-|-|-|
+#### `OE_READSTREAMPATH`  	     
+URI specifying input data stream.  
+
+| | | |
+|-|-|-|
 | option value type         | char * |
 | option value unit         | N/A |
 | default value             | file:///dev/xillybus_oe_input_32 |
 
-|`OE_SIGNALSTREAMPATH`  	| URI specifying hardware signal data stream |
-|-|-|
+#### `OE_SIGNALSTREAMPATH`  	 
+URI specifying hardware signal data stream 
+
+| | | |
+|-|-|-|
 | option value type 	    | char * |
 | option value unit 	    | N/A |
 | default value     	    | file:///dev/xillybus_oe_signal_32 |
 
-|`OE_DEVICEMAP`             | Obtain the device map |
-|-|-|
+#### `OE_DEVICEMAP`              
+Obtain the device map 
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_device_t * |
 | option value unit 	    | Pointer to a pre-allocated array of `oe_device_t` structs |
 | default value     	    | N/A |
 
-|`OE_NUMDEVICES`            | Number of devices in the device map |
-|-|-|
+#### `OE_NUMDEVICES`             
+Number of devices in the device map 
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | N/A |
 | default value     	    | N/A |
 
-|`OE_READFRAMESIZE`         | Size of a read frame (sample) in bytes |
-|-|-|
+#### `OE_READFRAMESIZE`          
+Size of a read frame (sample) in bytes 
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | N/A |
 | default value     	    | N/A |
 
-|`OE_WRITEFRAMESIZE`        | Size of a write frame (sample) in bytes |
-|-|-|
+#### `OE_WRITEFRAMESIZE`         
+Size of a write frame (sample) in bytes 
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | N/A |
 | default value     	    | N/A |
 
-|`OE_RUNNING`               | Hardware run state |
-|-|-|
+#### `OE_RUNNING`                
+Hardware run state 
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | True or False (i.e. 0 or > 0) |
 | default value     	    | False |
 
-|`OE_SYSCLKHZ`              | System clock frequency |
-|-|-|
+#### `OE_SYSCLKHZ`               
+System clock frequency 
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | Hz |
 | default value     	    | 100e6 |
 
-|`OE_FSCLKHZ`               | Sample clock frequency |
-|-|-|
+#### `OE_FSCLKHZ`                
+Sample clock frequency 
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | Hz |
 | default value     	    | 30e3 |
 
-|`OE_FSCLKM`                | Sample clock frequency multiplier|
-|-|-|
+#### `OE_FSCLKM`                 
+Sample clock frequency multiplier
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | N/A |
 | default value     	    | 3 |
 
-|`OE_FSCLKD`                | Sample clock frequency divider|
-|-|-|
+#### `OE_FSCLKD`                 
+Sample clock frequency divider
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | N/A |
 | default value     	    | 10000 |
 
-### oe_set_opt
+## oe_set_opt
 Set context options. NB: This follows the pattern of
 [zmq_setsockopt()](http://api.zeromq.org/4-1:zmq-setsockopt).
 
@@ -620,111 +658,128 @@ Set context options. NB: This follows the pattern of
 int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void* value, size_t size);
 ```
 
-#### Arguments
+### Arguments
 - `ctx` context
 - `option` option to set
 - `value` value to set `option` to
 - `size` length of `value` in bytes
 
-#### Returns `int`
+### Returns `int`
 - 0: success
 - Less than 0: `oe_error_t`
 
-#### Description
+### Description
 The `oe_set_opt` function shall set the option specified by the `option`
 argument to the value pointed to by the `value` argument within `ctx`. The
 `size` indicates the size of the `value` in bytes.
 
 The following socket options can be set:
 
-|`OE_CONFIGSTREAMPATH`\*  	| Set URI specifying config data stream. |
-|-|-|
+#### `OE_CONFIGSTREAMPATH`\*
+Set URI specifying config data stream.
+
+| | | |
+|-|-|-|
 | option value type         | char * |
 | option value unit         | N/A |
 | default value             | file:///dev/xillybus_oe_config_32 |
 
-|`OE_DATASTEAMPATH`\*  	    | Set URI specifying input data stream.  |
-|-|-|
+#### `OE_READSTREAMPATH`\*      
+Set URI specifying input data stream.
+
+| | | |
+|-|-|-|
 | option value type         | char * |
 | option value unit         | N/A |
 | default value             | file:///dev/xillybus_oe_input_32 |
 
-|`OE_SIGNALSTREAMPATH`\*  	| Set URI specifying hardware signal data stream |
-|-|-|
+#### `OE_SIGNALSTREAMPATH`\*  	
+Set URI specifying hardware signal data stream
+
+| | | |
+|-|-|-|
 | option value type 	    | char * |
 | option value unit 	    | N/A |
 | default value     	    | file:///dev/xillybus_oe_signal_32 |
 
-|`OE_RUNNING`\*\*  	        | Set/clear master clock gate |
-|-|-|
+#### `OE_RUNNING`\*\*  	        
+Set/clear master clock gate. Any value greater than 0 will start acqusition.
+Writing 0 to this option will stop acqusition, but will not reset context
+options or the sample counter.
+
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | True or false (i.e. 0 or not 0) |
 | default value     	    | False |
 
-Any value greater than 0 will start acqusition. Writing 0 to this option will stop acqusition, but will not reset context options or the sample counter.
+#### `OE_RESET`\*\*  	        
+Trigger global hardware reset. Any value great than 0 will trigger a hardware
+reset. In this case, acquisition is stopped and all global hardware parameters
+(clock multipliers, sample counters, etc) are defaulted.
 
-|`OE_RESET`\*\*  	        | Trigger global hardware reset |
-|-|-|
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | Trigger (i.e. any value greater than 0) |
 | default value     	    | Untriggered |
 
-Any value great than 0 will trigger a hardware reset. In this case, acqusition
-is stopped and all global hardware parameters (clock multipliers, sample
-counters, etc) are defaulted.
+#### `OE_FSCLM`\*\*  	        
+Set sample clock multiplier. Used to derive the sample clock frequency from the
+system clock. The sample clock frequency = M * system clock frequency / D.
 
-|`OE_FSCLM`\*\*  	        | Set sample clock multiplier |
-|-|-|
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | Sample clock ratio numerator |
 | default value     	    | 3 |
 
-Used to derive the sample clock frequency from the system clock. The sample
-clock frequncy = M * system clock frequency / D;
+#### `OE_FSCLD`\*\*  	        
+Set sample clock divider. Used to derive the sample clock frequency from the
+system clock. The sample clock frequency = M * system clock frequency / D.
 
-|`OE_FSCLD`\*\*  	        | Set sample clock divider |
-|-|-|
+| | | |
+|-|-|-|
 | option value type 	    | oe_reg_val_t |
 | option value unit 	    | Sample clock ratio denominator |
 | default value     	    | 10000 |
 
-Used to derive the sample clock frequency from the system clock. The sample
-clock frequncy = M * system clock frequency / D;
 
-\* Invalid following a successful call to `oe_init()`. In this case, will return with error code `OE_EINVALSTATE`.
-\*\* Invalid until a succesful call to `oe_init()`. In this case, will return with error code `OE_EINVALSTATE`.
+\* Invalid following a successful call to `oe_init_ctx()`. In this case, will return with error code `OE_EINVALSTATE`.
 
-### oe_read_reg
+\*\* Invalid until a succesful call to `oe_init_ctx()`. In this case, will return with error code `OE_EINVALSTATE`.
+
+## oe_read_reg
 Read a configuration register on a specific device.
 
 ``` {.c}
 int oe_read_reg(const oe_ctx ctx, const oe_dev_idx_t dev_idx, const oe_reg_addr_t addr, oe_reg_val_t *value)
 ```
 
-#### Arguments
+### Arguments
 - `ctx` context
 - `dev_idx` physical index number
 - `addr` Thekey of register to write to
 - `value` pointer to an int that will store the value of the register at `addr` on `dev_idx`
 
-#### Returns `int`
+### Returns `int`
 - 0: success
 - Less than 0: `oe_error_t`
 
-#### Description
+### Description
 `oe_read_reg` is used to read the value of configuration registers from devices
 within the current device map. This can be used to verify the success of calls
 to `oe_read_reg` or to obtain state information about devices managed by the
 current context.
 
-### oe_write_reg
+## oe_write_reg
 Set a configuration register on a specific device.
 
 ``` {.c}
 int oe_write_reg(const oe_ctx ctx, const oe_dev_idx_t dev_idx, const oe_reg_addr_t addr, const oe_reg_val_t value)
 ```
 
-#### Arguments
+### Arguments
 - `ctx` context
 - `dev_idx` the device index to read from
 - `addr` register address within the device specified by `dev_idx` to write
@@ -732,11 +787,11 @@ int oe_write_reg(const oe_ctx ctx, const oe_dev_idx_t dev_idx, const oe_reg_addr
 - `value` value with which to set the register at `addr` on the device
   specified by `dev_idx`
 
-#### Returns `int`
+### Returns `int`
 - 0: success
 - Less than 0: `oe_error_t`
 
-#### Description
+### Description
 `oe_write_reg` is used to write the value of configuration registers from
 devices within the current device map. This can be used to set configuraiton
 registers for devices managed by the current context. For example, this is used
@@ -745,23 +800,23 @@ successful return from this function does not guarantee that the register has
 been properly set. Confirmation of the register value can be made using a call
 to `oe_read_reg`.
 
-### oe_read
+## oe_read
 Read high-bandwidth input data stream.
 
 ``` {.c}
 int oe_read(const oe_ctx ctx, void *data, size_t size)
 ```
 
-#### Arguments
+### Arguments
 - `ctx` context
 - `data` buffer to read data into
 - `size` size of buffer in bytes
 
-#### Returns `int`
+### Returns `int`
 - 0: success
 - Less than 0: `oe_error_t`
 
-#### Description
+### Description
 `oe_read` reads data from a asynchronous input buffer into host memory. The
 layout of retrieved data is determined by a particular hardware configuration
 and corresponding device map. Each data frame corresponds to a round-robin
@@ -769,7 +824,7 @@ through all data producing devices in the device map. The read byte offsets of e
 device within a data frame can be found by examining the device map via calls
 to `oe_get_opt`.
 
-### oe_write
+## oe_write
 NB: Not implemented in first version
 Write data to an open stream
 
@@ -777,15 +832,15 @@ Write data to an open stream
 int oe_write(const oe_ctx ctx, void *data, size_t size)
 ```
 
-#### Arguments
+### Arguments
 - `ctx` context
 - `data` buffer to read data into
 - `size` size of buffer in bytes
 
-#### Returns `int`
+### Returns `int`
 - Less than 0: `oe_error_t`
 
-#### Description
+### Description
 `oe_write` writes data into an asynchronous output stream from host memory. The
 layout of output data is determined by a particular hardware configuration, and
 corresponding device map. Data placed into the stream corresponds to a
@@ -793,34 +848,28 @@ round-robin through all data accepting devices in the device map. The wite byte
 offsets of each device within a data frame can be found by examining the device
 map via calls to `oe_get_opt`.
 
-### oe_error
-Convert an instance of `oe_error_t` into a human readable string.
+## oe_error_str
+Convert an error number from `oe_error_t` into a human readable string.
 
 ``` {.c}
-void oe_error(oe_error_t err, char *str, size_t size);
+const char *oe_error_str(oe_error_t err)
 ```
 
-#### Arguments
+### Arguments
 - `err` error code
-- `str` string buffer
-- `size` size of string buffer in bytes
 
-#### Returns `int`
-- 0: success
-- Less than 0: `oe_error_t`
+### Returns `const char *`
+Pointer to an error message string
 
-### oe_error
-Convert an instance of `oe_device_id_t` into human readable string.
+## oe_device_str
+Convert an number from `oe_device_id_t` into human readable string.
 
 ``` {.c}
-int oe_device(const oe_device_id_t dev_id, char *str, size_t size);
+const char *oe_device(oe_device_id_t dev_id)
 ```
 
-#### Arguments
+### Arguments
 - `dev_id` device id
-- `str` string buffer
-- `size` size of string buffer in bytes
 
-#### Returns `int`
-- 0: success
-- Less than 0: `oe_error_t`
+### Returns `const char *`
+Pointer to a device ide string
