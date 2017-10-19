@@ -50,30 +50,71 @@ namespace oe {
 
     class context_t;
 
+    using device_map_t = std::vector<oe_device_t>;
+
     class frame_t
     {
         friend context_t;
-        using data_t = std::vector<uint8_t>;
+        using raw_t = uint8_t;
 
         public:
-            explicit frame_t(size_t size)
+
+            inline frame_t(size_t size, const device_map_t &dev_map)
+            : size_(size)
+            , data_(new uint8_t[size])
+            , dev_map_(dev_map)
             {
-                data_.resize(size);
             }
 
-            uint8_t *data() { return data_.data(); }
-            size_t size() const { return data_.size(); }
+            inline frame_t(const frame_t &rhs) {
+            : size_(rhs.size_)
+            , data_(new uint8_t[rhs.size_])
+            , dev_map_(rhs.dev_map_)
+            {
+                std::memcpy(data_, rhs.data_, sizeof(raw_t) * rhs.size);         
+            }
 
-            uint64_t time() { return *reinterpret_cast<uint64_t *>(data_.data()); }
+            inline frame_t &operator=(const frame_t &)
+            {
+                size_ = rhs.size_;
+                data_ = new uint8_t[rhs.size_];
+                std::memcpy(data_, rhs.data_, sizeof(raw_t) * rhs.size);         
+                dev_map_ = rhs.dev_map_;
+            }
+
+            inline frame_t(context_t &&rhs)  = default;
+            inline frame_t &operator = (frame_t &&rhs) = default;
+
+            ~frame_t() noexcept {
+                delete [] data_;
+            }
+
+            uint64_t time() { return *reinterpret_cast<uint64_t *>(data_); }
+
+            template <typename sample_t>
+            sample_t * begin(size_t dev_idx)
+            {
+                return reinterpret_cast<sample_t *>(
+                    data_ + dev_map_[dev_idx].read_offset);
+            }
+
+            template <typename sample_t>
+            sample_t * end(size_t dev_idx)
+            {
+                return reinterpret_cast<sample_t *>(
+                           data_ + dev_map_[dev_idx].read_offset
+                           + dev_map_[dev_idx].read_size) + 1;
+            }
 
         private:
-            data_t data_;
+            size_t size;
+            raw_t *data_;
+            const device_map_t &dev_map_;
     };
 
     class context_t {
 
     public:
-        using device_map_t = std::vector<oe_device_t>;
 
         inline context_t(const char* config_path = OE_DEFAULTCONFIGPATH,
                          const char* read_path = OE_DEFAULTREADPATH,
@@ -106,7 +147,7 @@ namespace oe {
         }
 
         // No copy
-        inline context_t(const context_t &)  = delete;
+        inline context_t(const context_t &) = delete;
         inline context_t &operator = (const context_t &) = delete;
 
         // Moves OK
@@ -187,37 +228,17 @@ namespace oe {
                 update_buffer();
 
             // Move data from buffer into frame
-            frame_t frame(frame_size_);
-            std::swap_ranges(buffer_.begin() + buf_idx_ * frame_size_,
-                             buffer_.begin() + (buf_idx_ + 1) * frame_size_,
-                             frame.data_.begin());
+            frame_t frame(frame_size_, device_map_);
+            std::move(buffer_.begin() + buf_idx_ * frame_size_,
+                      buffer_.begin() + (buf_idx_ + 1) * frame_size_,
+                      frame.data_);
 
             // Increment buffer index
-            buf_idx_ +=1;
+            buf_idx_ += 1;
 
             // Should be elided
             return frame;
         }
-
-
-        // TODO: frame -> device function templates
-        // template <typename FromT, typename ToT, typename UnaryOperation>
-        // static std::vector<T> sample(UnaryOperation op)
-        //{
-        //    std::vector<ToT> out;
-        //    auto start = reinterpret_cast<FromT *> start_;
-        //    auto end = reinterpret_cast<FromT *>(start_ + size);
-        //    std::transform(start, end, out.begin(), op);
-        //    return out;
-        //}
-
-        // template <typename FromT, class OutputItT, typename UnaryOperation>
-        // static void sample(UnaryOperation op, OutputItT out_it)
-        //{
-        //    auto start = reinterpret_cast<FromT *> start_;
-        //    auto end = reinterpret_cast<FromT *>(start_ + size);
-        //    std::transform(start, end, out_it, op);
-        //}
 
     private:
         inline void
@@ -245,7 +266,7 @@ namespace oe {
         oe_ctx ctx_ = nullptr;
         device_map_t device_map_;
         size_t frame_size_;
-        static constexpr size_t frames_per_update_ = 100;
+        static constexpr size_t frames_per_update_ = 100; // TODO: Settable
         std::vector<uint8_t> buffer_;
         size_t buf_idx_ = frames_per_update_;
     };

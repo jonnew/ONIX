@@ -20,7 +20,7 @@ const size_t fifo_buffer_samples = 1000;
 volatile oe_reg_val_t running = 0;
 const oe_reg_val_t sys_clock_hz = 100e6;
 oe_reg_val_t clock_m = 30;
-oe_reg_val_t clock_d = 100;
+oe_reg_val_t clock_d = 10000;
 volatile oe_reg_val_t fs_hz;
 
 // Global state
@@ -174,8 +174,6 @@ void generate_default_config(int config_fd)
 {
     // Default config
     running = 0;
-    clock_m = 30;
-    clock_d = 100;
     fs_hz = div_clock(sys_clock_hz, clock_m, clock_d);
     sample_tick = 0;
 
@@ -278,8 +276,9 @@ void *data_loop(void *vargp)
 
             // Generate sample (frame)
             int j;
-            for (j = OE_RFRAMEHEADERSZ; j < sample_size; j += 2)
-                *(uint16_t *)(sample + j) = (uint16_t)randn(32768, 50);
+            for (j = OE_RFRAMEHEADERSZ; j < sample_size; j += 2) 
+                *(uint16_t *)(sample + j) = sample_tick % 65535;
+                //*(uint16_t *)(sample + j) = (uint16_t)randn(32768, 50);
 
             size_t rc = write(data_fd, sample, sample_size);
             printf("Write %zu bytes\n", rc);
