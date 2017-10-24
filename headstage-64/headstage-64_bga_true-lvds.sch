@@ -5628,10 +5628,9 @@ and switcher that does not care.</text>
 </bus>
 <bus name="DIN[0..5]">
 <segment>
-<wire x1="111.76" y1="187.96" x2="111.76" y2="175.26" width="0.762" layer="92"/>
+<wire x1="111.76" y1="185.42" x2="111.76" y2="175.26" width="0.762" layer="92"/>
 <label x="114.3" y="191.77" size="1.27" layer="95"/>
-<wire x1="111.76" y1="187.96" x2="116.84" y2="185.42" width="0.762" layer="92"/>
-<wire x1="116.84" y1="185.42" x2="127" y2="185.42" width="0.762" layer="92"/>
+<wire x1="111.76" y1="185.42" x2="127" y2="185.42" width="0.762" layer="92"/>
 </segment>
 <segment>
 <label x="-327.66" y="201.93" size="1.27" layer="95"/>
@@ -8683,9 +8682,8 @@ and switcher that does not care.</text>
 <segment>
 <pinref part="R50" gate="R" pin="1"/>
 <wire x1="93.98" y1="190.5" x2="99.06" y2="190.5" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="190.5" x2="99.06" y2="187.96" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="187.96" x2="114.3" y2="187.96" width="0.1524" layer="91"/>
-<wire x1="114.3" y1="187.96" x2="114.3" y2="190.5" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="190.5" x2="116.84" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="187.96" x2="114.3" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="190.5" x2="119.38" y2="190.5" width="0.1524" layer="91"/>
 <junction x="114.3" y="190.5"/>
 <label x="119.38" y="190.5" size="1.27" layer="95" xref="yes"/>
@@ -8700,11 +8698,11 @@ and switcher that does not care.</text>
 </segment>
 <segment>
 <pinref part="R50" gate="R" pin="2"/>
-<wire x1="104.14" y1="190.5" x2="104.14" y2="193.04" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="193.04" x2="119.38" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="190.5" x2="101.6" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="193.04" x2="119.38" y2="193.04" width="0.1524" layer="91"/>
 <label x="119.38" y="193.04" size="1.27" layer="95" xref="yes"/>
-<wire x1="104.14" y1="193.04" x2="93.98" y2="193.04" width="0.1524" layer="91"/>
-<junction x="104.14" y="193.04"/>
+<wire x1="101.6" y1="193.04" x2="93.98" y2="193.04" width="0.1524" layer="91"/>
+<junction x="101.6" y="193.04"/>
 <pinref part="U11" gate="G$3" pin="DIFFIO_TX_RX_B9N/J4"/>
 </segment>
 </net>
