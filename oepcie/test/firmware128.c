@@ -19,8 +19,8 @@ const size_t fifo_buffer_samples = 1000;
 // Config registers
 volatile oe_reg_val_t running = 0;
 const oe_reg_val_t sys_clock_hz = 100e6;
-oe_reg_val_t clock_m = 30;
-oe_reg_val_t clock_d = 10000;
+oe_reg_val_t clock_m = 1;
+oe_reg_val_t clock_d = 10000; // These vals give 10 kHz
 volatile oe_reg_val_t fs_hz;
 
 // Global state
@@ -263,10 +263,12 @@ void *data_loop(void *vargp)
     // Sample number, LFP data, ...
     fcntl(data_fd, F_SETPIPE_SZ, sample_size * fifo_buffer_samples);
 
+    const int fudge_factor = 1;
+
     while (!quit) {
         if (running) {
 
-            usleep(1e6 / fs_hz); // Simulate finite sampling time
+            usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
 
             // Buffer for data
             uint8_t sample[sample_size];

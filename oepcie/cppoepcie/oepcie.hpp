@@ -54,36 +54,63 @@ namespace oe {
 
     class frame_t
     {
-        friend context_t;
+        friend context_t; // Fills data_
         using raw_t = uint8_t;
 
         public:
 
-            inline frame_t(size_t size, const device_map_t &dev_map)
+            inline frame_t(size_t size, device_map_t &dev_map)
             : size_(size)
-            , data_(new uint8_t[size])
+            , data_(new raw_t[size])
             , dev_map_(dev_map)
             {
+                // Nothing
             }
 
-            inline frame_t(const frame_t &rhs) {
+            inline frame_t(const frame_t &rhs)
             : size_(rhs.size_)
-            , data_(new uint8_t[rhs.size_])
+            , data_(new raw_t[rhs.size_])
             , dev_map_(rhs.dev_map_)
             {
-                std::memcpy(data_, rhs.data_, sizeof(raw_t) * rhs.size);         
+                std::memcpy(data_, rhs.data_, sizeof(raw_t) * rhs.size_);
             }
 
-            inline frame_t &operator=(const frame_t &)
+            inline frame_t(frame_t &&rhs)
+            : size_(rhs.size_)
+            , data_(rhs.data_)
+            , dev_map_(rhs.dev_map_)
             {
-                size_ = rhs.size_;
-                data_ = new uint8_t[rhs.size_];
-                std::memcpy(data_, rhs.data_, sizeof(raw_t) * rhs.size);         
-                dev_map_ = rhs.dev_map_;
+                rhs.data_ = nullptr;
             }
 
-            inline frame_t(context_t &&rhs)  = default;
-            inline frame_t &operator = (frame_t &&rhs) = default;
+            inline frame_t &operator=(const frame_t &rhs)
+            {
+                if (&rhs == this)
+                    return *this;
+
+                size_ = rhs.size_;
+                auto tmp = new raw_t[rhs.size_];
+                std::memcpy(tmp, rhs.data_, sizeof(raw_t) * rhs.size_);
+                delete [] data_;
+                data_ = tmp;
+                dev_map_ = rhs.dev_map_;
+
+                return *this;
+            }
+
+            inline frame_t &operator=(frame_t &&rhs)
+            {
+                if (&rhs == this)
+                    return *this;
+
+                size_ = rhs.size_;
+                delete[] data_;
+                data_ = rhs.data_;
+                rhs.data_ = nullptr;
+                dev_map_ = rhs.dev_map_;
+
+                return *this;
+            }
 
             ~frame_t() noexcept {
                 delete [] data_;
@@ -107,9 +134,9 @@ namespace oe {
             }
 
         private:
-            size_t size;
-            raw_t *data_;
-            const device_map_t &dev_map_;
+            size_t size_;
+            raw_t *data_ = nullptr;
+            device_map_t &dev_map_;
     };
 
     class context_t {
