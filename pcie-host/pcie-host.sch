@@ -6474,7 +6474,6 @@ grid 2.54 mm</description>
 <part name="C54" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="GND99" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="GND100" library="supply1" deviceset="GND" device=""/>
-<part name="R39" library="jonnew" deviceset="R" device="_0402" value="22"/>
 <part name="R47" library="jonnew" deviceset="R" device="_0402" value="22"/>
 <part name="R40" library="jonnew" deviceset="R" device="_0402" value="22"/>
 <part name="R48" library="jonnew" deviceset="R" device="_0402" value="22"/>
@@ -6666,6 +6665,8 @@ grid 2.54 mm</description>
 <part name="TP26" library="jonnew" deviceset="TP" device="_1MM" value="SCL(ISO)"/>
 <part name="TP27" library="jonnew" deviceset="TP" device="_1MM" value="SDA(ISO)"/>
 <part name="TP28" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
+<part name="R39" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="TP29" library="jonnew" deviceset="TP" device="TP06R" value="GPIO3"/>
 </parts>
 <sheets>
 <sheet>
@@ -6708,6 +6709,9 @@ XX mil FR4 core
 1.4 mil trace</text>
 <text x="624.84" y="322.58" size="2.54" layer="97">SN65LVDT388A has integrated
 110 ohm term resistors.</text>
+<text x="236.22" y="106.68" size="2.54" layer="97">Parity error on high-speed forward
+channel and pass will go low. This
+should be provided to LPC connector</text>
 </plain>
 <instances>
 <instance part="GND3" gate="1" x="497.84" y="205.74"/>
@@ -6953,7 +6957,6 @@ XX mil FR4 core
 <instance part="C54" gate="C" x="441.96" y="48.26" rot="R180"/>
 <instance part="GND99" gate="G$1" x="441.96" y="43.18"/>
 <instance part="GND100" gate="1" x="487.68" y="15.24"/>
-<instance part="R39" gate="R" x="264.16" y="149.86" rot="MR0"/>
 <instance part="R47" gate="R" x="274.32" y="147.32" rot="MR0"/>
 <instance part="R40" gate="R" x="264.16" y="144.78" rot="MR0"/>
 <instance part="R48" gate="R" x="274.32" y="142.24" rot="MR0"/>
@@ -7178,6 +7181,8 @@ XX mil FR4 core
 <instance part="TP26" gate="G$1" x="401.32" y="388.62" rot="R180"/>
 <instance part="TP27" gate="G$1" x="408.94" y="388.62" rot="R180"/>
 <instance part="TP28" gate="G$1" x="416.56" y="388.62" rot="R180"/>
+<instance part="R39" gate="R" x="386.08" y="27.94" rot="MR0"/>
+<instance part="TP29" gate="G$1" x="289.56" y="149.86" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -10308,13 +10313,6 @@ XX mil FR4 core
 <pinref part="U9" gate="G$1" pin="ROUT10"/>
 </segment>
 </net>
-<net name="N$56" class="0">
-<segment>
-<wire x1="254" y1="149.86" x2="259.08" y2="149.86" width="0.1524" layer="91"/>
-<pinref part="R39" gate="R" pin="2"/>
-<pinref part="U9" gate="G$1" pin="GPIO3"/>
-</segment>
-</net>
 <net name="N$57" class="0">
 <segment>
 <pinref part="R47" gate="R" pin="2"/>
@@ -10346,26 +10344,6 @@ XX mil FR4 core
 <pinref part="R40" gate="R" pin="1"/>
 <label x="345.44" y="144.78" size="1.27" layer="95" xref="yes"/>
 <wire x1="269.24" y1="144.78" x2="345.44" y2="144.78" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="GPO0_ISO" class="0">
-<segment>
-<wire x1="449.58" y1="27.94" x2="406.4" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="U17" gate="G$1" pin="VOD"/>
-<label x="406.4" y="27.94" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
-<pinref part="R39" gate="R" pin="1"/>
-<label x="345.44" y="149.86" size="1.27" layer="95" xref="yes"/>
-<wire x1="269.24" y1="149.86" x2="345.44" y2="149.86" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$1" class="0">
-<segment>
-<wire x1="241.3" y1="104.14" x2="236.22" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="236.22" y1="104.14" x2="236.22" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="TP5" gate="G$1" pin="TP"/>
-<pinref part="U9" gate="G$1" pin="PASS"/>
 </segment>
 </net>
 <net name="PCLK_N" class="1">
@@ -10823,14 +10801,14 @@ XX mil FR4 core
 </net>
 <net name="GPO1_ISO" class="0">
 <segment>
-<pinref part="U17" gate="G$1" pin="VOC"/>
-<wire x1="449.58" y1="30.48" x2="406.4" y2="30.48" width="0.1524" layer="91"/>
-<label x="406.4" y="30.48" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
 <label x="345.44" y="147.32" size="1.27" layer="95" xref="yes"/>
 <pinref part="R47" gate="R" pin="1"/>
 <wire x1="345.44" y1="147.32" x2="279.4" y2="147.32" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<label x="406.4" y="30.48" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="U17" gate="G$1" pin="VOC"/>
+<wire x1="449.58" y1="30.48" x2="406.4" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+5.5V_ISO" class="0">
@@ -11200,6 +11178,33 @@ XX mil FR4 core
 <wire x1="86.36" y1="762" x2="96.52" y2="762" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="762" x2="86.36" y2="756.92" width="0.1524" layer="91"/>
 <junction x="86.36" y="762"/>
+</segment>
+</net>
+<net name="PASS" class="0">
+<segment>
+<wire x1="241.3" y1="104.14" x2="236.22" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="104.14" x2="236.22" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="TP5" gate="G$1" pin="TP"/>
+<pinref part="U9" gate="G$1" pin="PASS"/>
+</segment>
+<segment>
+<wire x1="381" y1="27.94" x2="370.84" y2="27.94" width="0.1524" layer="91"/>
+<label x="370.84" y="27.94" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="R39" gate="R" pin="2"/>
+</segment>
+</net>
+<net name="N$38" class="0">
+<segment>
+<pinref part="U9" gate="G$1" pin="GPIO3"/>
+<pinref part="TP29" gate="G$1" pin="TP"/>
+<wire x1="254" y1="149.86" x2="287.02" y2="149.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="R39" gate="R" pin="1"/>
+<pinref part="U17" gate="G$1" pin="VOD"/>
+<wire x1="391.16" y1="27.94" x2="449.58" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
