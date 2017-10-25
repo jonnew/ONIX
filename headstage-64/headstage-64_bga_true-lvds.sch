@@ -5286,7 +5286,7 @@ and switcher that does not care.</text>
 <instance part="U$3" gate="PWR1" x="449.58" y="434.34"/>
 <instance part="U$4" gate="PWR1" x="449.58" y="373.38"/>
 <instance part="SUPPLY20" gate="PE" x="736.6" y="708.66"/>
-<instance part="SUPPLY21" gate="PE" x="650.24" y="756.92"/>
+<instance part="SUPPLY21" gate="PE" x="650.24" y="741.68"/>
 <instance part="U$5" gate="VCC" x="650.24" y="779.78"/>
 <instance part="U12" gate="U1" x="566.42" y="193.04"/>
 <instance part="L1" gate="L" x="546.1" y="231.14" rot="R270"/>
@@ -5784,11 +5784,15 @@ and switcher that does not care.</text>
 <pinref part="U3" gate="G$1" pin="GND"/>
 <wire x1="668.02" y1="762" x2="660.4" y2="762" width="0.1524" layer="91"/>
 <wire x1="660.4" y1="762" x2="650.24" y2="762" width="0.1524" layer="91"/>
-<wire x1="650.24" y1="762" x2="650.24" y2="759.46" width="0.1524" layer="91"/>
+<wire x1="650.24" y1="762" x2="650.24" y2="749.3" width="0.1524" layer="91"/>
+<wire x1="650.24" y1="749.3" x2="650.24" y2="744.22" width="0.1524" layer="91"/>
 <wire x1="660.4" y1="762" x2="660.4" y2="764.54" width="0.1524" layer="91"/>
 <junction x="660.4" y="762"/>
 <pinref part="SUPPLY21" gate="PE" pin="GND"/>
 <pinref part="C16" gate="C" pin="2"/>
+<pinref part="U3" gate="G$1" pin="BLANK"/>
+<wire x1="668.02" y1="749.3" x2="650.24" y2="749.3" width="0.1524" layer="91"/>
+<junction x="650.24" y="749.3"/>
 </segment>
 <segment>
 <pinref part="U12" gate="U1" pin="GND"/>
