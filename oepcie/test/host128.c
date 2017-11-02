@@ -22,7 +22,7 @@ int main()
     // Set stream paths
     const char *config_path = "/tmp/rat128_config";
     const char *sig_path = "/tmp/rat128_signal";
-    const char *data_path = "/tmp/rat128_data";
+    const char *data_path = "/tmp/rat128_read";
 
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);

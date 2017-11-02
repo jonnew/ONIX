@@ -103,9 +103,7 @@ by a `struct` as follows:
 ``` {.c}
 typedef struct oe_device {
     device_id_t id;
-    int         read_offset;
     size_t      read_size;
-    int         write_offset;
     size_t      write_size;
 } oe_device_t;
 ```
@@ -113,21 +111,20 @@ The definition of each member of `oe_device_t` is provided below:
 
 1. `enum config_device_id`: Device ID number which is globally enumerated for the
    entire project
-    - e.g. Intan RHD2032 could be 0, Intan RHD2064 could 1, etc.
-    - e.g. MWL001GPIOMUX is a MUX implemented in the headstage FPGA that is
-      used to route SERDES GPIO lines
+    - e.g. Immediate IO from the host board is 0
+    - e.g. Intan RHD2032 is 1, Intan RHD2064 is 2, etc.
     - This enum grows with the number of devices supported by the library.
       There is a single enum for the entire library which enumerates all
       possible devices that are controlled across `context` configurations.
     - Each `context` is only responsible for controlling a subset of all
-      supported devices.
+      supported devices. This subset is referred to a _device map_.
 
     ```
     typedef enum device_id {
-        RHD2032,
-        RHD2064
-        MPU9250,
-        MWL001GPIOMUX,
+        OE_IMMEDIATEIO = 0,
+        OE_RHD2132,
+        OE_RHD2164,
+        OE_MPU9250,
         ...
     } oe_device_id_t
     ```
@@ -146,54 +143,68 @@ The definition of each member of `oe_device_t` is provided below:
 
 Following a hardware reset which is triggered either by a call to `oe_init_ctx`
 or to `oe_set_ctx` with the appropriate option, the device map is pushed onto
-the singal stream by the FPGA as COBS encoded packets. The device map looks
+the signal stream by the FPGA as COBS encoded packets. The device map looks
 like this on the signal stream, where | represents '0' packet delimiters.
 
 ... | DEVICEMAPACK, uint32_t num_devices | FRAMERSIZE, uint32_t read_frame_size
     | FRAMEWSIZE, uint32_t write_frame_size | DEVICEINST oe_device_t dev_0
     | DEVICEINST oe_device_t dev_1 | ... | DEVICEINST oe_device_t dev_n| ...
 
-During a call to `oe_init_ctx`, the device map is decoded from the singal stream and used to populate the appropriate files in the current context. Here, packet contains a flag header defined as
-
-
+During a call to `oe_init_ctx`, the device map is decoded from the singal
+stream and used to populate the appropriate files in the current context. Here,
+packet contains a flag header defined as
 
 ### Frame
-A _frame_ is a flat byte array containing a single sample's worth of read
-or write data for an entire device map. This is the data format produced by
-`oe_read` and sent to `oe_write`. Data within a frame is arranged as follows:
+A _frame_ is a flat byte array containing a single sample's worth of read or
+write data for a set (one to all) of devices within a device map. This is the
+data format produced by `oe_read` and sent to `oe_write`. Data within a frame
+is arranged as follows:
 
 ```
-[32 byte header, dev_0 data, dev_1 data, ... , dev_n data, padding]
+[32 byte header,                              // 1. header
+ dev_0 idx, dev_1 idx, ... , dev_n idx,       // 2. device map index
+ dev_0 data, dev_1 data, ... , dev_n data,    // 3. data 
+ padding ]                                    // 4. padding
+ 
 ```
 
-Read-frames and write-frames have different structures since some devices
-produce data and some do not. Read-frame and write-frame information for a
-particular hardware configuration is provided by the FPGA firmware. It is
-captured by the host during `oe_init_ctx` and can be examined via calls to
-`oe_get_opt`, e.g. to find device read and write offsets and sizes within each
-frame.  Ideally, calls to `oe_read` and `oe_write` should provide buffers  of
-appropriate size to to fit an integer number of full frames, although this is
-not necessary. A frame is divided into three data sections:
+The information required to decode and encoded each frame is provided by the
+device map. The device map is captured by the host during `oe_init_ctx` and can
+be examined via calls to `oe_get_opt`, e.g. to find device read and write
+offsets and sizes within each frame.  Ideally, calls to `oe_read` and
+`oe_write` should provide buffers of appropriate size to to fit an integer
+number of full frames, although this is not necessary. A frame is divided into
+four sections:
 
-1. Header
-    - Frame metadata containing sample numbers and (TODO) error correction codes
+1. `header`
     - For read-frames (`oe_read`) header contains
-        - bytes 0-8: uint64_t frame number
-        - bytes 9-32: reserved
+        - bytes 0-7: uint64_t frame number
+        - bytes 8-9: uin16_t indicating number of devices that the frame contains
+          data for
+        - byte 10: uint8_t frame error. 0 = OK. 1 = transmission error detected.
+        - bytes 11-32: reserved
+
     - For write-frames (`oe_write`) header contains
         - bytes 0-32: reserved
-2. Data
+
+2. `device map index`
+    - uint32_t Index of the device map
+    - The size and type information of the _i_th data block within the `data`
+      section of each frame is determined by examining the _i_th member of the
+      device map.
+
+3. `data`
     - Raw data blocks from each device in the device map.
     - The ordering of device-specific blocks is the same as the device index
-      within the map
-    - The read/write offsets for each device-specific block is provided in the
+      within the `device map index` portion of the frame
+    - The read/write size for each device-specific block is provided in the
       device map
     - Data block type information is provided in device specific manual file,
       in this repository (TODO)
     - Perhaps in the future, data type casting information can be provided in
       the device map, but this is not currently implemented
 
-3. Padding
+3. `padding`
     - The read and write frame may require padding 0's at the end of the frame
       in order to make the frame size a multiple of 32-bits, which is the width
       of the FIFO that is used. This allows frames to fall on the FIFO's
@@ -242,9 +253,11 @@ typedef enum oe_signal {
 #### Configuration channel (32-bit, synchronous, read and write)
 
 - This channel supports seeking to, reading, and writing the following
-  registers, which form a device register programming interface. On the host
-  side, these registers are used through calls to `oe_reg_read` and
-  `oe_reg_write`
+  registers. Some of these registers encapsulate a generic device register
+  programming interface. The remaining registers are for global control and
+  configuration , which provide access to acquisition parameters and state
+  control.On the host side, all of these registers are used through calls to
+  `oe_reg_read` and `oe_reg_write`
 
     - `uint32_t config_device_id`: Device ID register. Specify a device endpoint as
       enumerated by the firmware (e.g. an Intan chip, or a IMU chip)  and
@@ -273,24 +286,13 @@ typedef enum oe_signal {
       transmission even if it is not successful or does not make sense
       given the address register values.
 
-- This channel also supports seeking to, reading, and writing the following
-  registers, which form are provide access to acquisition parameters and state
-  control.
-
-    - `uint32_t running`: set to >0 to run the system clock and produce data
-
-    - `uint32_t reset`: set to >0 to trigger hardware reset
-
-    - `uint32_t sys_clock_hz`: the frequency of the system clock from which all
-      others (including the frame clock) are derived.
-
-    - `uint32_t frame_clock_hz`: the data frame frequency at which data frames
-      are pushed to and frame the data input and output FIFOs.
-
-    - `uint32_t running`: set to > 0 to run the system clock and produce data
+    - `uint32_t running`: set to > 0 to run the system clock and produce data.
+      Set to 0 to stop the system clock and therefore stop data flow. Results
+      in no other configuration changes. 
 
     - `uint32_t reset`: set to > 0 to trigger a hardware reset and send a fresh
-      device map to the host
+      device map to the host and reset hardware to its default state. Set to 0
+      by host firmware upon entering the reset state.
 
     - `uint32_t sys_clock_hz`: A read-only register specifying the base
       hardware clock frequency in Hz.
@@ -304,24 +306,18 @@ typedef enum oe_signal {
 
     - `uint32_t frame_clock_d`: Frame clock divider denominator value.
 
-- Appropriate values of `config_reg_addr` and `config_reg_value` are determined
-  by:
+- _Note:_ Appropriate values of `config_reg_addr` and `config_reg_value` are
+  determined by:
     - Looking at a device's data sheet if the device is an integrated circuit
     - Looking at the verilog source code comments if the device exists as a
       module that is implemented within the FPGA (e.g a MUX) or as a
       verilog module that abstracts a PCB or sub-circuit (e.g. a
       digital IO port).
 
-- `config_reg_addr` and `config_reg_value` are always 32-bit unsigned
-  integers. A device module must implement methods for appropriately
-  translating these values into data that is properly fomatted for a a
-  particular device (e.g. changing endianness or removing significant
-  bits).
-
-- `SEEK` locations of each configuration register, relative to the start of the
+- _Note:_ `SEEK` locations of each configuration register, relative to the start of the
   stream, are provided by the `oe_config_reg` enum.
 
-- Upon a call to `oe_write_reg`, the following actions take place:
+- _Note:_ Upon a call to `oe_write_reg`, the following actions take place:
 
     1. The value of `config_trig` is checked.
         - If it is 0x00, the function call proceeds.
@@ -339,7 +335,7 @@ typedef enum oe_signal {
        that the host FPGA has attempted to write to the specified device
        register.
 
-- Upon a call to `oe_write_reg`, the following actions take place:
+- _Note:_ Upon a call to `oe_write_reg`, the following actions take place:
 
     1. The value of `config_trig` is checked.
         - If it is 0x00, the function call proceeds.
@@ -356,7 +352,8 @@ typedef enum oe_signal {
        that the host FPGA has completed reading the specified device register
        and copied its value to the `config_reg_value` register.
 
-- Following successful or unsuccessful device register read or write, the COBS encoded ACK or NACK packets must be passed to the signal stream.
+- _Note:_ Following successful or unsuccessful device register read or write,
+  the COBS encoded ACK or NACK packets must be passed to the signal stream.
 
 #### Data input channel (32-bit, asynchronous, read-only)
     - High-bandwidth communication channel from firmware to host.

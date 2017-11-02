@@ -278,7 +278,7 @@ void *data_loop(void *vargp)
 
             // Generate sample (frame)
             int j;
-            for (j = OE_RFRAMEHEADERSZ; j < sample_size; j += 2) 
+            for (j = OE_RFRAMEHEADERSZ; j < sample_size; j += 2)
                 *(uint16_t *)(sample + j) = sample_tick % 65535;
                 //*(uint16_t *)(sample + j) = (uint16_t)randn(32768, 50);
 

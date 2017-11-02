@@ -14,18 +14,20 @@ all: $(SNAME) $(DNAME)
 
 .PHONY: install
 install: $(SNAME) $(DNAME)
-	@[ -d $(DESTDIR)$(PREFIX)/lib/oepcie ] || mkdir -p $(DESTDIR)$(PREFIX)/lib/oepcie
-	@[ -d $(DESTDIR)$(PREFIX)/include/oepcie ] || mkdir -p $(DESTDIR)$(PREFIX)/include/oepcie
-	cp $(SNAME) $(DESTDIR)$(PREFIX)/lib/oepcie/$(SNAME)
-	cp $(DNAME) $(DESTDIR)$(PREFIX)/lib/oepcie/$(DNAME)
-	cp $(HDR) $(DESTDIR)$(PREFIX)/include/oepcie
-	@[ -d $(DESTDIR)$(PREFIX)/lib/oepcie/$(DNAMELN) ] || $(RM) $(DESTDIR)$(PREFIX)/lib/oepcie/$(DNAMELN)	
-	ln -s $(DESTDIR)$(PREFIX)/lib/oepcie/$(DNAME) $(DESTDIR)$(PREFIX)/lib/oepcie/$(DNAMELN)
+	@[ -d $(DESTDIR)$(PREFIX)/lib ] || mkdir -p $(DESTDIR)$(PREFIX)/lib
+	@[ -d $(DESTDIR)$(PREFIX)/include ] || mkdir -p $(DESTDIR)$(PREFIX)/include
+	cp $(SNAME) $(DESTDIR)$(PREFIX)/lib/$(SNAME)
+	cp $(DNAME) $(DESTDIR)$(PREFIX)/lib/$(DNAME)
+	cp $(HDR) $(DESTDIR)$(PREFIX)/include
+	@[ -d $(DESTDIR)$(PREFIX)/lib/$(DNAMELN) ] || $(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
+	ln -s $(DESTDIR)$(PREFIX)/lib/$(DNAME) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 
-.PHONY: uninstall
-uninstall:
-	$(RM) -r $(DESTDIR)$(PREFIX)/lib/oepcie
-	$(RM) -r $(DESTDIR)$(PREFIX)/include/oepcie
+#.PHONY: uninstall
+#uninstall:
+#	$(RM) -r $(DESTDIR)$(PREFIX)/lib/$(SNAME)
+#	$(RM) -r $(DESTDIR)$(PREFIX)/lib/$(DNAME)
+#	$(RM) -r $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
+#	$(RM) -r $(DESTDIR)$(PREFIX)/include/$(HDR)
 
 $(SNAME): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $^

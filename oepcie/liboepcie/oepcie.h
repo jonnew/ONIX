@@ -18,7 +18,7 @@ extern "C" {
 #include <stddef.h>
 #include <stdint.h>
 
-#define OE_RFRAMEHEADERSZ     32 // [uint64_t sample number, (24 reserved bytes), ...]
+#define OE_RFRAMEHEADERSZ     32 // [uint64_t sample number, uint16_t n_devs, (22 reserved bytes), ...]
 #define OE_RFRAMESAMPLEOFF    0  // Read frame sample number offset
 //...
 
@@ -28,7 +28,7 @@ extern "C" {
 // TODO: Cross platform and xillybus
 #define OE_DEFAULTCONFIGPATH  "/tmp/rat128_config"
 #define OE_DEFAULTREADPATH    "/tmp/rat128_read"
-#define OE_DEFAULTSINGALPATH  "/tmp/rat128_signal"
+#define OE_DEFAULTSIGNALPATH  "/tmp/rat128_signal"
 
 // Supported devices/IDs
 // NB: If you add an error here, make sure to update oe_device_str()
@@ -51,7 +51,7 @@ typedef uint32_t oe_reg_val_t;
 
 // TODO: The read/write types might be good targets for a tagged union so that
 // sizeof can be used.
-typedef struct oe_device {
+typedef struct {
     oe_dev_id_t id; // NB: Cannot use oe_device_id_t because this must be fixed width
     oe_size_t read_offset;
     oe_size_t read_size;
@@ -59,7 +59,7 @@ typedef struct oe_device {
     oe_size_t write_size;
 } oe_device_t;
 
-enum oe_opt {
+enum {
     OE_CONFIGSTREAMPATH,
     OE_READSTREAMPATH,
     OE_SIGNALSTREAMPATH,
@@ -76,7 +76,7 @@ enum oe_opt {
 };
 
 // NB: If you add an error here, make sure to update oe_error_str()
-enum oe_error {
+enum {
     OE_ESUCCESS         =  0,  // Success
     OE_EPATHINVALID     = -1,  // Invalid stream path, fail on open
     OE_EREINITCTX       = -2,  // Double initialization attempt

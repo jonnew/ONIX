@@ -54,7 +54,7 @@ namespace oe {
 
     class frame_t
     {
-        friend context_t; // Fills data_
+        friend context_t; // NB: Fills context_t::data_
         using raw_t = uint8_t;
 
         public:
@@ -91,7 +91,7 @@ namespace oe {
                 size_ = rhs.size_;
                 auto tmp = new raw_t[rhs.size_];
                 std::memcpy(tmp, rhs.data_, sizeof(raw_t) * rhs.size_);
-                delete [] data_;
+                delete[] data_;
                 data_ = tmp;
                 dev_map_ = rhs.dev_map_;
 
@@ -112,9 +112,7 @@ namespace oe {
                 return *this;
             }
 
-            ~frame_t() noexcept {
-                delete [] data_;
-            }
+            ~frame_t() noexcept { delete[] data_; }
 
             uint64_t time() { return *reinterpret_cast<uint64_t *>(data_); }
 
@@ -142,10 +140,9 @@ namespace oe {
     class context_t {
 
     public:
-
         inline context_t(const char* config_path = OE_DEFAULTCONFIGPATH,
                          const char* read_path = OE_DEFAULTREADPATH,
-                         const char* signal_path = OE_DEFAULTSINGALPATH)
+                         const char* signal_path = OE_DEFAULTSIGNALPATH)
         {
             // Create
             ctx_ = oe_create_ctx();
@@ -234,8 +231,8 @@ namespace oe {
 
         inline oe_reg_val_t read_reg(size_t dev_idx, oe_reg_addr_t addr)
         {
-            oe_reg_val_t *value;
-            auto rc = oe_read_reg(ctx_, dev_idx, addr, value);
+            oe_reg_val_t value = 0;
+            auto rc = oe_read_reg(ctx_, dev_idx, addr, &value);
             if (rc != 0) throw error_t(rc);
             return *value;
         }
@@ -268,26 +265,26 @@ namespace oe {
         }
 
     private:
-        inline void
-        get_opt(int option, void *value, size_t *size) const
+        inline void get_opt(int option, void *value, size_t *size) const
         {
             auto rc = oe_get_opt(ctx_, option, value, size);
             if (rc != 0) throw error_t(rc);
         }
 
-        inline void
-        set_opt(int option, const void *value, size_t size)
+        inline void set_opt(int option, const void *value, size_t size)
         {
             auto rc = oe_set_opt(ctx_, option, value, size);
             if (rc != 0) throw error_t(rc);
         }
 
-        inline void update_buffer() {
-           auto rc =  oe_read(ctx_, buffer_.data(), buffer_.size());
-           if (rc < 0) throw error_t(rc);
-           if (rc != buffer_.size())
-               throw std::runtime_error("Incomplete read.");
-           buf_idx_ = 0;
+        inline void update_buffer()
+        {
+            auto rc = oe_read(ctx_, buffer_.data(), buffer_.size());
+            if (rc < 0)
+                throw error_t(rc);
+            if (rc != static_cast<int>(buffer_.size()))
+                throw std::runtime_error("Incomplete read.");
+            buf_idx_ = 0;
         }
 
         oe_ctx ctx_ = nullptr;

@@ -574,7 +574,10 @@ int oe_read_reg(const oe_ctx ctx,
 int oe_read(const oe_ctx ctx, void *data, size_t size)
 {
     assert(ctx != NULL && "Context is NULL");
-    assert(ctx->run_state == RUNNING && "Context is not acquiring.");
+
+    // NB: We don't need run_state == RUNNING because this could be changed in
+    // a different thread
+    assert(ctx->run_state >= IDLE && "Context is not acquiring.");
 
     return _oe_read(ctx->read.fid, data, size);
 }
@@ -667,10 +670,10 @@ const char *oe_error_str(int err)
 const char *oe_device_str(int dev_id)
 {
     assert(dev_id < OE_MAXDEVICEID && "Invalid device ID.");
-    
+
     switch (dev_id) {
         case OE_IMMEDIATEIO: {
-            return "IMMEDIATEIO";
+            return "Immediate IO";
         }
         case OE_RHD2132: {
             return "RHD2132";
