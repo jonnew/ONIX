@@ -1559,6 +1559,175 @@ http://www.bccomponents.com/</description>
 </package>
 </packages>
 </library>
+<library name="molex_vhdci">
+<packages>
+<package name="MOLEX_743370911_SD_DUAL_STACKED_VHDCI">
+<wire x1="-21.4" y1="0" x2="-21.355" y2="0" width="0.127" layer="21"/>
+<hole x="-16.175" y="6.3" drill="1.2"/>
+<hole x="16.175" y="6.3" drill="1.2"/>
+<hole x="-16.175" y="17.13" drill="1.2"/>
+<hole x="16.175" y="17.13" drill="1.2"/>
+<pad name="P$34" x="-13.395" y="7.4" drill="0.65"/>
+<pad name="P$33" x="-12.595" y="8.55" drill="0.65"/>
+<pad name="P$67" x="-12.195" y="6.2" drill="0.65"/>
+<pad name="P$68" x="-12.995" y="5.05" drill="0.65"/>
+<pad name="Q$1" x="-13.195" y="13.63" drill="0.65"/>
+<pad name="Q$2" x="-12.395" y="14.78" drill="0.65"/>
+<pad name="Q$35" x="-13.195" y="15.98" drill="0.65"/>
+<pad name="Q$36" x="-12.395" y="17.13" drill="0.65"/>
+<wire x1="-21.355" y1="0" x2="-16" y2="0" width="0.127" layer="21"/>
+<wire x1="-16" y1="0" x2="16" y2="0" width="0.127" layer="21"/>
+<wire x1="16" y1="0" x2="21.355" y2="0" width="0.127" layer="21"/>
+<wire x1="21.355" y1="0" x2="21.4" y2="0" width="0.127" layer="21"/>
+<wire x1="-16" y1="0" x2="-16" y2="-7" width="0.127" layer="21"/>
+<wire x1="-16" y1="-7" x2="-15" y2="-8" width="0.127" layer="21"/>
+<wire x1="-15" y1="-8" x2="15" y2="-8" width="0.127" layer="21"/>
+<wire x1="15" y1="-8" x2="16" y2="-7" width="0.127" layer="21"/>
+<wire x1="16" y1="-7" x2="16" y2="0" width="0.127" layer="21"/>
+<wire x1="-17.5" y1="4.7" x2="-17.5" y2="19" width="0.127" layer="21"/>
+<wire x1="17.5" y1="4.7" x2="17.5" y2="19" width="0.127" layer="21"/>
+<wire x1="17.4" y1="19" x2="-17.5" y2="19" width="0.127" layer="21"/>
+<wire x1="-21.355" y1="0" x2="-21.355" y2="4.7" width="0.127" layer="21"/>
+<wire x1="21.355" y1="0" x2="21.355" y2="4.7" width="0.127" layer="21"/>
+<wire x1="-21.3" y1="4.7" x2="-17.5" y2="4.7" width="0.127" layer="21"/>
+<wire x1="21.3" y1="4.7" x2="17.5" y2="4.7" width="0.127" layer="21"/>
+<pad name="P$32" x="-11.795" y="7.4" drill="0.65"/>
+<pad name="P$31" x="-10.995" y="8.55" drill="0.65"/>
+<pad name="P$65" x="-10.595" y="6.2" drill="0.65"/>
+<pad name="P$66" x="-11.395" y="5.05" drill="0.65"/>
+<pad name="Q$3" x="-11.595" y="13.63" drill="0.65"/>
+<pad name="Q$4" x="-10.795" y="14.78" drill="0.65"/>
+<pad name="Q$37" x="-11.595" y="15.98" drill="0.65"/>
+<pad name="Q$38" x="-10.795" y="17.13" drill="0.65"/>
+<pad name="P$30" x="-10.195" y="7.4" drill="0.65"/>
+<pad name="P$29" x="-9.395" y="8.55" drill="0.65"/>
+<pad name="P$63" x="-8.995" y="6.2" drill="0.65"/>
+<pad name="P$64" x="-9.795" y="5.05" drill="0.65"/>
+<pad name="Q$5" x="-9.995" y="13.63" drill="0.65"/>
+<pad name="Q$6" x="-9.195" y="14.78" drill="0.65"/>
+<pad name="Q$39" x="-9.995" y="15.98" drill="0.65"/>
+<pad name="Q$40" x="-9.195" y="17.13" drill="0.65"/>
+<pad name="P$28" x="-8.595" y="7.4" drill="0.65"/>
+<pad name="P$27" x="-7.795" y="8.55" drill="0.65"/>
+<pad name="P$61" x="-7.395" y="6.2" drill="0.65"/>
+<pad name="P$62" x="-8.195" y="5.05" drill="0.65"/>
+<pad name="Q$7" x="-8.395" y="13.63" drill="0.65"/>
+<pad name="Q$8" x="-7.595" y="14.78" drill="0.65"/>
+<pad name="Q$41" x="-8.395" y="15.98" drill="0.65"/>
+<pad name="Q$42" x="-7.595" y="17.13" drill="0.65"/>
+<pad name="P$26" x="-6.995" y="7.4" drill="0.65"/>
+<pad name="P$25" x="-6.195" y="8.55" drill="0.65"/>
+<pad name="P$59" x="-5.795" y="6.2" drill="0.65"/>
+<pad name="P$60" x="-6.595" y="5.05" drill="0.65"/>
+<pad name="Q$9" x="-6.795" y="13.63" drill="0.65"/>
+<pad name="Q$10" x="-5.995" y="14.78" drill="0.65"/>
+<pad name="Q$43" x="-6.795" y="15.98" drill="0.65"/>
+<pad name="Q$44" x="-5.995" y="17.13" drill="0.65"/>
+<pad name="P$24" x="-5.395" y="7.4" drill="0.65"/>
+<pad name="P$23" x="-4.595" y="8.55" drill="0.65"/>
+<pad name="P$57" x="-4.195" y="6.2" drill="0.65"/>
+<pad name="P$58" x="-4.995" y="5.05" drill="0.65"/>
+<pad name="Q$11" x="-5.195" y="13.63" drill="0.65"/>
+<pad name="Q$12" x="-4.395" y="14.78" drill="0.65"/>
+<pad name="Q$45" x="-5.195" y="15.98" drill="0.65"/>
+<pad name="Q$46" x="-4.395" y="17.13" drill="0.65"/>
+<pad name="P$22" x="-3.795" y="7.4" drill="0.65"/>
+<pad name="P$21" x="-2.995" y="8.55" drill="0.65"/>
+<pad name="P$55" x="-2.595" y="6.2" drill="0.65"/>
+<pad name="P$56" x="-3.395" y="5.05" drill="0.65"/>
+<pad name="Q$13" x="-3.595" y="13.63" drill="0.65"/>
+<pad name="Q$14" x="-2.795" y="14.78" drill="0.65"/>
+<pad name="Q$47" x="-3.595" y="15.98" drill="0.65"/>
+<pad name="Q$48" x="-2.795" y="17.13" drill="0.65"/>
+<pad name="P$20" x="-2.195" y="7.4" drill="0.65"/>
+<pad name="P$19" x="-1.395" y="8.55" drill="0.65"/>
+<pad name="P$53" x="-0.995" y="6.2" drill="0.65"/>
+<pad name="P$54" x="-1.795" y="5.05" drill="0.65"/>
+<pad name="Q$15" x="-1.995" y="13.63" drill="0.65"/>
+<pad name="Q$16" x="-1.195" y="14.78" drill="0.65"/>
+<pad name="Q$49" x="-1.995" y="15.98" drill="0.65"/>
+<pad name="Q$50" x="-1.195" y="17.13" drill="0.65"/>
+<pad name="P$18" x="-0.595" y="7.4" drill="0.65"/>
+<pad name="P$17" x="0.205" y="8.55" drill="0.65"/>
+<pad name="P$51" x="0.605" y="6.2" drill="0.65"/>
+<pad name="P$52" x="-0.195" y="5.05" drill="0.65"/>
+<pad name="Q$17" x="-0.395" y="13.63" drill="0.65"/>
+<pad name="Q$18" x="0.405" y="14.78" drill="0.65"/>
+<pad name="Q$51" x="-0.395" y="15.98" drill="0.65"/>
+<pad name="Q$52" x="0.405" y="17.13" drill="0.65"/>
+<pad name="P$16" x="1.005" y="7.4" drill="0.65"/>
+<pad name="P$15" x="1.805" y="8.55" drill="0.65"/>
+<pad name="P$49" x="2.205" y="6.2" drill="0.65"/>
+<pad name="P$50" x="1.405" y="5.05" drill="0.65"/>
+<pad name="Q$19" x="1.205" y="13.63" drill="0.65"/>
+<pad name="Q$20" x="2.005" y="14.78" drill="0.65"/>
+<pad name="Q$53" x="1.205" y="15.98" drill="0.65"/>
+<pad name="Q$54" x="2.005" y="17.13" drill="0.65"/>
+<pad name="P$14" x="2.605" y="7.4" drill="0.65"/>
+<pad name="P$13" x="3.405" y="8.55" drill="0.65"/>
+<pad name="P$47" x="3.805" y="6.2" drill="0.65"/>
+<pad name="P$48" x="3.005" y="5.05" drill="0.65"/>
+<pad name="Q$21" x="2.805" y="13.63" drill="0.65"/>
+<pad name="Q$22" x="3.605" y="14.78" drill="0.65"/>
+<pad name="Q$55" x="2.805" y="15.98" drill="0.65"/>
+<pad name="Q$56" x="3.605" y="17.13" drill="0.65"/>
+<pad name="P$12" x="4.205" y="7.4" drill="0.65"/>
+<pad name="P$11" x="5.005" y="8.55" drill="0.65"/>
+<pad name="P$45" x="5.405" y="6.2" drill="0.65"/>
+<pad name="P$46" x="4.605" y="5.05" drill="0.65"/>
+<pad name="Q$23" x="4.405" y="13.63" drill="0.65"/>
+<pad name="Q$24" x="5.205" y="14.78" drill="0.65"/>
+<pad name="Q$57" x="4.405" y="15.98" drill="0.65"/>
+<pad name="Q$58" x="5.205" y="17.13" drill="0.65"/>
+<pad name="P$10" x="5.805" y="7.4" drill="0.65"/>
+<pad name="P$9" x="6.605" y="8.55" drill="0.65"/>
+<pad name="P$43" x="7.005" y="6.2" drill="0.65"/>
+<pad name="P$44" x="6.205" y="5.05" drill="0.65"/>
+<pad name="Q$25" x="6.005" y="13.63" drill="0.65"/>
+<pad name="Q$26" x="6.805" y="14.78" drill="0.65"/>
+<pad name="Q$59" x="6.005" y="15.98" drill="0.65"/>
+<pad name="Q$60" x="6.805" y="17.13" drill="0.65"/>
+<pad name="P$8" x="7.405" y="7.4" drill="0.65"/>
+<pad name="P$7" x="8.205" y="8.55" drill="0.65"/>
+<pad name="P$41" x="8.605" y="6.2" drill="0.65"/>
+<pad name="P$42" x="7.805" y="5.05" drill="0.65"/>
+<pad name="Q$27" x="7.605" y="13.63" drill="0.65"/>
+<pad name="Q$28" x="8.405" y="14.78" drill="0.65"/>
+<pad name="Q$61" x="7.605" y="15.98" drill="0.65"/>
+<pad name="Q$62" x="8.405" y="17.13" drill="0.65"/>
+<pad name="P$6" x="9.005" y="7.4" drill="0.65"/>
+<pad name="P$5" x="9.805" y="8.55" drill="0.65"/>
+<pad name="P$39" x="10.205" y="6.2" drill="0.65"/>
+<pad name="P$40" x="9.405" y="5.05" drill="0.65"/>
+<pad name="Q$29" x="9.205" y="13.63" drill="0.65"/>
+<pad name="Q$30" x="10.005" y="14.78" drill="0.65"/>
+<pad name="Q$63" x="9.205" y="15.98" drill="0.65"/>
+<pad name="Q$64" x="10.005" y="17.13" drill="0.65"/>
+<pad name="P$4" x="10.605" y="7.4" drill="0.65"/>
+<pad name="P$3" x="11.405" y="8.55" drill="0.65"/>
+<pad name="P$37" x="11.805" y="6.2" drill="0.65"/>
+<pad name="P$38" x="11.005" y="5.05" drill="0.65"/>
+<pad name="Q$31" x="10.805" y="13.63" drill="0.65"/>
+<pad name="Q$32" x="11.605" y="14.78" drill="0.65"/>
+<pad name="Q$65" x="10.805" y="15.98" drill="0.65"/>
+<pad name="Q$66" x="11.605" y="17.13" drill="0.65"/>
+<pad name="P$2" x="12.205" y="7.4" drill="0.65"/>
+<pad name="P$1" x="13.005" y="8.55" drill="0.65"/>
+<pad name="P$35" x="13.405" y="6.2" drill="0.65"/>
+<pad name="P$36" x="12.605" y="5.05" drill="0.65"/>
+<pad name="Q$33" x="12.405" y="13.63" drill="0.65"/>
+<pad name="Q$34" x="13.205" y="14.78" drill="0.65"/>
+<pad name="Q$67" x="12.405" y="15.98" drill="0.65"/>
+<pad name="Q$68" x="13.205" y="17.13" drill="0.65"/>
+<hole x="-20.95" y="3.68" drill="1.75"/>
+<wire x1="-20.8" y1="6.4" x2="-20.8" y2="16" width="0.127" layer="21"/>
+<wire x1="20.8" y1="6.4" x2="20.8" y2="16" width="0.127" layer="21"/>
+<wire x1="20.8" y1="16" x2="19.2" y2="16" width="0.127" layer="21"/>
+<wire x1="-20.8" y1="16" x2="-19.2" y2="16" width="0.127" layer="21"/>
+<hole x="20.95" y="3.68" drill="1.75"/>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -2739,6 +2908,7 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="TP_SIGNAL_NAME" value="" x="64.516" y="27.813" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="59.817" y="27.813" size="1.016" layer="27" font="vector" ratio="18" align="center-left"/>
 </element>
+<element name="U$2" library="molex_vhdci" package="MOLEX_743370911_SD_DUAL_STACKED_VHDCI" value="MOLEX_DUAL_STACKED_VHDCI" x="-29.845" y="63.5" rot="R270"/>
 </elements>
 <signals>
 <signal name="GND">
