@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.25" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -659,9 +659,9 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="2.52" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
 <attribute name="VALUE" x="3.81" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
-<element name="VCOAX" library="jonnew" package="POGO_S500-6350-P2" value="" x="-3.81" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="-6.31" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
-<attribute name="VALUE" x="-1.27" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
+<element name="VCOAX" library="jonnew" package="POGO_S500-6350-P2" value="" x="-2.54" y="73.66" smashed="yes" rot="R180">
+<attribute name="NAME" x="-4.24" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
+<attribute name="VALUE" x="0" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="TMS" library="jonnew" package="POGO_S500-6350-P2" value="" x="2.54" y="73.66" smashed="yes" rot="R180">
 <attribute name="NAME" x="4.79" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
@@ -702,9 +702,9 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="-6.25" y="41" size="1.27" layer="25" font="vector" ratio="17" rot="R180" align="center-left"/>
 <attribute name="VALUE" x="-6.25" y="39.5" size="1.27" layer="27" font="vector" ratio="17" rot="R180" align="center-left"/>
 </element>
-<element name="GND" library="jonnew" package="POGO_S500-6350-P2" value="" x="-2.54" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="-4.29" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
-<attribute name="VALUE" x="0" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
+<element name="GND" library="jonnew" package="POGO_S500-6350-P2" value="" x="-3.81" y="73.66" smashed="yes" rot="R180">
+<attribute name="NAME" x="-6.33" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
+<attribute name="VALUE" x="-1.27" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="TP1" library="jonnew" package="TESTPOINT_1MM" value="" x="-9.75" y="41.25" smashed="yes">
 <attribute name="VALUE" x="-8.734" y="40.7674" size="0.8128" layer="27" font="vector" ratio="18"/>
@@ -981,11 +981,12 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="R3" pad="2"/>
 <wire x1="-7.1176" y1="52.5" x2="-10.2126" y2="55.595" width="0.8128" layer="1"/>
 <wire x1="-10.2126" y1="55.595" x2="-10.2126" y2="67.17384375" width="0.8128" layer="1"/>
-<wire x1="-3.768221875" y1="73.618221875" x2="-10.2126" y2="67.17384375" width="0.8128" layer="1"/>
-<wire x1="-3.25" y1="70.2914" x2="-3.81" y2="70.8514" width="0.8128" layer="16"/>
-<wire x1="-3.81" y1="73.57644375" x2="-3.81" y2="70.8514" width="0.8128" layer="16"/>
-<wire x1="-3.81" y1="73.66" x2="-3.768221875" y2="73.618221875" width="0.254" layer="1"/>
-<wire x1="-3.81" y1="73.66" x2="-3.81" y2="73.57644375" width="0.254" layer="16"/>
+<wire x1="-10.2126" y1="67.17384375" x2="-7.08644375" y2="70.3" width="0.8128" layer="1"/>
+<wire x1="-2.54" y1="72.26" x2="-2.54" y2="73.66" width="0.8128" layer="1"/>
+<wire x1="-7.08644375" y1="70.3" x2="-4.5" y2="70.3" width="0.8128" layer="1"/>
+<wire x1="-4.5" y1="70.3" x2="-2.54" y2="72.26" width="0.8128" layer="1"/>
+<wire x1="-3.25" y1="70.2914" x2="-2.54" y2="71.0014" width="0.8128" layer="16"/>
+<wire x1="-2.54" y1="71.0014" x2="-2.54" y2="73.66" width="0.8128" layer="16"/>
 </signal>
 <signal name="N$2">
 <contactref element="R3" pad="1"/>
