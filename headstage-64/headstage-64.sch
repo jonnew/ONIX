@@ -5223,7 +5223,6 @@ Source: amp_227161.pdf</description>
 <part name="SUPPLY56" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY67" library="jonnew" deviceset="GND" device=""/>
 <part name="U$61" library="jonnew" deviceset="+1V8" device=""/>
-<part name="U$22" library="jonnew" deviceset="+1V8" device=""/>
 <part name="U$24" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="U$16" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="U$31" library="jonnew" deviceset="+VCOAX" device=""/>
@@ -5232,6 +5231,7 @@ Source: amp_227161.pdf</description>
 <part name="U$35" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="U$5" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="U$23" library="jonnew" deviceset="+VCOAX" device=""/>
+<part name="U$14" library="jonnew" deviceset="+2V5" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5672,7 +5672,6 @@ and switcher that does not care.</text>
 <instance part="SUPPLY56" gate="PE" x="701.04" y="119.38"/>
 <instance part="SUPPLY67" gate="PE" x="772.16" y="119.38"/>
 <instance part="U$61" gate="G$1" x="777.24" y="144.78"/>
-<instance part="U$22" gate="G$1" x="693.42" y="198.12"/>
 <instance part="U$24" gate="G$1" x="690.88" y="144.78"/>
 <instance part="U$16" gate="G$1" x="690.88" y="81.28"/>
 <instance part="U$31" gate="G$1" x="693.42" y="251.46"/>
@@ -5681,6 +5680,7 @@ and switcher that does not care.</text>
 <instance part="U$35" gate="G$1" x="175.26" y="284.48"/>
 <instance part="U$5" gate="G$1" x="35.56" y="728.98"/>
 <instance part="U$23" gate="G$1" x="510.54" y="233.68"/>
+<instance part="U$14" gate="G$1" x="693.42" y="198.12"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -8232,21 +8232,6 @@ and switcher that does not care.</text>
 <wire x1="777.24" y1="139.7" x2="772.16" y2="139.7" width="0.1524" layer="91"/>
 <junction x="772.16" y="139.7"/>
 </segment>
-<segment>
-<wire x1="703.58" y1="193.04" x2="703.58" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="703.58" y1="195.58" x2="716.28" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="716.28" y1="195.58" x2="718.82" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="703.58" y1="195.58" x2="693.42" y2="195.58" width="0.1524" layer="91"/>
-<junction x="703.58" y="195.58"/>
-<wire x1="693.42" y1="195.58" x2="693.42" y2="198.12" width="0.1524" layer="91"/>
-<wire x1="716.28" y1="195.58" x2="716.28" y2="185.42" width="0.1524" layer="91"/>
-<junction x="716.28" y="195.58"/>
-<wire x1="716.28" y1="185.42" x2="718.82" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="U17" gate="G$1" pin="IN"/>
-<pinref part="U17" gate="G$1" pin="EN"/>
-<pinref part="C23" gate="C" pin="1"/>
-<pinref part="U$22" gate="G$1" pin="+1V8"/>
-</segment>
 </net>
 <net name="N$33" class="0">
 <segment>
@@ -8454,6 +8439,21 @@ and switcher that does not care.</text>
 <pinref part="U9" gate="G$1" pin="OUT"/>
 <pinref part="U$45" gate="G$1" pin="+2V5"/>
 <pinref part="C22" gate="C" pin="1"/>
+</segment>
+<segment>
+<wire x1="703.58" y1="193.04" x2="703.58" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="703.58" y1="195.58" x2="716.28" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="716.28" y1="195.58" x2="718.82" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="703.58" y1="195.58" x2="693.42" y2="195.58" width="0.1524" layer="91"/>
+<junction x="703.58" y="195.58"/>
+<wire x1="693.42" y1="195.58" x2="693.42" y2="198.12" width="0.1524" layer="91"/>
+<wire x1="716.28" y1="195.58" x2="716.28" y2="185.42" width="0.1524" layer="91"/>
+<junction x="716.28" y="195.58"/>
+<wire x1="716.28" y1="185.42" x2="718.82" y2="185.42" width="0.1524" layer="91"/>
+<pinref part="U17" gate="G$1" pin="IN"/>
+<pinref part="U17" gate="G$1" pin="EN"/>
+<pinref part="C23" gate="C" pin="1"/>
+<pinref part="U$14" gate="G$1" pin="+2V5"/>
 </segment>
 </net>
 <net name="$N324" class="0">
