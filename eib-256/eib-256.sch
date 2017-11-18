@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -685,9 +686,9 @@
 </library>
 </libraries>
 <attributes>
-<attribute name="DESIGNER" value="JPN@MIT"/>
-<attribute name="DESIGN_NAME" value="2x64_hirose-circular"/>
-<attribute name="LICENSE" value="(c) Jon Newman CC-BY-SA-NC 4.0"/>
+<attribute name="DESIGNER" value="JON NEWMAN"/>
+<attribute name="DESIGN_NAME" value="EIB-256"/>
+<attribute name="LICENSE" value="CERN OHL v1.2"/>
 <attribute name="REVISION" value="1.0"/>
 </attributes>
 <variantdefs>

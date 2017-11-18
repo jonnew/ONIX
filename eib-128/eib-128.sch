@@ -718,9 +718,9 @@
 </library>
 </libraries>
 <attributes>
-<attribute name="DESIGNER" value="JONNEW, MWL@MIT"/>
-<attribute name="DESIGN_NAME" value="eib-128 (2x64_hirose-circular)"/>
-<attribute name="LICENSE" value="(c) Jon Newman CC-BY-SA-NC 4.0"/>
+<attribute name="DESIGNER" value="JON NEWMAN"/>
+<attribute name="DESIGN_NAME" value="EIB-128"/>
+<attribute name="LICENSE" value="CERN OHL v1.2"/>
 <attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>

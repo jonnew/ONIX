@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -237,6 +238,7 @@ JPN, MWL@MIT
 <text x="2" y="8.5" size="0.8128" layer="22" font="vector" ratio="18" rot="MR180" align="center-right">G</text>
 <text x="-3" y="-8.5" size="0.8128" layer="22" font="vector" ratio="18" rot="MR180" align="center-right">G</text>
 <text x="-2.9" y="-10.3" size="0.8128" layer="22" font="vector" ratio="18" rot="MR180" align="center-right">ESB</text>
+<circle x="0" y="0" radius="19.875421875" width="0.62" layer="39"/>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -496,6 +498,9 @@ einem neuen Namen ab.</description>
 <autorouter>
 <pass name="Default">
 <param name="RoutingGrid" value="50mil"/>
+<param name="AutoGrid" value="1"/>
+<param name="Efforts" value="0"/>
+<param name="TopRouterVariant" value="1"/>
 <param name="tpViaShape" value="round"/>
 <param name="PrefDir.1" value="|"/>
 <param name="PrefDir.2" value="0"/>
