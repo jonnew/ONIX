@@ -7441,19 +7441,16 @@ and switcher that does not care.</text>
 <wire x1="91.44" y1="734.06" x2="88.9" y2="734.06" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="734.06" x2="88.9" y2="751.84" width="0.1524" layer="91"/>
 <junction x="88.9" y="751.84"/>
-<wire x1="58.42" y1="751.84" x2="73.66" y2="751.84" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="751.84" x2="73.66" y2="751.84" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="751.84" x2="73.66" y2="756.92" width="0.1524" layer="91"/>
 <junction x="73.66" y="751.84"/>
 <label x="73.66" y="756.92" size="1.27" layer="95" rot="MR90" xref="yes"/>
+<pinref part="CENTER" gate="G$1" pin="TP"/>
 </segment>
 <segment>
 <pinref part="C51" gate="C" pin="1"/>
 <wire x1="142.24" y1="490.22" x2="157.48" y2="490.22" width="0.1524" layer="91"/>
 <label x="157.48" y="490.22" size="1.27" layer="95" xref="yes"/>
-</segment>
-<segment>
-<pinref part="CENTER" gate="G$1" pin="TP"/>
-<wire x1="55.88" y1="751.84" x2="58.42" y2="751.84" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ESTIM_POW_EN" class="0">
@@ -8490,6 +8487,11 @@ and switcher that does not care.</text>
 <pinref part="U14" gate="G$1" pin="E/CFGCLK"/>
 <wire x1="411.48" y1="299.72" x2="429.26" y2="299.72" width="0.1524" layer="91"/>
 <label x="429.26" y="299.72" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U11" gate="G$6" pin="DIFFIO_RX_T16N/DEV_CLRN/B6"/>
+<wire x1="93.98" y1="68.58" x2="101.6" y2="68.58" width="0.1524" layer="91"/>
+<label x="101.6" y="68.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$45" class="0">
