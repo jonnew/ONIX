@@ -1718,7 +1718,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </packages>
 <symbols>
 <symbol name="TS4231">
-<pin name="AVDD" x="-17.78" y="7.62" length="middle" direction="pwr"/>
+<pin name="AVDD" x="-17.78" y="7.62" length="middle" direction="pas"/>
 <pin name="IIN-" x="-17.78" y="2.54" length="middle" direction="in"/>
 <pin name="IIN+" x="-17.78" y="-2.54" length="middle" direction="in"/>
 <pin name="RBIAS" x="-17.78" y="-7.62" length="middle" direction="pas"/>
@@ -4385,7 +4385,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </libraries>
 <attributes>
 <attribute name="DESIGNER" value="JON NEWMAN, JAKOB VOIGTS, JACK ZHANG"/>
-<attribute name="LICENSE" value="CC-BY-SA-4.0"/>
+<attribute name="DESIGN_NAME" value="HEADSTAGE-64"/>
+<attribute name="LICENSE" value="CERN OHL v1.2"/>
 <attribute name="REVISION" value="1.0"/>
 </attributes>
 <variantdefs>
@@ -4398,7 +4399,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </classes>
 <parts>
 <part name="U1" library="jonnew" deviceset="TS4231" device="" value="TS4231"/>
-<part name="D1" library="jonnew" deviceset="PHOTODIODE" device="_0805T"/>
+<part name="D1" library="jonnew" deviceset="PHOTODIODE" device="_0805T" value="VEMD1160X01"/>
 <part name="R1" library="jonnew" deviceset="R" device="_0201T" value="15k"/>
 <part name="SUPPLY1" library="jonnew" deviceset="GND" device=""/>
 <part name="C2" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
@@ -4408,7 +4409,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="SUPPLY3" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="jonnew" deviceset="GND" device=""/>
 <part name="U2" library="jonnew" deviceset="MPU9250" device="_QFN_NO-PAD" value="MPU9250_QFN_NO-PAD"/>
-<part name="U$1" library="jonnew" deviceset="PINHD-2X35+4" device="_DF40-70HEAD"/>
+<part name="U$1" library="jonnew" deviceset="PINHD-2X35+4" device="_DF40-70HEAD" value="DF40C-70DP-0.4V(51)DF40C-70DP-0.4V(51)DF40C-70DP-0.4V(51)DF40C-70DP-0.4V(51)DF40C-70DP-0.4V(51)"/>
 <part name="U3" library="jonnew" deviceset="CAT4016" device="_QFN">
 <attribute name="PARTNO" value="CAT4016HV6-GT2"/>
 </part>
@@ -4417,14 +4418,14 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="U18" library="jonnew" deviceset="TLV707" device="" value="TLV70733"/>
 <part name="U17" library="jonnew" deviceset="TLV707" device="" value="TLV70712"/>
 <part name="U5" library="jonnew" deviceset="TS4231" device="" value="TS4231"/>
-<part name="D2" library="jonnew" deviceset="PHOTODIODE" device="_0805T"/>
+<part name="D2" library="jonnew" deviceset="PHOTODIODE" device="_0805T" value="VEMD1160X01"/>
 <part name="R2" library="jonnew" deviceset="R" device="_0201T" value="15k"/>
 <part name="SUPPLY5" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY6" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY7" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY8" library="jonnew" deviceset="GND" device=""/>
 <part name="U6" library="jonnew" deviceset="TS4231" device="" value="TS4231"/>
-<part name="D3" library="jonnew" deviceset="PHOTODIODE" device="_0805T"/>
+<part name="D3" library="jonnew" deviceset="PHOTODIODE" device="_0805T" value="VEMD1160X01"/>
 <part name="R3" library="jonnew" deviceset="R" device="_0201T" value="15k"/>
 <part name="SUPPLY9" library="jonnew" deviceset="GND" device=""/>
 <part name="C5" library="jonnew" deviceset="C" device="_0201T" value="1uF">
@@ -4749,7 +4750,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="U$55" library="jonnew" deviceset="+3V3" device=""/>
 <part name="TP12" library="jonnew" deviceset="TP" device="B0.4MM"/>
 <part name="U$56" library="jonnew" deviceset="+3V3" device=""/>
-<part name="U7" library="jonnew" deviceset="RHD2164_BGA" device="_BGA"/>
+<part name="U7" library="jonnew" deviceset="RHD2164_BGA" device="_BGA" value="RHD2064_BGA"/>
 <part name="C73" library="jonnew" deviceset="C" device="_0201T" value="0.1uF"/>
 <part name="SUPPLY66" library="jonnew" deviceset="AGND" device=""/>
 <part name="U16" library="jonnew" deviceset="TLV707" device="" value="TLV70733"/>
@@ -4774,7 +4775,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="C79" library="jonnew" deviceset="C" device="_0402T" value="4.7uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
-<part name="L8" library="jonnew" deviceset="L" device="_0805T"/>
+<part name="L8" library="jonnew" deviceset="L" device="_0805T" value="LQM21PN1R0NGRD"/>
 <part name="SUPPLY55" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY56" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY67" library="jonnew" deviceset="GND" device=""/>
@@ -4790,6 +4791,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="U$14" library="jonnew" deviceset="+2V5" device=""/>
 <part name="CENTER" library="jonnew" deviceset="TP" device="B0.4MM"/>
 <part name="SHIELD" library="jonnew" deviceset="TP" device="B0.4MM"/>
+<part name="U$22" library="jonnew" deviceset="+1V8" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4834,7 +4836,10 @@ and switcher that does not care.</text>
 </plain>
 <instances>
 <instance part="U1" gate="G$1" x="393.7" y="482.6"/>
-<instance part="D1" gate="G$1" x="355.6" y="474.98" rot="R90"/>
+<instance part="D1" gate="G$1" x="355.6" y="474.98" smashed="yes" rot="R90">
+<attribute name="NAME" x="348.488" y="481.33" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="351.79" y="468.63" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="R1" gate="R" x="368.3" y="467.36" rot="R90"/>
 <instance part="SUPPLY1" gate="PE" x="421.64" y="457.2"/>
 <instance part="C2" gate="C" x="449.58" y="480.06">
@@ -4853,14 +4858,20 @@ and switcher that does not care.</text>
 <instance part="U18" gate="G$1" x="734.06" y="243.84"/>
 <instance part="U17" gate="G$1" x="734.06" y="190.5"/>
 <instance part="U5" gate="G$1" x="393.7" y="421.64"/>
-<instance part="D2" gate="G$1" x="355.6" y="414.02" rot="R90"/>
+<instance part="D2" gate="G$1" x="355.6" y="414.02" smashed="yes" rot="R90">
+<attribute name="NAME" x="348.488" y="420.37" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="351.79" y="407.67" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="R2" gate="R" x="368.3" y="406.4" rot="R90"/>
 <instance part="SUPPLY5" gate="PE" x="421.64" y="396.24"/>
 <instance part="SUPPLY6" gate="PE" x="368.3" y="396.24"/>
 <instance part="SUPPLY7" gate="PE" x="342.9" y="396.24"/>
 <instance part="SUPPLY8" gate="PE" x="449.58" y="396.24"/>
 <instance part="U6" gate="G$1" x="393.7" y="360.68"/>
-<instance part="D3" gate="G$1" x="355.6" y="353.06" rot="R90"/>
+<instance part="D3" gate="G$1" x="355.6" y="353.06" smashed="yes" rot="R90">
+<attribute name="NAME" x="348.488" y="359.41" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="351.79" y="346.71" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="R3" gate="R" x="368.3" y="345.44" rot="R90"/>
 <instance part="SUPPLY9" gate="PE" x="421.64" y="335.28"/>
 <instance part="C5" gate="C" x="342.9" y="350.52">
@@ -5234,6 +5245,7 @@ and switcher that does not care.</text>
 <instance part="U$14" gate="G$1" x="693.42" y="198.12"/>
 <instance part="CENTER" gate="G$1" x="53.34" y="751.84" rot="R90"/>
 <instance part="SHIELD" gate="G$1" x="53.34" y="746.76" rot="R90"/>
+<instance part="U$22" gate="G$1" x="177.8" y="553.72"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -7730,6 +7742,25 @@ and switcher that does not care.</text>
 <wire x1="777.24" y1="139.7" x2="772.16" y2="139.7" width="0.1524" layer="91"/>
 <junction x="772.16" y="139.7"/>
 </segment>
+<segment>
+<pinref part="C63" gate="C" pin="1"/>
+<wire x1="144.78" y1="551.18" x2="144.78" y2="548.64" width="0.1524" layer="91"/>
+<pinref part="C64" gate="C" pin="1"/>
+<wire x1="134.62" y1="548.64" x2="134.62" y2="551.18" width="0.1524" layer="91"/>
+<pinref part="C65" gate="C" pin="1"/>
+<wire x1="124.46" y1="551.18" x2="124.46" y2="548.64" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="551.18" x2="134.62" y2="551.18" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="551.18" x2="124.46" y2="551.18" width="0.1524" layer="91"/>
+<junction x="134.62" y="551.18"/>
+<wire x1="124.46" y1="551.18" x2="101.6" y2="551.18" width="0.1524" layer="91"/>
+<junction x="124.46" y="551.18"/>
+<pinref part="U19" gate="G$1" pin="VDDT"/>
+<wire x1="101.6" y1="551.18" x2="101.6" y2="510.54" width="0.1524" layer="91"/>
+<pinref part="U$22" gate="G$1" pin="+1V8"/>
+<wire x1="144.78" y1="551.18" x2="177.8" y2="551.18" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="551.18" x2="177.8" y2="553.72" width="0.1524" layer="91"/>
+<junction x="144.78" y="551.18"/>
+</segment>
 </net>
 <net name="N$33" class="0">
 <segment>
@@ -7812,23 +7843,6 @@ and switcher that does not care.</text>
 <junction x="144.78" y="525.78"/>
 <pinref part="C49" gate="C" pin="1"/>
 <pinref part="U19" gate="G$1" pin="VDDCML"/>
-</segment>
-</net>
-<net name="N$37" class="0">
-<segment>
-<pinref part="C63" gate="C" pin="1"/>
-<wire x1="144.78" y1="551.18" x2="144.78" y2="548.64" width="0.1524" layer="91"/>
-<pinref part="C64" gate="C" pin="1"/>
-<wire x1="134.62" y1="548.64" x2="134.62" y2="551.18" width="0.1524" layer="91"/>
-<pinref part="C65" gate="C" pin="1"/>
-<wire x1="124.46" y1="551.18" x2="124.46" y2="548.64" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="551.18" x2="134.62" y2="551.18" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="551.18" x2="124.46" y2="551.18" width="0.1524" layer="91"/>
-<junction x="134.62" y="551.18"/>
-<wire x1="124.46" y1="551.18" x2="101.6" y2="551.18" width="0.1524" layer="91"/>
-<junction x="124.46" y="551.18"/>
-<pinref part="U19" gate="G$1" pin="VDDT"/>
-<wire x1="101.6" y1="551.18" x2="101.6" y2="510.54" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$40" class="0">
@@ -8592,7 +8606,42 @@ and switcher that does not care.</text>
 <approved hash="201,1,375.92,782.32,VCC,V+\, V-,,,,"/>
 <approved hash="201,1,467.36,731.52,VCC,V+\, V-,,,,"/>
 <approved hash="201,1,467.36,774.7,VCC,V+\, V-,,,,"/>
+<approved hash="104,1,411.48,490.22,U1,DVDD,+3V3,,,"/>
+<approved hash="104,1,375.92,596.9,U2,VDD,+3V3,,,"/>
+<approved hash="104,1,375.92,589.28,U2,VDDIO,+3V3,,,"/>
+<approved hash="104,1,668.02,774.7,U3,VDD,VCOAX,,,"/>
+<approved hash="104,1,86.36,510.54,U19,VDDIO,+3V3,,,"/>
+<approved hash="104,1,91.44,510.54,U19,VDDD,+1V8,,,"/>
+<approved hash="104,1,96.52,510.54,U19,VDDPLL,N$34,,,"/>
+<approved hash="104,1,101.6,510.54,U19,VDDT,+1V8,,,"/>
+<approved hash="104,1,114.3,510.54,U19,VDDCML,N$35,,,"/>
+<approved hash="104,1,327.66,759.46,U13,AVDD,+3V3,,,"/>
+<approved hash="104,1,718.82,248.92,U18,IN,VCOAX,,,"/>
+<approved hash="104,1,718.82,195.58,U17,IN,+2V5,,,"/>
+<approved hash="104,1,411.48,429.26,U5,DVDD,+3V3,,,"/>
+<approved hash="104,1,411.48,368.3,U6,DVDD,+3V3,,,"/>
+<approved hash="104,1,558.8,210.82,U12,VIN,VCOAX,,,"/>
+<approved hash="104,1,576.58,210.82,U12,VOUT1,V+,,,"/>
+<approved hash="104,1,746.76,744.22,U25,VDD,+3V3,,,"/>
+<approved hash="104,1,220.98,200.66,U11G$7,VCC,+1V2,,,"/>
+<approved hash="104,1,220.98,180.34,U11G$7,VCCD_PLL2,$N324,,,"/>
+<approved hash="104,1,220.98,160.02,U11G$7,VCCIO1_2,+3V3,,,"/>
+<approved hash="104,1,220.98,157.48,U11G$7,VCCIO3,+3V3,,,"/>
+<approved hash="104,1,220.98,154.94,U11G$7,VCCIO5_6,+3V3,,,"/>
+<approved hash="104,1,220.98,152.4,U11G$7,VCCIO8,+3V3,,,"/>
+<approved hash="104,1,220.98,132.08,U11G$7,VCCA1,+2V5,,,"/>
+<approved hash="104,1,220.98,129.54,U11G$7,VCCA2,+2V5,,,"/>
+<approved hash="104,1,220.98,127,U11G$7,VCCA3,+2V5,,,"/>
+<approved hash="104,1,220.98,124.46,U11G$7,VCCA4,+2V5,,,"/>
+<approved hash="104,1,716.28,78.74,U9,IN,VCOAX,,,"/>
+<approved hash="104,1,411.48,304.8,U14,DVDD,+3V3,,,"/>
+<approved hash="104,1,599.44,480.06,U7,GND,AGND,,,"/>
+<approved hash="104,1,594.36,480.06,U7,VESD,AGND,,,"/>
 <approved hash="202,1,711.2,480.06,U7,ELEC_TEST,,,,"/>
+<approved hash="104,1,612.14,480.06,U7,VDD,INTAN_VDD,,,"/>
+<approved hash="104,1,718.82,309.88,U16,IN,VCOAX,,,"/>
+<approved hash="104,1,734.06,289.56,U16,GND,AGND,,,"/>
+<approved hash="104,1,723.9,139.7,U22,VIN,VCOAX,,,"/>
 <approved hash="206,1,703.58,759.46,LED-1,,,,,"/>
 <approved hash="206,1,703.58,764.54,LED-1,,,,,"/>
 <approved hash="206,1,703.58,769.62,LED-1,,,,,"/>
@@ -8609,6 +8658,16 @@ and switcher that does not care.</text>
 <approved hash="206,1,703.58,744.22,LED-2,,,,,"/>
 <approved hash="206,1,703.58,741.68,LED-2,,,,,"/>
 <approved hash="206,1,703.58,739.14,LED-2,,,,,"/>
+<approved hash="113,1,236.056,264.16,TP3,,,,,"/>
+<approved hash="113,1,236.056,266.7,TP4,,,,,"/>
+<approved hash="113,1,236.056,269.24,TP5,,,,,"/>
+<approved hash="113,1,236.056,271.78,TP6,,,,,"/>
+<approved hash="113,1,55.88,441.796,TP7,,,,,"/>
+<approved hash="113,1,358.304,299.72,TP9,,,,,"/>
+<approved hash="113,1,357.598,294.64,TP11,,,,,"/>
+<approved hash="113,1,236.762,274.32,TP12,,,,,"/>
+<approved hash="113,1,50.6071,751.84,CENTER,,,,,"/>
+<approved hash="113,1,51.2453,746.76,SHIELD,,,,,"/>
 </errors>
 </schematic>
 </drawing>
