@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.02" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
+<grid distance="0.2" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route1" color="13" fill="1" visible="no" active="yes"/>
@@ -49,11 +49,11 @@
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
@@ -207,23 +207,23 @@ Rev 1.0</text>
 COHL v1.2</text>
 <polygon width="0.0762" layer="29">
 <vertex x="-1.2" y="0.6"/>
-<vertex x="-0.7" y="0.6" curve="-90"/>
-<vertex x="-0.5" y="0.4"/>
-<vertex x="-0.5" y="0" curve="-90"/>
-<vertex x="-0.7" y="-0.2"/>
+<vertex x="0.3" y="0.6" curve="-90"/>
+<vertex x="0.5" y="0.4"/>
+<vertex x="0.5" y="0" curve="-90"/>
+<vertex x="0.3" y="-0.2"/>
 <vertex x="-1.2" y="-0.2" curve="-90"/>
 <vertex x="-1.4" y="0"/>
 <vertex x="-1.4" y="0.4" curve="-90"/>
 </polygon>
-<polygon width="0.0762" layer="29">
-<vertex x="0.7" y="0"/>
-<vertex x="0.7" y="0.4" curve="90"/>
-<vertex x="0.5" y="0.6"/>
-<vertex x="0" y="0.6" curve="90"/>
-<vertex x="-0.2" y="0.4"/>
-<vertex x="-0.2" y="0" curve="90"/>
-<vertex x="0" y="-0.2"/>
-<vertex x="0.5" y="-0.2" curve="90"/>
+<polygon width="0.0508" layer="29">
+<vertex x="2" y="0.6"/>
+<vertex x="1.8" y="0.8"/>
+<vertex x="1" y="0.8"/>
+<vertex x="0.8" y="0.6"/>
+<vertex x="0.8" y="0"/>
+<vertex x="1" y="-0.2"/>
+<vertex x="1.8" y="-0.2"/>
+<vertex x="2" y="0"/>
 </polygon>
 </plain>
 <libraries>
@@ -1650,8 +1650,8 @@ einem neuen Namen ab.</description>
 <attribute name="PARTNO" value="CL05A105KO5NNNC" x="1.1" y="2.38" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="L8" library="jonnew" package="0805T" value="LQM21PN1R0NGRD" x="4.32" y="0.86" rot="R180"/>
-<element name="CENTER" library="jonnew" package="B0.4MM" value="" x="0.25" y="0.15"/>
-<element name="SHIELD" library="jonnew" package="B0.4MM" value="" x="-0.95" y="0.15"/>
+<element name="CENTER" library="jonnew" package="B0.4MM" value="" x="1.45" y="0.15"/>
+<element name="SHIELD" library="jonnew" package="B0.4MM" value="" x="-0.35" y="0.15"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -2120,12 +2120,12 @@ einem neuen Namen ab.</description>
 <wire x1="0.72" y1="-1.140003125" x2="0.599996875" y2="-1.02" width="0.15" layer="1"/>
 <wire x1="0.599996875" y1="-1.02" x2="0.44" y2="-1.02" width="0.15" layer="1"/>
 <polygon width="0.0762" layer="1" thermals="no" rank="3">
-<vertex x="-0.5" y="-0.2"/>
+<vertex x="0.3" y="-0.2"/>
 <vertex x="-1.4" y="-0.2"/>
 <vertex x="-1.4" y="1.47"/>
 <vertex x="-0.3" y="1.46"/>
 <vertex x="-0.3" y="0.74"/>
-<vertex x="-0.5" y="0.75"/>
+<vertex x="0.3" y="0.75"/>
 </polygon>
 <wire x1="4.66" y1="6.15" x2="4.66" y2="6.65" width="0.2" layer="1"/>
 <wire x1="4.66" y1="6.65" x2="4.68" y2="6.72" width="0.15" layer="1"/>
@@ -3731,10 +3731,10 @@ einem neuen Namen ab.</description>
 <contactref element="L3" pad="1"/>
 <contactref element="C51" pad="1"/>
 <polygon width="0.0762" layer="1" thermals="no">
-<vertex x="-0.2" y="-0.2"/>
-<vertex x="0.7" y="-0.2"/>
-<vertex x="0.7" y="0.6"/>
-<vertex x="-0.2" y="0.6"/>
+<vertex x="0.6" y="-0.2"/>
+<vertex x="2.1" y="-0.2"/>
+<vertex x="2.1" y="0.8"/>
+<vertex x="0.6" y="0.8"/>
 </polygon>
 <wire x1="-0.455" y1="-1.035" x2="-0.51" y2="-1.01" width="0.2" layer="1"/>
 <wire x1="-0.455" y1="-1.035" x2="-0.965" y2="-1.035" width="0.2" layer="1"/>
@@ -3744,16 +3744,19 @@ einem neuen Namen ab.</description>
 <wire x1="-1.63" y1="-0.37" x2="-0.965" y2="-1.035" width="0.2" layer="1"/>
 <polygon width="0.0762" layer="1" thermals="no">
 <vertex x="-0.55" y="-0.45"/>
-<vertex x="-0.4" y="-0.45"/>
-<vertex x="-0.2" y="-0.25"/>
-<vertex x="-0.2" y="0.25"/>
-<vertex x="0.12" y="0.25"/>
+<vertex x="-0.2" y="-0.45"/>
+<vertex x="-0.2" y="-0.55"/>
+<vertex x="0.12" y="-0.55"/>
 <vertex x="0.12" y="-1.62"/>
 <vertex x="-0.55" y="-1.62"/>
 </polygon>
-<wire x1="0.72" y1="-0.62" x2="0.72" y2="-0.32" width="0.1" layer="1"/>
+<wire x1="0.72" y1="-0.12" x2="0.72" y2="-0.62" width="0.1" layer="1"/>
 <contactref element="CENTER" pad="TP"/>
-<wire x1="0.72" y1="-0.32" x2="0.25" y2="0.15" width="0.1" layer="1"/>
+<wire x1="0.72" y1="-0.12" x2="0.84" y2="0" width="0.1" layer="1"/>
+<wire x1="0.84" y1="0" x2="1" y2="0" width="0.1" layer="1"/>
+<wire x1="1" y1="0" x2="1.45" y2="0.15" width="0.1" layer="1"/>
+<wire x1="0.72" y1="-0.62" x2="-0.04" y2="-0.62" width="0.2" layer="1"/>
+<wire x1="-0.04" y1="-0.62" x2="-0.455" y2="-1.035" width="0.2" layer="1"/>
 </signal>
 <signal name="ESTIM_POW_EN">
 <contactref element="R17" pad="1"/>
@@ -5438,93 +5441,9 @@ einem neuen Namen ab.</description>
 </signal>
 </signals>
 <errors>
-<approved hash="5,16,4f4c2d77dcc148de"/>
-<approved hash="5,16,034e3539c8c178ce"/>
-<approved hash="21,19,82ab80a980a982ab"/>
-<approved hash="21,19,28532a512c512e53"/>
-<approved hash="4,1,88792e68c4cd9c6b"/>
-<approved hash="4,1,13ca21624244e71b"/>
-<approved hash="4,1,496949dd0d0e0db8"/>
-<approved hash="4,1,114941cf5d191b7f"/>
-<approved hash="4,1,114941c37515337f"/>
-<approved hash="4,1,0168d0aea8994953"/>
-<approved hash="4,1,88fd884327b92707"/>
-<approved hash="5,1,f320a6d9ff7e6a80"/>
-<approved hash="5,1,dd25b0dce97c8485"/>
-<approved hash="4,2,88792e68c4cd9c6b"/>
-<approved hash="4,3,88792e68c4cd9c6b"/>
-<approved hash="4,4,88792e68c4cd9c6b"/>
-<approved hash="4,5,88792e68c4cd9c6b"/>
-<approved hash="4,16,596db9d9cd0b2dbd"/>
-<approved hash="4,16,23b505663b4de21e"/>
-<approved hash="4,16,88792e68c4cd9c6b"/>
-<approved hash="4,1,383041138114f837"/>
-<approved hash="4,1,22374b148b19e23a"/>
-<approved hash="4,1,ca3b7318b31a0a39"/>
-<approved hash="4,1,f23f1b1cdb1e323d"/>
-<approved hash="4,1,65c3fce03ce2a5c1"/>
-<approved hash="4,1,7dc7d4e414e6bdc5"/>
-<approved hash="4,1,55ca2ce9ecea95c9"/>
-<approved hash="4,1,a3c93aeafaef63cc"/>
-<approved hash="4,1,6ca3c1065303e5bd"/>
-<approved hash="4,1,5f80c44e6e74f7b8"/>
-<approved hash="4,1,7f35252a8a97ff95"/>
-<approved hash="4,2,5a14a415d4c9f75a"/>
-<approved hash="4,2,49122c3fee398b14"/>
-<approved hash="4,2,57153a38f83a9517"/>
-<approved hash="4,2,7f19c2340036bd1b"/>
-<approved hash="4,2,071dea302832c51f"/>
-<approved hash="4,2,d0e10dcccfce12e3"/>
-<approved hash="4,2,c8e565c8a7ca0ae7"/>
-<approved hash="4,2,20e95dc49fc6e2eb"/>
-<approved hash="4,2,12ec4fc18dc3d0ee"/>
-<approved hash="4,2,d3288bd611a3aecf"/>
-<approved hash="4,3,5a14a415d4c9f75a"/>
-<approved hash="4,3,49122c3fee398b14"/>
-<approved hash="4,3,57153a38f83a9517"/>
-<approved hash="4,3,7f19c2340036bd1b"/>
-<approved hash="4,3,071dea302832c51f"/>
-<approved hash="4,3,d0e10dcccfce12e3"/>
-<approved hash="4,3,c8e565c8a7ca0ae7"/>
-<approved hash="4,3,20e95dc49fc6e2eb"/>
-<approved hash="4,3,12ec4fc18dc3d0ee"/>
-<approved hash="4,3,d3288bd611a3aecf"/>
-<approved hash="4,4,49122c3fee398b14"/>
-<approved hash="4,4,57153a38f83a9517"/>
-<approved hash="4,4,7f19c2340036bd1b"/>
-<approved hash="4,4,071dea302832c51f"/>
-<approved hash="4,4,d0e10dcccfce12e3"/>
-<approved hash="4,4,c8e565c8a7ca0ae7"/>
-<approved hash="4,4,20e95dc49fc6e2eb"/>
-<approved hash="4,4,12ec4fc18dc3d0ee"/>
-<approved hash="4,4,5a14a415d4c9f75a"/>
-<approved hash="4,4,d3288bd611a3aecf"/>
-<approved hash="4,5,5a14a415d4c9f75a"/>
-<approved hash="4,5,49122c3fee398b14"/>
-<approved hash="4,5,57153a38f83a9517"/>
-<approved hash="4,5,7f19c2340036bd1b"/>
-<approved hash="4,5,071dea302832c51f"/>
-<approved hash="4,5,d0e10dcccfce12e3"/>
-<approved hash="4,5,c8e565c8a7ca0ae7"/>
-<approved hash="4,5,20e95dc49fc6e2eb"/>
-<approved hash="4,5,12ec4fc18dc3d0ee"/>
-<approved hash="4,5,d3288bd611a3aecf"/>
-<approved hash="4,16,383041138114f837"/>
-<approved hash="4,16,22374b148b19e23a"/>
-<approved hash="4,16,ca3b7318b31a0a39"/>
-<approved hash="4,16,f23f1b1cdb1e323d"/>
-<approved hash="4,16,18fe384087baa704"/>
-<approved hash="4,16,65c3fce03ce2a5c1"/>
-<approved hash="4,16,08fe0840a7baa704"/>
-<approved hash="4,16,7dc7d4e414e6bdc5"/>
-<approved hash="4,16,55ca2ce9ecea95c9"/>
-<approved hash="4,16,a3c93aeafaef63cc"/>
-<approved hash="4,16,6ca3c1065303e5bd"/>
-<approved hash="4,16,7f35252a8a97ff95"/>
-<approved hash="4,1,3743630fe79b1e8c"/>
 <approved hash="21,19,461849e5b5e74be4"/>
-<approved hash="4,1,22d22fc0c11e71a6"/>
 <approved hash="4,1,2870c94adfc11a34"/>
+<approved hash="4,1,22d22fc0c11e71a6"/>
 <approved hash="6,1,8cb88c2c00040090"/>
 <approved hash="6,1,942b6d4d6374662b"/>
 <approved hash="6,1,6f536f03bf27bf77"/>
