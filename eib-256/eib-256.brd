@@ -154,9 +154,9 @@
 <wire x1="-3.403590625" y1="5.74038125" x2="-3.784590625" y2="5.79118125" width="0.254" layer="21"/>
 <text x="-4.622446875" y="1.3868" size="1.016" layer="22" font="vector" ratio="19" rot="MR286.7" align="center">256 Channel EIB</text>
 <text x="4.379159375" y="-1.313809375" size="0.8128" layer="22" font="vector" ratio="19" rot="MR286.7" align="center">Rev. 1.0
-CC BY-SA-NC-4.0
+CERN OHL v1.2
 JPN, MWL@MIT
-2016</text>
+2017</text>
 <text x="10.91949375" y="1.79413125" size="1.778" layer="22" font="vector" ratio="19" rot="MR259" align="center">W</text>
 <wire x1="-7.882590625" y1="-5.06028125" x2="-5.449721875" y2="-5.790175" width="0.2032" layer="22"/>
 <wire x1="-5.449721875" y1="-5.790175" x2="-1.36230625" y2="7.833884375" width="0.2032" layer="22"/>

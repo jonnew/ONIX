@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.6.0">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -2946,7 +2947,7 @@ by exp-lbrs.ulp</description>
 <attributes>
 <attribute name="DESIGNER" value="JONNEW, MWL@MIT"/>
 <attribute name="DESIGN_NAME" value="128/256 Channel Headstage Test Board"/>
-<attribute name="LICENSE" value="(c) Jon Newman CC-BY-SA 4.0"/>
+<attribute name="LICENSE" value="CERN OHL v1.2"/>
 <attribute name="REVISION" value="1.0"/>
 </attributes>
 <variantdefs>

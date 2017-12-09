@@ -2911,7 +2911,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <attributes>
 <attribute name="DESIGNER" value="Jon Newman"/>
 <attribute name="DESIGN_NAME" value="Headstage Programmer"/>
-<attribute name="LICENSE" value="CC-BY-SA-4.0"/>
+<attribute name="LICENSE" value="CERN OHL v1.2"/>
 <attribute name="REVISION" value="1.0"/>
 </attributes>
 <variantdefs>
