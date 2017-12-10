@@ -1452,40 +1452,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <rectangle x1="-0.6" y1="-1" x2="-0.2" y2="1" layer="51"/>
 <rectangle x1="0.2" y1="-1" x2="0.6" y2="1" layer="51"/>
 </package>
-<package name="1210">
-<wire x1="-2.413" y1="1.651" x2="2.413" y2="1.651" width="0.127" layer="21"/>
-<wire x1="2.413" y1="1.651" x2="2.413" y2="-1.651" width="0.127" layer="21"/>
-<wire x1="2.413" y1="-1.651" x2="-2.413" y2="-1.651" width="0.127" layer="21"/>
-<wire x1="-2.413" y1="-1.651" x2="-2.413" y2="1.651" width="0.127" layer="21"/>
-<smd name="1" x="-1.397" y="0" dx="1.651" dy="2.794" layer="1"/>
-<text x="-2.413" y="1.889" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-2.54" y="-2.905" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<smd name="2" x="1.397" y="0" dx="1.651" dy="2.794" layer="1"/>
-</package>
-<package name="2220">
-<wire x1="-2.8448" y1="2.54" x2="2.8448" y2="2.54" width="0.1016" layer="51"/>
-<wire x1="2.8448" y1="-2.54" x2="-2.8448" y2="-2.54" width="0.1016" layer="51"/>
-<wire x1="-4.254" y1="3.27" x2="4.254" y2="3.27" width="0.127" layer="21"/>
-<wire x1="4.254" y1="3.27" x2="4.254" y2="-3.27" width="0.127" layer="21"/>
-<wire x1="4.254" y1="-3.27" x2="-4.254" y2="-3.27" width="0.127" layer="21"/>
-<wire x1="-4.254" y1="-3.27" x2="-4.254" y2="3.27" width="0.127" layer="21"/>
-<smd name="1" x="-2.85" y="0" dx="2" dy="5.6" layer="1"/>
-<text x="-4.064" y="3.54" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-4.064" y="-4.556" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<rectangle x1="-2.8448" y1="-2.54" x2="-2.032" y2="2.54" layer="51"/>
-<rectangle x1="2.032" y1="-2.54" x2="2.8448" y2="2.54" layer="51"/>
-<smd name="2" x="2.85" y="0" dx="2" dy="5.6" layer="1"/>
-</package>
-<package name="0603T">
-<wire x1="-0.762" y1="0.4064" x2="0.762" y2="0.4064" width="0.1016" layer="51"/>
-<wire x1="0.762" y1="-0.4064" x2="-0.762" y2="-0.4064" width="0.1016" layer="51"/>
-<smd name="1" x="-0.82" y="0" dx="0.7" dy="0.9" layer="1"/>
-<smd name="2" x="0.82" y="0" dx="0.7" dy="0.9" layer="1"/>
-<text x="-1.397" y="1.397" size="1.016" layer="25" font="vector" ratio="18" rot="R180" align="center-right">&gt;NAME</text>
-<text x="-1.397" y="-1.397" size="1.016" layer="27" font="vector" ratio="18" align="center-left">&gt;VALUE</text>
-<rectangle x1="-0.8128" y1="-0.4064" x2="-0.508" y2="0.4064" layer="51"/>
-<rectangle x1="0.508" y1="-0.4064" x2="0.8128" y2="0.4064" layer="51"/>
-</package>
 </packages>
 <symbols>
 <symbol name="PINHD2X35">
@@ -1995,16 +1961,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <vertex x="-2.921" y="-2.413"/>
 <vertex x="-2.413" y="-2.921"/>
 </polygon>
-</symbol>
-<symbol name="C">
-<wire x1="0" y1="-2.54" x2="0" y2="-2.032" width="0.1524" layer="94"/>
-<wire x1="0" y1="0" x2="0" y2="-0.508" width="0.1524" layer="94"/>
-<text x="1.524" y="0.381" size="1.778" layer="95">&gt;NAME</text>
-<text x="1.524" y="-4.699" size="1.778" layer="96">&gt;VALUE</text>
-<rectangle x1="-2.032" y1="-1.016" x2="2.032" y2="-0.508" layer="94"/>
-<rectangle x1="-2.032" y1="-2.032" x2="2.032" y2="-1.524" layer="94"/>
-<pin name="1" x="0" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
-<pin name="2" x="0" y="-5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -3107,118 +3063,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="C" prefix="C" uservalue="yes">
-<description>Capacitor</description>
-<gates>
-<gate name="C" symbol="C" x="0" y="0"/>
-</gates>
-<devices>
-<device name="_0201" package="0201">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_0402" package="0402">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_0603" package="0603">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_0805" package="0805">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DK" value="" constant="no"/>
-<attribute name="MN" value="TDK Corp." constant="no"/>
-<attribute name="PARTNO" value="C2012X5R1Cxxxxxxx" constant="no"/>
-<attribute name="VID" value="DK" constant="no"/>
-</technology>
-</technologies>
-</device>
-<device name="_1206" package="1206">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_1210" package="1210">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_2220" package="2220">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_0201T" package="0201T">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_0805T" package="0805T">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_0402T" package="0402T">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="_0603T" package="0603T">
-<connects>
-<connect gate="C" pin="1" pad="1"/>
-<connect gate="C" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 </devicesets>
 </library>
 <library name="josh">
@@ -3533,10 +3377,12 @@ by exp-lbrs.ulp</description>
 <part name="J1" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40-REC"/>
 <part name="D1" library="jonnew" deviceset="LED" device="_LXZ1" value="LXZ1-PB01"/>
 <part name="D2" library="jonnew" deviceset="LED" device="_LXZ1" value="LXZ1-PL01"/>
-<part name="C1" library="jonnew" deviceset="C" device="_0603" value="110nF"/>
-<part name="R9" library="jonnew" deviceset="R" device="_0603" value="3.5k"/>
-<part name="C_BYPASS" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
+<part name="CDL" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
 <part name="TP14" library="jonnew" deviceset="TP" device="PAD1-20" value="V_ESTIM"/>
+<part name="LED_SELECT" library="jonnew" deviceset="JP3E" device=""/>
+<part name="D2_EXT" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
+<part name="D1_EXT" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
+<part name="RS" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
 </parts>
 <sheets>
 <sheet>
@@ -3572,9 +3418,9 @@ by exp-lbrs.ulp</description>
 <wire x1="637.54" y1="274.32" x2="637.54" y2="279.4" width="0.1524" layer="97"/>
 <wire x1="637.54" y1="279.4" x2="642.62" y2="279.4" width="0.1524" layer="97"/>
 <frame x1="195.58" y1="104.14" x2="817.88" y2="474.98" columns="8" rows="5" layer="94"/>
-<text x="744.22" y="269.24" size="1.27" layer="97" rot="R90">Stimulation Electrode
-~200 uM diameter (Noorsal, 2012)</text>
-<text x="706.12" y="269.24" size="1.27" layer="97" rot="R90">Stim LEDs</text>
+<text x="769.62" y="269.24" size="1.27" layer="97" rot="R90">Stimulation Electrode
+~200 uM diameter: 110nF in series with 3.5k (Noorsal, 2012)</text>
+<text x="701.04" y="309.88" size="1.27" layer="97">Stim LEDs</text>
 </plain>
 <instances>
 <instance part="DOC_INFO" gate="G$1" x="642.62" y="160.02"/>
@@ -3657,15 +3503,26 @@ by exp-lbrs.ulp</description>
 <instance part="BANK_SELECT" gate="G$1" x="726.44" y="383.54" rot="R270"/>
 <instance part="SUPPLY33" gate="PE" x="718.82" y="358.14"/>
 <instance part="J1" gate="G$1" x="391.16" y="281.94" rot="R180"/>
-<instance part="D1" gate="G$1" x="685.8" y="276.86"/>
-<instance part="D2" gate="G$1" x="698.5" y="276.86"/>
-<instance part="C1" gate="C" x="731.52" y="287.02"/>
-<instance part="R9" gate="R" x="731.52" y="269.24" rot="R270"/>
-<instance part="C_BYPASS" gate="G$1" x="723.9" y="284.48" smashed="yes" rot="R90">
-<attribute name="NAME" x="715.01" y="292.1" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="721.36" y="290.195" size="1.778" layer="96" rot="R180"/>
+<instance part="D1" gate="G$1" x="711.2" y="276.86"/>
+<instance part="D2" gate="G$1" x="723.9" y="276.86"/>
+<instance part="CDL" gate="G$1" x="756.92" y="284.48" smashed="yes" rot="R90">
+<attribute name="NAME" x="748.03" y="292.1" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="754.38" y="290.195" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="TP14" gate="G$1" x="675.64" y="226.06"/>
+<instance part="LED_SELECT" gate="G$1" x="701.04" y="289.56"/>
+<instance part="D2_EXT" gate="G$1" x="698.5" y="274.32" smashed="yes" rot="R90">
+<attribute name="NAME" x="692.15" y="274.32" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="695.96" y="280.035" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="D1_EXT" gate="G$1" x="688.34" y="274.32" smashed="yes" rot="R90">
+<attribute name="NAME" x="681.99" y="274.32" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="685.8" y="280.035" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="RS" gate="G$1" x="756.92" y="266.7" smashed="yes" rot="R90">
+<attribute name="NAME" x="748.03" y="274.32" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="754.38" y="272.415" size="1.778" layer="96" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -4150,9 +4007,9 @@ by exp-lbrs.ulp</description>
 <wire x1="388.62" y1="274.32" x2="388.62" y2="251.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R9" gate="R" pin="2"/>
-<wire x1="731.52" y1="264.16" x2="731.52" y2="261.62" width="0.1524" layer="91"/>
-<label x="731.52" y="261.62" size="1.27" layer="95" rot="R270" xref="yes"/>
+<label x="756.92" y="261.62" size="1.27" layer="95" rot="R270" xref="yes"/>
+<pinref part="RS" gate="G$1" pin="1"/>
+<wire x1="756.92" y1="266.7" x2="756.92" y2="261.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -5453,14 +5310,9 @@ by exp-lbrs.ulp</description>
 <label x="391.16" y="312.42" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
 <segment>
-<wire x1="731.52" y1="297.18" x2="731.52" y2="289.56" width="0.1524" layer="91"/>
-<pinref part="C1" gate="C" pin="1"/>
-<label x="731.52" y="297.18" size="1.27" layer="95" rot="R90" xref="yes"/>
-<pinref part="C_BYPASS" gate="G$1" pin="2"/>
-<wire x1="723.9" y1="287.02" x2="726.44" y2="287.02" width="0.1524" layer="91"/>
-<wire x1="726.44" y1="287.02" x2="726.44" y2="289.56" width="0.1524" layer="91"/>
-<wire x1="726.44" y1="289.56" x2="731.52" y2="289.56" width="0.1524" layer="91"/>
-<junction x="731.52" y="289.56"/>
+<wire x1="756.92" y1="297.18" x2="756.92" y2="287.02" width="0.1524" layer="91"/>
+<label x="756.92" y="297.18" size="1.27" layer="95" rot="R90" xref="yes"/>
+<pinref part="CDL" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <wire x1="675.64" y1="223.52" x2="675.64" y2="210.82" width="0.1524" layer="91"/>
@@ -5476,8 +5328,13 @@ by exp-lbrs.ulp</description>
 </segment>
 <segment>
 <pinref part="D1" gate="G$1" pin="C"/>
-<wire x1="685.8" y1="271.78" x2="685.8" y2="261.62" width="0.1524" layer="91"/>
-<label x="685.8" y="261.62" size="1.27" layer="95" rot="R270" xref="yes"/>
+<wire x1="711.2" y1="271.78" x2="711.2" y2="261.62" width="0.1524" layer="91"/>
+<label x="711.2" y="261.62" size="1.27" layer="95" rot="R270" xref="yes"/>
+</segment>
+<segment>
+<pinref part="D2_EXT" gate="G$1" pin="1"/>
+<wire x1="698.5" y1="274.32" x2="698.5" y2="261.62" width="0.1524" layer="91"/>
+<label x="698.5" y="261.62" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="CAT1" class="0">
@@ -5488,8 +5345,13 @@ by exp-lbrs.ulp</description>
 </segment>
 <segment>
 <pinref part="D2" gate="G$1" pin="C"/>
-<wire x1="698.5" y1="271.78" x2="698.5" y2="261.62" width="0.1524" layer="91"/>
-<label x="698.5" y="261.62" size="1.27" layer="95" rot="R270" xref="yes"/>
+<wire x1="723.9" y1="271.78" x2="723.9" y2="261.62" width="0.1524" layer="91"/>
+<label x="723.9" y="261.62" size="1.27" layer="95" rot="R270" xref="yes"/>
+</segment>
+<segment>
+<pinref part="D1_EXT" gate="G$1" pin="1"/>
+<wire x1="688.34" y1="274.32" x2="688.34" y2="261.62" width="0.1524" layer="91"/>
+<label x="688.34" y="261.62" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="AN" class="0">
@@ -5499,26 +5361,16 @@ by exp-lbrs.ulp</description>
 <label x="304.8" y="251.46" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 <segment>
-<pinref part="D1" gate="G$1" pin="A"/>
-<wire x1="685.8" y1="279.4" x2="685.8" y2="287.02" width="0.1524" layer="91"/>
-<wire x1="685.8" y1="287.02" x2="698.5" y2="287.02" width="0.1524" layer="91"/>
-<pinref part="D2" gate="G$1" pin="A"/>
-<wire x1="698.5" y1="287.02" x2="698.5" y2="279.4" width="0.1524" layer="91"/>
-<wire x1="685.8" y1="287.02" x2="685.8" y2="297.18" width="0.1524" layer="91"/>
-<junction x="685.8" y="287.02"/>
-<label x="685.8" y="297.18" size="1.27" layer="95" rot="R90" xref="yes"/>
+<pinref part="LED_SELECT" gate="G$1" pin="2"/>
+<wire x1="706.12" y1="289.56" x2="706.12" y2="284.48" width="0.1524" layer="91"/>
+<label x="706.12" y="284.48" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="C1" gate="C" pin="2"/>
-<pinref part="R9" gate="R" pin="1"/>
-<wire x1="731.52" y1="281.94" x2="731.52" y2="274.32" width="0.1524" layer="91"/>
-<pinref part="C_BYPASS" gate="G$1" pin="1"/>
-<wire x1="723.9" y1="284.48" x2="726.44" y2="284.48" width="0.1524" layer="91"/>
-<wire x1="726.44" y1="284.48" x2="726.44" y2="281.94" width="0.1524" layer="91"/>
-<wire x1="726.44" y1="281.94" x2="731.52" y2="281.94" width="0.1524" layer="91"/>
-<junction x="731.52" y="281.94"/>
+<wire x1="756.92" y1="284.48" x2="756.92" y2="269.24" width="0.1524" layer="91"/>
+<pinref part="CDL" gate="G$1" pin="1"/>
+<pinref part="RS" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="SIG_TT8,9" class="0">
@@ -5571,6 +5423,32 @@ by exp-lbrs.ulp</description>
 <wire x1="739.14" y1="375.92" x2="741.68" y2="375.92" width="0.1524" layer="91"/>
 <label x="741.68" y="375.92" size="1.27" layer="95" rot="MR180" xref="yes"/>
 <pinref part="BANK_SELECT" gate="G$1" pin="8"/>
+</segment>
+</net>
+<net name="AN_INT" class="0">
+<segment>
+<pinref part="D1" gate="G$1" pin="A"/>
+<wire x1="711.2" y1="279.4" x2="711.2" y2="287.02" width="0.1524" layer="91"/>
+<wire x1="711.2" y1="287.02" x2="723.9" y2="287.02" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="A"/>
+<wire x1="723.9" y1="287.02" x2="723.9" y2="279.4" width="0.1524" layer="91"/>
+<pinref part="LED_SELECT" gate="G$1" pin="3"/>
+<wire x1="708.66" y1="289.56" x2="708.66" y2="287.02" width="0.1524" layer="91"/>
+<wire x1="708.66" y1="287.02" x2="711.2" y2="287.02" width="0.1524" layer="91"/>
+<junction x="711.2" y="287.02"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="D1_EXT" gate="G$1" pin="2"/>
+<wire x1="688.34" y1="276.86" x2="688.34" y2="287.02" width="0.1524" layer="91"/>
+<wire x1="688.34" y1="287.02" x2="698.5" y2="287.02" width="0.1524" layer="91"/>
+<pinref part="LED_SELECT" gate="G$1" pin="1"/>
+<wire x1="698.5" y1="287.02" x2="703.58" y2="287.02" width="0.1524" layer="91"/>
+<wire x1="703.58" y1="287.02" x2="703.58" y2="289.56" width="0.1524" layer="91"/>
+<pinref part="D2_EXT" gate="G$1" pin="2"/>
+<wire x1="698.5" y1="276.86" x2="698.5" y2="287.02" width="0.1524" layer="91"/>
+<junction x="698.5" y="287.02"/>
 </segment>
 </net>
 </nets>
