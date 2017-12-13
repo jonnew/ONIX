@@ -384,8 +384,7 @@ JPN, MWL@MIT
 </class>
 </classes>
 <designrules name="seeed-studio-4-layer *">
-<description language="en">
-&lt;b&gt;Seeed Fusion 4 Layer Design Rules&lt;/b&gt;</description>
+<description language="en">&lt;b&gt;Seeed Fusion 4 Layer Design Rules&lt;/b&gt;</description>
 <param name="layerSetup" value="(1*2*15*16)"/>
 <param name="mtCopper" value="0.035mm 0.0175mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.0175mm 0.035mm"/>
 <param name="mtIsolate" value="0.2mm 0.3mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm"/>
@@ -641,7 +640,7 @@ JPN, MWL@MIT
 <wire x1="-0.635" y1="62.444975" x2="-0.635" y2="63.714975" width="0.3048" layer="1"/>
 <contactref element="J4" pad="P$1"/>
 <wire x1="0.635" y1="81.11813125" x2="1.51686875" y2="82" width="0.3048" layer="1"/>
-<via x="10" y="73.5" extent="1-16" drill="1.5" shape="octagon"/>
+<via x="10" y="73.5" extent="1-16" drill="1.5" shape="octagon" alwaysstop="yes"/>
 <wire x1="10" y1="73.5" x2="10" y2="79" width="0.3048" layer="1"/>
 <wire x1="8" y1="81" x2="10" y2="79" width="0.3048" layer="1"/>
 <wire x1="7" y1="82" x2="8" y2="81" width="0.3048" layer="1"/>
