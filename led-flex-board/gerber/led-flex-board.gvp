@@ -1,0 +1,7 @@
+(gerbv-file-version! "2.0A")
+(define-layer! 3 (cons 'filename "led-flex-board.GKO")(cons 'visible #t)(cons 'color #(65535 32639 29555)))
+(define-layer! 2 (cons 'filename "led-flex-board.GTO")(cons 'visible #t)(cons 'color #(0 50115 50115)))
+(define-layer! 1 (cons 'filename "led-flex-board.GTS")(cons 'visible #t)(cons 'color #(29555 29555 57054)))
+(define-layer! 0 (cons 'filename "led-flex-board.GTL")(cons 'visible #t)(cons 'color #(65535 50629 13107)))
+(define-layer! -1 (cons 'filename "/home/jon/public/open-ephys-pcie/led-flex-board/gerber")(cons 'visible #f)(cons 'color #(0 0 0)))
+(set-render-type! 0)
