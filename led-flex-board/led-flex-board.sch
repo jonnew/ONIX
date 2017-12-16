@@ -1466,7 +1466,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </class>
 </classes>
 <parts>
-<part name="D1" library="jonnew" deviceset="LED" device="_DA2432"/>
+<part name="D1" library="jonnew" deviceset="LED" device="_DA2432" value="DA2432"/>
 <part name="A" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="C" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="D2" library="jonnew" deviceset="LED" device="_DA2432" value="DA2432"/>
@@ -1481,22 +1481,40 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="D5" library="jonnew" deviceset="LED" device="_DA2432" value="DA2432"/>
 <part name="A4" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="C4" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
-<part name="D6" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="DA2432"/>
+<part name="D6" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="XQ-E"/>
 <part name="A5" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="C5" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
-<part name="D7" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="DA2432"/>
+<part name="D7" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="XQ-E"/>
 <part name="A6" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="C6" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
-<part name="D8" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="DA2432"/>
+<part name="D8" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="XQ-E"/>
 <part name="A7" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="C7" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
-<part name="D9" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="DA2432"/>
+<part name="D9" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="XQ-E"/>
 <part name="A8" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="C8" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
-<part name="D10" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="DA2432"/>
+<part name="D10" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="XQ-E"/>
 <part name="A9" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="C9" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 <part name="U$1" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
+<part name="D11" library="jonnew" deviceset="LED" device="_DA2432" value="DA2432"/>
+<part name="A10" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="C10" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="D12" library="jonnew" deviceset="LED" device="_DA2432" value="DA2432"/>
+<part name="A11" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="C11" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="D13" library="jonnew" deviceset="LED" device="_XLAMP1.6X1.6MM" value="XQ-E"/>
+<part name="A12" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="C12" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="D14" library="jonnew" deviceset="LED" device="_DA2432" value="DA2432"/>
+<part name="A13" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="C13" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="D16" library="jonnew" deviceset="LED" device="_DA2432" value="DA2432"/>
+<part name="A15" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="C15" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="D17" library="jonnew" deviceset="LED" device="_DA2432" value="DA2432"/>
+<part name="A16" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
+<part name="C16" library="jonnew" deviceset="TP" device="_S0.6X1.5MM"/>
 </parts>
 <sheets>
 <sheet>
@@ -1535,6 +1553,24 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="A9" gate="G$1" x="121.92" y="139.7"/>
 <instance part="C9" gate="G$1" x="121.92" y="119.38" rot="R180"/>
 <instance part="U$1" gate="G$1" x="10.16" y="7.62"/>
+<instance part="D11" gate="G$1" x="134.62" y="91.44"/>
+<instance part="A10" gate="G$1" x="134.62" y="101.6"/>
+<instance part="C10" gate="G$1" x="134.62" y="81.28" rot="R180"/>
+<instance part="D12" gate="G$1" x="147.32" y="91.44"/>
+<instance part="A11" gate="G$1" x="147.32" y="101.6"/>
+<instance part="C11" gate="G$1" x="147.32" y="81.28" rot="R180"/>
+<instance part="D13" gate="G$1" x="134.62" y="129.54"/>
+<instance part="A12" gate="G$1" x="134.62" y="139.7"/>
+<instance part="C12" gate="G$1" x="134.62" y="119.38" rot="R180"/>
+<instance part="D14" gate="G$1" x="160.02" y="91.44"/>
+<instance part="A13" gate="G$1" x="160.02" y="101.6"/>
+<instance part="C13" gate="G$1" x="160.02" y="81.28" rot="R180"/>
+<instance part="D16" gate="G$1" x="172.72" y="91.44"/>
+<instance part="A15" gate="G$1" x="172.72" y="101.6"/>
+<instance part="C15" gate="G$1" x="172.72" y="81.28" rot="R180"/>
+<instance part="D17" gate="G$1" x="185.42" y="91.44"/>
+<instance part="A16" gate="G$1" x="185.42" y="101.6"/>
+<instance part="C16" gate="G$1" x="185.42" y="81.28" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -1677,6 +1713,90 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="D10" gate="G$1" pin="A"/>
 <pinref part="A9" gate="G$1" pin="TP"/>
 <wire x1="121.92" y1="132.08" x2="121.92" y2="137.16" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$21" class="0">
+<segment>
+<pinref part="C10" gate="G$1" pin="TP"/>
+<pinref part="D11" gate="G$1" pin="C"/>
+<wire x1="134.62" y1="83.82" x2="134.62" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$22" class="0">
+<segment>
+<pinref part="D11" gate="G$1" pin="A"/>
+<pinref part="A10" gate="G$1" pin="TP"/>
+<wire x1="134.62" y1="93.98" x2="134.62" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$23" class="0">
+<segment>
+<pinref part="C11" gate="G$1" pin="TP"/>
+<pinref part="D12" gate="G$1" pin="C"/>
+<wire x1="147.32" y1="83.82" x2="147.32" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$24" class="0">
+<segment>
+<pinref part="D12" gate="G$1" pin="A"/>
+<pinref part="A11" gate="G$1" pin="TP"/>
+<wire x1="147.32" y1="93.98" x2="147.32" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$25" class="0">
+<segment>
+<pinref part="C12" gate="G$1" pin="TP"/>
+<pinref part="D13" gate="G$1" pin="C"/>
+<wire x1="134.62" y1="121.92" x2="134.62" y2="124.46" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$26" class="0">
+<segment>
+<pinref part="D13" gate="G$1" pin="A"/>
+<pinref part="A12" gate="G$1" pin="TP"/>
+<wire x1="134.62" y1="132.08" x2="134.62" y2="137.16" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$27" class="0">
+<segment>
+<pinref part="C13" gate="G$1" pin="TP"/>
+<pinref part="D14" gate="G$1" pin="C"/>
+<wire x1="160.02" y1="83.82" x2="160.02" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$28" class="0">
+<segment>
+<pinref part="D14" gate="G$1" pin="A"/>
+<pinref part="A13" gate="G$1" pin="TP"/>
+<wire x1="160.02" y1="93.98" x2="160.02" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$31" class="0">
+<segment>
+<pinref part="C15" gate="G$1" pin="TP"/>
+<pinref part="D16" gate="G$1" pin="C"/>
+<wire x1="172.72" y1="83.82" x2="172.72" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$32" class="0">
+<segment>
+<pinref part="D16" gate="G$1" pin="A"/>
+<pinref part="A15" gate="G$1" pin="TP"/>
+<wire x1="172.72" y1="93.98" x2="172.72" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$33" class="0">
+<segment>
+<pinref part="C16" gate="G$1" pin="TP"/>
+<pinref part="D17" gate="G$1" pin="C"/>
+<wire x1="185.42" y1="83.82" x2="185.42" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$34" class="0">
+<segment>
+<pinref part="D17" gate="G$1" pin="A"/>
+<pinref part="A16" gate="G$1" pin="TP"/>
+<wire x1="185.42" y1="93.98" x2="185.42" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
