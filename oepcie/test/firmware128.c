@@ -14,7 +14,8 @@
 #include "testfunc.h"
 
 // Data acq. params
-const size_t fifo_buffer_samples = 1000;
+const size_t approx_frame_size = 500;
+const size_t fifo_frame_capacity = 1000;
 
 // Config registers
 volatile oe_reg_val_t running = 0;
@@ -72,19 +73,19 @@ typedef enum oe_conf_reg_off {
 // Devices handled by this firmware
 static oe_device_t my_devices[]
     = {{.id = OE_RHD2164,
-        .read_offset = OE_RFRAMEHEADERSZ,
+        //.read_offset = OE_RFRAMEHEADERSZ,
         .read_size = 66 * sizeof(uint16_t),
-        .write_offset = OE_WFRAMEHEADERSZ,
+        //.write_offset = OE_WFRAMEHEADERSZ,
         .write_size = 0},
        {.id = OE_RHD2164,
-        .read_offset = OE_RFRAMEHEADERSZ + 66 * sizeof(uint16_t),
+        //.read_offset = OE_RFRAMEHEADERSZ + 66 * sizeof(uint16_t),
         .read_size = 66 * sizeof(uint16_t),
-        .write_offset = OE_WFRAMEHEADERSZ,
+        //.write_offset = OE_WFRAMEHEADERSZ,
         .write_size = 0},
        {.id = OE_MPU9250,
-        .read_offset = OE_RFRAMEHEADERSZ + 2 * (66 * sizeof(uint16_t)),
+        //.read_offset = OE_RFRAMEHEADERSZ + 2 * (66 * sizeof(uint16_t)),
         .read_size = 4 * 6,
-        .write_offset = OE_WFRAMEHEADERSZ,
+        //.write_offset = OE_WFRAMEHEADERSZ,
         .write_size = 0}};
 
 // Normal distribution
@@ -114,36 +115,32 @@ double randn(double mu, double sigma)
     return (mu + sigma * (double)X1);
 }
 
-uint32_t get_read_frame_size(oe_device_t *dev_map, size_t n_devs)
+uint32_t get_read_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
 {
     int i;
-    int max_idx = 0;
+    size_t read_frame_size = OE_RFRAMEHEADERSZ + sizeof(uint32_t) * n_devs;
     for (i = 0; i < n_devs; i++) {
 
-        oe_device_t cur_dev = dev_map[i];
-        if (cur_dev.read_offset > dev_map[max_idx].read_offset)
-            max_idx = i;
+        oe_device_t cur_dev = dev_map[devs[i]];
+        read_frame_size += cur_dev.read_size;
     }
 
-    size_t read_frame_size = dev_map[max_idx].read_offset + dev_map[max_idx].read_size;
-    read_frame_size += read_frame_size % 32; // padding
+    read_frame_size += read_frame_size % 4; // padding
 
     return read_frame_size;
 }
 
-uint32_t get_write_frame_size(oe_device_t *dev_map, size_t n_devs)
+uint32_t get_write_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
 {
     int i;
-    int max_idx = 0;
+    size_t write_frame_size = OE_RFRAMEHEADERSZ + sizeof(uint32_t) * n_devs;
     for (i = 0; i < n_devs; i++) {
 
-        oe_device_t cur_dev = dev_map[i];
-        if (cur_dev.write_offset > dev_map[max_idx].write_offset)
-            max_idx = i;
+        oe_device_t cur_dev = dev_map[devs[i]];
+        write_frame_size += cur_dev.read_size;
     }
 
-    size_t write_frame_size = dev_map[max_idx].write_offset + dev_map[max_idx].write_size;
-    write_frame_size += write_frame_size % 32; // padding
+    write_frame_size += write_frame_size % 4; // padding
 
     return write_frame_size;
 }
@@ -230,13 +227,14 @@ int send_data_signal(int sig_fd, oe_signal_t type, void *data, size_t n)
 
 void send_device_map(int sig_fd)
 {
+    int dev_idxs[] = { 0, 1, 2 };
     uint32_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
     send_data_signal(sig_fd, DEVICEMAPACK, &num_dev, sizeof(num_dev));
 
-    uint32_t r_size = get_read_frame_size(my_devices, num_dev);
+    uint32_t r_size = get_read_frame_size(my_devices, dev_idxs, num_dev);
     send_data_signal(sig_fd, FRAMERSIZE, &r_size, sizeof(r_size));
 
-    uint32_t w_size = get_write_frame_size(my_devices, num_dev);
+    uint32_t w_size = get_write_frame_size(my_devices, dev_idxs, num_dev);
     send_data_signal(sig_fd, FRAMEWSIZE, &w_size, sizeof(w_size));
 
     // Loop through devices
@@ -250,43 +248,77 @@ void *data_loop(void *vargp)
     // Initial clock conifig
     fs_hz = div_clock(sys_clock_hz, clock_m, clock_d);
 
-    // Number of devices
-    const size_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
-
-    // Sample number + total bytes in samples
-    // NB: This fragile because it assumes that the devices are in order of
-    // read offsets
-    const size_t sample_size = my_devices[num_dev - 1].read_offset
-                               + my_devices[num_dev - 1].read_size;
-
     // Set data pipe capacity
     // Sample number, LFP data, ...
-    fcntl(data_fd, F_SETPIPE_SZ, sample_size * fifo_buffer_samples);
+    fcntl(data_fd, F_SETPIPE_SZ, approx_frame_size * fifo_frame_capacity);
 
-    const int fudge_factor = 1;
+    //const int fudge_factor = 1;
 
     while (!quit) {
         if (running) {
 
-            usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
+            //usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
 
-            // Buffer for data
-            uint8_t sample[sample_size];
+            // Raw frame
+            uint8_t * frame;
+            uint16_t num_devs;
+            size_t data_block_size = 0;
+            size_t frame_size;
+            if (sample_tick % 100 == 0) { // Include IMU data
+                num_devs = 3;
+                int dev_idxs[] = {0, 1, 2};
+                int i;
+                for (i = 0; i < num_devs; i++)
+                    data_block_size += my_devices[dev_idxs[i]].read_size;
 
-            // Leading sample_tick
-            *(uint64_t *)sample = sample_tick;
+                frame_size
+                    = get_read_frame_size(my_devices, dev_idxs, num_devs);
+                frame = malloc(frame_size);
 
-            // Generate sample (frame)
-            int j;
-            for (j = OE_RFRAMEHEADERSZ; j < sample_size; j += 2)
-                *(uint16_t *)(sample + j) = sample_tick % 65535;
-                //*(uint16_t *)(sample + j) = (uint16_t)randn(32768, 50);
+                // Device indicies
+                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 0) = 0;
+                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 1) = 1;
+                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 2) = 2;
 
-            size_t rc = write(data_fd, sample, sample_size);
+            } else {
+                num_devs = 2;
+                int dev_idxs[] = {0, 1};
+                int i;
+                for (i = 0; i < num_devs; i++)
+                    data_block_size += my_devices[dev_idxs[i]].read_size;
+
+                frame_size
+                    = get_read_frame_size(my_devices, dev_idxs, num_devs);
+                frame = malloc(frame_size);
+
+                // Device indicies
+                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 0) = 0;
+                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 1) = 1;
+            }
+
+            // Frame header
+            *(uint64_t *)frame = sample_tick;       // Sample number
+            *(((uint16_t *)frame) + 4) = num_devs;  // Num devices
+            *(frame + 10) = 0;                      // Error
+
+            // Where does the data block start and end
+            uint8_t *data_ptr
+                = frame + (OE_RFRAMEHEADERSZ + num_devs * sizeof(uint32_t));
+            uint8_t *data_end = data_ptr + data_block_size;
+
+            // Generate frame (frame)
+            // TODO: Generate the proper raw type for the device
+            while (data_ptr < data_end) {
+                *(uint16_t *)(data_ptr) = sample_tick % 65535;
+                data_ptr += 2;
+            }
+
+            size_t rc = write(data_fd, frame, frame_size);
             printf("Write %zu bytes\n", rc);
 
-            // Increment sample count
+            // Increment frame count
             sample_tick += 1;
+
         } else {
             usleep(1000); // Prevent CPU tacking
         }

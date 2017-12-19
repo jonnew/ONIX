@@ -25,8 +25,9 @@ Implementation shall be in C to facilitate cross platform and cross-language
 use.
 
 ## Scope and External Dependencies
-- This is a low level library used by high-level library and or application
-  plugin developers. It is not meant to be used by neuroscientists directly.
+- This is a low level library used by high-level language binding and/or
+  application plugin developers. It is not meant to be used by neuroscientists
+  directly.
 
 - The only external dependency aside from the c standard library is
   [Xillybus](http://xillybus.com/), which will be used for PCIe communication.
@@ -74,8 +75,8 @@ typedef struct oe_ctx_impl {
 } oe_ctx_impl_t;
 ```
 
-State details should be hidden in implementation file (.c). A pointer to opaque
-type (handle) is exposed publicly in header (.h)
+State details shall be hidden in implementation file (.c). A pointer to opaque
+type (handle) is exposed publicly in header (.h):
 
 ```
 // .h
@@ -83,9 +84,9 @@ typedef struct oe_ctx_impl *oe_ctx;
 ```
 
 API calls will typically take a context handle as the first argument and use it
-to look up required state information to enable communication, or to add mutate
-the context to reflect some function side effect (e.g. add device map
-information).
+to reference required state information to enable communication and/or to
+mutate the context to reflect some function side effect (e.g. add device map
+information):
 
 ```
 int oe_api_function(oe_ctx ctx, ...);
@@ -95,7 +96,7 @@ int oe_api_function(oe_ctx ctx, ...);
 A _device_ (`oe_device_t`) is defined as configurable piece of hardware with
 its own register address space (e.g. an integrated circuit) or something
 programmed within the firmware to emulate this (e.g. a MUX or microcontroller
-implemented in the FPGA's logic). On the FPGA firmware, each device corresponds
+implemented within an FPGA). On the FPGA firmware, each device corresponds
 to a module with several standard methods (TOD0: Elaborate on this!). Host
 interaction with a device is facilitated using a description, which is provided
 by a `struct` as follows:
@@ -109,14 +110,15 @@ typedef struct oe_device {
 ```
 The definition of each member of `oe_device_t` is provided below:
 
-1. `enum config_device_id`: Device ID number which is globally enumerated for the
-   entire project
+1. `enum config_device_id`: Device identification number which is globally
+   enumerated for the entire project
     - e.g. Immediate IO from the host board is 0
     - e.g. Intan RHD2032 is 1, Intan RHD2064 is 2, etc.
-    - This enum grows with the number of devices supported by the library.
-      There is a single enum for the entire library which enumerates all
-      possible devices that are controlled across `context` configurations.
-    - Each `context` is only responsible for controlling a subset of all
+    - This enumeration grows with the number of devices supported by the
+      library.  There is a single `enum` for the entire library which
+      enumerates all possible devices that are controlled across `context`
+      configurations.
+    - A `context` is only responsible for controlling a subset of all
       supported devices. This subset is referred to a _device map_.
 
     ```
@@ -129,13 +131,13 @@ The definition of each member of `oe_device_t` is provided below:
     } oe_device_id_t
     ```
 
-2. `int read_offset`: Byte count offset within a data frame that this
-   device's data can be found
+2. ~~`int read_offset`: Byte count offset within a data frame that this
+   device's data can be found~~
     - -1 indicates that no data is sent by the device
 3. `size_t read_size`:  bytes of each transmitted data frame from this device.
     - 0 indicates that it does not send data.
-4. `int write_offset`: Byte count offset within data frame that this
-   device's write data can be written
+4. ~~`int write_offset`: Byte count offset within data frame that this
+   device's write data can be written~~
     - -1 indicates that no data can be written to the device
 5. `size_t write_size`:  bytes within the output frame transmitted data packet
    to this device.
@@ -150,9 +152,9 @@ like this on the signal stream, where | represents '0' packet delimiters.
     | FRAMEWSIZE, uint32_t write_frame_size | DEVICEINST oe_device_t dev_0
     | DEVICEINST oe_device_t dev_1 | ... | DEVICEINST oe_device_t dev_n| ...
 
-During a call to `oe_init_ctx`, the device map is decoded from the singal
-stream and used to populate the appropriate files in the current context. Here,
-packet contains a flag header defined as
+During a call to `oe_init_ctx`, the device map is decoded from the signal
+stream. It can then be examined using calls to `oe_get_opt` using the
+`OE_DEVICEMAP` option. 
 
 ### Frame
 A _frame_ is a flat byte array containing a single sample's worth of read or

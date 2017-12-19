@@ -12,7 +12,7 @@
 int main()
 {
     // Frames per block read
-    const size_t frames_per_read = 100;
+    //const size_t frames_per_read = 100;
 
     // Generate context
     oe_ctx ctx = NULL;
@@ -46,11 +46,10 @@ int main()
 
         const char *dev_str = oe_device_str(devices[dev_idx].id);
 
-        printf("\t%d) ID: %d (%s), Offset: %u, Read size:%u\n",
+        printf("\t%d) ID: %d (%s), Read size:%u\n",
                dev_idx,
                devices[dev_idx].id,
                dev_str,
-               devices[dev_idx].read_offset,
                devices[dev_idx].read_size);
     }
 
@@ -62,9 +61,9 @@ int main()
     // Try to write to base clock freq, which is write only
     oe_reg_val_t base_hz = 10e6;
     int rc = oe_set_opt(ctx, OE_SYSCLKHZ, &base_hz, sizeof(oe_reg_val_t));
-    assert(rc == OE_EREADONLY && "Succesful write to read-only register.");
+    assert(rc == OE_EREADONLY && "Successful write to read-only register.");
 
-    size_t clk_val_sz = sizeof(clk_val_sz);
+    size_t clk_val_sz = sizeof(base_hz);
     rc = oe_get_opt(ctx, OE_SYSCLKHZ, &base_hz, &clk_val_sz);
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register read failure.");
@@ -98,36 +97,62 @@ int main()
     rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
 
-    const size_t read_size = frame_size * frames_per_read;
-    uint8_t buffer[frame_size * frames_per_read];
+    //const size_t read_size = frame_size * frames_per_read;
+    //uint8_t buffer[frame_size * frames_per_read];
 
-    while (oe_read(ctx, &buffer, read_size)  >= 0)  {
+    //while (oe_read(ctx, &buffer, read_size)  >= 0)  {
 
-        printf("-- start read block --\n");
+    //    printf("-- start read block --\n");
 
-        int f;
-        for (f = 0; f < frames_per_read; f++) {
+    //    int f;
+    //    for (f = 0; f < frames_per_read; f++) {
 
-            size_t frame_offset = f * frame_size;
-            uint64_t sample = *(uint64_t *)(buffer + frame_offset);
+    //        size_t frame_offset = f * frame_size;
+    //        uint64_t sample = *(uint64_t *)(buffer + frame_offset);
 
-            printf("Sample: %" PRIu64 "\n", sample);
+    //        printf("Sample: %" PRIu64 "\n", sample);
 
-            for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
+    //        for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
 
-                oe_device_t this_dev = devices[dev_idx];
+    //            oe_device_t this_dev = devices[dev_idx];
 
-                printf("\tDev: %d (%s)\n", dev_idx, oe_device_str(this_dev.id));
-                int16_t *lfp = (int16_t *)((uint8_t *)buffer + this_dev.read_offset);
-                int i;
-                printf("\tData: [");
-                for (i = 0; i < 10; i++)
-                    printf("%" PRId16 " ", *(lfp + i));
-                printf("...]\n");
-            }
+    //            printf("\tDev: %d (%s)\n", dev_idx, oe_device_str(this_dev.id));
+    //            int16_t *lfp = (int16_t *)((uint8_t *)buffer + this_dev.read_offset);
+    //            int i;
+    //            printf("\tData: [");
+    //            for (i = 0; i < 10; i++)
+    //                printf("%" PRId16 " ", *(lfp + i));
+    //            printf("...]\n");
+    //        }
+    //    }
+    //}
+
+    rc = 0;
+    oe_frame_t *frame;
+    while (rc == 0)  {
+        printf("-- Read frame --\n");
+
+        rc = oe_read_frame(ctx, &frame);
+        printf("\tSample: %" PRIu64 "\n", frame->sample_no);
+
+        int i;
+        for (i =  0; i < frame->num_dev; i++) {
+
+            oe_device_t this_dev = devices[frame->dev_idxs[i]];
+
+            printf("\tDev: %d (%s)\n", frame->dev_idxs[i], oe_device_str(this_dev.id));
+
+            //int16_t *lfp
+            //    = (int16_t *)((uint8_t *)buffer + this_dev.read_offset);
+            //int i;
+            //printf("\tData: [");
+            //for (i = 0; i < 10; i++)
+            //    printf("%" PRId16 " ", *(lfp + i));
+            //printf("...]\n");
         }
     }
 
+        oe_destroy_frame(frame);
     // Reset the hardware
     oe_reg_val_t reset = 1;
     rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));

@@ -8,7 +8,39 @@
 
 #include "oepcie.h"
 
+// Non-public fixed width types
+typedef uint32_t oe_reg_val_t;
+
+// Register size
 #define OE_REGSZ   sizeof(oe_reg_val_t)
+
+// Define if hardware produces byte-reversed types from compile command
+#ifdef OE_BIGEND
+
+// Nested define allows compile command to define OE_BE
+#define OE_BE
+
+// Define byte-swapping macros
+#define BSWAP_16(val)                                                          \
+    ((((uint16_t)(val)&0x00ff) << 8) | (((uint16_t)(val)&0xff00) >> 8))
+
+#define OE_BSWAP_32(val)                                                       \
+     ( (((uint32_t)(val)&0x000000ff) << 24)                                    \
+     | (((uint32_t)(val)&0x0000ff00) << 8)                                     \
+     | (((uint32_t)(val)&0x00ff0000) >> 8)                                     \
+     | (((uint32_t)(val)&0xff000000) >> 24))
+
+#define BSWAP_64(val)                                                          \
+     ( (((uint64_t)(val)&0x00000000000000ffULL) << 56)                         \
+     | (((uint64_t)(val)&0x000000000000ff00ULL) << 40)                         \
+     | (((uint64_t)(val)&0x0000000000ff0000ULL) << 24)                         \
+     | (((uint64_t)(val)&0x00000000ff000000ULL) << 8)                          \
+     | (((uint64_t)(val)&0x000000ff00000000ULL) >> 8)                          \
+     | (((uint64_t)(val)&0x0000ff0000000000ULL) >> 24)                         \
+     | (((uint64_t)(val)&0x00ff000000000000ULL) >> 40)                         \
+     | (((uint64_t)(val)&0xff00000000000000ULL) >> 56))
+
+#endif
 
 typedef struct stream_fid {
     char *path;
@@ -16,6 +48,7 @@ typedef struct stream_fid {
 } stream_fid_t;
 
 typedef struct oe_ctx_impl {
+
     // Communication channels
     stream_fid_t config;
     stream_fid_t read;
@@ -25,12 +58,12 @@ typedef struct oe_ctx_impl {
     oe_size_t num_dev;
     oe_device_t* dev_map;
 
-    // Frame sizes (bytes)
-    oe_size_t read_frame_size;
-    oe_size_t write_frame_size;
+    // Maximum frame sizes (bytes)
+    oe_size_t max_read_frame_size;
+    oe_size_t max_write_frame_size;
 
     // Acqusition state
-    enum run_state {
+    enum {
         CTXNULL = 0,
         UNINITIALIZED,
         IDLE,
@@ -71,7 +104,7 @@ typedef enum oe_conf_reg_off {
     CONFFRAMEHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
     CONFFRAMEHZMOFFSET  = 36,  // Configuration run hardware register byte offset
     CONFFRAMEHZDOFFSET  = 40,  // Configuration run hardware register byte offset
-} oe_conf_reg_off_t;
+} oe_conf_off_t;
 
 // Static helpers
 static inline int _oe_read(int data_fd, void* data, size_t size);
@@ -80,8 +113,13 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
 static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type);
 static int _oe_pump_signal_data(int signal_fd, int flags, oe_signal_t *type, void *data, size_t size);
 static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size);
-static int _oe_write_config(int config_fd, oe_conf_reg_off_t write_offset, const void *data, size_t size);
-static int _oe_read_config(int config_fd, oe_conf_reg_off_t read_offset, void *data, size_t size);
+static int _oe_write_config(int config_fd, oe_conf_off_t write_offset, oe_reg_val_t value);
+static int _oe_read_config(int config_fd, oe_conf_off_t read_offset, oe_reg_val_t *value);
+//static inline int _oe_raw_size(oe_raw_t type);
+#ifdef OE_BE
+static int _oe_array_bswap(void *data, oe_raw_t type, size_t size);
+static int _device_map_byte_swap(oe_ctx ctx);
+#endif
 
 oe_ctx oe_create_ctx()
 {
@@ -125,23 +163,34 @@ int oe_init_ctx(oe_ctx ctx)
 
     // Reset the run state of the hardware. This will push a frame header onto
     // the signal stream
-    uint8_t default_trig[] = {0x00, 0x00, 0x01};
-    int rc = _oe_write_config(ctx->config.fid, CONFRUNNINGOFFSET, default_trig, 3);
+    int rc = _oe_write_config(ctx->config.fid, CONFRUNNINGOFFSET, 0);
+    if (rc) return rc;
+
+    rc = _oe_write_config(ctx->config.fid, CONFRESETOFFSET, 1);
     if (rc) return rc;
 
     oe_signal_t sig_type = NULLSIG;
     rc = _oe_pump_signal_data(
         ctx->signal.fid, DEVICEMAPACK, &sig_type, &(ctx->num_dev), sizeof(ctx->num_dev));
+#ifdef OE_BE
+    ctx->num_dev = OE_BSWAP_32(ctx->num_dev);
+#endif
     if (rc) return rc;
 
     rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
-            &(ctx->read_frame_size), sizeof(ctx->read_frame_size));
+            &(ctx->max_read_frame_size), sizeof(ctx->max_read_frame_size));
+#ifdef OE_BE
+    ctx->max_read_frame_size = OE_BSWAP_32(ctx->max_read_frame_size);
+#endif
     if (rc) return rc;
     if (sig_type != FRAMERSIZE)
         return OE_EBADDEVMAP;
 
     rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
-            &(ctx->write_frame_size), sizeof(ctx->write_frame_size));
+            &(ctx->max_write_frame_size), sizeof(ctx->max_write_frame_size));
+#ifdef OE_BE
+    ctx->max_write_frame_size = OE_BSWAP_32(ctx->max_write_frame_size);
+#endif
     if (rc) return rc;
 
     if (sig_type != FRAMEWSIZE)
@@ -168,13 +217,20 @@ int oe_init_ctx(oe_ctx ctx)
         if (sig_type != DEVICEINST)
             return OE_EBADDEVMAP;
 
+#ifdef OE_BE
+        oe_dev_id_t device_id = OE_BSWAP_32((oe_dev_id_t)(*buffer));
+#else
         oe_dev_id_t device_id = (oe_dev_id_t)(*buffer);
+#endif
 
-        if (device_id >= 0 && device_id < OE_MAXDEVICEID) {
+        if (device_id < OE_MAXDEVICEID) {
             ctx->dev_map[i] = *(oe_device_t *)buffer; // Append the device onto the map
         } else {
             return OE_EDEVID;
         }
+#ifdef OE_BE
+        _device_map_byte_swap(ctx);
+#endif
     }
 
     // We are now initialized and idle
@@ -265,7 +321,7 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             if (*option_len < required_bytes)
                 return OE_EBUFFERSIZE;
 
-            *(oe_size_t *)value = ctx->read_frame_size;
+            *(oe_size_t *)value = ctx->max_read_frame_size;
             *option_len = required_bytes;
             break;
         }
@@ -274,71 +330,65 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             if (*option_len < required_bytes)
                 return OE_EBUFFERSIZE;
 
-            *(oe_size_t *)value = ctx->write_frame_size;
+            *(oe_size_t *)value = ctx->max_write_frame_size;
             *option_len = required_bytes;
             break;
         }
        case OE_RUNNING: {
-            if (*option_len < OE_REGSZ)
+            if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            int rc = _oe_read_config(
-                ctx->config.fid, CONFRUNNINGOFFSET, value, OE_REGSZ);
+            int rc = _oe_read_config(ctx->config.fid, CONFRUNNINGOFFSET, value);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
             break;
        }
        case OE_RESET: {
-            if (*option_len < OE_REGSZ)
+            if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            int rc = _oe_read_config(
-                ctx->config.fid, CONFRESETOFFSET, value, OE_REGSZ);
+            int rc = _oe_read_config(ctx->config.fid, CONFRESETOFFSET, value);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
             break;
        }
        case OE_SYSCLKHZ: {
-            if (*option_len < OE_REGSZ)
+            if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            int rc = _oe_read_config(
-                ctx->config.fid, CONFSYSCLKHZOFFSET, value, OE_REGSZ);
+            int rc = _oe_read_config(ctx->config.fid, CONFSYSCLKHZOFFSET, value);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
             break;
        }
        case OE_FSCLKHZ: {
-            if (*option_len < OE_REGSZ)
+            if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            int rc = _oe_read_config(
-                ctx->config.fid, CONFFRAMEHZOFFSET, value, OE_REGSZ);
+            int rc = _oe_read_config(ctx->config.fid, CONFFRAMEHZOFFSET, value);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
             break;
        }
        case OE_FSCLKM: {
-            if (*option_len < OE_REGSZ)
+            if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            int rc = _oe_read_config(
-                ctx->config.fid, CONFFRAMEHZMOFFSET, value, OE_REGSZ);
+            int rc = _oe_read_config(ctx->config.fid, CONFFRAMEHZMOFFSET, value);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
             break;
        }
        case OE_FSCLKD: {
-            if (*option_len < OE_REGSZ)
+            if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            int rc = _oe_read_config(
-                ctx->config.fid, CONFFRAMEHZDOFFSET, value, OE_REGSZ);
+            int rc = _oe_read_config(ctx->config.fid, CONFFRAMEHZDOFFSET, value);
             if (rc) return rc;
 
             *option_len = OE_REGSZ;
@@ -391,7 +441,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
                 return OE_EBUFFERSIZE;
 
             int rc = _oe_write_config(
-                ctx->config.fid, CONFRUNNINGOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFRUNNINGOFFSET, *(oe_reg_val_t*)value);
             if (rc) return rc;
 
             if (*(oe_reg_val_t *)value != 0)
@@ -409,7 +459,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
                 return OE_EBUFFERSIZE;
 
             int rc = _oe_write_config(
-                ctx->config.fid, CONFRESETOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFRESETOFFSET, *(oe_reg_val_t*)value);
             if (rc) return rc;
 
             if (*(oe_reg_val_t *)value != 0)
@@ -434,7 +484,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             // TODO: Read FSD value, make sure this is OK.
 
             int rc = _oe_write_config(
-                ctx->config.fid, CONFFRAMEHZMOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFFRAMEHZMOFFSET, *(oe_reg_val_t*)value);
             if (rc) return rc;
 
             break;
@@ -450,7 +500,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             // TODO: Read FSM value, make sure this is OK.
 
             int rc = _oe_write_config(
-                ctx->config.fid, CONFFRAMEHZDOFFSET, value, OE_REGSZ);
+                ctx->config.fid, CONFFRAMEHZDOFFSET, *(oe_reg_val_t*)value);
             if (rc) return rc;
 
             break;
@@ -571,7 +621,15 @@ int oe_read_reg(const oe_ctx ctx,
     return 0;
 }
 
-int oe_read(const oe_ctx ctx, void *data, size_t size)
+// NB: This is definately a 'worse is better' implementation
+// If we need to make this multithreaded because
+// 1. DMA FIFO Buffer is overflowing
+// 2. Small calls to read() impact RT performance
+// 3. etc
+// Then we can implement multithreaded RAM FIFO using fifo.c in Xillybus demo
+// code as an example
+// TOD0: replace with frame descriptor struct?
+int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame_in)
 {
     assert(ctx != NULL && "Context is NULL");
 
@@ -579,7 +637,81 @@ int oe_read(const oe_ctx ctx, void *data, size_t size)
     // a different thread
     assert(ctx->run_state >= IDLE && "Context is not acquiring.");
 
-    return _oe_read(ctx->read.fid, data, size);
+    // Get the header and figure out how many devies are in the frame
+    uint8_t header[OE_RFRAMEHEADERSZ];
+    int rc = _oe_read(ctx->read.fid, header, OE_RFRAMEHEADERSZ);
+    if (rc != OE_RFRAMEHEADERSZ) return OE_EREADFAILURE;
+
+    // Allocate frame
+    *frame_in= malloc(sizeof(oe_frame_t));
+    oe_frame_t *frame = *frame_in;
+
+#ifdef OE_BE
+    frame->sample_no = OE_BSWAP_64(*(uint64_t*)(header));
+    frame->num_dev = OE_BSWAP_32(*(uint16_t*)(header + OE_RFRAMENDEVOFF));
+    frame->corrupt = OE_BSWAP_8(*(uint8_t*)(header + OE_RFRAMENERROFF));
+#else
+    frame->sample_no = *(uint64_t*)(header);
+    frame->num_dev = *(uint16_t *)(header + OE_RFRAMENDEVOFF);
+    frame->corrupt = *(uint8_t*)(header + OE_RFRAMENERROFF);
+#endif
+
+    // Allocate space for data
+    frame->dev_idxs = malloc(frame->num_dev * sizeof(oe_size_t));
+    frame->dev_offs = malloc(frame->num_dev * sizeof(size_t));
+
+    // Read device indicies that are in this frame
+    _oe_read(ctx->read.fid, frame->dev_idxs, frame->num_dev * sizeof(oe_size_t));
+
+    // Find data read size
+    uint16_t i;
+    size_t rsize = 0;
+    for (i = 0; i < frame->num_dev; i++) {
+#ifdef OE_BE
+        // TODO: Inplace swap?
+        *(frame->dev_idxs + i) = OE_BSWAP_32(*(frame->dev_idxs + i));
+#endif
+        *(frame->dev_offs + i) = rsize;
+        rsize += ctx->dev_map[*(frame->dev_idxs + i)].read_size;
+    }
+
+    // Now we know the frame size, so we allocate
+    frame->data = malloc(rsize);
+
+    // Read data
+    _oe_read(ctx->read.fid, frame->data, rsize);
+
+    // TODO: Endianess swap based on each device's raw type
+#ifdef OE_BE
+    for (i = 0; i < frame->num_dev; i++) {
+
+        size_t dev_rsize = ctx->dev_map[*(frame->dev_idxs + i)].read_size;
+        size_t dev_off = *(frame->dev_offsets + i);
+        oe_raw_t dev_type = ctx->dev_map[*(frame->dev_idxs + i)].raw_type;
+        _oe_array_bswap(data + dev_off, dev_type, dev_rsize);
+    }
+#endif
+
+    return 0;
+}
+
+int oe_destroy_frame(oe_frame_t *frame) {
+
+    if (frame != NULL) {
+
+        // Free held resources
+        if (frame->dev_idxs != NULL)
+            free(frame->dev_idxs);
+        if (frame->dev_offs != NULL)
+            free(frame->dev_offs);
+        if (frame->data != NULL)
+            free(frame->data);
+
+        // Free the container
+        free(frame);
+    }
+
+    return 0;
 }
 
 void oe_version(int *major, int *minor, int *patch)
@@ -661,6 +793,9 @@ const char *oe_error_str(int err)
         }
         case OE_ERUNSTATESYNC: {
             return "Software and hardware run state out of sync";
+        }
+        case OE_EINVALRAWTYPE: {
+            return "Invalid raw data type";
         }
         default:
             return "Unknown error";
@@ -751,7 +886,11 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
         return OE_EBUFFERSIZE;
 
     // Get the type, which occupies first 4 bytes of buffer
-    *type = *(oe_signal_t *)buffer;
+#ifdef OE_BE
+        *type = OE_BSWAP_32(*(oe_signal_t *)buffer);
+#else
+        *type = *(oe_signal_t *)buffer;
+#endif
 
     // pack_size still has overhead byte and header, so we remove those
     size_t data_size = pack_size - 1 - sizeof(oe_signal_t);
@@ -782,7 +921,11 @@ static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type)
             continue; // Something wrong with packet, try again
 
         // Get the type, which occupies first 4 bytes of buffer
+#ifdef OE_BE
+        packet_type = OE_BSWAP_32(*(oe_signal_t *)buffer);
+#else
         packet_type = *(oe_signal_t *)buffer;
+#endif
 
     } while (!(packet_type & flags));
 
@@ -810,7 +953,11 @@ static int _oe_pump_signal_data(
             continue;
 
         // Get the type, which occupies first 4 bytes of buffer
+#ifdef OE_BE
+        packet_type = OE_BSWAP_32(*(oe_signal_t *)buffer);
+#else
         packet_type = *(oe_signal_t *)buffer;
+#endif
 
     } while (!(packet_type & flags));
 
@@ -848,29 +995,88 @@ static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size)
 }
 
 static int _oe_write_config(int config_fd,
-                            oe_conf_reg_off_t write_offset,
-                            const void *data,
-                            size_t size)
+                            oe_conf_off_t write_offset,
+                            oe_reg_val_t value)
 {
     if (lseek(config_fd, write_offset, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
-    if (write(config_fd, data, size) != (int)size)
+#ifdef OE_BE
+    value = OE_BSWAP_32(value);
+#endif
+
+    if (write(config_fd, &value, OE_REGSZ) != OE_REGSZ)
         return OE_EWRITEFAILURE;
 
     return 0;
 }
 
 static int _oe_read_config(int config_fd,
-                           oe_conf_reg_off_t read_offset,
-                           void *data,
-                           size_t size)
+                           oe_conf_off_t read_offset,
+                           oe_reg_val_t *value)
 {
     if (lseek(config_fd, read_offset, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
-    if (read(config_fd, data, size) != (int)size)
+    if (read(config_fd, value, OE_REGSZ) != OE_REGSZ)
         return OE_EREADFAILURE;
+
+#ifdef OE_BE
+    *value = OE_BSWAP_32(value);
+#endif
 
     return 0;
 }
+
+//static int _oe_raw_size(oe_raw_t type)
+//{
+//    switch (type) {
+//        case OE_UINT16: {
+//            return 2;
+//        }
+//        case OE_UINT32: {
+//            return 4;
+//        }
+//        default:
+//            return OE_EINVALRAWTYPE;
+//    }
+//}
+
+
+#ifdef OE_BE
+static int _device_map_byte_swap(oe_ctx ctx)
+{
+    int i;
+    for (i = 0; i < ctx->num_dev; i++) {
+        ctx->dev_map[i].id = OE_BSWAP_32(ctx->dev_map[i].id);
+        //ctx->dev_map[i].read_offset = OE_BSWAP_32(ctx->dev_map[i].read_offset);
+        ctx->dev_map[i].read_size = OE_BSWAP_32(ctx->dev_map[i].read_size);
+        ctx->dev_map[i].frames_per_read_sample = OE_BSWAP_32(ctx->dev_map[i].frames_per_read_sample);
+        //ctx->dev_map[i].write_offset = OE_BSWAP_32(ctx->dev_map[i].write_offset);
+        ctx->dev_map[i].write_size = OE_BSWAP_32(ctx->dev_map[i].write_size);
+        ctx->dev_map[i].frames_per_write_sample = OE_BSWAP_32(ctx->dev_map[i].frames_per_write_sample);
+    }
+
+    return 0;
+}
+
+static int _oe_array_bswap(void *data, oe_raw_t type, size_t size)
+{
+    size_t i;
+    int inc = _oe_raw_size(type);
+
+    switch (type) {
+
+        case OE_UINT16:
+            for (i = 0; i < size, i += inc) {
+                *((uint16_t *)(data) + i) = BSWAP_16(*((uint16_t *)(data) + i));
+            }
+        case OE_UINT32:
+            for (i = 0; i < size, i += inc) {
+                *((uint32_t *)(data) + i) = BSWAP_32(*((uint32_t *)(data) + i));
+            }
+        default:
+            return OE_EINVALRAWTYPE;
+    }
+}
+#endif

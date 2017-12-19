@@ -20,10 +20,10 @@ extern "C" {
 
 #define OE_RFRAMEHEADERSZ     32 // [uint64_t sample number, uint16_t n_devs, (22 reserved bytes), ...]
 #define OE_RFRAMESAMPLEOFF    0  // Read frame sample number offset
-//...
+#define OE_RFRAMENDEVOFF      8  // Read frame number of devices offset
+#define OE_RFRAMENERROFF      9  // Read frame error offset
 
 #define OE_WFRAMEHEADERSZ     32 // [( 32 reserved bytes), ...]
-//...
 
 // TODO: Cross platform and xillybus
 #define OE_DEFAULTCONFIGPATH  "/tmp/rat128_config"
@@ -45,20 +45,37 @@ enum oe_device_id {
 // Fixed width device types
 typedef uint32_t oe_size_t;
 typedef uint32_t oe_dev_idx_t;
-typedef int32_t oe_dev_id_t;
+typedef uint32_t oe_dev_id_t;
 typedef uint32_t oe_reg_addr_t;
 typedef uint32_t oe_reg_val_t;
+typedef uint32_t oe_raw_t;
 
-// TODO: The read/write types might be good targets for a tagged union so that
-// sizeof can be used.
+// Device type
 typedef struct {
     oe_dev_id_t id; // NB: Cannot use oe_device_id_t because this must be fixed width
-    oe_size_t read_offset;
+
+    //oe_size_t read_offset;
     oe_size_t read_size;
-    oe_size_t write_offset;
+    oe_raw_t read_type;
+
+    //oe_size_t write_offset;
     oe_size_t write_size;
+    oe_raw_t write_type;
+
 } oe_device_t;
 
+// Frame type (read and write)
+typedef struct oe_frame {
+    uint64_t sample_no;
+    uint16_t num_dev;
+    uint8_t corrupt;
+    oe_size_t *dev_idxs;
+    size_t *dev_offs;
+    uint8_t *data;
+
+} oe_frame_t;
+
+// Context options
 enum {
     OE_CONFIGSTREAMPATH,
     OE_READSTREAMPATH,
@@ -73,6 +90,12 @@ enum {
     OE_FSCLKHZ,
     OE_FSCLKM,
     OE_FSCLKD,
+};
+
+// Allowd raw data types
+enum {
+    OE_UINT16,
+    OE_UINT32,
 };
 
 // NB: If you add an error here, make sure to update oe_error_str()
@@ -99,9 +122,10 @@ enum {
     OE_EDATATYPE        = -19, // Invalid underlying data types
     OE_EREADONLY        = -20, // Attempted write to read only object (register, context option, etc)
     OE_ERUNSTATESYNC    = -21, // Software and hardware run state out of sync
+    OE_EINVALRAWTYPE    = -22, // Invalid raw data type
 
     // NB: Always at bottom
-    OE_MINERRORNUM      = -22
+    OE_MINERRORNUM      = -23
 };
 
 // Context
@@ -116,11 +140,12 @@ int oe_destroy_ctx(oe_ctx ctx);
 int oe_get_opt(const oe_ctx ctx, int option, void* value, size_t *size);
 int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size);
 
-// Hardware inspection and manipulation
+// Hardware inspection, manipulation, and IO
 int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t *value);
 int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
-int oe_read(const oe_ctx ctx, void *data, size_t size);
-//int oe_write(const oe_ctx ctx, void *data, size_t size);
+int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
+int oe_destroy_frame(oe_frame_t *frame);
+//int oe_write(const oe_ctx ctx, void *data, size_t num_frames);
 
 // Internal type conversion
 void oe_version(int *major, int *minor, int *patch);
