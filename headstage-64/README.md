@@ -1,5 +1,5 @@
 # Headstage-64
-Serialized, multifunction headstage for small rodents.
+Serialized, multifunction headstage for small rodents. Designed to function with [eib-64](../eib-64)
 
 ## BOM
 The BOM is located on [this google
@@ -9,8 +9,10 @@ sheet](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6
 The FPGA pinout is located on [this google
 sheet](https://docs.google.com/spreadsheets/d/1oJoQ89dJNL9LIiTrRnwJ_9KGiLzJ53Tju5Lfchuvsb0/edit#gid=2100166621).
 
-## ADC Pinout
-The Intan ADC pinout is located on [this google sheet](TODO)
+## Connector Pinout
+The headstage connector pinout (ADC input mapping, stimulation connections,
+etc) is located on [this google
+sheet](https://docs.google.com/spreadsheets/d/11wRDYOqHN5lPb03yUdfXfK0zvaDYsVetplaNK-R90Gg/edit#gid=663991061)
 
 ## License
 Copyright Jonathan P. Newman, Jakob Voigts 2017.
