@@ -4,7 +4,7 @@ channel count, closed-loop electrophysiology.
 
 __Maintainer__: [jonnew](https://github.com/jonnew)
 
-__Note__ This work is a second-order fork. It was based on the following open
+__Note__: This work is a second-order fork. It was based on the following open
 source designs:
 
 1. [Intan's headstages](http://intantech.com/index.html): no license provided.
@@ -28,10 +28,10 @@ __Citing this work__: TODO
 
 ## Repository Contents
 Each top level directory of this repository corresponds to a distinct system
-module. These can be hardware (e.g. headstage-64), firmware (e.g.
-kc705-host-firmware), or software/APIs (e.g. oepcie). Each may have distinct
-contributors and/or licenses.  Please refer to the README file withing each
-directory for further information.
+module. These can be hardware components (e.g. `headstage-64`), firmware (e.g.
+`oepcie-host-firmware`), or software/APIs (e.g. `oepcie`). Each may have
+distinct contributors and/or licenses. Please refer to the README file within
+each directory for further information on usage, licensing, etc.
 
 ## Hardware
 
@@ -103,7 +103,8 @@ Provides LEDs and simulated electrical loads for optical and electrical
 stimulation.
 
 ### [headstage-programmer](headstage-programmer/README.md)
-JTAG breakout for the (Intel USB Blaster 2)[https://www.digikey.com/short/qqw7hm] used to program the headstages' MAX10 FPGA.
+JTAG breakout for the [Intel USB Blaster 2](https://www.digikey.com/short/qqw7hm) 
+used to program the headstages' MAX10 FPGA.
 
 ### pcie-analog-io [WIP]
 General purpose analog IO board which sits next to pcie-host board.
@@ -117,17 +118,18 @@ acquire data from hardware in this project.
 ## Firmware
 
 ### kc705-host-firmware
-HDL code used by the KC705 to drive the host deserializer board. _Note_ Deprecated. Will be removed upon completion of oepcie-host-firmware.
+HDL code used by the KC705 to drive the host deserializer board. _Note_
+Deprecated. Will be removed upon completion of oepcie-host-firmware.
 
 ### oepcie-host-firmware
 HDL code for the pcie-host board.
 
-## Bills of materials
+## Bills of Materials
 The bills of materials for all hardware components can be found on [this google
 doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit?usp=sharing).
 Each subdirectory containing a hardware project will also have a README file
 with a link to the corresponding BOM for that specific device.
 
 ## Licensing
-Each subdirectory will contain a license or, possibly, a set of licenses if it involves
-both hardware and software.
+Each subdirectory will contain a license or, possibly, a set of licenses if it
+involves both hardware and software.
