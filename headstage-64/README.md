@@ -1,5 +1,8 @@
+[back](../README.md)
+
 # Headstage-64
-Serialized, multifunction headstage for small rodents. Designed to function with [eib-64](../eib-64)
+Serialized, multifunction headstage for small rodents. Designed to function
+with [eib-64](../eib-64)
 
 ## BOM
 The BOM is located on [this google

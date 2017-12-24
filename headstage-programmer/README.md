@@ -1,6 +1,8 @@
+[back](../README.md)
+
 # headstage-programmer
-JTAG breakout for the (Intel USB Blaster
-2)[https://www.digikey.com/short/qqw7hm] used to program the headstages' MAX10
+JTAG breakout for the [Intel USB Blaster
+2](https://www.digikey.com/short/qqw7hm) used to program the headstages' MAX10
 FPGA.
 
 ## Purpose

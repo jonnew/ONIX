@@ -1,3 +1,5 @@
+[back](../README.md)
+
 # eib-64
 64-channel electrode interface board (EIB) with electrical and optical stimulation. Designed for small rodent tetrode electrophysiology.
 

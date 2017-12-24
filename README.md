@@ -37,19 +37,19 @@ each directory for further information on usage, licensing, etc.
 
 ### [eib-64](eib-64/README.md)
 64 Channel electrode interface board. Designed for small rodent tetrode
-electrophysiology. Functions with [headstage-64](./headstage-64/README.md).
+electrophysiology. Works with [headstage-64](./headstage-64/README.md).
 
 ### [eib-128](eib-128/README.md)
 128 Channel electrode interface board. Designed for large rodent tetrode
-electrophysiology. Functions with [headstage-256](./headstage-256/README.md).
+electrophysiology. Works with [headstage-256](./headstage-256/README.md).
 
-### [eib-256](eib-128/README.md)
+### [eib-256](eib-256/README.md)
 256 Channel electrode interface board. Designed for large rodent tetrode
-electrophysiology. Functions with [headstage-256](./headstage-256/README.md).
+electrophysiology. Works with [headstage-256](./headstage-256/README.md).
 
 ### [headstage-64](headstage-64/README.md)
-Serialized, multifunction headstage for small rodents. Supports 64 ephys
-channels. Designed to function with [eib-64](./eib-64/README.md).
+Serialized, multifunction headstage for small rodents. Supports 64 channels.
+Designed to interface with [eib-64](./eib-64/README.md).
 
 ### headstage-256 [WIP]
 Serialized, multifunction headstage for large rodents. Supports both 128 or 256
@@ -81,13 +81,13 @@ Simple flexible board for making pig-tailed, driveable stimulation LEDs for
 optogenetic manipulation using standard chip scale LEDs or direct-attach micro
 LEDs.
 
-### nanoz-adapter-64
+### [nanoz-adapter-64](./nanoz-adapter-64/README.md)
 Adapter to interface eib-64 with the popular
 [nanoZ](http://www.white-matter.com/nanoz/) electrode impedance tester and
 plating device.
 
-### nanoz-adapter-128-256
-Muliplexed adapter to interface eib-128 and eib-256 with the popular
+### [nanoz-adapter-128-256](./nanoz-adapter-128-256/README.md)
+Multiplexed adapter to interface eib-128 and eib-256 with the popular
 [nanoZ](http://www.white-matter.com/nanoz/) electrode impedance tester and
 plating device.
 
