@@ -1,7 +1,7 @@
 [back](../README.md)
 
-#nanoz-adapter-128-256
-Multiplexed adapter to interface eib-128 and eib-256 with the popular
+# nanoz-adapter-64
+Adapter to interface eib-64 with the popular
 [nanoZ](http://www.white-matter.com/nanoz/) electrode impedance tester and
 plating device.
 
