@@ -3305,10 +3305,10 @@ by exp-lbrs.ulp</description>
 <part name="SIG_IN" library="josh" deviceset="BNC_RIGHT_ANGLE" device="" value="1-1634622-0"/>
 <part name="R4" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
 <part name="GND_IMP" library="jonnew" deviceset="JP3E" device=""/>
-<part name="R17" library="jonnew" deviceset="R" device="_0805" value="10k"/>
-<part name="R18" library="jonnew" deviceset="R" device="_0805" value="10k"/>
-<part name="R19" library="jonnew" deviceset="R" device="_0805" value="100"/>
-<part name="R20" library="jonnew" deviceset="R" device="_0805" value="100"/>
+<part name="R9" library="jonnew" deviceset="R" device="_0805" value="10k"/>
+<part name="R11" library="jonnew" deviceset="R" device="_0805" value="10k"/>
+<part name="R10" library="jonnew" deviceset="R" device="_0805" value="100"/>
+<part name="R12" library="jonnew" deviceset="R" device="_0805" value="100"/>
 <part name="S4" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
 <part name="SUPPLY5" library="jonnew" deviceset="GND" device=""/>
 <part name="SIG_GAIN" library="jonnew" deviceset="JP3E" device=""/>
@@ -3336,14 +3336,14 @@ by exp-lbrs.ulp</description>
 <part name="REF_TO_GND" library="jonnew" deviceset="JP3E" device=""/>
 <part name="R_REF" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
 <part name="R_GND" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
-<part name="U$1" library="test-board" deviceset="PINHD-1X9" device=""/>
-<part name="U$2" library="test-board" deviceset="PINHD-1X9" device=""/>
-<part name="U$3" library="test-board" deviceset="PINHD-1X9" device=""/>
-<part name="U$4" library="test-board" deviceset="PINHD-1X9" device=""/>
-<part name="U$5" library="test-board" deviceset="PINHD-1X9" device=""/>
-<part name="U$6" library="test-board" deviceset="PINHD-1X9" device=""/>
-<part name="U$7" library="test-board" deviceset="PINHD-1X9" device=""/>
-<part name="U$8" library="test-board" deviceset="PINHD-1X9" device=""/>
+<part name="J1" library="test-board" deviceset="PINHD-1X9" device=""/>
+<part name="J2" library="test-board" deviceset="PINHD-1X9" device=""/>
+<part name="J3" library="test-board" deviceset="PINHD-1X9" device=""/>
+<part name="J4" library="test-board" deviceset="PINHD-1X9" device=""/>
+<part name="J5" library="test-board" deviceset="PINHD-1X9" device=""/>
+<part name="J6" library="test-board" deviceset="PINHD-1X9" device=""/>
+<part name="J7" library="test-board" deviceset="PINHD-1X9" device=""/>
+<part name="J8" library="test-board" deviceset="PINHD-1X9" device=""/>
 <part name="SUPPLY17" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY18" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY20" library="jonnew" deviceset="GND" device=""/>
@@ -3374,7 +3374,7 @@ by exp-lbrs.ulp</description>
 <part name="SUPPLY32" library="jonnew" deviceset="GND" device=""/>
 <part name="BANK_SELECT" library="jonnew" deviceset="DIPSW-008-SPDT" device="_206-124" value="KAT1108E"/>
 <part name="SUPPLY33" library="jonnew" deviceset="GND" device=""/>
-<part name="J1" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40-REC"/>
+<part name="HEADSTAGE" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40-REC"/>
 <part name="D1" library="jonnew" deviceset="LED" device="_LXZ1" value="LXZ1-PB01"/>
 <part name="D2" library="jonnew" deviceset="LED" device="_LXZ1" value="LXZ1-PL01"/>
 <part name="CDL" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
@@ -3427,10 +3427,10 @@ by exp-lbrs.ulp</description>
 <instance part="SIG_IN" gate="G$1" x="581.66" y="381"/>
 <instance part="R4" gate="G$1" x="515.62" y="386.08"/>
 <instance part="GND_IMP" gate="G$1" x="624.84" y="292.1"/>
-<instance part="R17" gate="R" x="609.6" y="381"/>
-<instance part="R18" gate="R" x="635" y="381"/>
-<instance part="R19" gate="R" x="622.3" y="370.84" rot="R90"/>
-<instance part="R20" gate="R" x="655.32" y="370.84" rot="R90"/>
+<instance part="R9" gate="R" x="609.6" y="381"/>
+<instance part="R11" gate="R" x="635" y="381"/>
+<instance part="R10" gate="R" x="622.3" y="370.84" rot="R90"/>
+<instance part="R12" gate="R" x="655.32" y="370.84" rot="R90"/>
 <instance part="S4" gate="G$1" x="474.98" y="386.08" rot="R270"/>
 <instance part="SUPPLY5" gate="PE" x="462.28" y="370.84"/>
 <instance part="SIG_GAIN" gate="G$1" x="685.8" y="381" rot="R180"/>
@@ -3464,14 +3464,14 @@ by exp-lbrs.ulp</description>
 <attribute name="NAME" x="646.43" y="269.24" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="635" y="268.605" size="1.778" layer="96"/>
 </instance>
-<instance part="U$1" gate="G$1" x="289.56" y="373.38" rot="R270"/>
-<instance part="U$2" gate="G$1" x="360.68" y="373.38" rot="R270"/>
-<instance part="U$3" gate="G$1" x="431.8" y="373.38" rot="R270"/>
-<instance part="U$4" gate="G$1" x="502.92" y="373.38" rot="R270"/>
-<instance part="U$5" gate="G$1" x="269.24" y="193.04" rot="R90"/>
-<instance part="U$6" gate="G$1" x="340.36" y="193.04" rot="R90"/>
-<instance part="U$7" gate="G$1" x="411.48" y="193.04" rot="R90"/>
-<instance part="U$8" gate="G$1" x="482.6" y="193.04" rot="R90"/>
+<instance part="J1" gate="G$1" x="289.56" y="373.38" rot="R270"/>
+<instance part="J2" gate="G$1" x="360.68" y="373.38" rot="R270"/>
+<instance part="J3" gate="G$1" x="431.8" y="373.38" rot="R270"/>
+<instance part="J4" gate="G$1" x="502.92" y="373.38" rot="R270"/>
+<instance part="J5" gate="G$1" x="269.24" y="193.04" rot="R90"/>
+<instance part="J6" gate="G$1" x="340.36" y="193.04" rot="R90"/>
+<instance part="J7" gate="G$1" x="411.48" y="193.04" rot="R90"/>
+<instance part="J8" gate="G$1" x="482.6" y="193.04" rot="R90"/>
 <instance part="SUPPLY17" gate="PE" x="584.2" y="208.28"/>
 <instance part="SUPPLY18" gate="PE" x="594.36" y="208.28"/>
 <instance part="SUPPLY20" gate="PE" x="607.06" y="256.54"/>
@@ -3502,7 +3502,7 @@ by exp-lbrs.ulp</description>
 <instance part="SUPPLY32" gate="PE" x="614.68" y="172.72"/>
 <instance part="BANK_SELECT" gate="G$1" x="726.44" y="383.54" rot="R270"/>
 <instance part="SUPPLY33" gate="PE" x="718.82" y="358.14"/>
-<instance part="J1" gate="G$1" x="391.16" y="281.94" rot="R180"/>
+<instance part="HEADSTAGE" gate="G$1" x="391.16" y="281.94" rot="R180"/>
 <instance part="D1" gate="G$1" x="711.2" y="276.86"/>
 <instance part="D2" gate="G$1" x="723.9" y="276.86"/>
 <instance part="CDL" gate="G$1" x="756.92" y="284.48" smashed="yes" rot="R90">
@@ -3561,7 +3561,7 @@ by exp-lbrs.ulp</description>
 <wire x1="467.36" y1="396.24" x2="462.28" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="462.28" y1="396.24" x2="462.28" y2="393.7" width="0.1524" layer="91"/>
 <junction x="462.28" y="393.7"/>
-<pinref part="U$4" gate="G$1" pin="9"/>
+<pinref part="J4" gate="G$1" pin="9"/>
 <wire x1="482.6" y1="373.38" x2="462.28" y2="373.38" width="0.1524" layer="91"/>
 <junction x="462.28" y="373.38"/>
 </segment>
@@ -3598,7 +3598,7 @@ by exp-lbrs.ulp</description>
 <wire x1="396.24" y1="396.24" x2="391.16" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="391.16" y1="396.24" x2="391.16" y2="393.7" width="0.1524" layer="91"/>
 <junction x="391.16" y="393.7"/>
-<pinref part="U$3" gate="G$1" pin="9"/>
+<pinref part="J3" gate="G$1" pin="9"/>
 <wire x1="411.48" y1="373.38" x2="391.16" y2="373.38" width="0.1524" layer="91"/>
 <junction x="391.16" y="373.38"/>
 </segment>
@@ -3635,7 +3635,7 @@ by exp-lbrs.ulp</description>
 <wire x1="325.12" y1="396.24" x2="320.04" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="320.04" y1="396.24" x2="320.04" y2="393.7" width="0.1524" layer="91"/>
 <junction x="320.04" y="393.7"/>
-<pinref part="U$2" gate="G$1" pin="9"/>
+<pinref part="J2" gate="G$1" pin="9"/>
 <wire x1="320.04" y1="373.38" x2="340.36" y2="373.38" width="0.1524" layer="91"/>
 <junction x="320.04" y="373.38"/>
 </segment>
@@ -3672,7 +3672,7 @@ by exp-lbrs.ulp</description>
 <wire x1="254" y1="396.24" x2="248.92" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="248.92" y1="396.24" x2="248.92" y2="393.7" width="0.1524" layer="91"/>
 <junction x="248.92" y="393.7"/>
-<pinref part="U$1" gate="G$1" pin="9"/>
+<pinref part="J1" gate="G$1" pin="9"/>
 <wire x1="269.24" y1="373.38" x2="248.92" y2="373.38" width="0.1524" layer="91"/>
 <junction x="248.92" y="373.38"/>
 </segment>
@@ -3710,7 +3710,7 @@ by exp-lbrs.ulp</description>
 <wire x1="309.88" y1="170.18" x2="309.88" y2="172.72" width="0.1524" layer="91"/>
 <junction x="309.88" y="172.72"/>
 <junction x="309.88" y="170.18"/>
-<pinref part="U$5" gate="G$1" pin="9"/>
+<pinref part="J5" gate="G$1" pin="9"/>
 <wire x1="289.56" y1="193.04" x2="309.88" y2="193.04" width="0.1524" layer="91"/>
 <wire x1="309.88" y1="193.04" x2="309.88" y2="187.96" width="0.1524" layer="91"/>
 <junction x="309.88" y="187.96"/>
@@ -3749,7 +3749,7 @@ by exp-lbrs.ulp</description>
 <wire x1="381" y1="170.18" x2="381" y2="172.72" width="0.1524" layer="91"/>
 <junction x="381" y="172.72"/>
 <junction x="381" y="170.18"/>
-<pinref part="U$6" gate="G$1" pin="9"/>
+<pinref part="J6" gate="G$1" pin="9"/>
 <wire x1="360.68" y1="193.04" x2="381" y2="193.04" width="0.1524" layer="91"/>
 <wire x1="381" y1="193.04" x2="381" y2="187.96" width="0.1524" layer="91"/>
 <junction x="381" y="187.96"/>
@@ -3788,7 +3788,7 @@ by exp-lbrs.ulp</description>
 <wire x1="452.12" y1="170.18" x2="452.12" y2="172.72" width="0.1524" layer="91"/>
 <junction x="452.12" y="172.72"/>
 <junction x="452.12" y="170.18"/>
-<pinref part="U$7" gate="G$1" pin="9"/>
+<pinref part="J7" gate="G$1" pin="9"/>
 <wire x1="431.8" y1="193.04" x2="452.12" y2="193.04" width="0.1524" layer="91"/>
 <wire x1="452.12" y1="193.04" x2="452.12" y2="187.96" width="0.1524" layer="91"/>
 <junction x="452.12" y="187.96"/>
@@ -3827,7 +3827,7 @@ by exp-lbrs.ulp</description>
 <wire x1="523.24" y1="170.18" x2="523.24" y2="172.72" width="0.1524" layer="91"/>
 <junction x="523.24" y="172.72"/>
 <junction x="523.24" y="170.18"/>
-<pinref part="U$8" gate="G$1" pin="9"/>
+<pinref part="J8" gate="G$1" pin="9"/>
 <wire x1="502.92" y1="193.04" x2="523.24" y2="193.04" width="0.1524" layer="91"/>
 <wire x1="523.24" y1="193.04" x2="523.24" y2="187.96" width="0.1524" layer="91"/>
 <junction x="523.24" y="187.96"/>
@@ -3871,12 +3871,12 @@ by exp-lbrs.ulp</description>
 <pinref part="SUPPLY21" gate="PE" pin="GND"/>
 </segment>
 <segment>
-<pinref part="R19" gate="R" pin="1"/>
+<pinref part="R10" gate="R" pin="1"/>
 <wire x1="622.3" y1="365.76" x2="622.3" y2="360.68" width="0.1524" layer="91"/>
 <pinref part="SUPPLY23" gate="PE" pin="GND"/>
 </segment>
 <segment>
-<pinref part="R20" gate="R" pin="1"/>
+<pinref part="R12" gate="R" pin="1"/>
 <wire x1="655.32" y1="365.76" x2="655.32" y2="360.68" width="0.1524" layer="91"/>
 <pinref part="SUPPLY24" gate="PE" pin="GND"/>
 </segment>
@@ -3930,8 +3930,8 @@ by exp-lbrs.ulp</description>
 <net name="-80DB" class="0">
 <segment>
 <wire x1="640.08" y1="381" x2="655.32" y2="381" width="0.1524" layer="91"/>
-<pinref part="R18" gate="R" pin="2"/>
-<pinref part="R20" gate="R" pin="2"/>
+<pinref part="R11" gate="R" pin="2"/>
+<pinref part="R12" gate="R" pin="2"/>
 <wire x1="655.32" y1="381" x2="655.32" y2="375.92" width="0.1524" layer="91"/>
 <label x="685.8" y="388.62" size="1.778" layer="95"/>
 <wire x1="655.32" y1="381" x2="670.56" y2="381" width="0.1524" layer="91"/>
@@ -3953,7 +3953,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <pinref part="SIG_IN" gate="G$1" pin="SIG"/>
 <wire x1="586.74" y1="381" x2="604.52" y2="381" width="0.1524" layer="91"/>
-<pinref part="R17" gate="R" pin="1"/>
+<pinref part="R9" gate="R" pin="1"/>
 <label x="591.82" y="381" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -3966,9 +3966,9 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="622.3" y1="381" x2="629.92" y2="381" width="0.1524" layer="91"/>
 <wire x1="622.3" y1="381" x2="622.3" y2="375.92" width="0.1524" layer="91"/>
-<pinref part="R18" gate="R" pin="1"/>
-<pinref part="R19" gate="R" pin="2"/>
-<pinref part="R17" gate="R" pin="2"/>
+<pinref part="R11" gate="R" pin="1"/>
+<pinref part="R10" gate="R" pin="2"/>
+<pinref part="R9" gate="R" pin="2"/>
 <wire x1="622.3" y1="381" x2="614.68" y2="381" width="0.1524" layer="91"/>
 <junction x="622.3" y="381"/>
 <label x="670.56" y="388.62" size="1.778" layer="95"/>
@@ -3991,7 +3991,7 @@ by exp-lbrs.ulp</description>
 </segment>
 <segment>
 <label x="391.16" y="251.46" size="1.27" layer="95" rot="R270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="70"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="70"/>
 <wire x1="391.16" y1="274.32" x2="391.16" y2="251.46" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -4003,7 +4003,7 @@ by exp-lbrs.ulp</description>
 </segment>
 <segment>
 <label x="388.62" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="69"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="69"/>
 <wire x1="388.62" y1="274.32" x2="388.62" y2="251.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -4090,7 +4090,7 @@ by exp-lbrs.ulp</description>
 <net name="TT0D" class="0">
 <segment>
 <wire x1="337.82" y1="251.46" x2="337.82" y2="274.32" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="49"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="49"/>
 <label x="337.82" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
 </segment>
 <segment>
@@ -4102,14 +4102,14 @@ by exp-lbrs.ulp</description>
 <pinref part="S4" gate="G$1" pin="13"/>
 <wire x1="495.3" y1="388.62" x2="482.6" y2="388.62" width="0.1524" layer="91"/>
 <junction x="495.3" y="388.62"/>
-<pinref part="U$4" gate="G$1" pin="4"/>
+<pinref part="J4" gate="G$1" pin="4"/>
 <junction x="495.3" y="373.38"/>
 </segment>
 </net>
 <net name="TT0C" class="0">
 <segment>
 <wire x1="340.36" y1="251.46" x2="340.36" y2="274.32" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="50"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="50"/>
 <label x="340.36" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
 </segment>
 <segment>
@@ -4120,7 +4120,7 @@ by exp-lbrs.ulp</description>
 <wire x1="505.46" y1="391.16" x2="497.84" y2="391.16" width="0.1524" layer="91"/>
 <wire x1="497.84" y1="391.16" x2="482.6" y2="391.16" width="0.1524" layer="91"/>
 <junction x="497.84" y="391.16"/>
-<pinref part="U$4" gate="G$1" pin="3"/>
+<pinref part="J4" gate="G$1" pin="3"/>
 <wire x1="497.84" y1="373.38" x2="497.84" y2="391.16" width="0.1524" layer="91"/>
 <junction x="497.84" y="373.38"/>
 </segment>
@@ -4128,7 +4128,7 @@ by exp-lbrs.ulp</description>
 <net name="TT0B" class="0">
 <segment>
 <wire x1="342.9" y1="251.46" x2="342.9" y2="274.32" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="51"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="51"/>
 <label x="342.9" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
 </segment>
 <segment>
@@ -4139,7 +4139,7 @@ by exp-lbrs.ulp</description>
 <wire x1="505.46" y1="393.7" x2="500.38" y2="393.7" width="0.1524" layer="91"/>
 <wire x1="500.38" y1="393.7" x2="482.6" y2="393.7" width="0.1524" layer="91"/>
 <junction x="500.38" y="393.7"/>
-<pinref part="U$4" gate="G$1" pin="2"/>
+<pinref part="J4" gate="G$1" pin="2"/>
 <wire x1="500.38" y1="373.38" x2="500.38" y2="393.7" width="0.1524" layer="91"/>
 <junction x="500.38" y="373.38"/>
 </segment>
@@ -4147,7 +4147,7 @@ by exp-lbrs.ulp</description>
 <net name="TT0A" class="0">
 <segment>
 <wire x1="345.44" y1="251.46" x2="345.44" y2="274.32" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="52"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="52"/>
 <label x="345.44" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
 </segment>
 <segment>
@@ -4155,7 +4155,7 @@ by exp-lbrs.ulp</description>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="505.46" y1="396.24" x2="502.92" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="502.92" y1="396.24" x2="482.6" y2="396.24" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="1"/>
+<pinref part="J4" gate="G$1" pin="1"/>
 <wire x1="502.92" y1="373.38" x2="502.92" y2="396.24" width="0.1524" layer="91"/>
 <junction x="502.92" y="396.24"/>
 <wire x1="502.92" y1="350.52" x2="502.92" y2="373.38" width="0.1524" layer="91"/>
@@ -4167,7 +4167,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="335.28" y1="251.46" x2="335.28" y2="274.32" width="0.1524" layer="91"/>
 <label x="335.28" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="48"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="48"/>
 </segment>
 <segment>
 <wire x1="492.76" y1="350.52" x2="492.76" y2="373.38" width="0.1524" layer="91"/>
@@ -4178,7 +4178,7 @@ by exp-lbrs.ulp</description>
 <pinref part="S4" gate="G$1" pin="12"/>
 <wire x1="492.76" y1="373.38" x2="492.76" y2="386.08" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="386.08" x2="492.76" y2="386.08" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="5"/>
+<pinref part="J4" gate="G$1" pin="5"/>
 <junction x="492.76" y="373.38"/>
 </segment>
 </net>
@@ -4186,7 +4186,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="332.74" y1="251.46" x2="332.74" y2="274.32" width="0.1524" layer="91"/>
 <label x="332.74" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="47"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="47"/>
 </segment>
 <segment>
 <wire x1="490.22" y1="350.52" x2="490.22" y2="373.38" width="0.1524" layer="91"/>
@@ -4197,7 +4197,7 @@ by exp-lbrs.ulp</description>
 <junction x="490.22" y="383.54"/>
 <wire x1="490.22" y1="373.38" x2="490.22" y2="383.54" width="0.1524" layer="91"/>
 <wire x1="490.22" y1="383.54" x2="482.6" y2="383.54" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="6"/>
+<pinref part="J4" gate="G$1" pin="6"/>
 <junction x="490.22" y="373.38"/>
 </segment>
 </net>
@@ -4205,7 +4205,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="330.2" y1="251.46" x2="330.2" y2="274.32" width="0.1524" layer="91"/>
 <label x="330.2" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="46"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="46"/>
 </segment>
 <segment>
 <wire x1="487.68" y1="350.52" x2="487.68" y2="373.38" width="0.1524" layer="91"/>
@@ -4216,7 +4216,7 @@ by exp-lbrs.ulp</description>
 <junction x="487.68" y="381"/>
 <wire x1="487.68" y1="373.38" x2="487.68" y2="381" width="0.1524" layer="91"/>
 <wire x1="487.68" y1="381" x2="482.6" y2="381" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="7"/>
+<pinref part="J4" gate="G$1" pin="7"/>
 <junction x="487.68" y="373.38"/>
 </segment>
 </net>
@@ -4224,7 +4224,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="327.66" y1="251.46" x2="327.66" y2="274.32" width="0.1524" layer="91"/>
 <label x="327.66" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="45"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="45"/>
 </segment>
 <segment>
 <wire x1="485.14" y1="350.52" x2="485.14" y2="373.38" width="0.1524" layer="91"/>
@@ -4235,7 +4235,7 @@ by exp-lbrs.ulp</description>
 <junction x="485.14" y="378.46"/>
 <wire x1="485.14" y1="373.38" x2="485.14" y2="378.46" width="0.1524" layer="91"/>
 <wire x1="485.14" y1="378.46" x2="482.6" y2="378.46" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="8"/>
+<pinref part="J4" gate="G$1" pin="8"/>
 <junction x="485.14" y="373.38"/>
 </segment>
 </net>
@@ -4243,7 +4243,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="325.12" y1="251.46" x2="325.12" y2="274.32" width="0.1524" layer="91"/>
 <label x="325.12" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="44"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="44"/>
 </segment>
 <segment>
 <wire x1="431.8" y1="350.52" x2="431.8" y2="373.38" width="0.1524" layer="91"/>
@@ -4252,7 +4252,7 @@ by exp-lbrs.ulp</description>
 <wire x1="434.34" y1="396.24" x2="431.8" y2="396.24" width="0.1524" layer="91"/>
 <pinref part="S3" gate="G$1" pin="16"/>
 <wire x1="431.8" y1="396.24" x2="411.48" y2="396.24" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="1"/>
+<pinref part="J3" gate="G$1" pin="1"/>
 <wire x1="431.8" y1="373.38" x2="431.8" y2="396.24" width="0.1524" layer="91"/>
 <junction x="431.8" y="396.24"/>
 <junction x="431.8" y="373.38"/>
@@ -4262,7 +4262,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="322.58" y1="251.46" x2="322.58" y2="274.32" width="0.1524" layer="91"/>
 <label x="322.58" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="43"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="43"/>
 </segment>
 <segment>
 <wire x1="429.26" y1="350.52" x2="429.26" y2="373.38" width="0.1524" layer="91"/>
@@ -4272,7 +4272,7 @@ by exp-lbrs.ulp</description>
 <pinref part="S3" gate="G$1" pin="15"/>
 <wire x1="429.26" y1="393.7" x2="411.48" y2="393.7" width="0.1524" layer="91"/>
 <junction x="429.26" y="393.7"/>
-<pinref part="U$3" gate="G$1" pin="2"/>
+<pinref part="J3" gate="G$1" pin="2"/>
 <wire x1="429.26" y1="373.38" x2="429.26" y2="393.7" width="0.1524" layer="91"/>
 <junction x="429.26" y="373.38"/>
 </segment>
@@ -4281,7 +4281,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="320.04" y1="251.46" x2="320.04" y2="274.32" width="0.1524" layer="91"/>
 <label x="320.04" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="42"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="42"/>
 </segment>
 <segment>
 <wire x1="426.72" y1="350.52" x2="426.72" y2="373.38" width="0.1524" layer="91"/>
@@ -4291,7 +4291,7 @@ by exp-lbrs.ulp</description>
 <pinref part="S3" gate="G$1" pin="14"/>
 <wire x1="426.72" y1="391.16" x2="411.48" y2="391.16" width="0.1524" layer="91"/>
 <junction x="426.72" y="391.16"/>
-<pinref part="U$3" gate="G$1" pin="3"/>
+<pinref part="J3" gate="G$1" pin="3"/>
 <wire x1="426.72" y1="373.38" x2="426.72" y2="391.16" width="0.1524" layer="91"/>
 <junction x="426.72" y="373.38"/>
 </segment>
@@ -4300,7 +4300,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="317.5" y1="251.46" x2="317.5" y2="274.32" width="0.1524" layer="91"/>
 <label x="317.5" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="41"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="41"/>
 </segment>
 <segment>
 <wire x1="424.18" y1="350.52" x2="424.18" y2="373.38" width="0.1524" layer="91"/>
@@ -4310,7 +4310,7 @@ by exp-lbrs.ulp</description>
 <wire x1="434.34" y1="388.62" x2="424.18" y2="388.62" width="0.1524" layer="91"/>
 <wire x1="424.18" y1="388.62" x2="411.48" y2="388.62" width="0.1524" layer="91"/>
 <junction x="424.18" y="388.62"/>
-<pinref part="U$3" gate="G$1" pin="4"/>
+<pinref part="J3" gate="G$1" pin="4"/>
 <wire x1="424.18" y1="373.38" x2="424.18" y2="388.62" width="0.1524" layer="91"/>
 <junction x="424.18" y="373.38"/>
 </segment>
@@ -4319,7 +4319,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="314.96" y1="251.46" x2="314.96" y2="274.32" width="0.1524" layer="91"/>
 <label x="314.96" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="40"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="40"/>
 </segment>
 <segment>
 <wire x1="421.64" y1="350.52" x2="421.64" y2="373.38" width="0.1524" layer="91"/>
@@ -4329,7 +4329,7 @@ by exp-lbrs.ulp</description>
 <wire x1="411.48" y1="386.08" x2="421.64" y2="386.08" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="386.08" x2="434.34" y2="386.08" width="0.1524" layer="91"/>
 <junction x="421.64" y="386.08"/>
-<pinref part="U$3" gate="G$1" pin="5"/>
+<pinref part="J3" gate="G$1" pin="5"/>
 <wire x1="421.64" y1="373.38" x2="421.64" y2="386.08" width="0.1524" layer="91"/>
 <junction x="421.64" y="373.38"/>
 </segment>
@@ -4338,7 +4338,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="312.42" y1="251.46" x2="312.42" y2="274.32" width="0.1524" layer="91"/>
 <label x="312.42" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="39"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="39"/>
 </segment>
 <segment>
 <wire x1="419.1" y1="350.52" x2="419.1" y2="373.38" width="0.1524" layer="91"/>
@@ -4348,7 +4348,7 @@ by exp-lbrs.ulp</description>
 <wire x1="434.34" y1="383.54" x2="419.1" y2="383.54" width="0.1524" layer="91"/>
 <wire x1="419.1" y1="383.54" x2="411.48" y2="383.54" width="0.1524" layer="91"/>
 <junction x="419.1" y="383.54"/>
-<pinref part="U$3" gate="G$1" pin="6"/>
+<pinref part="J3" gate="G$1" pin="6"/>
 <wire x1="419.1" y1="373.38" x2="419.1" y2="383.54" width="0.1524" layer="91"/>
 <junction x="419.1" y="373.38"/>
 </segment>
@@ -4357,7 +4357,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="309.88" y1="251.46" x2="309.88" y2="274.32" width="0.1524" layer="91"/>
 <label x="309.88" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="38"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="38"/>
 </segment>
 <segment>
 <wire x1="416.56" y1="350.52" x2="416.56" y2="373.38" width="0.1524" layer="91"/>
@@ -4367,7 +4367,7 @@ by exp-lbrs.ulp</description>
 <wire x1="434.34" y1="381" x2="416.56" y2="381" width="0.1524" layer="91"/>
 <wire x1="416.56" y1="381" x2="411.48" y2="381" width="0.1524" layer="91"/>
 <junction x="416.56" y="381"/>
-<pinref part="U$3" gate="G$1" pin="7"/>
+<pinref part="J3" gate="G$1" pin="7"/>
 <wire x1="416.56" y1="373.38" x2="416.56" y2="381" width="0.1524" layer="91"/>
 <junction x="416.56" y="373.38"/>
 </segment>
@@ -4376,7 +4376,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="307.34" y1="251.46" x2="307.34" y2="274.32" width="0.1524" layer="91"/>
 <label x="307.34" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="37"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="37"/>
 </segment>
 <segment>
 <wire x1="414.02" y1="350.52" x2="414.02" y2="373.38" width="0.1524" layer="91"/>
@@ -4386,7 +4386,7 @@ by exp-lbrs.ulp</description>
 <wire x1="434.34" y1="378.46" x2="414.02" y2="378.46" width="0.1524" layer="91"/>
 <wire x1="414.02" y1="378.46" x2="411.48" y2="378.46" width="0.1524" layer="91"/>
 <junction x="414.02" y="378.46"/>
-<pinref part="U$3" gate="G$1" pin="8"/>
+<pinref part="J3" gate="G$1" pin="8"/>
 <wire x1="414.02" y1="373.38" x2="414.02" y2="378.46" width="0.1524" layer="91"/>
 <junction x="414.02" y="373.38"/>
 </segment>
@@ -4395,7 +4395,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="309.88" y1="312.42" x2="309.88" y2="289.56" width="0.1524" layer="91"/>
 <label x="309.88" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="33"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="33"/>
 </segment>
 <segment>
 <wire x1="360.68" y1="350.52" x2="360.68" y2="373.38" width="0.1524" layer="91"/>
@@ -4404,7 +4404,7 @@ by exp-lbrs.ulp</description>
 <wire x1="363.22" y1="396.24" x2="360.68" y2="396.24" width="0.1524" layer="91"/>
 <pinref part="S2" gate="G$1" pin="16"/>
 <wire x1="360.68" y1="396.24" x2="340.36" y2="396.24" width="0.1524" layer="91"/>
-<pinref part="U$2" gate="G$1" pin="1"/>
+<pinref part="J2" gate="G$1" pin="1"/>
 <wire x1="360.68" y1="373.38" x2="360.68" y2="396.24" width="0.1524" layer="91"/>
 <junction x="360.68" y="396.24"/>
 <junction x="360.68" y="373.38"/>
@@ -4414,7 +4414,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="312.42" y1="312.42" x2="312.42" y2="289.56" width="0.1524" layer="91"/>
 <label x="312.42" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="32"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="32"/>
 </segment>
 <segment>
 <wire x1="358.14" y1="350.52" x2="358.14" y2="373.38" width="0.1524" layer="91"/>
@@ -4425,7 +4425,7 @@ by exp-lbrs.ulp</description>
 <wire x1="358.14" y1="393.7" x2="340.36" y2="393.7" width="0.1524" layer="91"/>
 <wire x1="358.14" y1="393.7" x2="358.14" y2="373.38" width="0.1524" layer="91"/>
 <junction x="358.14" y="393.7"/>
-<pinref part="U$2" gate="G$1" pin="2"/>
+<pinref part="J2" gate="G$1" pin="2"/>
 <junction x="358.14" y="373.38"/>
 </segment>
 </net>
@@ -4433,7 +4433,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="314.96" y1="312.42" x2="314.96" y2="289.56" width="0.1524" layer="91"/>
 <label x="314.96" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="31"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="31"/>
 </segment>
 <segment>
 <wire x1="355.6" y1="350.52" x2="355.6" y2="373.38" width="0.1524" layer="91"/>
@@ -4443,7 +4443,7 @@ by exp-lbrs.ulp</description>
 <pinref part="S2" gate="G$1" pin="14"/>
 <wire x1="355.6" y1="391.16" x2="340.36" y2="391.16" width="0.1524" layer="91"/>
 <junction x="355.6" y="391.16"/>
-<pinref part="U$2" gate="G$1" pin="3"/>
+<pinref part="J2" gate="G$1" pin="3"/>
 <wire x1="355.6" y1="373.38" x2="355.6" y2="391.16" width="0.1524" layer="91"/>
 <junction x="355.6" y="373.38"/>
 </segment>
@@ -4452,7 +4452,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="317.5" y1="312.42" x2="317.5" y2="289.56" width="0.1524" layer="91"/>
 <label x="317.5" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="30"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="30"/>
 </segment>
 <segment>
 <wire x1="353.06" y1="350.52" x2="353.06" y2="373.38" width="0.1524" layer="91"/>
@@ -4463,7 +4463,7 @@ by exp-lbrs.ulp</description>
 <wire x1="353.06" y1="388.62" x2="340.36" y2="388.62" width="0.1524" layer="91"/>
 <wire x1="353.06" y1="388.62" x2="353.06" y2="373.38" width="0.1524" layer="91"/>
 <junction x="353.06" y="388.62"/>
-<pinref part="U$2" gate="G$1" pin="4"/>
+<pinref part="J2" gate="G$1" pin="4"/>
 <junction x="353.06" y="373.38"/>
 </segment>
 </net>
@@ -4471,7 +4471,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="320.04" y1="312.42" x2="320.04" y2="289.56" width="0.1524" layer="91"/>
 <label x="320.04" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="29"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="29"/>
 </segment>
 <segment>
 <wire x1="350.52" y1="350.52" x2="350.52" y2="373.38" width="0.1524" layer="91"/>
@@ -4481,7 +4481,7 @@ by exp-lbrs.ulp</description>
 <wire x1="340.36" y1="386.08" x2="350.52" y2="386.08" width="0.1524" layer="91"/>
 <wire x1="350.52" y1="386.08" x2="363.22" y2="386.08" width="0.1524" layer="91"/>
 <junction x="350.52" y="386.08"/>
-<pinref part="U$2" gate="G$1" pin="5"/>
+<pinref part="J2" gate="G$1" pin="5"/>
 <wire x1="350.52" y1="373.38" x2="350.52" y2="386.08" width="0.1524" layer="91"/>
 <junction x="350.52" y="373.38"/>
 </segment>
@@ -4490,7 +4490,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="322.58" y1="312.42" x2="322.58" y2="289.56" width="0.1524" layer="91"/>
 <label x="322.58" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="28"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="28"/>
 </segment>
 <segment>
 <wire x1="347.98" y1="350.52" x2="347.98" y2="373.38" width="0.1524" layer="91"/>
@@ -4501,7 +4501,7 @@ by exp-lbrs.ulp</description>
 <wire x1="347.98" y1="383.54" x2="340.36" y2="383.54" width="0.1524" layer="91"/>
 <wire x1="347.98" y1="383.54" x2="347.98" y2="373.38" width="0.1524" layer="91"/>
 <junction x="347.98" y="383.54"/>
-<pinref part="U$2" gate="G$1" pin="6"/>
+<pinref part="J2" gate="G$1" pin="6"/>
 <junction x="347.98" y="373.38"/>
 </segment>
 </net>
@@ -4509,7 +4509,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="325.12" y1="312.42" x2="325.12" y2="289.56" width="0.1524" layer="91"/>
 <label x="325.12" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="27"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="27"/>
 </segment>
 <segment>
 <wire x1="345.44" y1="350.52" x2="345.44" y2="373.38" width="0.1524" layer="91"/>
@@ -4520,7 +4520,7 @@ by exp-lbrs.ulp</description>
 <wire x1="345.44" y1="381" x2="340.36" y2="381" width="0.1524" layer="91"/>
 <wire x1="345.44" y1="381" x2="345.44" y2="373.38" width="0.1524" layer="91"/>
 <junction x="345.44" y="381"/>
-<pinref part="U$2" gate="G$1" pin="7"/>
+<pinref part="J2" gate="G$1" pin="7"/>
 <junction x="345.44" y="373.38"/>
 </segment>
 </net>
@@ -4528,7 +4528,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="327.66" y1="312.42" x2="327.66" y2="289.56" width="0.1524" layer="91"/>
 <label x="327.66" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="26"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="26"/>
 </segment>
 <segment>
 <wire x1="342.9" y1="350.52" x2="342.9" y2="373.38" width="0.1524" layer="91"/>
@@ -4538,7 +4538,7 @@ by exp-lbrs.ulp</description>
 <pinref part="S2" gate="G$1" pin="9"/>
 <wire x1="342.9" y1="378.46" x2="340.36" y2="378.46" width="0.1524" layer="91"/>
 <junction x="342.9" y="378.46"/>
-<pinref part="U$2" gate="G$1" pin="8"/>
+<pinref part="J2" gate="G$1" pin="8"/>
 <wire x1="342.9" y1="373.38" x2="342.9" y2="378.46" width="0.1524" layer="91"/>
 <junction x="342.9" y="373.38"/>
 </segment>
@@ -4547,7 +4547,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="330.2" y1="312.42" x2="330.2" y2="289.56" width="0.1524" layer="91"/>
 <label x="330.2" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="25"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="25"/>
 </segment>
 <segment>
 <wire x1="289.56" y1="350.52" x2="289.56" y2="373.38" width="0.1524" layer="91"/>
@@ -4556,7 +4556,7 @@ by exp-lbrs.ulp</description>
 <wire x1="292.1" y1="396.24" x2="289.56" y2="396.24" width="0.1524" layer="91"/>
 <pinref part="S1" gate="G$1" pin="16"/>
 <wire x1="289.56" y1="396.24" x2="269.24" y2="396.24" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="1"/>
 <wire x1="289.56" y1="373.38" x2="289.56" y2="396.24" width="0.1524" layer="91"/>
 <junction x="289.56" y="396.24"/>
 <junction x="289.56" y="373.38"/>
@@ -4566,7 +4566,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="332.74" y1="312.42" x2="332.74" y2="289.56" width="0.1524" layer="91"/>
 <label x="332.74" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="24"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="24"/>
 </segment>
 <segment>
 <wire x1="287.02" y1="350.52" x2="287.02" y2="373.38" width="0.1524" layer="91"/>
@@ -4577,7 +4577,7 @@ by exp-lbrs.ulp</description>
 <wire x1="287.02" y1="393.7" x2="269.24" y2="393.7" width="0.1524" layer="91"/>
 <wire x1="287.02" y1="393.7" x2="287.02" y2="373.38" width="0.1524" layer="91"/>
 <junction x="287.02" y="393.7"/>
-<pinref part="U$1" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="2"/>
 <junction x="287.02" y="373.38"/>
 </segment>
 </net>
@@ -4585,7 +4585,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="335.28" y1="312.42" x2="335.28" y2="289.56" width="0.1524" layer="91"/>
 <label x="335.28" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="23"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="23"/>
 </segment>
 <segment>
 <wire x1="284.48" y1="350.52" x2="284.48" y2="373.38" width="0.1524" layer="91"/>
@@ -4595,7 +4595,7 @@ by exp-lbrs.ulp</description>
 <pinref part="S1" gate="G$1" pin="14"/>
 <wire x1="284.48" y1="391.16" x2="269.24" y2="391.16" width="0.1524" layer="91"/>
 <junction x="284.48" y="391.16"/>
-<pinref part="U$1" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="3"/>
 <wire x1="284.48" y1="373.38" x2="284.48" y2="391.16" width="0.1524" layer="91"/>
 <junction x="284.48" y="373.38"/>
 </segment>
@@ -4604,7 +4604,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="337.82" y1="312.42" x2="337.82" y2="289.56" width="0.1524" layer="91"/>
 <label x="337.82" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="22"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="22"/>
 </segment>
 <segment>
 <wire x1="281.94" y1="350.52" x2="281.94" y2="373.38" width="0.1524" layer="91"/>
@@ -4615,7 +4615,7 @@ by exp-lbrs.ulp</description>
 <wire x1="281.94" y1="388.62" x2="269.24" y2="388.62" width="0.1524" layer="91"/>
 <wire x1="281.94" y1="388.62" x2="281.94" y2="373.38" width="0.1524" layer="91"/>
 <junction x="281.94" y="388.62"/>
-<pinref part="U$1" gate="G$1" pin="4"/>
+<pinref part="J1" gate="G$1" pin="4"/>
 <junction x="281.94" y="373.38"/>
 </segment>
 </net>
@@ -4623,7 +4623,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="340.36" y1="312.42" x2="340.36" y2="289.56" width="0.1524" layer="91"/>
 <label x="340.36" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="21"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="21"/>
 </segment>
 <segment>
 <wire x1="279.4" y1="350.52" x2="279.4" y2="373.38" width="0.1524" layer="91"/>
@@ -4633,7 +4633,7 @@ by exp-lbrs.ulp</description>
 <wire x1="269.24" y1="386.08" x2="279.4" y2="386.08" width="0.1524" layer="91"/>
 <wire x1="279.4" y1="386.08" x2="292.1" y2="386.08" width="0.1524" layer="91"/>
 <junction x="279.4" y="386.08"/>
-<pinref part="U$1" gate="G$1" pin="5"/>
+<pinref part="J1" gate="G$1" pin="5"/>
 <wire x1="279.4" y1="373.38" x2="279.4" y2="386.08" width="0.1524" layer="91"/>
 <junction x="279.4" y="373.38"/>
 </segment>
@@ -4642,7 +4642,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="342.9" y1="312.42" x2="342.9" y2="289.56" width="0.1524" layer="91"/>
 <label x="342.9" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="20"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="20"/>
 </segment>
 <segment>
 <wire x1="276.86" y1="350.52" x2="276.86" y2="373.38" width="0.1524" layer="91"/>
@@ -4653,7 +4653,7 @@ by exp-lbrs.ulp</description>
 <wire x1="276.86" y1="383.54" x2="269.24" y2="383.54" width="0.1524" layer="91"/>
 <wire x1="276.86" y1="383.54" x2="276.86" y2="373.38" width="0.1524" layer="91"/>
 <junction x="276.86" y="383.54"/>
-<pinref part="U$1" gate="G$1" pin="6"/>
+<pinref part="J1" gate="G$1" pin="6"/>
 <junction x="276.86" y="373.38"/>
 </segment>
 </net>
@@ -4661,7 +4661,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="345.44" y1="312.42" x2="345.44" y2="289.56" width="0.1524" layer="91"/>
 <label x="345.44" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="19"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="19"/>
 </segment>
 <segment>
 <wire x1="274.32" y1="350.52" x2="274.32" y2="373.38" width="0.1524" layer="91"/>
@@ -4671,7 +4671,7 @@ by exp-lbrs.ulp</description>
 <wire x1="292.1" y1="381" x2="274.32" y2="381" width="0.1524" layer="91"/>
 <wire x1="274.32" y1="381" x2="269.24" y2="381" width="0.1524" layer="91"/>
 <junction x="274.32" y="381"/>
-<pinref part="U$1" gate="G$1" pin="7"/>
+<pinref part="J1" gate="G$1" pin="7"/>
 <wire x1="274.32" y1="373.38" x2="274.32" y2="381" width="0.1524" layer="91"/>
 <junction x="274.32" y="373.38"/>
 </segment>
@@ -4680,7 +4680,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="347.98" y1="312.42" x2="347.98" y2="289.56" width="0.1524" layer="91"/>
 <label x="347.98" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="18"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="18"/>
 </segment>
 <segment>
 <wire x1="271.78" y1="350.52" x2="271.78" y2="373.38" width="0.1524" layer="91"/>
@@ -4691,7 +4691,7 @@ by exp-lbrs.ulp</description>
 <wire x1="271.78" y1="378.46" x2="269.24" y2="378.46" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="378.46" x2="271.78" y2="373.38" width="0.1524" layer="91"/>
 <junction x="271.78" y="378.46"/>
-<pinref part="U$1" gate="G$1" pin="8"/>
+<pinref part="J1" gate="G$1" pin="8"/>
 <junction x="271.78" y="373.38"/>
 </segment>
 </net>
@@ -4699,7 +4699,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="350.52" y1="312.42" x2="350.52" y2="289.56" width="0.1524" layer="91"/>
 <label x="350.52" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="17"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="17"/>
 </segment>
 <segment>
 <wire x1="269.24" y1="215.9" x2="269.24" y2="193.04" width="0.1524" layer="91"/>
@@ -4708,7 +4708,7 @@ by exp-lbrs.ulp</description>
 <wire x1="266.7" y1="170.18" x2="269.24" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="S5" gate="G$1" pin="16"/>
 <wire x1="269.24" y1="170.18" x2="289.56" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="U$5" gate="G$1" pin="1"/>
+<pinref part="J5" gate="G$1" pin="1"/>
 <wire x1="269.24" y1="193.04" x2="269.24" y2="170.18" width="0.1524" layer="91"/>
 <junction x="269.24" y="170.18"/>
 <junction x="269.24" y="193.04"/>
@@ -4718,7 +4718,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="353.06" y1="312.42" x2="353.06" y2="289.56" width="0.1524" layer="91"/>
 <label x="353.06" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="16"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="16"/>
 </segment>
 <segment>
 <wire x1="271.78" y1="215.9" x2="271.78" y2="193.04" width="0.1524" layer="91"/>
@@ -4728,7 +4728,7 @@ by exp-lbrs.ulp</description>
 <pinref part="S5" gate="G$1" pin="15"/>
 <wire x1="271.78" y1="172.72" x2="289.56" y2="172.72" width="0.1524" layer="91"/>
 <junction x="271.78" y="172.72"/>
-<pinref part="U$5" gate="G$1" pin="2"/>
+<pinref part="J5" gate="G$1" pin="2"/>
 <wire x1="271.78" y1="193.04" x2="271.78" y2="172.72" width="0.1524" layer="91"/>
 <junction x="271.78" y="193.04"/>
 </segment>
@@ -4737,7 +4737,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="355.6" y1="312.42" x2="355.6" y2="289.56" width="0.1524" layer="91"/>
 <label x="355.6" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="15"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="15"/>
 </segment>
 <segment>
 <wire x1="274.32" y1="215.9" x2="274.32" y2="193.04" width="0.1524" layer="91"/>
@@ -4748,7 +4748,7 @@ by exp-lbrs.ulp</description>
 <wire x1="274.32" y1="175.26" x2="289.56" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="274.32" y1="175.26" x2="274.32" y2="193.04" width="0.1524" layer="91"/>
 <junction x="274.32" y="175.26"/>
-<pinref part="U$5" gate="G$1" pin="3"/>
+<pinref part="J5" gate="G$1" pin="3"/>
 <junction x="274.32" y="193.04"/>
 </segment>
 </net>
@@ -4756,7 +4756,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="358.14" y1="312.42" x2="358.14" y2="289.56" width="0.1524" layer="91"/>
 <label x="358.14" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="14"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="14"/>
 </segment>
 <segment>
 <wire x1="276.86" y1="215.9" x2="276.86" y2="193.04" width="0.1524" layer="91"/>
@@ -4766,7 +4766,7 @@ by exp-lbrs.ulp</description>
 <wire x1="266.7" y1="177.8" x2="276.86" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="276.86" y1="177.8" x2="289.56" y2="177.8" width="0.1524" layer="91"/>
 <junction x="276.86" y="177.8"/>
-<pinref part="U$5" gate="G$1" pin="4"/>
+<pinref part="J5" gate="G$1" pin="4"/>
 <wire x1="276.86" y1="193.04" x2="276.86" y2="177.8" width="0.1524" layer="91"/>
 <junction x="276.86" y="193.04"/>
 </segment>
@@ -4775,7 +4775,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="360.68" y1="312.42" x2="360.68" y2="289.56" width="0.1524" layer="91"/>
 <label x="360.68" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="13"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="13"/>
 </segment>
 <segment>
 <wire x1="279.4" y1="215.9" x2="279.4" y2="193.04" width="0.1524" layer="91"/>
@@ -4786,7 +4786,7 @@ by exp-lbrs.ulp</description>
 <wire x1="279.4" y1="180.34" x2="266.7" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="279.4" y1="180.34" x2="279.4" y2="193.04" width="0.1524" layer="91"/>
 <junction x="279.4" y="180.34"/>
-<pinref part="U$5" gate="G$1" pin="5"/>
+<pinref part="J5" gate="G$1" pin="5"/>
 <junction x="279.4" y="193.04"/>
 </segment>
 </net>
@@ -4794,7 +4794,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="363.22" y1="312.42" x2="363.22" y2="289.56" width="0.1524" layer="91"/>
 <label x="363.22" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="12"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="12"/>
 </segment>
 <segment>
 <wire x1="281.94" y1="215.9" x2="281.94" y2="193.04" width="0.1524" layer="91"/>
@@ -4804,7 +4804,7 @@ by exp-lbrs.ulp</description>
 <wire x1="266.7" y1="182.88" x2="281.94" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="281.94" y1="182.88" x2="289.56" y2="182.88" width="0.1524" layer="91"/>
 <junction x="281.94" y="182.88"/>
-<pinref part="U$5" gate="G$1" pin="6"/>
+<pinref part="J5" gate="G$1" pin="6"/>
 <wire x1="281.94" y1="193.04" x2="281.94" y2="182.88" width="0.1524" layer="91"/>
 <junction x="281.94" y="193.04"/>
 </segment>
@@ -4813,7 +4813,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="365.76" y1="312.42" x2="365.76" y2="289.56" width="0.1524" layer="91"/>
 <label x="365.76" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="11"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="11"/>
 </segment>
 <segment>
 <wire x1="284.48" y1="215.9" x2="284.48" y2="193.04" width="0.1524" layer="91"/>
@@ -4824,7 +4824,7 @@ by exp-lbrs.ulp</description>
 <wire x1="284.48" y1="185.42" x2="289.56" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="284.48" y1="185.42" x2="284.48" y2="193.04" width="0.1524" layer="91"/>
 <junction x="284.48" y="185.42"/>
-<pinref part="U$5" gate="G$1" pin="7"/>
+<pinref part="J5" gate="G$1" pin="7"/>
 <junction x="284.48" y="193.04"/>
 </segment>
 </net>
@@ -4832,7 +4832,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="368.3" y1="312.42" x2="368.3" y2="289.56" width="0.1524" layer="91"/>
 <label x="368.3" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="10"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="10"/>
 </segment>
 <segment>
 <wire x1="287.02" y1="215.9" x2="287.02" y2="193.04" width="0.1524" layer="91"/>
@@ -4842,7 +4842,7 @@ by exp-lbrs.ulp</description>
 <wire x1="266.7" y1="187.96" x2="287.02" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="287.02" y1="187.96" x2="289.56" y2="187.96" width="0.1524" layer="91"/>
 <junction x="287.02" y="187.96"/>
-<pinref part="U$5" gate="G$1" pin="8"/>
+<pinref part="J5" gate="G$1" pin="8"/>
 <wire x1="287.02" y1="193.04" x2="287.02" y2="187.96" width="0.1524" layer="91"/>
 <junction x="287.02" y="193.04"/>
 </segment>
@@ -4851,7 +4851,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="370.84" y1="312.42" x2="370.84" y2="289.56" width="0.1524" layer="91"/>
 <label x="370.84" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="9"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="9"/>
 </segment>
 <segment>
 <wire x1="340.36" y1="215.9" x2="340.36" y2="193.04" width="0.1524" layer="91"/>
@@ -4860,7 +4860,7 @@ by exp-lbrs.ulp</description>
 <pinref part="R6" gate="G$1" pin="1"/>
 <wire x1="337.82" y1="170.18" x2="340.36" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="340.36" y1="170.18" x2="360.68" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="U$6" gate="G$1" pin="1"/>
+<pinref part="J6" gate="G$1" pin="1"/>
 <wire x1="340.36" y1="193.04" x2="340.36" y2="170.18" width="0.1524" layer="91"/>
 <junction x="340.36" y="170.18"/>
 <junction x="340.36" y="193.04"/>
@@ -4870,7 +4870,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="373.38" y1="312.42" x2="373.38" y2="289.56" width="0.1524" layer="91"/>
 <label x="373.38" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="8"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="8"/>
 </segment>
 <segment>
 <wire x1="342.9" y1="215.9" x2="342.9" y2="193.04" width="0.1524" layer="91"/>
@@ -4880,7 +4880,7 @@ by exp-lbrs.ulp</description>
 <wire x1="337.82" y1="172.72" x2="342.9" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="342.9" y1="172.72" x2="360.68" y2="172.72" width="0.1524" layer="91"/>
 <junction x="342.9" y="172.72"/>
-<pinref part="U$6" gate="G$1" pin="2"/>
+<pinref part="J6" gate="G$1" pin="2"/>
 <wire x1="342.9" y1="193.04" x2="342.9" y2="172.72" width="0.1524" layer="91"/>
 <junction x="342.9" y="193.04"/>
 </segment>
@@ -4889,7 +4889,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="375.92" y1="312.42" x2="375.92" y2="289.56" width="0.1524" layer="91"/>
 <label x="375.92" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="7"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="7"/>
 </segment>
 <segment>
 <wire x1="345.44" y1="215.9" x2="345.44" y2="193.04" width="0.1524" layer="91"/>
@@ -4900,7 +4900,7 @@ by exp-lbrs.ulp</description>
 <wire x1="345.44" y1="175.26" x2="360.68" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="345.44" y1="175.26" x2="345.44" y2="193.04" width="0.1524" layer="91"/>
 <junction x="345.44" y="175.26"/>
-<pinref part="U$6" gate="G$1" pin="3"/>
+<pinref part="J6" gate="G$1" pin="3"/>
 <junction x="345.44" y="193.04"/>
 </segment>
 </net>
@@ -4908,7 +4908,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="378.46" y1="312.42" x2="378.46" y2="289.56" width="0.1524" layer="91"/>
 <label x="378.46" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="6"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="6"/>
 </segment>
 <segment>
 <wire x1="347.98" y1="215.9" x2="347.98" y2="193.04" width="0.1524" layer="91"/>
@@ -4918,7 +4918,7 @@ by exp-lbrs.ulp</description>
 <wire x1="337.82" y1="177.8" x2="347.98" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="347.98" y1="177.8" x2="360.68" y2="177.8" width="0.1524" layer="91"/>
 <junction x="347.98" y="177.8"/>
-<pinref part="U$6" gate="G$1" pin="4"/>
+<pinref part="J6" gate="G$1" pin="4"/>
 <wire x1="347.98" y1="193.04" x2="347.98" y2="177.8" width="0.1524" layer="91"/>
 <junction x="347.98" y="193.04"/>
 </segment>
@@ -4927,7 +4927,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="381" y1="312.42" x2="381" y2="289.56" width="0.1524" layer="91"/>
 <label x="381" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="5"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="5"/>
 </segment>
 <segment>
 <wire x1="350.52" y1="215.9" x2="350.52" y2="193.04" width="0.1524" layer="91"/>
@@ -4937,7 +4937,7 @@ by exp-lbrs.ulp</description>
 <wire x1="360.68" y1="180.34" x2="350.52" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="350.52" y1="180.34" x2="337.82" y2="180.34" width="0.1524" layer="91"/>
 <junction x="350.52" y="180.34"/>
-<pinref part="U$6" gate="G$1" pin="5"/>
+<pinref part="J6" gate="G$1" pin="5"/>
 <wire x1="350.52" y1="193.04" x2="350.52" y2="180.34" width="0.1524" layer="91"/>
 <junction x="350.52" y="193.04"/>
 </segment>
@@ -4946,7 +4946,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="383.54" y1="312.42" x2="383.54" y2="289.56" width="0.1524" layer="91"/>
 <label x="383.54" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="4"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="4"/>
 </segment>
 <segment>
 <wire x1="353.06" y1="215.9" x2="353.06" y2="193.04" width="0.1524" layer="91"/>
@@ -4956,7 +4956,7 @@ by exp-lbrs.ulp</description>
 <wire x1="337.82" y1="182.88" x2="353.06" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="353.06" y1="182.88" x2="360.68" y2="182.88" width="0.1524" layer="91"/>
 <junction x="353.06" y="182.88"/>
-<pinref part="U$6" gate="G$1" pin="6"/>
+<pinref part="J6" gate="G$1" pin="6"/>
 <wire x1="353.06" y1="193.04" x2="353.06" y2="182.88" width="0.1524" layer="91"/>
 <junction x="353.06" y="193.04"/>
 </segment>
@@ -4965,7 +4965,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="386.08" y1="312.42" x2="386.08" y2="289.56" width="0.1524" layer="91"/>
 <label x="386.08" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="3"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="3"/>
 </segment>
 <segment>
 <wire x1="355.6" y1="215.9" x2="355.6" y2="193.04" width="0.1524" layer="91"/>
@@ -4975,7 +4975,7 @@ by exp-lbrs.ulp</description>
 <wire x1="337.82" y1="185.42" x2="355.6" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="355.6" y1="185.42" x2="360.68" y2="185.42" width="0.1524" layer="91"/>
 <junction x="355.6" y="185.42"/>
-<pinref part="U$6" gate="G$1" pin="7"/>
+<pinref part="J6" gate="G$1" pin="7"/>
 <wire x1="355.6" y1="193.04" x2="355.6" y2="185.42" width="0.1524" layer="91"/>
 <junction x="355.6" y="193.04"/>
 </segment>
@@ -4984,7 +4984,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="388.62" y1="312.42" x2="388.62" y2="289.56" width="0.1524" layer="91"/>
 <label x="388.62" y="312.42" size="1.27" layer="95" rot="MR90" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="2"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <wire x1="358.14" y1="215.9" x2="358.14" y2="193.04" width="0.1524" layer="91"/>
@@ -4995,7 +4995,7 @@ by exp-lbrs.ulp</description>
 <wire x1="358.14" y1="187.96" x2="360.68" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="358.14" y1="187.96" x2="358.14" y2="193.04" width="0.1524" layer="91"/>
 <junction x="358.14" y="187.96"/>
-<pinref part="U$6" gate="G$1" pin="8"/>
+<pinref part="J6" gate="G$1" pin="8"/>
 <junction x="358.14" y="193.04"/>
 </segment>
 </net>
@@ -5003,7 +5003,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="386.08" y1="251.46" x2="386.08" y2="274.32" width="0.1524" layer="91"/>
 <label x="386.08" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="68"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="68"/>
 </segment>
 <segment>
 <wire x1="411.48" y1="215.9" x2="411.48" y2="193.04" width="0.1524" layer="91"/>
@@ -5012,7 +5012,7 @@ by exp-lbrs.ulp</description>
 <pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="408.94" y1="170.18" x2="411.48" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="411.48" y1="170.18" x2="431.8" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="U$7" gate="G$1" pin="1"/>
+<pinref part="J7" gate="G$1" pin="1"/>
 <wire x1="411.48" y1="193.04" x2="411.48" y2="170.18" width="0.1524" layer="91"/>
 <junction x="411.48" y="170.18"/>
 <junction x="411.48" y="193.04"/>
@@ -5022,7 +5022,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="383.54" y1="251.46" x2="383.54" y2="274.32" width="0.1524" layer="91"/>
 <label x="383.54" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="67"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="67"/>
 </segment>
 <segment>
 <wire x1="414.02" y1="215.9" x2="414.02" y2="193.04" width="0.1524" layer="91"/>
@@ -5032,7 +5032,7 @@ by exp-lbrs.ulp</description>
 <wire x1="408.94" y1="172.72" x2="414.02" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="414.02" y1="172.72" x2="431.8" y2="172.72" width="0.1524" layer="91"/>
 <junction x="414.02" y="172.72"/>
-<pinref part="U$7" gate="G$1" pin="2"/>
+<pinref part="J7" gate="G$1" pin="2"/>
 <wire x1="414.02" y1="193.04" x2="414.02" y2="172.72" width="0.1524" layer="91"/>
 <junction x="414.02" y="193.04"/>
 </segment>
@@ -5041,7 +5041,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="381" y1="251.46" x2="381" y2="274.32" width="0.1524" layer="91"/>
 <label x="381" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="66"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="66"/>
 </segment>
 <segment>
 <wire x1="416.56" y1="215.9" x2="416.56" y2="193.04" width="0.1524" layer="91"/>
@@ -5051,7 +5051,7 @@ by exp-lbrs.ulp</description>
 <wire x1="408.94" y1="175.26" x2="416.56" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="416.56" y1="175.26" x2="431.8" y2="175.26" width="0.1524" layer="91"/>
 <junction x="416.56" y="175.26"/>
-<pinref part="U$7" gate="G$1" pin="3"/>
+<pinref part="J7" gate="G$1" pin="3"/>
 <wire x1="416.56" y1="193.04" x2="416.56" y2="175.26" width="0.1524" layer="91"/>
 <junction x="416.56" y="193.04"/>
 </segment>
@@ -5060,7 +5060,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="378.46" y1="251.46" x2="378.46" y2="274.32" width="0.1524" layer="91"/>
 <label x="378.46" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="65"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="65"/>
 </segment>
 <segment>
 <wire x1="419.1" y1="215.9" x2="419.1" y2="193.04" width="0.1524" layer="91"/>
@@ -5070,7 +5070,7 @@ by exp-lbrs.ulp</description>
 <wire x1="408.94" y1="177.8" x2="419.1" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="419.1" y1="177.8" x2="431.8" y2="177.8" width="0.1524" layer="91"/>
 <junction x="419.1" y="177.8"/>
-<pinref part="U$7" gate="G$1" pin="4"/>
+<pinref part="J7" gate="G$1" pin="4"/>
 <wire x1="419.1" y1="193.04" x2="419.1" y2="177.8" width="0.1524" layer="91"/>
 <junction x="419.1" y="193.04"/>
 </segment>
@@ -5079,7 +5079,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="375.92" y1="251.46" x2="375.92" y2="274.32" width="0.1524" layer="91"/>
 <label x="375.92" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="64"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="64"/>
 </segment>
 <segment>
 <wire x1="421.64" y1="215.9" x2="421.64" y2="193.04" width="0.1524" layer="91"/>
@@ -5089,7 +5089,7 @@ by exp-lbrs.ulp</description>
 <wire x1="431.8" y1="180.34" x2="421.64" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="180.34" x2="408.94" y2="180.34" width="0.1524" layer="91"/>
 <junction x="421.64" y="180.34"/>
-<pinref part="U$7" gate="G$1" pin="5"/>
+<pinref part="J7" gate="G$1" pin="5"/>
 <wire x1="421.64" y1="193.04" x2="421.64" y2="180.34" width="0.1524" layer="91"/>
 <junction x="421.64" y="193.04"/>
 </segment>
@@ -5098,7 +5098,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="373.38" y1="251.46" x2="373.38" y2="274.32" width="0.1524" layer="91"/>
 <label x="373.38" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="63"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="63"/>
 </segment>
 <segment>
 <wire x1="424.18" y1="215.9" x2="424.18" y2="193.04" width="0.1524" layer="91"/>
@@ -5108,7 +5108,7 @@ by exp-lbrs.ulp</description>
 <wire x1="408.94" y1="182.88" x2="424.18" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="424.18" y1="182.88" x2="431.8" y2="182.88" width="0.1524" layer="91"/>
 <junction x="424.18" y="182.88"/>
-<pinref part="U$7" gate="G$1" pin="6"/>
+<pinref part="J7" gate="G$1" pin="6"/>
 <wire x1="424.18" y1="193.04" x2="424.18" y2="182.88" width="0.1524" layer="91"/>
 <junction x="424.18" y="193.04"/>
 </segment>
@@ -5117,7 +5117,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="370.84" y1="251.46" x2="370.84" y2="274.32" width="0.1524" layer="91"/>
 <label x="370.84" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="62"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="62"/>
 </segment>
 <segment>
 <wire x1="426.72" y1="215.9" x2="426.72" y2="193.04" width="0.1524" layer="91"/>
@@ -5127,7 +5127,7 @@ by exp-lbrs.ulp</description>
 <wire x1="408.94" y1="185.42" x2="426.72" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="426.72" y1="185.42" x2="431.8" y2="185.42" width="0.1524" layer="91"/>
 <junction x="426.72" y="185.42"/>
-<pinref part="U$7" gate="G$1" pin="7"/>
+<pinref part="J7" gate="G$1" pin="7"/>
 <wire x1="426.72" y1="193.04" x2="426.72" y2="185.42" width="0.1524" layer="91"/>
 <junction x="426.72" y="193.04"/>
 </segment>
@@ -5136,7 +5136,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="368.3" y1="251.46" x2="368.3" y2="274.32" width="0.1524" layer="91"/>
 <label x="368.3" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="61"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="61"/>
 </segment>
 <segment>
 <wire x1="429.26" y1="215.9" x2="429.26" y2="193.04" width="0.1524" layer="91"/>
@@ -5146,7 +5146,7 @@ by exp-lbrs.ulp</description>
 <wire x1="408.94" y1="187.96" x2="429.26" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="429.26" y1="187.96" x2="431.8" y2="187.96" width="0.1524" layer="91"/>
 <junction x="429.26" y="187.96"/>
-<pinref part="U$7" gate="G$1" pin="8"/>
+<pinref part="J7" gate="G$1" pin="8"/>
 <wire x1="429.26" y1="193.04" x2="429.26" y2="187.96" width="0.1524" layer="91"/>
 <junction x="429.26" y="193.04"/>
 </segment>
@@ -5155,7 +5155,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="347.98" y1="251.46" x2="347.98" y2="274.32" width="0.1524" layer="91"/>
 <label x="347.98" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="53"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="53"/>
 </segment>
 <segment>
 <wire x1="500.38" y1="215.9" x2="500.38" y2="193.04" width="0.1524" layer="91"/>
@@ -5165,7 +5165,7 @@ by exp-lbrs.ulp</description>
 <wire x1="480.06" y1="187.96" x2="500.38" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="500.38" y1="187.96" x2="502.92" y2="187.96" width="0.1524" layer="91"/>
 <junction x="500.38" y="187.96"/>
-<pinref part="U$8" gate="G$1" pin="8"/>
+<pinref part="J8" gate="G$1" pin="8"/>
 <wire x1="500.38" y1="193.04" x2="500.38" y2="187.96" width="0.1524" layer="91"/>
 <junction x="500.38" y="193.04"/>
 </segment>
@@ -5174,7 +5174,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="350.52" y1="251.46" x2="350.52" y2="274.32" width="0.1524" layer="91"/>
 <label x="350.52" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="54"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="54"/>
 </segment>
 <segment>
 <wire x1="497.84" y1="215.9" x2="497.84" y2="193.04" width="0.1524" layer="91"/>
@@ -5184,7 +5184,7 @@ by exp-lbrs.ulp</description>
 <wire x1="480.06" y1="185.42" x2="497.84" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="497.84" y1="185.42" x2="502.92" y2="185.42" width="0.1524" layer="91"/>
 <junction x="497.84" y="185.42"/>
-<pinref part="U$8" gate="G$1" pin="7"/>
+<pinref part="J8" gate="G$1" pin="7"/>
 <wire x1="497.84" y1="193.04" x2="497.84" y2="185.42" width="0.1524" layer="91"/>
 <junction x="497.84" y="193.04"/>
 </segment>
@@ -5193,7 +5193,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="353.06" y1="251.46" x2="353.06" y2="274.32" width="0.1524" layer="91"/>
 <label x="353.06" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="55"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="55"/>
 </segment>
 <segment>
 <wire x1="495.3" y1="215.9" x2="495.3" y2="193.04" width="0.1524" layer="91"/>
@@ -5203,7 +5203,7 @@ by exp-lbrs.ulp</description>
 <wire x1="480.06" y1="182.88" x2="495.3" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="495.3" y1="182.88" x2="502.92" y2="182.88" width="0.1524" layer="91"/>
 <junction x="495.3" y="182.88"/>
-<pinref part="U$8" gate="G$1" pin="6"/>
+<pinref part="J8" gate="G$1" pin="6"/>
 <wire x1="495.3" y1="193.04" x2="495.3" y2="182.88" width="0.1524" layer="91"/>
 <junction x="495.3" y="193.04"/>
 </segment>
@@ -5212,7 +5212,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="355.6" y1="251.46" x2="355.6" y2="274.32" width="0.1524" layer="91"/>
 <label x="355.6" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="56"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="56"/>
 </segment>
 <segment>
 <wire x1="492.76" y1="215.9" x2="492.76" y2="193.04" width="0.1524" layer="91"/>
@@ -5222,7 +5222,7 @@ by exp-lbrs.ulp</description>
 <wire x1="502.92" y1="180.34" x2="492.76" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="492.76" y1="180.34" x2="480.06" y2="180.34" width="0.1524" layer="91"/>
 <junction x="492.76" y="180.34"/>
-<pinref part="U$8" gate="G$1" pin="5"/>
+<pinref part="J8" gate="G$1" pin="5"/>
 <wire x1="492.76" y1="193.04" x2="492.76" y2="180.34" width="0.1524" layer="91"/>
 <junction x="492.76" y="193.04"/>
 </segment>
@@ -5231,7 +5231,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="358.14" y1="251.46" x2="358.14" y2="274.32" width="0.1524" layer="91"/>
 <label x="358.14" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="57"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="57"/>
 </segment>
 <segment>
 <wire x1="490.22" y1="215.9" x2="490.22" y2="193.04" width="0.1524" layer="91"/>
@@ -5241,7 +5241,7 @@ by exp-lbrs.ulp</description>
 <wire x1="480.06" y1="177.8" x2="490.22" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="490.22" y1="177.8" x2="502.92" y2="177.8" width="0.1524" layer="91"/>
 <junction x="490.22" y="177.8"/>
-<pinref part="U$8" gate="G$1" pin="4"/>
+<pinref part="J8" gate="G$1" pin="4"/>
 <wire x1="490.22" y1="193.04" x2="490.22" y2="177.8" width="0.1524" layer="91"/>
 <junction x="490.22" y="193.04"/>
 </segment>
@@ -5250,7 +5250,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="360.68" y1="251.46" x2="360.68" y2="274.32" width="0.1524" layer="91"/>
 <label x="360.68" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="58"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="58"/>
 </segment>
 <segment>
 <wire x1="487.68" y1="215.9" x2="487.68" y2="193.04" width="0.1524" layer="91"/>
@@ -5260,7 +5260,7 @@ by exp-lbrs.ulp</description>
 <wire x1="480.06" y1="175.26" x2="487.68" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="487.68" y1="175.26" x2="502.92" y2="175.26" width="0.1524" layer="91"/>
 <junction x="487.68" y="175.26"/>
-<pinref part="U$8" gate="G$1" pin="3"/>
+<pinref part="J8" gate="G$1" pin="3"/>
 <wire x1="487.68" y1="193.04" x2="487.68" y2="175.26" width="0.1524" layer="91"/>
 <junction x="487.68" y="193.04"/>
 </segment>
@@ -5269,7 +5269,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="363.22" y1="251.46" x2="363.22" y2="274.32" width="0.1524" layer="91"/>
 <label x="363.22" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="59"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="59"/>
 </segment>
 <segment>
 <wire x1="485.14" y1="215.9" x2="485.14" y2="193.04" width="0.1524" layer="91"/>
@@ -5279,7 +5279,7 @@ by exp-lbrs.ulp</description>
 <wire x1="480.06" y1="172.72" x2="485.14" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="485.14" y1="172.72" x2="502.92" y2="172.72" width="0.1524" layer="91"/>
 <junction x="485.14" y="172.72"/>
-<pinref part="U$8" gate="G$1" pin="2"/>
+<pinref part="J8" gate="G$1" pin="2"/>
 <wire x1="485.14" y1="193.04" x2="485.14" y2="172.72" width="0.1524" layer="91"/>
 <junction x="485.14" y="193.04"/>
 </segment>
@@ -5288,7 +5288,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <wire x1="365.76" y1="251.46" x2="365.76" y2="274.32" width="0.1524" layer="91"/>
 <label x="365.76" y="251.46" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="J1" gate="G$1" pin="60"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="60"/>
 </segment>
 <segment>
 <wire x1="482.6" y1="215.9" x2="482.6" y2="193.04" width="0.1524" layer="91"/>
@@ -5297,7 +5297,7 @@ by exp-lbrs.ulp</description>
 <pinref part="R8" gate="G$1" pin="1"/>
 <wire x1="480.06" y1="170.18" x2="482.6" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="170.18" x2="502.92" y2="170.18" width="0.1524" layer="91"/>
-<pinref part="U$8" gate="G$1" pin="1"/>
+<pinref part="J8" gate="G$1" pin="1"/>
 <wire x1="482.6" y1="193.04" x2="482.6" y2="170.18" width="0.1524" layer="91"/>
 <junction x="482.6" y="170.18"/>
 <junction x="482.6" y="193.04"/>
@@ -5305,7 +5305,7 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="ISTIM" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="1"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="1"/>
 <wire x1="391.16" y1="289.56" x2="391.16" y2="312.42" width="0.1524" layer="91"/>
 <label x="391.16" y="312.42" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -5322,7 +5322,7 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="CAT0" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="34"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="34"/>
 <wire x1="307.34" y1="289.56" x2="307.34" y2="312.42" width="0.1524" layer="91"/>
 <label x="307.34" y="312.42" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -5339,7 +5339,7 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="CAT1" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="35"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="35"/>
 <wire x1="304.8" y1="289.56" x2="304.8" y2="312.42" width="0.1524" layer="91"/>
 <label x="304.8" y="312.42" size="1.27" layer="95" rot="R90" xref="yes"/>
 </segment>
@@ -5356,7 +5356,7 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="AN" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="36"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="36"/>
 <wire x1="304.8" y1="274.32" x2="304.8" y2="251.46" width="0.1524" layer="91"/>
 <label x="304.8" y="251.46" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>

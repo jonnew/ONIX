@@ -1104,19 +1104,19 @@ design rules under a new name.</description>
 <attribute name="NAME" x="39.624" y="-35.175" size="1.016" layer="21" font="vector" ratio="18" align="center"/>
 <attribute name="VALUE" x="35.814" y="-41.91" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="R17" library="jonnew" package="0805" value="10k" x="-12.7" y="-60.96" smashed="yes">
+<element name="R9" library="jonnew" package="0805" value="10k" x="-12.7" y="-60.96" smashed="yes">
 <attribute name="NAME" x="-14.478" y="-59.69" size="1.016" layer="25" font="vector" ratio="18"/>
 <attribute name="VALUE" x="-14.732" y="-63.246" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="R18" library="jonnew" package="0805" value="10k" x="-7.62" y="-60.96" smashed="yes">
+<element name="R11" library="jonnew" package="0805" value="10k" x="-7.62" y="-60.96" smashed="yes">
 <attribute name="NAME" x="-9.398" y="-59.69" size="1.016" layer="25" font="vector" ratio="18"/>
 <attribute name="VALUE" x="-9.652" y="-63.246" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="R19" library="jonnew" package="0805" value="100" x="-12.7" y="-66.04" smashed="yes" rot="R90">
+<element name="R10" library="jonnew" package="0805" value="100" x="-12.7" y="-66.04" smashed="yes" rot="R90">
 <attribute name="NAME" x="-13.97" y="-67.818" size="1.016" layer="25" font="vector" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="-10.414" y="-68.072" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R20" library="jonnew" package="0805" value="100" x="-7.62" y="-66.04" smashed="yes" rot="R90">
+<element name="R12" library="jonnew" package="0805" value="100" x="-7.62" y="-66.04" smashed="yes" rot="R90">
 <attribute name="NAME" x="-8.89" y="-67.818" size="1.016" layer="25" font="vector" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="-5.334" y="-68.072" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -1196,28 +1196,28 @@ design rules under a new name.</description>
 <attribute name="NAME" x="40.894" y="-47.625" size="1.016" layer="21" font="vector" ratio="18" rot="R180" align="center"/>
 <attribute name="VALUE" x="43.434" y="-40.64" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
-<element name="U$1" library="test-board" package="1X09" value="" x="-31.75" y="-5.08" smashed="yes" rot="R270">
+<element name="J1" library="test-board" package="1X09" value="" x="-31.75" y="-5.08" smashed="yes" rot="R270">
 <attribute name="VALUE" x="-35.56" y="-3.81" size="1.27" layer="27" font="vector" ratio="18" rot="R270"/>
 </element>
-<element name="U$2" library="test-board" package="1X09" value="" x="-31.75" y="20.32" smashed="yes" rot="R270">
+<element name="J2" library="test-board" package="1X09" value="" x="-31.75" y="20.32" smashed="yes" rot="R270">
 <attribute name="VALUE" x="-35.56" y="21.59" size="1.27" layer="27" font="vector" ratio="18" rot="R270"/>
 </element>
-<element name="U$3" library="test-board" package="1X09" value="" x="-5.08" y="31.75" smashed="yes" rot="R180">
+<element name="J3" library="test-board" package="1X09" value="" x="-5.08" y="31.75" smashed="yes" rot="R180">
 <attribute name="VALUE" x="-3.81" y="35.56" size="1.27" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
-<element name="U$4" library="test-board" package="1X09" value="" x="20.32" y="31.75" smashed="yes" rot="R180">
+<element name="J4" library="test-board" package="1X09" value="" x="20.32" y="31.75" smashed="yes" rot="R180">
 <attribute name="VALUE" x="21.59" y="35.56" size="1.27" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
-<element name="U$5" library="test-board" package="1X09" value="" x="-20.32" y="-31.75" smashed="yes">
+<element name="J5" library="test-board" package="1X09" value="" x="-20.32" y="-31.75" smashed="yes">
 <attribute name="VALUE" x="-21.59" y="-35.56" size="1.27" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="U$6" library="test-board" package="1X09" value="" x="5.08" y="-31.75" smashed="yes">
+<element name="J6" library="test-board" package="1X09" value="" x="5.08" y="-31.75" smashed="yes">
 <attribute name="VALUE" x="3.81" y="-35.56" size="1.27" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="U$7" library="test-board" package="1X09" value="" x="31.75" y="-20.32" smashed="yes" rot="R90">
+<element name="J7" library="test-board" package="1X09" value="" x="31.75" y="-20.32" smashed="yes" rot="R90">
 <attribute name="VALUE" x="35.56" y="-21.59" size="1.27" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="U$8" library="test-board" package="1X09" value="" x="31.75" y="5.08" smashed="yes" rot="R90">
+<element name="J8" library="test-board" package="1X09" value="" x="31.75" y="5.08" smashed="yes" rot="R90">
 <attribute name="VALUE" x="35.56" y="3.81" size="1.27" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="TP1" library="jonnew" package="P1-20" value="GND" x="-44.45" y="-63.5" smashed="yes">
@@ -1263,7 +1263,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="45.72" y="-60.96" size="1.016" layer="25" font="vector" ratio="18" rot="R90" align="center"/>
 <attribute name="VALUE" x="31.75" y="-64.77" size="1.016" layer="27" font="vector" ratio="18" align="center"/>
 </element>
-<element name="J1" library="jonnew" package="DF40-70REC" value="DF40-REC" x="0" y="0" smashed="yes" rot="R180">
+<element name="HEADSTAGE" library="jonnew" package="DF40-70REC" value="DF40-REC" x="0" y="0" smashed="yes" rot="R180">
 <attribute name="NAME" x="0" y="-2.794" size="1.016" layer="25" font="vector" ratio="18" rot="R180" align="center"/>
 <attribute name="VALUE" x="0" y="-4.064" size="1.016" layer="27" font="vector" ratio="18" rot="R180" align="center"/>
 </element>
@@ -1377,16 +1377,16 @@ design rules under a new name.</description>
 <contactref element="GND_IMP" pad="1"/>
 <contactref element="R_GND" pad="2"/>
 <contactref element="SIG_IN" pad="P$GND"/>
-<contactref element="R19" pad="1"/>
-<contactref element="R20" pad="1"/>
-<contactref element="U$5" pad="9"/>
-<contactref element="U$6" pad="9"/>
-<contactref element="U$7" pad="9"/>
-<contactref element="U$8" pad="9"/>
-<contactref element="U$1" pad="9"/>
-<contactref element="U$2" pad="9"/>
-<contactref element="U$3" pad="9"/>
-<contactref element="U$4" pad="9"/>
+<contactref element="R10" pad="1"/>
+<contactref element="R12" pad="1"/>
+<contactref element="J5" pad="9"/>
+<contactref element="J6" pad="9"/>
+<contactref element="J7" pad="9"/>
+<contactref element="J8" pad="9"/>
+<contactref element="J1" pad="9"/>
+<contactref element="J2" pad="9"/>
+<contactref element="J3" pad="9"/>
+<contactref element="J4" pad="9"/>
 <via x="-12.7" y="-68.58" extent="1-16" drill="0.6"/>
 <via x="-7.62" y="-68.58" extent="1-16" drill="0.6"/>
 <wire x1="-12.7" y1="-67.0814" x2="-12.7" y2="-68.58" width="0.254" layer="1"/>
@@ -1404,8 +1404,8 @@ design rules under a new name.</description>
 <contactref element="BANK_SELECT" pad="-"/>
 </signal>
 <signal name="-80DB">
-<contactref element="R18" pad="2"/>
-<contactref element="R20" pad="2"/>
+<contactref element="R11" pad="2"/>
+<contactref element="R12" pad="2"/>
 <contactref element="SIG_GAIN" pad="1"/>
 <wire x1="-6.5786" y1="-60.96" x2="5.08" y2="-60.96" width="0.254" layer="1"/>
 <wire x1="-6.5786" y1="-60.96" x2="-6.5786" y2="-63.9572" width="0.254" layer="1"/>
@@ -1416,7 +1416,7 @@ design rules under a new name.</description>
 </signal>
 <signal name="SIG_IN">
 <contactref element="SIG_IN" pad="P$SIG"/>
-<contactref element="R17" pad="1"/>
+<contactref element="R9" pad="1"/>
 <contactref element="TP7" pad="TP"/>
 <wire x1="-30.48" y1="-60.96" x2="-30.48" y2="-59.69" width="0.3048" layer="1"/>
 <wire x1="-30.48" y1="-58.42" x2="-15.0114" y2="-58.42" width="0.254" layer="1"/>
@@ -1426,9 +1426,9 @@ design rules under a new name.</description>
 <wire x1="-30.48" y1="-58.42" x2="-44.45" y2="-58.42" width="0.254" layer="1"/>
 </signal>
 <signal name="-40DB">
-<contactref element="R18" pad="1"/>
-<contactref element="R19" pad="2"/>
-<contactref element="R17" pad="2"/>
+<contactref element="R11" pad="1"/>
+<contactref element="R10" pad="2"/>
+<contactref element="R9" pad="2"/>
 <contactref element="SIG_GAIN" pad="3"/>
 <wire x1="-8.6614" y1="-60.96" x2="-8.6614" y2="-59.4614" width="0.254" layer="1"/>
 <wire x1="-8.6614" y1="-59.4614" x2="-7.62" y2="-58.42" width="0.254" layer="1"/>
@@ -1444,7 +1444,7 @@ design rules under a new name.</description>
 </signal>
 <signal name="HS_GND">
 <contactref element="GND_IMP" pad="2"/>
-<contactref element="J1" pad="70"/>
+<contactref element="HEADSTAGE" pad="70"/>
 <wire x1="6.8" y1="1.17" x2="6.8" y2="0.312" width="0.1778" layer="1"/>
 <wire x1="6.8" y1="0.312" x2="7.62" y2="-0.508" width="0.254" layer="1"/>
 <wire x1="7.62" y1="-0.508" x2="7.62" y2="-4.826" width="0.3048" layer="1"/>
@@ -1453,7 +1453,7 @@ design rules under a new name.</description>
 </signal>
 <signal name="REF">
 <contactref element="REF_TO_GND" pad="2"/>
-<contactref element="J1" pad="69"/>
+<contactref element="HEADSTAGE" pad="69"/>
 <wire x1="6.4" y1="1.17" x2="6.4" y2="2.06914375" width="0.1778" layer="1"/>
 <wire x1="6.4" y1="2.06914375" x2="7.83685625" y2="2.06914375" width="0.254" layer="1"/>
 <wire x1="7.83685625" y1="2.06914375" x2="8.89" y2="1.016" width="0.254" layer="1"/>
@@ -1540,10 +1540,10 @@ design rules under a new name.</description>
 <wire x1="8.89" y1="-64.77" x2="8.636" y2="-64.516" width="0.254" layer="1"/>
 </signal>
 <signal name="TT0D">
-<contactref element="J1" pad="49"/>
+<contactref element="HEADSTAGE" pad="49"/>
 <contactref element="R4" pad="4"/>
 <contactref element="S4" pad="13"/>
-<contactref element="U$4" pad="4"/>
+<contactref element="J4" pad="4"/>
 <wire x1="12.7" y1="40.64" x2="12.7" y2="35.56" width="0.254" layer="1"/>
 <wire x1="12.7" y1="35.56" x2="12.7" y2="31.75" width="0.254" layer="1"/>
 <wire x1="-1.6" y1="1.17" x2="-1.6" y2="9.068" width="0.1778" layer="1"/>
@@ -1551,10 +1551,10 @@ design rules under a new name.</description>
 <wire x1="-1.6" y1="9.068" x2="12.7" y2="23.368" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT0C">
-<contactref element="J1" pad="50"/>
+<contactref element="HEADSTAGE" pad="50"/>
 <contactref element="R4" pad="3"/>
 <contactref element="S4" pad="14"/>
-<contactref element="U$4" pad="3"/>
+<contactref element="J4" pad="3"/>
 <wire x1="15.24" y1="31.75" x2="15.24" y2="35.56" width="0.254" layer="1"/>
 <wire x1="15.24" y1="35.56" x2="15.24" y2="40.64" width="0.254" layer="1"/>
 <wire x1="-1.2" y1="1.17" x2="-1.2" y2="8.706" width="0.1778" layer="1"/>
@@ -1562,10 +1562,10 @@ design rules under a new name.</description>
 <wire x1="15.24" y1="25.146" x2="15.24" y2="31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT0B">
-<contactref element="J1" pad="51"/>
+<contactref element="HEADSTAGE" pad="51"/>
 <contactref element="R4" pad="2"/>
 <contactref element="S4" pad="15"/>
-<contactref element="U$4" pad="2"/>
+<contactref element="J4" pad="2"/>
 <wire x1="17.78" y1="40.64" x2="17.78" y2="35.56" width="0.254" layer="1"/>
 <wire x1="17.78" y1="31.75" x2="17.78" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-0.8" y1="1.17" x2="-0.8" y2="8.344" width="0.1778" layer="1"/>
@@ -1573,10 +1573,10 @@ design rules under a new name.</description>
 <wire x1="17.78" y1="26.924" x2="17.78" y2="31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT0A">
-<contactref element="J1" pad="52"/>
+<contactref element="HEADSTAGE" pad="52"/>
 <contactref element="R4" pad="1"/>
 <contactref element="S4" pad="16"/>
-<contactref element="U$4" pad="1"/>
+<contactref element="J4" pad="1"/>
 <wire x1="20.32" y1="31.75" x2="20.32" y2="35.56" width="0.254" layer="1"/>
 <wire x1="20.32" y1="35.56" x2="20.32" y2="40.64" width="0.254" layer="1"/>
 <wire x1="-0.4" y1="1.17" x2="-0.4" y2="7.982" width="0.1778" layer="1"/>
@@ -1584,10 +1584,10 @@ design rules under a new name.</description>
 <wire x1="20.32" y1="28.702" x2="20.32" y2="31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT1A">
-<contactref element="J1" pad="48"/>
+<contactref element="HEADSTAGE" pad="48"/>
 <contactref element="S4" pad="12"/>
 <contactref element="R4" pad="5"/>
-<contactref element="U$4" pad="5"/>
+<contactref element="J4" pad="5"/>
 <wire x1="10.16" y1="31.75" x2="10.16" y2="35.56" width="0.254" layer="1"/>
 <wire x1="10.16" y1="35.56" x2="10.16" y2="40.64" width="0.254" layer="1"/>
 <wire x1="-2" y1="1.17" x2="-2" y2="9.43" width="0.1778" layer="1"/>
@@ -1595,10 +1595,10 @@ design rules under a new name.</description>
 <wire x1="-2" y1="9.43" x2="10.16" y2="21.59" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT1B">
-<contactref element="J1" pad="47"/>
+<contactref element="HEADSTAGE" pad="47"/>
 <contactref element="R4" pad="6"/>
 <contactref element="S4" pad="11"/>
-<contactref element="U$4" pad="6"/>
+<contactref element="J4" pad="6"/>
 <wire x1="7.62" y1="40.64" x2="7.62" y2="35.56" width="0.254" layer="1"/>
 <wire x1="7.62" y1="35.56" x2="7.62" y2="31.75" width="0.254" layer="1"/>
 <wire x1="-2.4" y1="1.17" x2="-2.4" y2="9.792" width="0.1778" layer="1"/>
@@ -1606,10 +1606,10 @@ design rules under a new name.</description>
 <wire x1="-2.4" y1="9.792" x2="7.62" y2="19.812" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT1C">
-<contactref element="J1" pad="46"/>
+<contactref element="HEADSTAGE" pad="46"/>
 <contactref element="R4" pad="7"/>
 <contactref element="S4" pad="10"/>
-<contactref element="U$4" pad="7"/>
+<contactref element="J4" pad="7"/>
 <wire x1="5.08" y1="31.75" x2="5.08" y2="35.56" width="0.254" layer="1"/>
 <wire x1="5.08" y1="35.56" x2="5.08" y2="40.64" width="0.254" layer="1"/>
 <wire x1="-2.8" y1="1.17" x2="-2.8" y2="10.154" width="0.1778" layer="1"/>
@@ -1617,10 +1617,10 @@ design rules under a new name.</description>
 <wire x1="5.08" y1="18.034" x2="5.08" y2="31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT1D">
-<contactref element="J1" pad="45"/>
+<contactref element="HEADSTAGE" pad="45"/>
 <contactref element="R4" pad="8"/>
 <contactref element="S4" pad="9"/>
-<contactref element="U$4" pad="8"/>
+<contactref element="J4" pad="8"/>
 <wire x1="2.54" y1="40.64" x2="2.54" y2="35.56" width="0.254" layer="1"/>
 <wire x1="2.54" y1="31.75" x2="2.54" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-3.2" y1="1.17" x2="-3.2" y2="10.516" width="0.1778" layer="1"/>
@@ -1628,10 +1628,10 @@ design rules under a new name.</description>
 <wire x1="2.54" y1="16.256" x2="2.54" y2="31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT2A">
-<contactref element="J1" pad="44"/>
+<contactref element="HEADSTAGE" pad="44"/>
 <contactref element="R3" pad="1"/>
 <contactref element="S3" pad="16"/>
-<contactref element="U$3" pad="1"/>
+<contactref element="J3" pad="1"/>
 <wire x1="-5.08" y1="31.75" x2="-5.08" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-5.08" y1="35.56" x2="-5.08" y2="40.64" width="0.254" layer="1"/>
 <wire x1="-3.6" y1="1.17" x2="-3.6" y2="10.458" width="0.1778" layer="1"/>
@@ -1639,10 +1639,10 @@ design rules under a new name.</description>
 <wire x1="-3.6" y1="10.458" x2="-5.08" y2="11.938" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT2B">
-<contactref element="J1" pad="43"/>
+<contactref element="HEADSTAGE" pad="43"/>
 <contactref element="R3" pad="2"/>
 <contactref element="S3" pad="15"/>
-<contactref element="U$3" pad="2"/>
+<contactref element="J3" pad="2"/>
 <wire x1="-7.62" y1="40.64" x2="-7.62" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-7.62" y1="35.56" x2="-7.62" y2="31.75" width="0.254" layer="1"/>
 <wire x1="-4" y1="1.17" x2="-4" y2="10.096" width="0.1778" layer="1"/>
@@ -1650,10 +1650,10 @@ design rules under a new name.</description>
 <wire x1="-4" y1="10.096" x2="-7.62" y2="13.716" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT2C">
-<contactref element="J1" pad="42"/>
+<contactref element="HEADSTAGE" pad="42"/>
 <contactref element="R3" pad="3"/>
 <contactref element="S3" pad="14"/>
-<contactref element="U$3" pad="3"/>
+<contactref element="J3" pad="3"/>
 <wire x1="-10.16" y1="31.75" x2="-10.16" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-10.16" y1="35.56" x2="-10.16" y2="40.64" width="0.254" layer="1"/>
 <wire x1="-4.4" y1="1.17" x2="-4.4" y2="9.734" width="0.1778" layer="1"/>
@@ -1661,10 +1661,10 @@ design rules under a new name.</description>
 <wire x1="-10.16" y1="15.494" x2="-10.16" y2="31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT2D">
-<contactref element="J1" pad="41"/>
+<contactref element="HEADSTAGE" pad="41"/>
 <contactref element="R3" pad="4"/>
 <contactref element="S3" pad="13"/>
-<contactref element="U$3" pad="4"/>
+<contactref element="J3" pad="4"/>
 <wire x1="-12.7" y1="40.64" x2="-12.7" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-12.7" y1="35.56" x2="-12.7" y2="31.75" width="0.254" layer="1"/>
 <wire x1="-4.8" y1="1.17" x2="-4.8" y2="9.398" width="0.1778" layer="1"/>
@@ -1674,10 +1674,10 @@ design rules under a new name.</description>
 <wire x1="-12.7" y1="17.298" x2="-12.7" y2="31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT3A">
-<contactref element="J1" pad="40"/>
+<contactref element="HEADSTAGE" pad="40"/>
 <contactref element="S3" pad="12"/>
 <contactref element="R3" pad="5"/>
-<contactref element="U$3" pad="5"/>
+<contactref element="J3" pad="5"/>
 <wire x1="-15.24" y1="31.75" x2="-15.24" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-15.24" y1="35.56" x2="-15.24" y2="40.64" width="0.254" layer="1"/>
 <wire x1="-5.2" y1="1.17" x2="-5.2" y2="9.01" width="0.1778" layer="1"/>
@@ -1685,10 +1685,10 @@ design rules under a new name.</description>
 <wire x1="-5.2" y1="9.01" x2="-15.24" y2="19.05" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT3B">
-<contactref element="J1" pad="39"/>
+<contactref element="HEADSTAGE" pad="39"/>
 <contactref element="R3" pad="6"/>
 <contactref element="S3" pad="11"/>
-<contactref element="U$3" pad="6"/>
+<contactref element="J3" pad="6"/>
 <wire x1="-17.78" y1="40.64" x2="-17.78" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-17.78" y1="35.56" x2="-17.78" y2="31.75" width="0.254" layer="1"/>
 <wire x1="-5.6" y1="1.17" x2="-5.6" y2="8.648" width="0.1778" layer="1"/>
@@ -1696,10 +1696,10 @@ design rules under a new name.</description>
 <wire x1="-5.6" y1="8.648" x2="-17.78" y2="20.828" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT3C">
-<contactref element="J1" pad="38"/>
+<contactref element="HEADSTAGE" pad="38"/>
 <contactref element="R3" pad="7"/>
 <contactref element="S3" pad="10"/>
-<contactref element="U$3" pad="7"/>
+<contactref element="J3" pad="7"/>
 <wire x1="-20.32" y1="31.75" x2="-20.32" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-20.32" y1="35.56" x2="-20.32" y2="40.64" width="0.254" layer="1"/>
 <wire x1="-6" y1="1.17" x2="-6" y2="8.286" width="0.1778" layer="1"/>
@@ -1707,10 +1707,10 @@ design rules under a new name.</description>
 <wire x1="-6" y1="8.286" x2="-20.32" y2="22.606" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT3D">
-<contactref element="J1" pad="37"/>
+<contactref element="HEADSTAGE" pad="37"/>
 <contactref element="R3" pad="8"/>
 <contactref element="S3" pad="9"/>
-<contactref element="U$3" pad="8"/>
+<contactref element="J3" pad="8"/>
 <wire x1="-22.86" y1="40.64" x2="-22.86" y2="35.56" width="0.254" layer="1"/>
 <wire x1="-22.86" y1="35.56" x2="-22.86" y2="31.75" width="0.254" layer="1"/>
 <wire x1="-6.4" y1="1.17" x2="-6.4" y2="7.924" width="0.1778" layer="1"/>
@@ -1718,10 +1718,10 @@ design rules under a new name.</description>
 <wire x1="-6.4" y1="7.924" x2="-22.86" y2="24.384" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT4A">
-<contactref element="J1" pad="33"/>
+<contactref element="HEADSTAGE" pad="33"/>
 <contactref element="R2" pad="1"/>
 <contactref element="S2" pad="16"/>
-<contactref element="U$2" pad="1"/>
+<contactref element="J2" pad="1"/>
 <wire x1="-35.56" y1="20.32" x2="-31.75" y2="20.32" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="20.32" x2="-35.56" y2="20.32" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="20.32" x2="-26.924" y2="20.32" width="0.1778" layer="1"/>
@@ -1733,10 +1733,10 @@ design rules under a new name.</description>
 <wire x1="-6" y1="-2.19" x2="-6" y2="-1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT4B">
-<contactref element="J1" pad="32"/>
+<contactref element="HEADSTAGE" pad="32"/>
 <contactref element="R2" pad="2"/>
 <contactref element="S2" pad="15"/>
-<contactref element="U$2" pad="2"/>
+<contactref element="J2" pad="2"/>
 <wire x1="-35.56" y1="17.78" x2="-31.75" y2="17.78" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="17.78" x2="-35.56" y2="17.78" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="17.78" x2="-25.4" y2="17.78" width="0.1778" layer="1"/>
@@ -1748,10 +1748,10 @@ design rules under a new name.</description>
 <wire x1="-5.6" y1="-2.552" x2="-5.6" y2="-1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT4C">
-<contactref element="J1" pad="31"/>
+<contactref element="HEADSTAGE" pad="31"/>
 <contactref element="R2" pad="3"/>
 <contactref element="S2" pad="14"/>
-<contactref element="U$2" pad="3"/>
+<contactref element="J2" pad="3"/>
 <wire x1="-35.56" y1="15.24" x2="-31.75" y2="15.24" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="15.24" x2="-35.56" y2="15.24" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="15.24" x2="-23.876" y2="15.24" width="0.1778" layer="1"/>
@@ -1763,10 +1763,10 @@ design rules under a new name.</description>
 <wire x1="-5.2" y1="-2.914" x2="-5.2" y2="-1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT4D">
-<contactref element="J1" pad="30"/>
+<contactref element="HEADSTAGE" pad="30"/>
 <contactref element="R2" pad="4"/>
 <contactref element="S2" pad="13"/>
-<contactref element="U$2" pad="4"/>
+<contactref element="J2" pad="4"/>
 <wire x1="-35.56" y1="12.7" x2="-31.75" y2="12.7" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="12.7" x2="-35.56" y2="12.7" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="12.7" x2="-22.352" y2="12.7" width="0.1778" layer="1"/>
@@ -1778,10 +1778,10 @@ design rules under a new name.</description>
 <wire x1="-4.8" y1="-3.276" x2="-4.8" y2="-1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT5A">
-<contactref element="J1" pad="29"/>
+<contactref element="HEADSTAGE" pad="29"/>
 <contactref element="S2" pad="12"/>
 <contactref element="R2" pad="5"/>
-<contactref element="U$2" pad="5"/>
+<contactref element="J2" pad="5"/>
 <wire x1="-35.56" y1="10.16" x2="-31.75" y2="10.16" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="10.16" x2="-35.56" y2="10.16" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="10.16" x2="-20.828" y2="10.16" width="0.1778" layer="1"/>
@@ -1793,10 +1793,10 @@ design rules under a new name.</description>
 <wire x1="-5.334" y1="-4.572" x2="-9.144" y2="-4.572" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT5B">
-<contactref element="J1" pad="28"/>
+<contactref element="HEADSTAGE" pad="28"/>
 <contactref element="R2" pad="6"/>
 <contactref element="S2" pad="11"/>
-<contactref element="U$2" pad="6"/>
+<contactref element="J2" pad="6"/>
 <wire x1="-35.56" y1="7.62" x2="-31.75" y2="7.62" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="7.62" x2="-35.56" y2="7.62" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="7.62" x2="-19.304" y2="7.62" width="0.1778" layer="1"/>
@@ -1808,10 +1808,10 @@ design rules under a new name.</description>
 <wire x1="-4" y1="-4" x2="-4" y2="-1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT5C">
-<contactref element="J1" pad="27"/>
+<contactref element="HEADSTAGE" pad="27"/>
 <contactref element="R2" pad="7"/>
 <contactref element="S2" pad="10"/>
-<contactref element="U$2" pad="7"/>
+<contactref element="J2" pad="7"/>
 <wire x1="-35.56" y1="5.08" x2="-31.75" y2="5.08" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="5.08" x2="-35.56" y2="5.08" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="5.08" x2="-17.78" y2="5.08" width="0.1778" layer="1"/>
@@ -1823,10 +1823,10 @@ design rules under a new name.</description>
 <wire x1="-3.6" y1="-4.362" x2="-3.6" y2="-1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT5D">
-<contactref element="J1" pad="26"/>
+<contactref element="HEADSTAGE" pad="26"/>
 <contactref element="R2" pad="8"/>
 <contactref element="S2" pad="9"/>
-<contactref element="U$2" pad="8"/>
+<contactref element="J2" pad="8"/>
 <wire x1="-40.64" y1="2.54" x2="-35.56" y2="2.54" width="0.254" layer="1"/>
 <wire x1="-35.56" y1="2.54" x2="-31.75" y2="2.54" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="2.54" x2="-16.256" y2="2.54" width="0.1778" layer="1"/>
@@ -1838,10 +1838,10 @@ design rules under a new name.</description>
 <wire x1="-3.2" y1="-4.724" x2="-3.2" y2="-1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT6A">
-<contactref element="J1" pad="25"/>
+<contactref element="HEADSTAGE" pad="25"/>
 <contactref element="R1" pad="1"/>
 <contactref element="S1" pad="16"/>
-<contactref element="U$1" pad="1"/>
+<contactref element="J1" pad="1"/>
 <wire x1="-35.56" y1="-5.08" x2="-31.75" y2="-5.08" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="-5.08" x2="-35.56" y2="-5.08" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="-5.08" x2="-11.684" y2="-5.08" width="0.1778" layer="1"/>
@@ -1851,10 +1851,10 @@ design rules under a new name.</description>
 <wire x1="-4.318" y1="-6.604" x2="-10.16" y2="-6.604" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT6B">
-<contactref element="J1" pad="24"/>
+<contactref element="HEADSTAGE" pad="24"/>
 <contactref element="R1" pad="2"/>
 <contactref element="S1" pad="15"/>
-<contactref element="U$1" pad="2"/>
+<contactref element="J1" pad="2"/>
 <wire x1="-40.64" y1="-7.62" x2="-35.56" y2="-7.62" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="-7.62" x2="-35.56" y2="-7.62" width="0.254" layer="1"/>
 <wire x1="-2.4" y1="-1.17" x2="-2.4" y2="-5.448" width="0.1778" layer="1"/>
@@ -1862,10 +1862,10 @@ design rules under a new name.</description>
 <wire x1="-4.572" y1="-7.62" x2="-31.75" y2="-7.62" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT6C">
-<contactref element="J1" pad="23"/>
+<contactref element="HEADSTAGE" pad="23"/>
 <contactref element="R1" pad="3"/>
 <contactref element="S1" pad="14"/>
-<contactref element="U$1" pad="3"/>
+<contactref element="J1" pad="3"/>
 <wire x1="-32.258" y1="-10.16" x2="-31.75" y2="-10.16" width="0.254" layer="1"/>
 <wire x1="-32.258" y1="-10.16" x2="-35.56" y2="-10.16" width="0.254" layer="1"/>
 <wire x1="-40.64" y1="-10.16" x2="-35.56" y2="-10.16" width="0.254" layer="1"/>
@@ -1874,10 +1874,10 @@ design rules under a new name.</description>
 <wire x1="-6.35" y1="-10.16" x2="-32.258" y2="-10.16" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT6D">
-<contactref element="J1" pad="22"/>
+<contactref element="HEADSTAGE" pad="22"/>
 <contactref element="R1" pad="4"/>
 <contactref element="S1" pad="13"/>
-<contactref element="U$1" pad="4"/>
+<contactref element="J1" pad="4"/>
 <wire x1="-40.64" y1="-12.7" x2="-35.56" y2="-12.7" width="0.254" layer="1"/>
 <wire x1="-32.004" y1="-12.7" x2="-35.56" y2="-12.7" width="0.254" layer="1"/>
 <wire x1="-32.004" y1="-12.7" x2="-31.75" y2="-12.7" width="0.254" layer="1"/>
@@ -1886,10 +1886,10 @@ design rules under a new name.</description>
 <wire x1="-8.128" y1="-12.7" x2="-32.004" y2="-12.7" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT7A">
-<contactref element="J1" pad="21"/>
+<contactref element="HEADSTAGE" pad="21"/>
 <contactref element="S1" pad="12"/>
 <contactref element="R1" pad="5"/>
-<contactref element="U$1" pad="5"/>
+<contactref element="J1" pad="5"/>
 <wire x1="-32.004" y1="-15.24" x2="-31.75" y2="-15.24" width="0.254" layer="1"/>
 <wire x1="-32.004" y1="-15.24" x2="-35.56" y2="-15.24" width="0.254" layer="1"/>
 <wire x1="-35.56" y1="-15.24" x2="-40.64" y2="-15.24" width="0.254" layer="1"/>
@@ -1898,10 +1898,10 @@ design rules under a new name.</description>
 <wire x1="-9.906" y1="-15.24" x2="-32.004" y2="-15.24" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT7B">
-<contactref element="J1" pad="20"/>
+<contactref element="HEADSTAGE" pad="20"/>
 <contactref element="R1" pad="6"/>
 <contactref element="S1" pad="11"/>
-<contactref element="U$1" pad="6"/>
+<contactref element="J1" pad="6"/>
 <wire x1="-31.75" y1="-17.78" x2="-35.56" y2="-17.78" width="0.254" layer="1"/>
 <wire x1="-35.56" y1="-17.78" x2="-40.64" y2="-17.78" width="0.254" layer="1"/>
 <wire x1="-0.8" y1="-1.17" x2="-0.8" y2="-6.896" width="0.1778" layer="1"/>
@@ -1909,10 +1909,10 @@ design rules under a new name.</description>
 <wire x1="-11.684" y1="-17.78" x2="-31.75" y2="-17.78" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT7C">
-<contactref element="J1" pad="19"/>
+<contactref element="HEADSTAGE" pad="19"/>
 <contactref element="R1" pad="7"/>
 <contactref element="S1" pad="10"/>
-<contactref element="U$1" pad="7"/>
+<contactref element="J1" pad="7"/>
 <wire x1="-40.64" y1="-20.32" x2="-35.56" y2="-20.32" width="0.254" layer="1"/>
 <wire x1="-31.75" y1="-20.32" x2="-35.56" y2="-20.32" width="0.254" layer="1"/>
 <wire x1="-0.4" y1="-1.17" x2="-0.4" y2="-7.258" width="0.1778" layer="1"/>
@@ -1920,10 +1920,10 @@ design rules under a new name.</description>
 <wire x1="-13.462" y1="-20.32" x2="-31.75" y2="-20.32" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT7D">
-<contactref element="J1" pad="18"/>
+<contactref element="HEADSTAGE" pad="18"/>
 <contactref element="R1" pad="8"/>
 <contactref element="S1" pad="9"/>
-<contactref element="U$1" pad="8"/>
+<contactref element="J1" pad="8"/>
 <wire x1="-32.004" y1="-22.86" x2="-31.75" y2="-22.86" width="0.254" layer="1"/>
 <wire x1="-32.004" y1="-22.86" x2="-35.56" y2="-22.86" width="0.254" layer="1"/>
 <wire x1="-35.56" y1="-22.86" x2="-40.64" y2="-22.86" width="0.254" layer="1"/>
@@ -1932,10 +1932,10 @@ design rules under a new name.</description>
 <wire x1="-15.24" y1="-22.86" x2="-32.004" y2="-22.86" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT8A">
-<contactref element="J1" pad="17"/>
+<contactref element="HEADSTAGE" pad="17"/>
 <contactref element="R5" pad="1"/>
 <contactref element="S5" pad="16"/>
-<contactref element="U$5" pad="1"/>
+<contactref element="J5" pad="1"/>
 <wire x1="-20.32" y1="-40.64" x2="-20.32" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-20.32" y1="-32.004" x2="-20.32" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-20.32" y1="-32.004" x2="-20.32" y2="-31.75" width="0.254" layer="1"/>
@@ -1944,10 +1944,10 @@ design rules under a new name.</description>
 <wire x1="0.4" y1="-7.982" x2="-20.32" y2="-28.702" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT8B">
-<contactref element="J1" pad="16"/>
+<contactref element="HEADSTAGE" pad="16"/>
 <contactref element="R5" pad="2"/>
 <contactref element="S5" pad="15"/>
-<contactref element="U$5" pad="2"/>
+<contactref element="J5" pad="2"/>
 <wire x1="-17.78" y1="-32.258" x2="-17.78" y2="-31.75" width="0.254" layer="1"/>
 <wire x1="-17.78" y1="-32.258" x2="-17.78" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-17.78" y1="-35.56" x2="-17.78" y2="-40.64" width="0.254" layer="1"/>
@@ -1956,10 +1956,10 @@ design rules under a new name.</description>
 <wire x1="0.8" y1="-8.344" x2="-17.78" y2="-26.924" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT8C">
-<contactref element="J1" pad="15"/>
+<contactref element="HEADSTAGE" pad="15"/>
 <contactref element="R5" pad="3"/>
 <contactref element="S5" pad="14"/>
-<contactref element="U$5" pad="3"/>
+<contactref element="J5" pad="3"/>
 <wire x1="-15.24" y1="-40.64" x2="-15.24" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-15.24" y1="-32.004" x2="-15.24" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-15.24" y1="-32.004" x2="-15.24" y2="-31.75" width="0.254" layer="1"/>
@@ -1968,10 +1968,10 @@ design rules under a new name.</description>
 <wire x1="1.2" y1="-8.706" x2="-15.24" y2="-25.146" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT8D">
-<contactref element="J1" pad="14"/>
+<contactref element="HEADSTAGE" pad="14"/>
 <contactref element="R5" pad="4"/>
 <contactref element="S5" pad="13"/>
-<contactref element="U$5" pad="4"/>
+<contactref element="J5" pad="4"/>
 <wire x1="-12.7" y1="-31.75" x2="-12.7" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-12.7" y1="-35.56" x2="-12.7" y2="-40.64" width="0.254" layer="1"/>
 <wire x1="1.6" y1="-1.17" x2="1.6" y2="-9.068" width="0.1778" layer="1"/>
@@ -1979,10 +1979,10 @@ design rules under a new name.</description>
 <wire x1="1.6" y1="-9.068" x2="-12.7" y2="-23.368" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT9A">
-<contactref element="J1" pad="13"/>
+<contactref element="HEADSTAGE" pad="13"/>
 <contactref element="S5" pad="12"/>
 <contactref element="R5" pad="5"/>
-<contactref element="U$5" pad="5"/>
+<contactref element="J5" pad="5"/>
 <wire x1="-10.16" y1="-40.64" x2="-10.16" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-10.16" y1="-31.75" x2="-10.16" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="2" y1="-1.17" x2="2" y2="-9.43" width="0.1778" layer="1"/>
@@ -1990,10 +1990,10 @@ design rules under a new name.</description>
 <wire x1="2" y1="-9.43" x2="-10.16" y2="-21.59" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT9B">
-<contactref element="J1" pad="12"/>
+<contactref element="HEADSTAGE" pad="12"/>
 <contactref element="R5" pad="6"/>
 <contactref element="S5" pad="11"/>
-<contactref element="U$5" pad="6"/>
+<contactref element="J5" pad="6"/>
 <wire x1="-7.62" y1="-31.75" x2="-7.62" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-7.62" y1="-35.56" x2="-7.62" y2="-40.64" width="0.254" layer="1"/>
 <wire x1="2.4" y1="-1.17" x2="2.4" y2="-9.792" width="0.1778" layer="1"/>
@@ -2001,10 +2001,10 @@ design rules under a new name.</description>
 <wire x1="2.4" y1="-9.792" x2="-7.62" y2="-19.812" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT9C">
-<contactref element="J1" pad="11"/>
+<contactref element="HEADSTAGE" pad="11"/>
 <contactref element="R5" pad="7"/>
 <contactref element="S5" pad="10"/>
-<contactref element="U$5" pad="7"/>
+<contactref element="J5" pad="7"/>
 <wire x1="-5.08" y1="-40.64" x2="-5.08" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-5.08" y1="-32.004" x2="-5.08" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-5.08" y1="-32.004" x2="-5.08" y2="-31.75" width="0.254" layer="1"/>
@@ -2013,10 +2013,10 @@ design rules under a new name.</description>
 <wire x1="2.8" y1="-10.154" x2="-5.08" y2="-18.034" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT9D">
-<contactref element="J1" pad="10"/>
+<contactref element="HEADSTAGE" pad="10"/>
 <contactref element="R5" pad="8"/>
 <contactref element="S5" pad="9"/>
-<contactref element="U$5" pad="8"/>
+<contactref element="J5" pad="8"/>
 <wire x1="-2.54" y1="-32.004" x2="-2.54" y2="-31.75" width="0.254" layer="1"/>
 <wire x1="-2.54" y1="-32.004" x2="-2.54" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="-2.54" y1="-35.56" x2="-2.54" y2="-40.64" width="0.254" layer="1"/>
@@ -2025,10 +2025,10 @@ design rules under a new name.</description>
 <wire x1="3.2" y1="-10.516" x2="-2.54" y2="-16.256" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT10A">
-<contactref element="J1" pad="9"/>
+<contactref element="HEADSTAGE" pad="9"/>
 <contactref element="R6" pad="1"/>
 <contactref element="S6" pad="16"/>
-<contactref element="U$6" pad="1"/>
+<contactref element="J6" pad="1"/>
 <wire x1="5.08" y1="-40.64" x2="5.08" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="5.08" y1="-31.75" x2="5.08" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="3.6" y1="-1.17" x2="3.6" y2="-10.458" width="0.1778" layer="1"/>
@@ -2036,10 +2036,10 @@ design rules under a new name.</description>
 <wire x1="3.6" y1="-10.458" x2="5.08" y2="-11.938" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT10B">
-<contactref element="J1" pad="8"/>
+<contactref element="HEADSTAGE" pad="8"/>
 <contactref element="R6" pad="2"/>
 <contactref element="S6" pad="15"/>
-<contactref element="U$6" pad="2"/>
+<contactref element="J6" pad="2"/>
 <wire x1="7.62" y1="-40.64" x2="7.62" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="7.62" y1="-31.75" x2="7.62" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="4" y1="-1.17" x2="4" y2="-10.096" width="0.1778" layer="1"/>
@@ -2047,10 +2047,10 @@ design rules under a new name.</description>
 <wire x1="4" y1="-10.096" x2="7.62" y2="-13.716" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT10C">
-<contactref element="J1" pad="7"/>
+<contactref element="HEADSTAGE" pad="7"/>
 <contactref element="R6" pad="3"/>
 <contactref element="S6" pad="14"/>
-<contactref element="U$6" pad="3"/>
+<contactref element="J6" pad="3"/>
 <wire x1="10.16" y1="-40.64" x2="10.16" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="10.16" y1="-31.75" x2="10.16" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="4.4" y1="-1.17" x2="4.4" y2="-9.734" width="0.1778" layer="1"/>
@@ -2058,10 +2058,10 @@ design rules under a new name.</description>
 <wire x1="10.16" y1="-15.494" x2="10.16" y2="-31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT10D">
-<contactref element="J1" pad="6"/>
+<contactref element="HEADSTAGE" pad="6"/>
 <contactref element="R6" pad="4"/>
 <contactref element="S6" pad="13"/>
-<contactref element="U$6" pad="4"/>
+<contactref element="J6" pad="4"/>
 <wire x1="12.7" y1="-40.64" x2="12.7" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="12.7" y1="-31.75" x2="12.7" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="4.8" y1="-1.17" x2="4.8" y2="-9.398" width="0.1778" layer="1"/>
@@ -2071,10 +2071,10 @@ design rules under a new name.</description>
 <wire x1="12.7" y1="-17.298" x2="12.7" y2="-31.75" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT11A">
-<contactref element="J1" pad="5"/>
+<contactref element="HEADSTAGE" pad="5"/>
 <contactref element="S6" pad="12"/>
 <contactref element="R6" pad="5"/>
-<contactref element="U$6" pad="5"/>
+<contactref element="J6" pad="5"/>
 <wire x1="15.24" y1="-40.64" x2="15.24" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="15.24" y1="-31.75" x2="15.24" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="5.2" y1="-1.17" x2="5.2" y2="-9.01" width="0.1778" layer="1"/>
@@ -2082,10 +2082,10 @@ design rules under a new name.</description>
 <wire x1="5.2" y1="-9.01" x2="15.24" y2="-19.05" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT11B">
-<contactref element="J1" pad="4"/>
+<contactref element="HEADSTAGE" pad="4"/>
 <contactref element="R6" pad="6"/>
 <contactref element="S6" pad="11"/>
-<contactref element="U$6" pad="6"/>
+<contactref element="J6" pad="6"/>
 <wire x1="17.78" y1="-40.64" x2="17.78" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="17.78" y1="-31.75" x2="17.78" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="5.6" y1="-1.17" x2="5.6" y2="-8.648" width="0.1778" layer="1"/>
@@ -2093,10 +2093,10 @@ design rules under a new name.</description>
 <wire x1="5.6" y1="-8.648" x2="17.78" y2="-20.828" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT11C">
-<contactref element="J1" pad="3"/>
+<contactref element="HEADSTAGE" pad="3"/>
 <contactref element="R6" pad="7"/>
 <contactref element="S6" pad="10"/>
-<contactref element="U$6" pad="7"/>
+<contactref element="J6" pad="7"/>
 <wire x1="20.32" y1="-40.64" x2="20.32" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="20.32" y1="-31.75" x2="20.32" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="6" y1="-1.17" x2="6" y2="-8.286" width="0.1778" layer="1"/>
@@ -2104,10 +2104,10 @@ design rules under a new name.</description>
 <wire x1="6" y1="-8.286" x2="20.32" y2="-22.606" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT11D">
-<contactref element="J1" pad="2"/>
+<contactref element="HEADSTAGE" pad="2"/>
 <contactref element="R6" pad="8"/>
 <contactref element="S6" pad="9"/>
-<contactref element="U$6" pad="8"/>
+<contactref element="J6" pad="8"/>
 <wire x1="22.86" y1="-35.56" x2="22.86" y2="-40.64" width="0.254" layer="1"/>
 <wire x1="22.86" y1="-31.75" x2="22.86" y2="-35.56" width="0.254" layer="1"/>
 <wire x1="6.4" y1="-1.17" x2="6.4" y2="-7.924" width="0.1778" layer="1"/>
@@ -2115,10 +2115,10 @@ design rules under a new name.</description>
 <wire x1="6.4" y1="-7.924" x2="22.86" y2="-24.384" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT12A">
-<contactref element="J1" pad="68"/>
+<contactref element="HEADSTAGE" pad="68"/>
 <contactref element="R7" pad="1"/>
 <contactref element="S7" pad="16"/>
-<contactref element="U$7" pad="1"/>
+<contactref element="J7" pad="1"/>
 <wire x1="31.75" y1="-20.32" x2="35.56" y2="-20.32" width="0.254" layer="1"/>
 <wire x1="40.64" y1="-20.32" x2="35.56" y2="-20.32" width="0.254" layer="1"/>
 <wire x1="31.75" y1="-20.32" x2="26.924" y2="-20.32" width="0.1778" layer="1"/>
@@ -2130,10 +2130,10 @@ design rules under a new name.</description>
 <wire x1="6" y1="2.19" x2="6" y2="1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT12B">
-<contactref element="J1" pad="67"/>
+<contactref element="HEADSTAGE" pad="67"/>
 <contactref element="R7" pad="2"/>
 <contactref element="S7" pad="15"/>
-<contactref element="U$7" pad="2"/>
+<contactref element="J7" pad="2"/>
 <wire x1="31.75" y1="-17.78" x2="35.56" y2="-17.78" width="0.254" layer="1"/>
 <wire x1="40.64" y1="-17.78" x2="35.56" y2="-17.78" width="0.254" layer="1"/>
 <wire x1="31.75" y1="-17.78" x2="25.4" y2="-17.78" width="0.1778" layer="1"/>
@@ -2145,10 +2145,10 @@ design rules under a new name.</description>
 <wire x1="5.6" y1="2.552" x2="5.6" y2="1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT12C">
-<contactref element="J1" pad="66"/>
+<contactref element="HEADSTAGE" pad="66"/>
 <contactref element="R7" pad="3"/>
 <contactref element="S7" pad="14"/>
-<contactref element="U$7" pad="3"/>
+<contactref element="J7" pad="3"/>
 <wire x1="31.75" y1="-15.24" x2="35.56" y2="-15.24" width="0.254" layer="1"/>
 <wire x1="40.64" y1="-15.24" x2="35.56" y2="-15.24" width="0.254" layer="1"/>
 <wire x1="31.75" y1="-15.24" x2="23.876" y2="-15.24" width="0.1778" layer="1"/>
@@ -2160,10 +2160,10 @@ design rules under a new name.</description>
 <wire x1="5.2" y1="2.914" x2="5.2" y2="1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT12D">
-<contactref element="J1" pad="65"/>
+<contactref element="HEADSTAGE" pad="65"/>
 <contactref element="R7" pad="4"/>
 <contactref element="S7" pad="13"/>
-<contactref element="U$7" pad="4"/>
+<contactref element="J7" pad="4"/>
 <wire x1="31.75" y1="-12.7" x2="35.56" y2="-12.7" width="0.254" layer="1"/>
 <wire x1="40.64" y1="-12.7" x2="35.56" y2="-12.7" width="0.254" layer="1"/>
 <wire x1="31.75" y1="-12.7" x2="22.352" y2="-12.7" width="0.1778" layer="1"/>
@@ -2175,10 +2175,10 @@ design rules under a new name.</description>
 <wire x1="4.8" y1="3.276" x2="4.8" y2="1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT15C">
-<contactref element="J1" pad="54"/>
+<contactref element="HEADSTAGE" pad="54"/>
 <contactref element="R8" pad="7"/>
 <contactref element="S8" pad="10"/>
-<contactref element="U$8" pad="7"/>
+<contactref element="J8" pad="7"/>
 <wire x1="40.64" y1="20.32" x2="35.56" y2="20.32" width="0.254" layer="1"/>
 <wire x1="35.56" y1="20.32" x2="31.75" y2="20.32" width="0.254" layer="1"/>
 <wire x1="0.4" y1="1.17" x2="0.4" y2="7.258" width="0.1778" layer="1"/>
@@ -2186,10 +2186,10 @@ design rules under a new name.</description>
 <wire x1="13.462" y1="20.32" x2="31.75" y2="20.32" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT15B">
-<contactref element="J1" pad="55"/>
+<contactref element="HEADSTAGE" pad="55"/>
 <contactref element="R8" pad="6"/>
 <contactref element="S8" pad="11"/>
-<contactref element="U$8" pad="6"/>
+<contactref element="J8" pad="6"/>
 <wire x1="31.75" y1="17.78" x2="35.56" y2="17.78" width="0.254" layer="1"/>
 <wire x1="40.64" y1="17.78" x2="35.56" y2="17.78" width="0.254" layer="1"/>
 <wire x1="0.8" y1="1.17" x2="0.8" y2="6.896" width="0.1778" layer="1"/>
@@ -2197,10 +2197,10 @@ design rules under a new name.</description>
 <wire x1="11.684" y1="17.78" x2="31.75" y2="17.78" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT15A">
-<contactref element="J1" pad="56"/>
+<contactref element="HEADSTAGE" pad="56"/>
 <contactref element="S8" pad="12"/>
 <contactref element="R8" pad="5"/>
-<contactref element="U$8" pad="5"/>
+<contactref element="J8" pad="5"/>
 <wire x1="31.75" y1="15.24" x2="35.56" y2="15.24" width="0.254" layer="1"/>
 <wire x1="35.56" y1="15.24" x2="40.64" y2="15.24" width="0.254" layer="1"/>
 <wire x1="1.2" y1="1.17" x2="1.2" y2="6.534" width="0.1778" layer="1"/>
@@ -2208,10 +2208,10 @@ design rules under a new name.</description>
 <wire x1="9.906" y1="15.24" x2="31.75" y2="15.24" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT14D">
-<contactref element="J1" pad="57"/>
+<contactref element="HEADSTAGE" pad="57"/>
 <contactref element="R8" pad="4"/>
 <contactref element="S8" pad="13"/>
-<contactref element="U$8" pad="4"/>
+<contactref element="J8" pad="4"/>
 <wire x1="31.75" y1="12.7" x2="35.56" y2="12.7" width="0.254" layer="1"/>
 <wire x1="40.64" y1="12.7" x2="35.56" y2="12.7" width="0.254" layer="1"/>
 <wire x1="1.6" y1="1.17" x2="1.6" y2="6.172" width="0.1778" layer="1"/>
@@ -2219,10 +2219,10 @@ design rules under a new name.</description>
 <wire x1="8.128" y1="12.7" x2="31.75" y2="12.7" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT14C">
-<contactref element="J1" pad="58"/>
+<contactref element="HEADSTAGE" pad="58"/>
 <contactref element="R8" pad="3"/>
 <contactref element="S8" pad="14"/>
-<contactref element="U$8" pad="3"/>
+<contactref element="J8" pad="3"/>
 <wire x1="31.75" y1="10.16" x2="35.56" y2="10.16" width="0.254" layer="1"/>
 <wire x1="35.56" y1="10.16" x2="40.64" y2="10.16" width="0.254" layer="1"/>
 <wire x1="2" y1="1.17" x2="2" y2="5.81" width="0.1778" layer="1"/>
@@ -2230,10 +2230,10 @@ design rules under a new name.</description>
 <wire x1="6.35" y1="10.16" x2="31.75" y2="10.16" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT14B">
-<contactref element="J1" pad="59"/>
+<contactref element="HEADSTAGE" pad="59"/>
 <contactref element="R8" pad="2"/>
 <contactref element="S8" pad="15"/>
-<contactref element="U$8" pad="2"/>
+<contactref element="J8" pad="2"/>
 <wire x1="31.75" y1="7.62" x2="35.56" y2="7.62" width="0.254" layer="1"/>
 <wire x1="40.64" y1="7.62" x2="35.56" y2="7.62" width="0.254" layer="1"/>
 <wire x1="2.4" y1="1.17" x2="2.4" y2="5.448" width="0.1778" layer="1"/>
@@ -2241,10 +2241,10 @@ design rules under a new name.</description>
 <wire x1="4.572" y1="7.62" x2="31.75" y2="7.62" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT14A">
-<contactref element="J1" pad="60"/>
+<contactref element="HEADSTAGE" pad="60"/>
 <contactref element="R8" pad="1"/>
 <contactref element="S8" pad="16"/>
-<contactref element="U$8" pad="1"/>
+<contactref element="J8" pad="1"/>
 <wire x1="35.56" y1="5.08" x2="31.75" y2="5.08" width="0.254" layer="1"/>
 <wire x1="35.56" y1="5.08" x2="40.64" y2="5.08" width="0.254" layer="1"/>
 <wire x1="31.75" y1="5.08" x2="11.684" y2="5.08" width="0.1778" layer="1"/>
@@ -2254,10 +2254,10 @@ design rules under a new name.</description>
 <wire x1="4.318" y1="6.604" x2="10.16" y2="6.604" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT13A">
-<contactref element="J1" pad="64"/>
+<contactref element="HEADSTAGE" pad="64"/>
 <contactref element="S7" pad="12"/>
 <contactref element="R7" pad="5"/>
-<contactref element="U$7" pad="5"/>
+<contactref element="J7" pad="5"/>
 <wire x1="31.75" y1="-10.16" x2="35.56" y2="-10.16" width="0.254" layer="1"/>
 <wire x1="40.64" y1="-10.16" x2="35.56" y2="-10.16" width="0.254" layer="1"/>
 <wire x1="31.75" y1="-10.16" x2="20.828" y2="-10.16" width="0.1778" layer="1"/>
@@ -2269,10 +2269,10 @@ design rules under a new name.</description>
 <wire x1="5.334" y1="4.572" x2="9.144" y2="4.572" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT13B">
-<contactref element="J1" pad="63"/>
+<contactref element="HEADSTAGE" pad="63"/>
 <contactref element="R7" pad="6"/>
 <contactref element="S7" pad="11"/>
-<contactref element="U$7" pad="6"/>
+<contactref element="J7" pad="6"/>
 <wire x1="31.75" y1="-7.62" x2="35.56" y2="-7.62" width="0.254" layer="1"/>
 <wire x1="40.64" y1="-7.62" x2="35.56" y2="-7.62" width="0.254" layer="1"/>
 <wire x1="31.75" y1="-7.62" x2="19.304" y2="-7.62" width="0.1778" layer="1"/>
@@ -2284,10 +2284,10 @@ design rules under a new name.</description>
 <wire x1="4" y1="4" x2="4" y2="1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT13C">
-<contactref element="J1" pad="62"/>
+<contactref element="HEADSTAGE" pad="62"/>
 <contactref element="R7" pad="7"/>
 <contactref element="S7" pad="10"/>
-<contactref element="U$7" pad="7"/>
+<contactref element="J7" pad="7"/>
 <wire x1="31.75" y1="-5.08" x2="35.56" y2="-5.08" width="0.254" layer="1"/>
 <wire x1="40.64" y1="-5.08" x2="35.56" y2="-5.08" width="0.254" layer="1"/>
 <wire x1="31.75" y1="-5.08" x2="17.78" y2="-5.08" width="0.1778" layer="1"/>
@@ -2299,10 +2299,10 @@ design rules under a new name.</description>
 <wire x1="3.6" y1="4.362" x2="3.6" y2="1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT13D">
-<contactref element="J1" pad="61"/>
+<contactref element="HEADSTAGE" pad="61"/>
 <contactref element="R7" pad="8"/>
 <contactref element="S7" pad="9"/>
-<contactref element="U$7" pad="8"/>
+<contactref element="J7" pad="8"/>
 <wire x1="31.75" y1="-2.54" x2="35.56" y2="-2.54" width="0.254" layer="1"/>
 <wire x1="40.64" y1="-2.54" x2="35.56" y2="-2.54" width="0.254" layer="1"/>
 <wire x1="31.75" y1="-2.54" x2="16.256" y2="-2.54" width="0.1778" layer="1"/>
@@ -2314,10 +2314,10 @@ design rules under a new name.</description>
 <wire x1="3.2" y1="4.724" x2="3.2" y2="1.17" width="0.1778" layer="1"/>
 </signal>
 <signal name="TT15D">
-<contactref element="J1" pad="53"/>
+<contactref element="HEADSTAGE" pad="53"/>
 <contactref element="R8" pad="8"/>
 <contactref element="S8" pad="9"/>
-<contactref element="U$8" pad="8"/>
+<contactref element="J8" pad="8"/>
 <wire x1="31.75" y1="22.86" x2="35.56" y2="22.86" width="0.254" layer="1"/>
 <wire x1="35.56" y1="22.86" x2="40.64" y2="22.86" width="0.254" layer="1"/>
 <wire x1="0" y1="1.17" x2="0" y2="7.62" width="0.1778" layer="1"/>
@@ -2325,7 +2325,7 @@ design rules under a new name.</description>
 <wire x1="15.24" y1="22.86" x2="31.75" y2="22.86" width="0.1778" layer="1"/>
 </signal>
 <signal name="ISTIM">
-<contactref element="J1" pad="1"/>
+<contactref element="HEADSTAGE" pad="1"/>
 <contactref element="CDL" pad="2"/>
 <wire x1="6.8" y1="-1.17" x2="6.8" y2="-6.096" width="0.1778" layer="1"/>
 <contactref element="TP14" pad="TP"/>
@@ -2335,7 +2335,7 @@ design rules under a new name.</description>
 <wire x1="30.734" y1="-32.692" x2="30.734" y2="-38.1" width="0.3048" layer="1"/>
 </signal>
 <signal name="CAT0">
-<contactref element="J1" pad="34"/>
+<contactref element="HEADSTAGE" pad="34"/>
 <contactref element="D1" pad="C"/>
 <wire x1="-7.366" y1="0" x2="-7.874" y2="0.508" width="0.3048" layer="1"/>
 <wire x1="-6.4" y1="-1.17" x2="-6.4" y2="-0.458" width="0.1778" layer="1"/>
@@ -2362,7 +2362,7 @@ design rules under a new name.</description>
 <wire x1="-11.97541875" y1="8.768309375" x2="-12.22541875" y2="8.768309375" width="0.4064" layer="1"/>
 </signal>
 <signal name="CAT1">
-<contactref element="J1" pad="35"/>
+<contactref element="HEADSTAGE" pad="35"/>
 <contactref element="D2" pad="C"/>
 <wire x1="-7.466" y1="-1.17" x2="-6.8" y2="-1.17" width="0.1778" layer="1"/>
 <wire x1="-7.466" y1="-1.17" x2="-8.89" y2="0.254" width="0.3048" layer="1"/>
@@ -2376,7 +2376,7 @@ design rules under a new name.</description>
 <wire x1="-14.353553125" y1="11.14644375" x2="-16.64644375" y2="11.14644375" width="0.4064" layer="1"/>
 </signal>
 <signal name="AN">
-<contactref element="J1" pad="36"/>
+<contactref element="HEADSTAGE" pad="36"/>
 <contactref element="LED_SELECT" pad="2"/>
 <wire x1="-6.8" y1="3.8" x2="-7" y2="4" width="0.254" layer="1"/>
 <wire x1="-16.2" y1="16.9" x2="-15.025" y2="15.725" width="0.4064" layer="1"/>
