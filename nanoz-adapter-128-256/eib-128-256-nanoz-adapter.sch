@@ -2958,7 +2958,6 @@ grid 2.54 mm</description>
 <part name="A" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40HEAD"/>
 <part name="C" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40HEAD"/>
 <part name="B" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40HEAD"/>
-<part name="SUPPLY5" library="jonnew" deviceset="GND" device=""/>
 <part name="U1" library="jonnew" deviceset="DG4052E" device="_MQFN"/>
 <part name="U2" library="jonnew" deviceset="DG4052E" device="_MQFN"/>
 <part name="U3" library="jonnew" deviceset="DG4052E" device="_MQFN"/>
@@ -3074,7 +3073,7 @@ grid 2.54 mm</description>
 <part name="SUPPLY9" library="jonnew" deviceset="GND" device=""/>
 <part name="J4" library="jonnew" deviceset="JP3E" device="_SMD"/>
 <part name="SUPPLY26" library="jonnew" deviceset="GND" device=""/>
-<part name="D1" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="UDZ10B-7">
+<part name="D1" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="MMSZ5240BS">
 <attribute name="PARTNO" value="UDZ10B-7"/>
 </part>
 <part name="R1" library="jonnew" deviceset="R" device="_0603" value="1k"/>
@@ -3085,7 +3084,7 @@ grid 2.54 mm</description>
 <part name="Q2" library="jonnew" deviceset="P-MOSFET" device="_SOT23-GSD" value="DMP3056L">
 <attribute name="PARTNO" value="DMP3056L-7"/>
 </part>
-<part name="D2" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="UDZ10B-7">
+<part name="D2" library="jonnew" deviceset="Z-DIODE" device="_SOD-323" value="MMSZ5240BS">
 <attribute name="PARTNO" value="UDZ10B-7"/>
 </part>
 <part name="J3" library="jonnew" deviceset="JP3E" device="_SMD"/>
@@ -3194,7 +3193,6 @@ grid 2.54 mm</description>
 <instance part="A" gate="G$1" x="213.36" y="251.46" rot="R180"/>
 <instance part="C" gate="G$1" x="66.04" y="200.66" rot="R270"/>
 <instance part="B" gate="G$1" x="127" y="60.96"/>
-<instance part="SUPPLY5" gate="PE" x="106.68" y="58.42"/>
 <instance part="U1" gate="G$1" x="-220.98" y="574.04"/>
 <instance part="U2" gate="G$1" x="-220.98" y="472.44"/>
 <instance part="U3" gate="G$1" x="-220.98" y="370.84"/>
