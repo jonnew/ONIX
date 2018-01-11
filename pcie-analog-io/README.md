@@ -1,4 +1,4 @@
-# Intan & DIO FMC Daughter Card
+# analog IO card
 
 This board roughly conforms the PCIe card mechanical standard and uses a flex
 FMC cable to connect to the master FPGA module. This board performs all
@@ -62,5 +62,3 @@ http://www.cbttechnology.com/products/s/PCI/PCI-blanks-database.php
 http://www.keyelco.com/category.cfm/Standard-Blanks/Computer-Bracket-Blanks-With-Tabs/p/427/id/704/c_id/899
 
 There is one 0.05" pitch BGA connector (the samtech FMC connector) and a few omnetics connectors with inacessible pins on the board, so a stencil and reflow soldering need to be used.
-
-The Samtec FMC connector might need to be clamped or held down during reflow soldering. The samtec docs state that they should settle on their own during reflow though, so trying that first seems like a good idea (  http://suddendocs.samtec.com/processing/searay_soldering1.pdf ).
