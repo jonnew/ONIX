@@ -21,9 +21,9 @@ extern "C" {
 #define OE_RFRAMEHEADERSZ     32 // [uint64_t sample number, uint16_t n_devs, (22 reserved bytes), ...]
 #define OE_RFRAMESAMPLEOFF    0  // Read frame sample number offset
 #define OE_RFRAMENDEVOFF      8  // Read frame number of devices offset
-#define OE_RFRAMENERROFF      9  // Read frame error offset
+#define OE_RFRAMENERROFF      10 // Read frame error offset
 
-#define OE_WFRAMEHEADERSZ     32 // [( 32 reserved bytes), ...]
+#define OE_WFRAMEHEADERSZ     32 // [(32 reserved bytes), ...]
 
 // TODO: Cross platform and xillybus
 #define OE_DEFAULTCONFIGPATH  "/tmp/rat128_config"
@@ -31,7 +31,7 @@ extern "C" {
 #define OE_DEFAULTSIGNALPATH  "/tmp/rat128_signal"
 
 // Supported devices/IDs
-// NB: If you add an error here, make sure to update oe_device_str()
+// NB: If you add a device here, make sure to update oe_device_str()
 enum oe_device_id {
     OE_IMMEDIATEIO = 0,
     OE_RHD2132,
@@ -44,7 +44,6 @@ enum oe_device_id {
 
 // Fixed width device types
 typedef uint32_t oe_size_t;
-typedef uint32_t oe_dev_idx_t;
 typedef uint32_t oe_dev_id_t;
 typedef uint32_t oe_reg_addr_t;
 typedef uint32_t oe_reg_val_t;
@@ -52,26 +51,23 @@ typedef uint32_t oe_raw_t;
 
 // Device type
 typedef struct {
-    oe_dev_id_t id; // NB: Cannot use oe_device_id_t because this must be fixed width
-
-    //oe_size_t read_offset;
-    oe_size_t read_size;
-    oe_raw_t read_type;
-
-    //oe_size_t write_offset;
-    oe_size_t write_size;
-    oe_raw_t write_type;
+    oe_dev_id_t id;       // ID number; NB: Cannot use oe_device_id_t because this must be fixed width
+    oe_size_t read_size;  // read size in bytes
+    oe_raw_t read_type;   // read type
+    oe_size_t write_size; // write size in bytes
+    oe_raw_t write_type;  // write type
 
 } oe_device_t;
 
-// Frame type (read and write)
+// Frame type
 typedef struct oe_frame {
-    uint64_t sample_no;
-    uint16_t num_dev;
-    uint8_t corrupt;
-    oe_size_t *dev_idxs;
-    size_t *dev_offs;
-    uint8_t *data;
+    size_t size;          // Frame size in bytes (both static and dynamic)
+    uint64_t sample_no;   // Sample no.
+    uint16_t num_dev;     // Number of devices in frame
+    uint8_t corrupt;      // Is this frame corrupt?
+    oe_size_t *dev_idxs;  // Array of device indicies in frame
+    size_t *dev_offs;     // Device data offsets within data block
+    uint8_t *data;        // Multi-device raw data block
 
 } oe_frame_t;
 
@@ -92,9 +88,9 @@ enum {
     OE_FSCLKD,
 };
 
-// Allowd raw data types
+// Allowed raw data types
 enum {
-    OE_UINT16,
+    OE_UINT16 = 0,
     OE_UINT32,
 };
 
@@ -144,7 +140,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size);
 int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t *value);
 int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
 int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
-int oe_destroy_frame(oe_frame_t *frame);
+void oe_destroy_frame(oe_frame_t *frame);
 //int oe_write(const oe_ctx ctx, void *data, size_t num_frames);
 
 // Internal type conversion

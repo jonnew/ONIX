@@ -24,7 +24,7 @@ typedef uint32_t oe_reg_val_t;
 #define BSWAP_16(val)                                                          \
     ((((uint16_t)(val)&0x00ff) << 8) | (((uint16_t)(val)&0xff00) >> 8))
 
-#define OE_BSWAP_32(val)                                                       \
+#define BSWAP_32(val)                                                          \
      ( (((uint32_t)(val)&0x000000ff) << 24)                                    \
      | (((uint32_t)(val)&0x0000ff00) << 8)                                     \
      | (((uint32_t)(val)&0x00ff0000) >> 8)                                     \
@@ -173,14 +173,14 @@ int oe_init_ctx(oe_ctx ctx)
     rc = _oe_pump_signal_data(
         ctx->signal.fid, DEVICEMAPACK, &sig_type, &(ctx->num_dev), sizeof(ctx->num_dev));
 #ifdef OE_BE
-    ctx->num_dev = OE_BSWAP_32(ctx->num_dev);
+    ctx->num_dev = BSWAP_32(ctx->num_dev);
 #endif
     if (rc) return rc;
 
     rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
             &(ctx->max_read_frame_size), sizeof(ctx->max_read_frame_size));
 #ifdef OE_BE
-    ctx->max_read_frame_size = OE_BSWAP_32(ctx->max_read_frame_size);
+    ctx->max_read_frame_size = BSWAP_32(ctx->max_read_frame_size);
 #endif
     if (rc) return rc;
     if (sig_type != FRAMERSIZE)
@@ -189,7 +189,7 @@ int oe_init_ctx(oe_ctx ctx)
     rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
             &(ctx->max_write_frame_size), sizeof(ctx->max_write_frame_size));
 #ifdef OE_BE
-    ctx->max_write_frame_size = OE_BSWAP_32(ctx->max_write_frame_size);
+    ctx->max_write_frame_size = BSWAP_32(ctx->max_write_frame_size);
 #endif
     if (rc) return rc;
 
@@ -218,7 +218,7 @@ int oe_init_ctx(oe_ctx ctx)
             return OE_EBADDEVMAP;
 
 #ifdef OE_BE
-        oe_dev_id_t device_id = OE_BSWAP_32((oe_dev_id_t)(*buffer));
+        oe_dev_id_t device_id = BSWAP_32((oe_dev_id_t)(*buffer));
 #else
         oe_dev_id_t device_id = (oe_dev_id_t)(*buffer);
 #endif
@@ -228,11 +228,11 @@ int oe_init_ctx(oe_ctx ctx)
         } else {
             return OE_EDEVID;
         }
+    }
+
 #ifdef OE_BE
         _device_map_byte_swap(ctx);
 #endif
-    }
-
     // We are now initialized and idle
     ctx->run_state = IDLE;
 
@@ -628,7 +628,6 @@ int oe_read_reg(const oe_ctx ctx,
 // 3. etc
 // Then we can implement multithreaded RAM FIFO using fifo.c in Xillybus demo
 // code as an example
-// TOD0: replace with frame descriptor struct?
 int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame_in)
 {
     assert(ctx != NULL && "Context is NULL");
@@ -646,56 +645,63 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame_in)
     *frame_in= malloc(sizeof(oe_frame_t));
     oe_frame_t *frame = *frame_in;
 
-#ifdef OE_BE
-    frame->sample_no = OE_BSWAP_64(*(uint64_t*)(header));
-    frame->num_dev = OE_BSWAP_32(*(uint16_t*)(header + OE_RFRAMENDEVOFF));
-    frame->corrupt = OE_BSWAP_8(*(uint8_t*)(header + OE_RFRAMENERROFF));
-#else
+//#ifdef OE_BE
+//    frame->sample_no = BSWAP_64(*(uint64_t*)(header));
+//    frame->num_dev = BSWAP_32(*(uint16_t*)(header + OE_RFRAMENDEVOFF));
+//#else
     frame->sample_no = *(uint64_t*)(header);
     frame->num_dev = *(uint16_t *)(header + OE_RFRAMENDEVOFF);
+//#endif
     frame->corrupt = *(uint8_t*)(header + OE_RFRAMENERROFF);
-#endif
 
     // Allocate space for data
     frame->dev_idxs = malloc(frame->num_dev * sizeof(oe_size_t));
     frame->dev_offs = malloc(frame->num_dev * sizeof(size_t));
 
     // Read device indicies that are in this frame
-    _oe_read(ctx->read.fid, frame->dev_idxs, frame->num_dev * sizeof(oe_size_t));
+    int dev_idxs_sz = frame->num_dev * sizeof(oe_size_t);
+    rc = _oe_read(ctx->read.fid, frame->dev_idxs, dev_idxs_sz);
+    assert(rc == dev_idxs_sz && "Did not read full dev idxs buffer.");
 
     // Find data read size
     uint16_t i;
-    size_t rsize = 0;
+    int rsize = 0;
     for (i = 0; i < frame->num_dev; i++) {
-#ifdef OE_BE
+//#ifdef OE_BE
         // TODO: Inplace swap?
-        *(frame->dev_idxs + i) = OE_BSWAP_32(*(frame->dev_idxs + i));
-#endif
+//        *(frame->dev_idxs + i) = BSWAP_32(*(frame->dev_idxs + i));
+//#endif
         *(frame->dev_offs + i) = rsize;
         rsize += ctx->dev_map[*(frame->dev_idxs + i)].read_size;
     }
+
+    // Read size + padding
+    rsize += rsize % 4;
 
     // Now we know the frame size, so we allocate
     frame->data = malloc(rsize);
 
     // Read data
-    _oe_read(ctx->read.fid, frame->data, rsize);
+    rc = _oe_read(ctx->read.fid, frame->data, rsize);
+    assert(rc == rsize && "Did not read full data buffer.");
 
     // TODO: Endianess swap based on each device's raw type
-#ifdef OE_BE
-    for (i = 0; i < frame->num_dev; i++) {
+//#ifdef OE_BE
+    //for (i = 0; i < frame->num_dev; i++) {
 
-        size_t dev_rsize = ctx->dev_map[*(frame->dev_idxs + i)].read_size;
-        size_t dev_off = *(frame->dev_offsets + i);
-        oe_raw_t dev_type = ctx->dev_map[*(frame->dev_idxs + i)].raw_type;
-        _oe_array_bswap(data + dev_off, dev_type, dev_rsize);
-    }
-#endif
+    //    size_t dev_rsize = ctx->dev_map[*(frame->dev_idxs + i)].read_size;
+    //    size_t dev_off = *(frame->dev_offsets + i);
+    //    oe_raw_t dev_type = ctx->dev_map[*(frame->dev_idxs + i)].raw_type;
+    //    _oe_array_bswap(data + dev_off, dev_type, dev_rsize);
+    //}
+//#endif
+//
+    frame->size = dev_idxs_sz + rsize + sizeof(oe_frame_t);
 
     return 0;
 }
 
-int oe_destroy_frame(oe_frame_t *frame) {
+void oe_destroy_frame(oe_frame_t *frame) {
 
     if (frame != NULL) {
 
@@ -710,8 +716,6 @@ int oe_destroy_frame(oe_frame_t *frame) {
         // Free the container
         free(frame);
     }
-
-    return 0;
 }
 
 void oe_version(int *major, int *minor, int *patch)
@@ -887,7 +891,7 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
 
     // Get the type, which occupies first 4 bytes of buffer
 #ifdef OE_BE
-        *type = OE_BSWAP_32(*(oe_signal_t *)buffer);
+        *type = BSWAP_32(*(oe_signal_t *)buffer);
 #else
         *type = *(oe_signal_t *)buffer;
 #endif
@@ -922,7 +926,7 @@ static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type)
 
         // Get the type, which occupies first 4 bytes of buffer
 #ifdef OE_BE
-        packet_type = OE_BSWAP_32(*(oe_signal_t *)buffer);
+        packet_type = BSWAP_32(*(oe_signal_t *)buffer);
 #else
         packet_type = *(oe_signal_t *)buffer;
 #endif
@@ -954,7 +958,7 @@ static int _oe_pump_signal_data(
 
         // Get the type, which occupies first 4 bytes of buffer
 #ifdef OE_BE
-        packet_type = OE_BSWAP_32(*(oe_signal_t *)buffer);
+        packet_type = BSWAP_32(*(oe_signal_t *)buffer);
 #else
         packet_type = *(oe_signal_t *)buffer;
 #endif
@@ -1001,9 +1005,9 @@ static int _oe_write_config(int config_fd,
     if (lseek(config_fd, write_offset, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
-#ifdef OE_BE
-    value = OE_BSWAP_32(value);
-#endif
+//#ifdef OE_BE
+    //value = BSWAP_32(value);
+//#endif
 
     if (write(config_fd, &value, OE_REGSZ) != OE_REGSZ)
         return OE_EWRITEFAILURE;
@@ -1021,9 +1025,9 @@ static int _oe_read_config(int config_fd,
     if (read(config_fd, value, OE_REGSZ) != OE_REGSZ)
         return OE_EREADFAILURE;
 
-#ifdef OE_BE
-    *value = OE_BSWAP_32(value);
-#endif
+//#ifdef OE_BE
+    //*value = BSWAP_32(value);
+//#endif
 
     return 0;
 }
@@ -1042,19 +1046,14 @@ static int _oe_read_config(int config_fd,
 //    }
 //}
 
-
 #ifdef OE_BE
 static int _device_map_byte_swap(oe_ctx ctx)
 {
     int i;
     for (i = 0; i < ctx->num_dev; i++) {
-        ctx->dev_map[i].id = OE_BSWAP_32(ctx->dev_map[i].id);
-        //ctx->dev_map[i].read_offset = OE_BSWAP_32(ctx->dev_map[i].read_offset);
-        ctx->dev_map[i].read_size = OE_BSWAP_32(ctx->dev_map[i].read_size);
-        ctx->dev_map[i].frames_per_read_sample = OE_BSWAP_32(ctx->dev_map[i].frames_per_read_sample);
-        //ctx->dev_map[i].write_offset = OE_BSWAP_32(ctx->dev_map[i].write_offset);
-        ctx->dev_map[i].write_size = OE_BSWAP_32(ctx->dev_map[i].write_size);
-        ctx->dev_map[i].frames_per_write_sample = OE_BSWAP_32(ctx->dev_map[i].frames_per_write_sample);
+        ctx->dev_map[i].id = BSWAP_32(ctx->dev_map[i].id);
+        ctx->dev_map[i].read_size = BSWAP_32(ctx->dev_map[i].read_size);
+        ctx->dev_map[i].write_size = BSWAP_32(ctx->dev_map[i].write_size);
     }
 
     return 0;
@@ -1068,15 +1067,19 @@ static int _oe_array_bswap(void *data, oe_raw_t type, size_t size)
     switch (type) {
 
         case OE_UINT16:
-            for (i = 0; i < size, i += inc) {
+            for (i = 0; i < size; i += inc) {
                 *((uint16_t *)(data) + i) = BSWAP_16(*((uint16_t *)(data) + i));
             }
+            break;
         case OE_UINT32:
-            for (i = 0; i < size, i += inc) {
+            for (i = 0; i < size; i += inc) {
                 *((uint32_t *)(data) + i) = BSWAP_32(*((uint32_t *)(data) + i));
             }
+            break;
         default:
             return OE_EINVALRAWTYPE;
     }
+
+    return 0;
 }
 #endif

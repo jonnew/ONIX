@@ -23,6 +23,9 @@ int main()
     const char *config_path = "/tmp/rat128_config";
     const char *sig_path = "/tmp/rat128_signal";
     const char *data_path = "/tmp/rat128_read";
+    //const char *config_path = "/dev/xillybus_cmd_mem_32";
+    //const char *sig_path = "/dev/xillybus_async_read_8";
+    //const char *data_path = "/dev/xillybus_data_read_32";
 
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
@@ -90,7 +93,7 @@ int main()
     rc = oe_get_opt(ctx, OE_FSCLKHZ, &fs_hz, &fs_hz_sz);
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register read failure.");
-    assert(fs_hz == fs_desired && "Sample rate set failed.");
+    //assert(fs_hz == fs_desired && "Sample rate set failed.");
 
     // Start acquisition
     oe_reg_val_t run = 1;
@@ -152,7 +155,8 @@ int main()
         }
     }
 
-        oe_destroy_frame(frame);
+    oe_destroy_frame(frame);
+
     // Reset the hardware
     oe_reg_val_t reset = 1;
     rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
