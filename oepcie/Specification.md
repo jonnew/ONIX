@@ -20,8 +20,7 @@ applications.
 - Cross platform
 
 ## Language
-Implementation shall be in C to facilitate cross platform and cross-language
-use.
+The implementation is in C to facilitate cross platform and cross-language use.
 
 ## Scope and External Dependencies
 - This is a low level library used by high-level language binding and/or
@@ -74,7 +73,7 @@ typedef struct oe_ctx_impl {
 } oe_ctx_impl_t;
 ```
 
-State details shall be hidden in implementation file (.c). A pointer to opaque
+State details is hidden in implementation file (.c). A pointer to opaque
 type (handle) is exposed publicly in header (.h):
 
 ```
@@ -151,9 +150,10 @@ calls to `oe_get_opt` using the `OE_DEVICEMAP` option.
 
 ### Frame
 A _frame_ is a flat byte array containing a single sample's worth of data for a
-set (one to all) of devices within a device map. Frames are produced by calls
-`oe_read_frame` and provided to calls to `oe_write_frame`. Data within a frame
-is arranged as follows:
+set (one to all) of devices within a device map. _Read-frames_ are produced by
+calls `oe_read_frame` and _write_frames_ are provided to calls to
+`oe_write_frame`. Data within both read- and write-frames is arranged into four
+sections as follows:
 
 ```
 [32 byte header,                              // 1. header
@@ -163,12 +163,12 @@ is arranged as follows:
 
 ```
 
-A frame is divided into four sections, which are described below.
+Each frame section is described below:
 
 1. header
-    - Each fraem starts with a 32-byte header
+    - Each frame starts with a 32-byte header
     - For read-frames (`oe_read_frame`) header contains
-        - bytes 0-7: `uint64_t` frame number
+        - bytes 0-7: `uint64_t` system clock counter
         - bytes 8-9: `uin16_t` indicating number of devices that the frame contains
           data for
         - byte 10: `int8_t` frame error. 0 = OK. 1 = data may be corrupt.
@@ -177,7 +177,7 @@ A frame is divided into four sections, which are described below.
     - For write-frames (`oe_write_frame`) header contains
         - bytes 0-32: reserved
 
-2. device map indicies
+2. device map indices
     - An array of `uint32_t` indicies into the device map captured by the host
       during a call to `oe_init_ctx`.
     - The offset, size, and type information of the _i_th data block within the
@@ -269,64 +269,51 @@ provide access to acquisition parameters and state control.
 1. Device register programming interface:
 
 - `uint32_t config_device_id`: Device ID register. Specify a device endpoint as
-  enumerated by the firmware (e.g. an Intan chip, or a IMU chip)  and
-  to which communication will be directed using `config_reg_addr` and
+  enumerated by the firmware (e.g. an Intan chip, or a IMU chip)  and to which
+  communication will be directed using `config_reg_addr` and
   `config_reg_value`.
 
-- `uint32_t config_reg_addr`: register address of configuration to be
-  written
+- `uint32_t config_reg_addr`: register address of configuration to be written
 
-- `uint32_t config_reg_value`: configuration value to be written to or
-  read from and that corresponds to `config_reg_addr` on device
-  `config_device_id`
+- `uint32_t config_reg_value`: configuration value to be written to or read
+  from and that corresponds to `config_reg_addr` on device `config_device_id`
 
-- `uint32_t config_rw`: bit indicating if a read or write should be
-  performed. 0 indicates read operation. >0 indicates write operation.
+- `uint32_t config_rw`: bit indicating if a read or write should be performed.
+  0 indicates read operation. >0 indicates write operation.
 
-- `uint32_t config_trig`: set >0 to trigger either register read or
-  write operation depending on the state of `config_rw`. If `config_rw`
-  is 0, a read is performed. In this case `config_reg_value` is updated
-  with value stored at `config_reg_addr` on device at
-  `config_device_id`. If the specified register is not readable,
-  `config_reg_value` is populated with a magic number (`OE_REGMAGIC`).
-  If `config_rw`is 1, `config_reg_value` is written to register at
-  `config_reg_addr` on device `config_device_id`. The `config_trig`
-  register shall always be set low by the firmware following
-  transmission even if it is not successful or does not make sense
-  given the address register values.
+- `uint32_t config_trig`: set >0 to trigger either register read or write
+  operation depending on the state of `config_rw`. If `config_rw` is 0, a read
+  is performed. In this case `config_reg_value` is updated with value stored at
+  `config_reg_addr` on device at `config_device_id`. If the specified register
+  is not readable, `config_reg_value` is populated with a magic number
+  (`OE_REGMAGIC`).  If `config_rw`is 1, `config_reg_value` is written to
+  register at `config_reg_addr` on device `config_device_id`. The `config_trig`
+  register is always be set low by the firmware following transmission even
+  if it is not successful or does not make sense given the address register
+  values.
 
 2. Global acqusition registers
 
-- `uint32_t running`: set to > 0 to run the system clock and produce data.
-  Set to 0 to stop the system clock and therefore stop data flow. Results
-  in no other configuration changes.
+- `uint32_t running`: set to > 0 to run the system clock and produce data. Set
+  to 0 to stop the system clock and therefore stop data flow. Results in no
+  other configuration changes.
 
 - `uint32_t reset`: set to > 0 to trigger a hardware reset and send a fresh
-  device map to the host and reset hardware to its default state. Set to 0
-  by host firmware upon entering the reset state.
+  device map to the host and reset hardware to its default state. Set to 0 by
+  host firmware upon entering the reset state.
 
-- `uint32_t sys_clock_hz`: A read-only register specifying the base
-  hardware clock frequency in Hz.
-
-- `uint32_t frame_clock_hz`: A read-only register specifying the frame clock
-  frequency in Hz. This is a function of the current value of clock muliply
-  and divide registers specified below.
-  device map to the host
-
-- `uint32_t frame_clock_m`: Frame clock divider numerator value.
-
-- `uint32_t frame_clock_d`: Frame clock divider denominator value.
+- `uint32_t sys_clock_hz`: A read-only register specifying the base hardware
+  clock frequency in Hz.
 
 - _Note:_ Appropriate values of `config_reg_addr` and `config_reg_value` are
   determined by:
     - Looking at a device's data sheet if the device is an integrated circuit
     - Looking at the verilog source code comments if the device exists as a
-      module that is implemented within the FPGA (e.g a MUX) or as a
-      verilog module that abstracts a PCB or sub-circuit (e.g. a
-      digital IO port).
+      module that is implemented within the FPGA (e.g a MUX) or as a verilog
+      module that abstracts a PCB or sub-circuit (e.g. a digital IO port).
 
-- _Note:_ `SEEK` locations of each configuration register, relative to the start of the
-  stream, are provided by the `oe_config_reg` enum.
+- _Note:_ `SEEK` locations of each configuration register, relative to the
+  start of the stream, are provided by the `oe_config_reg` enum.
 
 - _Note:_ Upon a call to `oe_write_reg`, the following actions take place:
 
@@ -338,13 +325,13 @@ provide access to acquisition parameters and state control.
     1. `value` is copied to the `config_reg_value` register on the host FPGA.
     1. The `config_rw` register on the host FPGA is set to 0x01.
     1. The `config_trig` register on the host FPGA is set to 0x01, triggering
-       configuration transmission by the firmware.
+    configuration transmission by the firmware.
     1. (Firmware) A configuration write is performed by the firmware.
     1. (Firmware) `config_trig` is set to 0x00 by the firmware.
-    1. (Firmware) `OE_CONFIGWACK` is pushed onto the signal stream by the firmware.
+    1. (Firmware) `OE_CONFIGWACK` is pushed onto the signal stream by the
+    firmware.
     1. The signal stream is pumped until `OE_CONFIGWACK` is received indicating
-       that the host FPGA has attempted to write to the specified device
-       register.
+    that the host FPGA has attempted to write to the specified device register.
 
 - _Note:_ Upon a call to `oe_write_reg`, the following actions take place:
 
@@ -354,14 +341,15 @@ provide access to acquisition parameters and state control.
     1. `dev_idx` is copied to the `config_device_id` register on the host FPGA.
     1. `addr` is copied to the `config_reg_addr` register on the host FPGA.
     1. The `config_rw` register on the host FPGA is set to 0x00.
-    1. The `config_read_trig` register on the host FPGA is set to 0x01, triggering
-       configuration transmission by the firmware.
+    1. The `config_read_trig` register on the host FPGA is set to 0x01,
+    triggering configuration transmission by the firmware.
     1. (Firmware) A configuration read is performed by the firmware.
     1. (Firmware) `config_trig` is set to 0x00 by the firmware.
-    1. (Firmware) `OE_CONFIGRACK` is pushed onto the signal stream by the firmware.
+    1. (Firmware) `OE_CONFIGRACK` is pushed onto the signal stream by the
+    firmware.
     1. The signal stream is pumped until `OE_CONFIGRACK` is received indicating
-       that the host FPGA has completed reading the specified device register
-       and copied its value to the `config_reg_value` register.
+    that the host FPGA has completed reading the specified device register and
+    copied its value to the `config_reg_value` register.
 
 - _Note:_ Following successful or unsuccessful device register read or write,
   the COBS encoded ACK or NACK packets must be passed to the signal stream.
@@ -476,14 +464,15 @@ oe_ctx oe_create_ctx();
 
 ### Returns `oe_ctx`
 An opaque handle to the newly created context if successful. Otherwise it shall
-return NULL and set errno to `EAGAIN`
+return NULL and set errno to `EAGAIN`.
 
 ### Description
 On success a context struct is allocated and created, and its handle is passed
-to the user. The context holds all state used to communicate with a set of
-hardware devices. It holds paths to FIFOs and configuration communication
-channels and knowledge of the hardware's run state. It is configured through
-calls to `oe_set_opt`. It can be examined through calls to `oe_get_opt`.
+to the user. The context holds all state used by the library function calls for
+refection and hardware communication. It holds paths to FIFOs and configuration
+communication channels and knowledge of the hardware's parameters and run state
+. It is configured through calls to `oe_set_opt`. It can be examined through
+calls to `oe_get_opt`.
 
 ## oe_destroy_ctx
 Terminate a context and free bound resources.
@@ -780,7 +769,7 @@ int oe_read_reg(const oe_ctx ctx, const oe_dev_idx_t dev_idx, const oe_reg_addr_
 ### Arguments
 - `ctx` context
 - `dev_idx` physical index number
-- `addr` Thekey of register to write to
+- `addr` The address of register to write to
 - `value` pointer to an int that will store the value of the register at `addr` on `dev_idx`
 
 ### Returns `int`
@@ -825,61 +814,86 @@ to `oe_read_reg`.
 Read high-bandwidth input data stream.
 
 ``` {.c}
-int oe_read(const oe_ctx ctx, void *data, size_t size)
+int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 ```
 
 ### Arguments
 - `ctx` context
-- `data` buffer to read data into
-- `size` size of buffer in bytes
+- `frame` Pointer to a `oe_rframe_t` pointer
 
 ### Returns `int`
 - 0: success
 - Less than 0: `oe_error_t`
 
 ### Description
-`oe_read` reads data from a asynchronous input buffer into host memory. The
-layout of retrieved data is determined by a particular hardware configuration
-and corresponding device map. Each data frame corresponds to a round-robin
-through all data producing devices in the device map. The read byte offsets of each
-device within a data frame can be found by examining the device map via calls
-to `oe_get_opt`.
-
-## oe_write
-NB: Not implemented in first version
-Write data to an open stream
+`oe_read_frame` allocates and populates a `struct` corresponding to a single
+[read-frame](#frame) from the data input channel into host memory.
 
 ``` {.c}
-int oe_write(const oe_ctx ctx, void *data, size_t size)
+// Read frame type 
+typedef struct oe_rframe {
+    uint64_t sample_no;   // Sample no.
+    uint16_t num_dev;     // Number of devices in frame
+    uint8_t corrupt;      // Is this frame corrupt?
+    oe_size_t *dev_idxs;  // Array of device indicies in frame
+    size_t *dev_offs;     // Device data offsets within data block
+    uint8_t *data;        // Multi-device raw data block
+
+} oe_rframe_t;
+```
+
+## oe_write_frame
+NB: Not implemented in first version
+Write a frame to the output data channel.
+
+``` {.c}
+int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
 ```
 
 ### Arguments
 - `ctx` context
-- `data` buffer to read data into
-- `size` size of buffer in bytes
+- `frame` an [output frame]()
 
 ### Returns `int`
+- 0: success
 - Less than 0: `oe_error_t`
 
 ### Description
-`oe_write` writes data into an asynchronous output stream from host memory. The
-layout of output data is determined by a particular hardware configuration, and
-corresponding device map. Data placed into the stream corresponds to a
-round-robin through all data accepting devices in the device map. The wite byte
-offsets of each device within a data frame can be found by examining the device
-map via calls to `oe_get_opt`.
+`oe_write_frame` writes a pre-allocated and populated `stuct` corresponding to
+a single [write-frame](#frame) into the asynchronous data output channel from
+host memory. 
+
+## oe_version
+Report the oepcie library version.
+
+``` {.c}
+void oe_version(int major, int minor, int patch)
+```
+
+### Arguments
+- `major` major library version
+- `minor` minor library version
+- `patch` patch number
+
+### Returns `void`
+There is no return value.
+
+### Description
+This library uses [semantic versioning](www.semver.org). Briefly, the major
+revision is for incompatible API changes. Minor version is for backwards
+compatible changes. The patch number is for backwards-compatible bug fixes.
 
 ## oe_error_str
-Convert an error number from `oe_error_t` into a human readable string.
+convert an error number from `oe_error_t` into a human readable string.
 
 ``` {.c}
 const char *oe_error_str(oe_error_t err)
 ```
 
-### Arguments
+### arguments
 - `err` error code
 
-### Returns `const char *`
+### returns `const char *`
 Pointer to an error message string
 
 ## oe_device_str
@@ -893,4 +907,4 @@ const char *oe_device(oe_device_id_t dev_id)
 - `dev_id` device id
 
 ### Returns `const char *`
-Pointer to a device ide string
+Pointer to a device id string

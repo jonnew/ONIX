@@ -1,5 +1,6 @@
 #define _GNU_SOURCE // fcntl
 
+#include <assert.h>
 #include <fcntl.h>
 #include <math.h>
 #include <pthread.h>
@@ -73,19 +74,13 @@ typedef enum oe_conf_reg_off {
 // Devices handled by this firmware
 static oe_device_t my_devices[]
     = {{.id = OE_RHD2164,
-        //.read_offset = OE_RFRAMEHEADERSZ,
-        .read_size = 66 * sizeof(uint16_t),
-        //.write_offset = OE_WFRAMEHEADERSZ,
+        .read_size = 67 * sizeof(uint16_t),
         .write_size = 0},
        {.id = OE_RHD2164,
-        //.read_offset = OE_RFRAMEHEADERSZ + 66 * sizeof(uint16_t),
-        .read_size = 66 * sizeof(uint16_t),
-        //.write_offset = OE_WFRAMEHEADERSZ,
+        .read_size = 67 * sizeof(uint16_t),
         .write_size = 0},
        {.id = OE_MPU9250,
-        //.read_offset = OE_RFRAMEHEADERSZ + 2 * (66 * sizeof(uint16_t)),
-        .read_size = 4 * 6,
-        //.write_offset = OE_WFRAMEHEADERSZ,
+        .read_size = 9 * sizeof(uint16_t),
         .write_size = 0}};
 
 // Normal distribution
@@ -297,24 +292,35 @@ void *data_loop(void *vargp)
             }
 
             // Frame header
-            *(uint64_t *)frame = sample_tick;       // Sample number
-            *(((uint16_t *)frame) + 4) = num_devs;  // Num devices
-            *(frame + 10) = 0;                      // Error
+            *(uint64_t *)frame = sample_tick;                      // Sample number
+            *((uint16_t *)(frame + OE_RFRAMENDEVOFF)) = num_devs;  // Num devices
+            *(frame + OE_RFRAMENERROFF) = 0;                       // Error
 
             // Where does the data block start and end
             uint8_t *data_ptr
                 = frame + (OE_RFRAMEHEADERSZ + num_devs * sizeof(uint32_t));
             uint8_t *data_end = data_ptr + data_block_size;
 
-            // Generate frame (frame)
+            // Generate frame
             // TODO: Generate the proper raw type for the device
             while (data_ptr < data_end) {
                 *(uint16_t *)(data_ptr) = sample_tick % 65535;
                 data_ptr += 2;
+                if (data_ptr >= data_end)
+                    break;
+                *(uint16_t *)(data_ptr) = 65535 - (sample_tick % 65535);
+                data_ptr += 2;
+                if (data_ptr >= data_end)
+                    break;
+                *(uint16_t *)(data_ptr) = 65535 * (sample_tick % 2);
+                data_ptr += 2;
+                if (data_ptr >= data_end)
+                    break;
             }
 
             size_t rc = write(data_fd, frame, frame_size);
-            printf("Write %zu bytes\n", rc);
+            assert(rc == frame_size && "Incomplete write.");
+            //printf("Write %zu bytes\n", rc);
 
             // Increment frame count
             sample_tick += 1;
@@ -444,7 +450,7 @@ reset:
         }
     }
 
-    // Join data and singal threads
+    // Join data and signal threads
     pthread_join(tid, NULL);
 
     // Close pipes/files

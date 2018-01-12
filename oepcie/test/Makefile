@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS=-g -O0 -Wall
+CFLAGS=-g -O0 -Wall #-DOE_BIGEND
 LDFLAGS=-loepcie
 
 #liboepcie
