@@ -30,13 +30,13 @@
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -671,9 +671,9 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="1.5" y="36" size="1.27" layer="25" font="vector" ratio="17" rot="R90" align="center-left"/>
 <attribute name="VALUE" x="3.25" y="36" size="1.27" layer="27" font="vector" ratio="17" rot="R90" align="center-left"/>
 </element>
-<element name="L1" library="jonnew" package="LPS3015" value="LPS3015" x="-8" y="36.5" smashed="yes" rot="R270">
+<element name="L1" library="jonnew" package="LPS3015" value="LPS3015-222" x="-8" y="36.5" smashed="yes" rot="R270">
 <attribute name="NAME" x="-10.25" y="33.5" size="1.27" layer="25" font="vector" ratio="17" align="center-left"/>
-<attribute name="VALUE" x="-2.0362" y="30.3448" size="1.27" layer="27" font="vector" ratio="17" rot="R180" align="center-left"/>
+<attribute name="VALUE" x="-10.2638" y="30.3552" size="1.27" layer="27" font="vector" ratio="17" align="center-left"/>
 </element>
 <element name="C1" library="jonnew" package="0805" value="10uF" x="-4.25" y="34.25" smashed="yes">
 <attribute name="DK" value="" x="-4.25" y="34.25" size="1.778" layer="27" display="off"/>

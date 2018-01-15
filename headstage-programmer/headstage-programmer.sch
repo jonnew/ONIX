@@ -2929,7 +2929,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="VCOAX" library="jonnew" deviceset="TP" device="_S500-6350-P2"/>
 <part name="TMS" library="jonnew" deviceset="TP" device="_S500-6350-P2"/>
 <part name="U1" library="jonnew" deviceset="TPS61200" device="" value="TPS61202"/>
-<part name="L1" library="jonnew" deviceset="L" device="_LPS3015" value="LPS3015"/>
+<part name="L1" library="jonnew" deviceset="L" device="_LPS3015" value="LPS3015-222"/>
 <part name="C1" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
 <part name="C3" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
 <part name="C4" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
@@ -3009,7 +3009,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="Q1" gate="G$1" x="210.82" y="144.78" rot="MR90">
 <attribute name="PARTNO" x="210.82" y="144.78" size="1.778" layer="96" rot="MR90" display="off"/>
 </instance>
-<instance part="SUPPLY27" gate="PE" x="208.28" y="114.3"/>
+<instance part="SUPPLY27" gate="PE" x="208.28" y="111.76"/>
 <instance part="R3" gate="R" x="195.58" y="73.66" rot="R90"/>
 <instance part="D3" gate="G$1" x="195.58" y="60.96"/>
 <instance part="SUPPLY12" gate="PE" x="195.58" y="48.26"/>
@@ -3166,7 +3166,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R2" gate="R" pin="1"/>
 <pinref part="SUPPLY27" gate="PE" pin="GND"/>
-<wire x1="208.28" y1="121.92" x2="208.28" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="121.92" x2="208.28" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="D3" gate="G$1" pin="C"/>
