@@ -364,36 +364,6 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             *option_len = OE_REGSZ;
             break;
        }
-       case OE_FSCLKHZ: {
-            if (*option_len != OE_REGSZ)
-                return OE_EBUFFERSIZE;
-
-            int rc = _oe_read_config(ctx->config.fid, CONFFRAMEHZOFFSET, value);
-            if (rc) return rc;
-
-            *option_len = OE_REGSZ;
-            break;
-       }
-       case OE_FSCLKM: {
-            if (*option_len != OE_REGSZ)
-                return OE_EBUFFERSIZE;
-
-            int rc = _oe_read_config(ctx->config.fid, CONFFRAMEHZMOFFSET, value);
-            if (rc) return rc;
-
-            *option_len = OE_REGSZ;
-            break;
-       }
-       case OE_FSCLKD: {
-            if (*option_len != OE_REGSZ)
-                return OE_EBUFFERSIZE;
-
-            int rc = _oe_read_config(ctx->config.fid, CONFFRAMEHZDOFFSET, value);
-            if (rc) return rc;
-
-            *option_len = OE_REGSZ;
-            break;
-       }
 
        default:
            return OE_EINVALOPT;
@@ -469,41 +439,6 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
         }
         case OE_SYSCLKHZ: {
             return OE_EREADONLY;
-        }
-        case OE_FSCLKHZ: {
-            return OE_EREADONLY;
-        }
-        case OE_FSCLKM: {
-            assert(ctx->run_state == IDLE && "Context state must be IDLE.");
-            if (ctx->run_state != IDLE)
-                return OE_EINVALSTATE;
-
-            if (option_len != OE_REGSZ)
-                return OE_EBUFFERSIZE;
-
-            // TODO: Read FSD value, make sure this is OK.
-
-            int rc = _oe_write_config(
-                ctx->config.fid, CONFFRAMEHZMOFFSET, *(oe_reg_val_t*)value);
-            if (rc) return rc;
-
-            break;
-        }
-        case OE_FSCLKD: {
-            assert(ctx->run_state == IDLE && "Context state must be IDLE.");
-            if (ctx->run_state != IDLE)
-                return OE_EINVALSTATE;
-
-            if (option_len != OE_REGSZ)
-                return OE_EBUFFERSIZE;
-
-            // TODO: Read FSM value, make sure this is OK.
-
-            int rc = _oe_write_config(
-                ctx->config.fid, CONFFRAMEHZDOFFSET, *(oe_reg_val_t*)value);
-            if (rc) return rc;
-
-            break;
         }
         default:
             return OE_EINVALOPT;
@@ -646,22 +581,23 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame_in)
     oe_frame_t *frame = *frame_in;
 
 //#ifdef OE_BE
-//    frame->sample_no = BSWAP_64(*(uint64_t*)(header));
+//    frame->clock = BSWAP_64(*(uint64_t*)(header));
 //    frame->num_dev = BSWAP_32(*(uint16_t*)(header + OE_RFRAMENDEVOFF));
 //#else
-    frame->sample_no = *(uint64_t*)(header);
+    frame->clock = *(uint64_t*)(header);
     frame->num_dev = *(uint16_t *)(header + OE_RFRAMENDEVOFF);
 //#endif
     frame->corrupt = *(uint8_t*)(header + OE_RFRAMENERROFF);
 
-    // Allocate space for data
-    frame->dev_idxs = malloc(frame->num_dev * sizeof(oe_size_t));
-    frame->dev_offs = malloc(frame->num_dev * sizeof(size_t));
+    // Allocate space for device info
+    frame->dev_idxs_sz = frame->num_dev * sizeof(oe_size_t);
+    frame->dev_offs_sz = frame->num_dev * sizeof(size_t);
+    frame->dev_idxs = malloc(frame->dev_idxs_sz);
+    frame->dev_offs = malloc(frame->dev_offs_sz);
 
-    // Read device indicies that are in this frame
-    int dev_idxs_sz = frame->num_dev * sizeof(oe_size_t);
-    rc = _oe_read(ctx->read.fid, frame->dev_idxs, dev_idxs_sz);
-    assert(rc == dev_idxs_sz && "Did not read full dev idxs buffer.");
+    // Read device indices that are in this frame
+    rc = _oe_read(ctx->read.fid, frame->dev_idxs, frame->dev_idxs_sz);
+    assert((size_t)rc == frame->dev_idxs_sz && "Did not read full dev idxs buffer.");
 
     // Find data read size
     uint16_t i;
@@ -679,6 +615,7 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame_in)
     rsize += rsize % 4;
 
     // Now we know the frame size, so we allocate
+    frame->data_sz = rsize;
     frame->data = malloc(rsize);
 
     // Read data
@@ -696,7 +633,6 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame_in)
     //}
 //#endif
 //
-    frame->size = dev_idxs_sz + rsize + sizeof(oe_frame_t);
 
     return 0;
 }

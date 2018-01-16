@@ -48,9 +48,10 @@ namespace oe {
         return oe_device_str(dev_id);
     }
 
-    //class context_t;
+    class context_t;
 
-    using device_map_t = std::vector<oe_device_t>;
+    using device_t = oe_device_t;
+    using device_map_t = std::vector<device_t>;
 
     class frame_t
     {
@@ -58,63 +59,76 @@ namespace oe {
 
         public:
 
-            inline frame_t(const device_map_t &dev_map)
+            inline explicit frame_t(const device_map_t &dev_map)
             : dev_map_(dev_map)
-            //: size_(size)
-            //, frame_(frame)
             {
                 // Nothing
             }
 
-            //inline frame_t(const frame_t &rhs)
-            //: size_(rhs.size_)
-            ////, data_(new raw_t[rhs.size_])
-            //, dev_map_(rhs.dev_map_)
-            //{
-            //    std::memcpy(data_, rhs.data_, sizeof(raw_t) * rhs.size_);
-            //}
+            inline frame_t(const frame_t &rhs)
+            : dev_map_(rhs.dev_map_)
+            {
+                frame_ = static_cast<oe_frame_t *>(malloc(sizeof(oe_frame_t)));
+                frame_->clock = rhs.frame_->clock;
+                frame_->num_dev = rhs.frame_->num_dev;
+                frame_->corrupt = rhs.frame_->corrupt;
+                frame_->dev_idxs_sz = rhs.frame_->dev_idxs_sz;
+                frame_->dev_offs_sz = rhs.frame_->dev_offs_sz;
+                frame_->data_sz = rhs.frame_->data_sz;
 
-            //inline frame_t(frame_t &&rhs)
-            //: size_(rhs.size_)
-            //, data_(rhs.data_)
-            //, dev_map_(rhs.dev_map_)
-            //{
-            //    rhs.data_ = nullptr;
-            //}
+                std::memcpy(frame_->dev_offs, rhs.frame_->dev_offs, rhs.frame_->dev_offs_sz);
+                std::memcpy(frame_->dev_idxs, rhs.frame_->dev_idxs, rhs.frame_->dev_idxs_sz);
+                std::memcpy(frame_->data, rhs.frame_->data, rhs.frame_->data_sz);
+            }
 
-            //inline frame_t &operator=(const frame_t &rhs)
-            //{
-            //    if (&rhs == this)
-            //        return *this;
+            inline frame_t(frame_t &&rhs)
+            : dev_map_(rhs.dev_map_)
+            , frame_(rhs.frame_)
+            {
+                rhs.frame_ = nullptr;
+            }
 
-            //    size_ = rhs.size_;
-            //    auto tmp = new raw_t[rhs.size_];
-            //    std::memcpy(tmp, rhs.data_, sizeof(raw_t) * rhs.size_);
-            //    delete[] data_;
-            //    data_ = tmp;
-            //    dev_map_ = rhs.dev_map_;
+            inline frame_t &operator=(const frame_t &rhs)
+            {
+                if (&rhs == this)
+                    return *this;
 
-            //    return *this;
-            //}
+                const_cast<device_map_t&>(dev_map_) = rhs.dev_map_;
 
-            //inline frame_t &operator=(frame_t &&rhs)
-            //{
-            //    if (&rhs == this)
-            //        return *this;
+                oe_destroy_frame(frame_);
+                frame_ = static_cast<oe_frame_t *>(malloc(sizeof(oe_frame_t)));
+                frame_->clock = rhs.frame_->clock;
+                frame_->num_dev = rhs.frame_->num_dev;
+                frame_->corrupt = rhs.frame_->corrupt;
+                frame_->dev_idxs_sz = rhs.frame_->dev_idxs_sz;
+                frame_->dev_offs_sz = rhs.frame_->dev_offs_sz;
+                frame_->data_sz = rhs.frame_->data_sz;
 
-            //    size_ = rhs.size_;
-            //    delete[] data_;
-            //    data_ = rhs.data_;
-            //    rhs.data_ = nullptr;
-            //    dev_map_ = rhs.dev_map_;
+                std::memcpy(frame_->dev_offs, rhs.frame_->dev_offs, rhs.frame_->dev_offs_sz);
+                std::memcpy(frame_->dev_idxs, rhs.frame_->dev_idxs, rhs.frame_->dev_idxs_sz);
+                std::memcpy(frame_->data, rhs.frame_->data, rhs.frame_->data_sz);
 
-            //    return *this;
-            //}
+                return *this;
+            }
+
+            inline frame_t &operator=(frame_t &&rhs)
+            {
+                if (&rhs == this)
+                    return *this;
+
+                const_cast<device_map_t&>(dev_map_) = rhs.dev_map_;
+
+                oe_destroy_frame(frame_);
+                frame_ = rhs.frame_;
+                rhs.frame_ = nullptr;
+
+                return *this;
+            }
 
             ~frame_t() noexcept { oe_destroy_frame(frame_); }
 
-            uint64_t time() { return frame_.sample_no; }
-            bool corrupt() { return static_cast<bool>(frame_.corrupt); }
+            uint64_t time() { return frame_->clock; }
+            bool corrupt() { return static_cast<bool>(frame_->corrupt); }
 
             // TODO: raw_t should be deduced from call to oe_raw_type() using
             // c++14 features
@@ -124,34 +138,41 @@ namespace oe {
                 // Find the position of the requested idx in the frames
                 // dev_idx's array to get offset
                 auto it = std::find(
-                    frame.dev_idxs, frame.dev_idxs + frame.num_dev, dev_idx);
+                    frame_->dev_idxs, frame_->dev_idxs + frame_->num_dev, dev_idx);
 
-                if (it == frame.dev_idxs + frame.num_dev)
+                if (it == frame_->dev_idxs + frame_->num_dev)
                     throw(error_t(OE_EDEVIDX));
 
                 // Return iterator dev_idx's data begin()
-                auto i = std::distance(frame.dev_idxs, it);
-                return reinterpret_cast<raw_t *>(frame.data + frame.dev_offs + i);
+                auto i = std::distance(frame_->dev_idxs, it);
+                return reinterpret_cast<raw_t *>(frame_->data
+                                                 + frame_->dev_offs[i]);
             }
 
             template <typename raw_t>
             raw_t * end(size_t dev_idx)
             {
                 auto it = std::find(
-                    frame.dev_idxs, frame.dev_idxs + frame.num_dev, dev_idx);
+                    frame_->dev_idxs, frame_->dev_idxs + frame_->num_dev, dev_idx);
 
-                if (it == frame.dev_idxs + frame.num_dev)
+                if (it == frame_->dev_idxs + frame_->num_dev)
                     throw(error_t(OE_EDEVIDX));
 
                 // Return iterator dev_idx's data begin()
-                auto i = std::distance(frame.dev_idxs, it);
-                return reinterpret_cast<raw_t *>(frame.data + frame.dev_offs + i
-                                                 + dev_map_[dev_idx].read_size + 1);
+                auto i = std::distance(frame_->dev_idxs, it);
+                return reinterpret_cast<raw_t *>(frame_->data
+                                                 + frame_->dev_offs[i]
+                                                 + dev_map_[dev_idx].read_size);
+            }
+
+            std::vector<size_t> device_indices() const
+            {
+                return std::vector<size_t>(frame_->dev_idxs,
+                                           frame_->dev_idxs + frame_->num_dev);
             }
 
         private:
-            //const size_t frame_size_;
-            oe_frame_t *frame_; 
+            oe_frame_t *frame_ = nullptr;
             const device_map_t &dev_map_;
     };
 
@@ -182,10 +203,6 @@ namespace oe {
             size_t devices_sz = sizeof(oe_device_t) * num_devs;
             device_map_.resize(num_devs);
             get_opt(OE_DEVICEMAP, device_map_.data(), &devices_sz);
-
-            // Get data frame size and allocate
-            //frame_size_ = get_opt<oe_size_t>(OE_READFRAMESIZE);
-            //buffer_ = std::vector<uint8_t>(frame_size_ * frames_per_update_);
         }
 
         // No copy
@@ -195,10 +212,7 @@ namespace oe {
         // Moves OK
         inline context_t(context_t &&rhs) noexcept
         : ctx_(rhs.ctx_)
-        , device_map_(rhs.device_map_)
-        //, frame_size_(rhs.frame_size_)
-        //, buffer_(rhs.buffer_)
-        //, buf_idx_(rhs.buf_idx_)
+        , device_map_(std::move(rhs.device_map_))
         {
             rhs.ctx_ = nullptr;
         }
@@ -206,10 +220,7 @@ namespace oe {
         inline context_t &operator = (context_t &&rhs) noexcept
         {
             std::swap(ctx_, rhs.ctx_);
-            std::swap(device_map_, rhs.device_map_);
-            //std::swap(frame_size_, rhs.frame_size_);
-            //std::swap(buffer_, rhs.buffer_);
-            //std::swap(buf_idx_, rhs.buf_idx_);
+            device_map_ = rhs.device_map_;
             return *this;
         }
 
@@ -222,7 +233,7 @@ namespace oe {
                 return;
 
             // Reset the hardware, ignore error codes since this may or may not
-            // be approriate
+            // be appropriate
             oe_reg_val_t reset = 1;
             oe_set_opt(ctx_, OE_RESET, &reset, sizeof(reset));
 
@@ -252,7 +263,7 @@ namespace oe {
             oe_reg_val_t value = 0;
             auto rc = oe_read_reg(ctx_, dev_idx, addr, &value);
             if (rc != 0) throw error_t(rc);
-            return *value;
+            return value;
         }
 
         inline void write_reg(size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value)
@@ -265,23 +276,10 @@ namespace oe {
 
         inline frame_t read_frame()
         {
-            // If we have exausted buffer
-            //if (buf_idx_ == frames_per_update_)
-            //    update_buffer();
+            frame_t frame(device_map_);
+            oe_read_frame(ctx_, &frame.frame_);
 
-            frame_t frame;
-            oe_read_frame(ctx_, &frame.frame);
-
-            //// Move data from buffer into frame
-            //frame_t frame(frame_size_, device_map_);
-            //std::move(buffer_.begin() + buf_idx_ * frame_size_,
-            //          buffer_.begin() + (buf_idx_ + 1) * frame_size_,
-            //          frame.data_);
-
-            // Increment buffer index
-            //buf_idx_ += 1;
-
-            // Should be elided
+            // TODO: Should be elided, check disassembly
             return frame;
         }
 
@@ -298,21 +296,7 @@ namespace oe {
             if (rc != 0) throw error_t(rc);
         }
 
-        //inline void update_buffer()
-        //{
-        //    auto rc = oe_read(ctx_, buffer_.data(), buffer_.size());
-        //    if (rc < 0)
-        //        throw error_t(rc);
-        //    if (rc != static_cast<int>(buffer_.size()))
-        //        throw std::runtime_error("Incomplete read.");
-        //    buf_idx_ = 0;
-        //}
-
         oe_ctx ctx_ = nullptr;
         device_map_t device_map_;
-        //size_t frame_size_;
-        //static constexpr size_t frames_per_update_ = 100; // TODO: Settable
-        //std::vector<uint8_t> buffer_;
-        //size_t buf_idx_ = frames_per_update_;
     };
 }

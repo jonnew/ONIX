@@ -61,13 +61,15 @@ typedef struct {
 
 // Frame type
 typedef struct oe_frame {
-    size_t size;          // Frame size in bytes (both static and dynamic)
-    uint64_t sample_no;   // Sample no.
+    uint64_t clock;       // Base clock counter
     uint16_t num_dev;     // Number of devices in frame
     uint8_t corrupt;      // Is this frame corrupt?
-    oe_size_t *dev_idxs;  // Array of device indicies in frame
+    oe_size_t *dev_idxs;  // Array of device indices in frame
+    size_t dev_idxs_sz;   // Size in bytes of dev_idxs buffer
     size_t *dev_offs;     // Device data offsets within data block
+    size_t dev_offs_sz;   // Size in bytes of dev_idxs buffer
     uint8_t *data;        // Multi-device raw data block
+    size_t data_sz;       // Size in bytes of data buffer
 
 } oe_frame_t;
 
@@ -82,10 +84,7 @@ enum {
     OE_WRITEFRAMESIZE,
     OE_RUNNING,
     OE_RESET,
-    OE_SYSCLKHZ,
-    OE_FSCLKHZ,
-    OE_FSCLKM,
-    OE_FSCLKD,
+    OE_SYSCLKHZ
 };
 
 // Allowed raw data types

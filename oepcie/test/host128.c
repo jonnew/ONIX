@@ -11,9 +11,6 @@
 
 int main()
 {
-    // Frames per block read
-    //const size_t frames_per_read = 100;
-
     // Generate context
     oe_ctx ctx = NULL;
     ctx = oe_create_ctx();
@@ -71,64 +68,10 @@ int main()
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register read failure.");
 
-    //  Calculate m and d to get 10kHz
-    uint32_t fs_desired = 20000;
-    oe_reg_val_t m = 1;
-    oe_reg_val_t d = (m * base_hz) / fs_desired;
-
-    // Set clock divider to 10/100 to get 10kHz sample clock
-    rc = oe_set_opt(ctx, OE_FSCLKM, &m, sizeof(m));
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-    assert(!rc && "Register write failure.");
-
-    rc = oe_set_opt(ctx, OE_FSCLKD, &d, sizeof(d));
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-    assert(!rc && "Register write failure.");
-
-    // HACK. Wait for fs update
-    usleep(3000);
-
-    uint32_t fs_hz;
-    size_t fs_hz_sz = sizeof(fs_hz);
-    rc = oe_get_opt(ctx, OE_FSCLKHZ, &fs_hz, &fs_hz_sz);
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-    assert(!rc && "Register read failure.");
-    //assert(fs_hz == fs_desired && "Sample rate set failed.");
-
     // Start acquisition
     oe_reg_val_t run = 1;
     rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-
-    //const size_t read_size = frame_size * frames_per_read;
-    //uint8_t buffer[frame_size * frames_per_read];
-
-    //while (oe_read(ctx, &buffer, read_size)  >= 0)  {
-
-    //    printf("-- start read block --\n");
-
-    //    int f;
-    //    for (f = 0; f < frames_per_read; f++) {
-
-    //        size_t frame_offset = f * frame_size;
-    //        uint64_t sample = *(uint64_t *)(buffer + frame_offset);
-
-    //        printf("Sample: %" PRIu64 "\n", sample);
-
-    //        for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
-
-    //            oe_device_t this_dev = devices[dev_idx];
-
-    //            printf("\tDev: %d (%s)\n", dev_idx, oe_device_str(this_dev.id));
-    //            int16_t *lfp = (int16_t *)((uint8_t *)buffer + this_dev.read_offset);
-    //            int i;
-    //            printf("\tData: [");
-    //            for (i = 0; i < 10; i++)
-    //                printf("%" PRId16 " ", *(lfp + i));
-    //            printf("...]\n");
-    //        }
-    //    }
-    //}
 
     rc = 0;
     oe_frame_t *frame;
@@ -136,7 +79,7 @@ int main()
         printf("-- Read frame --\n");
 
         rc = oe_read_frame(ctx, &frame);
-        printf("\tSample: %" PRIu64 "\n", frame->sample_no);
+        printf("\tSample: %" PRIu64 "\n", frame->clock);
 
         int i;
         for (i =  0; i < frame->num_dev; i++) {
