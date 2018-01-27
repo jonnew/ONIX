@@ -596,96 +596,109 @@
 <text x="-3.6" y="1.7" size="1.27" layer="25" font="vector" ratio="18">&gt;NAME</text>
 </package>
 <package name="X2SON">
-<smd name="5" x="0" y="0" dx="0.48" dy="0.48" layer="1" rot="R45"/>
-<smd name="2" x="-0.45" y="-0.4" dx="0.21" dy="0.21" layer="1" roundness="100"/>
-<polygon width="0.053340625" layer="29">
-<vertex x="-0.6" y="-0.25"/>
-<vertex x="-0.45" y="-0.25"/>
-<vertex x="-0.25" y="-0.45"/>
-<vertex x="-0.25" y="-0.5"/>
-<vertex x="-0.6" y="-0.5"/>
+<smd name="PAD" x="0" y="0" dx="0.1" dy="0.1" layer="1" rot="R45" stop="no" thermals="no" cream="no"/>
+<smd name="2" x="-0.43" y="-0.33" dx="0.1" dy="0.1" layer="1" roundness="100" stop="no" thermals="no" cream="no"/>
+<smd name="1" x="-0.43" y="0.33" dx="0.1" dy="0.1" layer="1" roundness="100" stop="no" thermals="no" cream="no"/>
+<smd name="4" x="0.43" y="0.33" dx="0.1" dy="0.1" layer="1" roundness="100" stop="no" thermals="no" cream="no"/>
+<smd name="3" x="0.43" y="-0.33" dx="0.1" dy="0.1" layer="1" roundness="100" stop="no" thermals="no" cream="no"/>
+<text x="3.5" y="-0.15" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<polygon width="0.0508" layer="29">
+<vertex x="0" y="0.33940625"/>
+<vertex x="0.33940625" y="0"/>
+<vertex x="0" y="-0.33940625"/>
+<vertex x="-0.33940625" y="0"/>
 </polygon>
-<smd name="1" x="-0.45" y="0.4" dx="0.21" dy="0.21" layer="1" roundness="100"/>
-<smd name="4" x="0.45" y="0.4" dx="0.21" dy="0.21" layer="1" roundness="100"/>
-<smd name="3" x="0.45" y="-0.4" dx="0.21" dy="0.21" layer="1" roundness="100"/>
-<polygon width="0.053340625" layer="1">
-<vertex x="-0.6" y="0.5"/>
-<vertex x="-0.6" y="0.25"/>
-<vertex x="-0.45" y="0.25"/>
-<vertex x="-0.25" y="0.45"/>
-<vertex x="-0.25" y="0.5"/>
+<polygon width="0.0508" layer="1">
+<vertex x="0" y="0.400115625"/>
+<vertex x="0.400115625" y="0"/>
+<vertex x="0" y="-0.400115625"/>
+<vertex x="-0.400115625" y="0"/>
 </polygon>
-<polygon width="0.053340625" layer="1">
-<vertex x="0.6" y="0.5"/>
-<vertex x="0.6" y="0.25"/>
-<vertex x="0.45" y="0.25"/>
-<vertex x="0.25" y="0.45"/>
-<vertex x="0.25" y="0.5"/>
+<polygon width="0.0508" layer="1">
+<vertex x="-0.635" y="0.455"/>
+<vertex x="-0.225" y="0.455"/>
+<vertex x="-0.225" y="0.385"/>
+<vertex x="-0.415" y="0.195"/>
+<vertex x="-0.635" y="0.195"/>
 </polygon>
-<polygon width="0.053340625" layer="1">
-<vertex x="0.6" y="-0.5"/>
-<vertex x="0.6" y="-0.25"/>
-<vertex x="0.45" y="-0.25"/>
-<vertex x="0.25" y="-0.45"/>
-<vertex x="0.25" y="-0.5"/>
+<polygon width="0.0508" layer="29">
+<vertex x="-0.585" y="0.405"/>
+<vertex x="-0.275" y="0.405"/>
+<vertex x="-0.435" y="0.245"/>
+<vertex x="-0.585" y="0.245"/>
 </polygon>
-<polygon width="0.1016" layer="39">
-<vertex x="-0.6" y="0.5"/>
-<vertex x="-0.6" y="0.25"/>
-<vertex x="-0.45" y="0.25"/>
-<vertex x="-0.25" y="0.45"/>
-<vertex x="-0.25" y="0.5"/>
+<polygon width="0.0508" layer="31">
+<vertex x="0" y="0.31940625"/>
+<vertex x="0.31940625" y="0"/>
+<vertex x="0" y="-0.31940625"/>
+<vertex x="-0.31940625" y="0"/>
 </polygon>
-<polygon width="0.1" layer="39">
-<vertex x="0.25" y="0.5"/>
-<vertex x="0.25" y="0.45"/>
-<vertex x="0.45" y="0.25"/>
-<vertex x="0.6" y="0.25"/>
-<vertex x="0.6" y="0.5"/>
+<polygon width="0.0508" layer="31">
+<vertex x="-0.625" y="0.405"/>
+<vertex x="-0.275" y="0.405"/>
+<vertex x="-0.435" y="0.245"/>
+<vertex x="-0.625" y="0.245"/>
 </polygon>
-<polygon width="0.1" layer="39">
-<vertex x="0.45" y="-0.25"/>
-<vertex x="0.25" y="-0.45"/>
-<vertex x="0.25" y="-0.5"/>
-<vertex x="0.6" y="-0.5"/>
-<vertex x="0.6" y="-0.25"/>
+<polygon width="0.0508" layer="1">
+<vertex x="0.635" y="0.455"/>
+<vertex x="0.225" y="0.455"/>
+<vertex x="0.225" y="0.385"/>
+<vertex x="0.415" y="0.195"/>
+<vertex x="0.635" y="0.195"/>
 </polygon>
-<polygon width="0.1" layer="39">
-<vertex x="-0.6" y="-0.25"/>
-<vertex x="-0.6" y="-0.5"/>
-<vertex x="-0.25" y="-0.5"/>
-<vertex x="-0.25" y="-0.45"/>
-<vertex x="-0.45" y="-0.25"/>
+<polygon width="0.0508" layer="29">
+<vertex x="0.585" y="0.405"/>
+<vertex x="0.275" y="0.405"/>
+<vertex x="0.435" y="0.245"/>
+<vertex x="0.585" y="0.245"/>
 </polygon>
-<circle x="-0.8" y="0.6" radius="0.070709375" width="0.1" layer="21"/>
-<polygon width="0.053340625" layer="1">
-<vertex x="-0.6" y="-0.25"/>
-<vertex x="-0.45" y="-0.25"/>
-<vertex x="-0.25" y="-0.45"/>
-<vertex x="-0.25" y="-0.5"/>
-<vertex x="-0.6" y="-0.5"/>
+<polygon width="0.0508" layer="31">
+<vertex x="0.625" y="0.405"/>
+<vertex x="0.275" y="0.405"/>
+<vertex x="0.435" y="0.245"/>
+<vertex x="0.625" y="0.245"/>
 </polygon>
-<polygon width="0.053340625" layer="29">
-<vertex x="-0.6" y="0.5"/>
-<vertex x="-0.6" y="0.25"/>
-<vertex x="-0.45" y="0.25"/>
-<vertex x="-0.25" y="0.45"/>
-<vertex x="-0.25" y="0.5"/>
+<polygon width="0.0508" layer="1">
+<vertex x="0.635" y="-0.455"/>
+<vertex x="0.225" y="-0.455"/>
+<vertex x="0.225" y="-0.385"/>
+<vertex x="0.415" y="-0.195"/>
+<vertex x="0.635" y="-0.195"/>
 </polygon>
-<polygon width="0.053340625" layer="29">
-<vertex x="0.6" y="0.5"/>
-<vertex x="0.6" y="0.25"/>
-<vertex x="0.45" y="0.25"/>
-<vertex x="0.25" y="0.45"/>
-<vertex x="0.25" y="0.5"/>
+<polygon width="0.0508" layer="29">
+<vertex x="0.585" y="-0.405"/>
+<vertex x="0.275" y="-0.405"/>
+<vertex x="0.435" y="-0.245"/>
+<vertex x="0.585" y="-0.245"/>
 </polygon>
-<polygon width="0.053340625" layer="29">
-<vertex x="0.6" y="-0.5"/>
-<vertex x="0.6" y="-0.25"/>
-<vertex x="0.45" y="-0.25"/>
-<vertex x="0.25" y="-0.45"/>
-<vertex x="0.25" y="-0.5"/>
+<polygon width="0.0508" layer="31">
+<vertex x="0.625" y="-0.405"/>
+<vertex x="0.275" y="-0.405"/>
+<vertex x="0.435" y="-0.245"/>
+<vertex x="0.625" y="-0.245"/>
 </polygon>
+<polygon width="0.0508" layer="1">
+<vertex x="-0.635" y="-0.455"/>
+<vertex x="-0.225" y="-0.455"/>
+<vertex x="-0.225" y="-0.385"/>
+<vertex x="-0.415" y="-0.195"/>
+<vertex x="-0.635" y="-0.195"/>
+</polygon>
+<polygon width="0.0508" layer="29">
+<vertex x="-0.585" y="-0.405"/>
+<vertex x="-0.275" y="-0.405"/>
+<vertex x="-0.435" y="-0.245"/>
+<vertex x="-0.585" y="-0.245"/>
+</polygon>
+<polygon width="0.0508" layer="31">
+<vertex x="-0.625" y="-0.405"/>
+<vertex x="-0.275" y="-0.405"/>
+<vertex x="-0.435" y="-0.245"/>
+<vertex x="-0.625" y="-0.245"/>
+</polygon>
+<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="39"/>
+<circle x="-0.55" y="0.06" radius="0.1" width="0" layer="21"/>
+<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="51"/>
 </package>
 <package name="0805T">
 <wire x1="-0.9652" y1="0.635" x2="0.9652" y2="0.635" width="0.1016" layer="51"/>
@@ -3228,7 +3241,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <device name="" package="X2SON">
 <connects>
 <connect gate="G$1" pin="EN" pad="3"/>
-<connect gate="G$1" pin="GND" pad="2 5"/>
+<connect gate="G$1" pin="GND" pad="2 PAD"/>
 <connect gate="G$1" pin="IN" pad="4"/>
 <connect gate="G$1" pin="OUT" pad="1"/>
 </connects>
@@ -4871,8 +4884,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <attribute name="PARTNO" value="GRM033R71E103KE14D"/>
 </part>
 <part name="SUPPLY54" library="jonnew" deviceset="AGND" device=""/>
-<part name="TP10" library="jonnew" deviceset="TP" device="B0.3MM" value="VCC"/>
-<part name="TP8" library="jonnew" deviceset="TP" device="B0.3MM" value="VCC"/>
+<part name="TP10" library="jonnew" deviceset="TP" device="TP07R" value="VCC"/>
+<part name="TP8" library="jonnew" deviceset="TP" device="TP07R" value="VCC"/>
 <part name="R30" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="R31" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="R32" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
