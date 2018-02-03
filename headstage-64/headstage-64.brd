@@ -3823,6 +3823,8 @@ einem neuen Namen ab.</description>
 <wire x1="-7" y1="3.16" x2="-7.63" y2="3.16" width="0.0762" layer="1"/>
 <wire x1="-7.63" y1="3.16" x2="-7.63" y2="3.3" width="0.0762" layer="1"/>
 <wire x1="-7" y1="3.66" x2="-7" y2="3.16" width="0.0762" layer="1"/>
+<contactref element="U11" pad="A6"/>
+<wire x1="-7" y1="3.66" x2="0.8" y2="8.3" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$1">
 <contactref element="R8" pad="2"/>
