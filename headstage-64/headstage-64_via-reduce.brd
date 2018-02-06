@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.02" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
+<grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route1" color="13" fill="1" visible="yes" active="yes"/>
@@ -31,7 +31,7 @@
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
@@ -1296,10 +1296,10 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="-4.218" y="7.413" size="1.016" layer="25" font="vector" ratio="18" rot="R270"/>
 <attribute name="VALUE" x="-6.458" y="7.49" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
 </element>
-<element name="C17" library="jonnew" package="0402T" value="0.22uF" x="-5.56" y="6.22" smashed="yes" rot="R270">
-<attribute name="NAME" x="-4.898" y="7.413" size="1.016" layer="25" font="vector" ratio="18" rot="R270"/>
-<attribute name="PARTNO" value="UMK105BJ224KV-F" x="-5.56" y="6.22" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="VALUE" x="-7.138" y="7.49" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+<element name="C17" library="jonnew" package="0402T" value="0.22uF" x="-5.54" y="6.22" smashed="yes" rot="R270">
+<attribute name="NAME" x="-4.878" y="7.413" size="1.016" layer="25" font="vector" ratio="18" rot="R270"/>
+<attribute name="PARTNO" value="UMK105BJ224KV-F" x="-5.54" y="6.22" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="VALUE" x="-7.118" y="7.49" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
 </element>
 <element name="C18" library="jonnew" package="0402T" value="0.22uF" x="-7.2" y="3.42" rot="MR0">
 <attribute name="PARTNO" value="UMK105BJ224KV-F" x="-7.2" y="3.42" size="1.778" layer="28" rot="MR0" display="off"/>
@@ -1320,9 +1320,9 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="-8.9968" y="3.1988" size="1.016" layer="25" font="vector" ratio="18"/>
 <attribute name="VALUE" x="-9.1238" y="1.0652" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="C19" library="jonnew" package="0201T" value="10pF" x="-6.38" y="6.14" smashed="yes">
-<attribute name="NAME" x="-7.4468" y="6.6988" size="1.016" layer="25" font="vector" ratio="18"/>
-<attribute name="VALUE" x="-7.5738" y="4.5652" size="1.016" layer="27" font="vector" ratio="18"/>
+<element name="C19" library="jonnew" package="0201T" value="10pF" x="-6.42" y="6.14" smashed="yes">
+<attribute name="NAME" x="-7.4868" y="6.6988" size="1.016" layer="25" font="vector" ratio="18"/>
+<attribute name="VALUE" x="-7.6138" y="4.5652" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
 <element name="C15" library="jonnew" package="0402T" value="1uF" x="0.44" y="2.16" smashed="yes" rot="R90">
 <attribute name="NAME" x="-0.222" y="0.967" size="1.016" layer="25" font="vector" ratio="18" rot="R90"/>
@@ -1869,13 +1869,12 @@ einem neuen Namen ab.</description>
 <contactref element="C60" pad="2"/>
 <contactref element="C66" pad="2"/>
 <contactref element="C67" pad="2"/>
-<via x="-6.25" y="3.92" extent="1-4" drill="0.1"/>
+<via x="-6.25" y="4.06" extent="1-4" drill="0.1"/>
 <via x="-5.56" y="4.52" extent="1-4" drill="0.1"/>
 <via x="-5.6" y="4.22" extent="1-4" drill="0.1"/>
 <via x="-5.4" y="3.86" extent="1-4" drill="0.1"/>
 <via x="-5.7" y="2.78" extent="1-4" drill="0.1"/>
 <via x="-6" y="4.62" extent="1-4" drill="0.1"/>
-<wire x1="-5.56" y1="3.94" x2="-5.56" y2="5.6866" width="0.2" layer="1"/>
 <via x="-8.54" y="2.64" extent="1-4" drill="0.1"/>
 <via x="-8.54" y="3.28" extent="1-4" drill="0.1"/>
 <wire x1="-8.23" y1="3.3" x2="-8.52" y2="3.3" width="0.0762" layer="1"/>
@@ -2026,8 +2025,6 @@ einem neuen Namen ab.</description>
 <wire x1="-4.0031" y1="-1.9128" x2="-3.98" y2="-1.9359" width="0.0762" layer="1"/>
 <wire x1="0.72" y1="-2.55" x2="0.66" y2="-2.48" width="0.0762" layer="1"/>
 <wire x1="-5.4" y1="3.86" x2="-5.6" y2="3.66" width="0.0762" layer="1"/>
-<wire x1="-5.6" y1="3.66" x2="-5.6" y2="3.9" width="0.0762" layer="1"/>
-<wire x1="-5.6" y1="3.9" x2="-5.56" y2="3.94" width="0.0762" layer="1"/>
 <wire x1="-5.18" y1="-7.44" x2="-5.26" y2="-7.44" width="0.15" layer="1"/>
 <wire x1="-5.26" y1="-7.44" x2="-5.52" y2="-7.18" width="0.15" layer="1"/>
 <via x="2.73" y="3.6" extent="1-4" drill="0.1"/>
@@ -2134,7 +2131,7 @@ einem neuen Namen ab.</description>
 <via x="7.13" y="3.56" extent="1-4" drill="0.1"/>
 <via x="3.09" y="2.78" extent="1-4" drill="0.1"/>
 <via x="-6.25" y="4.4" extent="1-4" drill="0.1"/>
-<via x="-5.9" y="3.97" extent="1-4" drill="0.1"/>
+<via x="-5.9" y="4.05" extent="1-4" drill="0.1"/>
 <via x="-5.9" y="3.52" extent="1-4" drill="0.1"/>
 <via x="-5.9" y="3.02" extent="1-4" drill="0.1"/>
 <via x="-4.9" y="2.72" extent="1-4" drill="0.1"/>
@@ -2201,6 +2198,8 @@ einem neuen Namen ab.</description>
 <wire x1="3.51" y1="2.36" x2="3.47" y2="2.32" width="0.2" layer="1"/>
 <wire x1="3.47" y1="2.32" x2="3.36" y2="2.32" width="0.2" layer="1"/>
 <via x="0.66" y="3.6" extent="1-4" drill="0.1"/>
+<wire x1="-5.6" y1="3.66" x2="-5.6" y2="5.6266" width="0.2" layer="1"/>
+<wire x1="-5.6" y1="5.6266" x2="-5.54" y2="5.6866" width="0.2" layer="1"/>
 <polygon width="0.0508" layer="1" thermals="no">
 <vertex x="0.5846" y="6.16" curve="180"/>
 <vertex x="0.7354" y="6.16" curve="180"/>
@@ -2649,9 +2648,8 @@ einem neuen Namen ab.</description>
 <contactref element="U8" pad="7"/>
 <contactref element="U8" pad="PAD"/>
 <contactref element="C21" pad="1"/>
-<wire x1="-6.08" y1="6.2334" x2="-6.08" y2="6.14" width="0.0762" layer="1"/>
-<wire x1="-6.08" y1="6.2334" x2="-5.56" y2="6.7534" width="0.15" layer="1"/>
-<wire x1="-5.4888625" y1="6.7316" x2="-5.56" y2="6.7534" width="0.15" layer="1"/>
+<wire x1="-6.08" y1="6.2334" x2="-6.12" y2="6.14" width="0.0762" layer="1"/>
+<wire x1="-5.4888625" y1="6.7316" x2="-5.54" y2="6.7534" width="0.15" layer="1"/>
 <wire x1="-1.71" y1="6.47" x2="-1.64" y2="6.47" width="0.2" layer="16"/>
 <wire x1="-1.8252875" y1="6.47" x2="-1.7252875" y2="6.47" width="0.15" layer="16"/>
 <contactref element="U15" pad="PAD"/>
@@ -2689,7 +2687,7 @@ einem neuen Namen ab.</description>
 <wire x1="-6.32" y1="5.35" x2="-6.32" y2="5.78" width="0.15" layer="16"/>
 <wire x1="-6.32" y1="5.78" x2="-6.38" y2="5.84" width="0.15" layer="16"/>
 <via x="-6.3" y="6.08" extent="1-16" drill="0.15"/>
-<wire x1="-6.08" y1="6.14" x2="-6.24" y2="6.14" width="0.15" layer="1"/>
+<wire x1="-6.24" y1="6.14" x2="-6.12" y2="6.14" width="0.15" layer="1"/>
 <wire x1="-6.24" y1="6.14" x2="-6.3" y2="6.08" width="0.15" layer="1"/>
 <wire x1="-6.3" y1="6.08" x2="-6.3" y2="5.74" width="0.15" layer="1"/>
 <wire x1="-6.3" y1="5.74" x2="-6.4" y2="5.64" width="0.15" layer="1"/>
@@ -2704,6 +2702,8 @@ einem neuen Namen ab.</description>
 <wire x1="-4.82" y1="7.66" x2="-4.82" y2="6.605" width="0.15" layer="1"/>
 <wire x1="-4.88" y1="6.545" x2="-5.3022625" y2="6.545" width="0.15" layer="1"/>
 <wire x1="-5.3022625" y1="6.545" x2="-5.4888625" y2="6.7316" width="0.15" layer="1"/>
+<wire x1="-5.54" y1="6.7534" x2="-5.6266" y2="6.7534" width="0.15" layer="1"/>
+<wire x1="-5.6266" y1="6.7534" x2="-6.24" y2="6.14" width="0.15" layer="1"/>
 <polygon width="0.0508" layer="16" thermals="no">
 <vertex x="-4.9204" y="7.66" curve="180"/>
 <vertex x="-4.7196" y="7.66" curve="180"/>
@@ -3648,7 +3648,7 @@ einem neuen Namen ab.</description>
 <wire x1="-7" y1="5.64" x2="-7" y2="4.66" width="0.0762" layer="1"/>
 <wire x1="-7" y1="4.66" x2="-7.72" y2="4.66" width="0.0762" layer="1"/>
 <wire x1="-7.72" y1="4.66" x2="-7.76" y2="4.62" width="0.0762" layer="1"/>
-<wire x1="-6.68" y1="6.14" x2="-6.68" y2="5.96" width="0.0762" layer="1"/>
+<wire x1="-6.72" y1="6.14" x2="-6.68" y2="5.96" width="0.0762" layer="1"/>
 <wire x1="-6.68" y1="5.96" x2="-7" y2="5.64" width="0.0762" layer="1"/>
 </signal>
 <signal name="N$27">
@@ -4464,9 +4464,39 @@ einem neuen Namen ab.</description>
 <contactref element="R17" pad="1"/>
 <contactref element="U12" pad="9"/>
 <contactref element="U12" pad="8"/>
-<wire x1="-7" y1="3.16" x2="-7.63" y2="3.16" width="0.0762" layer="1"/>
 <wire x1="-7.63" y1="3.16" x2="-7.63" y2="3.3" width="0.0762" layer="1"/>
-<wire x1="-7" y1="3.66" x2="-7" y2="3.16" width="0.0762" layer="1"/>
+<contactref element="U11" pad="A6"/>
+<via x="0.8" y="8.3" extent="1-4" drill="0.1"/>
+<wire x1="-1.58" y1="6.24" x2="-0.1197" y2="7.7003" width="0.0762" layer="3"/>
+<wire x1="-1.58" y1="6.24" x2="-1.58" y2="4.68" width="0.0762" layer="3"/>
+<wire x1="-1.58" y1="4.68" x2="-2.22" y2="4.04" width="0.0762" layer="3"/>
+<wire x1="-2.22" y1="4.04" x2="-3.38" y2="4.04" width="0.0762" layer="3"/>
+<wire x1="-3.38" y1="4.04" x2="-3.44" y2="4.1" width="0.0762" layer="3"/>
+<wire x1="-3.44" y1="4.1" x2="-4.16" y2="4.1" width="0.0762" layer="3"/>
+<wire x1="-4.16" y1="4.1" x2="-4.68" y2="3.58" width="0.0762" layer="3"/>
+<wire x1="-4.68" y1="3.58" x2="-5.56" y2="3.58" width="0.0762" layer="3"/>
+<via x="-7.28" y="3.66" extent="1-4" drill="0.1"/>
+<wire x1="-5.56" y1="3.58" x2="-5.76" y2="3.78" width="0.0762" layer="3"/>
+<wire x1="0.2003" y1="7.7003" x2="0.8" y2="8.3" width="0.0762" layer="3"/>
+<wire x1="-0.1197" y1="7.7003" x2="0.2003" y2="7.7003" width="0.0762" layer="3"/>
+<wire x1="-7.16" y1="3.78" x2="-7.28" y2="3.66" width="0.0762" layer="3"/>
+<wire x1="-5.76" y1="3.78" x2="-7.16" y2="3.78" width="0.0762" layer="3"/>
+<wire x1="-7" y1="3.16" x2="-7" y2="3.66" width="0.0762" layer="1"/>
+<wire x1="-7.63" y1="3.3" x2="-7.49" y2="3.16" width="0.0762" layer="1"/>
+<wire x1="-7.49" y1="3.16" x2="-7" y2="3.16" width="0.0762" layer="1"/>
+<wire x1="-7" y1="3.66" x2="-7.28" y2="3.66" width="0.0762" layer="1"/>
+<polygon width="0.0508" layer="3" thermals="no">
+<vertex x="0.7246" y="8.3" curve="180"/>
+<vertex x="0.8754" y="8.3" curve="180"/>
+</polygon>
+<polygon width="0.0508" layer="3" thermals="no">
+<vertex x="-7.3554" y="3.66" curve="180"/>
+<vertex x="-7.2046" y="3.66" curve="180"/>
+</polygon>
+<polygon width="0.0508" layer="1" thermals="no">
+<vertex x="-7.3554" y="3.66" curve="180"/>
+<vertex x="-7.2046" y="3.66" curve="180"/>
+</polygon>
 </signal>
 <signal name="N$1">
 <contactref element="R8" pad="2"/>
@@ -6856,14 +6886,13 @@ einem neuen Namen ab.</description>
 <wire x1="-3.014525" y1="8.803690625" x2="-2.320303125" y2="9.04521875" width="0.0762" layer="2"/>
 <wire x1="-2.10355" y1="9.08184375" x2="-1.3314" y2="9.2305" width="0.0762" layer="2"/>
 <wire x1="-2.320303125" y1="9.04521875" x2="-2.10355" y2="9.08184375" width="0.0762" layer="2"/>
-<wire x1="-1.3314" y1="9.2305" x2="-0.1605" y2="9.2305" width="0.0762" layer="2"/>
-<wire x1="-0.1605" y1="9.2305" x2="0.72" y2="8.35" width="0.0762" layer="2"/>
-<wire x1="0.72" y1="8.35" x2="0.72" y2="7.97" width="0.0762" layer="2"/>
+<wire x1="-0.1605" y1="9.2305" x2="-1.3314" y2="9.2305" width="0.0762" layer="2"/>
 <wire x1="-3.0149875" y1="8.8050125" x2="-3.014525" y2="8.8050125" width="0.0762" layer="2"/>
 <wire x1="-3.014525" y1="8.8050125" x2="-3.014525" y2="8.803690625" width="0.0762" layer="2"/>
-<wire x1="0.72" y1="7.97" x2="0.73" y2="7.97" width="0.0762" layer="2"/>
-<wire x1="0.73" y1="7.97" x2="0.8" y2="7.9" width="0.0762" layer="2"/>
 <via x="0.8" y="7.9" extent="1-4" drill="0.1"/>
+<wire x1="0.8" y1="7.9" x2="0.5897" y2="8.1103" width="0.0762" layer="2"/>
+<wire x1="0.5897" y1="8.4803" x2="-0.1605" y2="9.2305" width="0.0762" layer="2"/>
+<wire x1="0.5897" y1="8.1103" x2="0.5897" y2="8.4803" width="0.0762" layer="2"/>
 <polygon width="0.0508" layer="2" thermals="no">
 <vertex x="-4.3154" y="-7.66" curve="180"/>
 <vertex x="-4.1646" y="-7.66" curve="180"/>
@@ -7007,8 +7036,6 @@ einem neuen Namen ab.</description>
 <approved hash="18,29,1e3b3551ed994d8b"/>
 <approved hash="6,1,86c0957022ceefbd"/>
 <approved hash="6,1,381e4b2afdc0e4d5"/>
-<approved hash="6,1,8cb88c2c00040090"/>
-<approved hash="6,1,6f536f03bf27bf77"/>
 <approved hash="21,19,461849e5b5e74be4"/>
 <approved hash="18,29,580a00163d03a232"/>
 <approved hash="18,29,b8c6f738b40160ab"/>
@@ -7021,7 +7048,9 @@ einem neuen Namen ab.</description>
 <approved hash="4,1,5f627630efdbc5fe"/>
 <approved hash="4,1,0d1fe93aed75d23f"/>
 <approved hash="4,1,1b2223f0ea66467e"/>
+<approved hash="6,1,8cb88c2c00040090"/>
 <approved hash="6,1,942b6d4d6374662b"/>
+<approved hash="6,1,6f536f03bf27bf77"/>
 <approved hash="4,16,65b20cc96872dea2"/>
 <approved hash="4,16,b7df21a35496d3ba"/>
 <approved hash="5,16,633e6bf3e9a8432b"/>

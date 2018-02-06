@@ -7675,6 +7675,11 @@ problems doing this."</text>
 <junction x="520.7" y="198.12"/>
 <label x="500.38" y="198.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U11" gate="G$6" pin="DIFFIO_RX_T18P/DEV_OEA6"/>
+<wire x1="93.98" y1="66.04" x2="149.86" y2="66.04" width="0.1524" layer="91"/>
+<label x="149.86" y="66.04" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="N$1" class="0">
 <segment>
