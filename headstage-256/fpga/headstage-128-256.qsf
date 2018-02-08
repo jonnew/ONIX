@@ -1,0 +1,266 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+# Date created = 08:37:01  February 08, 2018
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		headstage-128-256_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M08SAM153I7G
+set_global_assignment -name TOP_LEVEL_ENTITY "headstage-128-256"
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:37:01  FEBRUARY 08, 2018"
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name DEVICE_FILTER_PACKAGE MBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 153
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_R3 -to rhd_miso_a
+set_location_assignment PIN_L6 -to rhd_sclk_ac
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_sclk_ac
+set_location_assignment PIN_L7 -to "rhd_sclk_ac(n)"
+set_location_assignment PIN_P15 -to rhd_miso_b
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_miso_b
+set_location_assignment PIN_R14 -to "rhd_miso_b(n)"
+set_location_assignment PIN_P14 -to rhd_cs_bd
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_cs_bd
+set_location_assignment PIN_R13 -to "rhd_cs_bd(n)"
+set_location_assignment PIN_L9 -to rhd_sclk_bd
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_sclk_bd
+set_location_assignment PIN_M9 -to "rhd_sclk_bd(n)"
+set_location_assignment PIN_M11 -to rhd_mosi_bd
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_mosi_bd
+set_location_assignment PIN_L10 -to "rhd_mosi_bd(n)"
+set_location_assignment PIN_P9 -to rhd_miso_d
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_miso_d
+set_location_assignment PIN_R9 -to "rhd_miso_d(n)"
+set_location_assignment PIN_M7 -to rhd_miso_c
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_miso_c
+set_location_assignment PIN_L8 -to "rhd_miso_c(n)"
+set_location_assignment PIN_M4 -to rhd_cs_ac
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_cs_ac
+set_location_assignment PIN_M5 -to "rhd_cs_ac(n)"
+set_location_assignment PIN_P6 -to rhd_mosi_ac
+set_instance_assignment -name IO_STANDARD LVDS -to rhd_mosi_ac
+set_location_assignment PIN_P7 -to "rhd_mosi_ac(n)"
+set_location_assignment PIN_J5 -to sd_dat2
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sd_dat2
+set_location_assignment PIN_J4 -to sd_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sd_cs
+set_location_assignment PIN_K5 -to sd_mosi
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sd_mosi
+set_location_assignment PIN_K4 -to sd_sclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_sclk
+set_location_assignment PIN_L5 -to sd_miso
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sd_miso
+set_location_assignment PIN_L4 -to sd_irq
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sd_irq
+set_location_assignment PIN_N1 -to lh_env5
+set_location_assignment PIN_P2 -to lh_data5
+set_location_assignment PIN_P1 -to lh_env2
+set_location_assignment PIN_R2 -to lh_data2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lh_data2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lh_env2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lh_data5
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lh_env5
+set_location_assignment PIN_C14 -to lH_data1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lH_data1
+set_location_assignment PIN_C15 -to lh_env1
+set_location_assignment PIN_D12 -to led_sin
+set_location_assignment PIN_E11 -to led_clk
+set_location_assignment PIN_E14 -to led_latch
+set_location_assignment PIN_E15 -to potb_cs
+set_location_assignment PIN_F11 -to lh_data6
+set_location_assignment PIN_F12 -to lh_env6
+set_location_assignment PIN_G11 -to exp18
+set_location_assignment PIN_G12 -to exp17
+set_location_assignment PIN_G15 -to exp16
+set_location_assignment PIN_H11 -to exp15
+set_location_assignment PIN_H12 -to dac_b_cs
+set_location_assignment PIN_H13 -to stim_null_b
+set_location_assignment PIN_J12 -to lh_data3
+set_location_assignment PIN_J15 -to lh_env3
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lh_env1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led_sin
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led_latch
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to potb_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lh_data6
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lh_env6
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp18
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp17
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp16
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp15
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to dac_b_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to stim_null_b
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lh_data3
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lh_env3
+set_location_assignment PIN_J14 -to lh_data4
+set_location_assignment PIN_J11 -to lh_env4
+set_location_assignment PIN_K14 -to nrf_irq
+set_location_assignment PIN_K12 -to nrf_cs
+set_location_assignment PIN_K11 -to nrf_en
+set_location_assignment PIN_J9 -to miso
+set_location_assignment PIN_L11 -to mosi
+set_location_assignment PIN_M12 -to sclk
+set_location_assignment PIN_N14 -to sda
+set_location_assignment PIN_N15 -to scl
+set_location_assignment PIN_M14 -to status_a
+set_location_assignment PIN_L15 -to status_b
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lh_data4
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lh_env4
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to nrf_irq
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to nrf_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to nrf_en
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to miso
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mosi
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sda
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to scl
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to status_a
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to status_b
+set_location_assignment PIN_G1 -to TMS
+set_location_assignment PIN_G2 -to stim_null_a
+set_location_assignment PIN_H5 -to TDI
+set_location_assignment PIN_H4 -to TDO
+set_location_assignment PIN_H3 -to pota_cs
+set_location_assignment PIN_J2 -to dac_a_cs
+set_location_assignment PIN_J1 -to TCK
+set_location_assignment PIN_K2 -to intan_en
+set_location_assignment PIN_L1 -to estim_power_en
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to TMS
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to stim_null_a
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to TDI
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to TDO
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to pota_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to dac_a_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to TCK
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to intan_en
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to estim_power_en
+set_location_assignment PIN_B1 -to exp6
+set_location_assignment PIN_C2 -to exp2
+set_location_assignment PIN_C1 -to exp5
+set_location_assignment PIN_D2 -to exp1
+set_location_assignment PIN_E2 -to exp8
+set_location_assignment PIN_E1 -to exp7
+set_location_assignment PIN_F5 -to exp3
+set_location_assignment PIN_G5 -to exp4
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp6
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp2
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp5
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp8
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp7
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp3
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp4
+set_location_assignment PIN_P4 -to imu_int
+set_location_assignment PIN_R5 -to imu_reset
+set_location_assignment PIN_R7 -to exp9
+set_location_assignment PIN_P8 -to exp10
+set_location_assignment PIN_N8 -to exp13
+set_location_assignment PIN_M8 -to exp11
+set_location_assignment PIN_P12 -to exp14
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to imu_int
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to imu_reset
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp9
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp10
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp13
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp11
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to exp14
+set_location_assignment PIN_A2 -to lipo_alrt
+set_location_assignment PIN_A3 -to lipo_qstrt
+set_location_assignment PIN_B4 -to serdes_en
+set_location_assignment PIN_A5 -to serdes_gpio1
+set_location_assignment PIN_B6 -to serdes_gpio0
+set_location_assignment PIN_D6 -to nSTATUS
+set_location_assignment PIN_E6 -to CONF_DONE
+set_location_assignment PIN_A7 -to serdes_gpio2
+set_location_assignment PIN_B7 -to serdes_gpio3
+set_location_assignment PIN_D7 -to din0
+set_location_assignment PIN_E7 -to din1
+set_location_assignment PIN_B8 -to din2
+set_location_assignment PIN_C8 -to din3
+set_location_assignment PIN_D8 -to CONFIG_SEL
+set_location_assignment PIN_E8 -to nCONFIG
+set_location_assignment PIN_A9 -to din4
+set_location_assignment PIN_E9 -to din5
+set_location_assignment PIN_D10 -to din6
+set_location_assignment PIN_E10 -to din7
+set_location_assignment PIN_A11 -to din8
+set_location_assignment PIN_B11 -to din9
+set_location_assignment PIN_D11 -to din10
+set_location_assignment PIN_B12 -to din11
+set_location_assignment PIN_B13 -to serdes_scl
+set_location_assignment PIN_A14 -to pclk
+set_location_assignment PIN_A13 -to serdes_sda
+set_location_assignment PIN_B14 -to vsync
+set_location_assignment PIN_B15 -to hsync
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vsync
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to CONFIG_SEL
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to CONF_DONE
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din0
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din2
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din3
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din4
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din5
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din6
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din7
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din8
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din9
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din10
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to din11
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hsync
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lipo_alrt
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lipo_qstrt
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to nCONFIG
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to nSTATUS
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to pclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to serdes_en
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to serdes_gpio0
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to serdes_gpio1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to serdes_gpio2
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to serdes_gpio3
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to serdes_scl
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to serdes_sda
+set_global_assignment -name VERILOG_FILE "headstage-128-256.v"
