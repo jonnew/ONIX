@@ -563,7 +563,7 @@ int oe_read_reg(const oe_ctx ctx,
 // 3. etc
 // Then we can implement multithreaded RAM FIFO using fifo.c in Xillybus demo
 // code as an example
-int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame_in)
+int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 {
     assert(ctx != NULL && "Context is NULL");
 
@@ -577,58 +577,58 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame_in)
     if (rc != OE_RFRAMEHEADERSZ) return OE_EREADFAILURE;
 
     // Allocate frame
-    *frame_in= malloc(sizeof(oe_frame_t));
-    oe_frame_t *frame = *frame_in;
+    *frame = malloc(sizeof(oe_frame_t));
+    oe_frame_t *f_ptr = *frame;
 
-//#ifdef OE_BE
-//    frame->clock = BSWAP_64(*(uint64_t*)(header));
-//    frame->num_dev = BSWAP_32(*(uint16_t*)(header + OE_RFRAMENDEVOFF));
-//#else
-    frame->clock = *(uint64_t*)(header);
-    frame->num_dev = *(uint16_t *)(header + OE_RFRAMENDEVOFF);
+    //#ifdef OE_BE
+    //    f_ptr->clock = BSWAP_64(*(uint64_t*)(header));
+    //    f_ptr->num_dev = BSWAP_32(*(uint16_t*)(header + OE_RFRAMENDEVOFF));
+    //#else
+    f_ptr->clock = *(uint64_t*)(header);
+    f_ptr->num_dev = *(uint16_t *)(header + OE_RFRAMENDEVOFF);
 //#endif
-    frame->corrupt = *(uint8_t*)(header + OE_RFRAMENERROFF);
+    f_ptr->corrupt = *(uint8_t*)(header + OE_RFRAMENERROFF);
 
     // Allocate space for device info
-    frame->dev_idxs_sz = frame->num_dev * sizeof(oe_size_t);
-    frame->dev_offs_sz = frame->num_dev * sizeof(size_t);
-    frame->dev_idxs = malloc(frame->dev_idxs_sz);
-    frame->dev_offs = malloc(frame->dev_offs_sz);
+    f_ptr->dev_idxs_sz = f_ptr->num_dev * sizeof(oe_size_t);
+    f_ptr->dev_offs_sz = f_ptr->num_dev * sizeof(size_t);
+    f_ptr->dev_idxs = malloc(f_ptr->dev_idxs_sz);
+    f_ptr->dev_offs = malloc(f_ptr->dev_offs_sz);
 
     // Read device indices that are in this frame
-    rc = _oe_read(ctx->read.fid, frame->dev_idxs, frame->dev_idxs_sz);
-    assert((size_t)rc == frame->dev_idxs_sz && "Did not read full dev idxs buffer.");
+    rc = _oe_read(ctx->read.fid, f_ptr->dev_idxs, f_ptr->dev_idxs_sz);
+    assert((size_t)rc == f_ptr->dev_idxs_sz && "Did not read full dev idxs buffer.");
 
     // Find data read size
     uint16_t i;
     int rsize = 0;
-    for (i = 0; i < frame->num_dev; i++) {
+    for (i = 0; i < f_ptr->num_dev; i++) {
 //#ifdef OE_BE
         // TODO: Inplace swap?
-//        *(frame->dev_idxs + i) = BSWAP_32(*(frame->dev_idxs + i));
+//        *(f_ptr->dev_idxs + i) = BSWAP_32(*(f_ptr->dev_idxs + i));
 //#endif
-        *(frame->dev_offs + i) = rsize;
-        rsize += ctx->dev_map[*(frame->dev_idxs + i)].read_size;
+        *(f_ptr->dev_offs + i) = rsize;
+        rsize += ctx->dev_map[*(f_ptr->dev_idxs + i)].read_size;
     }
 
     // Read size + padding
     rsize += rsize % 4;
 
     // Now we know the frame size, so we allocate
-    frame->data_sz = rsize;
-    frame->data = malloc(rsize);
+    f_ptr->data_sz = rsize;
+    f_ptr->data = malloc(rsize);
 
     // Read data
-    rc = _oe_read(ctx->read.fid, frame->data, rsize);
+    rc = _oe_read(ctx->read.fid, f_ptr->data, rsize);
     assert(rc == rsize && "Did not read full data buffer.");
 
     // TODO: Endianess swap based on each device's raw type
 //#ifdef OE_BE
-    //for (i = 0; i < frame->num_dev; i++) {
+    //for (i = 0; i < f_ptr->num_dev; i++) {
 
-    //    size_t dev_rsize = ctx->dev_map[*(frame->dev_idxs + i)].read_size;
-    //    size_t dev_off = *(frame->dev_offsets + i);
-    //    oe_raw_t dev_type = ctx->dev_map[*(frame->dev_idxs + i)].raw_type;
+    //    size_t dev_rsize = ctx->dev_map[*(f_ptr->dev_idxs + i)].read_size;
+    //    size_t dev_off = *(f_ptr->dev_offsets + i);
+    //    oe_raw_t dev_type = ctx->dev_map[*(f_ptr->dev_idxs + i)].raw_type;
     //    _oe_array_bswap(data + dev_off, dev_type, dev_rsize);
     //}
 //#endif
@@ -748,16 +748,19 @@ const char *oe_device_str(int dev_id)
 
     switch (dev_id) {
         case OE_IMMEDIATEIO: {
-            return "Immediate IO";
+            return "Host-board Immediate IO";
         }
         case OE_RHD2132: {
-            return "RHD2132";
+            return "RHD2132 Bioamplifier";
         }
         case OE_RHD2164: {
-            return "RHD2164";
+            return "RHD2164 Bioamplifier";
         }
         case OE_MPU9250: {
-            return "MPU9250";
+            return "MPU9250 IMU";
+        }
+        case OE_ESTIM: {
+            return "Headborne Electrical Stimulator";
         }
         default:
             return "Uknown device";

@@ -255,7 +255,7 @@ void *data_loop(void *vargp)
             //usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
 
             // Raw frame
-            uint8_t * frame;
+            uint8_t *frame;
             uint16_t num_devs;
             size_t data_block_size = 0;
             size_t frame_size;
@@ -321,6 +321,8 @@ void *data_loop(void *vargp)
             size_t rc = write(data_fd, frame, frame_size);
             assert(rc == frame_size && "Incomplete write.");
             //printf("Write %zu bytes\n", rc);
+
+            free(frame);
 
             // Increment frame count
             sample_tick += 1;

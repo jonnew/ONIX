@@ -31,12 +31,14 @@ extern "C" {
 #define OE_DEFAULTSIGNALPATH  "/tmp/rat128_signal"
 
 // Supported devices/IDs
-// NB: If you add a device here, make sure to update oe_device_str()
+// NB: If you add a device here, make sure to update oe_device_str() and
+// potentially add registers to oedevices.h
 enum oe_device_id {
     OE_IMMEDIATEIO = 0,
     OE_RHD2132,
     OE_RHD2164,
     OE_MPU9250,
+    OE_ESTIM,
 
     // NB: Always on bottom
     OE_MAXDEVICEID
