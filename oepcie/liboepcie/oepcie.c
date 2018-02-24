@@ -224,7 +224,8 @@ int oe_init_ctx(oe_ctx ctx)
 #endif
 
         if (device_id < OE_MAXDEVICEID) {
-            ctx->dev_map[i] = *(oe_device_t *)buffer; // Append the device onto the map
+            // Append the device onto the map
+            memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
         } else {
             return OE_EDEVID;
         }
@@ -580,14 +581,10 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     *frame = malloc(sizeof(oe_frame_t));
     oe_frame_t *f_ptr = *frame;
 
-    //#ifdef OE_BE
-    //    f_ptr->clock = BSWAP_64(*(uint64_t*)(header));
-    //    f_ptr->num_dev = BSWAP_32(*(uint16_t*)(header + OE_RFRAMENDEVOFF));
-    //#else
-    f_ptr->clock = *(uint64_t*)(header);
-    f_ptr->num_dev = *(uint16_t *)(header + OE_RFRAMENDEVOFF);
-//#endif
-    f_ptr->corrupt = *(uint8_t*)(header + OE_RFRAMENERROFF);
+    // Copy frame header members
+    memcpy(&f_ptr->clock, header, sizeof(uint64_t));
+    memcpy(&f_ptr->num_dev,header + OE_RFRAMENDEVOFF, sizeof(uint16_t));
+    memcpy(&f_ptr->corrupt, header + OE_RFRAMENERROFF, sizeof(uint8_t));
 
     // Allocate space for device info
     f_ptr->dev_idxs_sz = f_ptr->num_dev * sizeof(oe_size_t);
@@ -832,7 +829,7 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
 #ifdef OE_BE
         *type = BSWAP_32(*(oe_signal_t *)buffer);
 #else
-        *type = *(oe_signal_t *)buffer;
+        memcpy(type, buffer, sizeof(oe_signal_t));
 #endif
 
     // pack_size still has overhead byte and header, so we remove those
@@ -867,7 +864,7 @@ static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type)
 #ifdef OE_BE
         packet_type = BSWAP_32(*(oe_signal_t *)buffer);
 #else
-        packet_type = *(oe_signal_t *)buffer;
+        memcpy(&packet_type, buffer, sizeof(oe_signal_t));
 #endif
 
     } while (!(packet_type & flags));
@@ -899,7 +896,7 @@ static int _oe_pump_signal_data(
 #ifdef OE_BE
         packet_type = BSWAP_32(*(oe_signal_t *)buffer);
 #else
-        packet_type = *(oe_signal_t *)buffer;
+        memcpy(&packet_type, buffer, sizeof(oe_signal_t));
 #endif
 
     } while (!(packet_type & flags));

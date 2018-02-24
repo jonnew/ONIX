@@ -142,7 +142,7 @@ int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val
 int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
 int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
 void oe_destroy_frame(oe_frame_t *frame);
-//int oe_write(const oe_ctx ctx, void *data, size_t num_frames);
+//int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
 
 // Internal type conversion
 void oe_version(int *major, int *minor, int *patch);
