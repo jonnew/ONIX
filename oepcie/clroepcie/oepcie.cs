@@ -49,48 +49,33 @@ namespace oe.lib
 
         // Repeat for the rest of the API
         [DllImport(LibraryName, EntryPoint = "oe_create_ctx", CallingConvention = CCCdecl)]
-        private static extern IntPtr oe_create_ctx();
-        public delegate IntPtr oe_create_ctx_delegate();
-        public static readonly oe_create_ctx_delegate create_ctx = oe_create_ctx;
+        public static extern IntPtr create_ctx();
 
         [DllImport(LibraryName, EntryPoint = "oe_init_ctx", CallingConvention = CCCdecl)]
-        private static extern Int32 oe_init_ctx(IntPtr ctx);
-        public delegate Int32 oe_init_ctx_delegate(IntPtr ctx);
-        public static readonly oe_init_ctx_delegate init_ctx = oe_init_ctx;
+        public static extern Int32 init_ctx(IntPtr ctx);
+
+        [DllImport(LibraryName, EntryPoint = "oe_destry_ctx", CallingConvention = CCCdecl)]
+        public static extern Int32 destroy_ctx(IntPtr ctx);
 
         [DllImport(LibraryName, EntryPoint = "oe_get_opt", CallingConvention = CCCdecl)]
-        private static extern Int32 oe_get_opt(IntPtr ctx, Int32 option, IntPtr val, UIntPtr size);
-        public delegate Int32 oe_get_opt_delegate(IntPtr ctx, Int32 option, IntPtr val, UIntPtr size);
-        public static readonly oe_get_opt_delegate get_opt = oe_get_opt;
+        public static extern Int32 get_opt(IntPtr ctx, Int32 option, IntPtr val, UIntPtr size);
 
         [DllImport(LibraryName, EntryPoint = "oe_set_opt", CallingConvention = CCCdecl)]
-        private static extern Int32 oe_set_opt(IntPtr ctx, Int32 option, IntPtr val, UInt32 size);
-        public delegate Int32 oe_set_opt_delegate(IntPtr ctx, Int32 option, IntPtr val, UInt32 size);
-        public static readonly oe_set_opt_delegate set_opt = oe_set_opt;
+        public static extern Int32 set_opt(IntPtr ctx, Int32 option, IntPtr val, UInt32 size);
 
         [DllImport(LibraryName, EntryPoint = "oe_read_reg", CallingConvention = CCCdecl)]
-        private static extern Int32 oe_read_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UIntPtr val);
-        public delegate Int32 oe_read_reg_delegate(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UIntPtr val);
-        public static readonly oe_read_reg_delegate read_reg = oe_read_reg;
+        public static extern Int32 read_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UIntPtr val);
 
         [DllImport(LibraryName, EntryPoint = "oe_write_reg", CallingConvention = CCCdecl)]
-        private static extern Int32 oe_write_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UInt32 val);
-        public delegate Int32 oe_write_reg_delegate(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UInt32 val);
-        public static readonly oe_write_reg_delegate write_reg = oe_write_reg;
+        public static extern Int32 write_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UInt32 val);
 
-        [DllImport(LibraryName, EntryPoint = "oe_read", CallingConvention = CCCdecl)]
-        private static extern Int32 oe_read(IntPtr ctx, IntPtr data, UInt32 size);
-        public delegate Int32 oe_read_delegate(IntPtr ctx, IntPtr data, UInt32 size);
-        public static readonly oe_read_delegate read = oe_read;
+        [DllImport(LibraryName, EntryPoint = "oe_read_frame", CallingConvention = CCCdecl)]
+        public static extern Int32 read(IntPtr ctx, IntPtr frame);
 
         [DllImport(LibraryName, EntryPoint = "oe_error_str", CallingConvention = CCCdecl)]
-        private static extern IntPtr oe_error_str(Int32 err);
-        public delegate IntPtr oe_error_str_delegate(Int32 err);
-        public static readonly oe_error_str_delegate error_str = oe_error_str;
+        public static extern IntPtr error_str(Int32 err);
 
         [DllImport(LibraryName, EntryPoint = "oe_device_str", CallingConvention = CCCdecl)]
-        private static extern IntPtr oe_device_str(Int32 err);
-        public delegate IntPtr oe_device_str_delegate(Int32 err);
-        public static readonly oe_device_str_delegate device_str = oe_device_str;
+        public static extern IntPtr device_str(Int32 err);
     }
 }

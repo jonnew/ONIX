@@ -38,14 +38,13 @@ namespace oe
             // oe_init_ctx
             var rc = oepcie.init_ctx(ctx);
             Console.WriteLine("\t oepcie.init_ctx(): " + rc);
-            
 
             return true;
         }
 
         static bool ErrorTest(bool print = true)
         {
-            Console.WriteLine("\tSuccess:" + Error.Success.ToString);
+            //Console.WriteLine("\tSuccess:" + Error.Success.ToString);
             return true;
         }
 
