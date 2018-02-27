@@ -25,10 +25,15 @@ extern "C" {
 
 #define OE_WFRAMEHEADERSZ     32 // [(32 reserved bytes), ...]
 
-// TODO: Cross platform and xillybus
-#define OE_DEFAULTCONFIGPATH  "/tmp/rat128_config"
-#define OE_DEFAULTREADPATH    "/tmp/rat128_read"
-#define OE_DEFAULTSIGNALPATH  "/tmp/rat128_signal"
+#ifdef _WIN32
+#define OE_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_32"
+#define OE_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
+#define OE_DEFAULTSIGNALPATH  "\\\\.\\xillybus_async_read_8"
+#else
+#define OE_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_32"
+#define OE_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
+#define OE_DEFAULTSIGNALPATH  "/dev/xillybus_async_read_8"
+#endif
 
 // Supported devices/IDs
 // NB: If you add a device here, make sure to update oe_device_str() and

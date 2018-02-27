@@ -1,10 +1,20 @@
-#include "assert.h"
-#include "errno.h"
-#include "fcntl.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "string.h"
-#include "unistd.h"
+#include <assert.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#ifdef _WIN32
+#include <io.h>
+#define open _open
+#define read _read
+#define write _write
+#define close _close
+#define lseek _lseek
+#else
+#include <unistd.h>
+#endif
 
 #include "oepcie.h"
 
@@ -21,8 +31,8 @@ typedef uint32_t oe_reg_val_t;
 #define OE_BE
 
 // Define byte-swapping macros
-#define BSWAP_16(val)                                                          \
-    ((((uint16_t)(val)&0x00ff) << 8) | (((uint16_t)(val)&0xff00) >> 8))
+// #define BSWAP_16(val)
+//    ((((uint16_t)(val)&0x00ff) << 8) | (((uint16_t)(val)&0xff00) >> 8))
 
 #define BSWAP_32(val)                                                          \
      ( (((uint32_t)(val)&0x000000ff) << 24)                                    \
@@ -30,17 +40,9 @@ typedef uint32_t oe_reg_val_t;
      | (((uint32_t)(val)&0x00ff0000) >> 8)                                     \
      | (((uint32_t)(val)&0xff000000) >> 24))
 
-#define BSWAP_64(val)                                                          \
-     ( (((uint64_t)(val)&0x00000000000000ffULL) << 56)                         \
-     | (((uint64_t)(val)&0x000000000000ff00ULL) << 40)                         \
-     | (((uint64_t)(val)&0x0000000000ff0000ULL) << 24)                         \
-     | (((uint64_t)(val)&0x00000000ff000000ULL) << 8)                          \
-     | (((uint64_t)(val)&0x000000ff00000000ULL) >> 8)                          \
-     | (((uint64_t)(val)&0x0000ff0000000000ULL) >> 24)                         \
-     | (((uint64_t)(val)&0x00ff000000000000ULL) >> 40)                         \
-     | (((uint64_t)(val)&0xff00000000000000ULL) >> 56))
-
 #endif
+
+#define OE_COBSBUFFERSIZE 255
 
 typedef struct stream_fid {
     char *path;
@@ -117,7 +119,7 @@ static int _oe_write_config(int config_fd, oe_conf_off_t write_offset, oe_reg_va
 static int _oe_read_config(int config_fd, oe_conf_off_t read_offset, oe_reg_val_t *value);
 //static inline int _oe_raw_size(oe_raw_t type);
 #ifdef OE_BE
-static int _oe_array_bswap(void *data, oe_raw_t type, size_t size);
+//static int _oe_array_bswap(void *data, oe_raw_t type, size_t size);
 static int _device_map_byte_swap(oe_ctx ctx);
 #endif
 
@@ -208,9 +210,8 @@ int oe_init_ctx(oe_ctx ctx)
     for (i= 0; i < ctx->num_dev; i++) {
 
         sig_type = NULLSIG;
-        size_t b_size = 255;
-        uint8_t buffer[b_size];
-        rc = _oe_read_signal_data(ctx->signal.fid, &sig_type, buffer, b_size);
+        uint8_t buffer[OE_COBSBUFFERSIZE];
+        rc = _oe_read_signal_data(ctx->signal.fid, &sig_type, buffer, OE_COBSBUFFERSIZE);
         if (rc) return rc;
 
         // We should see num_dev device instances appear on the signal stream
@@ -600,10 +601,6 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     uint16_t i;
     int rsize = 0;
     for (i = 0; i < f_ptr->num_dev; i++) {
-//#ifdef OE_BE
-        // TODO: Inplace swap?
-//        *(f_ptr->dev_idxs + i) = BSWAP_32(*(f_ptr->dev_idxs + i));
-//#endif
         *(f_ptr->dev_offs + i) = rsize;
         rsize += ctx->dev_map[*(f_ptr->dev_idxs + i)].read_size;
     }
@@ -618,18 +615,6 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     // Read data
     rc = _oe_read(ctx->read.fid, f_ptr->data, rsize);
     assert(rc == rsize && "Did not read full data buffer.");
-
-    // TODO: Endianess swap based on each device's raw type
-//#ifdef OE_BE
-    //for (i = 0; i < f_ptr->num_dev; i++) {
-
-    //    size_t dev_rsize = ctx->dev_map[*(f_ptr->dev_idxs + i)].read_size;
-    //    size_t dev_off = *(f_ptr->dev_offsets + i);
-    //    oe_raw_t dev_type = ctx->dev_map[*(f_ptr->dev_idxs + i)].raw_type;
-    //    _oe_array_bswap(data + dev_off, dev_type, dev_rsize);
-    //}
-//#endif
-//
 
     return 0;
 }
@@ -941,10 +926,6 @@ static int _oe_write_config(int config_fd,
     if (lseek(config_fd, write_offset, SEEK_SET) < 0)
         return OE_ESEEKFAILURE;
 
-//#ifdef OE_BE
-    //value = BSWAP_32(value);
-//#endif
-
     if (write(config_fd, &value, OE_REGSZ) != OE_REGSZ)
         return OE_EWRITEFAILURE;
 
@@ -960,10 +941,6 @@ static int _oe_read_config(int config_fd,
 
     if (read(config_fd, value, OE_REGSZ) != OE_REGSZ)
         return OE_EREADFAILURE;
-
-//#ifdef OE_BE
-    //*value = BSWAP_32(value);
-//#endif
 
     return 0;
 }
@@ -995,27 +972,27 @@ static int _device_map_byte_swap(oe_ctx ctx)
     return 0;
 }
 
-static int _oe_array_bswap(void *data, oe_raw_t type, size_t size)
-{
-    size_t i;
-    int inc = _oe_raw_size(type);
-
-    switch (type) {
-
-        case OE_UINT16:
-            for (i = 0; i < size; i += inc) {
-                *((uint16_t *)(data) + i) = BSWAP_16(*((uint16_t *)(data) + i));
-            }
-            break;
-        case OE_UINT32:
-            for (i = 0; i < size; i += inc) {
-                *((uint32_t *)(data) + i) = BSWAP_32(*((uint32_t *)(data) + i));
-            }
-            break;
-        default:
-            return OE_EINVALRAWTYPE;
-    }
-
-    return 0;
-}
+//static int _oe_array_bswap(void *data, oe_raw_t type, size_t size)
+//{
+//    size_t i;
+//    int inc = _oe_raw_size(type);
+//
+//    switch (type) {
+//
+//        case OE_UINT16:
+//            for (i = 0; i < size; i += inc) {
+//                *((uint16_t *)(data) + i) = BSWAP_16(*((uint16_t *)(data) + i));
+//            }
+//            break;
+//        case OE_UINT32:
+//            for (i = 0; i < size; i += inc) {
+//                *((uint32_t *)(data) + i) = BSWAP_32(*((uint32_t *)(data) + i));
+//            }
+//            break;
+//        default:
+//            return OE_EINVALRAWTYPE;
+//    }
+//
+//    return 0;
+//}
 #endif
