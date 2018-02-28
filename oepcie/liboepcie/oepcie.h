@@ -18,21 +18,26 @@ extern "C" {
 #include <stddef.h>
 #include <stdint.h>
 
+// Read frame constants
 #define OE_RFRAMEHEADERSZ     32 // [uint64_t sample number, uint16_t n_devs, (22 reserved bytes), ...]
 #define OE_RFRAMESAMPLEOFF    0  // Read frame sample number offset
 #define OE_RFRAMENDEVOFF      8  // Read frame number of devices offset
 #define OE_RFRAMENERROFF      10 // Read frame error offset
 
+// Write frame contants
 #define OE_WFRAMEHEADERSZ     32 // [(32 reserved bytes), ...]
 
+// OS-specific constants
 #ifdef _WIN32
 #define OE_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_32"
 #define OE_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
 #define OE_DEFAULTSIGNALPATH  "\\\\.\\xillybus_async_read_8"
+#define OE_EXPORT __declspec(dllexport)
 #else
 #define OE_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_32"
 #define OE_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
 #define OE_DEFAULTSIGNALPATH  "/dev/xillybus_async_read_8"
+#define OE_EXPORT
 #endif
 
 // Supported devices/IDs
@@ -134,25 +139,25 @@ enum {
 typedef struct oe_ctx_impl *oe_ctx;
 
 // Context manipulation
-oe_ctx oe_create_ctx();
-int oe_init_ctx(oe_ctx ctx);
-int oe_destroy_ctx(oe_ctx ctx);
+OE_EXPORT oe_ctx oe_create_ctx();
+OE_EXPORT int oe_init_ctx(oe_ctx ctx);
+OE_EXPORT int oe_destroy_ctx(oe_ctx ctx);
 
 // Option getting/setting
-int oe_get_opt(const oe_ctx ctx, int option, void* value, size_t *size);
-int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size);
+OE_EXPORT int oe_get_opt(const oe_ctx ctx, int option, void* value, size_t *size);
+OE_EXPORT int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size);
 
 // Hardware inspection, manipulation, and IO
-int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t *value);
-int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
-int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
-void oe_destroy_frame(oe_frame_t *frame);
+OE_EXPORT int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t *value);
+OE_EXPORT int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
+OE_EXPORT int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
+OE_EXPORT void oe_destroy_frame(oe_frame_t *frame);
 //int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
 
 // Internal type conversion
-void oe_version(int *major, int *minor, int *patch);
-const char *oe_error_str(int err);
-const char *oe_device_str(int dev_id);
+OE_EXPORT void oe_version(int *major, int *minor, int *patch);
+OE_EXPORT const char *oe_error_str(int err);
+OE_EXPORT const char *oe_device_str(int dev_id);
 
 #ifdef __cplusplus
 }
