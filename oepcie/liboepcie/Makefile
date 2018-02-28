@@ -1,3 +1,4 @@
+SHELL   := /bin/bash
 NAME    :=  liboepcie
 SNAME   :=  $(NAME).a
 DNAME   :=  $(NAME).so.1
@@ -8,6 +9,12 @@ OBJ     :=  $(SRC:.c=.o)
 CFLAGS  :=  -pedantic -Wall -W -Werror -g -g3 -fPIC -O3
 LDFLAGS :=  -L.
 PREFIX  := /usr/local
+
+# Turn wildcard list into comma separated list
+SPACE :=
+SPACE += # $SPACE is a SPACE
+COMMA := ,
+COMMA-SEPARATE = $(subst ${SPACE},${COMMA},$(strip $1))
 
 .PHONY: all
 all: $(SNAME) $(DNAME)
@@ -22,12 +29,12 @@ install: $(SNAME) $(DNAME)
 	@[ -d $(DESTDIR)$(PREFIX)/lib/$(DNAMELN) ] || $(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 	ln -s $(DESTDIR)$(PREFIX)/lib/$(DNAME) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 
-#.PHONY: uninstall
-#uninstall:
-#	$(RM) -r $(DESTDIR)$(PREFIX)/lib/$(SNAME)
-#	$(RM) -r $(DESTDIR)$(PREFIX)/lib/$(DNAME)
-#	$(RM) -r $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
-#	$(RM) -r $(DESTDIR)$(PREFIX)/include/$(HDR)
+.PHONY: uninstall
+uninstall:
+	$(RM) $(DESTDIR)$(PREFIX)/lib/$(SNAME)
+	$(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAME)
+	$(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
+	$(RM) $(DESTDIR)$(PREFIX)/include/{$(call COMMA-SEPARATE,${HDR})}
 
 $(SNAME): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $^
