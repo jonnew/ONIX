@@ -7760,7 +7760,7 @@ This is the very popular, low cost, very low power RF transceiver from Nordic Se
 <part name="GND17" library="jonnew" deviceset="GND" device=""/>
 <part name="L14" library="jonnew" deviceset="L" device="_0402T" value="8.2nH, 5%"/>
 <part name="GND22" library="jonnew" deviceset="GND" device=""/>
-<part name="R28" library="jonnew" deviceset="R" device="_0201T"/>
+<part name="R28" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="SUPPLY43" library="jonnew" deviceset="GND" device=""/>
 <part name="U$59" library="jonnew" deviceset="+3V3" device=""/>
 <part name="U$60" library="jonnew" deviceset="+3V3" device=""/>
@@ -14920,9 +14920,9 @@ others!</text>
 <pinref part="U3" gate="G$1" pin="CE"/>
 </segment>
 <segment>
-<wire x1="111.76" y1="279.4" x2="106.68" y2="279.4" width="0.1524" layer="91"/>
-<label x="111.76" y="279.4" size="1.27" layer="95" xref="yes"/>
-<pinref part="U5" gate="G$6" pin="DIFFIO_RX_R10P/J9"/>
+<wire x1="111.76" y1="297.18" x2="106.68" y2="297.18" width="0.1524" layer="91"/>
+<label x="111.76" y="297.18" size="1.27" layer="95" xref="yes"/>
+<pinref part="U5" gate="G$6" pin="DIFFIO_RX_R2P/N15"/>
 </segment>
 </net>
 <net name="ANT" class="0">
@@ -14961,9 +14961,9 @@ others!</text>
 <pinref part="U3" gate="G$1" pin="CSN"/>
 </segment>
 <segment>
-<wire x1="106.68" y1="299.72" x2="111.76" y2="299.72" width="0.1524" layer="91"/>
-<label x="111.76" y="299.72" size="1.27" layer="95" rot="MR180" xref="yes"/>
-<pinref part="U5" gate="G$6" pin="DIFFIO_RX_R1P/M12"/>
+<wire x1="106.68" y1="292.1" x2="111.76" y2="292.1" width="0.1524" layer="91"/>
+<label x="111.76" y="292.1" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<pinref part="U5" gate="G$6" pin="DIFFIO_RX_R2N/N14"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
@@ -15005,9 +15005,9 @@ others!</text>
 <pinref part="U3" gate="G$1" pin="!IRQ"/>
 </segment>
 <segment>
-<wire x1="111.76" y1="297.18" x2="106.68" y2="297.18" width="0.1524" layer="91"/>
-<label x="111.76" y="297.18" size="1.27" layer="95" rot="MR180" xref="yes"/>
-<pinref part="U5" gate="G$6" pin="DIFFIO_RX_R2P/N15"/>
+<wire x1="111.76" y1="279.4" x2="106.68" y2="279.4" width="0.1524" layer="91"/>
+<label x="111.76" y="279.4" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<pinref part="U5" gate="G$6" pin="DIFFIO_RX_R10P/J9"/>
 </segment>
 </net>
 <net name="SD_MOSI" class="0">
@@ -15408,9 +15408,9 @@ others!</text>
 <pinref part="U3" gate="G$1" pin="MISO"/>
 </segment>
 <segment>
-<wire x1="106.68" y1="292.1" x2="111.76" y2="292.1" width="0.1524" layer="91"/>
-<label x="111.76" y="292.1" size="1.27" layer="95" xref="yes"/>
-<pinref part="U5" gate="G$6" pin="DIFFIO_RX_R2N/N14"/>
+<wire x1="106.68" y1="299.72" x2="111.76" y2="299.72" width="0.1524" layer="91"/>
+<label x="111.76" y="299.72" size="1.27" layer="95" xref="yes"/>
+<pinref part="U5" gate="G$6" pin="DIFFIO_RX_R1P/M12"/>
 </segment>
 </net>
 <net name="RHD_MISO-_A" class="0">
@@ -15459,6 +15459,8 @@ others!</text>
 <pinref part="U5" gate="G$7" pin="DIFFIO_TX_RX_B10P/P15"/>
 <pinref part="R32" gate="R" pin="1"/>
 <wire x1="137.16" y1="330.2" x2="137.16" y2="327.66" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="327.66" x2="157.48" y2="327.66" width="0.1524" layer="91"/>
+<junction x="137.16" y="327.66"/>
 </segment>
 </net>
 <net name="RHD_MISO-_B" class="0">
