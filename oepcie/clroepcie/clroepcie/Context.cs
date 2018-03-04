@@ -62,6 +62,29 @@ namespace oe
             }
         }
 
+        public uint ReadRegister(uint dev_idx, uint reg_addr)
+        {
+            uint value;
+            int rc = oepcie.read_reg(ctx, dev_idx, reg_addr, out value);
+            if (rc != 0) { throw new OEException(rc); }
+            return value;
+        }
+
+        public void WriteRegister(uint dev_idx, uint reg_addr, uint value)
+        {
+            int rc = oepcie.write_reg(ctx, dev_idx, reg_addr, value);
+            if (rc != 0) { throw new OEException(rc); }
+        }
+
+        public Frame ReadFrame()
+        {
+            var frame = new Frame(device_map);
+            int rc = oepcie.read_frame(ctx, out frame.frame_mem);
+            if (rc != 0) frame.marshall();
+            
+            return frame;
+        }
+
         // NB: These need to be redeclared unfortuately
         public enum Option : int
         {

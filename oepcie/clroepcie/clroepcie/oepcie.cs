@@ -15,6 +15,21 @@ namespace oe.lib
         public const string DefaultReadPath = "\\\\.\\xillybus_data_read_32";
         public const string DefaultSignalPath = "\\\\.\\xillybus_async_read_8";
 
+        // Make managed version of oe_frame_t
+        [StructLayout(LayoutKind.Sequential)]
+        public struct frame_t
+        {
+            public ulong clock;       // Base clock counter
+            public ushort num_dev;     // Number of devices in frame
+            public byte corrupt;       // Is this frame corrupt?
+            public UIntPtr dev_idxs;   // Array of device indices in frame
+            public uint dev_idxs_sz; // Size in bytes of dev_idxs buffer
+            public UIntPtr dev_offs;   // Device data offsets within data block
+            public uint dev_offs_sz; // Size in bytes of dev_idxs buffer
+            public IntPtr data;         // Multi-device raw data block
+            public uint data_sz;     // Size in bytes of data buffer
+        }
+
         // The static constructor prepares static readonly fields
         static oepcie()
         {
@@ -68,13 +83,18 @@ namespace oe.lib
         public static extern Int32 set_opt(IntPtr ctx, Int32 option, IntPtr val, UInt32 size);
 
         [DllImport(LibraryName, EntryPoint = "oe_read_reg", CallingConvention = CCCdecl)]
-        public static extern Int32 read_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UIntPtr val);
+        public static extern Int32 read_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, out UInt32 val);
 
         [DllImport(LibraryName, EntryPoint = "oe_write_reg", CallingConvention = CCCdecl)]
         public static extern Int32 write_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UInt32 val);
 
         [DllImport(LibraryName, EntryPoint = "oe_read_frame", CallingConvention = CCCdecl)]
-        public static extern Int32 read(IntPtr ctx, IntPtr frame);
+        //public static extern Int32 read_frame(IntPtr ctx, FrameT **frame);
+        public static extern Int32 read_frame(IntPtr ctx, out IntPtr frame);
+
+        [DllImport(LibraryName, EntryPoint = "oe_destroy_frame", CallingConvention = CCCdecl)]
+        //public static extern Int32 destroy_frame(out FrameT frame);
+        public static extern Int32 destroy_frame(IntPtr frame);
 
         [DllImport(LibraryName, EntryPoint = "oe_error_str", CallingConvention = CCCdecl)]
         public static extern IntPtr error_str(Int32 err);

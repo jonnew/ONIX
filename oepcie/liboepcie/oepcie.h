@@ -152,7 +152,7 @@ OE_EXPORT int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, 
 OE_EXPORT int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
 OE_EXPORT int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
 OE_EXPORT void oe_destroy_frame(oe_frame_t *frame);
-//int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
+//OE_EXPORT int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
 
 // Internal type conversion
 OE_EXPORT void oe_version(int *major, int *minor, int *patch);
