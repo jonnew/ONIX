@@ -11,6 +11,7 @@
     - Target device family: Xilinx Kintex 7
     - Intial template: Empty
     - Operating system: Windows and Linux
+	 ![xillybus_cmd_32 options](./resources/xillybus-cores.png)
 1. After the core has been generated, create 3 device files for the core with the following settings
     1. `xillybus_cmd_32`
     ![xillybus_cmd_32 options](./resources/xillybus_cmd_32.png)
