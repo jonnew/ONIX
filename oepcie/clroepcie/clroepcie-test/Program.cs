@@ -11,13 +11,19 @@ namespace clroepcie_test
     {
         static void Main(string[] args)
         {
+            // Ger version
             var ver = oe.lib.oepcie.LibraryVersion;
+            System.Console.WriteLine("Using liboepcie version: " + ver);
 
-            var ctx = new oe.Context();
-
-            System.Console.WriteLine(ver);
-
-            //var context = new oe.Context();
+            // Open context
+            try
+            {
+                var ctx = new oe.Context();
+            }
+            catch (OEException ex)
+            {
+                System.Console.Error.WriteLine("liboepcie failed with the following error: " + ex.ToString());
+            }
         }
     }
 }

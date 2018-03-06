@@ -24,7 +24,7 @@ namespace oe
             SetOption(Option.CONFIGSTREAMPATH, config_path);
             SetOption(Option.READSTREAMPATH, read_path);
             SetOption(Option.SIGNALSTREAMPATH, signal_path);
-
+            
             int rc = oepcie.init_ctx(ctx);
             if (rc != 0) { throw new OEException(rc); }
 
