@@ -1913,22 +1913,6 @@
 <rectangle x1="-1.6" y1="-1.6" x2="1.6" y2="1.6" layer="39"/>
 <rectangle x1="-0.6" y1="-0.9" x2="0.6" y2="0.9" layer="31"/>
 </package>
-<package name="SOD123">
-<wire x1="-2.6" y1="0.9" x2="2.6" y2="0.9" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="-0.79375" y2="0.63505" width="0.127" layer="21"/>
-<wire x1="-0.79375" y1="0.63505" x2="-0.79375" y2="-0.63505" width="0.127" layer="21"/>
-<wire x1="-0.79375" y1="-0.63505" x2="0.15875" y2="0" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="0.15875" y2="0.63505" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="0.15875" y2="-0.63505" width="0.127" layer="21"/>
-<smd name="A" x="-1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
-<smd name="C" x="1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
-<text x="-2.54" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-2.54" y="-2.54" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<wire x1="-2.6" y1="0.9" x2="-2.6" y2="-0.9" width="0.127" layer="21"/>
-<wire x1="-2.6" y1="-0.9" x2="2.6" y2="-0.9" width="0.127" layer="21"/>
-<wire x1="2.6" y1="-0.9" x2="2.6" y2="0.9" width="0.127" layer="21"/>
-<rectangle x1="0.635" y1="-0.9525" x2="0.9525" y2="0.9525" layer="21"/>
-</package>
 <package name="DO-220AA">
 <smd name="C" x="-1.27" y="0.01" dx="2.54" dy="2.67" layer="1"/>
 <smd name="A" x="1.01" y="0" dx="1.27" dy="0.762" layer="1" rot="R90"/>
@@ -2084,24 +2068,6 @@ clearance</text>
 <smd name="M4" x="-2.275" y="1.585" dx="0.35" dy="0.75" layer="1"/>
 <text x="-2.54" y="2.54" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.54" y="-3.81" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-</package>
-<package name="MICROSIP9-3X2.3">
-<smd name="A1" x="-1" y="0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<smd name="A2" x="0" y="0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<smd name="A3" x="1" y="0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<smd name="B1" x="-1" y="0" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<smd name="C1" x="-1" y="-0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<smd name="B2" x="0" y="0" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<smd name="C2" x="0" y="-0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<smd name="B3" x="1" y="0" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<smd name="C3" x="1" y="-0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
-<wire x1="-1.5" y1="1.15" x2="1.5" y2="1.15" width="0.127" layer="21"/>
-<wire x1="1.5" y1="1.15" x2="1.5" y2="-1.15" width="0.127" layer="21"/>
-<wire x1="1.5" y1="-1.15" x2="-1.5" y2="-1.15" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="-1.15" x2="-1.5" y2="1.15" width="0.127" layer="21"/>
-<text x="-1.4668" y="1.5588" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-1.4938" y="-2.3748" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<rectangle x1="-1.5" y1="-1.15" x2="1.5" y2="1.15" layer="39"/>
 </package>
 <package name="SOT23-GSD">
 <smd name="D" x="0" y="0" dx="0.8" dy="0.9" layer="1"/>
@@ -2813,7 +2779,7 @@ Conn.</text>
 <text x="0.1" y="2" size="1.016" layer="25" font="vector" ratio="18" align="center">&gt;NAME</text>
 <text x="-2.7" y="-2" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
-<package name="PWSON-N10-3X3">
+<package name="PWSON-N10+4-3X3">
 <smd name="PAD" x="0" y="0" dx="1.65" dy="2.4" layer="1"/>
 <wire x1="-0.65" y1="-1.5" x2="-1.5" y2="-1.5" width="0.1524" layer="21"/>
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="-1.4" width="0.1524" layer="21"/>
@@ -3400,6 +3366,57 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <circle x="-1.8" y="1.8" radius="0.4242625" width="0" layer="21"/>
 <text x="-1.9" y="2.6" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.8" y="-3.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="DR125">
+<smd name="1" x="-5" y="0" dx="3.85" dy="5.5" layer="1"/>
+<smd name="2" x="5" y="0" dx="3.85" dy="5.5" layer="1"/>
+<rectangle x1="-6.5" y1="-6.5" x2="6.5" y2="6.5" layer="39"/>
+<wire x1="-6.5" y1="3.5" x2="-6.5" y2="6.5" width="0.254" layer="21"/>
+<wire x1="-6.5" y1="6.5" x2="6.5" y2="6.5" width="0.254" layer="21"/>
+<wire x1="6.5" y1="6.5" x2="6.5" y2="3.5" width="0.254" layer="21"/>
+<wire x1="6.5" y1="-3.5" x2="6.5" y2="-6.5" width="0.254" layer="21"/>
+<wire x1="6.5" y1="-6.5" x2="-6.5" y2="-6.5" width="0.254" layer="21"/>
+<wire x1="-6.5" y1="-6.5" x2="-6.5" y2="-3.5" width="0.254" layer="21"/>
+<text x="-5.278" y="4.77" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-5.532" y="-5.786" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="SOD123">
+<wire x1="0.45875" y1="0" x2="-0.59375" y2="0.63505" width="0.1524" layer="21"/>
+<wire x1="-0.59375" y1="0.63505" x2="-0.59375" y2="-0.63505" width="0.1524" layer="21"/>
+<wire x1="-0.59375" y1="-0.63505" x2="0.45875" y2="0" width="0.1524" layer="21"/>
+<smd name="A" x="-1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
+<smd name="C" x="1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
+<text x="-2.54" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.54" y="-2.54" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="0.335" y1="-0.8" x2="0.6525" y2="0.8" layer="21"/>
+<wire x1="-1.3" y1="0.8" x2="1.3" y2="0.8" width="0.1524" layer="21"/>
+<wire x1="-1.3" y1="-0.8" x2="1.3" y2="-0.8" width="0.1524" layer="21"/>
+<rectangle x1="-1.3" y1="-0.8" x2="1.3" y2="0.8" layer="39"/>
+</package>
+<package name="MICROSIP9-3X2.3">
+<smd name="A1" x="-1" y="0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<smd name="A2" x="0" y="0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<smd name="A3" x="1" y="0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<smd name="B1" x="-1" y="0" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<smd name="C1" x="-1" y="-0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<smd name="B2" x="0" y="0" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<smd name="C2" x="0" y="-0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<smd name="B3" x="1" y="0" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<smd name="C3" x="1" y="-0.8" dx="0.3" dy="0.3" layer="1" roundness="100"/>
+<wire x1="-1.5" y1="1.15" x2="1.5" y2="1.15" width="0.127" layer="21"/>
+<wire x1="1.5" y1="1.15" x2="1.5" y2="-1.15" width="0.127" layer="21"/>
+<wire x1="1.5" y1="-1.15" x2="-1.5" y2="-1.15" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="-1.15" x2="-1.5" y2="0.3" width="0.127" layer="21"/>
+<text x="-1.4668" y="1.5588" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.4938" y="-2.3748" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-1.5" y1="-1.15" x2="1.5" y2="1.15" layer="39"/>
+<wire x1="-1.5" y1="0.3" x2="-1.5" y2="1.15" width="0.127" layer="21"/>
+<polygon width="0.000128125" layer="21">
+<vertex x="-1.5" y="1.15"/>
+<vertex x="-1.25" y="1.15"/>
+<vertex x="-1.25" y="0.35"/>
+<vertex x="-1.5" y="0.35"/>
+</polygon>
 </package>
 </packages>
 <symbols>
@@ -4341,23 +4358,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pin name="M4" x="-20.32" y="2.54" visible="pad" length="middle"/>
 <pin name="M1" x="-20.32" y="-2.54" visible="pad" length="middle"/>
 </symbol>
-<symbol name="TPS82740X">
-<wire x1="10.16" y1="5.08" x2="10.16" y2="-33.02" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-33.02" x2="-10.16" y2="-33.02" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-33.02" x2="-10.16" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="5.08" x2="10.16" y2="5.08" width="0.254" layer="94"/>
-<pin name="EN" x="-12.7" y="-5.08" length="short" direction="in"/>
-<pin name="GND" x="-12.7" y="-30.48" length="short" direction="pwr"/>
-<pin name="VIN" x="-12.7" y="2.54" length="short" direction="pwr"/>
-<pin name="LOAD" x="12.7" y="-12.7" length="short" direction="sup" rot="R180"/>
-<pin name="VOUT" x="12.7" y="2.54" length="short" direction="sup" rot="R180"/>
-<text x="-10.16" y="6.35" size="1.778" layer="95">&gt;NAME</text>
-<text x="-10.16" y="-35.56" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="CTRL" x="-12.7" y="-12.7" length="short" direction="in"/>
-<pin name="VSEL1" x="-12.7" y="-17.78" length="short" direction="in"/>
-<pin name="VSEL2" x="-12.7" y="-20.32" length="short" direction="in"/>
-<pin name="VSEL3" x="-12.7" y="-22.86" length="short" direction="in"/>
-</symbol>
 <symbol name="P-MOSFET">
 <wire x1="-3.6576" y1="2.413" x2="-3.6576" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="0" y1="1.905" x2="-2.0066" y2="1.905" width="0.1524" layer="94"/>
@@ -4591,6 +4591,19 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pin name="XC2" x="22.86" y="-15.24" length="middle" direction="in" rot="R180"/>
 <text x="-15.24" y="23.622" size="1.6764" layer="95">&gt;NAME</text>
 <text x="4.064" y="23.622" size="1.6764" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="TPS8268X">
+<wire x1="10.16" y1="15.24" x2="10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-12.7" x2="-10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-12.7" x2="-10.16" y2="15.24" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="15.24" x2="10.16" y2="15.24" width="0.254" layer="94"/>
+<pin name="EN" x="-12.7" y="-2.54" length="short" direction="in"/>
+<pin name="GND" x="-12.7" y="-10.16" length="short" direction="pwr"/>
+<pin name="VIN" x="-12.7" y="12.7" length="short" direction="pwr"/>
+<pin name="VOUT" x="12.7" y="12.7" length="short" direction="sup" rot="R180"/>
+<text x="-10.16" y="16.51" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="MODE" x="-12.7" y="5.08" length="short" direction="in"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -6232,6 +6245,15 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_DR125" package="DR125">
+<connects>
+<connect gate="L" pin="1" pad="1"/>
+<connect gate="L" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="+1V8">
@@ -6657,29 +6679,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="TPS82740X" uservalue="yes">
-<gates>
-<gate name="G$1" symbol="TPS82740X" x="0" y="12.7"/>
-</gates>
-<devices>
-<device name="" package="MICROSIP9-3X2.3">
-<connects>
-<connect gate="G$1" pin="CTRL" pad="B2"/>
-<connect gate="G$1" pin="EN" pad="B3"/>
-<connect gate="G$1" pin="GND" pad="C2"/>
-<connect gate="G$1" pin="LOAD" pad="B1"/>
-<connect gate="G$1" pin="VIN" pad="C3"/>
-<connect gate="G$1" pin="VOUT" pad="C1"/>
-<connect gate="G$1" pin="VSEL1" pad="A3"/>
-<connect gate="G$1" pin="VSEL2" pad="A2"/>
-<connect gate="G$1" pin="VSEL3" pad="A1"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="P-MOSFET" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="P-MOSFET" x="0" y="0"/>
@@ -7013,7 +7012,7 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <gate name="G$1" symbol="TPS61200" x="0" y="2.54"/>
 </gates>
 <devices>
-<device name="" package="PWSON-N10-3X3">
+<device name="" package="PWSON-N10+4-3X3">
 <connects>
 <connect gate="G$1" pin="EN" pad="6"/>
 <connect gate="G$1" pin="FB" pad="10"/>
@@ -7326,6 +7325,25 @@ This is the very popular, low cost, very low power RF transceiver from Nordic Se
 <connect gate="G$1" pin="VSS" pad="8 14 17 20"/>
 <connect gate="G$1" pin="XC1" pad="10"/>
 <connect gate="G$1" pin="XC2" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TPS8268X" prefix="U" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="TPS8268X" x="0" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="MICROSIP9-3X2.3">
+<connects>
+<connect gate="G$1" pin="EN" pad="B2"/>
+<connect gate="G$1" pin="GND" pad="C1 C2 C3"/>
+<connect gate="G$1" pin="MODE" pad="B1"/>
+<connect gate="G$1" pin="VIN" pad="A3 B3"/>
+<connect gate="G$1" pin="VOUT" pad="A1 A2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -7766,7 +7784,6 @@ This is the very popular, low cost, very low power RF transceiver from Nordic Se
 <part name="U$60" library="jonnew" deviceset="+3V3" device=""/>
 <part name="SUPPLY46" library="jonnew" deviceset="GND" device=""/>
 <part name="C59" library="jonnew" deviceset="C" device="_0201T" value="0.1uF"/>
-<part name="U62" library="jonnew" deviceset="TPS82740X" device="" value="TPS82740A"/>
 <part name="R61" library="jonnew" deviceset="R" device="_0201T" value="4.7k"/>
 <part name="GND8" library="jonnew" deviceset="GND" device=""/>
 <part name="GND9" library="jonnew" deviceset="GND" device=""/>
@@ -7991,6 +8008,7 @@ This is the very popular, low cost, very low power RF transceiver from Nordic Se
 </part>
 <part name="SUPPLY93" library="jonnew" deviceset="AGND" device=""/>
 <part name="GND15" library="jonnew" deviceset="GND" device=""/>
+<part name="U10" library="jonnew" deviceset="TPS8268X" device="" value="TPS8268180"/>
 </parts>
 <sheets>
 <sheet>
@@ -8061,7 +8079,6 @@ The CBC2012T100M saturates at
 <text x="1178.56" y="205.74" size="1.778" layer="97">NB: Worst case 
 current consumption
 is ~80 mA for 4 chips.</text>
-<text x="1115.06" y="78.74" size="1.778" layer="97" rot="R90">1.8V Setting</text>
 <text x="861.06" y="464.82" size="1.778" layer="97">I2C Selected</text>
 <text x="922.02" y="449.58" size="1.778" layer="97">TODO: To get the best performance out
 of BNO055, it is recommended to use
@@ -8555,7 +8572,6 @@ others!</text>
 <instance part="U$60" gate="PWR1" x="378.46" y="635"/>
 <instance part="SUPPLY46" gate="PE" x="378.46" y="581.66"/>
 <instance part="C59" gate="C" x="378.46" y="629.92"/>
-<instance part="U62" gate="G$1" x="1140.46" y="104.14"/>
 <instance part="R61" gate="R" x="1155.7" y="505.46" rot="R90"/>
 <instance part="GND8" gate="PE" x="1150.62" y="459.74"/>
 <instance part="GND9" gate="PE" x="1097.28" y="459.74"/>
@@ -8822,6 +8838,7 @@ others!</text>
 </instance>
 <instance part="SUPPLY93" gate="G$1" x="551.18" y="281.94"/>
 <instance part="GND15" gate="PE" x="510.54" y="281.94"/>
+<instance part="U10" gate="G$1" x="1140.46" y="93.98"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -10913,26 +10930,10 @@ others!</text>
 <wire x1="1061.72" y1="462.28" x2="1061.72" y2="467.36" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U62" gate="G$1" pin="VSEL1"/>
 <pinref part="SUPPLY55" gate="PE" pin="GND"/>
-<wire x1="1127.76" y1="86.36" x2="1117.6" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="1117.6" y1="86.36" x2="1117.6" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="U62" gate="G$1" pin="GND"/>
-<wire x1="1117.6" y1="83.82" x2="1117.6" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="1117.6" y1="81.28" x2="1117.6" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="1117.6" y1="73.66" x2="1117.6" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="1127.76" y1="73.66" x2="1117.6" y2="73.66" width="0.1524" layer="91"/>
-<junction x="1117.6" y="73.66"/>
-<pinref part="U62" gate="G$1" pin="VSEL3"/>
-<wire x1="1127.76" y1="81.28" x2="1117.6" y2="81.28" width="0.1524" layer="91"/>
-<junction x="1117.6" y="81.28"/>
-<pinref part="U62" gate="G$1" pin="VSEL2"/>
 <wire x1="1127.76" y1="83.82" x2="1117.6" y2="83.82" width="0.1524" layer="91"/>
-<junction x="1117.6" y="83.82"/>
-<pinref part="U62" gate="G$1" pin="CTRL"/>
-<wire x1="1127.76" y1="91.44" x2="1117.6" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="1117.6" y1="91.44" x2="1117.6" y2="86.36" width="0.1524" layer="91"/>
-<junction x="1117.6" y="86.36"/>
+<wire x1="1117.6" y1="83.82" x2="1117.6" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="U10" gate="G$1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U5" gate="G$2" pin="GND"/>
@@ -14096,10 +14097,10 @@ others!</text>
 <junction x="561.34" y="858.52"/>
 </segment>
 <segment>
-<pinref part="U62" gate="G$1" pin="VOUT"/>
 <wire x1="1153.16" y1="106.68" x2="1181.1" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="1181.1" y1="106.68" x2="1181.1" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="U$61" gate="G$1" pin="+1V8"/>
+<pinref part="U10" gate="G$1" pin="VOUT"/>
 </segment>
 </net>
 <net name="N$48" class="0">
@@ -14468,10 +14469,15 @@ others!</text>
 <pinref part="U$38" gate="G$1" pin="VCOAX"/>
 </segment>
 <segment>
-<pinref part="U62" gate="G$1" pin="VIN"/>
 <pinref part="U$33" gate="G$1" pin="VCOAX"/>
-<wire x1="1127.76" y1="106.68" x2="1089.66" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="1127.76" y1="106.68" x2="1117.6" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="1117.6" y1="106.68" x2="1089.66" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="1089.66" y1="106.68" x2="1089.66" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="U10" gate="G$1" pin="VIN"/>
+<pinref part="U10" gate="G$1" pin="MODE"/>
+<wire x1="1127.76" y1="99.06" x2="1117.6" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="1117.6" y1="99.06" x2="1117.6" y2="106.68" width="0.1524" layer="91"/>
+<junction x="1117.6" y="106.68"/>
 </segment>
 <segment>
 <wire x1="1188.72" y1="408.94" x2="1188.72" y2="416.56" width="0.1524" layer="91"/>
@@ -15261,9 +15267,9 @@ others!</text>
 </net>
 <net name="SERDES_EN" class="0">
 <segment>
-<wire x1="1127.76" y1="99.06" x2="1120.14" y2="99.06" width="0.1524" layer="91"/>
-<label x="1120.14" y="99.06" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="U62" gate="G$1" pin="EN"/>
+<wire x1="1127.76" y1="91.44" x2="1120.14" y2="91.44" width="0.1524" layer="91"/>
+<label x="1120.14" y="91.44" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="U10" gate="G$1" pin="EN"/>
 </segment>
 <segment>
 <wire x1="106.68" y1="142.24" x2="111.76" y2="142.24" width="0.1524" layer="91"/>
