@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace oe
 {
@@ -30,7 +31,7 @@ namespace oe
 
             // Populate device map
             int num_devs = GetOption(Option.NUMDEVICES);
-            device_map.Capacity = num_devs;
+            device_map = new DeviceMap(num_devs);
         }
 
         ~Context()
@@ -43,16 +44,51 @@ namespace oe
 
         // NB: There must be a way to make these generic, but its confusing with all the pointer-wrapper crap
         // Get int option
-        public int GetOption(Option opt) // Int version
+
+        // Low-level GetOption
+        private bool GetOption(Option option, IntPtr value, ref int size)
         {
-            UInt32 sz;
-            IntPtr value = (IntPtr)0;
-            int rc = oepcie.get_opt(ctx, (int)opt, value, out sz);
-            if (rc != 0) { throw new OEException(rc); }
-            return (int)value;
+            EnsureNotDisposed();
+
+            using (var option_len = DispoIntPtr.Alloc(IntPtr.Size))
+            {
+                if (IntPtr.Size == 4)
+                    Marshal.WriteInt32(option_len.Ptr, size);
+                else if (IntPtr.Size == 8)
+                    Marshal.WriteInt64(option_len.Ptr, (long)size);
+                else
+                    throw new PlatformNotSupportedException();
+
+                int rc = oepcie.get_opt(ctx, (int)option, value, option_len.Ptr);
+                if (rc != 0) { throw new OEException(rc); }
+
+                if (IntPtr.Size == 4)
+                    size = Marshal.ReadInt32(option_len.Ptr);
+                else if (IntPtr.Size == 8)
+                    size = (int)Marshal.ReadInt64(option_len.Ptr);
+                else
+                    throw new PlatformNotSupportedException();
+            }
+
+            return true;
         }
 
-        public void SetOption(Option opt, string value) // String version
+        // Int32 GetOption
+        public Int32 GetOption(Option option)
+        {
+            int size = Marshal.SizeOf(typeof(Int32));
+            using (var value = DispoIntPtr.Alloc(size))
+            {
+                if (GetOption(option, value.Ptr, ref size))
+                {
+                    return Marshal.ReadInt32(value.Ptr);
+                }
+                return default(Int32);
+            }
+        }
+
+        // String SetOption
+        public void SetOption(Option opt, string value)
         {
             int ssize;
             using (var path_ptr = DispoIntPtr.AllocString(value, out ssize))
@@ -64,10 +100,13 @@ namespace oe
 
         public uint ReadRegister(uint dev_idx, uint reg_addr)
         {
-            uint value;
-            int rc = oepcie.read_reg(ctx, dev_idx, reg_addr, out value);
-            if (rc != 0) { throw new OEException(rc); }
-            return value;
+            int size = Marshal.SizeOf(typeof(Int32));
+            using (var value = DispoIntPtr.Alloc(size))
+            {
+                int rc = oepcie.read_reg(ctx, dev_idx, reg_addr, value);
+                if (rc != 0) { throw new OEException(rc); }
+                return (uint)Marshal.ReadInt32(value.Ptr);
+            }
         }
 
         public void WriteRegister(uint dev_idx, uint reg_addr, uint value)
@@ -98,6 +137,15 @@ namespace oe
             RUNNING,
             RESET,
             SYSCLKHZ
+        }
+
+        // Not entierly sure what this is for. I guess because ctx could get GCed??
+        private void EnsureNotDisposed()
+        {
+            if (ctx == IntPtr.Zero)
+            {
+                throw new ObjectDisposedException(GetType().FullName);
+            }
         }
     }
 }

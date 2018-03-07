@@ -11,7 +11,7 @@ namespace oe.lib
 
         private const string LibraryName = "liboepcie";
 
-        public const string DefaultConfigPath = "\\\\.\\xillybus_cmd_32";
+        public const string DefaultConfigPath = "\\\\.\\xillybus_cmd_mem_32";
         public const string DefaultReadPath = "\\\\.\\xillybus_data_read_32";
         public const string DefaultSignalPath = "\\\\.\\xillybus_async_read_8";
 
@@ -77,13 +77,13 @@ namespace oe.lib
         public static extern Int32 destroy_ctx(IntPtr ctx);
 
         [DllImport(LibraryName, EntryPoint = "oe_get_opt", CallingConvention = CCCdecl)]
-        public static extern Int32 get_opt(IntPtr ctx, Int32 option, IntPtr val, out UInt32 size);
+        public static extern Int32 get_opt(IntPtr ctx, Int32 option, IntPtr val, IntPtr size);
 
         [DllImport(LibraryName, EntryPoint = "oe_set_opt", CallingConvention = CCCdecl)]
         public static extern Int32 set_opt(IntPtr ctx, Int32 option, IntPtr val, UInt32 size);
 
         [DllImport(LibraryName, EntryPoint = "oe_read_reg", CallingConvention = CCCdecl)]
-        public static extern Int32 read_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, out UInt32 val);
+        public static extern Int32 read_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, IntPtr val);
 
         [DllImport(LibraryName, EntryPoint = "oe_write_reg", CallingConvention = CCCdecl)]
         public static extern Int32 write_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UInt32 val);
