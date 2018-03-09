@@ -465,8 +465,8 @@ int oe_write_reg(const oe_ctx ctx,
         return OE_ESEEKFAILURE;
 
     // Make sure we are not already in config triggered state
-    uint8_t trig = 0x00;
-    if (read(ctx->config.fid, &trig, 1) == 0)
+    uint32_t trig = 0x00;
+    if (read(ctx->config.fid, &trig, sizeof(uint32_t)) == 0)
         return OE_EREADFAILURE;
 
     if (trig != 0)
@@ -485,12 +485,12 @@ int oe_write_reg(const oe_ctx ctx,
     if (write(ctx->config.fid, &value, sizeof(uint32_t)) <= 0)
         return OE_EWRITEFAILURE;
 
-    uint8_t rw = 0x01;
-    if (write(ctx->config.fid, &rw, sizeof(uint8_t)) <= 0)
+    uint32_t rw = 0x01;
+    if (write(ctx->config.fid, &rw, sizeof(uint32_t)) <= 0)
         return OE_EWRITEFAILURE;
 
     trig = 0x01;
-    if (write(ctx->config.fid, &trig, sizeof(uint8_t)) <= 0)
+    if (write(ctx->config.fid, &trig, sizeof(uint32_t)) <= 0)
         return OE_EWRITEFAILURE;
 
     oe_signal_t type;
@@ -962,7 +962,7 @@ static int _oe_read_config(int config_fd,
 #ifdef OE_BE
 static int _device_map_byte_swap(oe_ctx ctx)
 {
-    int i;
+    size_t i;
     for (i = 0; i < ctx->num_dev; i++) {
         ctx->dev_map[i].id = BSWAP_32(ctx->dev_map[i].id);
         ctx->dev_map[i].read_size = BSWAP_32(ctx->dev_map[i].read_size);
