@@ -1,4 +1,4 @@
-SHELL   := /bin/bash
+SHELL   :=  /bin/bash
 NAME    :=  liboepcie
 SNAME   :=  $(NAME).a
 DNAME   :=  $(NAME).so.1
