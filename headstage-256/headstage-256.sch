@@ -7711,6 +7711,8 @@ This is the very popular, low cost, very low power RF transceiver from Nordic Se
 <part name="GND20" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY93" library="jonnew" deviceset="AGND" device=""/>
 <part name="SUPPLY94" library="jonnew" deviceset="AGND" device=""/>
+<part name="TP28" library="jonnew" deviceset="TP" device="_0.7MM"/>
+<part name="GND15" library="jonnew" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8538,6 +8540,8 @@ others!</text>
 <instance part="GND20" gate="PE" x="205.74" y="645.16"/>
 <instance part="SUPPLY93" gate="G$1" x="695.96" y="218.44"/>
 <instance part="SUPPLY94" gate="G$1" x="695.96" y="452.12"/>
+<instance part="TP28" gate="G$1" x="518.16" y="596.9"/>
+<instance part="GND15" gate="PE" x="518.16" y="586.74"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -10016,7 +10020,7 @@ others!</text>
 <pinref part="U2" gate="A" pin="ADC_REF"/>
 </segment>
 </net>
-<net name="GND" class="1">
+<net name="GND" class="0">
 <segment>
 <pinref part="SUPPLY5" gate="PE" pin="GND"/>
 <wire x1="1214.12" y1="198.12" x2="1214.12" y2="190.5" width="0.1524" layer="91"/>
@@ -10892,6 +10896,11 @@ others!</text>
 <wire x1="172.72" y1="675.64" x2="172.72" y2="673.1" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="673.1" x2="205.74" y2="673.1" width="0.1524" layer="91"/>
 <wire x1="205.74" y1="673.1" x2="205.74" y2="647.7" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="TP28" gate="G$1" pin="TP"/>
+<pinref part="GND15" gate="PE" pin="GND"/>
+<wire x1="518.16" y1="594.36" x2="518.16" y2="589.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VDAC_A" class="0">
