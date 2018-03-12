@@ -1,15 +1,78 @@
 #include <assert.h>
 #include <errno.h>
 #include <inttypes.h>
-#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <unistd.h>
 
 #include "../liboepcie/oepcie.h"
+
+// Windows- and UNIX-specific includes etc
+#ifdef _WIN32
+#include <windows.h>
+#pragma comment(lib, "liboepcie")
+#include <stdio.h>
+#include <stdlib.h>
+
+// Windows does not have a getline()
+size_t getline(char **lineptr, size_t *n, FILE *stream) {
+	char *bufptr = NULL;
+	char *p = bufptr;
+	size_t size;
+	int c;
+
+	if (lineptr == NULL) {
+		return -1;
+	}
+	if (stream == NULL) {
+		return -1;
+	}
+	if (n == NULL) {
+		return -1;
+	}
+	bufptr = *lineptr;
+	size = *n;
+
+	c = fgetc(stream);
+	if (c == EOF) {
+		return -1;
+	}
+	if (bufptr == NULL) {
+		bufptr = malloc(128);
+		if (bufptr == NULL) {
+			return -1;
+		}
+		size = 128;
+	}
+	p = bufptr;
+	while (c != EOF) {
+		if ((p - bufptr) > (size - 1)) {
+			size = size + 128;
+			bufptr = realloc(bufptr, size);
+			if (bufptr == NULL) {
+				return -1;
+			}
+		}
+		*p++ = c;
+		if (c == '\n') {
+			break;
+		}
+		c = fgetc(stream);
+	}
+
+	*p++ = '\0';
+	*lineptr = bufptr;
+	*n = size;
+
+	return p - bufptr - 1;
+}
+#else
+#include <unistd.h>
+#include <pthread.h>
+#endif
+
 
 volatile oe_ctx ctx = NULL;
 oe_device_t *devices = NULL;
@@ -42,7 +105,11 @@ int parse_reg_cmd(const char *cmd, long *values)
     return 0;
 }
 
+#ifdef _WIN32
+DWORD WINAPI data_loop(LPVOID lpParam)
+#else 
 void *data_loop(void *vargp)
+#endif
 {
     int rc = 0;
     while (rc == 0 && !quit)  {
@@ -79,7 +146,6 @@ void *data_loop(void *vargp)
         oe_destroy_frame(frame);
     }
 
-
 	return NULL;
 }
 
@@ -90,12 +156,16 @@ int main()
     if (!ctx) exit(EXIT_FAILURE);
 
     // Set stream paths
-    const char *config_path = "/tmp/rat128_config";
-    const char *sig_path = "/tmp/rat128_signal";
-    const char *data_path = "/tmp/rat128_read";
-    //const char *config_path = "/dev/xillybus_cmd_mem_32";
-    //const char *sig_path = "/dev/xillybus_async_read_8";
-    //const char *data_path = "/dev/xillybus_data_read_32";
+
+	// Test firmware paths
+    //const char *config_path = "/tmp/rat128_config";
+    //const char *sig_path = "/tmp/rat128_signal";
+    //const char *data_path = "/tmp/rat128_read";
+
+	// Real hardware
+    const char *config_path = OE_DEFAULTCONFIGPATH;
+    const char *sig_path = OE_DEFAULTSIGNALPATH;
+    const char *data_path = OE_DEFAULTREADPATH;
 
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
@@ -135,7 +205,7 @@ int main()
     printf("Frame size: %u bytes\n", frame_size);
 
     // Try to write to base clock freq, which is write only
-    oe_reg_val_t base_hz = 10e6;
+    oe_reg_val_t base_hz = (oe_reg_val_t)10e6;
     int rc = oe_set_opt(ctx, OE_SYSCLKHZ, &base_hz, sizeof(oe_reg_val_t));
     assert(rc == OE_EREADONLY && "Successful write to read-only register.");
 
@@ -150,8 +220,14 @@ int main()
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
 
     // Generate data thread and continue here config/signal handling in parallel
+#ifdef _WIN32
+	DWORD tid;
+	CreateThread(NULL, 0, data_loop, NULL, 0, &tid);
+#else
     pthread_t tid;
-    pthread_create(&tid, NULL, data_loop, NULL);
+	pthread_create(&tid, NULL, data_loop, NULL);
+#endif // _WIN32
+    
 
     // Read stdin to start (s) or pause (p)
     int c = 's';
@@ -205,18 +281,22 @@ int main()
             oe_write_reg(ctx, dev_idx, addr, val);
 
         }
-
     }
 
     // Join data and signal threads
     quit = 1;
-    pthread_join(tid, NULL);
+#ifdef _WIN32
+	WaitForSingleObject(tid, INFINITE);
+	CloseHandle(tid);
+#else
+	pthread_join(tid, NULL);
+#endif
+    
 
     // Reset the hardware
     oe_reg_val_t reset = 1;
     rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-
     assert(!rc && "Register write failure.");
 
     // Free dynamic stuff

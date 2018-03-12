@@ -15,19 +15,69 @@ namespace oe.lib
         public const string DefaultReadPath = "\\\\.\\xillybus_data_read_32";
         public const string DefaultSignalPath = "\\\\.\\xillybus_async_read_8";
 
+        private enum Error
+        {
+            SUCCESS = 0,  // Success
+            PATHINVALID = -1,  // Invalid stream path, fail on open
+            REINITCTX = -2,  // Double initialization attempt
+            DEVID = -3,  // Invalid device ID on init or reg op
+            READFAILURE = -4,  // Failure to read from a stream/register
+            WRITEFAILURE = -5,  // Failure to write to a stream/register
+            NULLCTX = -6,  // Attempt to call function w null ctx
+            SEEKFAILURE = -7,  // Failure to seek on stream
+            INVALSTATE = -8,  // Invalid operation for the current context run state
+            DEVIDX = -9,  // Invalid device index
+            INVALOPT = -10, // Invalid context option
+            INVALARG = -11, // Invalid function arguments
+            CANTSETOPT = -12, // Option cannot be set in current context state
+            COBSPACK = -13, // Invalid COBS packet
+            RETRIG = -14, // Attempt to trigger an already triggered operation
+            BUFFERSIZE = -15, // Supplied buffer is too small
+            BADDEVMAP = -16, // Badly formated device map supplied by firmware
+            BADALLOC = -17, // Bad dynamic memory allocation
+            CLOSEFAIL = -18, // File descriptor close failure, check errno
+            DATATYPE = -19, // Invalid underlying data types
+            READONLY = -20, // Attempted write to read only object (register, context option, etc)
+            RUNSTATESYNC = -21, // Software and hardware run state out of sync
+            INVALRAWTYPE = -22, // Invalid raw data type
+        }
+
         // Make managed version of oe_frame_t
         [StructLayout(LayoutKind.Sequential)]
         public struct frame_t
         {
+            [MarshalAs(UnmanagedType.U8)]
             public ulong clock;       // Base clock counter
+            [MarshalAs(UnmanagedType.U2)]
             public ushort num_dev;     // Number of devices in frame
-            public byte corrupt;       // Is this frame corrupt?
-            public UIntPtr dev_idxs;   // Array of device indices in frame
+            [MarshalAs(UnmanagedType.U1)]
+            public byte corrupt;       // Is this frame corrupt?  
+            public uint *dev_idxs;   // Array of device indices in frame
+            [MarshalAs(UnmanagedType.U4)]
             public uint dev_idxs_sz; // Size in bytes of dev_idxs buffer
-            public UIntPtr dev_offs;   // Device data offsets within data block
+            public uint *dev_offs;   // Device data offsets within data block
+            [MarshalAs(UnmanagedType.U4)]
             public uint dev_offs_sz; // Size in bytes of dev_idxs buffer
-            public IntPtr data;         // Multi-device raw data block
+            public byte *data;         // Multi-device raw data block
+            [MarshalAs(UnmanagedType.U4)]
             public uint data_sz;     // Size in bytes of data buffer
+        }
+
+        // Make managed version of oe_device_t
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        public struct device_t
+        {
+            //[MarshalAs(UnmanagedType.U4)]
+            public uint id;             // Device ID
+            //[MarshalAs(UnmanagedType.U4)]
+            public uint read_size;      // Read size
+            //[MarshalAs(UnmanagedType.U4)]
+            public uint read_type;      // Read type ID
+            //[MarshalAs(UnmanagedType.U4)]
+            public uint write_size;     // Write size
+            //[MarshalAs(UnmanagedType.U4)]
+            public uint write_type;     // Write type ID
+
         }
 
         // The static constructor prepares static readonly fields
@@ -88,7 +138,7 @@ namespace oe.lib
         [DllImport(LibraryName, EntryPoint = "oe_write_reg", CallingConvention = CCCdecl)]
         public static extern Int32 write_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UInt32 val);
 
-        [DllImport(LibraryName, EntryPoint = "oe_read_frame", CallingConvention = CCCdecl)]
+        [DllImport(LibraryName, EntryPoint = "oe_read_frame", CallingConvention = CCCdecl, SetLastError = true)]
         //public static extern Int32 read_frame(IntPtr ctx, FrameT **frame);
         public static extern Int32 read_frame(IntPtr ctx, out IntPtr frame);
 

@@ -39,6 +39,7 @@ enum oe_estim_regs {
     OE_ESTIM_POWERON     = 13, // Control estim sub-circuit power (0 = off, 1 = on)
     OE_ESTIM_ENABLE      = 14, // Control null switch (0 = stim output shorted to ground, 1 = stim output attached to electrode during pulses)
     OE_ESTIM_RESTCURR    = 15, // Resting current between pulse phases, (0 to 255 = -1.5 mA to +1.5mA)
+	OE_ESTIM_RESET		 = 16, // Reset all parameters to default
 };
 
 #ifdef __cplusplus

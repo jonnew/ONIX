@@ -14,6 +14,7 @@
 #define lseek _lseek
 #else
 #include <unistd.h>
+#define _O_BINARY 0
 #endif
 
 #include "oepcie.h"
@@ -145,24 +146,29 @@ oe_ctx oe_create_ctx()
 
 int oe_init_ctx(oe_ctx ctx)
 {
-    assert(ctx != NULL && "Context is NULL.");
-    assert(ctx->run_state == UNINITIALIZED && "Context is in invalid state.");
+	assert(ctx != NULL && "Context is NULL.");
+	assert(ctx->run_state == UNINITIALIZED && "Context is in invalid state.");
 
-    if(ctx->run_state != UNINITIALIZED)
-        return OE_EINVALSTATE;
+	if (ctx->run_state != UNINITIALIZED)
+		return OE_EINVALSTATE;
 
-    ctx->config.fid = open(ctx->config.path, O_RDWR);
-    if (ctx->config.fid == -1)
-        return OE_EPATHINVALID;
+	ctx->config.fid = open(ctx->config.path, O_RDWR | _O_BINARY);
+	if (ctx->config.fid == -1) {
+		//fprintf(stderr, _strerror(NULL));
+		return OE_EPATHINVALID;
+	}
 
-    ctx->read.fid = open(ctx->read.path, O_RDONLY);
-    if (ctx->read.fid == -1)
-        return OE_EPATHINVALID;
+	ctx->read.fid = open(ctx->read.path, O_RDONLY | _O_BINARY);
+	if (ctx->read.fid == -1) {
+		//fprintf(stderr, _strerror(NULL));
+		return OE_EPATHINVALID;
+	}
 
-    ctx->signal.fid = open(ctx->signal.path, O_RDONLY);
-    if (ctx->signal.fid == -1)
-        return OE_EPATHINVALID;
-
+	ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
+	if (ctx->signal.fid == -1) {
+		//fprintf(stderr, _strerror(NULL));
+		return OE_EPATHINVALID;
+	}
     // Reset the run state of the hardware. This will push a frame header onto
     // the signal stream
     int rc = _oe_write_config(ctx->config.fid, CONFRUNNINGOFFSET, 0);
@@ -576,7 +582,7 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     // Get the header and figure out how many devies are in the frame
     uint8_t header[OE_RFRAMEHEADERSZ];
     int rc = _oe_read(ctx->read.fid, header, OE_RFRAMEHEADERSZ);
-    if (rc != OE_RFRAMEHEADERSZ) return OE_EREADFAILURE;
+    if (rc != OE_RFRAMEHEADERSZ) return rc;
 
     // Allocate frame
     *frame = malloc(sizeof(oe_frame_t));
@@ -595,7 +601,8 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 
     // Read device indices that are in this frame
     rc = _oe_read(ctx->read.fid, f_ptr->dev_idxs, f_ptr->dev_idxs_sz);
-    assert((size_t)rc == f_ptr->dev_idxs_sz && "Did not read full dev idxs buffer.");
+	if ((size_t)rc != f_ptr->dev_idxs_sz) return rc;
+    //assert((size_t)rc == f_ptr->dev_idxs_sz && "Did not read full dev idxs buffer.");
 
     // Find data read size
     uint16_t i;
@@ -614,7 +621,8 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 
     // Read data
     rc = _oe_read(ctx->read.fid, f_ptr->data, rsize);
-    assert(rc == rsize && "Did not read full data buffer.");
+	if (rc != rsize) return rc;
+    //assert(rc == rsize && "Did not read full data buffer.");
 
     return 0;
 }

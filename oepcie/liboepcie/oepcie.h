@@ -29,12 +29,12 @@ extern "C" {
 
 // OS-specific constants
 #ifdef _WIN32
-#define OE_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_32"
+#define OE_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_mem_32"
 #define OE_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
 #define OE_DEFAULTSIGNALPATH  "\\\\.\\xillybus_async_read_8"
 #define OE_EXPORT __declspec(dllexport)
 #else
-#define OE_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_32"
+#define OE_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_mem_32"
 #define OE_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
 #define OE_DEFAULTSIGNALPATH  "/dev/xillybus_async_read_8"
 #define OE_EXPORT
