@@ -7113,7 +7113,7 @@ This is the very popular, low cost, very low power RF transceiver from Nordic Se
 </class>
 </classes>
 <parts>
-<part name="U5" library="jonnew" deviceset="10M08SAM153" device="_MBGA"/>
+<part name="U5" library="jonnew" deviceset="10M08SAM153" device="_MBGA" value="10M08SAM15317G"/>
 <part name="SUPPLY7" library="jonnew" deviceset="AGND" device=""/>
 <part name="C3" library="jonnew" deviceset="C" device="_0201T" value="10nF">
 <attribute name="PARTNO" value="GRM033R71E103KE14D"/>
