@@ -78,6 +78,7 @@ volatile oe_ctx ctx = NULL;
 oe_device_t *devices = NULL;
 volatile int quit = 0;
 volatile int display = 0;
+volatile int display_clock = 0;
 int running = 1;
 
 int parse_reg_cmd(const char *cmd, long *values)
@@ -117,10 +118,10 @@ void *data_loop(void *vargp)
         oe_frame_t *frame;
         rc = oe_read_frame(ctx, &frame);
 
-        if (display) {
+		if (display_clock)
+			printf("\tSample: %" PRIu64 "\n\n", frame->clock);
 
-            printf("-- Read frame --\n");
-            printf("\tSample: %" PRIu64 "\n", frame->clock);
+        if (display) {
 
             int i;
             for (i = 0; i < frame->num_dev; i++) {
@@ -247,14 +248,16 @@ int main()
         c = cmd[0];
         free(cmd);
 
-        if (c == 'p') {
-            running = (running == 1) ? 0 : 1;
-            oe_reg_val_t run = running;
-            rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
-            if (rc) {
-                printf("Error: %s\n", oe_error_str(rc));
-            }
-            printf("Paused\n");
+		if (c == 'p') {
+			running = (running == 1) ? 0 : 1;
+			oe_reg_val_t run = running;
+			rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
+			if (rc) {
+				printf("Error: %s\n", oe_error_str(rc));
+			}
+			printf("Paused\n");
+		} else if (c == 'c') {
+			display_clock = (display_clock == 0) ? 1 : 0;
         } else if (c == 'd') {
             display = (display == 0) ? 1 : 0;
         } else if (c == 'r') {

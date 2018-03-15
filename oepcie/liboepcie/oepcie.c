@@ -251,12 +251,12 @@ int oe_destroy_ctx(oe_ctx ctx)
 {
     assert(ctx != NULL && "Context is NULL");
 
-    if (ctx->run_state >= IDLE) {
-
-        if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
-        if (close(ctx->read.fid) == -1) goto oe_close_ctx_fail;
-        if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
-    }
+    //if (ctx->run_state >= IDLE) {
+	//
+    //    if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
+    //    if (close(ctx->read.fid) == -1) goto oe_close_ctx_fail;
+    //    if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
+    //}
 
     free(ctx->config.path);
     free(ctx->read.path);
@@ -595,7 +595,7 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 
     // Allocate space for device info
     f_ptr->dev_idxs_sz = f_ptr->num_dev * sizeof(oe_size_t);
-    f_ptr->dev_offs_sz = f_ptr->num_dev * sizeof(size_t);
+    f_ptr->dev_offs_sz = f_ptr->num_dev * sizeof(oe_size_t);
     f_ptr->dev_idxs = malloc(f_ptr->dev_idxs_sz);
     f_ptr->dev_offs = malloc(f_ptr->dev_offs_sz);
 

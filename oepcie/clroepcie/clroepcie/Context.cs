@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using MapDevice = System.Tuple<int, oe.lib.oepcie.device_t>;
 
 namespace oe
 {
@@ -13,7 +14,6 @@ namespace oe
                        string read_path = oepcie.DefaultReadPath,
                        string signal_path = oepcie.DefaultSignalPath)
         {
-
             // Create context
             ctx = oepcie.create_ctx();
             if (ctx == IntPtr.Zero)
@@ -31,21 +31,44 @@ namespace oe
 
             // Populate device map
             int num_devs = GetOption(Option.NUMDEVICES);
-            var device_map = GetDeviceMap(num_devs);
+            DeviceMap = new List<MapDevice>();
+            int size_dev = Marshal.SizeOf(new oe.lib.oepcie.device_t());
+            int size = size_dev * num_devs;
+            using (var value = DispoIntPtr.Alloc(size))
+            {
+                GetOption(Option.DEVICEMAP, value.Ptr, ref size);
+                var mem = value.Ptr;
+
+                // TODO: This seems very inefficient. We allocate memroy in value and then copy 
+                // each element into device_map.  Would be better to directly provide device map's 
+                // memory as buffer.
+                for (int i = 0; i < num_devs; i++)
+                {
+                    DeviceMap.Add(new MapDevice(i, (oepcie.device_t)Marshal.PtrToStructure(mem, typeof(oepcie.device_t))));
+                    mem = new IntPtr((long)mem + size_dev);
+                }
+
+                // We are not disposed
+                disposed = false;
+            }
         }
 
         ~Context()
         {
-            oepcie.destroy_ctx(ctx);
+            Dispose(false);  // TODO: This does not seem to do anything. Why is it called with false arg?
         }
 
+        public static readonly uint DefaultIndex = 0;
+        public uint Index = DefaultIndex;
         private IntPtr ctx;
-        private oepcie.device_t[] device_map;
+        public readonly List<MapDevice> DeviceMap;
+        private bool disposed;
+        private Object context_lock = new Object();
 
-        uint deviceID(uint device_index)
+        public uint deviceID(uint device_index)
         {
-            if (device_index < device_map.Length)
-                return device_map[device_index].id;
+            if (device_index < DeviceMap.Count)
+                return DeviceMap[(int)device_index].Item2.id;
             else
                 throw new OEException((int)oepcie.Error.DEVIDX);
         }
@@ -64,8 +87,11 @@ namespace oe
                 else
                     throw new PlatformNotSupportedException();
 
-                int rc = oepcie.get_opt(ctx, (int)option, value, option_len.Ptr);
-                if (rc != 0) { throw new OEException(rc); }
+                lock (context_lock)
+                {
+                    int rc = oepcie.get_opt(ctx, (int)option, value, option_len.Ptr);
+                    if (rc != 0) { throw new OEException(rc); }
+                }
 
                 if (IntPtr.Size == 4)
                     size = Marshal.ReadInt32(option_len.Ptr);
@@ -87,50 +113,43 @@ namespace oe
             }
         }
 
-        // DeviceMap GetOption
-        private oepcie.device_t[] GetDeviceMap(int num_dev)
+        public void Start()
         {
-            device_map = new oepcie.device_t[num_dev];
-            int size_dev = Marshal.SizeOf(device_map[0]);
-            int size = size_dev * num_dev;
-            using (var value = DispoIntPtr.Alloc(size))
-            {
-                GetOption(Option.DEVICEMAP, value.Ptr, ref size);
-                var mem = value.Ptr;
+            SetOption(Context.Option.RUNNING, 1);
+        }
 
-                // TODO: This seems very inefficient. We allocate memroy in value and then copy 
-                // each element into device_map.  Would be better to directly provide device map's 
-                // memory as buffer.
-                for (int i = 0; i < num_dev; i++) {
-                   device_map[i] = (oepcie.device_t)Marshal.PtrToStructure(mem, typeof(oepcie.device_t));
-                    mem = new IntPtr((long)mem + size_dev);
-                }
-
-                return device_map;
-            }
-          
+        public void Stop()
+        {
+            SetOption(Context.Option.RUNNING, 0);
         }
 
         // Int32 SetOption
-        public void SetOption(Option opt, int value)
+        private void SetOption(Option opt, int value)
         {
             int size = Marshal.SizeOf(typeof(Int32));
             using (var mem = DispoIntPtr.Alloc(size))
             {
                 Marshal.WriteInt32(mem.Ptr, value);
-                int rc = oepcie.set_opt(ctx, (int)opt, mem, (uint)size);
-                if (rc != 0) { throw new OEException(rc); }
+                lock (context_lock)
+                {
+                    int rc = oepcie.set_opt(ctx, (int)opt, mem, (uint)size);
+                    if (rc != 0) { throw new OEException(rc); }
+                }
             }  
         }
 
         // String SetOption
-        public void SetOption(Option opt, string value)
+        private void SetOption(Option opt, string value)
         {
             int ssize;
             using (var path_ptr = DispoIntPtr.AllocString(value, out ssize))
             {
-                int rc = oepcie.set_opt(ctx, (int)opt, path_ptr, (uint)ssize);
-                if (rc != 0) { throw new OEException(rc); }
+                lock (context_lock)
+                {
+                    int rc = oepcie.set_opt(ctx, (int)opt, path_ptr, (uint)ssize);
+                    if (rc != 0) { throw new OEException(rc); }
+                }
+
             }
         }
 
@@ -139,16 +158,22 @@ namespace oe
             int size = Marshal.SizeOf(typeof(Int32));
             using (var value = DispoIntPtr.Alloc(size))
             {
-                int rc = oepcie.read_reg(ctx, dev_idx, reg_addr, value);
-                if (rc != 0) { throw new OEException(rc); }
-                return (uint)Marshal.ReadInt32(value.Ptr);
+                lock (context_lock)
+                {
+                    int rc = oepcie.read_reg(ctx, dev_idx, reg_addr, value);
+                    if (rc != 0) { throw new OEException(rc); }
+                    return (uint)Marshal.ReadInt32(value.Ptr);
+                }
             }
         }
 
         public void WriteRegister(uint dev_idx, uint reg_addr, uint value)
         {
-            int rc = oepcie.write_reg(ctx, dev_idx, reg_addr, value);
-            if (rc != 0) { throw new OEException(rc); }
+            lock (context_lock)
+            {
+                int rc = oepcie.write_reg(ctx, dev_idx, reg_addr, value);
+                if (rc != 0) { throw new OEException(rc); }
+            }
         }
 
         public Frame ReadFrame()
@@ -156,9 +181,12 @@ namespace oe
             unsafe {
                 var value = DispoIntPtr.Alloc(sizeof(oepcie.frame_t));
                 var mem = value.Ptr;
-                int rc = oepcie.read_frame(ctx, out mem);
-                var frame = new Frame(device_map, mem);
-                if (rc != 0) { throw new OEException(rc); }
+                lock (context_lock)
+                {
+                    int rc = oepcie.read_frame(ctx, out mem);
+                    if (rc != 0) { throw new OEException(rc); }
+                }
+                var frame = new Frame(DeviceMap, mem);
                 return frame;
             }
         }
@@ -178,19 +206,27 @@ namespace oe
             SYSCLKHZ
         }
 
-        void IDisposable.Dispose()
+        public void Close()
         {
-            oepcie.destroy_ctx(ctx);
+            Dispose(true);
+            GC.SuppressFinalize(this); // I guess this is because we are calling Dispose manually here
+
         }
 
+        void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                int rc = oepcie.destroy_ctx(ctx); // Free resources held by ctx. This does not seem to happen correctly all the time.
+                if (rc != 0) { throw new OEException(rc); }
+                disposed = true;
+            }
+        }
 
-        // Not entierly sure what this is for. I guess because ctx could get GCed??
-        //private void EnsureNotDisposed()
-        //{
-        //    if (ctx == IntPtr.Zero)
-        //    {
-        //        throw new ObjectDisposedException(GetType().FullName);
-        //    }
-        //}
+        void IDisposable.Dispose()
+        {
+            Close(); 
+        }
+
     }
 }

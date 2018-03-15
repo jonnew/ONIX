@@ -22,7 +22,7 @@ namespace clroepcie_test
                 using (var ctx = new oe.Context())
                 {
                     // Start acqusisition
-                    ctx.SetOption(Context.Option.RUNNING, 1);
+                    ctx.Start(); 
 
                     // See how big max frame is
                     int frame_size = ctx.GetOption(Context.Option.READFRAMESIZE);
@@ -37,11 +37,6 @@ namespace clroepcie_test
                     System.Console.WriteLine("Running state: " + running);
 
                     var frame = ctx.ReadFrame();
-
-                    if (frame.contains(0) != -1) {
-                        var dat = frame.data<UInt16>(0);
-                    }
-
 
                 } // ctx.Dispose() is called.
 

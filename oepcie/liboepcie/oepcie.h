@@ -27,7 +27,7 @@ extern "C" {
 // Write frame contants
 #define OE_WFRAMEHEADERSZ     32 // [(32 reserved bytes), ...]
 
-// OS-specific constants
+// OS-specific defintions
 #ifdef _WIN32
 #define OE_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_mem_32"
 #define OE_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
@@ -45,10 +45,10 @@ extern "C" {
 // potentially add registers to oedevices.h
 enum oe_device_id {
     OE_IMMEDIATEIO = 0,
-    OE_RHD2132,
-    OE_RHD2164,
-    OE_MPU9250,
-    OE_ESTIM,
+    OE_RHD2132	   = 1,
+    OE_RHD2164     = 2,
+    OE_MPU9250     = 3,
+    OE_ESTIM       = 4,
 
     // NB: Always on bottom
     OE_MAXDEVICEID
@@ -77,11 +77,11 @@ typedef struct oe_frame {
     uint16_t num_dev;     // Number of devices in frame
     uint8_t corrupt;      // Is this frame corrupt?
     oe_size_t *dev_idxs;  // Array of device indices in frame
-    size_t dev_idxs_sz;   // Size in bytes of dev_idxs buffer
-    size_t *dev_offs;     // Device data offsets within data block
-    size_t dev_offs_sz;   // Size in bytes of dev_idxs buffer
+	oe_size_t dev_idxs_sz;   // Size in bytes of dev_idxs buffer
+	oe_size_t *dev_offs;     // Device data offsets within data block
+	oe_size_t dev_offs_sz;   // Size in bytes of dev_idxs buffer
     uint8_t *data;        // Multi-device raw data block
-    size_t data_sz;       // Size in bytes of data buffer
+	oe_size_t data_sz;       // Size in bytes of data buffer
 
 } oe_frame_t;
 

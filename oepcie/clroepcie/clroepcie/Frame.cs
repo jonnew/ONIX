@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MapDevice = System.Tuple<int, oe.lib.oepcie.device_t>;
 
 namespace oe
 {
@@ -8,54 +9,46 @@ namespace oe
 
     public unsafe class Frame : IDisposable
     {
-        public Frame(oepcie.device_t[] dev_map, IntPtr frame_mem)
+        public Frame(List<MapDevice> dev_map, IntPtr frame_mem)
         {
-            this.dev_map = dev_map;
+            // Deep copy of frame memroy into managed memory
             this.frame_mem = frame_mem;
             frame = (oepcie.frame_t)Marshal.PtrToStructure(frame_mem, typeof(oepcie.frame_t));
+
+            // Create frame-specific device map
+            DeviceMap = new Dictionary<uint, MapDevice>(); // (frame.num_dev);
+            for (int i = 0; i < frame.num_dev; i++)
+            {
+                DeviceMap.Add(*(frame.dev_idxs + i), new MapDevice(i, dev_map[(int)*(frame.dev_idxs + i)].Item2));
+            }
         }
 
         ~Frame()
         {
+            // Release unmanged memory whenver GC finds time I guess
             oepcie.destroy_frame(frame_mem);
         }
 
-        public UInt64 time() { return frame.clock; }
-        public bool corrupt() { return frame.corrupt != 0; }
+        public ulong Time() { return frame.clock; }
 
-        public int contains(int dev_idx)
-        {
-            for (int i = 0; i < frame.num_dev; i++) {
-            if (*(frame.dev_idxs + i) == dev_idx)
-                return i;
-            }
-            return -1;
-        }
+        public bool Corrupt() { return frame.corrupt != 0; }
 
         // NB: This seems horribly inefficient, but I really have no idea
-        public T[] data<T>(int dev_idx) where T : IConvertible
+        public byte[] Data(uint dev_idx)
         {
-            // Smash data into list somehow
-            // Get the byte size of the array
-            int frame_idx = contains(dev_idx);
-            if (frame_idx == -1)
+            if (!DeviceMap.ContainsKey(dev_idx))
             {
-                throw new OEException(-9); // OE_EDEVIDX
+                throw new OEException((int)oepcie.Error.DEVIDX); 
             }
 
-            var num_bytes = dev_map[dev_idx].read_size;
-            var byte_offset = *(frame.dev_offs + frame_idx);
-            var t_size = Marshal.SizeOf(typeof(T));
-            var n = num_bytes / t_size;
+            // Get the byte size of the array
+            var num_bytes = DeviceMap[dev_idx].Item2.read_size;
+            var byte_offset = *(frame.dev_offs + DeviceMap[dev_idx].Item1);          
 
-            var output = new T[n];
+            var output = new byte[num_bytes];
             int j = 0;
             var start_ptr = frame.data + byte_offset;
-            for (int i = 0; i < n; i ++)
-            {
-                output[i] = (T)Convert.ChangeType(*(start_ptr + j), typeof(T));
-                j += t_size;
-            }
+            Marshal.Copy((IntPtr)start_ptr, output, 0, (int)num_bytes);
             return output;
         }
 
@@ -64,8 +57,8 @@ namespace oe
             oepcie.destroy_frame(frame_mem);
         }
 
-        // NB: I think that since DeviceMap is an object, we automatically only store a reference here.
-        public readonly oepcie.device_t[] dev_map;
+        // Global device index -> device_t struct
+        public readonly Dictionary<uint, MapDevice> DeviceMap; 
         private oepcie.frame_t frame;
         private IntPtr frame_mem;
     }

@@ -15,7 +15,7 @@ namespace oe.lib
         public const string DefaultReadPath = "\\\\.\\xillybus_data_read_32";
         public const string DefaultSignalPath = "\\\\.\\xillybus_async_read_8";
 
-        private enum Error
+        public enum Error
         {
             SUCCESS = 0,  // Success
             PATHINVALID = -1,  // Invalid stream path, fail on open
@@ -42,24 +42,33 @@ namespace oe.lib
             INVALRAWTYPE = -22, // Invalid raw data type
         }
 
+        public enum DeviceID
+        {
+            IMMEDIATEIO = 0,
+            RHD2132 = 1,
+            RHD2164 = 2,
+            MPU9250 = 3,
+            ESTIM = 4,
+        }
+
         // Make managed version of oe_frame_t
         [StructLayout(LayoutKind.Sequential)]
         public struct frame_t
         {
-            [MarshalAs(UnmanagedType.U8)]
+            //[MarshalAs(UnmanagedType.U8)]
             public ulong clock;       // Base clock counter
-            [MarshalAs(UnmanagedType.U2)]
+            //[MarshalAs(UnmanagedType.U2)]
             public ushort num_dev;     // Number of devices in frame
-            [MarshalAs(UnmanagedType.U1)]
+            //[MarshalAs(UnmanagedType.U1)]
             public byte corrupt;       // Is this frame corrupt?  
             public uint *dev_idxs;   // Array of device indices in frame
-            [MarshalAs(UnmanagedType.U4)]
+            //[MarshalAs(UnmanagedType.U4)]
             public uint dev_idxs_sz; // Size in bytes of dev_idxs buffer
             public uint *dev_offs;   // Device data offsets within data block
-            [MarshalAs(UnmanagedType.U4)]
+            //[MarshalAs(UnmanagedType.U4)]
             public uint dev_offs_sz; // Size in bytes of dev_idxs buffer
             public byte *data;         // Multi-device raw data block
-            [MarshalAs(UnmanagedType.U4)]
+            //[MarshalAs(UnmanagedType.U4)]
             public uint data_sz;     // Size in bytes of data buffer
         }
 
