@@ -45,6 +45,8 @@ typedef uint32_t oe_reg_val_t;
 
 #define OE_COBSBUFFERSIZE 255
 
+#define OE_READSIZE 1024
+
 typedef struct stream_fid {
     char *path;
     int fid;
@@ -64,6 +66,11 @@ typedef struct oe_ctx_impl {
     // Maximum frame sizes (bytes)
     oe_size_t max_read_frame_size;
     oe_size_t max_write_frame_size;
+
+    // Data buffer
+    uint8_t *buffer;
+    uint8_t *buff_read_pos;
+    uint8_t *buff_end_pos;
 
     // Acqusition state
     enum {
@@ -118,6 +125,7 @@ static int _oe_pump_signal_data(int signal_fd, int flags, oe_signal_t *type, voi
 static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size);
 static int _oe_write_config(int config_fd, oe_conf_off_t write_offset, oe_reg_val_t value);
 static int _oe_read_config(int config_fd, oe_conf_off_t read_offset, oe_reg_val_t *value);
+static int _oe_read_buffer(oe_ctx ctx, void *data, size_t size);
 //static inline int _oe_raw_size(oe_raw_t type);
 #ifdef OE_BE
 //static int _oe_array_bswap(void *data, oe_raw_t type, size_t size);
@@ -152,6 +160,7 @@ int oe_init_ctx(oe_ctx ctx)
 	if (ctx->run_state != UNINITIALIZED)
 		return OE_EINVALSTATE;
 
+    // Open the device files
 	ctx->config.fid = open(ctx->config.path, O_RDWR | _O_BINARY);
 	if (ctx->config.fid == -1) {
 		//fprintf(stderr, _strerror(NULL));
@@ -169,14 +178,16 @@ int oe_init_ctx(oe_ctx ctx)
 		//fprintf(stderr, _strerror(NULL));
 		return OE_EPATHINVALID;
 	}
-    // Reset the run state of the hardware. This will push a frame header onto
-    // the signal stream
+
+    // Reset the run and reset states of the hardware. This will push a frame
+    // header onto the signal stream
     int rc = _oe_write_config(ctx->config.fid, CONFRUNNINGOFFSET, 0);
     if (rc) return rc;
 
     rc = _oe_write_config(ctx->config.fid, CONFRESETOFFSET, 1);
     if (rc) return rc;
 
+    // Get number of devices
     oe_signal_t sig_type = NULLSIG;
     rc = _oe_pump_signal_data(
         ctx->signal.fid, DEVICEMAPACK, &sig_type, &(ctx->num_dev), sizeof(ctx->num_dev));
@@ -185,6 +196,7 @@ int oe_init_ctx(oe_ctx ctx)
 #endif
     if (rc) return rc;
 
+    // TODO: Remove
     rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
             &(ctx->max_read_frame_size), sizeof(ctx->max_read_frame_size));
 #ifdef OE_BE
@@ -194,13 +206,13 @@ int oe_init_ctx(oe_ctx ctx)
     if (sig_type != FRAMERSIZE)
         return OE_EBADDEVMAP;
 
+    // TODO: Remove
     rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
             &(ctx->max_write_frame_size), sizeof(ctx->max_write_frame_size));
 #ifdef OE_BE
     ctx->max_write_frame_size = BSWAP_32(ctx->max_write_frame_size);
 #endif
     if (rc) return rc;
-
     if (sig_type != FRAMEWSIZE)
         return OE_EBADDEVMAP;
 
@@ -213,7 +225,9 @@ int oe_init_ctx(oe_ctx ctx)
         return OE_EBADALLOC;
 
     oe_size_t i;
-    for (i= 0; i < ctx->num_dev; i++) {
+    ctx->max_read_frame_size = 0;
+    ctx->max_write_frame_size = 0;
+    for (i = 0; i < ctx->num_dev; i++) {
 
         sig_type = NULLSIG;
         uint8_t buffer[OE_COBSBUFFERSIZE];
@@ -233,6 +247,8 @@ int oe_init_ctx(oe_ctx ctx)
         if (device_id < OE_MAXDEVICEID) {
             // Append the device onto the map
             memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
+            ctx->max_read_frame_size += ctx->dev_map->read_size;
+            ctx->max_write_frame_size += ctx->dev_map->write_size;
         } else {
             return OE_EDEVID;
         }
@@ -241,6 +257,11 @@ int oe_init_ctx(oe_ctx ctx)
 #ifdef OE_BE
         _device_map_byte_swap(ctx);
 #endif
+
+    // Initialize buffer
+    ctx->buff_read_pos = NULL;
+    ctx->buff_end_pos = NULL;
+
     // We are now initialized and idle
     ctx->run_state = IDLE;
 
@@ -251,12 +272,12 @@ int oe_destroy_ctx(oe_ctx ctx)
 {
     assert(ctx != NULL && "Context is NULL");
 
-    //if (ctx->run_state >= IDLE) {
-	//
-    //    if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
-    //    if (close(ctx->read.fid) == -1) goto oe_close_ctx_fail;
-    //    if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
-    //}
+    if (ctx->run_state >= IDLE) {
+
+        if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
+        if (close(ctx->read.fid) == -1) goto oe_close_ctx_fail;
+        if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
+    }
 
     free(ctx->config.path);
     free(ctx->read.path);
@@ -564,13 +585,6 @@ int oe_read_reg(const oe_ctx ctx,
     return 0;
 }
 
-// NB: This is definately a 'worse is better' implementation
-// If we need to make this multithreaded because
-// 1. DMA FIFO Buffer is overflowing
-// 2. Small calls to read() impact RT performance
-// 3. etc
-// Then we can implement multithreaded RAM FIFO using fifo.c in Xillybus demo
-// code as an example
 int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 {
     assert(ctx != NULL && "Context is NULL");
@@ -581,8 +595,8 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 
     // Get the header and figure out how many devies are in the frame
     uint8_t header[OE_RFRAMEHEADERSZ];
-    int rc = _oe_read(ctx->read.fid, header, OE_RFRAMEHEADERSZ);
-    if (rc != OE_RFRAMEHEADERSZ) return rc;
+    int rc = _oe_read_buffer(ctx, header, OE_RFRAMEHEADERSZ);
+    if (rc != 0) return rc;
 
     // Allocate frame
     *frame = malloc(sizeof(oe_frame_t));
@@ -600,8 +614,8 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     f_ptr->dev_offs = malloc(f_ptr->dev_offs_sz);
 
     // Read device indices that are in this frame
-    rc = _oe_read(ctx->read.fid, f_ptr->dev_idxs, f_ptr->dev_idxs_sz);
-	if ((size_t)rc != f_ptr->dev_idxs_sz) return rc;
+    rc = _oe_read_buffer(ctx, f_ptr->dev_idxs, f_ptr->dev_idxs_sz);
+    if (rc != 0) return rc;
     //assert((size_t)rc == f_ptr->dev_idxs_sz && "Did not read full dev idxs buffer.");
 
     // Find data read size
@@ -615,13 +629,13 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     // Read size + padding
     rsize += rsize % 4;
 
-    // Now we know the frame size, so we allocate
+    // Now we know the frame data size, so we allocate
     f_ptr->data_sz = rsize;
     f_ptr->data = malloc(rsize);
 
     // Read data
-    rc = _oe_read(ctx->read.fid, f_ptr->data, rsize);
-	if (rc != rsize) return rc;
+    rc = _oe_read_buffer(ctx, f_ptr->data, rsize);
+    if (rc != 0) return rc;
     //assert(rc == rsize && "Did not read full data buffer.");
 
     return 0;
@@ -949,6 +963,39 @@ static int _oe_read_config(int config_fd,
 
     if (read(config_fd, value, OE_REGSZ) != OE_REGSZ)
         return OE_EREADFAILURE;
+
+    return 0;
+}
+
+static int _oe_read_buffer(oe_ctx ctx, void *data, size_t size)
+{
+    // Check if we have less than size remaining
+    size_t remaining = ctx->buff_end_pos - ctx->buff_read_pos;
+
+    if (remaining < size) {
+
+        // Allocate space in buffer
+        uint8_t *old_buffer = ctx->buffer;
+        ctx->buffer = malloc(remaining + OE_READSIZE);
+
+        // Transfer remaining data to new buffer
+        if (old_buffer != NULL) {
+            memcpy(ctx->buffer, ctx->buff_read_pos, remaining);
+            free(old_buffer);
+        }
+
+        // Reset read and end poisitions
+        ctx->buff_read_pos = ctx->buffer;
+        ctx->buff_end_pos = ctx->buffer + remaining + OE_READSIZE;
+
+        // Fill the buffer
+        int rc = _oe_read(ctx->read.fid, ctx->buffer + remaining, OE_READSIZE);
+        if (rc != OE_READSIZE) return rc;
+    }
+
+    // Read from buffer
+    memcpy(data, ctx->buff_read_pos, size);
+    ctx->buff_read_pos += size;
 
     return 0;
 }

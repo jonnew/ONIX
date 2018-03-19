@@ -78,7 +78,7 @@ volatile oe_ctx ctx = NULL;
 oe_device_t *devices = NULL;
 volatile int quit = 0;
 volatile int display = 0;
-volatile int display_clock = 0;
+volatile int display_clock = 1;
 int running = 1;
 
 int parse_reg_cmd(const char *cmd, long *values)

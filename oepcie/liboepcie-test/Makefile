@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS=-g -O0 -Wall 
+CFLAGS=-g -g3 -O0 -Wall 
 LDFLAGS=-loepcie
 
 #liboepcie
