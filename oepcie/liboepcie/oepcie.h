@@ -49,6 +49,8 @@ enum oe_device_id {
     OE_RHD2164     = 2,
     OE_MPU9250     = 3,
     OE_ESTIM       = 4,
+    OE_OSTIM       = 5,
+    OE_PCECAMV3    = 6,
 
     // NB: Always on bottom
     OE_MAXDEVICEID
@@ -59,29 +61,31 @@ typedef uint32_t oe_size_t;
 typedef uint32_t oe_dev_id_t;
 typedef uint32_t oe_reg_addr_t;
 typedef uint32_t oe_reg_val_t;
-typedef uint32_t oe_raw_t;
+//typedef uint32_t oe_raw_t;
 
 // Device type
 typedef struct {
-    oe_dev_id_t id;       // ID number; NB: Cannot use oe_device_id_t because this must be fixed width
-    oe_size_t read_size;  // read size in bytes
-    oe_raw_t read_type;   // read type
-    oe_size_t write_size; // write size in bytes
-    oe_raw_t write_type;  // write type
+    oe_dev_id_t id;         // ID number; NB: Cannot use oe_device_id_t because this must be fixed width
+    oe_size_t read_size;    // Device data read size per frame in bytes
+    oe_size_t num_reads;    // Number of frames that must be read to construct a full sample (e.g., for row reads from camera)
+    //oe_raw_t read_type;   // read type
+    oe_size_t write_size;   // Device data write size per frame in bytes
+    oe_size_t num_writes;   // Number of frames that must be written to construct a full output sample
+    //oe_raw_t write_type;  // write type
 
 } oe_device_t;
 
 // Frame type
 typedef struct oe_frame {
-    uint64_t clock;       // Base clock counter
-    uint16_t num_dev;     // Number of devices in frame
-    uint8_t corrupt;      // Is this frame corrupt?
-    oe_size_t *dev_idxs;  // Array of device indices in frame
-	oe_size_t dev_idxs_sz;   // Size in bytes of dev_idxs buffer
-	oe_size_t *dev_offs;     // Device data offsets within data block
-	oe_size_t dev_offs_sz;   // Size in bytes of dev_idxs buffer
-    uint8_t *data;        // Multi-device raw data block
-	oe_size_t data_sz;       // Size in bytes of data buffer
+    uint64_t clock;         // Base clock counter
+    uint16_t num_dev;       // Number of devices in frame
+    uint8_t corrupt;        // Is this frame corrupt?
+    oe_size_t *dev_idxs;    // Array of device indices in frame
+	oe_size_t dev_idxs_sz;  // Size in bytes of dev_idxs buffer
+	oe_size_t *dev_offs;    // Device data offsets within data block
+	oe_size_t dev_offs_sz;  // Size in bytes of dev_idxs buffer
+    uint8_t *data;          // Multi-device raw data block
+	oe_size_t data_sz;      // Size in bytes of data buffer
 
 } oe_frame_t;
 
@@ -100,10 +104,10 @@ enum {
 };
 
 // Allowed raw data types
-enum {
-    OE_UINT16 = 0,
-    OE_UINT32,
-};
+//enum {
+//    OE_UINT16 = 0,
+//    OE_UINT32,
+//};
 
 // NB: If you add an error here, make sure to update oe_error_str()
 enum {

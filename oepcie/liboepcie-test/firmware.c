@@ -21,9 +21,6 @@ const size_t fifo_frame_capacity = 1000;
 // Config registers
 volatile oe_reg_val_t running = 0;
 const oe_reg_val_t sys_clock_hz = 100e6;
-oe_reg_val_t clock_m = 1;
-oe_reg_val_t clock_d = 10000; // These vals give 10 kHz
-volatile oe_reg_val_t fs_hz;
 
 // Global state
 volatile uint64_t sample_tick = 0;
@@ -47,9 +44,7 @@ typedef enum oe_signal {
     CONFIGRACK          = (1u << 3), // Configuration read-acknowledgement
     CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgement
     DEVICEMAPACK        = (1u << 5), // Device map start acnknowledgement
-    FRAMERSIZE          = (1u << 6), // Frame read size in bytes
-    FRAMEWSIZE          = (1u << 7), // Frame write size in bytes
-    DEVICEINST          = (1u << 8), // Deivce map instance
+    DEVICEINST          = (1u << 6), // Deivce map instance
 } oe_signal_t;
 
 // Configuration file offsets
@@ -66,9 +61,6 @@ typedef enum oe_conf_reg_off {
     CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
-    CONFFSCLKHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
-    CONFFSCLKMOFFSET    = 36,  // Configuration run hardware register byte offset
-    CONFFSCLKDOFFSET    = 40,  // Configuration run hardware register byte offset
 } oe_conf_reg_off_t;
 
 // Devices handled by this firmware
@@ -140,14 +132,6 @@ uint32_t get_write_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
     return write_frame_size;
 }
 
-size_t div_clock(size_t base_freq_hz, uint32_t M, uint32_t D)
-{
-    if (M >= D)
-        return base_freq_hz;
-    else
-        return (M * base_freq_hz)/D;
-}
-
 int read_config(int config_fd, oe_conf_reg_off_t offset, void *result, size_t size)
 {
     lseek(config_fd, offset, SEEK_SET);
@@ -166,7 +150,6 @@ void generate_default_config(int config_fd)
 {
     // Default config
     running = 0;
-    fs_hz = div_clock(sys_clock_hz, clock_m, clock_d);
     sample_tick = 0;
 
     // Just put a bunch of 0s in there
@@ -177,9 +160,6 @@ void generate_default_config(int config_fd)
     // Write defaults for registers that need it
     write_config(config_fd, CONFRUNNINGOFFSET, (void *)&running, sizeof(oe_reg_val_t));
     write_config(config_fd, CONFSYSCLKHZOFFSET, (void *)&sys_clock_hz, sizeof(oe_reg_val_t));
-    write_config(config_fd, CONFFSCLKHZOFFSET, (void *)&fs_hz, sizeof(oe_reg_val_t));
-    write_config(config_fd, CONFFSCLKMOFFSET, (void *)&clock_m, sizeof(oe_reg_val_t));
-    write_config(config_fd, CONFFSCLKDOFFSET, (void *)&clock_d, sizeof(oe_reg_val_t));
 }
 
 int send_msg_signal(int sig_fd, oe_signal_t type)
@@ -222,27 +202,17 @@ int send_data_signal(int sig_fd, oe_signal_t type, void *data, size_t n)
 
 void send_device_map(int sig_fd)
 {
-    int dev_idxs[] = { 0, 1, 2 };
     uint32_t num_dev = sizeof(my_devices) / sizeof(oe_device_t);
     send_data_signal(sig_fd, DEVICEMAPACK, &num_dev, sizeof(num_dev));
 
-    uint32_t r_size = get_read_frame_size(my_devices, dev_idxs, num_dev);
-    send_data_signal(sig_fd, FRAMERSIZE, &r_size, sizeof(r_size));
-
-    uint32_t w_size = get_write_frame_size(my_devices, dev_idxs, num_dev);
-    send_data_signal(sig_fd, FRAMEWSIZE, &w_size, sizeof(w_size));
-
     // Loop through devices
     int i;
-    for (i = 0; i < sizeof(my_devices)/sizeof(oe_device_t); i++)
+    for (i = 0; i < num_dev; i++)
         send_data_signal(sig_fd, DEVICEINST, &my_devices[i], sizeof(oe_device_t));
 }
 
 void *data_loop(void *vargp)
 {
-    // Initial clock conifig
-    fs_hz = div_clock(sys_clock_hz, clock_m, clock_d);
-
     // Set data pipe capacity
     // Sample number, LFP data, ...
     fcntl(data_fd, F_SETPIPE_SZ, approx_frame_size * fifo_frame_capacity);
@@ -390,12 +360,6 @@ reset:
             write_config(config_fd, CONFRESETOFFSET, &reset, 4);
             goto reset;
         }
-
-        // Sample rate
-        read_config(config_fd, CONFFSCLKMOFFSET, &clock_m, 4);
-        read_config(config_fd, CONFFSCLKDOFFSET, &clock_d, 4);
-        fs_hz = div_clock(sys_clock_hz, clock_m, clock_d);
-        write_config(config_fd, CONFFSCLKHZOFFSET, (void *)&fs_hz, 4);
 
         // -- Device configuration Interface --
         // Poll configuration registers

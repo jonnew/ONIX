@@ -42,6 +42,10 @@ enum oe_estim_regs {
 	OE_ESTIM_RESET		 = 16, // Reset all parameters to default
 };
 
+// ** OE_OSTIM device configuration registers **
+// TODO
+
+
 #ifdef __cplusplus
 }
 #endif

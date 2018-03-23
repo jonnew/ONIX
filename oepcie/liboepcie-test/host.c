@@ -73,7 +73,6 @@ size_t getline(char **lineptr, size_t *n, FILE *stream) {
 #include <pthread.h>
 #endif
 
-
 volatile oe_ctx ctx = NULL;
 oe_device_t *devices = NULL;
 volatile int quit = 0;
@@ -83,7 +82,6 @@ int running = 1;
 
 int parse_reg_cmd(const char *cmd, long *values)
 {
-    //printf("Parsing '%s':\n", cmd);
     char *end;
     int k = 0;
     for (long i = strtol(cmd, &end, 10);
@@ -91,7 +89,6 @@ int parse_reg_cmd(const char *cmd, long *values)
          i = strtol(cmd, &end, 10))
     {
 
-        //printf("'%.*s' -> ", (int)(end-p), p);
         cmd = end;
         if (errno == ERANGE){ return -1; }
 
@@ -159,14 +156,14 @@ int main()
     // Set stream paths
 
 	// Test firmware paths
-    //const char *config_path = "/tmp/rat128_config";
-    //const char *sig_path = "/tmp/rat128_signal";
-    //const char *data_path = "/tmp/rat128_read";
+    const char *config_path = "/tmp/rat128_config";
+    const char *sig_path = "/tmp/rat128_signal";
+    const char *data_path = "/tmp/rat128_read";
 
 	// Real hardware
-    const char *config_path = OE_DEFAULTCONFIGPATH;
-    const char *sig_path = OE_DEFAULTSIGNALPATH;
-    const char *data_path = OE_DEFAULTREADPATH;
+    //const char *config_path = OE_DEFAULTCONFIGPATH;
+    //const char *sig_path = OE_DEFAULTSIGNALPATH;
+    //const char *data_path = OE_DEFAULTREADPATH;
 
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
@@ -282,7 +279,6 @@ int main()
             oe_reg_val_t val = (oe_reg_val_t)values[2];
 
             oe_write_reg(ctx, dev_idx, addr, val);
-
         }
     }
 

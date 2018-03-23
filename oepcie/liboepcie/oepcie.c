@@ -90,9 +90,7 @@ typedef enum oe_signal {
     CONFIGRACK          = (1u << 3), // Configuration read-acknowledgement
     CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgement
     DEVICEMAPACK        = (1u << 5), // Device map start acnknowledgement
-    FRAMERSIZE          = (1u << 6), // Frame read size in bytes
-    FRAMEWSIZE          = (1u << 7), // Frame write size in bytes
-    DEVICEINST          = (1u << 8), // Deivce map instance
+    DEVICEINST          = (1u << 6), // Deivce map instance
 } oe_signal_t;
 
 // Configuration file offsets
@@ -112,8 +110,8 @@ typedef enum oe_conf_reg_off {
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
     CONFFRAMEHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
-    CONFFRAMEHZMOFFSET  = 36,  // Configuration run hardware register byte offset
-    CONFFRAMEHZDOFFSET  = 40,  // Configuration run hardware register byte offset
+    //CONFFRAMEHZMOFFSET  = 36,  // Configuration run hardware register byte offset
+    //CONFFRAMEHZDOFFSET  = 40,  // Configuration run hardware register byte offset
 } oe_conf_off_t;
 
 // Static helpers
@@ -196,25 +194,25 @@ int oe_init_ctx(oe_ctx ctx)
 #endif
     if (rc) return rc;
 
-    // TODO: Remove
-    rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
-            &(ctx->max_read_frame_size), sizeof(ctx->max_read_frame_size));
-#ifdef OE_BE
-    ctx->max_read_frame_size = BSWAP_32(ctx->max_read_frame_size);
-#endif
-    if (rc) return rc;
-    if (sig_type != FRAMERSIZE)
-        return OE_EBADDEVMAP;
-
-    // TODO: Remove
-    rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
-            &(ctx->max_write_frame_size), sizeof(ctx->max_write_frame_size));
-#ifdef OE_BE
-    ctx->max_write_frame_size = BSWAP_32(ctx->max_write_frame_size);
-#endif
-    if (rc) return rc;
-    if (sig_type != FRAMEWSIZE)
-        return OE_EBADDEVMAP;
+//    // TODO: Remove
+//    rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
+//            &(ctx->max_read_frame_size), sizeof(ctx->max_read_frame_size));
+//#ifdef OE_BE
+//    ctx->max_read_frame_size = BSWAP_32(ctx->max_read_frame_size);
+//#endif
+//    if (rc) return rc;
+//    if (sig_type != FRAMERSIZE)
+//        return OE_EBADDEVMAP;
+//
+//    // TODO: Remove
+//    rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
+//            &(ctx->max_write_frame_size), sizeof(ctx->max_write_frame_size));
+//#ifdef OE_BE
+//    ctx->max_write_frame_size = BSWAP_32(ctx->max_write_frame_size);
+//#endif
+//    if (rc) return rc;
+//    if (sig_type != FRAMEWSIZE)
+//        return OE_EBADDEVMAP;
 
     // Make space for the device map
     oe_device_t *new_map
@@ -345,57 +343,43 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             *option_len = required_bytes;
             break;
         }
-        case OE_READFRAMESIZE: {
-            size_t required_bytes = sizeof(oe_size_t);
-            if (*option_len < required_bytes)
-                return OE_EBUFFERSIZE;
-
-            *(oe_size_t *)value = ctx->max_read_frame_size;
-            *option_len = required_bytes;
-            break;
-        }
-        case OE_WRITEFRAMESIZE: {
-            size_t required_bytes = sizeof(oe_size_t);
-            if (*option_len < required_bytes)
-                return OE_EBUFFERSIZE;
-
-            *(oe_size_t *)value = ctx->max_write_frame_size;
-            *option_len = required_bytes;
-            break;
-        }
-       case OE_RUNNING: {
+        case OE_RUNNING: {
             if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
             int rc = _oe_read_config(ctx->config.fid, CONFRUNNINGOFFSET, value);
-            if (rc) return rc;
+            if (rc)
+                return rc;
 
             *option_len = OE_REGSZ;
             break;
-       }
-       case OE_RESET: {
+        }
+        case OE_RESET: {
             if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
             int rc = _oe_read_config(ctx->config.fid, CONFRESETOFFSET, value);
-            if (rc) return rc;
+            if (rc)
+                return rc;
 
             *option_len = OE_REGSZ;
             break;
-       }
-       case OE_SYSCLKHZ: {
+        }
+        case OE_SYSCLKHZ: {
             if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            int rc = _oe_read_config(ctx->config.fid, CONFSYSCLKHZOFFSET, value);
-            if (rc) return rc;
+            int rc
+                = _oe_read_config(ctx->config.fid, CONFSYSCLKHZOFFSET, value);
+            if (rc)
+                return rc;
 
             *option_len = OE_REGSZ;
             break;
-       }
+        }
 
-       default:
-           return OE_EINVALOPT;
+        default:
+            return OE_EINVALOPT;
     }
 
     return 0;
@@ -1021,6 +1005,7 @@ static int _device_map_byte_swap(oe_ctx ctx)
     for (i = 0; i < ctx->num_dev; i++) {
         ctx->dev_map[i].id = BSWAP_32(ctx->dev_map[i].id);
         ctx->dev_map[i].read_size = BSWAP_32(ctx->dev_map[i].read_size);
+        ctx->dev_map[i].frames_per_datum = BSWAP_32(ctx->dev_map[i].frames_per_datum);
         ctx->dev_map[i].write_size = BSWAP_32(ctx->dev_map[i].write_size);
     }
 
