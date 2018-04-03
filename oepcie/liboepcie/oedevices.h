@@ -5,6 +5,29 @@
 extern "C" {
 #endif
 
+#ifdef _WIN32
+#define OE_EXPORT __declspec(dllexport)
+#else
+#define OE_EXPORT
+#endif
+
+// Supported devices/IDs for the open-ephys++ project. oedevices.* can be
+// replaced with any device set if a user wishes to redefine these.
+// NB: If you add a device here, make sure to update oe_device_str() and add
+// registers below
+enum oe_device_id {
+    OE_IMMEDIATEIO = 0,
+    OE_RHD2132	   = 1,
+    OE_RHD2164     = 2,
+    OE_MPU9250     = 3,
+    OE_ESTIM       = 4,
+    OE_OSTIM       = 5,
+    OE_PCECAMV3    = 6,
+
+    // NB: Always on bottom
+    OE_MAXDEVICEID
+};
+
 // ** OE_IMMEDIATEIO device configuration registers **
 // TODO
 
@@ -45,6 +68,8 @@ enum oe_estim_regs {
 // ** OE_OSTIM device configuration registers **
 // TODO
 
+// Human readable string from ID
+OE_EXPORT const char *oe_device_str(int dev_id);
 
 #ifdef __cplusplus
 }

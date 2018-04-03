@@ -40,22 +40,6 @@ extern "C" {
 #define OE_EXPORT
 #endif
 
-// Supported devices/IDs
-// NB: If you add a device here, make sure to update oe_device_str() and
-// potentially add registers to oedevices.h
-enum oe_device_id {
-    OE_IMMEDIATEIO = 0,
-    OE_RHD2132	   = 1,
-    OE_RHD2164     = 2,
-    OE_MPU9250     = 3,
-    OE_ESTIM       = 4,
-    OE_OSTIM       = 5,
-    OE_PCECAMV3    = 6,
-
-    // NB: Always on bottom
-    OE_MAXDEVICEID
-};
-
 // Fixed width device types
 typedef uint32_t oe_size_t;
 typedef uint32_t oe_dev_id_t;
@@ -68,10 +52,8 @@ typedef struct {
     oe_dev_id_t id;         // ID number; NB: Cannot use oe_device_id_t because this must be fixed width
     oe_size_t read_size;    // Device data read size per frame in bytes
     oe_size_t num_reads;    // Number of frames that must be read to construct a full sample (e.g., for row reads from camera)
-    //oe_raw_t read_type;   // read type
     oe_size_t write_size;   // Device data write size per frame in bytes
     oe_size_t num_writes;   // Number of frames that must be written to construct a full output sample
-    //oe_raw_t write_type;  // write type
 
 } oe_device_t;
 
@@ -161,7 +143,6 @@ OE_EXPORT void oe_destroy_frame(oe_frame_t *frame);
 // Internal type conversion
 OE_EXPORT void oe_version(int *major, int *minor, int *patch);
 OE_EXPORT const char *oe_error_str(int err);
-OE_EXPORT const char *oe_device_str(int dev_id);
 
 #ifdef __cplusplus
 }

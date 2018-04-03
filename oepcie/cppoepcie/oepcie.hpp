@@ -43,11 +43,6 @@ namespace oe {
         return v;
     }
 
-    inline const char *device_str(int dev_id)
-    {
-        return oe_device_str(dev_id);
-    }
-
     class context_t;
 
     using device_t = oe_device_t;

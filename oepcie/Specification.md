@@ -100,8 +100,10 @@ using a description, which is provided by a `struct` as follows:
 ``` {.c}
 typedef struct oe_device {
     device_id_t id;
-    size_t      read_size;
-    size_t      write_size;
+    oe_size_t   read_size;
+    oe_size_t   num_reads;
+    oe_size_t   write_size;
+    oe_size_t   num_writes;   // Number of frames that must be written to construct a full output sample
 } oe_device_t;
 ```
 
@@ -129,11 +131,15 @@ The definition of each member of the `oe_device_t` structure is provided below:
     } oe_device_id_t
     ```
 
-2. `size_t read_size`:  bytes of each transmitted data frame from this device.
+2. `oe_size_t read_size`: bytes of each transmitted data frame from this device.
     - 0 indicates that it does not send data.
-3. `size_t write_size`:  bytes within the output frame transmitted data packet
-   to this device.
+
+3. `oe_size_t num_reads`: Number of frames that must be read to construct a full sample (e.g., for row reads from camera.
+
+4. `oe_size_t write_size`: bytes within the output frame transmitted data packet to this device.
     - 0 indicates that it does not send data.
+
+5. `oe_size_t num_writes`: number of frames that must be written to construct a full output sample.
 
 Following a hardware reset, which is triggered either by a call to
 `oe_init_ctx` or to `oe_set_ctx` using the `` option, the device map is pushed
@@ -236,9 +242,7 @@ typedef enum oe_signal {
     CONFIGRACK          = (1u << 3), // Configuration read-acknowledgement
     CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgement
     DEVICEMAPACK        = (1u << 5), // Device map start acnknowledgement
-    FRAMERSIZE          = (1u << 6), // Frame read size in bytes
-    FRAMEWSIZE          = (1u << 7), // Frame write size in bytes
-    DEVICEINST          = (1u << 8), // Device map instance
+    DEVICEINST          = (1u << 6), // Device map instance
 } oe_signal_t;
 ```
 
@@ -246,8 +250,7 @@ Following a hardware reset, the signal channel is used to provide the device
 map and frame information to the host using the following packet sequence:
 
 ```
-... | DEVICEMAPACK, uint32_t num_devices | FRAMERSIZE, uint32_t read_frame_size
-    | FRAMEWSIZE, uint32_t write_frame_size | DEVICEINST oe_device_t dev_0
+... | DEVICEMAPACK, uint32_t num_devices | DEVICEINST oe_device_t dev_0
     | DEVICEINST oe_device_t dev_1 | ... | DEVICEINST oe_device_t dev_n| ...
 ```
 
@@ -379,11 +382,10 @@ identical to the data input channel.
 ## Types
 
 ### Integer types
-- `oe_dev_idx_t`: Fixed width device index integer type.
+- `oe_size_t`: Fixed width size integer type.
 - `oe_dev_id_t`: Fixed width device identity integer type.
 - `oe_reg_addr_t`: Fixed width device register address integer type.
 - `oe_reg_value_t`: Fixed width device register value integer type.
-- `oe_device_t
 
 ### `oe_ctx`
 Opaque handle to a structure which contains hardware and device state
@@ -393,7 +395,7 @@ information. There is generally one context per process using the library.
 Context option enumeration. See `oe_set_opt` and `oe_get_opt` for valid values.
 
 ### `oe_device_id_t`
-Device identiy enumeration. Provides agreed-upon, liboepcie-specific IDs for
+Device identity enumeration. Provides agreed-upon, liboepcie-specific IDs for
 all devices supported by the firmware.
 
 ``` {.c}
@@ -665,7 +667,6 @@ Set context options. NB: This follows the pattern of
 ``` {.c}
 int oe_set_opt(oe_ctx ctx, const oe_opt_t option, const void* value, size_t size);
 ```
-
 ### Arguments
 - `ctx` context
 - `option` option to set
@@ -830,7 +831,7 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 [read-frame](#frame) from the data input channel into host memory.
 
 ``` {.c}
-// Read frame type 
+// Read frame type
 typedef struct oe_rframe {
     uint64_t sample_no;   // Sample no.
     uint16_t num_dev;     // Number of devices in frame
@@ -861,7 +862,7 @@ int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
 ### Description
 `oe_write_frame` writes a pre-allocated and populated `stuct` corresponding to
 a single [write-frame](#frame) into the asynchronous data output channel from
-host memory. 
+host memory.
 
 ## oe_version
 Report the oepcie library version.

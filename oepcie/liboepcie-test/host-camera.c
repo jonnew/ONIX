@@ -7,8 +7,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "oepcie.h"
-#include "oedevices.h"
+#include "../liboepcie/oepcie.h"
 
 // Windows- and UNIX-specific includes etc
 #ifdef _WIN32
@@ -16,6 +15,16 @@
 #pragma comment(lib, "liboepcie")
 #include <stdio.h>
 #include <stdlib.h>
+
+// ** OE_PCECAMV3 device configuration registers **
+// NB: Compressive sensing camera developed in MWL
+enum oe_pcecamv3_regs {
+    OE_PCECAMV3_NULLPARM            = 0,  // No command
+    OE_PCECAMV3_LEDSYNCTRIG         = 1,  // Sycrnonized LED trigger (1 = Load LED brightness)
+    OE_PCECAMV3_LEDCURRLIM          = 2,  // Sycrnonized LED trigger  
+    OE_PCECAMV3_LEDBRIGHTNESS       = 3,  // LED 16 channel bitmask (00000000 00000000)
+    OE_PCECAMV3_CLOCKDIV            = 4,  // Sycrnonized LED trigger 
+}
 
 // Windows does not have a getline()
 size_t getline(char **lineptr, size_t *n, FILE *stream) {
@@ -78,7 +87,7 @@ volatile oe_ctx ctx = NULL;
 oe_device_t *devices = NULL;
 volatile int quit = 0;
 volatile int display = 0;
-volatile int display_clock = 0;
+volatile int display_clock = 1;
 int running = 1;
 
 int parse_reg_cmd(const char *cmd, long *values)
@@ -121,6 +130,14 @@ void *data_loop(void *vargp)
 
         if (display) {
 
+
+            // Build frame
+
+            if (frame_ready)  {
+                // Display
+                //
+            }
+
             int i;
             for (i = 0; i < frame->num_dev; i++) {
 
@@ -157,14 +174,14 @@ int main()
     // Set stream paths
 
 	// Test firmware paths
-    const char *config_path = "/tmp/rat128_config";
-    const char *sig_path = "/tmp/rat128_signal";
-    const char *data_path = "/tmp/rat128_read";
+    //const char *config_path = "/tmp/rat128_config";
+    //const char *sig_path = "/tmp/rat128_signal";
+    //const char *data_path = "/tmp/rat128_read";
 
 	// Real hardware
-    //const char *config_path = OE_DEFAULTCONFIGPATH;
-    //const char *sig_path = OE_DEFAULTSIGNALPATH;
-    //const char *data_path = OE_DEFAULTREADPATH;
+    const char *config_path = OE_DEFAULTCONFIGPATH;
+    const char *sig_path = OE_DEFAULTSIGNALPATH;
+    const char *data_path = OE_DEFAULTREADPATH;
 
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
@@ -197,21 +214,15 @@ int main()
                dev_str,
                devices[dev_idx].read_size);
     }
+    
+    if (num_devs != 1) { printf("Error: There should be one OE_PCECAMV3 device only.\n"); }
 
-    oe_size_t frame_size = 0;
-    size_t frame_size_sz = sizeof(frame_size);
-    oe_get_opt(ctx, OE_READFRAMESIZE, &frame_size, &frame_size_sz);
-    printf("Frame size: %u bytes\n", frame_size);
-
-    // Try to write to base clock freq, which is write only
-    oe_reg_val_t base_hz = (oe_reg_val_t)10e6;
-    int rc = oe_set_opt(ctx, OE_SYSCLKHZ, &base_hz, sizeof(oe_reg_val_t));
-    assert(rc == OE_EREADONLY && "Successful write to read-only register.");
-
+    oe_reg_val_t base_hz = 0; //(oe_reg_val_t)10e6;
     size_t clk_val_sz = sizeof(base_hz);
-    rc = oe_get_opt(ctx, OE_SYSCLKHZ, &base_hz, &clk_val_sz);
+    int rc = oe_get_opt(ctx, OE_SYSCLKHZ, &base_hz, &clk_val_sz);
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register read failure.");
+    printf("System clock (Hz): %d", base_hz);
 
     // Start acquisition
     oe_reg_val_t run = 1;
@@ -233,7 +244,6 @@ int main()
     while (c != 'q') {
 
         printf("Enter a command and press enter:\n");
-        printf("\tc - toggle clock display\n");
         printf("\td - toggle display\n");
         printf("\tp - toggle stream pause\n");
         printf("\tr - enter register command\n");

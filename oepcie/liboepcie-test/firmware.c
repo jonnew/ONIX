@@ -11,7 +11,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "../liboepcie/oepcie.h"
+#include "oepcie.h"
+#include "oedevices.h"
+
 #include "testfunc.h"
 
 // Data acq. params

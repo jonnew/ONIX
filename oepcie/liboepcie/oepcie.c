@@ -64,6 +64,7 @@ typedef struct oe_ctx_impl {
     oe_device_t* dev_map;
 
     // Maximum frame sizes (bytes)
+    // TODO: Needed?
     oe_size_t max_read_frame_size;
     oe_size_t max_write_frame_size;
 
@@ -104,14 +105,10 @@ typedef enum oe_conf_reg_off {
     CONFTRIGOFFSET      = 16,  // Configuration read/write trigger register byte offset
 
     // Global configuration
-    // NB: I don't think we can memory map these because read/write operaitons
-    // on xillybus sychronous streams
     CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
     CONFFRAMEHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
-    //CONFFRAMEHZMOFFSET  = 36,  // Configuration run hardware register byte offset
-    //CONFFRAMEHZDOFFSET  = 40,  // Configuration run hardware register byte offset
 } oe_conf_off_t;
 
 // Static helpers
@@ -194,26 +191,6 @@ int oe_init_ctx(oe_ctx ctx)
 #endif
     if (rc) return rc;
 
-//    // TODO: Remove
-//    rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
-//            &(ctx->max_read_frame_size), sizeof(ctx->max_read_frame_size));
-//#ifdef OE_BE
-//    ctx->max_read_frame_size = BSWAP_32(ctx->max_read_frame_size);
-//#endif
-//    if (rc) return rc;
-//    if (sig_type != FRAMERSIZE)
-//        return OE_EBADDEVMAP;
-//
-//    // TODO: Remove
-//    rc = _oe_read_signal_data(ctx->signal.fid, &sig_type,
-//            &(ctx->max_write_frame_size), sizeof(ctx->max_write_frame_size));
-//#ifdef OE_BE
-//    ctx->max_write_frame_size = BSWAP_32(ctx->max_write_frame_size);
-//#endif
-//    if (rc) return rc;
-//    if (sig_type != FRAMEWSIZE)
-//        return OE_EBADDEVMAP;
-
     // Make space for the device map
     oe_device_t *new_map
         = realloc(ctx->dev_map, ctx->num_dev * sizeof(oe_device_t));
@@ -236,24 +213,14 @@ int oe_init_ctx(oe_ctx ctx)
         if (sig_type != DEVICEINST)
             return OE_EBADDEVMAP;
 
-#ifdef OE_BE
-        oe_dev_id_t device_id = BSWAP_32((oe_dev_id_t)(*buffer));
-#else
-        oe_dev_id_t device_id = (oe_dev_id_t)(*buffer);
-#endif
-
-        if (device_id < OE_MAXDEVICEID) {
-            // Append the device onto the map
-            memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
-            ctx->max_read_frame_size += ctx->dev_map->read_size;
-            ctx->max_write_frame_size += ctx->dev_map->write_size;
-        } else {
-            return OE_EDEVID;
-        }
+        // Append the device onto the map
+        memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
+        ctx->max_read_frame_size += ctx->dev_map->read_size;
+        ctx->max_write_frame_size += ctx->dev_map->write_size;
     }
 
 #ifdef OE_BE
-        _device_map_byte_swap(ctx);
+    _device_map_byte_swap(ctx);
 #endif
 
     // Initialize buffer
@@ -662,7 +629,7 @@ const char *oe_error_str(int err)
             return "Invalid stream path";
         }
         case OE_EREINITCTX: {
-            return "Double initialization attempt";
+            return "Double context initialization attempt";
         }
         case OE_EDEVID: {
             return "Invalid device ID";
@@ -727,31 +694,6 @@ const char *oe_error_str(int err)
         }
         default:
             return "Unknown error";
-    }
-}
-
-const char *oe_device_str(int dev_id)
-{
-    assert(dev_id < OE_MAXDEVICEID && "Invalid device ID.");
-
-    switch (dev_id) {
-        case OE_IMMEDIATEIO: {
-            return "Host-board Immediate IO";
-        }
-        case OE_RHD2132: {
-            return "RHD2132 Bioamplifier";
-        }
-        case OE_RHD2164: {
-            return "RHD2164 Bioamplifier";
-        }
-        case OE_MPU9250: {
-            return "MPU9250 IMU";
-        }
-        case OE_ESTIM: {
-            return "Headborne Electrical Stimulator";
-        }
-        default:
-            return "Uknown device";
     }
 }
 
@@ -956,6 +898,7 @@ static int _oe_read_buffer(oe_ctx ctx, void *data, size_t size)
     // Check if we have less than size remaining
     size_t remaining = ctx->buff_end_pos - ctx->buff_read_pos;
 
+    // Buffer reup?
     if (remaining < size) {
 
         // Allocate space in buffer
@@ -968,7 +911,7 @@ static int _oe_read_buffer(oe_ctx ctx, void *data, size_t size)
             free(old_buffer);
         }
 
-        // Reset read and end poisitions
+        // Reset read and end positions
         ctx->buff_read_pos = ctx->buffer;
         ctx->buff_end_pos = ctx->buffer + remaining + OE_READSIZE;
 
