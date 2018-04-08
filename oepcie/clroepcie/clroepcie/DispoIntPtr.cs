@@ -15,7 +15,8 @@ namespace oe.lib
             dispPtr._ptr = Marshal.StringToHGlobalAnsi(str);
             dispPtr.isAllocated = true;
 
-            byteCount = Encoding.Default.GetByteCount(str);
+            byteCount = ASCIIEncoding.ASCII.GetByteCount(str);
+            //byteCount = Encoding.Default.GetByteCount(str);
             return dispPtr;
         }
 
@@ -117,7 +118,7 @@ namespace oe.lib
 
         void Dispose(bool disposing)
         {
-            // TODO: instance ThreadStatic && do ( o == null ? return : ( lock(o, ms), check threadId, .. ) ) 
+            // TODO: instance ThreadStatic && do ( o == null ? return : ( lock(o, ms), check threadId, .. ) )
             IntPtr handle = _ptr;
             if (handle != IntPtr.Zero)
             {

@@ -12,6 +12,7 @@
 #define write _write
 #define close _close
 #define lseek _lseek
+#define strerror _strerror
 #else
 #include <unistd.h>
 #define _O_BINARY 0
@@ -64,7 +65,6 @@ typedef struct oe_ctx_impl {
     oe_device_t* dev_map;
 
     // Maximum frame sizes (bytes)
-    // TODO: Needed?
     oe_size_t max_read_frame_size;
     oe_size_t max_write_frame_size;
 
@@ -158,19 +158,19 @@ int oe_init_ctx(oe_ctx ctx)
     // Open the device files
 	ctx->config.fid = open(ctx->config.path, O_RDWR | _O_BINARY);
 	if (ctx->config.fid == -1) {
-		//fprintf(stderr, _strerror(NULL));
+		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->config.path);
 		return OE_EPATHINVALID;
 	}
 
 	ctx->read.fid = open(ctx->read.path, O_RDONLY | _O_BINARY);
 	if (ctx->read.fid == -1) {
-		//fprintf(stderr, _strerror(NULL));
+		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
 		return OE_EPATHINVALID;
 	}
 
 	ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
 	if (ctx->signal.fid == -1) {
-		//fprintf(stderr, _strerror(NULL));
+		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->signal.path);
 		return OE_EPATHINVALID;
 	}
 
@@ -307,6 +307,24 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
                 return OE_EBUFFERSIZE;
 
             *(oe_size_t *)value = ctx->num_dev;
+            *option_len = required_bytes;
+            break;
+        }
+        case OE_MAXREADFRAMESIZE: {
+            size_t required_bytes = sizeof(oe_size_t);
+            if (*option_len < required_bytes)
+                return OE_EBUFFERSIZE;
+
+            *(oe_size_t *)value = ctx->max_read_frame_size;
+            *option_len = required_bytes;
+            break;
+        }
+        case OE_MAXWRITEFRAMESIZE: {
+            size_t required_bytes = sizeof(oe_size_t);
+            if (*option_len < required_bytes)
+                return OE_EBUFFERSIZE;
+
+            *(oe_size_t *)value = ctx->max_write_frame_size;
             *option_len = required_bytes;
             break;
         }
@@ -759,10 +777,9 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
         return OE_EBUFFERSIZE;
 
     // Get the type, which occupies first 4 bytes of buffer
+    memcpy(type, buffer, sizeof(oe_signal_t));
 #ifdef OE_BE
-        *type = BSWAP_32(*(oe_signal_t *)buffer);
-#else
-        memcpy(type, buffer, sizeof(oe_signal_t));
+    *type = BSWAP_32(*type);
 #endif
 
     // pack_size still has overhead byte and header, so we remove those
@@ -794,10 +811,9 @@ static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type)
             continue; // Something wrong with packet, try again
 
         // Get the type, which occupies first 4 bytes of buffer
-#ifdef OE_BE
-        packet_type = BSWAP_32(*(oe_signal_t *)buffer);
-#else
         memcpy(&packet_type, buffer, sizeof(oe_signal_t));
+#ifdef OE_BE
+        packet_type = BSWAP_32(packet_type);
 #endif
 
     } while (!(packet_type & flags));
@@ -826,10 +842,9 @@ static int _oe_pump_signal_data(
             continue;
 
         // Get the type, which occupies first 4 bytes of buffer
-#ifdef OE_BE
-        packet_type = BSWAP_32(*(oe_signal_t *)buffer);
-#else
         memcpy(&packet_type, buffer, sizeof(oe_signal_t));
+#ifdef OE_BE
+        packet_type = BSWAP_32(packet_type);
 #endif
 
     } while (!(packet_type & flags));
@@ -948,8 +963,9 @@ static int _device_map_byte_swap(oe_ctx ctx)
     for (i = 0; i < ctx->num_dev; i++) {
         ctx->dev_map[i].id = BSWAP_32(ctx->dev_map[i].id);
         ctx->dev_map[i].read_size = BSWAP_32(ctx->dev_map[i].read_size);
-        ctx->dev_map[i].frames_per_datum = BSWAP_32(ctx->dev_map[i].frames_per_datum);
+        ctx->dev_map[i].num_reads = BSWAP_32(ctx->dev_map[i].num_reads);
         ctx->dev_map[i].write_size = BSWAP_32(ctx->dev_map[i].write_size);
+        ctx->dev_map[i].num_writes = BSWAP_32(ctx->dev_map[i].num_writes);
     }
 
     return 0;

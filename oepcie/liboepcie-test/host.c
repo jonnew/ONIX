@@ -200,8 +200,8 @@ int main()
 
     oe_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);
-    oe_get_opt(ctx, OE_READFRAMESIZE, &frame_size, &frame_size_sz);
-    printf("Frame size: %u bytes\n", frame_size);
+    oe_get_opt(ctx, OE_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
+    printf("Max. read frame size: %u bytes\n", frame_size);
 
     // Try to write to base clock freq, which is write only
     oe_reg_val_t base_hz = (oe_reg_val_t)10e6;
@@ -227,7 +227,6 @@ int main()
 	pthread_create(&tid, NULL, data_loop, NULL);
 #endif // _WIN32
     
-
     // Read stdin to start (s) or pause (p)
     int c = 's';
     while (c != 'q') {

@@ -38,15 +38,14 @@ namespace oe
         {
             if (!DeviceMap.ContainsKey(dev_idx))
             {
-                throw new OEException((int)oepcie.Error.DEVIDX); 
+                throw new OEException((int)oepcie.Error.DEVIDX);
             }
 
             // Get the byte size of the array
             var num_bytes = DeviceMap[dev_idx].Item2.read_size;
-            var byte_offset = *(frame.dev_offs + DeviceMap[dev_idx].Item1);          
+            var byte_offset = *(frame.dev_offs + DeviceMap[dev_idx].Item1);
 
             var output = new byte[num_bytes];
-            int j = 0;
             var start_ptr = frame.data + byte_offset;
             Marshal.Copy((IntPtr)start_ptr, output, 0, (int)num_bytes);
             return output;
@@ -58,7 +57,7 @@ namespace oe
         }
 
         // Global device index -> device_t struct
-        public readonly Dictionary<uint, MapDevice> DeviceMap; 
+        public readonly Dictionary<uint, MapDevice> DeviceMap;
         private oepcie.frame_t frame;
         private IntPtr frame_mem;
     }

@@ -42,14 +42,14 @@ namespace oe.lib
             INVALRAWTYPE = -22, // Invalid raw data type
         }
 
-        public enum DeviceID
-        {
-            IMMEDIATEIO = 0,
-            RHD2132 = 1,
-            RHD2164 = 2,
-            MPU9250 = 3,
-            ESTIM = 4,
-        }
+        //public enum DeviceID
+        //{
+        //    IMMEDIATEIO = 0,
+        //    RHD2132 = 1,
+        //    RHD2164 = 2,
+        //    MPU9250 = 3,
+        //    ESTIM = 4,
+        //}
 
         // Make managed version of oe_frame_t
         [StructLayout(LayoutKind.Sequential)]
@@ -81,11 +81,11 @@ namespace oe.lib
             //[MarshalAs(UnmanagedType.U4)]
             public uint read_size;      // Read size
             //[MarshalAs(UnmanagedType.U4)]
-            public uint read_type;      // Read type ID
+            public uint num_reads;      // Num reads per sample
             //[MarshalAs(UnmanagedType.U4)]
             public uint write_size;     // Write size
             //[MarshalAs(UnmanagedType.U4)]
-            public uint write_type;     // Write type ID
+            public uint num_writes;     // Num writes per sample
 
         }
 
@@ -148,17 +148,15 @@ namespace oe.lib
         public static extern Int32 write_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UInt32 val);
 
         [DllImport(LibraryName, EntryPoint = "oe_read_frame", CallingConvention = CCCdecl, SetLastError = true)]
-        //public static extern Int32 read_frame(IntPtr ctx, FrameT **frame);
         public static extern Int32 read_frame(IntPtr ctx, out IntPtr frame);
 
         [DllImport(LibraryName, EntryPoint = "oe_destroy_frame", CallingConvention = CCCdecl)]
-        //public static extern Int32 destroy_frame(out FrameT frame);
         public static extern Int32 destroy_frame(IntPtr frame);
 
         [DllImport(LibraryName, EntryPoint = "oe_error_str", CallingConvention = CCCdecl)]
         public static extern IntPtr error_str(Int32 err);
 
-        [DllImport(LibraryName, EntryPoint = "oe_device_str", CallingConvention = CCCdecl)]
-        public static extern IntPtr device_str(Int32 err);
+        //[DllImport(LibraryName, EntryPoint = "oe_device_str", CallingConvention = CCCdecl)]
+        //public static extern IntPtr device_str(Int32 id);
     }
 }
