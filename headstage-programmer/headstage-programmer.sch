@@ -2963,7 +2963,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="R3" library="jonnew" deviceset="R" device="_0805" value="220"/>
 <part name="D3" library="jonnew" deviceset="LED" device="_MLE-HS-CAT" value="MLEAWT-A1"/>
 <part name="SUPPLY12" library="jonnew" deviceset="GND" device=""/>
-<part name="S1" library="jonnew" deviceset="SPDT" device="_JS"/>
+<part name="S1" library="jonnew" deviceset="SPDT" device="_JS" value="JS102011SAQN"/>
+<part name="S2" library="jonnew" deviceset="SPDT" device="_JS" value="JS102011SAQN"/>
 </parts>
 <sheets>
 <sheet>
@@ -3014,6 +3015,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="D3" gate="G$1" x="195.58" y="60.96"/>
 <instance part="SUPPLY12" gate="PE" x="195.58" y="48.26"/>
 <instance part="S1" gate="G$1" x="50.8" y="149.86" rot="R180"/>
+<instance part="S2" gate="G$1" x="195.58" y="83.82" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -3253,9 +3255,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <junction x="231.14" y="144.78"/>
 </segment>
 <segment>
-<pinref part="R3" gate="R" pin="2"/>
-<wire x1="195.58" y1="83.82" x2="195.58" y2="78.74" width="0.1524" layer="91"/>
-<label x="195.58" y="83.82" size="1.27" layer="95" rot="R90" xref="yes"/>
+<wire x1="198.12" y1="96.52" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
+<label x="198.12" y="96.52" size="1.27" layer="95" rot="R90" xref="yes"/>
+<pinref part="S2" gate="G$1" pin="3"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -3271,6 +3273,13 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="U2" gate="G$1" pin="+"/>
 <pinref part="S1" gate="G$1" pin="3"/>
 <wire x1="35.56" y1="152.4" x2="43.18" y2="152.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="S2" gate="G$1" pin="2"/>
+<pinref part="R3" gate="R" pin="2"/>
+<wire x1="195.58" y1="81.28" x2="195.58" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
