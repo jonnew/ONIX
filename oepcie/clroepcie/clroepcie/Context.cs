@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using MapDevice = System.Tuple<int, oe.lib.oepcie.device_t>; // Index -> device
+//using MapDevice = System.Tuple<int, oe.lib.oepcie.device_t>; // Index -> device
 
 namespace oe
 {
@@ -31,8 +31,8 @@ namespace oe
 
             // Populate device map
             int num_devs = GetOption(Option.NUMDEVICES);
-            DeviceMap = new List<MapDevice>();
-            int size_dev = Marshal.SizeOf(new oe.lib.oepcie.device_t());
+            DeviceMap = new Dictionary<int, oepcie.device_t>();
+            int size_dev = Marshal.SizeOf(new oepcie.device_t());
             int size = size_dev * num_devs;
             using (var value = DispoIntPtr.Alloc(size))
             {
@@ -44,7 +44,7 @@ namespace oe
                 // memory as buffer.
                 for (int i = 0; i < num_devs; i++)
                 {
-                    DeviceMap.Add(new MapDevice(i, (oepcie.device_t)Marshal.PtrToStructure(mem, typeof(oepcie.device_t))));
+                    DeviceMap.Add(i, (oepcie.device_t)Marshal.PtrToStructure(mem, typeof(oepcie.device_t)));
                     mem = new IntPtr((long)mem + size_dev);
                 }
 
@@ -60,14 +60,14 @@ namespace oe
         public static readonly uint DefaultIndex = 0;
         public uint Index = DefaultIndex;
         private IntPtr ctx;
-        public readonly List<MapDevice> DeviceMap;
+        public readonly Dictionary<int, oepcie.device_t> DeviceMap;
         private bool disposed = false;
         private Object context_lock = new Object();
 
         public uint DeviceID(uint device_index)
         {
             if (device_index < DeviceMap.Count)
-                return DeviceMap[(int)device_index].Item2.id;
+                return DeviceMap[(int)device_index].id;
             else
                 throw new OEException((int)oepcie.Error.DEVIDX);
         }
@@ -145,7 +145,8 @@ namespace oe
             {
                 lock (context_lock)
                 {
-                    int rc = oepcie.set_opt(ctx, (int)opt, str, (uint)ssize);
+                    // NB: +1 is for trailing null character
+                    int rc = oepcie.set_opt(ctx, (int)opt, str, (uint)ssize + 1);
                     if (rc != 0) { throw new OEException(rc); }
                 }
 
@@ -185,8 +186,7 @@ namespace oe
                     int rc = oepcie.read_frame(ctx, out mem);
                     if (rc != 0) { throw new OEException(rc); }
                 }
-                var frame = new Frame(DeviceMap, mem);
-                return frame;
+                return new Frame(DeviceMap, mem);
             }
         }
 

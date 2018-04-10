@@ -6,9 +6,6 @@
     using lib;
     using System.Runtime.InteropServices;
 
-    /// <summary>
-    /// An exception thrown by the result of liboepcie.
-    /// </summary>
     [Serializable]
     public class OEException : Exception
     {

@@ -20,7 +20,7 @@
 
 #include "oepcie.h"
 
-// Non-public fixed width types
+// Static fixed width types
 typedef uint32_t oe_reg_val_t;
 
 // Register size
@@ -29,7 +29,7 @@ typedef uint32_t oe_reg_val_t;
 // Define if hardware produces byte-reversed types from compile command
 #ifdef OE_BIGEND
 
-// Nested define allows compile command to define OE_BE
+// NB: Nested define allows compile command to define OE_BE
 #define OE_BE
 
 // Define byte-swapping macros
@@ -44,8 +44,11 @@ typedef uint32_t oe_reg_val_t;
 
 #endif
 
+// Consistent overhead bytestuffing buffer size
 #define OE_COBSBUFFERSIZE 255
 
+// Bytes per read() syscall on the data input stream
+// NB: This defines a minimum delay for real-time processing
 #define OE_READSIZE 1024
 
 typedef struct stream_fid {
@@ -53,6 +56,7 @@ typedef struct stream_fid {
     int fid;
 } stream_fid_t;
 
+// Context implementation
 typedef struct oe_ctx_impl {
 
     // Communication channels

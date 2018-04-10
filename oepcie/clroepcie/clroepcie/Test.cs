@@ -34,7 +34,7 @@ namespace oe
 
             if (print)
                 Console.WriteLine("\t liboepcie version: " + oepcie.LibraryVersion);
-           
+
             // oe_init_ctx
             var rc = oepcie.init_ctx(ctx);
             Console.WriteLine("\t oepcie.init_ctx(): " + rc);

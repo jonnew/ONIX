@@ -13,10 +13,11 @@ namespace oe.lib
             // use builtin allocation
             var dispPtr = new DispoIntPtr();
             dispPtr._ptr = Marshal.StringToHGlobalAnsi(str);
-            dispPtr.isAllocated = true;
+            dispPtr.is_allocated = true;
 
-            byteCount = ASCIIEncoding.ASCII.GetByteCount(str);
-            //byteCount = Encoding.Default.GetByteCount(str);
+            byteCount = Encoding.Default.GetByteCount(str);
+            //byteCount = ASCIIEncoding.ASCII.GetByteCount(str);
+            //System.Console.WriteLine("{0}: {1} bytes.", str, byteCount);
             return dispPtr;
         }
 
@@ -24,14 +25,14 @@ namespace oe.lib
         {
             var dispPtr = new DispoIntPtr();
             dispPtr._ptr = Marshal.AllocHGlobal(size);
-            dispPtr.isAllocated = true;
+            dispPtr.is_allocated = true;
             return dispPtr;
         }
 
         public static DispoIntPtr AllocString(string str)
         {
             int byteCount;
-            return AllocString(str, out byteCount);
+            return AllocStringNative(str, out byteCount);
         }
 
         public static DispoIntPtr AllocString(string str, out int byteCount)
@@ -94,7 +95,7 @@ namespace oe.lib
             return dispoIntPtr == null ? (ulong*)null : (ulong*)dispoIntPtr._ptr;
         }
 
-        private bool isAllocated;
+        private bool is_allocated;
 
         private IntPtr _ptr;
 
@@ -122,10 +123,10 @@ namespace oe.lib
             IntPtr handle = _ptr;
             if (handle != IntPtr.Zero)
             {
-                if (isAllocated)
+                if (is_allocated)
                 {
                     Marshal.FreeHGlobal(handle);
-                    isAllocated = false;
+                    is_allocated = false;
                 }
                 _ptr = IntPtr.Zero;
             }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MapDevice = System.Tuple<int, oe.lib.oepcie.device_t>;
 
 namespace oe
 {
@@ -9,17 +8,20 @@ namespace oe
 
     public unsafe class Frame : IDisposable
     {
-        public Frame(List<MapDevice> dev_map, IntPtr frame_mem)
+        public Frame(Dictionary<int, oepcie.device_t> dev_map, IntPtr frame_mem)
         {
-            // Deep copy of frame memroy into managed memory
+            // Deep copy of frame memory into managed memory
             this.frame_mem = frame_mem;
             frame = (oepcie.frame_t)Marshal.PtrToStructure(frame_mem, typeof(oepcie.frame_t));
 
-            // Create frame-specific device map
-            DeviceMap = new Dictionary<uint, MapDevice>(); // (frame.num_dev);
+            // Get device map reference
+            DeviceMap = dev_map;
+
+            // Get devices in this frame
+            DeviceIndices = new List<int>(frame.num_dev);
             for (int i = 0; i < frame.num_dev; i++)
             {
-                DeviceMap.Add(*(frame.dev_idxs + i), new MapDevice(i, dev_map[(int)*(frame.dev_idxs + i)].Item2));
+                DeviceIndices.Add((int)*(frame.dev_idxs + i));
             }
         }
 
@@ -34,20 +36,28 @@ namespace oe
         public bool Corrupt() { return frame.corrupt != 0; }
 
         // NB: This seems horribly inefficient, but I really have no idea
-        public byte[] Data(uint dev_idx)
+
+        public T[] Data<T>(int dev_idx) where T : struct
         {
-            if (!DeviceMap.ContainsKey(dev_idx))
+            // Device position in frame
+            var pos = DeviceIndices.FindIndex(x => x == dev_idx);
+
+            // If device is not in frame
+            if (pos == -1)
             {
                 throw new OEException((int)oepcie.Error.DEVIDX);
             }
 
-            // Get the byte size of the array
-            var num_bytes = DeviceMap[dev_idx].Item2.read_size;
-            var byte_offset = *(frame.dev_offs + DeviceMap[dev_idx].Item1);
+            // Get the read size and offset for this device
+            var num_bytes = DeviceMap[dev_idx].read_size;
+            var byte_offset = *(frame.dev_offs + pos);
 
-            var output = new byte[num_bytes];
+            var buffer = new byte[num_bytes];
+            var output = new T[num_bytes / Marshal.SizeOf(default(T))];
             var start_ptr = frame.data + byte_offset;
-            Marshal.Copy((IntPtr)start_ptr, output, 0, (int)num_bytes);
+            // TODO: Seems like we should be able to copy directly into output!
+            Marshal.Copy((IntPtr)start_ptr, buffer, 0, (int)num_bytes);
+            Buffer.BlockCopy(buffer, 0, output, 0, (int)num_bytes);
             return output;
         }
 
@@ -56,8 +66,11 @@ namespace oe
             oepcie.destroy_frame(frame_mem);
         }
 
+        // Devices with data in this frame
+        public List<int> DeviceIndices {get; private set;}
+
         // Global device index -> device_t struct
-        public readonly Dictionary<uint, MapDevice> DeviceMap;
+        private readonly Dictionary<int, oe.lib.oepcie.device_t> DeviceMap;
         private oepcie.frame_t frame;
         private IntPtr frame_mem;
     }

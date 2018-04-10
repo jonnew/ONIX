@@ -60,7 +60,7 @@ namespace oe.lib
             //[MarshalAs(UnmanagedType.U2)]
             public ushort num_dev;     // Number of devices in frame
             //[MarshalAs(UnmanagedType.U1)]
-            public byte corrupt;       // Is this frame corrupt?  
+            public byte corrupt;       // Is this frame corrupt?
             public uint *dev_idxs;   // Array of device indices in frame
             //[MarshalAs(UnmanagedType.U4)]
             public uint dev_idxs_sz; // Size in bytes of dev_idxs buffer
