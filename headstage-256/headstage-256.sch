@@ -8285,6 +8285,9 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="GND37" library="jonnew" deviceset="GND" device=""/>
 <part name="TP28" library="jonnew" deviceset="TP" device="B0.4MM"/>
 <part name="TP29" library="jonnew" deviceset="TP" device="B0.4MM"/>
+<part name="TP30" library="jonnew" deviceset="TP" device="TP13R"/>
+<part name="TP31" library="jonnew" deviceset="TP" device="TP13R"/>
+<part name="TP32" library="jonnew" deviceset="TP" device="TP13R"/>
 </parts>
 <sheets>
 <sheet>
@@ -8389,7 +8392,7 @@ others!</text>
 - 0x28: BNO055</text>
 <text x="1155.7" y="205.74" size="1.778" layer="97">NB: Switching residue
 filter.</text>
-<text x="124.46" y="276.86" size="1.778" layer="97">NB: CLK2 drives PLL2</text>
+<text x="152.4" y="441.96" size="1.778" layer="97">NB: CLK2 drives PLL1</text>
 </plain>
 <instances>
 <instance part="U16" gate="G$1" x="78.74" y="528.32"/>
@@ -9106,10 +9109,10 @@ filter.</text>
 <instance part="SUPPLY53" gate="PE" x="1140.46" y="185.42"/>
 <instance part="SUPPLY1" gate="G$1" x="368.3" y="342.9"/>
 <instance part="SUPPLY95" gate="G$1" x="381" y="342.9"/>
-<instance part="U26" gate="G$1" x="160.02" y="269.24" rot="MR0"/>
-<instance part="C72" gate="C" x="180.34" y="266.7"/>
-<instance part="SUPPLY6" gate="PE" x="180.34" y="248.92" rot="MR0"/>
-<instance part="U$4" gate="PWR1" x="180.34" y="279.4"/>
+<instance part="U26" gate="G$1" x="187.96" y="434.34" rot="MR0"/>
+<instance part="C72" gate="C" x="208.28" y="431.8"/>
+<instance part="SUPPLY6" gate="PE" x="208.28" y="414.02" rot="MR0"/>
+<instance part="U$4" gate="PWR1" x="208.28" y="444.5"/>
 <instance part="C107" gate="C" x="1071.88" y="424.18" smashed="yes">
 <attribute name="NAME" x="1074.42" y="426.72" size="1.778" layer="95"/>
 <attribute name="VALUE" x="1074.42" y="424.18" size="1.778" layer="96"/>
@@ -9123,6 +9126,9 @@ filter.</text>
 <instance part="GND37" gate="PE" x="952.5" y="424.18"/>
 <instance part="TP28" gate="G$1" x="922.02" y="373.38"/>
 <instance part="TP29" gate="G$1" x="924.56" y="368.3"/>
+<instance part="TP30" gate="G$1" x="464.82" y="360.68" rot="R180"/>
+<instance part="TP31" gate="G$1" x="695.96" y="360.68" rot="R180"/>
+<instance part="TP32" gate="G$1" x="464.82" y="127" rot="R180"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -9467,14 +9473,14 @@ filter.</text>
 <segment>
 <pinref part="U26" gate="G$1" pin="EN"/>
 <pinref part="C72" gate="C" pin="1"/>
-<wire x1="170.18" y1="269.24" x2="180.34" y2="269.24" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="269.24" x2="180.34" y2="274.32" width="0.1524" layer="91"/>
-<junction x="180.34" y="269.24"/>
+<wire x1="198.12" y1="434.34" x2="208.28" y2="434.34" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="434.34" x2="208.28" y2="439.42" width="0.1524" layer="91"/>
+<junction x="208.28" y="434.34"/>
 <pinref part="U26" gate="G$1" pin="VCC"/>
-<wire x1="180.34" y1="274.32" x2="170.18" y2="274.32" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="439.42" x2="198.12" y2="439.42" width="0.1524" layer="91"/>
 <pinref part="U$4" gate="PWR1" pin="+3V3"/>
-<wire x1="180.34" y1="279.4" x2="180.34" y2="274.32" width="0.1524" layer="91"/>
-<junction x="180.34" y="274.32"/>
+<wire x1="208.28" y1="444.5" x2="208.28" y2="439.42" width="0.1524" layer="91"/>
+<junction x="208.28" y="439.42"/>
 </segment>
 </net>
 <net name="AGND" class="0">
@@ -11502,12 +11508,12 @@ filter.</text>
 </segment>
 <segment>
 <pinref part="C72" gate="C" pin="2"/>
-<wire x1="180.34" y1="261.62" x2="180.34" y2="259.08" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="426.72" x2="208.28" y2="424.18" width="0.1524" layer="91"/>
 <pinref part="U26" gate="G$1" pin="GND"/>
-<wire x1="180.34" y1="259.08" x2="170.18" y2="259.08" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="424.18" x2="198.12" y2="424.18" width="0.1524" layer="91"/>
 <pinref part="SUPPLY6" gate="PE" pin="GND"/>
-<wire x1="180.34" y1="259.08" x2="180.34" y2="251.46" width="0.1524" layer="91"/>
-<junction x="180.34" y="259.08"/>
+<wire x1="208.28" y1="424.18" x2="208.28" y2="416.56" width="0.1524" layer="91"/>
+<junction x="208.28" y="424.18"/>
 </segment>
 <segment>
 <wire x1="962.66" y1="436.88" x2="962.66" y2="431.8" width="0.1524" layer="91"/>
@@ -14897,9 +14903,9 @@ filter.</text>
 <junction x="855.98" y="754.38"/>
 </segment>
 <segment>
-<wire x1="104.14" y1="439.42" x2="109.22" y2="439.42" width="0.1524" layer="91"/>
-<label x="109.22" y="439.42" size="1.27" layer="95" rot="MR180" xref="yes"/>
-<pinref part="U16" gate="G$5" pin="DIFFIO_RX_L18P/CLK0P/J5"/>
+<wire x1="104.14" y1="274.32" x2="109.22" y2="274.32" width="0.1524" layer="91"/>
+<label x="109.22" y="274.32" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<pinref part="U16" gate="G$8" pin="DIFFIO_RX_R14N/CLK2N/H11"/>
 </segment>
 </net>
 <net name="N$55" class="0">
@@ -17021,13 +17027,6 @@ filter.</text>
 <junction x="962.66" y="449.58"/>
 </segment>
 </net>
-<net name="N$22" class="0">
-<segment>
-<pinref part="U16" gate="G$8" pin="DIFFIO_RX_R14N/CLK2N/H11"/>
-<pinref part="U26" gate="G$1" pin="OUT"/>
-<wire x1="104.14" y1="274.32" x2="149.86" y2="274.32" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$21" class="0">
 <segment>
 <pinref part="U19" gate="G$1" pin="XIN32"/>
@@ -17054,6 +17053,34 @@ filter.</text>
 <wire x1="104.14" y1="264.16" x2="109.22" y2="264.16" width="0.1524" layer="91"/>
 <label x="109.22" y="264.16" size="1.27" layer="95" xref="yes"/>
 <pinref part="U16" gate="G$8" pin="DIFFIO_RX_R18N/G15"/>
+</segment>
+</net>
+<net name="N$22" class="0">
+<segment>
+<pinref part="U16" gate="G$5" pin="DIFFIO_RX_L18P/CLK0P/J5"/>
+<pinref part="U26" gate="G$1" pin="OUT"/>
+<wire x1="104.14" y1="439.42" x2="177.8" y2="439.42" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$23" class="0">
+<segment>
+<pinref part="U21" gate="A" pin="AUXOUT"/>
+<pinref part="TP30" gate="G$1" pin="TP"/>
+<wire x1="464.82" y1="383.54" x2="464.82" y2="363.22" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$32" class="0">
+<segment>
+<pinref part="U30" gate="A" pin="AUXOUT"/>
+<pinref part="TP32" gate="G$1" pin="TP"/>
+<wire x1="464.82" y1="149.86" x2="464.82" y2="129.54" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$40" class="0">
+<segment>
+<pinref part="U22" gate="A" pin="AUXOUT"/>
+<pinref part="TP31" gate="G$1" pin="TP"/>
+<wire x1="695.96" y1="383.54" x2="695.96" y2="363.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
