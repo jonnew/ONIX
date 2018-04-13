@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.25" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="DRoute" color="13" fill="1" visible="yes" active="yes"/>
@@ -227,9 +227,14 @@
 <text x="2.6" y="15.5" size="1.016" layer="21" font="vector" ratio="18" align="center">C</text>
 <text x="-14.9" y="-3.15" size="1.016" layer="21" font="vector" ratio="18" distance="10" rot="R90" align="center">JPN
 MWL18</text>
-<text x="-6.05" y="11.4" size="1.016" layer="22" font="vector" ratio="18" rot="MR225" align="center">OUT</text>
-<text x="-11.4" y="-6.05" size="1.016" layer="22" font="vector" ratio="18" rot="MR135" align="center">OUT</text>
-<text x="6.05" y="-11.4" size="1.016" layer="22" font="vector" ratio="18" rot="SMR225" align="center">OUT</text>
+<text x="-11.3" y="-5.6" size="1.016" layer="22" font="vector" ratio="18" rot="SMR135" align="center">OUT</text>
+<text x="-11.4" y="-11" size="1.016" layer="22" font="vector" ratio="18" rot="SMR135" align="center">AG</text>
+<text x="5.6" y="-11.3" size="1.016" layer="22" font="vector" ratio="18" rot="SMR45" align="center">OUT</text>
+<text x="11.25" y="-11.65" size="1.016" layer="22" font="vector" ratio="18" rot="SMR45" align="center">G</text>
+<text x="11.3" y="5.6" size="1.016" layer="22" font="vector" ratio="18" rot="SMR315" align="center">OUT</text>
+<text x="11.4" y="11" size="1.016" layer="22" font="vector" ratio="18" rot="SMR315" align="center">AG</text>
+<text x="-5.6" y="11.3" size="1.016" layer="22" font="vector" ratio="18" rot="SMR225" align="center">OUT</text>
+<text x="-11.25" y="11.65" size="1.016" layer="22" font="vector" ratio="18" rot="SMR225" align="center">G</text>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -2430,6 +2435,18 @@ einem neuen Namen ab.</description>
 <element name="TP32" library="jonnew" package="TP13R" value="" x="4.3" y="-10.1" rot="MR0">
 <attribute name="TP_SIGNAL_NAME" value="" x="4.3" y="-10.1" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
+<element name="TP33" library="jonnew" package="TP13R" value="" x="-12.2" y="-12.5" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="-12.2" y="-12.5" size="1.778" layer="28" rot="MR0" display="off"/>
+</element>
+<element name="TP34" library="jonnew" package="TP13R" value="" x="12.5" y="-12.2" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="12.5" y="-12.2" size="1.778" layer="28" rot="MR0" display="off"/>
+</element>
+<element name="TP35" library="jonnew" package="TP13R" value="" x="12.2" y="12.5" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="12.2" y="12.5" size="1.778" layer="28" rot="MR0" display="off"/>
+</element>
+<element name="TP36" library="jonnew" package="TP13R" value="" x="-12.5" y="12.2" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="-12.5" y="12.2" size="1.778" layer="28" rot="MR0" display="off"/>
+</element>
 </elements>
 <signals>
 <signal name="S$7" class="1">
@@ -3240,6 +3257,10 @@ einem neuen Namen ab.</description>
 <via x="-11" y="-3.7" extent="5-16" drill="0.2"/>
 <via x="3.5" y="-9.275" extent="5-16" drill="0.2"/>
 <via x="4.65" y="-11.175" extent="5-16" drill="0.2"/>
+<contactref element="TP33" pad="TP"/>
+<contactref element="TP34" pad="TP"/>
+<contactref element="TP35" pad="TP"/>
+<contactref element="TP36" pad="TP"/>
 <polygon width="0.0508" layer="16" thermals="no">
 <vertex x="3.9246" y="-4.55" curve="180"/>
 <vertex x="4.0754" y="-4.55" curve="180"/>
@@ -12641,6 +12662,7 @@ einem neuen Namen ab.</description>
 <approved hash="4,1,0ada714c4f36947f"/>
 <approved hash="5,16,27fa7a78f9e60489"/>
 <approved hash="5,16,39fa667f68e09789"/>
+<approved hash="18,30,60a856b85479ca7c"/>
 <approved hash="21,19,583d5a3f5a3f583d"/>
 <approved hash="21,19,8d9e8f9c8f9c8d9e"/>
 <approved hash="21,19,99de9bdc9a5c985e"/>
@@ -12686,7 +12708,6 @@ einem neuen Namen ab.</description>
 <approved hash="18,29,09a1222e4ef15863"/>
 <approved hash="18,29,bb082c69d35c4405"/>
 <approved hash="18,29,bb082e554d554805"/>
-<approved hash="18,30,60a856b85479ca7c"/>
 <approved hash="18,30,4666871608b731a7"/>
 <approved hash="18,30,2defce446026f4a4"/>
 <approved hash="18,30,682a7e8011642154"/>
@@ -12700,32 +12721,32 @@ einem neuen Namen ab.</description>
 <approved hash="18,30,c13118f37cd115ae"/>
 <approved hash="18,30,7e454de76ae97e2e"/>
 <approved hash="18,30,71d651ab50e53c6b"/>
+<approved hash="18,30,1484bab6c9c0e783"/>
+<approved hash="18,30,290029656be2591a"/>
+<approved hash="18,30,bd9d0e9f3c5ae6ba"/>
+<approved hash="18,30,774f6788d64c3f15"/>
+<approved hash="18,30,ae2faec2dd301ed5"/>
+<approved hash="18,30,d723f846a9723051"/>
+<approved hash="18,30,cf4fa9843be9b54f"/>
+<approved hash="18,30,567bc410ac138630"/>
 <approved hash="18,30,a243ba2eda75eb4d"/>
 <approved hash="18,30,d42436a425d9d17f"/>
 <approved hash="18,30,25cc51d956a8fbb5"/>
 <approved hash="18,30,c95bda1fce17ef5b"/>
-<approved hash="18,30,567bc410ac138630"/>
-<approved hash="18,30,cf4fa9843be9b54f"/>
-<approved hash="18,30,d723f846a9723051"/>
-<approved hash="18,30,ae2faec2dd301ed5"/>
+<approved hash="18,30,7c943f49faf1eb79"/>
+<approved hash="18,30,ff204d3dcd327f2f"/>
 <approved hash="18,30,fd1c5c7077860713"/>
 <approved hash="18,30,dd6eb52ff70fd344"/>
-<approved hash="18,30,ff204d3dcd327f2f"/>
-<approved hash="18,30,774f6788d64c3f15"/>
-<approved hash="18,30,290029656be2591a"/>
-<approved hash="18,30,bd9d0e9f3c5ae6ba"/>
-<approved hash="18,30,1484bab6c9c0e783"/>
-<approved hash="18,30,3aa6ea70f443a1b4"/>
-<approved hash="18,30,7c943f49faf1eb79"/>
-<approved hash="18,30,315bae6e4a4b744c"/>
-<approved hash="18,30,2e5063a5d632d904"/>
-<approved hash="18,30,67e35a768e565c7b"/>
+<approved hash="18,30,62c080807d30617c"/>
 <approved hash="18,30,d8a872843673dcf4"/>
 <approved hash="18,30,9cd4d8f61b6cbf04"/>
+<approved hash="18,30,d208d75f7b28b3ac"/>
+<approved hash="18,30,3aa6ea70f443a1b4"/>
+<approved hash="18,30,315bae6e4a4b744c"/>
+<approved hash="18,30,67e35a768e565c7b"/>
+<approved hash="18,30,2e5063a5d632d904"/>
 <approved hash="18,30,48fc6fc0304a0e6a"/>
 <approved hash="18,30,3d7c28099f0f6c0e"/>
-<approved hash="18,30,d208d75f7b28b3ac"/>
-<approved hash="18,30,62c080807d30617c"/>
 <approved hash="18,30,f847970b466dc5a4"/>
 <approved hash="18,30,724e3ace5cc8bf0a"/>
 <approved hash="18,30,5db0e0f2a38da4e1"/>
@@ -12822,15 +12843,15 @@ einem neuen Namen ab.</description>
 <approved hash="4,16,22790a450a452279"/>
 <approved hash="4,16,a2757a497a49a275"/>
 <approved hash="4,16,2061085d085d2061"/>
+<approved hash="4,16,c98cf5acf5acc98c"/>
 <approved hash="4,16,44027822782a440a"/>
+<approved hash="4,16,460c7a2c7a2c460c"/>
+<approved hash="4,16,b97c855c8556b976"/>
 <approved hash="4,16,c502f922f93ac51a"/>
 <approved hash="4,16,798045a045a87988"/>
-<approved hash="4,16,c98cf5acf5acc98c"/>
 <approved hash="4,16,4d1c713c713c4d1c"/>
-<approved hash="4,16,b97c855c8556b976"/>
-<approved hash="4,16,460c7a2c7a2c460c"/>
-<approved hash="4,16,4400782078384418"/>
 <approved hash="4,16,46047a247a544674"/>
+<approved hash="4,16,4400782078384418"/>
 </errors>
 </board>
 </drawing>

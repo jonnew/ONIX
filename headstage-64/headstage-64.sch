@@ -5139,6 +5139,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="R22" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="U$43" library="jonnew" deviceset="+3V3" device=""/>
 <part name="TP13" library="jonnew" deviceset="TP" device="TP07R" value="VCC"/>
+<part name="SUPPLY51" library="jonnew" deviceset="AGND" device=""/>
+<part name="TP14" library="jonnew" deviceset="TP" device="TP07R" value="VCC"/>
 </parts>
 <sheets>
 <sheet>
@@ -5614,6 +5616,8 @@ problems doing this."</text>
 <instance part="R22" gate="R" x="134.62" y="78.74" rot="R270"/>
 <instance part="U$43" gate="PWR1" x="134.62" y="86.36"/>
 <instance part="TP13" gate="G$1" x="695.96" y="454.66" rot="R180"/>
+<instance part="SUPPLY51" gate="G$1" x="581.66" y="556.26"/>
+<instance part="TP14" gate="G$1" x="581.66" y="566.42"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -8455,6 +8459,11 @@ problems doing this."</text>
 <pinref part="R21" gate="R" pin="1"/>
 <pinref part="SUPPLY16" gate="G$1" pin="AGND"/>
 <wire x1="589.28" y1="452.12" x2="589.28" y2="441.96" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="TP14" gate="G$1" pin="TP"/>
+<pinref part="SUPPLY51" gate="G$1" pin="AGND"/>
+<wire x1="581.66" y1="563.88" x2="581.66" y2="558.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="RHD_CS_-" class="0">

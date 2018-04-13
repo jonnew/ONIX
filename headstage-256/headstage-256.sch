@@ -8288,6 +8288,14 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="TP30" library="jonnew" deviceset="TP" device="TP13R"/>
 <part name="TP31" library="jonnew" deviceset="TP" device="TP13R"/>
 <part name="TP32" library="jonnew" deviceset="TP" device="TP13R"/>
+<part name="SUPPLY96" library="jonnew" deviceset="AGND" device=""/>
+<part name="TP33" library="jonnew" deviceset="TP" device="TP13R"/>
+<part name="SUPPLY101" library="jonnew" deviceset="AGND" device=""/>
+<part name="TP34" library="jonnew" deviceset="TP" device="TP13R"/>
+<part name="SUPPLY102" library="jonnew" deviceset="AGND" device=""/>
+<part name="TP35" library="jonnew" deviceset="TP" device="TP13R"/>
+<part name="SUPPLY103" library="jonnew" deviceset="AGND" device=""/>
+<part name="TP36" library="jonnew" deviceset="TP" device="TP13R"/>
 </parts>
 <sheets>
 <sheet>
@@ -9129,6 +9137,14 @@ filter.</text>
 <instance part="TP30" gate="G$1" x="464.82" y="360.68" rot="R180"/>
 <instance part="TP31" gate="G$1" x="695.96" y="360.68" rot="R180"/>
 <instance part="TP32" gate="G$1" x="464.82" y="127" rot="R180"/>
+<instance part="SUPPLY96" gate="G$1" x="520.7" y="276.86"/>
+<instance part="TP33" gate="G$1" x="520.7" y="287.02"/>
+<instance part="SUPPLY101" gate="G$1" x="530.86" y="276.86"/>
+<instance part="TP34" gate="G$1" x="530.86" y="287.02"/>
+<instance part="SUPPLY102" gate="G$1" x="541.02" y="276.86"/>
+<instance part="TP35" gate="G$1" x="541.02" y="287.02"/>
+<instance part="SUPPLY103" gate="G$1" x="553.72" y="276.86"/>
+<instance part="TP36" gate="G$1" x="553.72" y="287.02"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -9627,6 +9643,26 @@ filter.</text>
 <pinref part="C64" gate="C" pin="1"/>
 <wire x1="381" y1="345.44" x2="381" y2="350.52" width="0.1524" layer="91"/>
 <pinref part="SUPPLY95" gate="G$1" pin="AGND"/>
+</segment>
+<segment>
+<pinref part="TP33" gate="G$1" pin="TP"/>
+<pinref part="SUPPLY96" gate="G$1" pin="AGND"/>
+<wire x1="520.7" y1="284.48" x2="520.7" y2="279.4" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="TP34" gate="G$1" pin="TP"/>
+<pinref part="SUPPLY101" gate="G$1" pin="AGND"/>
+<wire x1="530.86" y1="284.48" x2="530.86" y2="279.4" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="TP35" gate="G$1" pin="TP"/>
+<pinref part="SUPPLY102" gate="G$1" pin="AGND"/>
+<wire x1="541.02" y1="284.48" x2="541.02" y2="279.4" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="TP36" gate="G$1" pin="TP"/>
+<pinref part="SUPPLY103" gate="G$1" pin="AGND"/>
+<wire x1="553.72" y1="284.48" x2="553.72" y2="279.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="RHD_CS-_AC" class="0">

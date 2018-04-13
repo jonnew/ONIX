@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route1" color="13" fill="1" visible="yes" active="yes"/>
@@ -29,15 +29,15 @@
 <layer number="18" name="Vias" color="10" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
@@ -47,8 +47,8 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
@@ -59,8 +59,8 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -234,6 +234,10 @@ MIT,'18</text>
 <text x="-1.3200125" y="-0.28998125" size="1" layer="21" font="vector" ratio="19" distance="30" align="center">-</text>
 <text x="-8.59001875" y="-1.9800125" size="0.8128" layer="21" font="vector" ratio="19" distance="30" rot="R90" align="center">JPN</text>
 <text x="-8.79001875" y="1.8199875" size="0.8128" layer="21" font="vector" ratio="19" distance="30" rot="R90" align="center">JV</text>
+<text x="-8.758478125" y="-2.41385625" size="0.8128" layer="22" font="vector" ratio="19" distance="30" rot="MR334.2" align="center">G</text>
+<text x="5.48" y="-7.03" size="0.8128" layer="22" font="vector" ratio="19" distance="30" rot="MR141.8" align="center">IN2</text>
+<text x="7.86" y="-4.15" size="0.8128" layer="22" font="vector" ratio="19" distance="30" rot="MR298.4" align="center">IN3</text>
+<text x="-7.02" y="-5.76" size="0.8128" layer="22" font="vector" ratio="19" distance="30" rot="MR315.1" align="center">O</text>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -1765,6 +1769,9 @@ einem neuen Namen ab.</description>
 <element name="R22" library="jonnew" package="0201T" value="10k" x="-2.95" y="-5.89" rot="R90"/>
 <element name="TP13" library="jonnew" package="TP07R" value="VCC" x="-6.4" y="-6.3" rot="MR0">
 <attribute name="TP_SIGNAL_NAME" value="" x="-6.4" y="-6.3" size="1.778" layer="28" rot="MR0" display="off"/>
+</element>
+<element name="TP14" library="jonnew" package="TP07R" value="VCC" x="-8.4" y="-3.1" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="-8.4" y="-3.1" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 </elements>
 <signals>
@@ -5807,6 +5814,7 @@ einem neuen Namen ab.</description>
 <contactref element="R21" pad="1"/>
 <via x="4" y="-8" extent="5-16" drill="0.1"/>
 <contactref element="L13" pad="2"/>
+<contactref element="TP14" pad="TP"/>
 </signal>
 <signal name="RHD_CS_-">
 <contactref element="R26" pad="1"/>
@@ -7180,9 +7188,6 @@ einem neuen Namen ab.</description>
 <approved hash="6,1,381e4b2afdc0e4d5"/>
 <approved hash="5,16,c616c4c464c56617"/>
 <approved hash="5,16,38883bd964d86789"/>
-<approved hash="6,1,8cb88c2c00040090"/>
-<approved hash="6,1,6f536f03bf27bf77"/>
-<approved hash="21,19,461849e5b5e74be4"/>
 <approved hash="7,40,f2f82f12f0919b00"/>
 <approved hash="18,29,3d5ab42f345ead4b"/>
 <approved hash="18,29,3d5ab42f345ead4b"/>
@@ -7192,10 +7197,15 @@ einem neuen Namen ab.</description>
 <approved hash="18,29,0f39b5b7eae7f6ca"/>
 <approved hash="18,29,679185bd4c233b40"/>
 <approved hash="18,29,19fff367eae93d7b"/>
+<approved hash="6,1,8cb88c2c00040090"/>
+<approved hash="6,1,6f536f03bf27bf77"/>
+<approved hash="21,19,461849e5b5e74be4"/>
+<approved hash="18,30,fac2f691498819bd"/>
+<approved hash="18,30,e24df7b0dfe3fea4"/>
 <approved hash="18,30,eb0d4dc439258428"/>
 <approved hash="18,30,16bc0913891396bc"/>
-<approved hash="18,30,e8c43905aeea6dd9"/>
 <approved hash="18,30,3e02e4d9cf90eb04"/>
+<approved hash="18,30,e8c43905aeea6dd9"/>
 <approved hash="18,30,455bb54e354ec55b"/>
 <approved hash="18,30,98c17ba8270e3c40"/>
 <approved hash="18,30,5da0778c27185b3c"/>
