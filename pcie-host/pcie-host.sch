@@ -6244,9 +6244,9 @@ grid 2.54 mm</description>
 </library>
 </libraries>
 <attributes>
-<attribute name="DESIGNER" value="JON NEWMAN, JACK ZHANG"/>
+<attribute name="DESIGNER" value="JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="PCIE HOST BOARD"/>
-<attribute name="LICENSE" value="CC-BY-SA-4.0"/>
+<attribute name="LICENSE" value="CERN OHL v1.2"/>
 <attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
