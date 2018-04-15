@@ -106,7 +106,7 @@ int parse_reg_cmd(const char *cmd, long *values)
 
 #ifdef _WIN32
 DWORD WINAPI data_loop(LPVOID lpParam)
-#else 
+#else
 void *data_loop(void *vargp)
 #endif
 {
@@ -148,24 +148,30 @@ void *data_loop(void *vargp)
 	return NULL;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     // Generate context
     ctx = oe_create_ctx();
     if (!ctx) exit(EXIT_FAILURE);
 
-    // Set stream paths
+    const char *config_path = OE_DEFAULTCONFIGPATH;
+    const char *sig_path = OE_DEFAULTSIGNALPATH;
+    const char *data_path = OE_DEFAULTREADPATH;
 
-	// Test firmware paths
-    const char *config_path = "/tmp/rat128_config";
-    const char *sig_path = "/tmp/rat128_signal";
-    const char *data_path = "/tmp/rat128_read";
+    if (argc != 1 && argc != 4) {
+        printf("usage:\n");
+        printf("\thost : run using default stream paths\n");
+        printf("\thost config signal data : specify the configuration, signal and data paths.\n");
+        exit(1);
+    } else if (argc == 4) {
 
-	// Real hardware
-    //const char *config_path = OE_DEFAULTCONFIGPATH;
-    //const char *sig_path = OE_DEFAULTSIGNALPATH;
-    //const char *data_path = OE_DEFAULTREADPATH;
+        // Set firmware paths
+        config_path = argv[1];
+        sig_path = argv[2];
+        data_path = argv[3];
+    }
 
+	// Set paths in context
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
     oe_set_opt(ctx, OE_READSTREAMPATH, data_path, strlen(data_path) + 1);
@@ -226,7 +232,7 @@ int main()
     pthread_t tid;
 	pthread_create(&tid, NULL, data_loop, NULL);
 #endif // _WIN32
-    
+
     // Read stdin to start (s) or pause (p)
     int c = 's';
     while (c != 'q') {
@@ -291,7 +297,6 @@ int main()
 #else
 	pthread_join(tid, NULL);
 #endif
-    
 
     // Reset the hardware
     oe_reg_val_t reset = 1;
