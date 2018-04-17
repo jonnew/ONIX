@@ -192,7 +192,7 @@ int main(int argc, char *argv[])
 
     // Show device map
     printf("Found the following devices:\n");
-    int dev_idx;
+    size_t dev_idx;
     for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
 
         const char *dev_str = oe_device_str(devices[dev_idx].id);
@@ -227,7 +227,8 @@ int main(int argc, char *argv[])
     // Generate data thread and continue here config/signal handling in parallel
 #ifdef _WIN32
 	DWORD tid;
-	CreateThread(NULL, 0, data_loop, NULL, 0, &tid);
+	HANDLE thread;
+	thread = CreateThread(NULL, 0, data_loop, NULL, 0, &tid);
 #else
     pthread_t tid;
 	pthread_create(&tid, NULL, data_loop, NULL);
@@ -292,8 +293,8 @@ int main(int argc, char *argv[])
     // Join data and signal threads
     quit = 1;
 #ifdef _WIN32
-	WaitForSingleObject(tid, INFINITE);
-	CloseHandle(tid);
+	WaitForSingleObject(thread, INFINITE);
+	CloseHandle(thread);
 #else
 	pthread_join(tid, NULL);
 #endif

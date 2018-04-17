@@ -12,7 +12,6 @@
 #define write _write
 #define close _close
 #define lseek _lseek
-#define strerror _strerror
 #else
 #include <unistd.h>
 #define _O_BINARY 0
