@@ -156,7 +156,5 @@ namespace oe.lib
         [DllImport(LibraryName, EntryPoint = "oe_error_str", CallingConvention = CCCdecl)]
         public static extern IntPtr error_str(Int32 err);
 
-        //[DllImport(LibraryName, EntryPoint = "oe_device_str", CallingConvention = CCCdecl)]
-        //public static extern IntPtr device_str(Int32 id);
     }
 }

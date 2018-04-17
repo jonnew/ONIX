@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/jonnew/open-ephys-pcie/blob/master/oepcie/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jonnew/open-ephys-pcie</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Jon Newman © 2018</copyright>
+    <tags>Open Ephys Electrophysiology PCIe Neuro Science</tags>
+  </metadata>
+  <files>
+    <file src="clroepcie.targets" target="build\net45"/>
+    <file src="..\Externals\oepcie\**\*.dll" target="build\native\bin"/>
+  </files>
+</package>
