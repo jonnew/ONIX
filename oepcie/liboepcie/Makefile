@@ -1,3 +1,9 @@
+# Examples:
+# make                          // Makes the library without debug symbols
+# make install                  // Installs library at default PREFIX
+# make install PREFIX=somedir   // Installs library in somedir
+# make debug                    // Makes the library with debug symbols
+# make ENDFLAG=OE_BIGEND        // Turn on hardware endianess conversion
 SHELL   :=  /bin/bash
 NAME    :=  liboepcie
 SNAME   :=  $(NAME).a
@@ -6,7 +12,7 @@ DNAMELN :=  $(NAME).so
 HDR     :=  $(wildcard *.h)
 SRC     :=  $(wildcard *.c)
 OBJ     :=  $(SRC:.c=.o)
-CFLAGS  :=  -pedantic -Wall -W -Werror -g -g3 -fPIC -O3
+CFLAGS  :=  -pedantic -Wall -W -Werror -fPIC -O3 $(ENDFLAG)
 LDFLAGS :=  -L.
 PREFIX  := /usr/local
 
@@ -18,6 +24,10 @@ COMMA-SEPARATE = $(subst ${SPACE},${COMMA},$(strip $1))
 
 .PHONY: all
 all: $(SNAME) $(DNAME)
+
+.PHONY: debug
+debug: CFLAGS += -g3 
+debug: all
 
 .PHONY: install
 install: $(SNAME) $(DNAME)
