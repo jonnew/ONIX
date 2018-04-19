@@ -16,6 +16,9 @@
 
 #include "testfunc.h"
 
+// Sample rate
+const int fs_hz = 30e3;
+
 // Data acq. params
 const size_t approx_frame_size = 500;
 const size_t fifo_frame_capacity = 1000;
@@ -30,10 +33,11 @@ volatile uint64_t sample_tick = 0;
 // Thread control
 volatile int quit = 0;
 
-// FIFO file path and desciptor handles
-const char *config_path = "/tmp/rat128_config";
-const char *sig_path = "/tmp/rat128_signal";
-const char *data_path = "/tmp/rat128_read";
+// FIFO file path and desciptor handles to mimic xillybus streams
+const char *config_path = "/tmp/xillybus_cmd_mem_32";
+const char *sig_path = "/tmp/xillybus_async_read_8";
+const char *data_path = "/tmp/xillybus_data_read_32";
+
 int config_fd = -1;
 int data_fd = -1;
 int sig_fd = -1;
@@ -219,12 +223,12 @@ void *data_loop(void *vargp)
     // Sample number, LFP data, ...
     fcntl(data_fd, F_SETPIPE_SZ, approx_frame_size * fifo_frame_capacity);
 
-    //const int fudge_factor = 1;
+    const int fudge_factor = 1;
 
     while (!quit) {
         if (running) {
 
-            //usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
+            usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
 
             // Raw frame
             uint8_t *frame;

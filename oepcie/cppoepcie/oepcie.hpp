@@ -128,7 +128,7 @@ namespace oe {
             // TODO: raw_t should be deduced from call to oe_raw_type() using
             // c++14 features
             template <typename raw_t>
-            raw_t * begin(size_t dev_idx)
+            raw_t *begin(size_t dev_idx)
             {
                 // Find the position of the requested idx in the frames
                 // dev_idx's array to get offset
@@ -145,7 +145,7 @@ namespace oe {
             }
 
             template <typename raw_t>
-            raw_t * end(size_t dev_idx)
+            raw_t *end(size_t dev_idx)
             {
                 auto it = std::find(
                     frame_->dev_idxs, frame_->dev_idxs + frame_->num_dev, dev_idx);

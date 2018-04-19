@@ -122,6 +122,11 @@ namespace oe
             SetOption(Context.Option.RUNNING, 0);
         }
 
+        public void Reset()
+        {
+            SetOption(Context.Option.RESET, 1);
+        }
+
         // Int32 SetOption
         private void SetOption(Option opt, int value)
         {
@@ -149,7 +154,6 @@ namespace oe
                     int rc = oepcie.set_opt(ctx, (int)opt, str, (uint)ssize + 1);
                     if (rc != 0) { throw new OEException(rc); }
                 }
-
             }
         }
 
@@ -205,7 +209,7 @@ namespace oe
             SYSCLKHZ
         }
 
-        void Dispose(bool disposing)
+        public void Dispose(bool disposing)
         {
             if (!disposed)
             {

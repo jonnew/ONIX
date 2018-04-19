@@ -70,7 +70,7 @@ namespace oe
         public List<int> DeviceIndices {get; private set;}
 
         // Global device index -> device_t struct
-        private readonly Dictionary<int, oe.lib.oepcie.device_t> DeviceMap;
+        private Dictionary<int, oe.lib.oepcie.device_t> DeviceMap;
         private oepcie.frame_t frame;
         private IntPtr frame_mem;
     }
