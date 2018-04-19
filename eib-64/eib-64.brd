@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -23,7 +23,7 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
@@ -228,6 +228,7 @@ OHL v1.2</text>
 <wire x1="7.4" y1="-4" x2="-7.4" y2="-4" width="0" layer="20" curve="-123.213961"/>
 <wire x1="-7.4" y1="4" x2="-7.4" y2="-4" width="0" layer="20"/>
 <wire x1="7.4" y1="4" x2="7.4" y2="-4" width="0" layer="20"/>
+<wire x1="-5.57" y1="-2.34" x2="-5.16" y2="-2.34" width="0.2032" layer="21"/>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -838,25 +839,25 @@ einem neuen Namen ab.</description>
 <contactref element="J1" pad="70"/>
 <contactref element="GND0" pad="P$1"/>
 <contactref element="GND1" pad="P$1"/>
-<polygon width="0.127" layer="16" thermals="no">
+<polygon width="0.127" layer="16" isolate="0.2032" thermals="no">
 <vertex x="-10.549996875" y="11.349996875"/>
 <vertex x="10.449996875" y="11.349996875"/>
 <vertex x="10.449996875" y="-11.649996875"/>
 <vertex x="-10.549996875" y="-11.649996875"/>
 </polygon>
-<polygon width="0.127" layer="1" thermals="no">
+<polygon width="0.127" layer="1" isolate="0.2032" thermals="no">
 <vertex x="-13.549996875" y="14.35"/>
 <vertex x="13.45" y="14.349996875"/>
 <vertex x="13.449996875" y="-14.65"/>
 <vertex x="-13.55" y="-14.649996875"/>
 </polygon>
-<polygon width="0.127" layer="15" thermals="no">
+<polygon width="0.127" layer="15" isolate="0.2032" thermals="no">
 <vertex x="-11.549996875" y="12.349996875"/>
 <vertex x="11.449996875" y="12.349996875"/>
 <vertex x="11.449996875" y="-12.649996875"/>
 <vertex x="-11.549996875" y="-12.649996875"/>
 </polygon>
-<polygon width="0.127" layer="2" thermals="no">
+<polygon width="0.127" layer="2" isolate="0.2032" thermals="no">
 <vertex x="-12.549996875" y="13.35"/>
 <vertex x="12.45" y="13.349996875"/>
 <vertex x="12.449996875" y="-13.65"/>

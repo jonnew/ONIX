@@ -1932,25 +1932,25 @@ einem neuen Namen ab.</description>
 <contactref element="J1" pad="70"/>
 <contactref element="GND0" pad="P$1"/>
 <contactref element="GND1" pad="P$1"/>
-<polygon width="0.127" layer="16" thermals="no">
+<polygon width="0.127" layer="16" isolate="0.2032" thermals="no">
 <vertex x="-20.549996875" y="111.349996875"/>
 <vertex x="110.449996875" y="111.349996875"/>
 <vertex x="110.449996875" y="-21.649996875"/>
 <vertex x="-20.549996875" y="-21.649996875"/>
 </polygon>
-<polygon width="0.127" layer="1" thermals="no">
+<polygon width="0.127" layer="1" isolate="0.2032" thermals="no">
 <vertex x="-23.549996875" y="114.35"/>
 <vertex x="113.45" y="114.349996875"/>
 <vertex x="113.449996875" y="-24.65"/>
 <vertex x="-23.55" y="-24.649996875"/>
 </polygon>
-<polygon width="0.127" layer="15" thermals="no">
+<polygon width="0.127" layer="15" isolate="0.2032" thermals="no">
 <vertex x="-21.549996875" y="112.349996875"/>
 <vertex x="111.449996875" y="112.349996875"/>
 <vertex x="111.449996875" y="-22.649996875"/>
 <vertex x="-21.549996875" y="-22.649996875"/>
 </polygon>
-<polygon width="0.127" layer="2" thermals="no">
+<polygon width="0.127" layer="2" isolate="0.2032" thermals="no">
 <vertex x="-22.549996875" y="113.35"/>
 <vertex x="112.45" y="113.349996875"/>
 <vertex x="112.449996875" y="-23.65"/>
@@ -2180,25 +2180,7 @@ einem neuen Namen ab.</description>
 <via x="44.4" y="47.95" extent="1-16" drill="0.2"/>
 <via x="47.2" y="47.45" extent="1-16" drill="0.2"/>
 <via x="49" y="46.45" extent="1-16" drill="0.2"/>
-<wire x1="47.2" y1="47.45" x2="49" y2="46.45" width="0" layer="19" extent="1-1"/>
-<wire x1="50.1" y1="44.6" x2="49" y2="46.45" width="0" layer="19" extent="1-1"/>
-<wire x1="51.2" y1="43.05" x2="50.1" y2="44.6" width="0" layer="19" extent="1-1"/>
-<wire x1="51.2" y1="42.17" x2="51.2" y2="43.05" width="0" layer="19" extent="1-1"/>
-<wire x1="44.4" y1="47.95" x2="47.2" y2="47.45" width="0" layer="19" extent="1-1"/>
-<wire x1="44.4" y1="46.6" x2="44.4" y2="47.95" width="0" layer="19" extent="1-1"/>
-<wire x1="41.6" y1="47.45" x2="44.4" y2="47.95" width="0" layer="19" extent="1-1"/>
-<wire x1="39.7" y1="46.35" x2="41.6" y2="47.45" width="0" layer="19" extent="1-1"/>
-<wire x1="36.4" y1="43.05" x2="39.7" y2="46.35" width="0" layer="19" extent="1-1"/>
-<wire x1="38" y1="35.35" x2="35.8" y2="35.15" width="0" layer="19" extent="1-1"/>
-<wire x1="38.9" y1="34.35" x2="38" y2="35.35" width="0" layer="19" extent="1-1"/>
-<wire x1="40.6" y1="33.05" x2="38.9" y2="34.35" width="0" layer="19" extent="1-1"/>
-<wire x1="42.4" y1="32.35" x2="40.6" y2="33.05" width="0" layer="19" extent="1-1"/>
-<wire x1="44.4" y1="32.05" x2="42.4" y2="32.35" width="0" layer="19" extent="1-1"/>
-<wire x1="44.4" y1="33.9" x2="44.4" y2="32.05" width="0" layer="19" extent="1-1"/>
-<wire x1="46.5" y1="32.35" x2="44.4" y2="32.05" width="0" layer="19" extent="1-1"/>
-<wire x1="47.9" y1="32.95" x2="46.5" y2="32.35" width="0" layer="19" extent="1-1"/>
-<wire x1="49.5" y1="33.95" x2="47.9" y2="32.95" width="0" layer="19" extent="1-1"/>
-<wire x1="50.6" y1="35.15" x2="49.5" y2="33.95" width="0" layer="19" extent="1-1"/>
+<wire x1="35.8" y1="35.15" x2="38" y2="35.35" width="0" layer="19" extent="1-1"/>
 <wire x1="21" y1="35.15" x2="23.2" y2="35.35" width="0" layer="19" extent="1-1"/>
 <wire x1="6.2" y1="35.15" x2="8.4" y2="35.35" width="0" layer="19" extent="1-1"/>
 <wire x1="44.4" y1="27.95" x2="44.4" y2="32.05" width="0" layer="19" extent="1-1"/>
