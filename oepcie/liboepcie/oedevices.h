@@ -11,21 +11,26 @@ extern "C" {
 #define OE_EXPORT
 #endif
 
-// Supported devices/IDs for the open-ephys++ project. oedevices.* can be
-// replaced with any device set if a user wishes to redefine these.
+#define OE_MAXDEVID 9999
+
+// NB: Officially supported device IDs for the open-ephys++ project occupy
+// device IDs < 10000. IDs above this value are not reserved and can be used
+// for custom projects.
 // NB: If you add a device here, make sure to update oe_device_str() and add
 // registers below
 enum oe_device_id {
-    OE_IMMEDIATEIO = 0,
-    OE_RHD2132	   = 1,
-    OE_RHD2164     = 2,
-    OE_MPU9250     = 3,
-    OE_ESTIM       = 4,
-    OE_OSTIM       = 5,
-    OE_PCECAMV3    = 6,
+    OE_IMMEDIATEIO       = 0, // pci-host board GPIO 
+    OE_RHD2132	         = 1, // Intan RHD2132 bioamplifier
+    OE_RHD2164           = 2, // Intan RHD2162 bioamplifier
+    OE_MPU9250           = 3, // MPU9250 9-axis accerometer
+    OE_ESTIM             = 4, // Electrical stimulation subcircuit
+    OE_OSTIM             = 5, // Optical stimulation subcircuit
+    OE_TS4231            = 6, // Triad semiconductor TS421 optical to digital converter
 
-    // NB: Always on bottom
-    OE_MAXDEVICEID
+    // NB: Final reserved device ID. Always on bottom
+    OE_MAXDEVICEID       = OE_MAXDEVID,
+
+    // >= 10000: Not reserved. Free to use for custom projects
 };
 
 // ** OE_IMMEDIATEIO device configuration registers **

@@ -26,7 +26,7 @@ COMMA-SEPARATE = $(subst ${SPACE},${COMMA},$(strip $1))
 all: $(SNAME) $(DNAME)
 
 .PHONY: debug
-debug: CFLAGS += -g3 
+debug: CFLAGS += -DDEBUG -g3 
 debug: all
 
 .PHONY: install

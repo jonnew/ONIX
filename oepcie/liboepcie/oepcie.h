@@ -34,9 +34,9 @@ extern "C" {
 #define OE_DEFAULTSIGNALPATH  "\\\\.\\xillybus_async_read_8"
 #define OE_EXPORT __declspec(dllexport)
 #else
-#define OE_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_mem_32"
-#define OE_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
-#define OE_DEFAULTSIGNALPATH  "/dev/xillybus_async_read_8"
+#define OE_DEFAULTCONFIGPATH  "file:///dev/xillybus_cmd_mem_32"
+#define OE_DEFAULTREADPATH    "file:///dev/xillybus_data_read_32"
+#define OE_DEFAULTSIGNALPATH  "file:///dev/xillybus_async_read_8"
 #define OE_EXPORT
 #endif
 
@@ -45,11 +45,10 @@ typedef uint32_t oe_size_t;
 typedef uint32_t oe_dev_id_t;
 typedef uint32_t oe_reg_addr_t;
 typedef uint32_t oe_reg_val_t;
-//typedef uint32_t oe_raw_t;
 
 // Device type
 typedef struct {
-    oe_dev_id_t id;         // ID number; NB: Cannot use oe_device_id_t because this must be fixed width
+    oe_dev_id_t id;         // Device ID number (see oedevices.h)
     oe_size_t read_size;    // Device data read size per frame in bytes
     oe_size_t num_reads;    // Number of frames that must be read to construct a full sample (e.g., for row reads from camera)
     oe_size_t write_size;   // Device data write size per frame in bytes
@@ -75,6 +74,7 @@ typedef struct oe_frame {
 enum {
     OE_CONFIGSTREAMPATH,
     OE_READSTREAMPATH,
+    OE_WRITESTREAMPATH,
     OE_SIGNALSTREAMPATH,
     OE_DEVICEMAP,
     OE_NUMDEVICES,
@@ -84,12 +84,6 @@ enum {
     OE_RESET,
     OE_SYSCLKHZ
 };
-
-// Allowed raw data types
-//enum {
-//    OE_UINT16 = 0,
-//    OE_UINT32,
-//};
 
 // NB: If you add an error here, make sure to update oe_error_str()
 enum {
@@ -129,7 +123,7 @@ OE_EXPORT oe_ctx oe_create_ctx();
 OE_EXPORT int oe_init_ctx(oe_ctx ctx);
 OE_EXPORT int oe_destroy_ctx(oe_ctx ctx);
 
-// Option getting/setting
+// Context option getting/setting
 OE_EXPORT int oe_get_opt(const oe_ctx ctx, int option, void* value, size_t *size);
 OE_EXPORT int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size);
 
@@ -137,8 +131,8 @@ OE_EXPORT int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size)
 OE_EXPORT int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t *value);
 OE_EXPORT int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
 OE_EXPORT int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
+OE_EXPORT int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
 OE_EXPORT void oe_destroy_frame(oe_frame_t *frame);
-//OE_EXPORT int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
 
 // Internal type conversion
 OE_EXPORT void oe_version(int *major, int *minor, int *patch);

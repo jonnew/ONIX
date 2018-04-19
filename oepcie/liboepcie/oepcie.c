@@ -31,10 +31,6 @@ typedef uint32_t oe_reg_val_t;
 // NB: Nested define allows compile command to define OE_BE
 #define OE_BE
 
-// Define byte-swapping macros
-// #define BSWAP_16(val)
-//    ((((uint16_t)(val)&0x00ff) << 8) | (((uint16_t)(val)&0xff00) >> 8))
-
 #define BSWAP_32(val)                                                          \
      ( (((uint32_t)(val)&0x000000ff) << 24)                                    \
      | (((uint32_t)(val)&0x0000ff00) << 8)                                     \
@@ -61,6 +57,7 @@ typedef struct oe_ctx_impl {
     // Communication channels
     stream_fid_t config;
     stream_fid_t read;
+    stream_fid_t write;
     stream_fid_t signal;
 
     // Devices
@@ -116,6 +113,7 @@ typedef enum oe_conf_reg_off {
 
 // Static helpers
 static inline int _oe_read(int data_fd, void* data, size_t size);
+static inline int _oe_write(int data_fd, char* data, size_t size);
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer);
 static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, size_t size);
 static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type);
@@ -142,6 +140,7 @@ oe_ctx oe_create_ctx()
     // NB: Setting pointers to NULL Enables downstream use of realloc()
     ctx->config.path = NULL;
     ctx->read.path = NULL;
+    ctx->write.path = NULL;
     ctx->signal.path = NULL;
     ctx->num_dev = 0;
     ctx->dev_map = NULL;
@@ -167,6 +166,12 @@ int oe_init_ctx(oe_ctx ctx)
 
 	ctx->read.fid = open(ctx->read.path, O_RDONLY | _O_BINARY);
 	if (ctx->read.fid == -1) {
+		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
+		return OE_EPATHINVALID;
+	}
+
+	ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
+	if (ctx->write.fid == -1) {
 		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
 		return OE_EPATHINVALID;
 	}
@@ -249,6 +254,7 @@ int oe_destroy_ctx(oe_ctx ctx)
 
     free(ctx->config.path);
     free(ctx->read.path);
+    free(ctx->write.path);
     free(ctx->signal.path);
     free(ctx->dev_map);
     free(ctx);
@@ -283,6 +289,15 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
 
             size_t n = strlen(ctx->read.path) + 1;
             memcpy(value, ctx->read.path, n);
+            *option_len = n;
+            break;
+        }
+        case OE_WRITESTREAMPATH: {
+            if (*option_len < (strlen(ctx->write.path) + 1))
+                return OE_EBUFFERSIZE;
+
+            size_t n = strlen(ctx->write.path) + 1;
+            memcpy(value, ctx->write.path, n);
             *option_len = n;
             break;
         }
@@ -393,6 +408,14 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
                 return OE_EINVALSTATE;
             ctx->read.path = realloc(ctx->read.path, option_len);
             memcpy(ctx->read.path, value, option_len);
+            break;
+        }
+        case OE_WRITESTREAMPATH: {
+            assert(ctx->run_state == UNINITIALIZED && "Context state must be UNINITIALIZED.");
+            if (ctx->run_state != UNINITIALIZED)
+                return OE_EINVALSTATE;
+            ctx->write.path = realloc(ctx->write.path, option_len);
+            memcpy(ctx->write.path, value, option_len);
             break;
         }
         case OE_SIGNALSTREAMPATH: {
@@ -613,8 +636,26 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     return 0;
 }
 
-void oe_destroy_frame(oe_frame_t *frame) {
+int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
+{
+    int num_bytes = OE_WFRAMEHEADERSZ + frame->dev_idxs_sz + frame->data_sz;
 
+    // Create serialized write frame
+    char *write_frame = malloc(num_bytes);
+    // TODO: Header
+    memcpy(write_frame + OE_WFRAMEHEADERSZ, frame->dev_idxs, frame->dev_idxs_sz);
+    memcpy(write_frame + OE_WFRAMEHEADERSZ + frame->dev_idxs_sz, frame->data, frame->data_sz);
+
+    int rc = _oe_write(ctx->write.fid, write_frame, num_bytes);
+
+    free(write_frame);
+
+    if (rc != num_bytes) return rc;
+    return 0;
+}
+
+void oe_destroy_frame(oe_frame_t *frame)
+{
     if (frame != NULL) {
 
         // Free held resources
@@ -736,6 +777,24 @@ static inline int _oe_read(int data_fd, void *data, size_t size)
     }
 
     return received;
+}
+
+static inline int _oe_write(int data_fd, char *data, size_t size)
+{
+    int written = 0;
+
+    while (1) {
+
+        written = write(data_fd, data, size);
+
+        if ((written < 0) && (errno == EINTR))
+            continue;
+
+        if (written <= 0)
+            return OE_EWRITEFAILURE;
+    }
+
+    return written;
 }
 
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer)
@@ -945,20 +1004,6 @@ static int _oe_read_buffer(oe_ctx ctx, void *data, size_t size)
     return 0;
 }
 
-//static int _oe_raw_size(oe_raw_t type)
-//{
-//    switch (type) {
-//        case OE_UINT16: {
-//            return 2;
-//        }
-//        case OE_UINT32: {
-//            return 4;
-//        }
-//        default:
-//            return OE_EINVALRAWTYPE;
-//    }
-//}
-
 #ifdef OE_BE
 static int _device_map_byte_swap(oe_ctx ctx)
 {
@@ -974,27 +1019,4 @@ static int _device_map_byte_swap(oe_ctx ctx)
     return 0;
 }
 
-//static int _oe_array_bswap(void *data, oe_raw_t type, size_t size)
-//{
-//    size_t i;
-//    int inc = _oe_raw_size(type);
-//
-//    switch (type) {
-//
-//        case OE_UINT16:
-//            for (i = 0; i < size; i += inc) {
-//                *((uint16_t *)(data) + i) = BSWAP_16(*((uint16_t *)(data) + i));
-//            }
-//            break;
-//        case OE_UINT32:
-//            for (i = 0; i < size; i += inc) {
-//                *((uint32_t *)(data) + i) = BSWAP_32(*((uint32_t *)(data) + i));
-//            }
-//            break;
-//        default:
-//            return OE_EINVALRAWTYPE;
-//    }
-//
-//    return 0;
-//}
 #endif
