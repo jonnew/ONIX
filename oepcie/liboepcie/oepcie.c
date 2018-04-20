@@ -170,11 +170,11 @@ int oe_init_ctx(oe_ctx ctx)
 		return OE_EPATHINVALID;
 	}
 
-	ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
-	if (ctx->write.fid == -1) {
-		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
-		return OE_EPATHINVALID;
-	}
+	//ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
+	//if (ctx->write.fid == -1) {
+	//	fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
+	//	return OE_EPATHINVALID;
+	//}
 
 	ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
 	if (ctx->signal.fid == -1) {
@@ -249,6 +249,7 @@ int oe_destroy_ctx(oe_ctx ctx)
 
         if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
         if (close(ctx->read.fid) == -1) goto oe_close_ctx_fail;
+		//if (close(ctx->write.fid) == -1) goto oe_close_ctx_fail;
         if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
     }
 
@@ -426,22 +427,22 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             memcpy(ctx->signal.path, value, option_len);
             break;
         }
-        case OE_RUNNING: {
-            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
-            if (ctx->run_state < IDLE)
-                return OE_EINVALSTATE;
+		case OE_RUNNING: {
+			assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
+			if (ctx->run_state < IDLE)
+				return OE_EINVALSTATE;
 
-            if (option_len != OE_REGSZ)
-                return OE_EBUFFERSIZE;
+			if (option_len != OE_REGSZ)
+				return OE_EBUFFERSIZE;
 
-            int rc = _oe_write_config(
-                ctx->config.fid, CONFRUNNINGOFFSET, *(oe_reg_val_t*)value);
-            if (rc) return rc;
+			int rc = _oe_write_config(
+				ctx->config.fid, CONFRUNNINGOFFSET, *(oe_reg_val_t*)value);
+			if (rc) return rc;
 
-            if (*(oe_reg_val_t *)value != 0)
-                ctx->run_state = RUNNING;
-            else
-                ctx->run_state = IDLE;
+			if (*(oe_reg_val_t *)value != 0)
+				ctx->run_state = RUNNING;
+			else
+				ctx->run_state = IDLE;
             break;
         }
         case OE_RESET: {
@@ -636,23 +637,23 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     return 0;
 }
 
-int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
-{
-    int num_bytes = OE_WFRAMEHEADERSZ + frame->dev_idxs_sz + frame->data_sz;
-
-    // Create serialized write frame
-    char *write_frame = malloc(num_bytes);
-    // TODO: Header
-    memcpy(write_frame + OE_WFRAMEHEADERSZ, frame->dev_idxs, frame->dev_idxs_sz);
-    memcpy(write_frame + OE_WFRAMEHEADERSZ + frame->dev_idxs_sz, frame->data, frame->data_sz);
-
-    int rc = _oe_write(ctx->write.fid, write_frame, num_bytes);
-
-    free(write_frame);
-
-    if (rc != num_bytes) return rc;
-    return 0;
-}
+//int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
+//{
+//    int num_bytes = OE_WFRAMEHEADERSZ + frame->dev_idxs_sz + frame->data_sz;
+//
+//    // Create serialized write frame
+//    char *write_frame = malloc(num_bytes);
+//    // TODO: Header
+//    memcpy(write_frame + OE_WFRAMEHEADERSZ, frame->dev_idxs, frame->dev_idxs_sz);
+//    memcpy(write_frame + OE_WFRAMEHEADERSZ + frame->dev_idxs_sz, frame->data, frame->data_sz);
+//
+//    int rc = _oe_write(ctx->write.fid, write_frame, num_bytes);
+//
+//    free(write_frame);
+//
+//    if (rc != num_bytes) return rc;
+//    return 0;
+//}
 
 void oe_destroy_frame(oe_frame_t *frame)
 {

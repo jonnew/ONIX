@@ -177,7 +177,9 @@ int main(int argc, char *argv[])
     oe_set_opt(ctx, OE_READSTREAMPATH, data_path, strlen(data_path) + 1);
 
     // Initialize context and discover hardware
-    assert(oe_init_ctx(ctx) == 0);
+	int rc = oe_init_ctx(ctx);
+	if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    assert(rc == 0);
 
     // Examine device map
     oe_size_t num_devs = 0;
@@ -197,7 +199,7 @@ int main(int argc, char *argv[])
 
         const char *dev_str = oe_device_str(devices[dev_idx].id);
 
-        printf("\t%d) ID: %d (%s), Read size:%u\n",
+        printf("\t%zd) ID: %d (%s), Read size:%u\n",
                dev_idx,
                devices[dev_idx].id,
                dev_str,
@@ -211,7 +213,7 @@ int main(int argc, char *argv[])
 
     // Try to write to base clock freq, which is write only
     oe_reg_val_t base_hz = (oe_reg_val_t)10e6;
-    int rc = oe_set_opt(ctx, OE_SYSCLKHZ, &base_hz, sizeof(oe_reg_val_t));
+    rc = oe_set_opt(ctx, OE_SYSCLKHZ, &base_hz, sizeof(oe_reg_val_t));
     assert(rc == OE_EREADONLY && "Successful write to read-only register.");
 
     size_t clk_val_sz = sizeof(base_hz);

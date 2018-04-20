@@ -34,9 +34,9 @@ extern "C" {
 #define OE_DEFAULTSIGNALPATH  "\\\\.\\xillybus_async_read_8"
 #define OE_EXPORT __declspec(dllexport)
 #else
-#define OE_DEFAULTCONFIGPATH  "file:///dev/xillybus_cmd_mem_32"
-#define OE_DEFAULTREADPATH    "file:///dev/xillybus_data_read_32"
-#define OE_DEFAULTSIGNALPATH  "file:///dev/xillybus_async_read_8"
+#define OE_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_mem_32"
+#define OE_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
+#define OE_DEFAULTSIGNALPATH  "/dev/xillybus_async_read_8"
 #define OE_EXPORT
 #endif
 
@@ -131,7 +131,7 @@ OE_EXPORT int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size)
 OE_EXPORT int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t *value);
 OE_EXPORT int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
 OE_EXPORT int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
-OE_EXPORT int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
+//OE_EXPORT int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
 OE_EXPORT void oe_destroy_frame(oe_frame_t *frame);
 
 // Internal type conversion
