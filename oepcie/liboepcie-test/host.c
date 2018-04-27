@@ -137,7 +137,7 @@ void *data_loop(void *vargp)
                 int i;
                 printf("\tData: [");
                 for (i = 0; i < data_sz; i += 2)
-                    printf("%" PRId16 " ", *(uint16_t *)(data + i));
+                    printf("%u ", *(uint16_t *)(data + i));
                 printf("]\n");
             }
         }
@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
 
         const char *dev_str = oe_device_str(devices[dev_idx].id);
 
-        printf("\t%zd) ID: %d (%s), Read size:%u\n",
+        printf("\t%zd) ID: %d (%s), Read size: %u\n",
                dev_idx,
                devices[dev_idx].id,
                dev_str,
