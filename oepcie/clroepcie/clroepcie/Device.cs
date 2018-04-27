@@ -19,7 +19,7 @@ namespace oe
             MPU9250 = 3,
             ESTIM = 4,
             OSTIM = 5,
-            PCECAMV3 = 6
+            TS4231 = 6
         }
 
         // ** IMMEDIATEIO device configuration registers **

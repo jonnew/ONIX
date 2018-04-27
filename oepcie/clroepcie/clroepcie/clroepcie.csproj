@@ -28,7 +28,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\x86\Release\</OutputPath>
+    <OutputPath>bin\x64\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -100,12 +100,14 @@
     <None Include="clroepcie.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="clroepcie.targets" />
+    <None Include="clroepcie.targets">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)\..\liboepcie\Release\x86\liboepcie.dll $(SolutionDir)\Externals\oepcie\x86\liboepcie.dll /y
-copy $(SolutionDir)\..\liboepcie\Release\x64\liboepcie.dll $(SolutionDir)\Externals\oepcie\x64\liboepcie.dll /y</PreBuildEvent>
+    <PreBuildEvent>copy $(ProjectDir)\..\..\liboepcie\x86\Release\liboepcie.dll $(ProjectDir)\..\Externals\oepcie\x86\liboepcie.dll /y
+copy $(ProjectDir)\..\..\liboepcie\x64\Release\liboepcie.dll $(ProjectDir)\..\Externals\oepcie\x64\liboepcie.dll /y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

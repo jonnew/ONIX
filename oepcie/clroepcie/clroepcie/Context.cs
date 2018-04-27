@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-//using MapDevice = System.Tuple<int, oe.lib.oepcie.device_t>; // Index -> device
 
 namespace oe
 {
-    //using DeviceMap = List<Device>;
     using lib;
 
     public class Context : IDisposable

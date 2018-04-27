@@ -14,7 +14,7 @@
     <tags>Open Ephys Electrophysiology PCIe Neuro Science</tags>
   </metadata>
   <files>
-    <file src="clroepcie.targets" target="build\net45"/>
+    <file src="clroepcie.targets" target="lib\net45"/>
     <file src="..\Externals\oepcie\**\*.dll" target="build\native\bin"/>
   </files>
 </package>
