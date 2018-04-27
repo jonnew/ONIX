@@ -3,7 +3,7 @@
 #include "oepcie.h"
 #include "oedevices.h"
 
-int oe_device_valid(int dev_id) {
+static int oe_device_valid(int dev_id) {
 
     // Check if a custom device
     if (dev_id > OE_MAXDEVID)
