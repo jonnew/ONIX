@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route1" color="13" fill="1" visible="yes" active="yes"/>
@@ -1385,7 +1385,7 @@ einem neuen Namen ab.</description>
 <element name="U8" library="jonnew" package="LFCSP8-2X3" value="ADG1401" x="6.0365" y="4.0897" rot="MR0">
 <attribute name="PARTNO" value="ADG1401BCPZ" x="6.0365" y="4.0897" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
-<element name="R13" library="jonnew" package="0201T" value="49.9" x="3.84" y="4.86" rot="MR180"/>
+<element name="R13" library="jonnew" package="0201T" value="590" x="3.84" y="4.86" rot="MR180"/>
 <element name="C20" library="jonnew" package="0201T" value="0.1uF" x="8.0672" y="3.5932" rot="MR90">
 <attribute name="PARTNO" value="CL03A104KA3NNNC" x="8.0672" y="3.5932" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>

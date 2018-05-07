@@ -4842,7 +4842,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <attribute name="PARTNO" value="ADG1401BCPZ"/>
 </part>
 <part name="SUPPLY28" library="jonnew" deviceset="GND" device=""/>
-<part name="R13" library="jonnew" deviceset="R" device="_0201T" value="49.9"/>
+<part name="R13" library="jonnew" deviceset="R" device="_0201T" value="590"/>
 <part name="C20" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
 <attribute name="PARTNO" value="CL03A104KA3NNNC"/>
 </part>
