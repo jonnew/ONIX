@@ -113,7 +113,7 @@ typedef enum oe_conf_reg_off {
 
 // Static helpers
 static inline int _oe_read(int data_fd, void* data, size_t size);
-static inline int _oe_write(int data_fd, char* data, size_t size);
+//static inline int _oe_write(int data_fd, char* data, size_t size);
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer);
 static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, size_t size);
 static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type);
@@ -780,23 +780,23 @@ static inline int _oe_read(int data_fd, void *data, size_t size)
     return received;
 }
 
-static inline int _oe_write(int data_fd, char *data, size_t size)
-{
-    int written = 0;
-
-    while (1) {
-
-        written = write(data_fd, data, size);
-
-        if ((written < 0) && (errno == EINTR))
-            continue;
-
-        if (written <= 0)
-            return OE_EWRITEFAILURE;
-    }
-
-    return written;
-}
+//static inline int _oe_write(int data_fd, char *data, size_t size)
+//{
+//    int written = 0;
+//
+//    while (1) {
+//
+//        written = write(data_fd, data, size);
+//
+//        if ((written < 0) && (errno == EINTR))
+//            continue;
+//
+//        if (written <= 0)
+//            return OE_EWRITEFAILURE;
+//    }
+//
+//    return written;
+//}
 
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer)
 {

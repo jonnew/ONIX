@@ -17,7 +17,7 @@
 #include "testfunc.h"
 
 // Sample rate
-const int fs_hz = 30e3;
+//const int fs_hz = 30e3;
 
 // Data acq. params
 const size_t approx_frame_size = 500;
@@ -223,12 +223,12 @@ void *data_loop(void *vargp)
     // Sample number, LFP data, ...
     fcntl(data_fd, F_SETPIPE_SZ, approx_frame_size * fifo_frame_capacity);
 
-    const int fudge_factor = 1;
+    //const int fudge_factor = 1;
 
     while (!quit) {
         if (running) {
 
-            usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
+            //usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
 
             // Raw frame
             uint8_t *frame;

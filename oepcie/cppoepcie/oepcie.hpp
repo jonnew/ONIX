@@ -49,14 +49,6 @@ namespace oe {
     using device_t = oe_device_t;
     using device_map_t = std::vector<device_t>;
 
-    const char *device_str(int dev_id)
-    {
-        int rc = oe_device_valid(dev_id);
-        if (rc != 0) throw error_t(rc);
-
-        return oe_device_str(dev_id);
-    }
-
     class frame_t
     {
         friend context_t; // NB: Fills frame_t::frame_;
@@ -207,12 +199,6 @@ namespace oe {
             size_t devices_sz = sizeof(oe_device_t) * num_devs;
             device_map_.resize(num_devs);
             get_opt(OE_DEVICEMAP, device_map_.data(), &devices_sz);
-
-            // Check device validity
-            for (const auto &dev : device_map_) {
-                int rc = oe_device_valid(dev.id);
-                if (rc != 0) throw error_t(rc);
-            }
         }
 
         // No copy

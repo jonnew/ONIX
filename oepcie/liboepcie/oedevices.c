@@ -3,8 +3,8 @@
 #include "oepcie.h"
 #include "oedevices.h"
 
-static int oe_device_valid(int dev_id) {
-
+int oe_device_official(int dev_id)
+{
     // Check if a custom device
     if (dev_id > OE_MAXDEVID)
         return 0;
@@ -26,8 +26,6 @@ static int oe_device_valid(int dev_id) {
 
 const char *oe_device_str(int dev_id)
 {
-    assert(oe_device_valid(dev_id) == 0 && "Invalid device ID.");
-
     switch (dev_id) {
         case OE_IMMEDIATEIO: {
             return "Host-board GPIO";
