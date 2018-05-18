@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -65,6 +65,9 @@
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="no"/>
@@ -88,6 +91,8 @@
 <layer number="111" name="LPC17xx" color="7" fill="1" visible="no" active="yes"/>
 <layer number="112" name="tSilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="113" name="IDFDebug" color="4" fill="1" visible="no" active="yes"/>
+<layer number="114" name="Badge_Outline" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="115" name="ReferenceISLANDS" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="116" name="Patch_BOT" color="7" fill="1" visible="no" active="yes"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="no"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="no" active="yes"/>
@@ -98,6 +103,7 @@
 <layer number="126" name="_bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="127" name="_tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="129" name="Mask" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="no" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="no" active="yes"/>
 <layer number="144" name="Drill_legend" color="7" fill="1" visible="no" active="yes"/>
@@ -133,11 +139,21 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="225" name="225bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="226" name="226bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="227" name="227bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="228" name="228bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="229" name="229bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="230" name="230bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="231" name="231bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="232" name="Eagle3D_PG2" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="233" name="Eagle3D_PG3" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="248" name="Housing" color="7" fill="1" visible="no" active="yes"/>
 <layer number="249" name="Edge" color="7" fill="1" visible="no" active="yes"/>
 <layer number="250" name="Descript" color="7" fill="1" visible="no" active="yes"/>
 <layer number="251" name="SMDround" color="7" fill="1" visible="no" active="yes"/>
 <layer number="254" name="OrgLBR" color="7" fill="1" visible="no" active="yes"/>
+<layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
 <plain>
@@ -550,6 +566,7 @@ GOOD</text>
 <wire x1="-0.762" y1="-1.397" x2="0.762" y2="-1.397" width="0.1016" layer="51"/>
 <rectangle x1="0.3175" y1="-1.397" x2="0.8255" y2="1.397" layer="51"/>
 <rectangle x1="-3.048" y1="-1.651" x2="-2.413" y2="1.651" layer="21"/>
+<rectangle x1="-2.2" y1="-1.5" x2="2.2" y2="1.4" layer="39"/>
 </package>
 <package name="JP3_SMD">
 <wire x1="-3.81" y1="-1.524" x2="-3.81" y2="1.524" width="0.1524" layer="21"/>
@@ -861,30 +878,30 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="7.8049" y="-16.794840625" size="1.6764" layer="26" font="vector" ratio="18" rot="MR146" align="center"/>
 <attribute name="VALUE" x="6.676925" y="-15.34964375" size="0.889" layer="28" font="vector" ratio="18" rot="MR146" align="center"/>
 </element>
-<element name="U1" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-31.0612125" y="-0.445359375" smashed="yes" rot="MR56">
+<element name="U1" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-31.0612125" y="-0.445359375" smashed="yes" rot="MR56">
 <attribute name="NAME" x="-28.734975" y="-0.714565625" size="1.016" layer="26" font="vector" ratio="18" rot="MR56"/>
 </element>
-<element name="U2" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-28.824446875" y="-3.761515625" smashed="yes" rot="MR56">
+<element name="U2" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-28.824446875" y="-3.761515625" smashed="yes" rot="MR56">
 <attribute name="NAME" x="-26.498209375" y="-4.030721875" size="1.016" layer="26" font="vector" ratio="18" rot="MR56"/>
 </element>
-<element name="U3" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-26.587671875" y="-7.07766875" smashed="yes" rot="MR56">
+<element name="U3" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-26.587671875" y="-7.07766875" smashed="yes" rot="MR56">
 <attribute name="NAME" x="-24.261434375" y="-7.346875" size="1.016" layer="26" font="vector" ratio="18" rot="MR56"/>
 </element>
-<element name="U4" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-24.35090625" y="-10.393815625" smashed="yes" rot="MR56">
+<element name="U4" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-24.35090625" y="-10.393815625" smashed="yes" rot="MR56">
 <attribute name="NAME" x="-22.02466875" y="-10.663021875" size="1.016" layer="26" font="vector" ratio="18" rot="MR56"/>
 </element>
-<element name="U8" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-15.40383125" y="-23.658390625" smashed="yes" rot="MR56">
+<element name="U8" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-15.40383125" y="-23.658390625" smashed="yes" rot="MR56">
 <attribute name="NAME" x="-13.07759375" y="-23.927596875" size="1.016" layer="26" font="vector" ratio="18" rot="MR56"/>
 </element>
 <element name="J8" library="jonnew" package="MOLC-110-11-S-Q" value="" x="0" y="57.999975" smashed="yes" rot="MR0"/>
-<element name="U7" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-17.6406" y="-20.342234375" smashed="yes" rot="MR56">
+<element name="U7" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-17.6406" y="-20.342234375" smashed="yes" rot="MR56">
 <attribute name="NAME" x="-15.3143625" y="-20.611440625" size="1.016" layer="26" font="vector" ratio="18" rot="MR56"/>
 </element>
-<element name="U6" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-19.877375" y="-17.02608125" smashed="yes" rot="MR56">
+<element name="U6" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-19.877375" y="-17.02608125" smashed="yes" rot="MR56">
 <attribute name="NAME" x="-17.5511375" y="-17.2952875" size="1.016" layer="26" font="vector" ratio="18" rot="MR56"/>
 <attribute name="VALUE" x="-16.769496875" y="-15.27991875" size="1.016" layer="28" font="vector" ratio="18" rot="MR56"/>
 </element>
-<element name="U5" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-22.114134375" y="-13.709959375" smashed="yes" rot="MR56">
+<element name="U5" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-22.114134375" y="-13.709959375" smashed="yes" rot="MR56">
 <attribute name="NAME" x="-19.787896875" y="-13.979165625" size="1.016" layer="26" font="vector" ratio="18" rot="MR56"/>
 </element>
 <element name="S1" library="jonnew" package="SMS-002" value="219-2MSTR" x="-28.57499375" y="67.944978125" smashed="yes">
@@ -904,79 +921,79 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="-36.322" y="71.374" size="1.016" layer="25" font="vector" ratio="18" rot="R180" align="center-right"/>
 <attribute name="VALUE" x="-35.63899375" y="65.9803875" size="1.016" layer="27" font="vector" ratio="18" align="center-left"/>
 </element>
-<element name="U9" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="0.445359375" y="-31.0612125" smashed="yes" rot="MR326">
+<element name="U9" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="0.445359375" y="-31.0612125" smashed="yes" rot="MR326">
 <attribute name="NAME" x="0.71456875" y="-28.734971875" size="1.016" layer="26" font="vector" ratio="18" rot="MR326"/>
 </element>
-<element name="U10" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="3.761515625" y="-28.824446875" smashed="yes" rot="MR326">
+<element name="U10" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="3.761515625" y="-28.824446875" smashed="yes" rot="MR326">
 <attribute name="NAME" x="4.030725" y="-26.49820625" size="1.016" layer="26" font="vector" ratio="18" rot="MR326"/>
 </element>
-<element name="U12" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="7.07766875" y="-26.587671875" smashed="yes" rot="MR326">
+<element name="U12" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="7.07766875" y="-26.587671875" smashed="yes" rot="MR326">
 <attribute name="NAME" x="7.346878125" y="-24.26143125" size="1.016" layer="26" font="vector" ratio="18" rot="MR326"/>
 </element>
-<element name="U14" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="10.393815625" y="-24.35090625" smashed="yes" rot="MR326">
+<element name="U14" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="10.393815625" y="-24.35090625" smashed="yes" rot="MR326">
 <attribute name="NAME" x="10.663025" y="-22.024665625" size="1.016" layer="26" font="vector" ratio="18" rot="MR326"/>
 </element>
-<element name="U22" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="23.658390625" y="-15.40383125" smashed="yes" rot="MR326">
+<element name="U22" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="23.658390625" y="-15.40383125" smashed="yes" rot="MR326">
 <attribute name="NAME" x="23.9276" y="-13.077590625" size="1.016" layer="26" font="vector" ratio="18" rot="MR326"/>
 </element>
-<element name="U20" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="20.342234375" y="-17.6406" smashed="yes" rot="MR326">
+<element name="U20" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="20.342234375" y="-17.6406" smashed="yes" rot="MR326">
 <attribute name="NAME" x="20.61144375" y="-15.314359375" size="1.016" layer="26" font="vector" ratio="18" rot="MR326"/>
 </element>
-<element name="U18" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="17.02608125" y="-19.877375" smashed="yes" rot="MR326">
+<element name="U18" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="17.02608125" y="-19.877375" smashed="yes" rot="MR326">
 <attribute name="NAME" x="17.295290625" y="-17.551134375" size="1.016" layer="26" font="vector" ratio="18" rot="MR326"/>
 <attribute name="VALUE" x="14.771921875" y="-17.27749375" size="1.016" layer="28" font="vector" ratio="18" rot="MR326"/>
 </element>
-<element name="U16" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="13.709959375" y="-22.114134375" smashed="yes" rot="MR326">
+<element name="U16" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="13.709959375" y="-22.114134375" smashed="yes" rot="MR326">
 <attribute name="NAME" x="13.97916875" y="-19.78789375" size="1.016" layer="26" font="vector" ratio="18" rot="MR326"/>
 </element>
-<element name="U32" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="31.0612125" y="0.445359375" smashed="yes" rot="MR236">
+<element name="U32" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="31.0612125" y="0.445359375" smashed="yes" rot="MR236">
 <attribute name="NAME" x="28.734975" y="0.714565625" size="1.016" layer="26" font="vector" ratio="18" rot="MR236"/>
 </element>
-<element name="U31" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="28.824446875" y="3.761515625" smashed="yes" rot="MR236">
+<element name="U31" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="28.824446875" y="3.761515625" smashed="yes" rot="MR236">
 <attribute name="NAME" x="26.498209375" y="4.030721875" size="1.016" layer="26" font="vector" ratio="18" rot="MR236"/>
 </element>
-<element name="U30" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="26.587671875" y="7.07766875" smashed="yes" rot="MR236">
+<element name="U30" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="26.587671875" y="7.07766875" smashed="yes" rot="MR236">
 <attribute name="NAME" x="24.261434375" y="7.346875" size="1.016" layer="26" font="vector" ratio="18" rot="MR236"/>
 </element>
-<element name="U29" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="24.35090625" y="10.393815625" smashed="yes" rot="MR236">
+<element name="U29" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="24.35090625" y="10.393815625" smashed="yes" rot="MR236">
 <attribute name="NAME" x="22.02466875" y="10.663021875" size="1.016" layer="26" font="vector" ratio="18" rot="MR236"/>
 </element>
-<element name="U25" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="15.40383125" y="23.658390625" smashed="yes" rot="MR236">
+<element name="U25" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="15.40383125" y="23.658390625" smashed="yes" rot="MR236">
 <attribute name="NAME" x="13.07759375" y="23.927596875" size="1.016" layer="26" font="vector" ratio="18" rot="MR236"/>
 </element>
-<element name="U26" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="17.6406" y="20.342234375" smashed="yes" rot="MR236">
+<element name="U26" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="17.6406" y="20.342234375" smashed="yes" rot="MR236">
 <attribute name="NAME" x="15.3143625" y="20.611440625" size="1.016" layer="26" font="vector" ratio="18" rot="MR236"/>
 </element>
-<element name="U27" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="19.877375" y="17.02608125" smashed="yes" rot="MR236">
+<element name="U27" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="19.877375" y="17.02608125" smashed="yes" rot="MR236">
 <attribute name="NAME" x="17.5511375" y="17.2952875" size="1.016" layer="26" font="vector" ratio="18" rot="MR236"/>
 <attribute name="VALUE" x="17.277496875" y="14.77191875" size="1.016" layer="28" font="vector" ratio="18" rot="MR236"/>
 </element>
-<element name="U28" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="22.114134375" y="13.709959375" smashed="yes" rot="MR236">
+<element name="U28" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="22.114134375" y="13.709959375" smashed="yes" rot="MR236">
 <attribute name="NAME" x="19.787896875" y="13.979165625" size="1.016" layer="26" font="vector" ratio="18" rot="MR236"/>
 </element>
-<element name="U24" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-0.445359375" y="31.0612125" smashed="yes" rot="MR146">
+<element name="U24" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-0.445359375" y="31.0612125" smashed="yes" rot="MR146">
 <attribute name="NAME" x="-0.71456875" y="28.734971875" size="1.016" layer="26" font="vector" ratio="18" rot="MR146"/>
 </element>
-<element name="U23" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-3.761515625" y="28.824446875" smashed="yes" rot="MR146">
+<element name="U23" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-3.761515625" y="28.824446875" smashed="yes" rot="MR146">
 <attribute name="NAME" x="-4.030725" y="26.49820625" size="1.016" layer="26" font="vector" ratio="18" rot="MR146"/>
 </element>
-<element name="U21" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-7.07766875" y="26.587671875" smashed="yes" rot="MR146">
+<element name="U21" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-7.07766875" y="26.587671875" smashed="yes" rot="MR146">
 <attribute name="NAME" x="-7.346878125" y="24.26143125" size="1.016" layer="26" font="vector" ratio="18" rot="MR146"/>
 </element>
-<element name="U19" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-10.393815625" y="24.35090625" smashed="yes" rot="MR146">
+<element name="U19" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-10.393815625" y="24.35090625" smashed="yes" rot="MR146">
 <attribute name="NAME" x="-10.663025" y="22.024665625" size="1.016" layer="26" font="vector" ratio="18" rot="MR146"/>
 </element>
-<element name="U11" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-23.658390625" y="15.40383125" smashed="yes" rot="MR146">
+<element name="U11" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-23.658390625" y="15.40383125" smashed="yes" rot="MR146">
 <attribute name="NAME" x="-23.9276" y="13.077590625" size="1.016" layer="26" font="vector" ratio="18" rot="MR146"/>
 </element>
-<element name="U13" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-20.342234375" y="17.6406" smashed="yes" rot="MR146">
+<element name="U13" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-20.342234375" y="17.6406" smashed="yes" rot="MR146">
 <attribute name="NAME" x="-20.61144375" y="15.314359375" size="1.016" layer="26" font="vector" ratio="18" rot="MR146"/>
 </element>
-<element name="U15" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-17.02608125" y="19.877375" smashed="yes" rot="MR146">
+<element name="U15" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-17.02608125" y="19.877375" smashed="yes" rot="MR146">
 <attribute name="NAME" x="-17.295290625" y="17.551134375" size="1.016" layer="26" font="vector" ratio="18" rot="MR146"/>
 <attribute name="VALUE" x="-14.517921875" y="17.53149375" size="1.016" layer="28" font="vector" ratio="18" rot="MR146"/>
 </element>
-<element name="U17" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052E_MQFN" x="-13.709959375" y="22.114134375" smashed="yes" rot="MR146">
+<element name="U17" library="jonnew" package="MQFN16-1.8X2.6" value="DG4052A" x="-13.709959375" y="22.114134375" smashed="yes" rot="MR146">
 <attribute name="NAME" x="-13.97916875" y="19.78789375" size="1.016" layer="26" font="vector" ratio="18" rot="MR146"/>
 </element>
 <element name="C17" library="jonnew" package="1210-POL" value="10uF" x="18.795996875" y="61.467990625" smashed="yes" rot="R180">
