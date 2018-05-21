@@ -1901,42 +1901,6 @@
 <text x="-2.1668" y="1.6788" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.2238" y="-2.5048" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
-<package name="MICRO-SD-473092851">
-<text x="0.6" y="-10.6" size="1.27" layer="51" font="vector" ratio="18" rot="R180" align="center">Inserted
-1.65 mm
-clearance</text>
-<smd name="VDD" x="0.55" y="-1.3" dx="0.6" dy="1.25" layer="1"/>
-<smd name="CLK" x="-0.55" y="-1.3" dx="0.6" dy="1.25" layer="1"/>
-<smd name="VSS" x="-1.65" y="-1.3" dx="0.6" dy="1.25" layer="1"/>
-<smd name="DAT0" x="-2.75" y="-1.3" dx="0.6" dy="1.25" layer="1"/>
-<smd name="DAT1" x="-3.85" y="-1.3" dx="0.6" dy="1.25" layer="1"/>
-<smd name="CMD" x="1.65" y="-1.3" dx="0.6" dy="1.25" layer="1"/>
-<smd name="CD/DATA3" x="2.75" y="-1.3" dx="0.6" dy="1.25" layer="1"/>
-<smd name="DAT2" x="3.85" y="-1.3" dx="0.6" dy="1.25" layer="1"/>
-<smd name="G1" x="-5" y="-5.105" dx="3.79" dy="1.2" layer="1" rot="R90"/>
-<wire x1="6.1" y1="-10.4" x2="6.1" y2="-14.453590625" width="0.2032" layer="51"/>
-<wire x1="6.1" y1="-14.453590625" x2="5.253590625" y2="-15.3" width="0.2032" layer="51" curve="-90"/>
-<wire x1="-4.85" y1="-7.2" x2="-4.85" y2="-14.191725" width="0.2032" layer="51"/>
-<wire x1="-4.85" y1="-14.191725" x2="-3.741725" y2="-15.3" width="0.2032" layer="51" curve="90"/>
-<wire x1="-3.741725" y1="-15.3" x2="5.253590625" y2="-15.3" width="0.2032" layer="51"/>
-<wire x1="-5.4" y1="0.05" x2="6" y2="0.05" width="0.127" layer="21"/>
-<wire x1="6" y1="0.05" x2="6" y2="-6.8" width="0.127" layer="21"/>
-<wire x1="6" y1="-6.8" x2="-5.4" y2="-6.8" width="0.127" layer="21"/>
-<wire x1="-5.4" y1="-6.8" x2="-5.4" y2="0.05" width="0.127" layer="21"/>
-<smd name="G4" x="4.775" y="-6.6" dx="0.85" dy="0.95" layer="1" rot="R90"/>
-<smd name="G3" x="5.7" y="-4.5" dx="1" dy="0.6" layer="1" rot="R180"/>
-<smd name="G2" x="5.475" y="-3.05" dx="1.4" dy="1.45" layer="1" rot="R270"/>
-<rectangle x1="-5.4" y1="-6.8" x2="6" y2="0" layer="39"/>
-<wire x1="5.6" y1="-7" x2="5.6" y2="-7.2" width="0.2032" layer="51"/>
-<wire x1="5.6" y1="-7.2" x2="6.1" y2="-7.7" width="0.2032" layer="51"/>
-<wire x1="5.5" y1="-9.14140625" x2="5.5" y2="-9.9" width="0.2032" layer="51"/>
-<wire x1="5.5" y1="-9.9" x2="6.1" y2="-10.4" width="0.2032" layer="51"/>
-<wire x1="6.1" y1="-7.7" x2="6.1" y2="-8.8" width="0.2032" layer="51"/>
-<wire x1="5.5" y1="-9.1" x2="5.8" y2="-8.8" width="0.2032" layer="51" curve="-90"/>
-<wire x1="5.8" y1="-8.8" x2="6.1" y2="-8.8" width="0.2032" layer="51"/>
-<text x="-3.5" y="-3.8" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-3.5" y="-5.1" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-</package>
 <package name="MICRO-SD-473093751">
 <text x="0.6" y="-9.7" size="1.27" layer="51" font="vector" ratio="18" rot="R180" align="center">Inserted
 2.55 mm
@@ -1973,7 +1937,6 @@ clearance</text>
 <wire x1="6" y1="-0.05" x2="6" y2="-2.25" width="0.127" layer="21"/>
 <wire x1="6" y1="-4.9" x2="6" y2="-5.7" width="0.127" layer="21"/>
 <wire x1="6" y1="-5.7" x2="5.45" y2="-5.7" width="0.127" layer="21"/>
-<wire x1="4.05" y1="-5.7" x2="-4.15" y2="-5.7" width="0.127" layer="21"/>
 </package>
 <package name="LGA-28-3.8X5.2">
 <smd name="1" x="-2.25" y="1.56" dx="0.25" dy="0.475" layer="1" rot="R180"/>
@@ -2897,13 +2860,13 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <package name="LED-0201T">
 <wire x1="-0.254" y1="0.1524" x2="0.254" y2="0.1524" width="0.1016" layer="51"/>
 <wire x1="0.254" y1="-0.1524" x2="-0.254" y2="-0.1524" width="0.1016" layer="51"/>
-<smd name="1" x="-0.3" y="0" dx="0.3" dy="0.4" layer="1"/>
-<smd name="2" x="0.3" y="0" dx="0.3" dy="0.4" layer="1"/>
+<smd name="1" x="-0.2" y="0" dx="0.2" dy="0.35" layer="1"/>
+<smd name="2" x="0.2" y="0" dx="0.2" dy="0.35" layer="1"/>
 <text x="-1.0668" y="0.5588" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.1938" y="-1.5748" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.3048" y1="-0.1524" x2="-0.1524" y2="0.1524" layer="51"/>
 <rectangle x1="0.1524" y1="-0.1524" x2="0.3048" y2="0.1524" layer="51"/>
-<wire x1="-0.0604" y1="0.173" x2="-0.0604" y2="-0.1476" width="0.127" layer="21"/>
+<wire x1="-0.4104" y1="0.173" x2="-0.4104" y2="-0.1476" width="0.127" layer="21"/>
 </package>
 <package name="DA2432">
 <wire x1="-0.12" y1="0.16" x2="-0.12" y2="-0.16" width="0.01" layer="51"/>
@@ -3610,6 +3573,43 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="-1.524" y="1.778" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.524" y="-2.794" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.9" y1="-1.3" x2="0.9" y2="1.3" layer="39"/>
+</package>
+<package name="MICRO-SD-473092851">
+<text x="0.6" y="-10.6" size="1.27" layer="51" font="vector" ratio="18" rot="R180" align="center">Inserted
+1.65 mm
+clearance</text>
+<smd name="VDD" x="0.55" y="-1.4" dx="0.6" dy="1.25" layer="1"/>
+<smd name="CLK" x="-0.55" y="-1.4" dx="0.6" dy="1.25" layer="1"/>
+<smd name="VSS" x="-1.65" y="-1.4" dx="0.6" dy="1.25" layer="1"/>
+<smd name="DAT0" x="-2.75" y="-1.4" dx="0.6" dy="1.25" layer="1"/>
+<smd name="DAT1" x="-3.85" y="-1.4" dx="0.6" dy="1.25" layer="1"/>
+<smd name="CMD" x="1.65" y="-1.4" dx="0.6" dy="1.25" layer="1"/>
+<smd name="CD/DATA3" x="2.75" y="-1.4" dx="0.6" dy="1.25" layer="1"/>
+<smd name="DAT2" x="3.85" y="-1.4" dx="0.6" dy="1.25" layer="1"/>
+<smd name="G1" x="-5" y="-3.905" dx="3.79" dy="1.2" layer="1" rot="R90"/>
+<wire x1="-5.4" y1="-0.05" x2="6" y2="-0.05" width="0.127" layer="21"/>
+<wire x1="-5.4" y1="-1.8" x2="-5.4" y2="-0.05" width="0.127" layer="21"/>
+<smd name="G4" x="4.775" y="-5.4" dx="0.85" dy="0.95" layer="1" rot="R90"/>
+<smd name="G3" x="5.7" y="-4.4" dx="1" dy="0.6" layer="1" rot="R180"/>
+<smd name="G2" x="5.475" y="-3.15" dx="1.4" dy="1.45" layer="1" rot="R270"/>
+<rectangle x1="-5.4" y1="-5.7" x2="6" y2="-0.1" layer="39"/>
+<text x="-3.4" y="-3.8" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-3.4" y="-5.1" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<wire x1="6" y1="-0.05" x2="6" y2="-2.25" width="0.127" layer="21"/>
+<wire x1="6" y1="-4.9" x2="6" y2="-5.7" width="0.127" layer="21"/>
+<wire x1="6" y1="-5.7" x2="5.45" y2="-5.7" width="0.127" layer="21"/>
+<wire x1="6" y1="-9.5" x2="6" y2="-14.553590625" width="0.2032" layer="51"/>
+<wire x1="6" y1="-14.553590625" x2="5.153590625" y2="-15.4" width="0.2032" layer="51" curve="-90"/>
+<wire x1="-4.95" y1="-6.3" x2="-4.95" y2="-14.291725" width="0.2032" layer="51"/>
+<wire x1="-4.95" y1="-14.291725" x2="-3.841725" y2="-15.4" width="0.2032" layer="51" curve="90"/>
+<wire x1="-3.841725" y1="-15.4" x2="5.153590625" y2="-15.4" width="0.2032" layer="51"/>
+<wire x1="5.5" y1="-6.1" x2="5.5" y2="-6.3" width="0.2032" layer="51"/>
+<wire x1="5.5" y1="-6.3" x2="6" y2="-6.8" width="0.2032" layer="51"/>
+<wire x1="5.4" y1="-8.24140625" x2="5.4" y2="-9" width="0.2032" layer="51"/>
+<wire x1="5.4" y1="-9" x2="6" y2="-9.5" width="0.2032" layer="51"/>
+<wire x1="6" y1="-6.8" x2="6" y2="-7.9" width="0.2032" layer="51"/>
+<wire x1="5.4" y1="-8.2" x2="5.7" y2="-7.9" width="0.2032" layer="51" curve="-90"/>
+<wire x1="5.7" y1="-7.9" x2="6" y2="-7.9" width="0.2032" layer="51"/>
 </package>
 </packages>
 <symbols>

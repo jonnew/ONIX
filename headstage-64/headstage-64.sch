@@ -993,13 +993,13 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <package name="LED-0201T">
 <wire x1="-0.254" y1="0.1524" x2="0.254" y2="0.1524" width="0.1016" layer="51"/>
 <wire x1="0.254" y1="-0.1524" x2="-0.254" y2="-0.1524" width="0.1016" layer="51"/>
-<smd name="1" x="-0.3" y="0" dx="0.3" dy="0.4" layer="1"/>
-<smd name="2" x="0.3" y="0" dx="0.3" dy="0.4" layer="1"/>
+<smd name="1" x="-0.2" y="0" dx="0.2" dy="0.35" layer="1"/>
+<smd name="2" x="0.2" y="0" dx="0.2" dy="0.35" layer="1"/>
 <text x="-1.0668" y="0.5588" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.1938" y="-1.5748" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.3048" y1="-0.1524" x2="-0.1524" y2="0.1524" layer="51"/>
 <rectangle x1="0.1524" y1="-0.1524" x2="0.3048" y2="0.1524" layer="51"/>
-<wire x1="-0.0604" y1="0.173" x2="-0.0604" y2="-0.1476" width="0.127" layer="21"/>
+<wire x1="-0.4104" y1="0.173" x2="-0.4104" y2="-0.1476" width="0.127" layer="21"/>
 </package>
 <package name="UQFN">
 <circle x="-1" y="1.1" radius="0.25" width="0" layer="21"/>
@@ -1950,6 +1950,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="-0.9" y1="1.3" x2="-0.9" y2="0.9" width="0.127" layer="21"/>
 <text x="-1.524" y="1.778" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.524" y="-2.794" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-0.9" y1="-1.3" x2="0.9" y2="1.3" layer="39"/>
 </package>
 </packages>
 <symbols>
