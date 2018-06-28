@@ -1,20 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Microsoft.Win32.SafeHandles;
 
 namespace oe
 {
     using lib;
-
-    public class Context : IDisposable
+    
+    public class Context : SafeHandleZeroOrMinusOneIsInvalid
     {
-        public Context(string config_path = oepcie.DefaultConfigPath,
-                       string read_path = oepcie.DefaultReadPath,
-                       string signal_path = oepcie.DefaultSignalPath)
+        protected Context() 
+        : base(true)
+        {
+        }
+
+        public Context(string config_path = NativeMethods.DefaultConfigPath,
+                       string read_path = NativeMethods.DefaultReadPath,
+                       string signal_path = NativeMethods.DefaultSignalPath)
+        :base (true)
         {
             // Create context
-            ctx = oepcie.create_ctx();
-            if (ctx == IntPtr.Zero)
+            handle = NativeMethods.oe_create_ctx(); // this.handle is IntPtr wrapped by the SafeHandle
+            if (handle == IntPtr.Zero)
             {
                 throw new InvalidProgramException("oe_create_ctx");
             }
@@ -24,13 +31,13 @@ namespace oe
             SetOption(Option.READSTREAMPATH, read_path);
             SetOption(Option.SIGNALSTREAMPATH, signal_path);
 
-            int rc = oepcie.init_ctx(ctx);
+            int rc = NativeMethods.oe_init_ctx(handle);
             if (rc != 0) { throw new OEException(rc); }
 
             // Populate device map
             int num_devs = GetOption(Option.NUMDEVICES);
-            DeviceMap = new Dictionary<int, oepcie.device_t>();
-            int size_dev = Marshal.SizeOf(new oepcie.device_t());
+            DeviceMap = new Dictionary<int, device_t>();
+            int size_dev = Marshal.SizeOf(new device_t());
             int size = size_dev * num_devs;
             using (var value = DispoIntPtr.Alloc(size))
             {
@@ -42,32 +49,28 @@ namespace oe
                 // memory as buffer.
                 for (int i = 0; i < num_devs; i++)
                 {
-                    DeviceMap.Add(i, (oepcie.device_t)Marshal.PtrToStructure(mem, typeof(oepcie.device_t)));
+                    DeviceMap.Add(i, (device_t)Marshal.PtrToStructure(mem, typeof(device_t)));
                     mem = new IntPtr((long)mem + size_dev);
                 }
-
             }
-        }
-
-        // The destructor calls Object.Finalize.
-        ~Context()
-        {
-            Dispose(false);  // NB: False because this is not called from Dispose()
         }
 
         public static readonly uint DefaultIndex = 0;
         public uint Index = DefaultIndex;
-        private IntPtr ctx;
-        public readonly Dictionary<int, oepcie.device_t> DeviceMap;
-        private bool disposed = false;
+        public readonly Dictionary<int, device_t> DeviceMap;
         private Object context_lock = new Object();
+
+        protected override bool ReleaseHandle()
+        {
+            return (NativeMethods.oe_destroy_ctx(handle) == 0);
+        }
 
         public uint DeviceID(uint device_index)
         {
             if (device_index < DeviceMap.Count)
                 return DeviceMap[(int)device_index].id;
             else
-                throw new OEException((int)oepcie.Error.DEVIDX);
+                throw new OEException((int)Error.DEVIDX);
         }
 
         // NB: There must be a way to make these generic, but its confusing with all the pointer-wrapper crap
@@ -86,7 +89,7 @@ namespace oe
 
                 lock (context_lock)
                 {
-                    int rc = oepcie.get_opt(ctx, (int)option, value, option_len.Ptr);
+                    int rc = NativeMethods.oe_get_opt(handle, (int)option, value, option_len.Ptr);
                     if (rc != 0) { throw new OEException(rc); }
                 }
 
@@ -134,7 +137,7 @@ namespace oe
                 Marshal.WriteInt32(mem.Ptr, value);
                 lock (context_lock)
                 {
-                    int rc = oepcie.set_opt(ctx, (int)opt, mem, (uint)size);
+                    int rc = NativeMethods.oe_set_opt(handle, (int)opt, mem, (uint)size);
                     if (rc != 0) { throw new OEException(rc); }
                 }
             }
@@ -149,7 +152,7 @@ namespace oe
                 lock (context_lock)
                 {
                     // NB: +1 is for trailing null character
-                    int rc = oepcie.set_opt(ctx, (int)opt, str, (uint)ssize + 1);
+                    int rc = NativeMethods.oe_set_opt(handle, (int)opt, str, (uint)ssize + 1);
                     if (rc != 0) { throw new OEException(rc); }
                 }
             }
@@ -162,7 +165,7 @@ namespace oe
             {
                 lock (context_lock)
                 {
-                    int rc = oepcie.read_reg(ctx, dev_idx, reg_addr, value);
+                    int rc = NativeMethods.oe_read_reg(handle, dev_idx, reg_addr, value);
                     if (rc != 0) { throw new OEException(rc); }
                     return (uint)Marshal.ReadInt32(value.Ptr);
                 }
@@ -173,23 +176,18 @@ namespace oe
         {
             lock (context_lock)
             {
-                int rc = oepcie.write_reg(ctx, dev_idx, reg_addr, value);
+                int rc = NativeMethods.oe_write_reg(handle, dev_idx, reg_addr, value);
                 if (rc != 0) { throw new OEException(rc); }
             }
         }
 
         public Frame ReadFrame()
         {
-            unsafe {
-                var value = DispoIntPtr.Alloc(sizeof(oepcie.frame_t));
-                var mem = value.Ptr;
-                lock (context_lock)
-                {
-                    int rc = oepcie.read_frame(ctx, out mem);
-                    if (rc != 0) { throw new OEException(rc); }
-                }
-                return new Frame(DeviceMap, mem);
-            }
+            Frame frame;
+            int rc = NativeMethods.oe_read_frame(handle, out frame);
+            frame.Map(DeviceMap);
+            if (rc != 0) { throw new OEException(rc); }
+            return frame;
         }
 
         // NB: These need to be redeclared unfortuately
@@ -204,29 +202,7 @@ namespace oe
             MAXWRITEFRAMESIZE,
             RUNNING,
             RESET,
-            SYSCLKHZ
-        }
-
-        public void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                // If the call is from Dispose, free managed resources.
-                if (disposing) {
-                    // NB: We dont have any I think.
-                }
-
-                int rc = oepcie.destroy_ctx(ctx); // Free resources held by ctx. This does not seem to happen correctly all the time.
-
-                if (rc != 0) { throw new OEException(rc); }
-            }
-            disposed = true;
-        }
-
-        void IDisposable.Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this); // Destructor will call Finalize I think.
+            SYSCLKHZ,
         }
 
     }

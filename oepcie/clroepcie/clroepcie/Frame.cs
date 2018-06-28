@@ -1,77 +1,108 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Win32.SafeHandles;
 
 namespace oe
 {
     using lib;
     using System.Runtime.InteropServices;
 
-    public unsafe class Frame : IDisposable
+    // Make managed version of oe_frame_t
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct frame_t
     {
-        public Frame(Dictionary<int, oepcie.device_t> dev_map, IntPtr frame_mem)
+        //[MarshalAs(UnmanagedType.U8)]
+        public ulong clock;       // Base clock counter
+                                  //[MarshalAs(UnmanagedType.U2)]
+        public ushort num_dev;     // Number of devices in frame
+                                   //[MarshalAs(UnmanagedType.U1)]
+        public byte corrupt;       // Is this frame corrupt?
+        public uint* dev_idxs;   // Array of device indices in frame
+                                 //[MarshalAs(UnmanagedType.U4)]
+        public uint dev_idxs_sz; // Size in bytes of dev_idxs buffer
+        public uint* dev_offs;   // Device data offsets within data block
+                                 //[MarshalAs(UnmanagedType.U4)]
+        public uint dev_offs_sz; // Size in bytes of dev_idxs buffer
+        public byte* data;         // Multi-device raw data block
+                                   //[MarshalAs(UnmanagedType.U4)]
+        public uint data_sz;     // Size in bytes of data buffer
+    }
+
+
+    public unsafe class Frame : SafeHandleZeroOrMinusOneIsInvalid
+    {
+
+        protected Frame() 
+        : base(true)
         {
-            // Deep copy of frame memory into managed memory
-            this.frame_mem = frame_mem;
-            frame = (oepcie.frame_t)Marshal.PtrToStructure(frame_mem, typeof(oepcie.frame_t));
+        }
 
-            // Get device map reference
+        internal void Map(Dictionary<int, device_t> dev_map)
+        {
             DeviceMap = dev_map;
+            var frame = (frame_t*)handle.ToPointer();
 
-            // Get devices in this frame
-            DeviceIndices = new List<int>(frame.num_dev);
-            for (int i = 0; i < frame.num_dev; i++)
+            DeviceIndices = new List<int>(frame->num_dev);
+            for (int i = 0; i < frame->num_dev; i++)
             {
-                DeviceIndices.Add((int)*(frame.dev_idxs + i));
+                DeviceIndices.Add((int)*(frame->dev_idxs + i));
             }
         }
 
-        ~Frame()
+        public ulong Time()
         {
-            // Release unmanged memory whenver GC finds time I guess
-            oepcie.destroy_frame(frame_mem);
+            return ((frame_t*)handle.ToPointer())->clock;
+            //return frame.clock;
         }
 
-        public ulong Time() { return frame.clock; }
+        public bool Corrupt()
+        {
+            return ((frame_t*)handle.ToPointer())->corrupt != 0;
+            //return frame.corrupt != 0;
+        }
 
-        public bool Corrupt() { return frame.corrupt != 0; }
-
-        // NB: This seems horribly inefficient, but I really have no idea
-
+        // Ideally, I would like this to be a "Span" into the exsting, allocated frame
+        // Now, there are _two_ deep copies happening here as far as I can tell which is ridiculous
         public T[] Data<T>(int dev_idx) where T : struct
         {
+            var frame = (frame_t*)handle.ToPointer();
+
             // Device position in frame
             var pos = DeviceIndices.FindIndex(x => x == dev_idx);
 
             // If device is not in frame
             if (pos == -1)
             {
-                throw new OEException((int)oepcie.Error.DEVIDX);
+                throw new OEException((int)Error.DEVIDX);
             }
 
             // Get the read size and offset for this device
             var num_bytes = DeviceMap[dev_idx].read_size;
-            var byte_offset = *(frame.dev_offs + pos);
+            var byte_offset = *(frame->dev_offs + pos);
 
             var buffer = new byte[num_bytes];
             var output = new T[num_bytes / Marshal.SizeOf(default(T))];
-            var start_ptr = frame.data + byte_offset;
+            var start_ptr = frame->data + byte_offset;
+
             // TODO: Seems like we should be able to copy directly into output!
             Marshal.Copy((IntPtr)start_ptr, buffer, 0, (int)num_bytes);
             Buffer.BlockCopy(buffer, 0, output, 0, (int)num_bytes);
             return output;
         }
 
-        void IDisposable.Dispose()
+        protected override bool ReleaseHandle()
         {
-            oepcie.destroy_frame(frame_mem);
+            NativeMethods.oe_destroy_frame(handle);
+            return true;
         }
 
         // Devices with data in this frame
-        public List<int> DeviceIndices {get; private set;}
+        public List<int> DeviceIndices { get; private set; }
 
         // Global device index -> device_t struct
-        private Dictionary<int, oe.lib.oepcie.device_t> DeviceMap;
-        private oepcie.frame_t frame;
-        private IntPtr frame_mem;
+        private Dictionary<int, device_t> DeviceMap;
+        //private frame_t frame;
+
+        //private IntPtr frame_mem;
     }
 }

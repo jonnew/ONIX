@@ -54,8 +54,8 @@ class Host
 {
     static void Main(string[] args)
     {
-        // Ger version
-        var ver = oe.lib.oepcie.LibraryVersion;
+        // Get version
+        var ver = oe.lib.NativeMethods.LibraryVersion;
         Console.WriteLine("Using liboepcie version: " + ver);
         bool running = true;
 
