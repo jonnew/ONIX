@@ -8,7 +8,7 @@ namespace oe
     {
         public static string Name(int id)
         {
-            return Marshal.PtrToStringAnsi(oedevices.device_str(id));
+            return Marshal.PtrToStringAnsi(NativeMethods.oe_device_str(id));
         }
 
         public enum DeviceID

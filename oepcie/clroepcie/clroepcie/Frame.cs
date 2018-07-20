@@ -11,27 +11,19 @@ namespace oe
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct frame_t
     {
-        //[MarshalAs(UnmanagedType.U8)]
-        public ulong clock;       // Base clock counter
-                                  //[MarshalAs(UnmanagedType.U2)]
-        public ushort num_dev;     // Number of devices in frame
-                                   //[MarshalAs(UnmanagedType.U1)]
-        public byte corrupt;       // Is this frame corrupt?
-        public uint* dev_idxs;   // Array of device indices in frame
-                                 //[MarshalAs(UnmanagedType.U4)]
-        public uint dev_idxs_sz; // Size in bytes of dev_idxs buffer
-        public uint* dev_offs;   // Device data offsets within data block
-                                 //[MarshalAs(UnmanagedType.U4)]
-        public uint dev_offs_sz; // Size in bytes of dev_idxs buffer
-        public byte* data;         // Multi-device raw data block
-                                   //[MarshalAs(UnmanagedType.U4)]
-        public uint data_sz;     // Size in bytes of data buffer
+        public ulong clock;         // Base clock counter
+        public ushort num_dev;      // Number of devices in frame
+        public byte corrupt;        // Is this frame corrupt?
+        public uint* dev_idxs;      // Array of device indices in frame
+        public uint dev_idxs_sz;    // Size in bytes of dev_idxs buffer
+        public uint* dev_offs;      // Device data offsets within data block
+        public uint dev_offs_sz;    // Size in bytes of dev_idxs buffer
+        public byte* data;          // Multi-device raw data block
+        public uint data_sz;        // Size in bytes of data buffer
     }
-
 
     public unsafe class Frame : SafeHandleZeroOrMinusOneIsInvalid
     {
-
         protected Frame() 
         : base(true)
         {

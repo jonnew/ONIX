@@ -3,13 +3,9 @@
     using System;
     using System.Runtime.InteropServices;
 
-    public static class oedevices
+    public static partial class NativeMethods
     {
-        private const CallingConvention CCCdecl = CallingConvention.Cdecl;
-
-        private const string LibraryName = "liboepcie";
-
-        [DllImport(LibraryName, EntryPoint = "oe_device_str", CallingConvention = CCCdecl)]
-        public static extern IntPtr device_str(Int32 id);
+        [DllImport(LibraryName, CallingConvention = CCCdecl)]
+        public static extern IntPtr oe_device_str(int id);
     }
 }

@@ -7,5 +7,5 @@
 ## Creating the nuget package
 Use the following command:
 ```
-nuget pack clroepcie.csprog -properties Configuration=Release
+nuget pack clroepcie.csproj -properties Configuration=Release
 ```

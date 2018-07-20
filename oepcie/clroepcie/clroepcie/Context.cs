@@ -58,7 +58,7 @@ namespace oe
         public static readonly uint DefaultIndex = 0;
         public uint Index = DefaultIndex;
         public readonly Dictionary<int, device_t> DeviceMap;
-        private Object context_lock = new Object();
+        private object context_lock = new object();
 
         protected override bool ReleaseHandle()
         {
@@ -131,31 +131,15 @@ namespace oe
         // Int32 SetOption
         private void SetOption(Option opt, int value)
         {
-            int size = Marshal.SizeOf(typeof(Int32));
-            using (var mem = DispoIntPtr.Alloc(size))
-            {
-                Marshal.WriteInt32(mem.Ptr, value);
-                lock (context_lock)
-                {
-                    int rc = NativeMethods.oe_set_opt(handle, (int)opt, mem, (uint)size);
-                    if (rc != 0) { throw new OEException(rc); }
-                }
-            }
+            var val = Marshal.AllocHGlobal(value);
+            int rc = NativeMethods.oe_set_opt(handle, (int)opt, val, 4);
+            if (rc != 0) { throw new OEException(rc); }
         }
 
         // String SetOption
         private void SetOption(Option opt, string value)
         {
-            int ssize;
-            using (var str = DispoIntPtr.AllocString(value, out ssize))
-            {
-                lock (context_lock)
-                {
-                    // NB: +1 is for trailing null character
-                    int rc = NativeMethods.oe_set_opt(handle, (int)opt, str, (uint)ssize + 1);
-                    if (rc != 0) { throw new OEException(rc); }
-                }
-            }
+            int rc = NativeMethods.oe_set_opt(handle, (int)opt, value, (uint)value.Length + 1);
         }
 
         public uint ReadRegister(uint dev_idx, uint reg_addr)

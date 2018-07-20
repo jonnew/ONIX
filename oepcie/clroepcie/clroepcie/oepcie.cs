@@ -3,6 +3,7 @@ namespace oe.lib
     using System;
     using System.Runtime.InteropServices;
     using System.Security;
+    using System.Text;
 
     public enum Error
     {
@@ -31,36 +32,19 @@ namespace oe.lib
         INVALRAWTYPE = -22, // Invalid raw data type
     }
 
-    //public enum DeviceID
-    //{
-    //    IMMEDIATEIO = 0,
-    //    RHD2132 = 1,
-    //    RHD2164 = 2,
-    //    MPU9250 = 3,
-    //    ESTIM = 4,
-    //}
-
-
-
     // Make managed version of oe_device_t
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct device_t
     {
-        //[MarshalAs(UnmanagedType.U4)]
         public uint id;             // Device ID
-                                    //[MarshalAs(UnmanagedType.U4)]
         public uint read_size;      // Read size
-                                    //[MarshalAs(UnmanagedType.U4)]
         public uint num_reads;      // Num reads per sample
-                                    //[MarshalAs(UnmanagedType.U4)]
         public uint write_size;     // Write size
-                                    //[MarshalAs(UnmanagedType.U4)]
         public uint num_writes;     // Num writes per sample
-
     }
 
     [SuppressUnmanagedCodeSecurity] // Call into native code without incurring the performance loss of a run-time security check when doing so
-    public static unsafe class NativeMethods
+    public static unsafe partial class NativeMethods
     {
         public static readonly Version LibraryVersion;
 
@@ -94,20 +78,11 @@ namespace oe.lib
                         requiredVersion));
         }
 
-        // (1) Declare privately the extern entry point
+        // liboepcie:
+
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         private static extern void oe_version(out int major, out int minor, out int patch);
 
-        // (2) Describe the extern function using a delegate
-        //private delegate void oe_version_delegate(out int major, out int minor, out int patch);
-
-        // (3) Save and return the managed delegate to the unmanaged function
-        //     This static readonly field definition allows to be
-        //     initialized and possibly redirected by the static constructor.
-        //     (usually public, but we can access this through LibraryVersion)
-        //private static readonly oe_version_delegate version = oe_version;
-
-        // Repeat for the rest of the API
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern IntPtr oe_create_ctx();
 
@@ -118,16 +93,19 @@ namespace oe.lib
         public static extern int oe_destroy_ctx(IntPtr ctx);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
-        public static extern int oe_get_opt(IntPtr ctx, Int32 option, IntPtr val, IntPtr size);
+        public static extern int oe_get_opt(IntPtr ctx, int option, IntPtr val, IntPtr size);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
-        public static extern int oe_set_opt(IntPtr ctx, Int32 option, IntPtr val, UInt32 size);
+        public static extern int oe_set_opt(IntPtr ctx, int option, [In] IntPtr val, uint size);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
-        public static extern int oe_read_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, IntPtr val);
+        public static extern int oe_set_opt(IntPtr ctx, int option, string val, uint size);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
-        public static extern int oe_write_reg(IntPtr ctx, UInt32 dev_idx, UInt32 addr, UInt32 val);
+        public static extern int oe_read_reg(IntPtr ctx, uint dev_idx, uint addr, IntPtr val);
+
+        [DllImport(LibraryName, CallingConvention = CCCdecl)]
+        public static extern int oe_write_reg(IntPtr ctx, uint dev_idx, uint addr, uint val);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl, SetLastError = true)]
         public static extern int oe_read_frame(IntPtr ctx, out Frame frame);
@@ -137,6 +115,5 @@ namespace oe.lib
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern IntPtr oe_error_str(int err);
-
     }
 }
