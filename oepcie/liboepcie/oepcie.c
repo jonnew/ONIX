@@ -23,7 +23,7 @@
 typedef uint32_t oe_reg_val_t;
 
 // Register size
-#define OE_REGSZ   sizeof(oe_reg_val_t)
+#define OE_REGSZ sizeof(oe_reg_val_t)
 
 // Define if hardware produces byte-reversed types from compile command
 #ifdef OE_BIGEND
@@ -151,36 +151,36 @@ oe_ctx oe_create_ctx()
 
 int oe_init_ctx(oe_ctx ctx)
 {
-	assert(ctx != NULL && "Context is NULL.");
-	assert(ctx->run_state == UNINITIALIZED && "Context is in invalid state.");
+    assert(ctx != NULL && "Context is NULL.");
+    assert(ctx->run_state == UNINITIALIZED && "Context is in invalid state.");
 
-	if (ctx->run_state != UNINITIALIZED)
-		return OE_EINVALSTATE;
+    if (ctx->run_state != UNINITIALIZED)
+        return OE_EINVALSTATE;
 
     // Open the device files
-	ctx->config.fid = open(ctx->config.path, O_RDWR | _O_BINARY);
-	if (ctx->config.fid == -1) {
-		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->config.path);
-		return OE_EPATHINVALID;
-	}
+    ctx->config.fid = open(ctx->config.path, O_RDWR | _O_BINARY);
+    if (ctx->config.fid == -1) {
+        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->config.path);
+        return OE_EPATHINVALID;
+    }
 
-	ctx->read.fid = open(ctx->read.path, O_RDONLY | _O_BINARY);
-	if (ctx->read.fid == -1) {
-		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
-		return OE_EPATHINVALID;
-	}
+    ctx->read.fid = open(ctx->read.path, O_RDONLY | _O_BINARY);
+    if (ctx->read.fid == -1) {
+        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
+        return OE_EPATHINVALID;
+    }
 
-	//ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
-	//if (ctx->write.fid == -1) {
-	//	fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
-	//	return OE_EPATHINVALID;
-	//}
+    //ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
+    //if (ctx->write.fid == -1) {
+    //    fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
+    //    return OE_EPATHINVALID;
+    //}
 
-	ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
-	if (ctx->signal.fid == -1) {
-		fprintf(stderr, "%s: %s\n", strerror(errno), ctx->signal.path);
-		return OE_EPATHINVALID;
-	}
+    ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
+    if (ctx->signal.fid == -1) {
+        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->signal.path);
+        return OE_EPATHINVALID;
+    }
 
     // Reset the run and reset states of the hardware. This will push a frame
     // header onto the signal stream
@@ -223,12 +223,14 @@ int oe_init_ctx(oe_ctx ctx)
 
         // Append the device onto the map
         memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
-        ctx->max_read_frame_size += ctx->dev_map->read_size;
-        ctx->max_write_frame_size += ctx->dev_map->write_size;
+        ctx->max_read_frame_size += (ctx->dev_map + i)->read_size;
+        ctx->max_write_frame_size += (ctx->dev_map + i)->write_size;
     }
 
 #ifdef OE_BE
     _device_map_byte_swap(ctx);
+    ctx->max_read_frame_size = BSWAP_32(ctx->max_read_frame_size);
+    ctx->max_write_frame_size = BSWAP_32(ctx->max_write_frame_size);
 #endif
 
     // Initialize buffer
@@ -249,7 +251,7 @@ int oe_destroy_ctx(oe_ctx ctx)
 
         if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
         if (close(ctx->read.fid) == -1) goto oe_close_ctx_fail;
-		//if (close(ctx->write.fid) == -1) goto oe_close_ctx_fail;
+        //if (close(ctx->write.fid) == -1) goto oe_close_ctx_fail;
         if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
     }
 
@@ -427,22 +429,22 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             memcpy(ctx->signal.path, value, option_len);
             break;
         }
-		case OE_RUNNING: {
-			assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
-			if (ctx->run_state < IDLE)
-				return OE_EINVALSTATE;
+        case OE_RUNNING: {
+            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
+            if (ctx->run_state < IDLE)
+                return OE_EINVALSTATE;
 
-			if (option_len != OE_REGSZ)
-				return OE_EBUFFERSIZE;
+            if (option_len != OE_REGSZ)
+                return OE_EBUFFERSIZE;
 
-			int rc = _oe_write_config(
-				ctx->config.fid, CONFRUNNINGOFFSET, *(oe_reg_val_t*)value);
-			if (rc) return rc;
+            int rc = _oe_write_config(
+                ctx->config.fid, CONFRUNNINGOFFSET, *(oe_reg_val_t*)value);
+            if (rc) return rc;
 
-			if (*(oe_reg_val_t *)value != 0)
-				ctx->run_state = RUNNING;
-			else
-				ctx->run_state = IDLE;
+            if (*(oe_reg_val_t *)value != 0)
+                ctx->run_state = RUNNING;
+            else
+                ctx->run_state = IDLE;
             break;
         }
         case OE_RESET: {

@@ -20,12 +20,13 @@ extern "C" {
 // oe_device_official(), and update documentation below
 enum oe_device_id {
     OE_IMMEDIATEIO       = 0, // pci-host board GPIO
-    OE_RHD2132	         = 1, // Intan RHD2132 bioamplifier
+    OE_RHD2132           = 1, // Intan RHD2132 bioamplifier
     OE_RHD2164           = 2, // Intan RHD2162 bioamplifier
     OE_MPU9250           = 3, // MPU9250 9-axis accerometer
     OE_ESTIM             = 4, // Electrical stimulation subcircuit
     OE_OSTIM             = 5, // Optical stimulation subcircuit
     OE_TS4231            = 6, // Triad semiconductor TS421 optical to digital converter
+    OE_SERDESGPO         = 7, // SERDES GPIO pins
 
     // NB: Final reserved device ID. Always on bottom
     OE_MAXDEVICEID       = OE_MAXDEVID,
@@ -66,7 +67,7 @@ enum oe_device_id {
 
 // # OE_ESTIM
 // - Input frame data contents: N/A
-// - Configuration registers
+// - Configuration registers:
 //      - NB: Based loosely on master-8 and pulse-pal parameters. See this page
 //      for a visual definition: https://sites.google.com/site/pulsepalwiki/parameter-guide
 enum oe_estim_regs {
@@ -86,7 +87,7 @@ enum oe_estim_regs {
     OE_ESTIM_POWERON     = 13, // Control estim sub-circuit power (0 = off, 1 = on)
     OE_ESTIM_ENABLE      = 14, // Control null switch (0 = stim output shorted to ground, 1 = stim output attached to electrode during pulses)
     OE_ESTIM_RESTCURR    = 15, // Resting current between pulse phases, (0 to 255 = -1.5 mA to +1.5mA)
-	OE_ESTIM_RESET		 = 16, // Reset all parameters to default
+    OE_ESTIM_RESET       = 16, // Reset all parameters to default
 };
 
 // # OE_OSTIM
@@ -107,14 +108,25 @@ enum oe_ostim_regs {
     OE_OSTIM_TRIGGER     = 11, // Trigger stimulation (1 = deliver)
     OE_OSTIM_ENABLE      = 12, // Control null switch (0 = stim output shorted to ground, 1 = stim output attached to electrode during pulses)
     OE_OSTIM_RESTCURR    = 13, // Resting current between pulse phases, (0 to 255 = -1.5 mA to +1.5mA)
-	OE_OSTIM_RESET		 = 14, // Reset all parameters to default
+    OE_OSTIM_RESET       = 14, // Reset all parameters to default
 };
 
-// ** OE_TS4231 device configuration registers **
+// # OE_TS4231
 // Read frame data contents:
-//  [uint64_t local_clock,
-//   uint32_t type,
-//   uint32_t measure]
+//  [uint16_t lighthouse_id
+//     uint64_t local_clock,
+//   uint16_t high or low]
+
+// # OE_SERDESGPIO
+// Control GPO pins available on the DS90UB913A-Q1 serializer.
+// - Input frame data contents: N/A
+// - Configuration registers:
+enum oe_serdesgpo_regs {
+    OE_SERDESGPO_NULLPARM    = 0, // No command
+    OE_SERDESGPO_NUM         = 1, // Select a GPO pin to control (0-3)
+    OE_SERDESGPO_STATE       = 2, // Set the state of the selected pin (0 = LOW, other = HIGH)
+    OE_SERDESGPO_RESET       = 3, // Reset all parameters to default pull all GPO pins LOW.
+};
 
 // Human readable string from ID
 OE_EXPORT int oe_device_official(int dev_id);
