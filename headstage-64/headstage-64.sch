@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.2">
+<eagle version="9.0.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1952,6 +1952,35 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="-1.524" y="-2.794" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.9" y1="-1.3" x2="0.9" y2="1.3" layer="39"/>
 </package>
+<package name="DF40-10HEAD">
+<circle x="-0.8234" y="-0.5542" radius="0.227184375" width="0.127" layer="21"/>
+<wire x1="-1.8" y1="-1" x2="-1.8" y2="1" width="0.127" layer="21"/>
+<wire x1="-1.8" y1="1" x2="1.8" y2="1" width="0.127" layer="21"/>
+<wire x1="1.8" y1="1" x2="1.8" y2="-1" width="0.127" layer="21"/>
+<wire x1="1.8" y1="-1" x2="-1.8" y2="-1" width="0.127" layer="21"/>
+<wire x1="-1.4" y1="0.5" x2="-1.4" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="-1.4" y1="-0.5" x2="-1.3" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="-1.4" y1="0.5" x2="1.4" y2="0.5" width="0.127" layer="21"/>
+<wire x1="1.4" y1="0.5" x2="1.4" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="1.4" y1="-0.5" x2="-0.4" y2="-0.5" width="0.127" layer="21"/>
+<rectangle x1="-2.4" y1="-1.7" x2="2.4" y2="1.7" layer="39"/>
+<smd name="1" x="-0.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="2" x="-0.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="3" x="0" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="4" x="0.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="5" x="0.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="6" x="0.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="7" x="0.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="8" x="0" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="9" x="-0.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="10" x="-0.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="M1" x="-1.275" y="-1.585" dx="0.35" dy="0.75" layer="1"/>
+<smd name="M2" x="1.275" y="-1.585" dx="0.35" dy="0.75" layer="1"/>
+<smd name="M3" x="1.275" y="1.585" dx="0.35" dy="0.75" layer="1"/>
+<smd name="M4" x="-1.275" y="1.585" dx="0.35" dy="0.75" layer="1"/>
+<text x="-1.6" y="2.2" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.6" y="-3.1" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="TS4231">
@@ -2884,6 +2913,36 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="-12.7" y1="-38.1" x2="-8.89" y2="-38.1" width="0.254" layer="94"/>
 <wire x1="-8.89" y1="-43.18" x2="-12.7" y2="-43.18" width="0.254" layer="94"/>
 <text x="-3.81" y="-40.64" size="1.778" layer="94" rot="R90">Logic</text>
+</symbol>
+<symbol name="PINHD2X5+4">
+<wire x1="-5.08" y1="-1.27" x2="-5.08" y2="-2.54" width="0.8128" layer="94"/>
+<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="-2.54" width="0.8128" layer="94"/>
+<wire x1="0" y1="-1.27" x2="0" y2="-2.54" width="0.8128" layer="94"/>
+<wire x1="2.54" y1="-1.27" x2="2.54" y2="-2.54" width="0.8128" layer="94"/>
+<wire x1="5.08" y1="-1.27" x2="5.08" y2="-2.54" width="0.8128" layer="94"/>
+<wire x1="-5.08" y1="2.54" x2="-5.08" y2="1.27" width="0.8128" layer="94"/>
+<wire x1="-2.54" y1="2.54" x2="-2.54" y2="1.27" width="0.8128" layer="94"/>
+<wire x1="0" y1="2.54" x2="0" y2="1.27" width="0.8128" layer="94"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="1.27" width="0.8128" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="1.27" width="0.8128" layer="94"/>
+<wire x1="-7.62" y1="3.81" x2="-7.62" y2="-3.81" width="0.6096" layer="94"/>
+<wire x1="-7.62" y1="-3.81" x2="7.62" y2="-3.81" width="0.6096" layer="94"/>
+<wire x1="7.62" y1="-3.81" x2="7.62" y2="3.81" width="0.6096" layer="94"/>
+<wire x1="7.62" y1="3.81" x2="-7.62" y2="3.81" width="0.6096" layer="94"/>
+<pin name="1" x="-5.08" y="-7.62" visible="pad" length="middle" rot="R90"/>
+<pin name="2" x="-2.54" y="-7.62" visible="pad" length="middle" rot="R90"/>
+<pin name="3" x="0" y="-7.62" visible="pad" length="middle" rot="R90"/>
+<pin name="4" x="2.54" y="-7.62" visible="pad" length="middle" rot="R90"/>
+<pin name="5" x="5.08" y="-7.62" visible="pad" length="middle" rot="R90"/>
+<pin name="6" x="5.08" y="7.62" visible="pad" length="middle" rot="R270"/>
+<pin name="7" x="2.54" y="7.62" visible="pad" length="middle" rot="R270"/>
+<pin name="8" x="0" y="7.62" visible="pad" length="middle" rot="R270"/>
+<pin name="9" x="-2.54" y="7.62" visible="pad" length="middle" rot="R270"/>
+<pin name="10" x="-5.08" y="7.62" visible="pad" length="middle" rot="R270"/>
+<pin name="M3" x="12.7" y="2.54" visible="pad" length="middle" rot="R180"/>
+<pin name="M2" x="12.7" y="-2.54" visible="pad" length="middle" rot="R180"/>
+<pin name="M4" x="-12.7" y="2.54" visible="pad" length="middle"/>
+<pin name="M1" x="-12.7" y="-2.54" visible="pad" length="middle"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -4857,6 +4916,34 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="PINHD-2X5+4">
+<gates>
+<gate name="G$1" symbol="PINHD2X5+4" x="0" y="0"/>
+</gates>
+<devices>
+<device name="DF40-HEAD" package="DF40-10HEAD">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
+<connect gate="G$1" pin="M1" pad="M1"/>
+<connect gate="G$1" pin="M2" pad="M2"/>
+<connect gate="G$1" pin="M3" pad="M3"/>
+<connect gate="G$1" pin="M4" pad="M4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -5280,6 +5367,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="R25" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="U$51" library="jonnew" deviceset="+3V3" device=""/>
 <part name="SUPPLY68" library="jonnew" deviceset="GND" device=""/>
+<part name="U$54" library="jonnew" deviceset="PINHD-2X5+4" device="DF40-HEAD"/>
 </parts>
 <sheets>
 <sheet>
@@ -5656,8 +5744,8 @@ problems doing this."</text>
 <attribute name="PARTNO" x="698.5" y="429.26" size="1.27" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="SUPPLY54" gate="G$1" x="698.5" y="419.1"/>
-<instance part="TP10" gate="G$1" x="635" y="429.26" rot="R180"/>
-<instance part="TP8" gate="G$1" x="632.46" y="429.26" rot="R180"/>
+<instance part="TP10" gate="G$1" x="635" y="396.24" rot="R180"/>
+<instance part="TP8" gate="G$1" x="632.46" y="396.24" rot="R180"/>
 <instance part="R30" gate="R" x="101.6" y="312.42" rot="R270"/>
 <instance part="R31" gate="R" x="111.76" y="312.42" rot="MR270"/>
 <instance part="R32" gate="R" x="121.92" y="312.42" rot="MR270"/>
@@ -5750,8 +5838,8 @@ problems doing this."</text>
 <instance part="C54" gate="C" x="170.18" y="106.68"/>
 <instance part="SUPPLY39" gate="PE" x="170.18" y="88.9" rot="MR0"/>
 <instance part="U$27" gate="PWR1" x="170.18" y="119.38"/>
-<instance part="R22" gate="R" x="134.62" y="78.74" rot="R270"/>
-<instance part="U$43" gate="PWR1" x="134.62" y="86.36"/>
+<instance part="R22" gate="R" x="124.46" y="127" rot="R270"/>
+<instance part="U$43" gate="PWR1" x="124.46" y="134.62"/>
 <instance part="TP13" gate="G$1" x="703.58" y="411.48" rot="R180"/>
 <instance part="SUPPLY51" gate="G$1" x="589.28" y="513.08"/>
 <instance part="TP14" gate="G$1" x="589.28" y="523.24"/>
@@ -5759,18 +5847,13 @@ problems doing this."</text>
 <instance part="R25" gate="R" x="335.28" y="591.82" rot="MR180"/>
 <instance part="U$51" gate="PWR1" x="312.42" y="599.44"/>
 <instance part="SUPPLY68" gate="PE" x="345.44" y="566.42" rot="MR0"/>
+<instance part="U$54" gate="G$1" x="650.24" y="378.46" rot="R90"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
 <segment>
 <wire x1="78.74" y1="454.66" x2="78.74" y2="419.1" width="0.762" layer="92"/>
 <label x="77.47" y="419.1" size="1.27" layer="95" rot="R90"/>
-</segment>
-</bus>
-<bus name="DIN[0..11]">
-<segment>
-<label x="113.03" y="170.18" size="1.27" layer="95" rot="R270"/>
-<wire x1="111.76" y1="142.24" x2="111.76" y2="187.96" width="0.762" layer="92"/>
 </segment>
 </bus>
 </busses>
@@ -6334,9 +6417,9 @@ problems doing this."</text>
 <label x="457.2" y="502.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="93.98" y1="119.38" x2="119.38" y2="119.38" width="0.1524" layer="91"/>
-<label x="119.38" y="119.38" size="1.27" layer="95" xref="yes"/>
-<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R14P/CLK2P/E8"/>
+<label x="101.6" y="238.76" size="1.27" layer="95" xref="yes"/>
+<wire x1="101.6" y1="238.76" x2="93.98" y2="238.76" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L18P/CLK0P/F2"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -6450,8 +6533,8 @@ problems doing this."</text>
 <label x="457.2" y="381" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="93.98" y1="111.76" x2="119.38" y2="111.76" width="0.1524" layer="91"/>
-<label x="119.38" y="111.76" size="1.27" layer="95" xref="yes"/>
+<wire x1="93.98" y1="111.76" x2="127" y2="111.76" width="0.1524" layer="91"/>
+<label x="127" y="111.76" size="1.27" layer="95" xref="yes"/>
 <pinref part="U11" gate="G$5" pin="DIFFIO_RX_R16N/CLK3N/D9"/>
 </segment>
 </net>
@@ -6877,7 +6960,7 @@ problems doing this."</text>
 <segment>
 <pinref part="U$43" gate="PWR1" pin="+3V3"/>
 <pinref part="R22" gate="R" pin="1"/>
-<wire x1="134.62" y1="86.36" x2="134.62" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="134.62" x2="124.46" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R25" gate="R" pin="1"/>
@@ -8046,9 +8129,9 @@ problems doing this."</text>
 <wire x1="78.74" y1="441.96" x2="86.36" y2="441.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R7N/G9"/>
-<wire x1="93.98" y1="147.32" x2="111.76" y2="147.32" width="0.1524" layer="91"/>
-<label x="96.52" y="147.32" size="1.27" layer="95"/>
+<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L20P/CLK1P/G1"/>
+<wire x1="93.98" y1="233.68" x2="101.6" y2="233.68" width="0.1524" layer="91"/>
+<label x="101.6" y="233.68" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DIN8" class="0">
@@ -8156,9 +8239,9 @@ problems doing this."</text>
 <wire x1="78.74" y1="454.66" x2="86.36" y2="454.66" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="93.98" y1="106.68" x2="119.38" y2="106.68" width="0.1524" layer="91"/>
-<label x="119.38" y="106.68" size="1.27" layer="95" xref="yes"/>
-<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R27N/C9"/>
+<label x="147.32" y="50.8" size="1.27" layer="95" xref="yes"/>
+<pinref part="U11" gate="G$6" pin="CRC_ERROR/C5"/>
+<wire x1="147.32" y1="50.8" x2="93.98" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VSYNC" class="0">
@@ -8167,8 +8250,8 @@ problems doing this."</text>
 <wire x1="78.74" y1="452.12" x2="86.36" y2="452.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="93.98" y1="104.14" x2="119.38" y2="104.14" width="0.1524" layer="91"/>
-<label x="119.38" y="104.14" size="1.27" layer="95" xref="yes"/>
+<wire x1="93.98" y1="104.14" x2="127" y2="104.14" width="0.1524" layer="91"/>
+<label x="127" y="104.14" size="1.27" layer="95" xref="yes"/>
 <pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33P/PLL_R_CLKOUTP/C7"/>
 </segment>
 </net>
@@ -8178,9 +8261,9 @@ problems doing this."</text>
 <wire x1="78.74" y1="449.58" x2="86.36" y2="449.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="93.98" y1="101.6" x2="119.38" y2="101.6" width="0.1524" layer="91"/>
-<label x="119.38" y="101.6" size="1.27" layer="95" xref="yes"/>
-<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33N/PLL_R_CLKOUTN/B7"/>
+<label x="157.48" y="236.22" size="1.27" layer="95" xref="yes"/>
+<wire x1="157.48" y1="236.22" x2="93.98" y2="236.22" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L20N/CLK1N/G2"/>
 </segment>
 </net>
 <net name="DIN11" class="0">
@@ -8189,9 +8272,9 @@ problems doing this."</text>
 <wire x1="78.74" y1="447.04" x2="86.36" y2="447.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R10N/F9"/>
-<wire x1="93.98" y1="142.24" x2="111.76" y2="142.24" width="0.1524" layer="91"/>
-<label x="96.52" y="142.24" size="1.27" layer="95"/>
+<wire x1="106.68" y1="48.26" x2="93.98" y2="48.26" width="0.1524" layer="91"/>
+<label x="106.68" y="48.26" size="1.778" layer="95"/>
+<pinref part="U11" gate="G$6" pin="A3"/>
 </segment>
 </net>
 <net name="N$28" class="0">
@@ -8308,8 +8391,8 @@ problems doing this."</text>
 </segment>
 <segment>
 <wire x1="93.98" y1="109.22" x2="114.3" y2="109.22" width="0.1524" layer="91"/>
-<label x="119.38" y="109.22" size="1.27" layer="95" xref="yes"/>
-<wire x1="114.3" y1="109.22" x2="119.38" y2="109.22" width="0.1524" layer="91"/>
+<label x="127" y="109.22" size="1.27" layer="95" xref="yes"/>
+<wire x1="114.3" y1="109.22" x2="127" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="121.92" x2="114.3" y2="109.22" width="0.1524" layer="91"/>
 <junction x="114.3" y="109.22"/>
 <pinref part="U11" gate="G$5" pin="DIFFIO_RX_R27P/C8"/>
@@ -8324,8 +8407,8 @@ problems doing this."</text>
 </segment>
 <segment>
 <wire x1="93.98" y1="116.84" x2="104.14" y2="116.84" width="0.1524" layer="91"/>
-<label x="119.38" y="116.84" size="1.27" layer="95" xref="yes"/>
-<wire x1="104.14" y1="116.84" x2="119.38" y2="116.84" width="0.1524" layer="91"/>
+<label x="127" y="116.84" size="1.27" layer="95" xref="yes"/>
+<wire x1="104.14" y1="116.84" x2="127" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="121.92" x2="104.14" y2="116.84" width="0.1524" layer="91"/>
 <junction x="104.14" y="116.84"/>
 <pinref part="U11" gate="G$5" pin="DIFFIO_RX_R14N/CLK2N/E7"/>
@@ -8722,14 +8805,14 @@ problems doing this."</text>
 <segment>
 <pinref part="TP10" gate="G$1" pin="TP"/>
 <pinref part="U7" gate="A" pin="AUXIN2"/>
-<wire x1="635" y1="431.8" x2="635" y2="436.88" width="0.1524" layer="91"/>
+<wire x1="635" y1="398.78" x2="635" y2="436.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="AUXIN3" class="0">
 <segment>
 <pinref part="TP8" gate="G$1" pin="TP"/>
 <pinref part="U7" gate="A" pin="AUXIN1"/>
-<wire x1="632.46" y1="431.8" x2="632.46" y2="436.88" width="0.1524" layer="91"/>
+<wire x1="632.46" y1="398.78" x2="632.46" y2="436.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$36" class="0">
@@ -8904,9 +8987,9 @@ problems doing this."</text>
 <label x="299.72" y="477.52" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$6" pin="A3"/>
-<wire x1="93.98" y1="48.26" x2="142.24" y2="48.26" width="0.1524" layer="91"/>
-<label x="142.24" y="48.26" size="1.27" layer="95" xref="yes"/>
+<label x="116.84" y="142.24" size="1.27" layer="95" xref="yes"/>
+<wire x1="116.84" y1="142.24" x2="93.98" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R10N/F9"/>
 </segment>
 </net>
 <net name="SDI" class="0">
@@ -8933,9 +9016,9 @@ problems doing this."</text>
 <label x="662.94" y="642.62" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L20N/CLK1N/G2"/>
-<wire x1="93.98" y1="236.22" x2="119.38" y2="236.22" width="0.1524" layer="91"/>
-<label x="119.38" y="236.22" size="1.27" layer="95" xref="yes"/>
+<label x="99.06" y="101.6" size="1.27" layer="95" xref="yes"/>
+<wire x1="99.06" y1="101.6" x2="93.98" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33N/PLL_R_CLKOUTN/B7"/>
 </segment>
 </net>
 <net name="POT_CS" class="0">
@@ -8945,9 +9028,9 @@ problems doing this."</text>
 <label x="774.7" y="640.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L20P/CLK1P/G1"/>
-<wire x1="93.98" y1="233.68" x2="119.38" y2="233.68" width="0.1524" layer="91"/>
-<label x="119.38" y="233.68" size="1.27" layer="95" xref="yes"/>
+<label x="116.84" y="147.32" size="1.27" layer="95" xref="yes"/>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R7N/G9"/>
+<wire x1="116.84" y1="147.32" x2="93.98" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LED_CLK" class="0">
@@ -8957,9 +9040,9 @@ problems doing this."</text>
 <label x="662.94" y="637.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L18P/CLK0P/F2"/>
-<wire x1="93.98" y1="238.76" x2="119.38" y2="238.76" width="0.1524" layer="91"/>
-<label x="119.38" y="238.76" size="1.27" layer="95" xref="yes"/>
+<label x="127" y="119.38" size="1.27" layer="95" xref="yes"/>
+<wire x1="127" y1="119.38" x2="93.98" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R14P/CLK2P/E8"/>
 </segment>
 </net>
 <net name="MIDFILT" class="0">
@@ -9112,13 +9195,13 @@ problems doing this."</text>
 <label x="662.94" y="665.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$6" pin="CRC_ERROR/C5"/>
-<wire x1="93.98" y1="50.8" x2="134.62" y2="50.8" width="0.1524" layer="91"/>
-<label x="142.24" y="50.8" size="1.27" layer="95" xref="yes"/>
+<label x="127" y="106.68" size="1.27" layer="95" xref="yes"/>
 <pinref part="R22" gate="R" pin="2"/>
-<wire x1="134.62" y1="50.8" x2="142.24" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="73.66" x2="134.62" y2="50.8" width="0.1524" layer="91"/>
-<junction x="134.62" y="50.8"/>
+<wire x1="124.46" y1="106.68" x2="127" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="121.92" x2="124.46" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R27N/C9"/>
+<wire x1="124.46" y1="106.68" x2="93.98" y2="106.68" width="0.1524" layer="91"/>
+<junction x="124.46" y="106.68"/>
 </segment>
 </net>
 <net name="N$37" class="0">
