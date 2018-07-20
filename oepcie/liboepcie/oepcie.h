@@ -62,11 +62,11 @@ typedef struct oe_frame {
     uint16_t num_dev;       // Number of devices in frame
     uint8_t corrupt;        // Is this frame corrupt?
     oe_size_t *dev_idxs;    // Array of device indices in frame
-	oe_size_t dev_idxs_sz;  // Size in bytes of dev_idxs buffer
-	oe_size_t *dev_offs;    // Device data offsets within data block
-	oe_size_t dev_offs_sz;  // Size in bytes of dev_idxs buffer
+    oe_size_t dev_idxs_sz;  // Size in bytes of dev_idxs buffer
+    oe_size_t *dev_offs;    // Device data offsets within data block
+    oe_size_t dev_offs_sz;  // Size in bytes of dev_idxs buffer
     uint8_t *data;          // Multi-device raw data block
-	oe_size_t data_sz;      // Size in bytes of data buffer
+    oe_size_t data_sz;      // Size in bytes of data buffer
 
 } oe_frame_t;
 

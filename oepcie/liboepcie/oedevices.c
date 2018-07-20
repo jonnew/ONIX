@@ -18,6 +18,7 @@ int oe_device_official(int dev_id)
         case OE_ESTIM:
         case OE_OSTIM:
         case OE_TS4231:
+        case OE_SERDESGPO:
             return 0;
         default:
             return OE_EDEVID;
@@ -47,6 +48,9 @@ const char *oe_device_str(int dev_id)
         }
         case OE_TS4231: {
             return "Triad TS4231 optical to digital converter";
+        }
+        case OE_SERDESGPO: {
+            return "GPO pins available on the DS90UB913A-Q1 serializer.";
         }
         default:
             return "Unknown device";

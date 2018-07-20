@@ -17,57 +17,64 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Dump raw device streams to files?
+//#define DUMPFILES
+
+#ifdef DUMPFILES
+FILE **dump_files;
+#endif
+
 // Windows does not have a getline()
 size_t getline(char **lineptr, size_t *n, FILE *stream) {
-	char *bufptr = NULL;
-	char *p = bufptr;
-	size_t size;
-	int c;
+    char *bufptr = NULL;
+    char *p = bufptr;
+    size_t size;
+    int c;
 
-	if (lineptr == NULL) {
-		return -1;
-	}
-	if (stream == NULL) {
-		return -1;
-	}
-	if (n == NULL) {
-		return -1;
-	}
-	bufptr = *lineptr;
-	size = *n;
+    if (lineptr == NULL) {
+        return -1;
+    }
+    if (stream == NULL) {
+        return -1;
+    }
+    if (n == NULL) {
+        return -1;
+    }
+    bufptr = *lineptr;
+    size = *n;
 
-	c = fgetc(stream);
-	if (c == EOF) {
-		return -1;
-	}
-	if (bufptr == NULL) {
-		bufptr = malloc(128);
-		if (bufptr == NULL) {
-			return -1;
-		}
-		size = 128;
-	}
-	p = bufptr;
-	while (c != EOF) {
-		if ((p - bufptr) > (size - 1)) {
-			size = size + 128;
-			bufptr = realloc(bufptr, size);
-			if (bufptr == NULL) {
-				return -1;
-			}
-		}
-		*p++ = c;
-		if (c == '\n') {
-			break;
-		}
-		c = fgetc(stream);
-	}
+    c = fgetc(stream);
+    if (c == EOF) {
+        return -1;
+    }
+    if (bufptr == NULL) {
+        bufptr = malloc(128);
+        if (bufptr == NULL) {
+            return -1;
+        }
+        size = 128;
+    }
+    p = bufptr;
+    while (c != EOF) {
+        if ((p - bufptr) > (size - 1)) {
+            size = size + 128;
+            bufptr = realloc(bufptr, size);
+            if (bufptr == NULL) {
+                return -1;
+            }
+        }
+        *p++ = c;
+        if (c == '\n') {
+            break;
+        }
+        c = fgetc(stream);
+    }
 
-	*p++ = '\0';
-	*lineptr = bufptr;
-	*n = size;
+    *p++ = '\0';
+    *lineptr = bufptr;
+    *n = size;
 
-	return p - bufptr - 1;
+    return p - bufptr - 1;
 }
 #else
 #include <unistd.h>
@@ -116,23 +123,25 @@ void *data_loop(void *vargp)
         oe_frame_t *frame;
         rc = oe_read_frame(ctx, &frame);
 
-		if (display_clock)
-			printf("\tSample: %" PRIu64 "\n\n", frame->clock);
+        if (display_clock)
+            printf("\tSample: %" PRIu64 "\n\n", frame->clock);
 
-        if (display) {
+        int i;
+        for (i = 0; i < frame->num_dev; i++) {
 
-            int i;
-            for (i = 0; i < frame->num_dev; i++) {
+            // Pull data
+            size_t this_idx = frame->dev_idxs[i];
+            oe_device_t this_dev = devices[this_idx];
+            uint8_t *data = (uint8_t *)(frame->data + frame->dev_offs[i]);
+            size_t data_sz = this_dev.read_size;
 
-                oe_device_t this_dev = devices[frame->dev_idxs[i]];
-
+#ifdef DUMPFILES
+            fwrite(data, 1, data_sz, dump_files[this_idx]);
+#endif
+            if (display) {
                 printf("\tDev: %d (%s)\n",
-                       frame->dev_idxs[i],
-                       oe_device_str(this_dev.id));
-
-                uint8_t *data = (uint8_t *)(frame->data + frame->dev_offs[i]);
-
-                size_t data_sz = this_dev.read_size;
+                    this_idx,
+                    oe_device_str(this_dev.id));
 
                 int i;
                 printf("\tData: [");
@@ -145,7 +154,7 @@ void *data_loop(void *vargp)
         oe_destroy_frame(frame);
     }
 
-	return NULL;
+    return NULL;
 }
 
 int main(int argc, char *argv[])
@@ -163,7 +172,8 @@ int main(int argc, char *argv[])
         printf("\thost : run using default stream paths\n");
         printf("\thost config signal data : specify the configuration, signal and data paths.\n");
         exit(1);
-    } else if (argc == 4) {
+    }
+    else if (argc == 4) {
 
         // Set firmware paths
         config_path = argv[1];
@@ -171,14 +181,14 @@ int main(int argc, char *argv[])
         data_path = argv[3];
     }
 
-	// Set paths in context
+    // Set paths in context
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
     oe_set_opt(ctx, OE_READSTREAMPATH, data_path, strlen(data_path) + 1);
 
     // Initialize context and discover hardware
-	int rc = oe_init_ctx(ctx);
-	if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    int rc = oe_init_ctx(ctx);
+    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(rc == 0);
 
     // Examine device map
@@ -192,6 +202,11 @@ int main(int argc, char *argv[])
     if (devices == NULL) { exit(EXIT_FAILURE); }
     oe_get_opt(ctx, OE_DEVICEMAP, devices, &devices_sz);
 
+#ifdef DUMPFILES
+    // Make room for dump files
+    dump_files = malloc(num_devs * sizeof(FILE *));
+#endif
+
     // Show device map
     printf("Found the following devices:\n");
     size_t dev_idx;
@@ -200,10 +215,17 @@ int main(int argc, char *argv[])
         const char *dev_str = oe_device_str(devices[dev_idx].id);
 
         printf("\t%zd) ID: %d (%s), Read size: %u\n",
-               dev_idx,
-               devices[dev_idx].id,
-               dev_str,
-               devices[dev_idx].read_size);
+            dev_idx,
+            devices[dev_idx].id,
+            dev_str,
+            devices[dev_idx].read_size);
+
+#ifdef DUMPFILES
+        // Open dump files
+        char * buffer = malloc(100);
+        snprintf(buffer, 100, "%s_idx-%d_id-%d.raw", "dev", dev_idx, devices[dev_idx].id);
+        dump_files[dev_idx] = fopen(buffer, "wb");
+#endif
     }
 
     oe_size_t frame_size = 0;
@@ -228,12 +250,12 @@ int main(int argc, char *argv[])
 
     // Generate data thread and continue here config/signal handling in parallel
 #ifdef _WIN32
-	DWORD tid;
-	HANDLE thread;
-	thread = CreateThread(NULL, 0, data_loop, NULL, 0, &tid);
+    DWORD tid;
+    HANDLE thread;
+    thread = CreateThread(NULL, 0, data_loop, NULL, 0, &tid);
 #else
     pthread_t tid;
-	pthread_create(&tid, NULL, data_loop, NULL);
+    pthread_create(&tid, NULL, data_loop, NULL);
 #endif // _WIN32
 
     // Read stdin to start (s) or pause (p)
@@ -251,24 +273,26 @@ int main(int argc, char *argv[])
         char *cmd = NULL;
         size_t cmd_len = 0;
         rc = getline(&cmd, &cmd_len, stdin);
-        if (rc == -1) { printf("Error: bad command\n"); continue;}
+        if (rc == -1) { printf("Error: bad command\n"); continue; }
         c = cmd[0];
         free(cmd);
 
-		if (c == 'p') {
-			running = (running == 1) ? 0 : 1;
-			oe_reg_val_t run = running;
-			rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
-			if (rc) {
-				printf("Error: %s\n", oe_error_str(rc));
-			}
-			printf("Paused\n");
-		} else if (c == 'c') {
-			display_clock = (display_clock == 0) ? 1 : 0;
-        } else if (c == 'd') {
+        if (c == 'p') {
+            running = (running == 1) ? 0 : 1;
+            oe_reg_val_t run = running;
+            rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
+            if (rc) {
+                printf("Error: %s\n", oe_error_str(rc));
+            }
+            printf("Paused\n");
+        }
+        else if (c == 'c') {
+            display_clock = (display_clock == 0) ? 1 : 0;
+        }
+        else if (c == 'd') {
             display = (display == 0) ? 1 : 0;
-        } else if (c == 'r') {
-
+        }
+        else if (c == 'r') {
             printf("Enter dev_idx reg_addr reg_val\n");
             printf(">>> ");
 
@@ -276,12 +300,12 @@ int main(int argc, char *argv[])
             char *buf = NULL;
             size_t len = 0;
             rc = getline(&buf, &len, stdin);
-            if (rc == -1) { printf("Error: bad command\n"); continue;}
+            if (rc == -1) { printf("Error: bad command\n"); continue; }
 
             // Parse the command string
             long values[3];
             rc = parse_reg_cmd(buf, values);
-            if (rc == -1) { printf("Error: bad command\n"); continue;}
+            if (rc == -1) { printf("Error: bad command\n"); continue; }
             free(buf);
 
             size_t dev_idx = (size_t)values[0];
@@ -295,10 +319,16 @@ int main(int argc, char *argv[])
     // Join data and signal threads
     quit = 1;
 #ifdef _WIN32
-	WaitForSingleObject(thread, INFINITE);
-	CloseHandle(thread);
+    WaitForSingleObject(thread, INFINITE);
+    CloseHandle(thread);
 #else
-	pthread_join(tid, NULL);
+    pthread_join(tid, NULL);
+#endif
+#ifdef DUMPFILES
+    // Close dump files
+    for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
+        fclose(dump_files[dev_idx]);
+    }
 #endif
 
     // Reset the hardware
