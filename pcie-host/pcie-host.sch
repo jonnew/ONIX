@@ -7227,7 +7227,7 @@ grid 2.54 mm</description>
 <part name="PWR47" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
 <part name="C52" library="jonnew" deviceset="C" device="_0402" value="10nF"/>
 <part name="C53" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
-<part name="C54" library="jonnew" deviceset="C" device="_1206" value="4.7F"/>
+<part name="C54" library="jonnew" deviceset="C" device="_1206" value="4.7uF"/>
 <part name="GND81" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="C36" library="jonnew" deviceset="C" device="_0402" value="10nF"/>
 <part name="C37" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
@@ -7243,9 +7243,9 @@ grid 2.54 mm</description>
 <part name="GND85" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="C69" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="GND86" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="R68" library="jonnew" deviceset="R" device="_0603" value="1K"/>
-<part name="R69" library="jonnew" deviceset="R" device="_0603" value="1K"/>
-<part name="C78" library="jonnew" deviceset="C" device="_0805" value="4.7uF"/>
+<part name="R70" library="jonnew" deviceset="R" device="_0603" value="1k"/>
+<part name="R71" library="jonnew" deviceset="R" device="_0603" value="1k"/>
+<part name="C78" library="jonnew" deviceset="C" device="_1206" value="4.7uF"/>
 <part name="GND87" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="GND88" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="PWR50" library="jonnew" deviceset="+5V" device="" value="+5.5V_ISO"/>
@@ -7254,22 +7254,22 @@ grid 2.54 mm</description>
 <part name="R42" library="jonnew" deviceset="R" device="_0402" value="49.9"/>
 <part name="GND89" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="GND93" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="R61" library="jonnew" deviceset="R" device="_0402" value="10K"/>
-<part name="R62" library="jonnew" deviceset="R" device="_0402" value="10K"/>
-<part name="R63" library="jonnew" deviceset="R" device="_0402" value="10K"/>
-<part name="R64" library="jonnew" deviceset="R" device="_0402" value="10K"/>
+<part name="R61" library="jonnew" deviceset="R" device="_0402" value="10k"/>
+<part name="R62" library="jonnew" deviceset="R" device="_0402" value="10k"/>
+<part name="R63" library="jonnew" deviceset="R" device="_0402" value="10k"/>
+<part name="R65" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="U15" library="jonnew" deviceset="DIPSW-004" device="_SMD-0.05IN"/>
 <part name="GND94" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="C61" library="jonnew" deviceset="C" device="_0603" value="10uF"/>
-<part name="R56" library="jonnew" deviceset="R" device="_0402" value="10K"/>
+<part name="C61" library="jonnew" deviceset="C" device="_1206" value="10uF"/>
+<part name="R56" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="GND95" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="PWR55" library="jonnew" deviceset="+5V" device="" value="+1.8V_ISO"/>
-<part name="R70" library="jonnew" deviceset="R" device="_0402" value="10K"/>
-<part name="R71" library="jonnew" deviceset="R" device="_0402" value="10K"/>
-<part name="R72" library="jonnew" deviceset="R" device="_0402" value="10K"/>
-<part name="R73" library="jonnew" deviceset="R" device="_0402" value="0"/>
-<part name="R74" library="jonnew" deviceset="R" device="_0402" value="0"/>
+<part name="R72" library="jonnew" deviceset="R" device="_0402" value="10k"/>
+<part name="R73" library="jonnew" deviceset="R" device="_0402" value="10k"/>
+<part name="R74" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="R75" library="jonnew" deviceset="R" device="_0402" value="0"/>
+<part name="R76" library="jonnew" deviceset="R" device="_0402" value="0"/>
+<part name="R77" library="jonnew" deviceset="R" device="_0402" value="3k"/>
 <part name="GND96" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="R46" library="jonnew" deviceset="R" device="_0402" value="22"/>
 <part name="R47" library="jonnew" deviceset="R" device="_0402" value="22"/>
@@ -7304,13 +7304,13 @@ grid 2.54 mm</description>
 <part name="R26" library="cyclops" deviceset="R" device="_0603" value="4.7k"/>
 <part name="Q4" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="NDS351AN"/>
 <part name="R29" library="cyclops" deviceset="R" device="_0603" value="100k"/>
-<part name="R65" library="cyclops" deviceset="R" device="_0603" value="1k"/>
 <part name="R66" library="cyclops" deviceset="R" device="_0603" value="1k"/>
-<part name="Q5" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="NDS351AN"/>
-<part name="R67" library="cyclops" deviceset="R" device="_0603" value="100k"/>
+<part name="R68" library="cyclops" deviceset="R" device="_0603" value="1k"/>
+<part name="Q6" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="NDS351AN"/>
+<part name="R69" library="cyclops" deviceset="R" device="_0603" value="100k"/>
 <part name="GND90" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="L5" library="jonnew" deviceset="L" device="_1008PS" value="1008PS-472KLB"/>
-<part name="L6" library="jonnew" deviceset="L" device="_SRN6045TA" value="SRN6045TA-101M"/>
+<part name="L5" library="jonnew" deviceset="L" device="_1008PS" value="1008PS-472"/>
+<part name="L6" library="jonnew" deviceset="L" device="_SRN6045TA" value="SRNxx-101M"/>
 <part name="L4" library="jonnew" deviceset="L" device="_0805" value="MPZ2012S102AT000"/>
 <part name="L3" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
 <part name="L1" library="jonnew" deviceset="L" device="_0603" value="BLM18KG601SN1D"/>
@@ -7320,7 +7320,7 @@ grid 2.54 mm</description>
 <part name="C75" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
 <part name="C74" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="PWR53" library="jonnew" deviceset="+3V3" device=""/>
-<part name="U17" library="jonnew" deviceset="DIGISO-4-0" device="" value="ISO7742"/>
+<part name="U17" library="jonnew" deviceset="DIGISO-4-0" device="" value="ISO7740"/>
 <part name="GND105" library="supply1" deviceset="GND" device=""/>
 <part name="C28" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
 <part name="GND106" library="supply1" deviceset="GND" device=""/>
@@ -7364,10 +7364,10 @@ grid 2.54 mm</description>
 <part name="D2" library="jonnew" deviceset="DIODE2" device="_SOT23" value="BAR66"/>
 <part name="D3" library="jonnew" deviceset="DIODE2" device="_SOT23" value="BAR66"/>
 <part name="D4" library="jonnew" deviceset="DIODE2" device="_SOT23" value="BAR66"/>
-<part name="C12" library="RHD2000_eval_board" deviceset="C" device="_0603" value="1uF"/>
+<part name="C12" library="jonnew" deviceset="C" device="_0805" value="1uF"/>
 <part name="C23" library="jonnew" deviceset="C-POL" device="_1210" value="22uF"/>
 <part name="U11" library="jonnew" deviceset="SN65LVDS387" device="_TSSOP" value="SN65LVDS387"/>
-<part name="C79" library="jonnew" deviceset="C" device="_0805" value="4.7uF"/>
+<part name="C79" library="jonnew" deviceset="C" device="_1206" value="4.7uF"/>
 <part name="GND20" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="GND21" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="C77" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
@@ -7460,9 +7460,9 @@ grid 2.54 mm</description>
 <part name="TP7" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
 <part name="TP8" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
 <part name="GND112" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="TP26" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
+<part name="TP25" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
 <part name="GND113" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="TP27" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
+<part name="TP26" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
 <part name="PWR37" library="jonnew" deviceset="+3V3" device=""/>
 <part name="TP10" library="jonnew" deviceset="TP" device="_2MM" value="+3.3V"/>
 <part name="R7" library="jonnew" deviceset="R" device="_0603" value="1k"/>
@@ -7476,7 +7476,7 @@ grid 2.54 mm</description>
 <part name="TP15" library="jonnew" deviceset="TP" device="_1MM" value="SCL(ISO)"/>
 <part name="TP16" library="jonnew" deviceset="TP" device="_1MM" value="SDA(ISO)"/>
 <part name="TP17" library="jonnew" deviceset="TP" device="_1MM" value="GND(ISO)"/>
-<part name="R76" library="jonnew" deviceset="R" device="_0402" value="22"/>
+<part name="R78" library="jonnew" deviceset="R" device="_0402" value="22"/>
 <part name="U18" library="jonnew" deviceset="DIGISO-3-1" device="" value="ISO7741"/>
 <part name="R57" library="jonnew" deviceset="R" device="_0402" value="22"/>
 <part name="J5" library="jonnew" deviceset="COAX" device="_SMA-VERT-SMA"/>
@@ -7498,14 +7498,14 @@ grid 2.54 mm</description>
 <part name="GND92" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="GND97" library="supply1" deviceset="GND" device=""/>
 <part name="TP9" library="jonnew" deviceset="TP" device="_2MM" value="GND"/>
-<part name="R77" library="jonnew" deviceset="R" device="_0402" value="1k"/>
-<part name="Q6" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="NDS351AN"/>
-<part name="R78" library="jonnew" deviceset="R" device="_0402" value="100k"/>
+<part name="R64" library="jonnew" deviceset="R" device="_0603" value="1k"/>
+<part name="Q5" library="jonnew" deviceset="N-MOSFET" device="_SOT23-GSD" value="NDS351"/>
+<part name="R67" library="jonnew" deviceset="R" device="_0603" value="100k"/>
 <part name="GND99" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="S1" library="jonnew" deviceset="SPST_TACT2" device="_EVQPF"/>
 <part name="GND102" library="jonnew" deviceset="GND_ISO" device=""/>
-<part name="R79" library="jonnew" deviceset="R" device="_0402" value="0"/>
 <part name="R80" library="jonnew" deviceset="R" device="_0402" value="0"/>
+<part name="R79" library="jonnew" deviceset="R" device="_0402" value="0"/>
 </parts>
 <sheets>
 <sheet>
@@ -7747,8 +7747,8 @@ should be provided to LPC connector</text>
 <instance part="GND85" gate="G$1" x="332.74" y="129.54"/>
 <instance part="C69" gate="C" x="342.9" y="137.16" rot="R180"/>
 <instance part="GND86" gate="G$1" x="342.9" y="129.54"/>
-<instance part="R68" gate="R" x="104.14" y="111.76" rot="R180"/>
-<instance part="R69" gate="R" x="132.08" y="111.76" rot="R180"/>
+<instance part="R70" gate="R" x="104.14" y="111.76" rot="R180"/>
+<instance part="R71" gate="R" x="132.08" y="111.76" rot="R180"/>
 <instance part="C78" gate="C" x="154.94" y="101.6" rot="R180"/>
 <instance part="GND87" gate="G$1" x="154.94" y="93.98"/>
 <instance part="GND88" gate="G$1" x="165.1" y="93.98"/>
@@ -7763,7 +7763,7 @@ should be provided to LPC connector</text>
 <instance part="R61" gate="R" x="144.78" y="175.26" rot="MR0"/>
 <instance part="R62" gate="R" x="152.4" y="170.18" rot="MR0"/>
 <instance part="R63" gate="R" x="144.78" y="165.1" rot="MR0"/>
-<instance part="R64" gate="R" x="152.4" y="160.02" rot="MR0"/>
+<instance part="R65" gate="R" x="152.4" y="160.02" rot="MR0"/>
 <instance part="U15" gate="G$1" x="195.58" y="149.86" rot="R270"/>
 <instance part="GND94" gate="G$1" x="210.82" y="139.7"/>
 <instance part="C61" gate="C" x="73.66" y="187.96" rot="MR180"/>
@@ -7772,12 +7772,12 @@ should be provided to LPC connector</text>
 <instance part="PWR55" gate="1" x="322.58" y="114.3" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="319.405" y="107.95" size="1.27" layer="96" font="vector" ratio="18" rot="MR90"/>
 </instance>
-<instance part="R70" gate="R" x="322.58" y="93.98" rot="R270"/>
-<instance part="R71" gate="R" x="337.82" y="93.98" rot="R270"/>
-<instance part="R72" gate="R" x="353.06" y="93.98" rot="R270"/>
-<instance part="R73" gate="R" x="322.58" y="78.74" rot="R270"/>
-<instance part="R74" gate="R" x="337.82" y="78.74" rot="R270"/>
-<instance part="R75" gate="R" x="353.06" y="78.74" rot="R270"/>
+<instance part="R72" gate="R" x="322.58" y="93.98" rot="R270"/>
+<instance part="R73" gate="R" x="337.82" y="93.98" rot="R270"/>
+<instance part="R74" gate="R" x="353.06" y="93.98" rot="R270"/>
+<instance part="R75" gate="R" x="322.58" y="78.74" rot="R270"/>
+<instance part="R76" gate="R" x="337.82" y="78.74" rot="R270"/>
+<instance part="R77" gate="R" x="353.06" y="78.74" rot="R270"/>
 <instance part="GND96" gate="G$1" x="337.82" y="63.5"/>
 <instance part="R46" gate="R" x="312.42" y="226.06" rot="MR0"/>
 <instance part="R47" gate="R" x="304.8" y="223.52" rot="MR0"/>
@@ -7818,10 +7818,10 @@ should be provided to LPC connector</text>
 <attribute name="NAME" x="52.2986" y="537.21" size="1.27" layer="95" rot="MR90"/>
 <attribute name="VALUE" x="47.498" y="537.21" size="1.778" layer="96" rot="MR90"/>
 </instance>
-<instance part="R65" gate="R" x="304.8" y="154.94" rot="R90"/>
-<instance part="R66" gate="R" x="287.02" y="124.46" rot="R180"/>
-<instance part="Q5" gate="G$1" x="302.26" y="127"/>
-<instance part="R67" gate="R" x="294.64" y="116.84" smashed="yes" rot="R90">
+<instance part="R66" gate="R" x="304.8" y="154.94" rot="R90"/>
+<instance part="R68" gate="R" x="287.02" y="124.46" rot="R180"/>
+<instance part="Q6" gate="G$1" x="302.26" y="127"/>
+<instance part="R69" gate="R" x="294.64" y="116.84" smashed="yes" rot="R90">
 <attribute name="NAME" x="293.1414" y="113.03" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="297.942" y="113.03" size="1.778" layer="96" rot="R90"/>
 </instance>
@@ -8003,9 +8003,9 @@ should be provided to LPC connector</text>
 <instance part="TP7" gate="G$1" x="556.26" y="645.16" rot="R180"/>
 <instance part="TP8" gate="G$1" x="561.34" y="645.16" rot="R180"/>
 <instance part="GND112" gate="G$1" x="132.08" y="393.7"/>
-<instance part="TP26" gate="G$1" x="139.7" y="398.78" rot="R180"/>
+<instance part="TP25" gate="G$1" x="139.7" y="398.78" rot="R180"/>
 <instance part="GND113" gate="G$1" x="147.32" y="393.7"/>
-<instance part="TP27" gate="G$1" x="154.94" y="398.78" rot="R180"/>
+<instance part="TP26" gate="G$1" x="154.94" y="398.78" rot="R180"/>
 <instance part="PWR37" gate="PWR1" x="576.58" y="657.86"/>
 <instance part="TP10" gate="G$1" x="576.58" y="645.16" rot="R180"/>
 <instance part="R7" gate="R" x="99.06" y="833.12"/>
@@ -8020,7 +8020,7 @@ should be provided to LPC connector</text>
 <instance part="TP15" gate="G$1" x="424.18" y="459.74" rot="R180"/>
 <instance part="TP16" gate="G$1" x="431.8" y="459.74" rot="R180"/>
 <instance part="TP17" gate="G$1" x="439.42" y="459.74" rot="R180"/>
-<instance part="R76" gate="R" x="462.28" y="43.18" rot="R180"/>
+<instance part="R78" gate="R" x="462.28" y="43.18" rot="R180"/>
 <instance part="U18" gate="G$1" x="490.22" y="45.72"/>
 <instance part="R57" gate="R" x="299.72" y="195.58" rot="MR0"/>
 <instance part="J5" gate="G$1" x="419.1" y="48.26"/>
@@ -8042,17 +8042,17 @@ should be provided to LPC connector</text>
 <instance part="GND92" gate="G$1" x="469.9" y="30.48" rot="MR0"/>
 <instance part="GND97" gate="1" x="513.08" y="25.4" rot="MR0"/>
 <instance part="TP9" gate="G$1" x="571.5" y="645.16" rot="R180"/>
-<instance part="R77" gate="R" x="76.2" y="160.02" rot="R180"/>
-<instance part="Q6" gate="G$1" x="91.44" y="162.56"/>
-<instance part="R78" gate="R" x="83.82" y="152.4" smashed="yes" rot="R90">
+<instance part="R64" gate="R" x="76.2" y="160.02" rot="R180"/>
+<instance part="Q5" gate="G$1" x="91.44" y="162.56"/>
+<instance part="R67" gate="R" x="83.82" y="152.4" smashed="yes" rot="R90">
 <attribute name="NAME" x="82.3214" y="148.59" size="1.27" layer="95" rot="R90"/>
 <attribute name="VALUE" x="87.122" y="148.59" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND99" gate="G$1" x="93.98" y="144.78"/>
 <instance part="S1" gate="G$1" x="119.38" y="167.64"/>
 <instance part="GND102" gate="G$1" x="119.38" y="144.78"/>
-<instance part="R79" gate="R" x="449.58" y="30.48" rot="R270"/>
-<instance part="R80" gate="R" x="439.42" y="40.64"/>
+<instance part="R80" gate="R" x="449.58" y="30.48" rot="R270"/>
+<instance part="R79" gate="R" x="439.42" y="40.64"/>
 </instances>
 <busses>
 </busses>
@@ -8292,12 +8292,12 @@ should be provided to LPC connector</text>
 <pinref part="GND95" gate="G$1" pin="GND_ISO"/>
 </segment>
 <segment>
-<pinref part="R73" gate="R" pin="2"/>
+<pinref part="R75" gate="R" pin="2"/>
 <wire x1="322.58" y1="73.66" x2="322.58" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="322.58" y1="68.58" x2="337.82" y2="68.58" width="0.1524" layer="91"/>
-<pinref part="R74" gate="R" pin="2"/>
+<pinref part="R76" gate="R" pin="2"/>
 <wire x1="337.82" y1="68.58" x2="337.82" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="R75" gate="R" pin="2"/>
+<pinref part="R77" gate="R" pin="2"/>
 <wire x1="353.06" y1="73.66" x2="353.06" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="353.06" y1="68.58" x2="337.82" y2="68.58" width="0.1524" layer="91"/>
 <junction x="337.82" y="68.58"/>
@@ -8306,8 +8306,8 @@ should be provided to LPC connector</text>
 </segment>
 <segment>
 <wire x1="304.8" y1="121.92" x2="304.8" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="Q5" gate="G$1" pin="S"/>
-<pinref part="R67" gate="R" pin="1"/>
+<pinref part="Q6" gate="G$1" pin="S"/>
+<pinref part="R69" gate="R" pin="1"/>
 <wire x1="304.8" y1="111.76" x2="304.8" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="294.64" y1="111.76" x2="304.8" y2="111.76" width="0.1524" layer="91"/>
 <junction x="304.8" y="111.76"/>
@@ -8390,14 +8390,14 @@ should be provided to LPC connector</text>
 <pinref part="GND112" gate="G$1" pin="GND_ISO"/>
 <wire x1="132.08" y1="393.7" x2="132.08" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="406.4" x2="139.7" y2="406.4" width="0.1524" layer="91"/>
-<pinref part="TP26" gate="G$1" pin="TP"/>
+<pinref part="TP25" gate="G$1" pin="TP"/>
 <wire x1="139.7" y1="406.4" x2="139.7" y2="401.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND113" gate="G$1" pin="GND_ISO"/>
 <wire x1="147.32" y1="393.7" x2="147.32" y2="406.4" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="406.4" x2="154.94" y2="406.4" width="0.1524" layer="91"/>
-<pinref part="TP27" gate="G$1" pin="TP"/>
+<pinref part="TP26" gate="G$1" pin="TP"/>
 <wire x1="154.94" y1="406.4" x2="154.94" y2="401.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -8439,8 +8439,8 @@ should be provided to LPC connector</text>
 </segment>
 <segment>
 <wire x1="93.98" y1="157.48" x2="93.98" y2="147.32" width="0.1524" layer="91"/>
-<pinref part="Q6" gate="G$1" pin="S"/>
-<pinref part="R78" gate="R" pin="1"/>
+<pinref part="Q5" gate="G$1" pin="S"/>
+<pinref part="R67" gate="R" pin="1"/>
 <wire x1="93.98" y1="147.32" x2="93.98" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="147.32" x2="93.98" y2="147.32" width="0.1524" layer="91"/>
 <junction x="93.98" y="147.32"/>
@@ -9626,7 +9626,7 @@ should be provided to LPC connector</text>
 <pinref part="R63" gate="R" pin="2"/>
 <wire x1="139.7" y1="165.1" x2="134.62" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="165.1" x2="134.62" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="R64" gate="R" pin="2"/>
+<pinref part="R65" gate="R" pin="2"/>
 <wire x1="134.62" y1="160.02" x2="147.32" y2="160.02" width="0.1524" layer="91"/>
 <junction x="134.62" y="170.18"/>
 <junction x="134.62" y="165.1"/>
@@ -9646,7 +9646,7 @@ should be provided to LPC connector</text>
 <pinref part="U$23" gate="G$1" pin="+3V3_ISO"/>
 </segment>
 <segment>
-<pinref part="R65" gate="R" pin="2"/>
+<pinref part="R66" gate="R" pin="2"/>
 <wire x1="304.8" y1="160.02" x2="304.8" y2="165.1" width="0.1524" layer="91"/>
 <pinref part="U$43" gate="G$1" pin="+3V3_ISO"/>
 </segment>
@@ -10520,9 +10520,9 @@ should be provided to LPC connector</text>
 <wire x1="353.06" y1="106.68" x2="353.06" y2="99.06" width="0.1524" layer="91"/>
 <junction x="337.82" y="106.68"/>
 <junction x="322.58" y="106.68"/>
-<pinref part="R70" gate="R" pin="1"/>
-<pinref part="R71" gate="R" pin="1"/>
 <pinref part="R72" gate="R" pin="1"/>
+<pinref part="R73" gate="R" pin="1"/>
+<pinref part="R74" gate="R" pin="1"/>
 </segment>
 <segment>
 <wire x1="241.3" y1="264.16" x2="241.3" y2="259.08" width="0.1524" layer="91"/>
@@ -10987,8 +10987,8 @@ should be provided to LPC connector</text>
 </net>
 <net name="N$21" class="0">
 <segment>
-<pinref part="R68" gate="R" pin="1"/>
-<pinref part="R69" gate="R" pin="2"/>
+<pinref part="R70" gate="R" pin="1"/>
+<pinref part="R71" gate="R" pin="2"/>
 <wire x1="109.22" y1="111.76" x2="114.3" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="127" y1="111.76" x2="121.92" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="111.76" x2="114.3" y2="111.76" width="0.1524" layer="91"/>
@@ -11004,7 +11004,7 @@ should be provided to LPC connector</text>
 </net>
 <net name="N$22" class="0">
 <segment>
-<pinref part="R69" gate="R" pin="1"/>
+<pinref part="R71" gate="R" pin="1"/>
 <wire x1="137.16" y1="111.76" x2="142.24" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="111.76" x2="142.24" y2="101.6" width="0.1524" layer="91"/>
 <junction x="142.24" y="111.76"/>
@@ -11047,7 +11047,7 @@ should be provided to LPC connector</text>
 <junction x="40.64" y="111.76"/>
 <pinref part="L5" gate="L" pin="2"/>
 <wire x1="93.98" y1="101.6" x2="96.52" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="R68" gate="R" pin="2"/>
+<pinref part="R70" gate="R" pin="2"/>
 <wire x1="99.06" y1="111.76" x2="93.98" y2="111.76" width="0.1524" layer="91"/>
 <junction x="93.98" y="111.76"/>
 <wire x1="93.98" y1="111.76" x2="93.98" y2="101.6" width="0.1524" layer="91"/>
@@ -11113,7 +11113,7 @@ should be provided to LPC connector</text>
 <wire x1="228.6" y1="180.34" x2="213.36" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="180.34" x2="213.36" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="160.02" x2="180.34" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="R64" gate="R" pin="1"/>
+<pinref part="R65" gate="R" pin="1"/>
 <label x="226.06" y="180.34" size="1.27" layer="95" rot="MR0"/>
 <pinref part="U12" gate="G$1" pin="BISTEN"/>
 <wire x1="180.34" y1="160.02" x2="157.48" y2="160.02" width="0.1524" layer="91"/>
@@ -11123,8 +11123,8 @@ should be provided to LPC connector</text>
 </net>
 <net name="IDX0" class="0">
 <segment>
-<pinref part="R70" gate="R" pin="2"/>
-<pinref part="R73" gate="R" pin="1"/>
+<pinref part="R72" gate="R" pin="2"/>
+<pinref part="R75" gate="R" pin="1"/>
 <wire x1="322.58" y1="88.9" x2="322.58" y2="86.36" width="0.1524" layer="91"/>
 <label x="320.04" y="86.36" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="322.58" y1="86.36" x2="322.58" y2="83.82" width="0.1524" layer="91"/>
@@ -11139,8 +11139,8 @@ should be provided to LPC connector</text>
 </net>
 <net name="IDX1" class="0">
 <segment>
-<pinref part="R71" gate="R" pin="2"/>
-<pinref part="R74" gate="R" pin="1"/>
+<pinref part="R73" gate="R" pin="2"/>
+<pinref part="R76" gate="R" pin="1"/>
 <wire x1="337.82" y1="88.9" x2="337.82" y2="86.36" width="0.1524" layer="91"/>
 <label x="335.28" y="86.36" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="337.82" y1="86.36" x2="337.82" y2="83.82" width="0.1524" layer="91"/>
@@ -11155,8 +11155,8 @@ should be provided to LPC connector</text>
 </net>
 <net name="MODE" class="0">
 <segment>
-<pinref part="R72" gate="R" pin="2"/>
-<pinref part="R75" gate="R" pin="1"/>
+<pinref part="R74" gate="R" pin="2"/>
+<pinref part="R77" gate="R" pin="1"/>
 <wire x1="353.06" y1="88.9" x2="353.06" y2="86.36" width="0.1524" layer="91"/>
 <label x="350.52" y="86.36" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="353.06" y1="86.36" x2="353.06" y2="83.82" width="0.1524" layer="91"/>
@@ -11365,16 +11365,16 @@ should be provided to LPC connector</text>
 <net name="N$29" class="0">
 <segment>
 <wire x1="304.8" y1="134.62" x2="304.8" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="Q5" gate="G$1" pin="D"/>
+<pinref part="Q6" gate="G$1" pin="D"/>
 <pinref part="PWR/LOCK" gate="2" pin="C"/>
 </segment>
 </net>
 <net name="N$62" class="0">
 <segment>
-<pinref part="R66" gate="R" pin="1"/>
+<pinref part="R68" gate="R" pin="1"/>
 <wire x1="292.1" y1="124.46" x2="294.64" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="Q5" gate="G$1" pin="G"/>
-<pinref part="R67" gate="R" pin="2"/>
+<pinref part="Q6" gate="G$1" pin="G"/>
+<pinref part="R69" gate="R" pin="2"/>
 <wire x1="294.64" y1="124.46" x2="299.72" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="294.64" y1="124.46" x2="294.64" y2="121.92" width="0.1524" layer="91"/>
 <junction x="294.64" y="124.46"/>
@@ -11382,7 +11382,7 @@ should be provided to LPC connector</text>
 </net>
 <net name="LOCK_ISO" class="0">
 <segment>
-<pinref part="R66" gate="R" pin="2"/>
+<pinref part="R68" gate="R" pin="2"/>
 <wire x1="281.94" y1="124.46" x2="266.7" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="266.7" y1="124.46" x2="266.7" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="U12" gate="G$1" pin="LOCK"/>
@@ -11398,7 +11398,7 @@ should be provided to LPC connector</text>
 </net>
 <net name="N$15" class="0">
 <segment>
-<pinref part="R65" gate="R" pin="1"/>
+<pinref part="R66" gate="R" pin="1"/>
 <pinref part="PWR/LOCK" gate="2" pin="A"/>
 <wire x1="304.8" y1="149.86" x2="304.8" y2="142.24" width="0.1524" layer="91"/>
 </segment>
@@ -12089,7 +12089,7 @@ should be provided to LPC connector</text>
 <segment>
 <wire x1="457.2" y1="43.18" x2="452.12" y2="43.18" width="0.1524" layer="91"/>
 <label x="452.12" y="43.18" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="R76" gate="R" pin="2"/>
+<pinref part="R78" gate="R" pin="2"/>
 </segment>
 </net>
 <net name="N$38" class="0">
@@ -12148,12 +12148,12 @@ should be provided to LPC connector</text>
 <net name="SMA_OUT_ISO" class="0">
 <segment>
 <pinref part="U18" gate="G$1" pin="VOD"/>
-<pinref part="R79" gate="R" pin="1"/>
+<pinref part="R80" gate="R" pin="1"/>
 <wire x1="444.5" y1="40.64" x2="449.58" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="449.58" y1="40.64" x2="472.44" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="449.58" y1="40.64" x2="449.58" y2="35.56" width="0.1524" layer="91"/>
 <junction x="449.58" y="40.64"/>
-<pinref part="R80" gate="R" pin="2"/>
+<pinref part="R79" gate="R" pin="2"/>
 </segment>
 </net>
 <net name="SMA_OUT" class="0">
@@ -12186,7 +12186,7 @@ should be provided to LPC connector</text>
 </net>
 <net name="N$56" class="0">
 <segment>
-<pinref part="R76" gate="R" pin="1"/>
+<pinref part="R78" gate="R" pin="1"/>
 <pinref part="U18" gate="G$1" pin="VIC"/>
 <wire x1="467.36" y1="43.18" x2="472.44" y2="43.18" width="0.1524" layer="91"/>
 </segment>
@@ -12195,6 +12195,7 @@ should be provided to LPC connector</text>
 <segment>
 <pinref part="U16" gate="G$1" pin="3A"/>
 <wire x1="619.76" y1="104.14" x2="612.14" y2="104.14" width="0.1524" layer="91"/>
+<label x="612.14" y="104.14" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <wire x1="508" y1="48.26" x2="518.16" y2="48.26" width="0.1524" layer="91"/>
@@ -12206,6 +12207,7 @@ should be provided to LPC connector</text>
 <segment>
 <pinref part="U16" gate="G$1" pin="4A"/>
 <wire x1="619.76" y1="101.6" x2="612.14" y2="101.6" width="0.1524" layer="91"/>
+<label x="612.14" y="101.6" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <wire x1="508" y1="43.18" x2="518.16" y2="43.18" width="0.1524" layer="91"/>
@@ -12239,10 +12241,10 @@ should be provided to LPC connector</text>
 </net>
 <net name="N$1" class="0">
 <segment>
-<pinref part="R77" gate="R" pin="1"/>
+<pinref part="R64" gate="R" pin="1"/>
 <wire x1="81.28" y1="160.02" x2="83.82" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="Q6" gate="G$1" pin="G"/>
-<pinref part="R78" gate="R" pin="2"/>
+<pinref part="Q5" gate="G$1" pin="G"/>
+<pinref part="R67" gate="R" pin="2"/>
 <wire x1="83.82" y1="160.02" x2="88.9" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="160.02" x2="83.82" y2="157.48" width="0.1524" layer="91"/>
 <junction x="83.82" y="160.02"/>
@@ -12250,7 +12252,7 @@ should be provided to LPC connector</text>
 </net>
 <net name="PDN_ISO" class="0">
 <segment>
-<pinref part="R77" gate="R" pin="2"/>
+<pinref part="R64" gate="R" pin="2"/>
 <wire x1="71.12" y1="160.02" x2="63.5" y2="160.02" width="0.1524" layer="91"/>
 <label x="63.5" y="160.02" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -12262,7 +12264,7 @@ should be provided to LPC connector</text>
 <junction x="73.66" y="195.58"/>
 <wire x1="228.6" y1="195.58" x2="119.38" y2="195.58" width="0.1524" layer="91"/>
 <pinref part="U12" gate="G$1" pin="PDN"/>
-<pinref part="Q6" gate="G$1" pin="D"/>
+<pinref part="Q5" gate="G$1" pin="D"/>
 <wire x1="119.38" y1="195.58" x2="93.98" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="195.58" x2="73.66" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="195.58" x2="93.98" y2="167.64" width="0.1524" layer="91"/>
@@ -12270,9 +12272,10 @@ should be provided to LPC connector</text>
 <pinref part="S1" gate="G$1" pin="S"/>
 <wire x1="119.38" y1="195.58" x2="119.38" y2="172.72" width="0.1524" layer="91"/>
 <junction x="119.38" y="195.58"/>
+<label x="226.06" y="195.58" size="1.27" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="R79" gate="R" pin="2"/>
+<pinref part="R80" gate="R" pin="2"/>
 <wire x1="449.58" y1="25.4" x2="449.58" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="449.58" y1="17.78" x2="429.26" y2="17.78" width="0.1524" layer="91"/>
 <label x="429.26" y="17.78" size="1.27" layer="95" rot="R180" xref="yes"/>
@@ -12280,7 +12283,7 @@ should be provided to LPC connector</text>
 </net>
 <net name="N$40" class="0">
 <segment>
-<pinref part="R80" gate="R" pin="1"/>
+<pinref part="R79" gate="R" pin="1"/>
 <pinref part="J7" gate="G$1" pin="1"/>
 <wire x1="421.64" y1="40.64" x2="434.34" y2="40.64" width="0.1524" layer="91"/>
 <label x="421.64" y="40.64" size="1.27" layer="95"/>
@@ -12289,29 +12292,6 @@ should be provided to LPC connector</text>
 </nets>
 </sheet>
 </sheets>
-<errors>
-<approved hash="113,1,517.996,128.27,C11,,,,,"/>
-<approved hash="113,1,523.076,128.27,C12,,,,,"/>
-<approved hash="113,1,528.156,128.27,C20,,,,,"/>
-<approved hash="113,1,533.236,128.27,C21,,,,,"/>
-<approved hash="113,1,517.996,179.07,C22,,,,,"/>
-<approved hash="113,1,523.076,179.07,C23,,,,,"/>
-<approved hash="113,1,528.156,179.07,C24,,,,,"/>
-<approved hash="113,1,533.236,179.07,C44,,,,,"/>
-<approved hash="113,1,517.996,237.49,C45,,,,,"/>
-<approved hash="113,1,523.076,237.49,C46,,,,,"/>
-<approved hash="113,1,528.156,237.49,C47,,,,,"/>
-<approved hash="113,1,533.236,237.49,C48,,,,,"/>
-<approved hash="113,1,517.287,72.39,C8,,,,,"/>
-<approved hash="113,1,522.367,72.39,C9,,,,,"/>
-<approved hash="113,1,528.156,72.39,C10,,,,,"/>
-<approved hash="113,1,533.236,72.39,C50,,,,,"/>
-<approved hash="113,1,467.36,405.617,U$1,,,,,"/>
-<approved hash="113,1,500.38,574.204,TP3,,,,,"/>
-<approved hash="113,1,505.46,574.204,TP4,,,,,"/>
-<approved hash="113,1,510.54,574.204,TP6,,,,,"/>
-<approved hash="113,1,515.62,574.204,TP7,,,,,"/>
-</errors>
 </schematic>
 </drawing>
 <compatibility>
