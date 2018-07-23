@@ -6417,9 +6417,9 @@ problems doing this."</text>
 <label x="457.2" y="502.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<label x="101.6" y="238.76" size="1.27" layer="95" xref="yes"/>
-<wire x1="101.6" y1="238.76" x2="93.98" y2="238.76" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$2" pin="DIFFIO_RX_L18P/CLK0P/F2"/>
+<label x="129.54" y="104.14" size="1.27" layer="95" xref="yes"/>
+<wire x1="129.54" y1="104.14" x2="93.98" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33P/PLL_R_CLKOUTP/C7"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -8140,9 +8140,10 @@ problems doing this."</text>
 <wire x1="78.74" y1="439.42" x2="86.36" y2="439.42" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R7P/G8"/>
-<wire x1="93.98" y1="149.86" x2="111.76" y2="149.86" width="0.1524" layer="91"/>
-<label x="96.52" y="149.86" size="1.27" layer="95"/>
+<wire x1="93.98" y1="119.38" x2="111.76" y2="119.38" width="0.1524" layer="91"/>
+<label x="111.76" y="119.38" size="1.778" layer="95"/>
+<label x="111.76" y="119.38" size="1.778" layer="95"/>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R14P/CLK2P/E8"/>
 </segment>
 </net>
 <net name="DIN7" class="0">
@@ -8250,9 +8251,8 @@ problems doing this."</text>
 <wire x1="78.74" y1="452.12" x2="86.36" y2="452.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="93.98" y1="104.14" x2="127" y2="104.14" width="0.1524" layer="91"/>
-<label x="127" y="104.14" size="1.27" layer="95" xref="yes"/>
-<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33P/PLL_R_CLKOUTP/C7"/>
+<label x="109.22" y="238.76" size="1.27" layer="95" xref="yes"/>
+<wire x1="109.22" y1="238.76" x2="93.98" y2="238.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="HSYNC" class="0">
@@ -8987,9 +8987,9 @@ problems doing this."</text>
 <label x="299.72" y="477.52" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<label x="116.84" y="142.24" size="1.27" layer="95" xref="yes"/>
-<wire x1="116.84" y1="142.24" x2="93.98" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R10N/F9"/>
+<label x="116.84" y="101.6" size="1.27" layer="95" xref="yes"/>
+<wire x1="116.84" y1="101.6" x2="93.98" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33N/PLL_R_CLKOUTN/B7"/>
 </segment>
 </net>
 <net name="SDI" class="0">
@@ -9016,9 +9016,9 @@ problems doing this."</text>
 <label x="662.94" y="642.62" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<label x="99.06" y="101.6" size="1.27" layer="95" xref="yes"/>
-<wire x1="99.06" y1="101.6" x2="93.98" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R33N/PLL_R_CLKOUTN/B7"/>
+<label x="104.14" y="142.24" size="1.27" layer="95" xref="yes"/>
+<wire x1="104.14" y1="142.24" x2="93.98" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R10N/F9"/>
 </segment>
 </net>
 <net name="POT_CS" class="0">
@@ -9028,9 +9028,9 @@ problems doing this."</text>
 <label x="774.7" y="640.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<label x="116.84" y="147.32" size="1.27" layer="95" xref="yes"/>
-<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R7N/G9"/>
-<wire x1="116.84" y1="147.32" x2="93.98" y2="147.32" width="0.1524" layer="91"/>
+<label x="116.84" y="149.86" size="1.27" layer="95" xref="yes"/>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R7P/G8"/>
+<wire x1="116.84" y1="149.86" x2="93.98" y2="149.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LED_CLK" class="0">
@@ -9040,9 +9040,9 @@ problems doing this."</text>
 <label x="662.94" y="637.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<label x="127" y="119.38" size="1.27" layer="95" xref="yes"/>
-<wire x1="127" y1="119.38" x2="93.98" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="U11" gate="G$5" pin="DIFFIO_RX_R14P/CLK2P/E8"/>
+<label x="111.76" y="147.32" size="1.27" layer="95" xref="yes"/>
+<wire x1="111.76" y1="147.32" x2="93.98" y2="147.32" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$4" pin="DIFFIO_RX_R7N/G9"/>
 </segment>
 </net>
 <net name="MIDFILT" class="0">
