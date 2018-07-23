@@ -13,7 +13,7 @@ namespace oe.lib
         DEVID = -3,  // Invalid device ID on init or reg op
         READFAILURE = -4,  // Failure to read from a stream/register
         WRITEFAILURE = -5,  // Failure to write to a stream/register
-        NULLCTX = -6,  // Attempt to call function w null ctx
+        NULLCTX = -6,  // Attempt to call function with null ctx
         SEEKFAILURE = -7,  // Failure to seek on stream
         INVALSTATE = -8,  // Invalid operation for the current context run state
         DEVIDX = -9,  // Invalid device index
@@ -96,10 +96,13 @@ namespace oe.lib
         public static extern int oe_get_opt(IntPtr ctx, int option, IntPtr val, IntPtr size);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
-        public static extern int oe_set_opt(IntPtr ctx, int option, [In] IntPtr val, uint size);
+        public static extern int oe_get_opt(IntPtr ctx, int option, StringBuilder val, IntPtr size);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
-        public static extern int oe_set_opt(IntPtr ctx, int option, string val, uint size);
+        public static extern int oe_set_opt(IntPtr ctx, int option, IntPtr val, int size);
+
+        [DllImport(LibraryName, CharSet= CharSet.Ansi, CallingConvention = CCCdecl)]
+        public static extern int oe_set_opt(IntPtr ctx, int option, string val, int size);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern int oe_read_reg(IntPtr ctx, uint dev_idx, uint addr, IntPtr val);

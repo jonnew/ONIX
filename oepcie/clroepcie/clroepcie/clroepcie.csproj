@@ -89,7 +89,6 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="Device.cs" />
-    <Compile Include="DispoIntPtr.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="oedevices.cs" />
     <Compile Include="OEException.cs" />
@@ -106,7 +105,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy $(ProjectDir)\..\..\liboepcie\x86\Release\liboepcie.dll $(ProjectDir)\..\Externals\oepcie\x86\liboepcie.dll /y
+    <PreBuildEvent>copy $(ProjectDir)\..\..\liboepcie\Win32\Release\liboepcie.dll $(ProjectDir)\..\Externals\oepcie\x86\liboepcie.dll /y
 copy $(ProjectDir)\..\..\liboepcie\x64\Release\liboepcie.dll $(ProjectDir)\..\Externals\oepcie\x64\liboepcie.dll /y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -223,14 +223,20 @@ int oe_init_ctx(oe_ctx ctx)
 
         // Append the device onto the map
         memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
+#ifdef OE_BE
+        ctx->max_read_frame_size += BSWAP_32((ctx->dev_map + i)->read_size);
+        ctx->max_write_frame_size += BSWAP_32((ctx->dev_map + i)->write_size);
+#else
         ctx->max_read_frame_size += (ctx->dev_map + i)->read_size;
         ctx->max_write_frame_size += (ctx->dev_map + i)->write_size;
+#endif
     }
+
+    //assert(ctx->max_read_frame_size < OE_READSIZE &&
+        //"Block read size is too small given the possible frame size.");
 
 #ifdef OE_BE
     _device_map_byte_swap(ctx);
-    ctx->max_read_frame_size = BSWAP_32(ctx->max_read_frame_size);
-    ctx->max_write_frame_size = BSWAP_32(ctx->max_write_frame_size);
 #endif
 
     // Initialize buffer

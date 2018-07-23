@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Microsoft.Win32.SafeHandles;
-
-namespace oe
+﻿namespace oe
 {
+    using System;
+    using System.Text;
+    using System.Collections.Generic;
+    using System.Runtime.InteropServices;
+    using Microsoft.Win32.SafeHandles;
+
     using lib;
-    
+
     public class Context : SafeHandleZeroOrMinusOneIsInvalid
     {
         protected Context() 
@@ -27,31 +28,33 @@ namespace oe
             }
 
             // Set stream paths
-            SetOption(Option.CONFIGSTREAMPATH, config_path);
-            SetOption(Option.READSTREAMPATH, read_path);
-            SetOption(Option.SIGNALSTREAMPATH, signal_path);
+            SetStringOption(Option.CONFIGSTREAMPATH, config_path);
+            SetStringOption(Option.READSTREAMPATH, read_path);
+            SetStringOption(Option.SIGNALSTREAMPATH, signal_path);
 
             int rc = NativeMethods.oe_init_ctx(handle);
             if (rc != 0) { throw new OEException(rc); }
 
+            // Get context metadata
+            SystemClockHz = GetIntOption(Option.SYSCLKHZ);
+            MaxReadFrameSize = GetIntOption(Option.MAXREADFRAMESIZE); // TODO: This is still not correct for some reason
+            MaxWriteFrameSize = GetIntOption(Option.MAXWRITEFRAMESIZE);
+
             // Populate device map
-            int num_devs = GetOption(Option.NUMDEVICES);
+            int num_devs = GetIntOption(Option.NUMDEVICES);
             DeviceMap = new Dictionary<int, device_t>();
             int size_dev = Marshal.SizeOf(new device_t());
-            int size = size_dev * num_devs;
-            using (var value = DispoIntPtr.Alloc(size))
-            {
-                GetOption(Option.DEVICEMAP, value.Ptr, ref size);
-                var mem = value.Ptr;
+            int size = size_dev * num_devs; // bytes required to read map
 
-                // TODO: This seems very inefficient. We allocate memroy in value and then copy
-                // each element into device_map.  Would be better to directly provide device map's
-                // memory as buffer.
-                for (int i = 0; i < num_devs; i++)
-                {
-                    DeviceMap.Add(i, (device_t)Marshal.PtrToStructure(mem, typeof(device_t)));
-                    mem = new IntPtr((long)mem + size_dev);
-                }
+            var map = GetOption(Option.DEVICEMAP, size);
+
+            // TODO: This seems very inefficient. We allocate memory in value and then copy
+            // each element into device_map.  Would be better to directly provide device map's
+            // memory as buffer.
+            for (int i = 0; i < num_devs; i++)
+            {
+                DeviceMap.Add(i, (device_t)Marshal.PtrToStructure(map, typeof(device_t)));
+                map = new IntPtr((long)map + size_dev);
             }
         }
 
@@ -59,6 +62,10 @@ namespace oe
         public uint Index = DefaultIndex;
         public readonly Dictionary<int, device_t> DeviceMap;
         private object context_lock = new object();
+
+        public readonly int SystemClockHz = 0;
+        public readonly int MaxReadFrameSize = 0;
+        public readonly int MaxWriteFrameSize = 0;
 
         protected override bool ReleaseHandle()
         {
@@ -73,86 +80,76 @@ namespace oe
                 throw new OEException((int)Error.DEVIDX);
         }
 
-        // NB: There must be a way to make these generic, but its confusing with all the pointer-wrapper crap
-
-        // Low-level GetOption
-        private void GetOption(Option option, IntPtr value, ref int size)
+        // GetOption
+        private IntPtr GetOption(Option option, int size)
         {
-            using (var option_len = DispoIntPtr.Alloc(IntPtr.Size))
-            {
-                if (IntPtr.Size == 4)
-                    Marshal.WriteInt32(option_len.Ptr, size);
-                else if (IntPtr.Size == 8)
-                    Marshal.WriteInt64(option_len.Ptr, (long)size);
-                else
-                    throw new PlatformNotSupportedException();
-
-                lock (context_lock)
-                {
-                    int rc = NativeMethods.oe_get_opt(handle, (int)option, value, option_len.Ptr);
-                    if (rc != 0) { throw new OEException(rc); }
-                }
-
-                if (IntPtr.Size == 4)
-                    size = Marshal.ReadInt32(option_len.Ptr);
-                else if (IntPtr.Size == 8)
-                    size = (int)Marshal.ReadInt64(option_len.Ptr);
-                else
-                    throw new PlatformNotSupportedException();
-            }
+            // NB: If I dont do all this wacky stuff, the size 
+            // parameter ends up being too wrong for 64-bit compilation.
+            var sz = Marshal.AllocHGlobal(IntPtr.Size);
+            if (IntPtr.Size == 4) Marshal.WriteInt32(sz, size); else Marshal.WriteInt64(sz, size);
+            var value = Marshal.AllocHGlobal(size);
+            int rc = NativeMethods.oe_get_opt(handle, (int)option, value, sz);
+            if (rc != 0) { throw new OEException(rc); }
+            return value;
         }
 
         // Int32 GetOption
-        public Int32 GetOption(Option option)
+        private int GetIntOption(Option option)
         {
-            int size = Marshal.SizeOf(typeof(Int32));
-            using (var value = DispoIntPtr.Alloc(size))
-            {
-                GetOption(option, value.Ptr, ref size);
-                return Marshal.ReadInt32(value.Ptr);
-            }
+            var value = GetOption(option, Marshal.SizeOf(typeof(int)));
+            return Marshal.ReadInt32(value); 
         }
 
-        public void Start()
+        // String GetOption
+        private string GetStringOption(Option option)
         {
-            SetOption(Context.Option.RUNNING, 1);
-        }
-
-        public void Stop()
-        {
-            SetOption(Context.Option.RUNNING, 0);
-        }
-
-        public void Reset()
-        {
-            SetOption(Context.Option.RESET, 1);
+            var sz = Marshal.AllocHGlobal(IntPtr.Size);
+            if (IntPtr.Size == 4) Marshal.WriteInt32(sz, 1000); else Marshal.WriteInt64(sz, 1000);
+            var str = new StringBuilder(1000);
+            int rc = NativeMethods.oe_get_opt(handle, (int)option, str, sz);
+            if (rc != 0) { throw new OEException(rc); }
+            return str.ToString();
         }
 
         // Int32 SetOption
-        private void SetOption(Option opt, int value)
+        private void SetIntOption(Option opt, int value)
         {
-            var val = Marshal.AllocHGlobal(value);
+            var val = Marshal.AllocHGlobal(IntPtr.Size);
+            if (IntPtr.Size == 4) Marshal.WriteInt32(val, value); else Marshal.WriteInt64(val, value);
             int rc = NativeMethods.oe_set_opt(handle, (int)opt, val, 4);
             if (rc != 0) { throw new OEException(rc); }
         }
 
         // String SetOption
-        private void SetOption(Option opt, string value)
+        private void SetStringOption(Option opt, string value)
         {
-            int rc = NativeMethods.oe_set_opt(handle, (int)opt, value, (uint)value.Length + 1);
+            int rc = NativeMethods.oe_set_opt(handle, (int)opt, value, value.Length + 1);
+            if (rc != 0) { throw new OEException(rc); }
+        }
+
+        public void Start()
+        {
+            SetIntOption(Context.Option.RUNNING, 1);
+        }
+
+        public void Stop()
+        {
+            SetIntOption(Context.Option.RUNNING, 0);
+        }
+
+        public void Reset()
+        {
+            SetIntOption(Context.Option.RESET, 1);
         }
 
         public uint ReadRegister(uint dev_idx, uint reg_addr)
         {
-            int size = Marshal.SizeOf(typeof(Int32));
-            using (var value = DispoIntPtr.Alloc(size))
+            lock (context_lock)
             {
-                lock (context_lock)
-                {
-                    int rc = NativeMethods.oe_read_reg(handle, dev_idx, reg_addr, value);
-                    if (rc != 0) { throw new OEException(rc); }
-                    return (uint)Marshal.ReadInt32(value.Ptr);
-                }
+                var val = Marshal.AllocHGlobal(4);
+                int rc = NativeMethods.oe_read_reg(handle, dev_idx, reg_addr, val);
+                if (rc != 0) { throw new OEException(rc); }
+                return (uint)Marshal.ReadInt32(val);
             }
         }
 
@@ -164,6 +161,31 @@ namespace oe
                 if (rc != 0) { throw new OEException(rc); }
             }
         }
+
+        // TODO: timeout read/write register?
+        // private static readonly int RegisterTimeoutMillis = 5000;
+        //public async void WriteRegister(uint dev_idx, uint reg_addr, uint value)
+        //{
+        //    var ts = new CancellationTokenSource();
+        //    CancellationToken ct = ts.Token;
+        //    var t = Task.Factory.StartNew(() =>
+        //    {
+        //        lock (context_lock)
+        //        {
+        //            int rc = NativeMethods.oe_write_reg(handle, dev_idx, reg_addr, value);
+        //            if (rc != 0) { throw new OEException(rc); }
+        //        }
+        //    }, ct);
+
+        //    if (await Task.WhenAny(t, Task.Delay(RegisterTimeoutMillis)) == t)
+        //    {
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        throw new OEException((int)Error.WRITEFAILURE);
+        //    }
+        //}
 
         public Frame ReadFrame()
         {
@@ -179,6 +201,7 @@ namespace oe
         {
             CONFIGSTREAMPATH = 0,
             READSTREAMPATH,
+            WRITESREAMPATH,
             SIGNALSTREAMPATH,
             DEVICEMAP,
             NUMDEVICES,

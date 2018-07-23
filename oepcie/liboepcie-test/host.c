@@ -18,7 +18,7 @@
 #include <stdlib.h>
 
 // Dump raw device streams to files?
-//#define DUMPFILES
+#define DUMPFILES
 
 #ifdef DUMPFILES
 FILE **dump_files;

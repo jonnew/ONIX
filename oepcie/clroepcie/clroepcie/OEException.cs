@@ -1,10 +1,10 @@
 ﻿namespace oe
 {
     using System;
+    using System.Runtime.InteropServices;
     using System.Runtime.Serialization;
 
     using lib;
-    using System.Runtime.InteropServices;
 
     [Serializable]
     public class OEException : Exception

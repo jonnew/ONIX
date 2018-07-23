@@ -1,23 +1,22 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
 using System.Threading;
-using oe;
 using System.Runtime.InteropServices;
+using oe;
+
 
 namespace clroepcie_test
 {
 
-class DataProcessor
+
+    class DataProcessor
 {
     private oe.Context ctx;
-    public bool quit = false;
+
     public bool display = false;
     public bool display_clock = false;
+    public volatile bool quit = false;
     const int display_downsample = 100;
-    UInt64 counter = 0;
+    ulong counter = 0;
 
     public DataProcessor(oe.Context ctx)
     {
@@ -80,16 +79,15 @@ class Host
                         device.read_size);
                     }
 
-                    // Start acqusisition
-                    ctx.Start();
-
-                    // See how big max frame is
-                    int frame_size = ctx.GetOption(Context.Option.MAXREADFRAMESIZE);
-                    Console.WriteLine("Max read frame size: " + frame_size);
+                    // See how big max frames are
+                    Console.WriteLine("Max read frame size: " + ctx.MaxReadFrameSize);
+                    Console.WriteLine("Max write frame size: " + ctx.MaxWriteFrameSize);
 
                     // See the hardware clock
-                    int hz = ctx.GetOption(Context.Option.SYSCLKHZ);
-                    Console.WriteLine("System clock frequency: " + hz);
+                    Console.WriteLine("System clock frequency: " + ctx.SystemClockHz);
+
+                    // Start acqusisition
+                    ctx.Start();
 
                     // Start processor in background
                     var processor = new DataProcessor(ctx);

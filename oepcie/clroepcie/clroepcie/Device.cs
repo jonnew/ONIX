@@ -1,7 +1,7 @@
-﻿using System.Runtime.InteropServices;
-
-namespace oe
+﻿namespace oe
 {
+    using System.Runtime.InteropServices;
+
     using lib;
     
     public static class Device

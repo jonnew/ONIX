@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Win32.SafeHandles;
-
-namespace oe
+﻿namespace oe
 {
-    using lib;
+    using System;
+    using System.Collections.Generic;
     using System.Runtime.InteropServices;
+    using Microsoft.Win32.SafeHandles;
+
+    using lib;
 
     // Make managed version of oe_frame_t
     [StructLayout(LayoutKind.Sequential)]
