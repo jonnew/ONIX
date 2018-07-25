@@ -5345,6 +5345,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="SUPPLY68" library="jonnew" deviceset="GND" device=""/>
 <part name="U$54" library="jonnew" deviceset="PINHD-1X5_HALF_CONNETOR" device=""/>
 <part name="SUPPLY69" library="jonnew" deviceset="AGND" device=""/>
+<part name="U$57" library="jonnew" deviceset="+VCOAX" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5826,6 +5827,7 @@ problems doing this."</text>
 <instance part="SUPPLY68" gate="PE" x="345.44" y="566.42" rot="MR0"/>
 <instance part="U$54" gate="G$1" x="645.16" y="381"/>
 <instance part="SUPPLY69" gate="G$1" x="640.08" y="388.62" rot="R180"/>
+<instance part="U$57" gate="G$1" x="640.08" y="383.54" rot="R90"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -7106,6 +7108,10 @@ problems doing this."</text>
 <junction x="675.64" y="119.38"/>
 <wire x1="665.48" y1="119.38" x2="665.48" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="U$24" gate="G$1" pin="VCOAX"/>
+</segment>
+<segment>
+<pinref part="U$54" gate="G$1" pin="2"/>
+<pinref part="U$57" gate="G$1" pin="VCOAX"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -8787,22 +8793,22 @@ problems doing this."</text>
 <segment>
 <pinref part="TP10" gate="G$1" pin="TP"/>
 <pinref part="U7" gate="A" pin="AUXIN2"/>
-<wire x1="635" y1="365.76" x2="635" y2="381" width="0.1524" layer="91"/>
-<pinref part="U$54" gate="G$1" pin="3"/>
-<wire x1="635" y1="381" x2="635" y2="436.88" width="0.1524" layer="91"/>
-<wire x1="640.08" y1="381" x2="635" y2="381" width="0.1524" layer="91"/>
-<junction x="635" y="381"/>
+<wire x1="635" y1="365.76" x2="635" y2="378.46" width="0.1524" layer="91"/>
+<pinref part="U$54" gate="G$1" pin="4"/>
+<wire x1="635" y1="378.46" x2="635" y2="436.88" width="0.1524" layer="91"/>
+<wire x1="640.08" y1="378.46" x2="635" y2="378.46" width="0.1524" layer="91"/>
+<junction x="635" y="378.46"/>
 </segment>
 </net>
 <net name="AUXIN3" class="0">
 <segment>
 <pinref part="TP8" gate="G$1" pin="TP"/>
 <pinref part="U7" gate="A" pin="AUXIN1"/>
-<wire x1="632.46" y1="365.76" x2="632.46" y2="383.54" width="0.1524" layer="91"/>
-<pinref part="U$54" gate="G$1" pin="2"/>
-<wire x1="632.46" y1="383.54" x2="632.46" y2="436.88" width="0.1524" layer="91"/>
-<wire x1="640.08" y1="383.54" x2="632.46" y2="383.54" width="0.1524" layer="91"/>
-<junction x="632.46" y="383.54"/>
+<wire x1="632.46" y1="365.76" x2="632.46" y2="381" width="0.1524" layer="91"/>
+<pinref part="U$54" gate="G$1" pin="3"/>
+<wire x1="632.46" y1="381" x2="632.46" y2="436.88" width="0.1524" layer="91"/>
+<wire x1="640.08" y1="381" x2="632.46" y2="381" width="0.1524" layer="91"/>
+<junction x="632.46" y="381"/>
 </segment>
 </net>
 <net name="N$36" class="0">
@@ -9148,10 +9154,10 @@ problems doing this."</text>
 <junction x="647.7" y="414.02"/>
 <pinref part="U7" gate="A" pin="VDD"/>
 <label x="619.76" y="419.1" size="1.27" layer="95" rot="R90"/>
-<wire x1="627.38" y1="414.02" x2="627.38" y2="378.46" width="0.1524" layer="91"/>
+<wire x1="627.38" y1="414.02" x2="627.38" y2="375.92" width="0.1524" layer="91"/>
 <junction x="627.38" y="414.02"/>
-<pinref part="U$54" gate="G$1" pin="4"/>
-<wire x1="627.38" y1="378.46" x2="640.08" y2="378.46" width="0.1524" layer="91"/>
+<pinref part="U$54" gate="G$1" pin="5"/>
+<wire x1="640.08" y1="375.92" x2="627.38" y2="375.92" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U7" gate="A" pin="LVDS_EN"/>
