@@ -7769,7 +7769,7 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <attribute name="DESIGNER" value="JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="headstage-128-256"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -8549,6 +8549,10 @@ filter.</text>
 <text x="152.4" y="441.96" size="1.778" layer="97">NB: CLK2 drives PLL1</text>
 <text x="1069.34" y="754.38" size="1.778" layer="97">NB: GND for ease 
 of routing.</text>
+<text x="396.24" y="401.32" size="6.4516" layer="97">A</text>
+<text x="398.78" y="170.18" size="6.4516" layer="97">B</text>
+<text x="629.92" y="167.64" size="6.4516" layer="97">D</text>
+<text x="635" y="401.32" size="6.4516" layer="97">C</text>
 </plain>
 <instances>
 <instance part="U16" gate="G$1" x="78.74" y="528.32"/>
@@ -9235,8 +9239,8 @@ of routing.</text>
 <attribute name="VALUE" x="177.8" y="685.8" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="GND20" gate="PE" x="205.74" y="645.16"/>
-<instance part="SUPPLY93" gate="G$1" x="695.96" y="218.44"/>
-<instance part="SUPPLY94" gate="G$1" x="695.96" y="452.12"/>
+<instance part="SUPPLY93" gate="G$1" x="695.96" y="213.36"/>
+<instance part="SUPPLY94" gate="G$1" x="695.96" y="447.04"/>
 <instance part="TP7" gate="G$1" x="523.24" y="604.52"/>
 <instance part="GND15" gate="PE" x="523.24" y="594.36"/>
 <instance part="U$7" gate="G$1" x="1196.34" y="350.52"/>
@@ -9789,12 +9793,12 @@ of routing.</text>
 <segment>
 <pinref part="JD" gate="G$1" pin="35"/>
 <pinref part="SUPPLY93" gate="G$1" pin="AGND"/>
-<wire x1="695.96" y1="231.14" x2="695.96" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="695.96" y1="231.14" x2="695.96" y2="215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="JC" gate="G$1" pin="35"/>
 <pinref part="SUPPLY94" gate="G$1" pin="AGND"/>
-<wire x1="695.96" y1="464.82" x2="695.96" y2="454.66" width="0.1524" layer="91"/>
+<wire x1="695.96" y1="464.82" x2="695.96" y2="449.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="368.3" y1="383.54" x2="368.3" y2="373.38" width="0.1524" layer="91"/>
@@ -10783,6 +10787,11 @@ of routing.</text>
 <wire x1="396.24" y1="134.62" x2="396.24" y2="149.86" width="0.1524" layer="91"/>
 <label x="396.24" y="137.16" size="1.27" layer="95" rot="R90"/>
 </segment>
+<segment>
+<pinref part="JC" gate="G$1" pin="36"/>
+<wire x1="695.96" y1="480.06" x2="695.96" y2="485.14" width="0.1524" layer="91"/>
+<label x="695.96" y="485.14" size="1.27" layer="95" rot="R90" xref="yes"/>
+</segment>
 </net>
 <net name="AUXIN1_B" class="0">
 <segment>
@@ -10790,6 +10799,11 @@ of routing.</text>
 <pinref part="U30" gate="A" pin="AUXIN1"/>
 <wire x1="393.7" y1="134.62" x2="393.7" y2="149.86" width="0.1524" layer="91"/>
 <label x="393.7" y="137.16" size="1.27" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="JC" gate="G$1" pin="34"/>
+<wire x1="693.42" y1="464.82" x2="693.42" y2="459.74" width="0.1524" layer="91"/>
+<label x="693.42" y="459.74" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -12532,6 +12546,11 @@ of routing.</text>
 <wire x1="396.24" y1="368.3" x2="396.24" y2="383.54" width="0.1524" layer="91"/>
 <label x="396.24" y="370.84" size="1.27" layer="95" rot="R90"/>
 </segment>
+<segment>
+<pinref part="JD" gate="G$1" pin="36"/>
+<wire x1="695.96" y1="246.38" x2="695.96" y2="251.46" width="0.1524" layer="91"/>
+<label x="695.96" y="251.46" size="1.27" layer="95" rot="R90" xref="yes"/>
+</segment>
 </net>
 <net name="AUXIN1_A" class="0">
 <segment>
@@ -12539,6 +12558,11 @@ of routing.</text>
 <pinref part="U21" gate="A" pin="AUXIN1"/>
 <wire x1="393.7" y1="368.3" x2="393.7" y2="383.54" width="0.1524" layer="91"/>
 <label x="393.7" y="370.84" size="1.27" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="JD" gate="G$1" pin="34"/>
+<wire x1="693.42" y1="231.14" x2="693.42" y2="226.06" width="0.1524" layer="91"/>
+<label x="693.42" y="226.06" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 <net name="N$1" class="0">
