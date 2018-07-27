@@ -8793,11 +8793,10 @@ problems doing this."</text>
 <segment>
 <pinref part="TP10" gate="G$1" pin="TP"/>
 <pinref part="U7" gate="A" pin="AUXIN2"/>
-<wire x1="635" y1="365.76" x2="635" y2="378.46" width="0.1524" layer="91"/>
-<pinref part="U$54" gate="G$1" pin="4"/>
-<wire x1="635" y1="378.46" x2="635" y2="436.88" width="0.1524" layer="91"/>
-<wire x1="640.08" y1="378.46" x2="635" y2="378.46" width="0.1524" layer="91"/>
-<junction x="635" y="378.46"/>
+<wire x1="635" y1="365.76" x2="635" y2="375.92" width="0.1524" layer="91"/>
+<pinref part="U$54" gate="G$1" pin="5"/>
+<wire x1="635" y1="375.92" x2="635" y2="436.88" width="0.1524" layer="91"/>
+<wire x1="640.08" y1="375.92" x2="635" y2="375.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="AUXIN3" class="0">
@@ -8916,6 +8915,11 @@ problems doing this."</text>
 <label x="142.24" y="63.5" size="1.27" layer="95" xref="yes"/>
 <pinref part="U11" gate="G$6" pin="DIFFIO_RX_T18N/A5"/>
 <wire x1="142.24" y1="63.5" x2="93.98" y2="63.5" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$54" gate="G$1" pin="4"/>
+<wire x1="640.08" y1="378.46" x2="617.22" y2="378.46" width="0.1524" layer="91"/>
+<label x="617.22" y="378.46" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CONFIG_SEL" class="0">
@@ -9154,10 +9158,10 @@ problems doing this."</text>
 <junction x="647.7" y="414.02"/>
 <pinref part="U7" gate="A" pin="VDD"/>
 <label x="619.76" y="419.1" size="1.27" layer="95" rot="R90"/>
-<wire x1="627.38" y1="414.02" x2="627.38" y2="375.92" width="0.1524" layer="91"/>
+<wire x1="627.38" y1="414.02" x2="627.38" y2="373.38" width="0.1524" layer="91"/>
 <junction x="627.38" y="414.02"/>
-<pinref part="U$54" gate="G$1" pin="5"/>
-<wire x1="640.08" y1="375.92" x2="627.38" y2="375.92" width="0.1524" layer="91"/>
+<pinref part="U$54" gate="G$1" pin="6"/>
+<wire x1="640.08" y1="373.38" x2="627.38" y2="373.38" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U7" gate="A" pin="LVDS_EN"/>
