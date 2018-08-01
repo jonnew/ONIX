@@ -6078,6 +6078,7 @@ Source: amp_227161.pdf</description>
 <part name="SUPPLY69" library="jonnew" deviceset="AGND" device=""/>
 <part name="U$57" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="J1" library="jonnew" deviceset="COAX" device="_U.FL"/>
+<part name="D6" library="jonnew" deviceset="PHOTODIODE" device="_0805T" value="VEMD1160X01"/>
 </parts>
 <sheets>
 <sheet>
@@ -6479,12 +6480,12 @@ problems doing this."</text>
 <instance part="SUPPLY59" gate="G$1" x="728.98" y="515.62"/>
 <instance part="SUPPLY60" gate="PE" x="759.46" y="515.62"/>
 <instance part="U14" gate="G$1" x="421.64" y="314.96"/>
-<instance part="R37" gate="R" x="396.24" y="299.72" rot="R90"/>
+<instance part="R37" gate="R" x="398.78" y="299.72" rot="R90"/>
 <instance part="SUPPLY61" gate="PE" x="449.58" y="289.56"/>
 <instance part="C46" gate="C" x="370.84" y="304.8">
 <attribute name="PARTNO" x="370.84" y="304.8" size="1.27" layer="96" display="off"/>
 </instance>
-<instance part="SUPPLY62" gate="PE" x="396.24" y="289.56"/>
+<instance part="SUPPLY62" gate="PE" x="398.78" y="289.56"/>
 <instance part="SUPPLY64" gate="PE" x="370.84" y="289.56"/>
 <instance part="SUPPLY65" gate="PE" x="477.52" y="289.56"/>
 <instance part="U$49" gate="PWR1" x="477.52" y="327.66"/>
@@ -6561,6 +6562,10 @@ problems doing this."</text>
 <instance part="SUPPLY69" gate="G$1" x="640.08" y="388.62" rot="R180"/>
 <instance part="U$57" gate="G$1" x="640.08" y="383.54" rot="R90"/>
 <instance part="J1" gate="G$1" x="63.5" y="678.18" rot="R270"/>
+<instance part="D6" gate="G$1" x="386.08" y="299.72" smashed="yes" rot="R90">
+<attribute name="NAME" x="378.968" y="306.07" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="382.27" y="293.37" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -7067,7 +7072,7 @@ problems doing this."</text>
 <segment>
 <pinref part="R37" gate="R" pin="1"/>
 <pinref part="SUPPLY62" gate="PE" pin="GND"/>
-<wire x1="396.24" y1="294.64" x2="396.24" y2="292.1" width="0.1524" layer="91"/>
+<wire x1="398.78" y1="294.64" x2="398.78" y2="292.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C46" gate="C" pin="2"/>
@@ -9808,23 +9813,33 @@ problems doing this."</text>
 <net name="N$26" class="0">
 <segment>
 <pinref part="U14" gate="G$1" pin="IIN-"/>
-<wire x1="403.86" y1="317.5" x2="388.62" y2="317.5" width="0.1524" layer="91"/>
+<wire x1="403.86" y1="317.5" x2="391.16" y2="317.5" width="0.1524" layer="91"/>
 <pinref part="TP9" gate="G$1" pin="TP"/>
+<pinref part="D6" gate="G$1" pin="C"/>
+<wire x1="391.16" y1="317.5" x2="388.62" y2="317.5" width="0.1524" layer="91"/>
+<wire x1="386.08" y1="304.8" x2="391.16" y2="304.8" width="0.1524" layer="91"/>
+<wire x1="391.16" y1="304.8" x2="391.16" y2="317.5" width="0.1524" layer="91"/>
+<junction x="391.16" y="317.5"/>
 </segment>
 </net>
 <net name="N$38" class="0">
 <segment>
 <pinref part="U14" gate="G$1" pin="IIN+"/>
-<wire x1="388.62" y1="312.42" x2="403.86" y2="312.42" width="0.1524" layer="91"/>
+<wire x1="388.62" y1="312.42" x2="393.7" y2="312.42" width="0.1524" layer="91"/>
 <pinref part="TP11" gate="G$1" pin="TP"/>
+<pinref part="D6" gate="G$1" pin="A"/>
+<wire x1="393.7" y1="312.42" x2="403.86" y2="312.42" width="0.1524" layer="91"/>
+<wire x1="386.08" y1="297.18" x2="393.7" y2="297.18" width="0.1524" layer="91"/>
+<wire x1="393.7" y1="297.18" x2="393.7" y2="312.42" width="0.1524" layer="91"/>
+<junction x="393.7" y="312.42"/>
 </segment>
 </net>
 <net name="N$41" class="0">
 <segment>
 <pinref part="U14" gate="G$1" pin="RBIAS"/>
-<wire x1="403.86" y1="307.34" x2="396.24" y2="307.34" width="0.1524" layer="91"/>
+<wire x1="403.86" y1="307.34" x2="398.78" y2="307.34" width="0.1524" layer="91"/>
 <pinref part="R37" gate="R" pin="2"/>
-<wire x1="396.24" y1="307.34" x2="396.24" y2="304.8" width="0.1524" layer="91"/>
+<wire x1="398.78" y1="307.34" x2="398.78" y2="304.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$42" class="0">
