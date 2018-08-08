@@ -6075,8 +6075,6 @@ Source: amp_227161.pdf</description>
 <part name="U$51" library="jonnew" deviceset="+3V3" device=""/>
 <part name="SUPPLY68" library="jonnew" deviceset="GND" device=""/>
 <part name="U$54" library="jonnew" deviceset="PINHD-1X5_HALF_CONNETOR" device=""/>
-<part name="SUPPLY69" library="jonnew" deviceset="AGND" device=""/>
-<part name="U$57" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="J1" library="jonnew" deviceset="COAX" device="_U.FL"/>
 <part name="D6" library="jonnew" deviceset="PHOTODIODE" device="_0805T" value="VEMD1160X01"/>
 </parts>
@@ -6559,8 +6557,6 @@ problems doing this."</text>
 <instance part="U$51" gate="PWR1" x="312.42" y="599.44"/>
 <instance part="SUPPLY68" gate="PE" x="345.44" y="566.42" rot="MR0"/>
 <instance part="U$54" gate="G$1" x="645.16" y="381"/>
-<instance part="SUPPLY69" gate="G$1" x="640.08" y="388.62" rot="R180"/>
-<instance part="U$57" gate="G$1" x="640.08" y="383.54" rot="R90"/>
 <instance part="J1" gate="G$1" x="63.5" y="678.18" rot="R270"/>
 <instance part="D6" gate="G$1" x="386.08" y="299.72" smashed="yes" rot="R90">
 <attribute name="NAME" x="378.968" y="306.07" size="1.778" layer="95" rot="R90"/>
@@ -7850,10 +7846,6 @@ problems doing this."</text>
 <junction x="675.64" y="119.38"/>
 <wire x1="665.48" y1="119.38" x2="665.48" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="U$24" gate="G$1" pin="VCOAX"/>
-</segment>
-<segment>
-<pinref part="U$54" gate="G$1" pin="2"/>
-<pinref part="U$57" gate="G$1" pin="VCOAX"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -9416,10 +9408,6 @@ problems doing this."</text>
 <pinref part="SUPPLY51" gate="G$1" pin="AGND"/>
 <wire x1="589.28" y1="520.7" x2="589.28" y2="515.62" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="U$54" gate="G$1" pin="1"/>
-<pinref part="SUPPLY69" gate="G$1" pin="AGND"/>
-</segment>
 </net>
 <net name="RHD_CS_-" class="0">
 <segment>
@@ -9914,10 +9902,11 @@ problems doing this."</text>
 <junction x="647.7" y="414.02"/>
 <pinref part="U7" gate="A" pin="VDD"/>
 <label x="619.76" y="419.1" size="1.27" layer="95" rot="R90"/>
-<wire x1="627.38" y1="414.02" x2="627.38" y2="373.38" width="0.1524" layer="91"/>
+<wire x1="627.38" y1="414.02" x2="627.38" y2="383.54" width="0.1524" layer="91"/>
 <junction x="627.38" y="414.02"/>
-<pinref part="U$54" gate="G$1" pin="6"/>
-<wire x1="640.08" y1="373.38" x2="627.38" y2="373.38" width="0.1524" layer="91"/>
+<pinref part="U$54" gate="G$1" pin="2"/>
+<wire x1="640.08" y1="383.54" x2="627.38" y2="383.54" width="0.1524" layer="91"/>
+<junction x="627.38" y="383.54"/>
 </segment>
 <segment>
 <pinref part="U7" gate="A" pin="LVDS_EN"/>
