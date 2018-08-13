@@ -1428,11 +1428,14 @@
 <smd name="C3" x="0.5" y="-0.5" dx="0.25" dy="0.25" layer="1" roundness="100"/>
 <smd name="B3" x="0.5" y="0" dx="0.25" dy="0.25" layer="1" roundness="100"/>
 <smd name="A3" x="0.5" y="0.5" dx="0.25" dy="0.25" layer="1" roundness="100"/>
-<circle x="-0.85" y="0.85" radius="0.180275" width="0.127" layer="21"/>
-<circle x="-0.85" y="0.85" radius="0.1" width="0.127" layer="21"/>
 <text x="-1.2954" y="1.1176" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.4478" y="-2.0574" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.85" y1="-0.85" x2="0.85" y2="0.85" layer="39"/>
+<polygon width="0.127" layer="21">
+<vertex x="-0.87" y="0.52"/>
+<vertex x="-0.52" y="0.87"/>
+<vertex x="-0.87" y="0.87"/>
+</polygon>
 </package>
 <package name="VBPW34S">
 <smd name="C" x="3.575" y="0" dx="1.75" dy="1.8" layer="1" rot="R270"/>
@@ -1516,11 +1519,17 @@
 <wire x1="-2.5" y1="-2.5" x2="-2.5" y2="-2.1" width="0.127" layer="21"/>
 <wire x1="2.5" y1="-2.5" x2="2.5" y2="-2.1" width="0.127" layer="21"/>
 <wire x1="2.5" y1="-2.5" x2="2.1" y2="-2.5" width="0.127" layer="21"/>
-<circle x="2.4" y="2.4" radius="0.35" width="0" layer="21"/>
 <rectangle x1="-1.35" y1="0.15" x2="-0.15" y2="1.35" layer="31"/>
 <rectangle x1="0.15" y1="0.15" x2="1.35" y2="1.35" layer="31"/>
 <rectangle x1="0.15" y1="-1.35" x2="1.35" y2="-0.15" layer="31"/>
 <rectangle x1="-1.35" y1="-1.35" x2="-0.15" y2="-0.15" layer="31"/>
+<wire x1="2.5" y1="2.5" x2="2.1" y2="2.5" width="0.127" layer="21"/>
+<wire x1="2.5" y1="2.5" x2="2.5" y2="2.1" width="0.127" layer="21"/>
+<polygon width="0.127" layer="21">
+<vertex x="2.1" y="2.5"/>
+<vertex x="2.5" y="2.5"/>
+<vertex x="2.5" y="2.1"/>
+</polygon>
 </package>
 <package name="4020">
 <smd name="1" x="-1.1811" y="0" dx="0.8128" dy="3.2512" layer="1"/>
@@ -1751,7 +1760,6 @@
 <rectangle x1="-1.5" y1="-1.5" x2="1.5" y2="1.55" layer="39"/>
 </package>
 <package name="UQFN">
-<circle x="-1" y="1.1" radius="0.25" width="0" layer="21"/>
 <wire x1="0.8" y1="0.9" x2="0.4" y2="0.9" width="0.127" layer="21"/>
 <wire x1="-0.8" y1="0.9" x2="-0.4" y2="0.9" width="0.127" layer="21"/>
 <wire x1="-0.8" y1="-0.9" x2="-0.4" y2="-0.9" width="0.127" layer="21"/>
@@ -1765,6 +1773,13 @@
 <smd name="P$7" x="0.7" y="0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R270"/>
 <smd name="P$8" x="0" y="0.7" dx="0.3" dy="0.6" layer="1" roundness="50" rot="R180"/>
 <rectangle x1="-0.75" y1="-0.9" x2="0.75" y2="0.9" layer="39"/>
+<wire x1="-0.8" y1="0.96" x2="-0.4" y2="0.96" width="0.127" layer="21"/>
+<wire x1="-0.8" y1="1.01" x2="-0.4" y2="1.01" width="0.127" layer="21"/>
+<wire x1="-0.8" y1="1.03" x2="-0.79" y2="1.03" width="0.127" layer="21"/>
+<wire x1="-0.79" y1="1.03" x2="-0.4" y2="1.03" width="0.127" layer="21"/>
+<wire x1="-0.79" y1="1.03" x2="-0.8" y2="1.02" width="0.127" layer="21"/>
+<wire x1="-0.8" y1="1.02" x2="-0.8" y2="0.9" width="0.127" layer="21"/>
+<wire x1="-0.4" y1="1.03" x2="-0.4" y2="0.9" width="0.127" layer="21"/>
 </package>
 <package name="X2SON">
 <smd name="PAD" x="0" y="0" dx="0.1" dy="0.1" layer="1" rot="R45" stop="no" thermals="no" cream="no"/>
@@ -2282,6 +2297,7 @@ Source: amp_227161.pdf</description>
 <smd name="P$2" x="-1" y="0" dx="1.5" dy="0.6" layer="1" rot="R90"/>
 <smd name="P$3" x="0" y="1" dx="0.5" dy="0.6" layer="1" rot="R180"/>
 <smd name="P$4" x="1" y="0" dx="1.5" dy="0.6" layer="1" rot="R90"/>
+<rectangle x1="-0.7" y1="-0.75" x2="0.6" y2="0.7" layer="41"/>
 </package>
 <package name="MMCX-SMT-VERT">
 <smd name="SIG" x="0" y="0" dx="1.2" dy="1.2" layer="1" roundness="100"/>
@@ -3611,6 +3627,31 @@ clearance</text>
 <wire x1="5.4" y1="-8.2" x2="5.7" y2="-7.9" width="0.2032" layer="51" curve="-90"/>
 <wire x1="5.7" y1="-7.9" x2="6" y2="-7.9" width="0.2032" layer="51"/>
 </package>
+<package name="TO-252-THICK-FILM">
+<smd name="PAD" x="0" y="0" dx="8" dy="8.2" layer="1"/>
+<smd name="1" x="-2.5" y="-8.4" dx="2" dy="3" layer="1"/>
+<smd name="2" x="2.5" y="-8.4" dx="2" dy="3" layer="1"/>
+<rectangle x1="-4.2" y1="-7.8" x2="4.2" y2="4.3" layer="39"/>
+<wire x1="-4.3" y1="4.4" x2="4.4" y2="4.4" width="0.127" layer="21"/>
+<wire x1="4.4" y1="4.4" x2="4.4" y2="-8" width="0.127" layer="21"/>
+<wire x1="4.4" y1="-8" x2="3.8" y2="-8" width="0.127" layer="21"/>
+<wire x1="1.3" y1="-8" x2="-1.3" y2="-8" width="0.127" layer="21"/>
+<wire x1="-3.7" y1="-8" x2="-4.3" y2="-8" width="0.127" layer="21"/>
+<wire x1="-4.3" y1="-8" x2="-4.3" y2="4.4" width="0.127" layer="21"/>
+<text x="-4" y="6" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-4" y="4.7" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="S7121-42R">
+<smd name="P$1" x="0" y="0" dx="2.8" dy="2" layer="1"/>
+<wire x1="1.15" y1="1.5" x2="1.15" y2="-1.6" width="0.127" layer="51" style="shortdash"/>
+<text x="1.15" y="1.7" size="1.016" layer="51" font="vector" ratio="18">Edge</text>
+<text x="-3.15" y="-1.1" size="1.016" layer="25" font="vector" ratio="18" rot="R90">&gt;NAME</text>
+<text x="-1.95" y="-1.1" size="1.016" layer="27" font="vector" ratio="18" rot="R90">&gt;VALUE</text>
+<wire x1="-1.6" y1="1.2" x2="1.6" y2="1.2" width="0.127" layer="21"/>
+<wire x1="1.6" y1="1.2" x2="1.6" y2="-1.2" width="0.127" layer="21"/>
+<wire x1="1.6" y1="-1.2" x2="-1.6" y2="-1.2" width="0.127" layer="21"/>
+<wire x1="-1.6" y1="-1.2" x2="-1.6" y2="1.2" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="10M08SAM153-BANK-ANALOG">
@@ -4805,7 +4846,7 @@ clearance</text>
 <pin name="GND" x="-20.32" y="-50.8" length="short" direction="pwr"/>
 <pin name="X" x="20.32" y="-7.62" length="short" direction="pas" rot="R180"/>
 <pin name="X1" x="20.32" y="-12.7" length="short" direction="pas" rot="R180"/>
-<pin name="V+" x="-20.32" y="2.54" length="short"/>
+<pin name="V+" x="-20.32" y="2.54" length="short" direction="pwr"/>
 <pin name="X0" x="20.32" y="-2.54" length="short" direction="pas" rot="R180"/>
 <wire x1="-17.78" y1="10.16" x2="-17.78" y2="-55.88" width="0.254" layer="94"/>
 <wire x1="-17.78" y1="-55.88" x2="17.78" y2="-55.88" width="0.254" layer="94"/>
@@ -5176,6 +5217,15 @@ clearance</text>
 </technologies>
 </device>
 <device name="_0805W" package="0805W">
+<connects>
+<connect gate="R" pin="1" pad="1"/>
+<connect gate="R" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_TO-252-THICK-FILM" package="TO-252-THICK-FILM">
 <connects>
 <connect gate="R" pin="1" pad="1"/>
 <connect gate="R" pin="2" pad="2"/>
@@ -5827,6 +5877,14 @@ clearance</text>
 <device name="_S0.6X1.5MM" package="S0.6X1.5MM">
 <connects>
 <connect gate="G$1" pin="TP" pad="TP"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_S7121-42R" package="S7121-42R">
+<connects>
+<connect gate="G$1" pin="TP" pad="P$1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8186,7 +8244,7 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="R35" library="jonnew" deviceset="R" device="_0201T" value="2M"/>
 <part name="C56" library="jonnew" deviceset="C" device="_0402T" value="4.7uF"/>
 <part name="L11" library="jonnew" deviceset="L" device="_0806T" value="TFM201610ALM-2R2MTAA, 2.2 uH"/>
-<part name="J2" library="jonnew" deviceset="COAX" device="_MMCX/U.FL-VERT" value="MMCX-J-P-H-ST-SM1/U.FL-R-SMT(01)"/>
+<part name="J2" library="jonnew" deviceset="COAX" device="_XFL" value="MMCX-J-P-H-ST-SM1/U.FL-R-SMT(01)"/>
 <part name="GND2" library="jonnew" deviceset="GND" device=""/>
 <part name="U18" library="jonnew" deviceset="MAX1704X" device="_WLP" value="MAX17048_WLP"/>
 <part name="C50" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">

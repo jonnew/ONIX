@@ -8,7 +8,7 @@
 (define-layer! 4 (cons 'filename "headstage-256_via-reduce.GTL")(cons 'visible #t)(cons 'color #(47031 65535 65535)))
 (define-layer! 3 (cons 'filename "headstage-256_via-reduce.GTS")(cons 'visible #t)(cons 'color #(47802 47802 47802)))
 (define-layer! 2 (cons 'filename "headstage-256_via-reduce.GTO")(cons 'visible #t)(cons 'color #(54227 54227 65535)))
-(define-layer! 1 (cons 'filename "headstage-256_via-reduce.XLN.0716")(cons 'visible #t)(cons 'color #(65021 53970 52942))(cons 'attribs (list (list 'autodetect 'Boolean 0) (list 'zero_supression 'Enum 0) (list 'units 'Enum 0) (list 'digits 'Integer 5))))
+(define-layer! 1 (cons 'filename "headstage-256_via-reduce.XLN.0106")(cons 'visible #t)(cons 'color #(30069 62194 26471))(cons 'attribs (list (list 'autodetect 'Boolean 0) (list 'zero_supression 'Enum 0) (list 'units 'Enum 0) (list 'digits 'Integer 5))))
 (define-layer! 0 (cons 'filename "headstage-256_via-reduce.XLN.0116")(cons 'visible #t)(cons 'color #(61937 65535 47031))(cons 'attribs (list (list 'autodetect 'Boolean 0) (list 'zero_supression 'Enum 0) (list 'units 'Enum 0) (list 'digits 'Integer 5))))
 (define-layer! -1 (cons 'filename "/home/jon/public/open-ephys-pcie/headstage-256/gerber")(cons 'visible #f)(cons 'color #(0 0 0)))
 (set-render-type! 0)
