@@ -5994,7 +5994,7 @@ Source: amp_227161.pdf</description>
 <attribute name="DESIGNER" value="JON NEWMAN, JAKOB VOIGTS"/>
 <attribute name="DESIGN_NAME" value="HEADSTAGE-64"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="REVISION" value="1.2"/>
 </attributes>
 <variantdefs>
 </variantdefs>
