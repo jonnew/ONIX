@@ -223,8 +223,9 @@ int main(int argc, char *argv[])
 #ifdef DUMPFILES
         // Open dump files
         char * buffer = malloc(100);
-        snprintf(buffer, 100, "%s_idx-%d_id-%d.raw", "dev", dev_idx, devices[dev_idx].id);
+        snprintf(buffer, 100, "%s_idx-%zd_id-%d.raw", "dev", dev_idx, devices[dev_idx].id);
         dump_files[dev_idx] = fopen(buffer, "wb");
+        free(buffer);
 #endif
     }
 
