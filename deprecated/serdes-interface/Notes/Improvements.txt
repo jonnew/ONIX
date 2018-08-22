@@ -1,0 +1,34 @@
+1. Pinout GPIO to the PCB
+
+2. Fix memory(EPROM) footprint
+
+3. align the edge pins so that it fits in a nice circle
+
+4. POT's SPI interface needs better renaming. Currently it is qutie confusing 
+
+5. use 100K pot for the LED driver
+
+6. reverse the sink/source polarity for LED
+
+7. Edit the foot print of the mechanical connectors to make sure they align well.
+
+8. DC path needs to be changes to support current limits of LED driver
+
+9. LTM needs to produce 5.5V rails and 3.3V raile for LED driver and digital stuff, repectively. 3.3 is dropped to 1.2 via LDO.
+
+10. Potentially replace the SMA with Hirose MMCX 
+
+
+Problems from animal testing: 
+
+11. serdes needs to have reduncdant power + gnd connection to the intan board 
+ 
+12. LED +/- terminals needs to be on the analog intan baord (for the ease of removing serdes). 
+
+13. 10KHz interfernce on some channels
+
+14. change connector polarity on the headstage 
+
+15. put a status LED on the FPGA to indicate programming completed. 
+
+16. put status LEDs on the FPGA to indicate current states on the main statemachine  
