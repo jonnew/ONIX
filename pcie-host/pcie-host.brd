@@ -6200,7 +6200,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="38.2613125" y1="78.12319375" x2="38.3013125" y2="78.16319375" width="0.33" layer="16"/>
 <via x="28.5513125" y="73.37319375" extent="1-16" drill="0.5"/>
 </signal>
-<signal name="GPO1_N" class="1">
+<signal name="DES_GPIO0_N" class="1">
 <contactref element="U8" pad="19"/>
 <wire x1="73.7276625" y1="88.80099375" x2="121.3695125" y2="88.80099375" width="0.2286" layer="1"/>
 <wire x1="121.3695125" y1="88.80099375" x2="123.9095125" y2="91.34099375" width="0.2286" layer="1"/>
@@ -6212,7 +6212,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="58.2462875" y1="63.86716875" x2="58.2462875" y2="73.31961875" width="0.2286" layer="1"/>
 <wire x1="58.2462875" y1="73.31961875" x2="73.7276625" y2="88.80099375" width="0.2286" layer="1"/>
 </signal>
-<signal name="GPO1_P" class="1">
+<signal name="DES_GPIO0_P" class="1">
 <contactref element="U8" pad="18"/>
 <wire x1="73.8749625" y1="88.44539375" x2="121.56073125" y2="88.44539375" width="0.2286" layer="1"/>
 <wire x1="121.56073125" y1="88.44539375" x2="124.2651125" y2="91.149775" width="0.2286" layer="1"/>
@@ -6224,7 +6224,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="58.7462875" y1="63.86716875" x2="58.7462875" y2="73.31671875" width="0.2286" layer="1"/>
 <wire x1="58.7462875" y1="73.31671875" x2="73.8749625" y2="88.44539375" width="0.2286" layer="1"/>
 </signal>
-<signal name="GPO0_N" class="1">
+<signal name="DES_GPIO1_N" class="1">
 <contactref element="U8" pad="17"/>
 <wire x1="74.2276625" y1="87.80099375" x2="122.6395125" y2="87.80099375" width="0.2286" layer="1"/>
 <wire x1="122.6395125" y1="87.80099375" x2="125.1795125" y2="90.34099375" width="0.2286" layer="1"/>
@@ -6234,7 +6234,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="59.2462875" y1="63.86716875" x2="59.2462875" y2="72.81961875" width="0.2286" layer="1"/>
 <wire x1="59.2462875" y1="72.81961875" x2="74.2276625" y2="87.80099375" width="0.2286" layer="1"/>
 </signal>
-<signal name="GPO0_P" class="1">
+<signal name="DES_GPIO1_P" class="1">
 <contactref element="U8" pad="16"/>
 <wire x1="74.3749625" y1="87.44539375" x2="122.855440625" y2="87.44539375" width="0.2286" layer="1"/>
 <wire x1="122.855440625" y1="87.44539375" x2="125.5351125" y2="90.125065625" width="0.2286" layer="1"/>

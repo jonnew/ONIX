@@ -7792,15 +7792,15 @@ should be provided to LPC connector</text>
 <instance part="R45" gate="R" x="297.18" y="228.6" rot="MR0"/>
 <instance part="R44" gate="R" x="304.8" y="231.14" rot="MR0"/>
 <instance part="R43" gate="R" x="312.42" y="233.68" rot="MR0"/>
-<instance part="R41" gate="R" x="299.72" y="236.22" rot="MR0"/>
-<instance part="R40" gate="R" x="309.88" y="238.76" rot="MR0"/>
+<instance part="R41" gate="R" x="297.18" y="236.22" rot="MR0"/>
+<instance part="R40" gate="R" x="304.8" y="238.76" rot="MR0"/>
 <instance part="C70" gate="C" x="459.74" y="119.38" rot="R180"/>
 <instance part="GND98" gate="G$1" x="467.36" y="91.44" rot="MR0"/>
 <instance part="C71" gate="C" x="515.62" y="119.38" rot="MR180"/>
 <instance part="GND100" gate="1" x="510.54" y="88.9" rot="MR0"/>
-<instance part="R58" gate="R" x="307.34" y="193.04" rot="MR0"/>
-<instance part="R59" gate="R" x="297.18" y="190.5" rot="MR0"/>
-<instance part="R60" gate="R" x="307.34" y="187.96" rot="MR0"/>
+<instance part="R58" gate="R" x="297.18" y="193.04" rot="MR0"/>
+<instance part="R59" gate="R" x="312.42" y="190.5" rot="MR0"/>
+<instance part="R60" gate="R" x="304.8" y="187.96" rot="MR0"/>
 <instance part="C76" gate="C" x="165.1" y="104.14"/>
 <instance part="GND101" gate="G$1" x="73.66" y="393.7"/>
 <instance part="C24" gate="C" x="444.5" y="393.7"/>
@@ -8022,7 +8022,7 @@ should be provided to LPC connector</text>
 <instance part="TP17" gate="G$1" x="439.42" y="459.74" rot="R180"/>
 <instance part="R78" gate="R" x="462.28" y="43.18" rot="R180"/>
 <instance part="U18" gate="G$1" x="490.22" y="45.72"/>
-<instance part="R57" gate="R" x="299.72" y="195.58" rot="MR0"/>
+<instance part="R57" gate="R" x="304.8" y="195.58" rot="MR0"/>
 <instance part="J5" gate="G$1" x="419.1" y="48.26"/>
 <instance part="J7" gate="G$1" x="419.1" y="40.64"/>
 <instance part="J8" gate="G$1" x="538.48" y="40.64" rot="MR0"/>
@@ -10215,9 +10215,9 @@ should be provided to LPC connector</text>
 </net>
 <net name="VSYNC_ISO" class="0">
 <segment>
-<label x="378.46" y="236.22" size="1.27" layer="95" xref="yes"/>
+<label x="330.2" y="236.22" size="1.27" layer="95" xref="yes"/>
 <pinref part="R41" gate="R" pin="1"/>
-<wire x1="378.46" y1="236.22" x2="304.8" y2="236.22" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="236.22" x2="302.26" y2="236.22" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U14" gate="G$1" pin="VIB"/>
@@ -10228,8 +10228,8 @@ should be provided to LPC connector</text>
 <net name="HSYNC_ISO" class="0">
 <segment>
 <pinref part="R43" gate="R" pin="1"/>
-<label x="378.46" y="233.68" size="1.27" layer="95" xref="yes"/>
-<wire x1="317.5" y1="233.68" x2="378.46" y2="233.68" width="0.1524" layer="91"/>
+<label x="330.2" y="233.68" size="1.27" layer="95" xref="yes"/>
+<wire x1="317.5" y1="233.68" x2="330.2" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U14" gate="G$1" pin="VIA"/>
@@ -10240,8 +10240,8 @@ should be provided to LPC connector</text>
 <net name="PCLK_ISO" class="0">
 <segment>
 <pinref part="R40" gate="R" pin="1"/>
-<label x="378.46" y="238.76" size="1.27" layer="95" xref="yes"/>
-<wire x1="314.96" y1="238.76" x2="378.46" y2="238.76" width="0.1524" layer="91"/>
+<label x="330.2" y="238.76" size="1.27" layer="95" xref="yes"/>
+<wire x1="309.88" y1="238.76" x2="330.2" y2="238.76" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U14" gate="G$1" pin="VIC"/>
@@ -10251,8 +10251,8 @@ should be provided to LPC connector</text>
 </net>
 <net name="D11_ISO" class="0">
 <segment>
-<wire x1="378.46" y1="231.14" x2="309.88" y2="231.14" width="0.1524" layer="91"/>
-<label x="378.46" y="231.14" size="1.27" layer="95" xref="yes"/>
+<wire x1="330.2" y1="231.14" x2="309.88" y2="231.14" width="0.1524" layer="91"/>
+<label x="330.2" y="231.14" size="1.27" layer="95" xref="yes"/>
 <pinref part="R44" gate="R" pin="1"/>
 </segment>
 <segment>
@@ -10264,8 +10264,8 @@ should be provided to LPC connector</text>
 <net name="D10_ISO" class="0">
 <segment>
 <pinref part="R45" gate="R" pin="1"/>
-<wire x1="378.46" y1="228.6" x2="302.26" y2="228.6" width="0.1524" layer="91"/>
-<label x="378.46" y="228.6" size="1.27" layer="95" xref="yes"/>
+<wire x1="330.2" y1="228.6" x2="302.26" y2="228.6" width="0.1524" layer="91"/>
+<label x="330.2" y="228.6" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U13" gate="G$1" pin="VIC"/>
@@ -10275,8 +10275,8 @@ should be provided to LPC connector</text>
 </net>
 <net name="D9_ISO" class="0">
 <segment>
-<wire x1="378.46" y1="226.06" x2="317.5" y2="226.06" width="0.1524" layer="91"/>
-<label x="378.46" y="226.06" size="1.27" layer="95" xref="yes"/>
+<wire x1="330.2" y1="226.06" x2="317.5" y2="226.06" width="0.1524" layer="91"/>
+<label x="330.2" y="226.06" size="1.27" layer="95" xref="yes"/>
 <pinref part="R46" gate="R" pin="1"/>
 </segment>
 <segment>
@@ -10288,8 +10288,8 @@ should be provided to LPC connector</text>
 <net name="D8_ISO" class="0">
 <segment>
 <pinref part="R47" gate="R" pin="1"/>
-<label x="378.46" y="223.52" size="1.27" layer="95" xref="yes"/>
-<wire x1="309.88" y1="223.52" x2="378.46" y2="223.52" width="0.1524" layer="91"/>
+<label x="330.2" y="223.52" size="1.27" layer="95" xref="yes"/>
+<wire x1="309.88" y1="223.52" x2="330.2" y2="223.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U13" gate="G$1" pin="VIA"/>
@@ -10299,9 +10299,9 @@ should be provided to LPC connector</text>
 </net>
 <net name="D7_ISO" class="0">
 <segment>
-<label x="378.46" y="220.98" size="1.27" layer="95" xref="yes"/>
+<label x="330.2" y="220.98" size="1.27" layer="95" xref="yes"/>
 <pinref part="R48" gate="R" pin="1"/>
-<wire x1="378.46" y1="220.98" x2="302.26" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="220.98" x2="302.26" y2="220.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U10" gate="G$1" pin="VID"/>
@@ -10312,8 +10312,8 @@ should be provided to LPC connector</text>
 <net name="D6_ISO" class="0">
 <segment>
 <pinref part="R49" gate="R" pin="1"/>
-<label x="378.46" y="218.44" size="1.27" layer="95" xref="yes"/>
-<wire x1="317.5" y1="218.44" x2="378.46" y2="218.44" width="0.1524" layer="91"/>
+<label x="330.2" y="218.44" size="1.27" layer="95" xref="yes"/>
+<wire x1="317.5" y1="218.44" x2="330.2" y2="218.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U10" gate="G$1" pin="VIC"/>
@@ -10323,9 +10323,9 @@ should be provided to LPC connector</text>
 </net>
 <net name="D5_ISO" class="0">
 <segment>
-<label x="378.46" y="215.9" size="1.27" layer="95" xref="yes"/>
+<label x="330.2" y="215.9" size="1.27" layer="95" xref="yes"/>
 <pinref part="R50" gate="R" pin="1"/>
-<wire x1="378.46" y1="215.9" x2="309.88" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="215.9" x2="309.88" y2="215.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U10" gate="G$1" pin="VIB"/>
@@ -10336,8 +10336,8 @@ should be provided to LPC connector</text>
 <net name="D4_ISO" class="0">
 <segment>
 <pinref part="R51" gate="R" pin="1"/>
-<label x="378.46" y="213.36" size="1.27" layer="95" xref="yes"/>
-<wire x1="302.26" y1="213.36" x2="378.46" y2="213.36" width="0.1524" layer="91"/>
+<label x="330.2" y="213.36" size="1.27" layer="95" xref="yes"/>
+<wire x1="302.26" y1="213.36" x2="330.2" y2="213.36" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U10" gate="G$1" pin="VIA"/>
@@ -10347,9 +10347,9 @@ should be provided to LPC connector</text>
 </net>
 <net name="D3_ISO" class="0">
 <segment>
-<label x="378.46" y="210.82" size="1.27" layer="95" xref="yes"/>
+<label x="330.2" y="210.82" size="1.27" layer="95" xref="yes"/>
 <pinref part="R52" gate="R" pin="1"/>
-<wire x1="378.46" y1="210.82" x2="317.5" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="210.82" x2="317.5" y2="210.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U9" gate="G$1" pin="VID"/>
@@ -10360,8 +10360,8 @@ should be provided to LPC connector</text>
 <net name="D2_ISO" class="0">
 <segment>
 <pinref part="R53" gate="R" pin="1"/>
-<label x="378.46" y="208.28" size="1.27" layer="95" xref="yes"/>
-<wire x1="309.88" y1="208.28" x2="378.46" y2="208.28" width="0.1524" layer="91"/>
+<label x="330.2" y="208.28" size="1.27" layer="95" xref="yes"/>
+<wire x1="309.88" y1="208.28" x2="330.2" y2="208.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U9" gate="G$1" pin="VIC"/>
@@ -10371,9 +10371,9 @@ should be provided to LPC connector</text>
 </net>
 <net name="D1_ISO" class="0">
 <segment>
-<label x="378.46" y="205.74" size="1.27" layer="95" xref="yes"/>
+<label x="330.2" y="205.74" size="1.27" layer="95" xref="yes"/>
 <pinref part="R54" gate="R" pin="1"/>
-<wire x1="378.46" y1="205.74" x2="302.26" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="205.74" x2="302.26" y2="205.74" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U9" gate="G$1" pin="VIB"/>
@@ -10384,8 +10384,8 @@ should be provided to LPC connector</text>
 <net name="D0_ISO" class="0">
 <segment>
 <pinref part="R55" gate="R" pin="1"/>
-<label x="378.46" y="203.2" size="1.27" layer="95" xref="yes"/>
-<wire x1="317.5" y1="203.2" x2="378.46" y2="203.2" width="0.1524" layer="91"/>
+<label x="330.2" y="203.2" size="1.27" layer="95" xref="yes"/>
+<wire x1="317.5" y1="203.2" x2="330.2" y2="203.2" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U9" gate="G$1" pin="VIA"/>
@@ -10952,13 +10952,13 @@ should be provided to LPC connector</text>
 <net name="N$4" class="0">
 <segment>
 <pinref part="R40" gate="R" pin="2"/>
-<wire x1="304.8" y1="238.76" x2="287.02" y2="238.76" width="0.1524" layer="91"/>
+<wire x1="299.72" y1="238.76" x2="287.02" y2="238.76" width="0.1524" layer="91"/>
 <pinref part="U12" gate="G$1" pin="PCLK"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
-<wire x1="287.02" y1="236.22" x2="294.64" y2="236.22" width="0.1524" layer="91"/>
+<wire x1="287.02" y1="236.22" x2="292.1" y2="236.22" width="0.1524" layer="91"/>
 <pinref part="R41" gate="R" pin="2"/>
 <pinref part="U12" gate="G$1" pin="VSYNC"/>
 </segment>
@@ -11241,21 +11241,21 @@ should be provided to LPC connector</text>
 <net name="N$57" class="0">
 <segment>
 <pinref part="R58" gate="R" pin="2"/>
-<wire x1="302.26" y1="193.04" x2="287.02" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="292.1" y1="193.04" x2="287.02" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="U12" gate="G$1" pin="GPIO2"/>
 </segment>
 </net>
 <net name="N$58" class="0">
 <segment>
 <pinref part="R59" gate="R" pin="2"/>
-<wire x1="292.1" y1="190.5" x2="287.02" y2="190.5" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="190.5" x2="287.02" y2="190.5" width="0.1524" layer="91"/>
 <pinref part="U12" gate="G$1" pin="GPIO1"/>
 </segment>
 </net>
 <net name="N$59" class="0">
 <segment>
 <pinref part="R60" gate="R" pin="2"/>
-<wire x1="302.26" y1="187.96" x2="287.02" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="299.72" y1="187.96" x2="287.02" y2="187.96" width="0.1524" layer="91"/>
 <pinref part="U12" gate="G$1" pin="GPIO0"/>
 </segment>
 </net>
@@ -11484,7 +11484,7 @@ should be provided to LPC connector</text>
 <pinref part="FMC_LPC" gate="G$1" pin="LA21_N"/>
 </segment>
 </net>
-<net name="GPO1_N" class="1">
+<net name="DES_GPIO0_N" class="1">
 <segment>
 <wire x1="645.16" y1="337.82" x2="652.78" y2="337.82" width="0.1524" layer="91"/>
 <label x="652.78" y="337.82" size="1.27" layer="95" xref="yes"/>
@@ -11496,7 +11496,7 @@ should be provided to LPC connector</text>
 <pinref part="FMC_LPC" gate="G$1" pin="LA22_N"/>
 </segment>
 </net>
-<net name="GPO1_P" class="1">
+<net name="DES_GPIO0_P" class="1">
 <segment>
 <wire x1="645.16" y1="340.36" x2="652.78" y2="340.36" width="0.1524" layer="91"/>
 <label x="652.78" y="340.36" size="1.27" layer="95" xref="yes"/>
@@ -11508,7 +11508,7 @@ should be provided to LPC connector</text>
 <pinref part="FMC_LPC" gate="G$1" pin="LA22_P"/>
 </segment>
 </net>
-<net name="GPO0_N" class="1">
+<net name="DES_GPIO1_N" class="1">
 <segment>
 <wire x1="652.78" y1="342.9" x2="645.16" y2="342.9" width="0.1524" layer="91"/>
 <label x="652.78" y="342.9" size="1.27" layer="95" xref="yes"/>
@@ -11520,7 +11520,7 @@ should be provided to LPC connector</text>
 <pinref part="FMC_LPC" gate="G$1" pin="LA19_N"/>
 </segment>
 </net>
-<net name="GPO0_P" class="1">
+<net name="DES_GPIO1_P" class="1">
 <segment>
 <wire x1="645.16" y1="345.44" x2="652.78" y2="345.44" width="0.1524" layer="91"/>
 <label x="652.78" y="345.44" size="1.27" layer="95" xref="yes"/>
@@ -12008,8 +12008,8 @@ should be provided to LPC connector</text>
 <net name="DES_GPIO0_ISO" class="0">
 <segment>
 <pinref part="R60" gate="R" pin="1"/>
-<wire x1="378.46" y1="187.96" x2="312.42" y2="187.96" width="0.1524" layer="91"/>
-<label x="378.46" y="187.96" size="1.27" layer="95" xref="yes"/>
+<wire x1="330.2" y1="187.96" x2="309.88" y2="187.96" width="0.1524" layer="91"/>
+<label x="330.2" y="187.96" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="472.44" y1="99.06" x2="449.58" y2="99.06" width="0.1524" layer="91"/>
@@ -12069,14 +12069,14 @@ should be provided to LPC connector</text>
 <segment>
 <pinref part="U12" gate="G$1" pin="GPIO3"/>
 <pinref part="R57" gate="R" pin="2"/>
-<wire x1="287.02" y1="195.58" x2="294.64" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="287.02" y1="195.58" x2="299.72" y2="195.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DES_GPIO1_ISO" class="0">
 <segment>
 <pinref part="R59" gate="R" pin="1"/>
-<label x="378.46" y="190.5" size="1.27" layer="95" xref="yes"/>
-<wire x1="302.26" y1="190.5" x2="378.46" y2="190.5" width="0.1524" layer="91"/>
+<label x="330.2" y="190.5" size="1.27" layer="95" xref="yes"/>
+<wire x1="317.5" y1="190.5" x2="330.2" y2="190.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="472.44" y1="101.6" x2="449.58" y2="101.6" width="0.1524" layer="91"/>
@@ -12086,9 +12086,9 @@ should be provided to LPC connector</text>
 </net>
 <net name="DES_GPIO2_ISO" class="0">
 <segment>
-<label x="378.46" y="193.04" size="1.27" layer="95" xref="yes"/>
+<label x="330.2" y="193.04" size="1.27" layer="95" xref="yes"/>
 <pinref part="R58" gate="R" pin="1"/>
-<wire x1="378.46" y1="193.04" x2="312.42" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="193.04" x2="302.26" y2="193.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <label x="449.58" y="104.14" size="1.27" layer="95" rot="R180" xref="yes"/>
@@ -12099,8 +12099,8 @@ should be provided to LPC connector</text>
 <net name="DES_GPIO3_ISO" class="0">
 <segment>
 <pinref part="R57" gate="R" pin="1"/>
-<wire x1="304.8" y1="195.58" x2="378.46" y2="195.58" width="0.1524" layer="91"/>
-<label x="378.46" y="195.58" size="1.27" layer="95" xref="yes"/>
+<wire x1="309.88" y1="195.58" x2="330.2" y2="195.58" width="0.1524" layer="91"/>
+<label x="330.2" y="195.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="472.44" y1="106.68" x2="449.58" y2="106.68" width="0.1524" layer="91"/>
