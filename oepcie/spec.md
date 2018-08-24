@@ -16,11 +16,11 @@ toc-depth: 2
 secnumdepth: 2
 abstract: |
     This document specifies requirements for implementing the Open Ephys++ data
-    acqusition system. This specification entails two basic elements: (1)
-    Communication protocols between acqusition firmware and host software and
+    acquisition system. This specification entails two basic elements: (1)
+    Communication protocols between acquisition firmware and host software and
     (2) an application programming interface (API) for utilizing this
     communication protocol. This document is incomplete and we gratefully
-    welcome critisms and admendments.
+    welcome criticisms and amendments.
 ---
 
 \newpage
@@ -72,16 +72,16 @@ where `PACKET_FLAG` is 32-bit unsigned integer with a single unique bit
 setting, ` | ` represents a packet delimiter, and `...` represents other
 packets. This stream can be read and ignored  until a desired packet is
 received. Reading this stream shall block if no data is available, which allows
-asynchronous configuration acknowledgement. Valid `PACKET_FLAG`s are:
+asynchronous configuration acknowledgment. Valid `PACKET_FLAG`s are:
 
 ``` {.c}
 enum signal {
     NULLSIG      = (1u << 0), // Null signal, ignored by host
-    CONFIGWACK   = (1u << 1), // Configuration write-acknowledgement
-    CONFIGWNACK  = (1u << 2), // Configuration no-write-acknowledgement
-    CONFIGRACK   = (1u << 3), // Configuration read-acknowledgement
-    CONFIGRNACK  = (1u << 4), // Configuration no-read-acknowledgement
-    DEVICEMAPACK = (1u << 5), // Device map start acnknowledgement
+    CONFIGWACK   = (1u << 1), // Configuration write-acknowledgment
+    CONFIGWNACK  = (1u << 2), // Configuration no-write-acknowledgment
+    CONFIGRACK   = (1u << 3), // Configuration read-acknowledgment
+    CONFIGRNACK  = (1u << 4), // Configuration no-read-acknowledgment
+    DEVICEMAPACK = (1u << 5), // Device map start acknowledgment
     DEVICEINST   = (1u << 6), // Device map instance
 };
 ```
@@ -336,7 +336,7 @@ Each frame memory sector is described below:
 
 2. Device map indices
     - An array of unsigned 32-bit keys corresponding the device map captured by
-      the host during context initialisaiton
+      the host during context initialization
     - The offset, size, and type information of the _i_th data block within the
       `data` section of each frame is determined by examining the _i_th member
       of the device map.
@@ -367,7 +367,7 @@ exclusive file pairs:
 `liboepcie` is a low level library used by high-level language binding and/or
 software plugin developers. It is not meant to be used by neuroscientists
 directly. The only external dependency aside from the C standard library is is
-a hardware communication backend that fulfils the requirements of the
+a hardware communication backend that fulfills the requirements of the
 [FPGA/Host Communication
 Specification](#comm-protocol). An example of such
 a backend is [Xillybus](http://xillybus.com/), which provides proprietary FPGA
@@ -383,7 +383,7 @@ of Xillybus would be a major benefit to the systems neuroscience community.
 
 Importantly, the low-level synchronization, resource allocation, and logic
 required to use the hardware communication backend is implicit to `liboepcie`
-API function calls. Ochestration of the communication backend _is not directly
+API function calls. Orchestration of the communication backend _is not directly
 managed by the library user_.
 
 ## License
@@ -576,6 +576,8 @@ typedef enum oe_error {
     OE_EDATATYPE        = -19, // Invalid underlying data types
     OE_EREADONLY        = -20, // Attempted write to read only object (register, context option, etc)
     OE_ERUNSTATESYNC    = -21, // Software and hardware run state out of sync
+    OE_EINVALRAWTYPE    = -22, // Invalid raw data type
+    OE_EUNIMPL          = -23, // Specified, but unimplemented, feature
 } oe_error_t;
 ```
 
@@ -764,13 +766,25 @@ running.
 | default value       | False |
 
 #### `OE_SYSCLKHZ`
-System clock frequency in Hz. Read frame clock values are are incremented at this rate.
+System clock frequency in Hz. The PCIe bus is operated at this rate. Read-frame clock values 
+are incremented at this rate.
 
 | | |
 |---------------------|--------------------------------------------------------------------|
 | option value type   | `oe_reg_val_t` |
 | option description  | System clock frequency in Hz |
 | default value       | N/A |
+
+#### `OE_ACQCLKHZ`
+Acquisition clock frequency in Hz. Reads from devices are synchronized to this clock. 
+Clock values within frame data are incremented at this rate.
+
+| | |
+|---------------------|--------------------------------------------------------------------|
+| option value type   | `oe_reg_val_t` |
+| option description  | Acquisition clock frequency in Hz |
+| default value       | 42000000 |
+
 
 ## oe_set_opt
 Set context options.
@@ -853,6 +867,7 @@ sample counters, etc) is defaulted.
 | option value type 	    | `oe_reg_val_t` |
 | option description 	    | Any value greater than 0 will trigger a reset |
 | default value     	    | Untriggered |
+
 
 \* Invalid following a successful call to `oe_init_ctx`. Before this, will
 return with error code `OE_EINVALSTATE`.

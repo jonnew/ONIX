@@ -4,7 +4,7 @@
 // Version macros for compile-time API version detection
 #define OE_VERSION_MAJOR 1
 #define OE_VERSION_MINOR 0
-#define OE_VERSION_PATCH 0
+#define OE_VERSION_PATCH 1
 
 #define OE_MAKE_VERSION(major, minor, patch) \
     ((major) * 10000 + (minor) * 100 + (patch))
@@ -82,7 +82,8 @@ enum {
     OE_MAXWRITEFRAMESIZE,
     OE_RUNNING,
     OE_RESET,
-    OE_SYSCLKHZ
+    OE_SYSCLKHZ,
+    OE_ACQCLKHZ,
 };
 
 // NB: If you add an error here, make sure to update oe_error_str()
@@ -110,9 +111,10 @@ enum {
     OE_EREADONLY        = -20, // Attempted write to read only object (register, context option, etc)
     OE_ERUNSTATESYNC    = -21, // Software and hardware run state out of sync
     OE_EINVALRAWTYPE    = -22, // Invalid raw data type
+    OE_EUNIMPL          = -23, // Specified, but unimplemented, feature
 
     // NB: Always at bottom
-    OE_MINERRORNUM      = -23
+    OE_MINERRORNUM      = -24
 };
 
 // Context

@@ -30,6 +30,7 @@ namespace oe.lib
         READONLY = -20, // Attempted write to read only object (register, context option, etc)
         RUNSTATESYNC = -21, // Software and hardware run state out of sync
         INVALRAWTYPE = -22, // Invalid raw data type
+        UNIMPL = -23, // Specified, but unimplemented, feature
     }
 
     // Make managed version of oe_device_t

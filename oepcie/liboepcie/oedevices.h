@@ -27,6 +27,8 @@ enum oe_device_id {
     OE_OSTIM             = 5, // Optical stimulation subcircuit
     OE_TS4231            = 6, // Triad semiconductor TS421 optical to digital converter
     OE_SERDESGPO         = 7, // SERDES GPIO pins
+    OE_DINPUT32          = 8, // 32-bit digital input port
+    OE_DOUTPUT32         = 9, // 32-bit digital output port
 
     // NB: Final reserved device ID. Always on bottom
     OE_MAXDEVICEID       = OE_MAXDEVID,
@@ -126,6 +128,31 @@ enum oe_serdesgpo_regs {
     OE_SERDESGPO_NUM         = 1, // Select a GPO pin to control (0-3)
     OE_SERDESGPO_STATE       = 2, // Set the state of the selected pin (0 = LOW, other = HIGH)
     OE_SERDESGPO_RESET       = 3, // Reset all parameters to default pull all GPO pins LOW.
+};
+
+// # OE_DINPUT32
+// A 32-bit digital input port. Physical device may support less digital inputs than this.
+// - Input frame data contents
+//
+//  [uint64_t local_clock,
+//   uint32_t port_state]
+//
+// - Configuration registers:
+enum oe_dinput32_regs {
+    OE_DINPUT32_NULLPARM    = 0, // No command
+    OE_DINPUT32_NUM         = 1, // Select a digital input pin to control (0-31)
+    OE_DINPUT32_TERM        = 2, // Toggle 50 ohm termination (0 = Off, other = On)
+    OE_DINPUT32_LLEVEL      = 3, // Set logic threshold level (0-255, actual voltage depends on circuitry)
+};
+
+// # OE_DOUTPUT32
+// A 32-bit digital output port. Physical device may support less digital outputs than this.
+// - Input frame data contents:  N/A
+// - Configuration registers:
+enum oe_doutput32_regs {
+    OE_DOUTPUT32_NULLPARM   = 0, // No command
+    OE_DOUTPUT32_STATE      = 1, // Set the port state (32-bit unsigned integer)
+    OE_DOUTPUT32_LLEVEL     = 2, // Set logic threshold level (0-255, actual voltage depends on circuitry)
 };
 
 // Human readable string from ID

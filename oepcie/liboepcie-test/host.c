@@ -229,6 +229,12 @@ int main(int argc, char *argv[])
 #endif
     }
 
+    // Reset the hardware
+    oe_reg_val_t reset = 1;
+    rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
+    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    assert(!rc && "Register write failure.");
+
     oe_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);
     oe_get_opt(ctx, OE_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
@@ -243,6 +249,14 @@ int main(int argc, char *argv[])
     rc = oe_get_opt(ctx, OE_SYSCLKHZ, &base_hz, &clk_val_sz);
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register read failure.");
+    printf("System clock rate: %u Hz\n", base_hz);
+
+    oe_reg_val_t acq_hz = 0;
+    size_t acq_clk_val_sz = sizeof(acq_hz);
+    rc = oe_get_opt(ctx, OE_ACQCLKHZ, &acq_hz, &acq_clk_val_sz);
+    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    assert(!rc && "Register read failure.");
+    printf("Acquisition clock rate: %u Hz\n", acq_hz);
 
     // Start acquisition
     oe_reg_val_t run = 1;
@@ -333,7 +347,7 @@ int main(int argc, char *argv[])
 #endif
 
     // Reset the hardware
-    oe_reg_val_t reset = 1;
+    reset = 1;
     rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register write failure.");

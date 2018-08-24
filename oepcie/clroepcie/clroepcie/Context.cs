@@ -37,6 +37,7 @@
 
             // Get context metadata
             SystemClockHz = GetIntOption(Option.SYSCLKHZ);
+            AcquisitionClockHz = GetIntOption(Option.ACQCLKHZ);
             MaxReadFrameSize = GetIntOption(Option.MAXREADFRAMESIZE); // TODO: This is still not correct for some reason
             MaxWriteFrameSize = GetIntOption(Option.MAXWRITEFRAMESIZE);
 
@@ -64,6 +65,7 @@
         private object context_lock = new object();
 
         public readonly int SystemClockHz = 0;
+        public readonly int AcquisitionClockHz = 0;
         public readonly int MaxReadFrameSize = 0;
         public readonly int MaxWriteFrameSize = 0;
 
@@ -210,6 +212,7 @@
             RUNNING,
             RESET,
             SYSCLKHZ,
+            ACQCLKHZ
         }
 
     }

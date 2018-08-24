@@ -44,7 +44,7 @@ typedef uint32_t oe_reg_val_t;
 
 // Bytes per read() syscall on the data input stream
 // NB: This defines a minimum delay for real-time processing
-#define OE_READSIZE 1024
+#define OE_READSIZE 512
 
 typedef struct stream_fid {
     char *path;
@@ -108,7 +108,9 @@ typedef enum oe_conf_reg_off {
     CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
-    CONFFRAMEHZOFFSET   = 32,  // Configuration frame clock frequency register byte offset
+    CONFACQCLKHZOFFSET  = 32,  // Configuration acquisition clock frequency register byte offset
+    CONFACQCLKMOFFSET   = 36,  // Configuration acquisition clock multiplier register byte offset
+    CONFACQCLKDOFFSET   = 40,  // Configuration acquisition clock divider register byte offset
 } oe_conf_off_t;
 
 // Static helpers
@@ -232,8 +234,8 @@ int oe_init_ctx(oe_ctx ctx)
 #endif
     }
 
-    //assert(ctx->max_read_frame_size < OE_READSIZE &&
-        //"Block read size is too small given the possible frame size.");
+    assert(ctx->max_read_frame_size < OE_READSIZE &&
+        "Block read size is too small given the possible frame size.");
 
 #ifdef OE_BE
     _device_map_byte_swap(ctx);
@@ -389,7 +391,18 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             *option_len = OE_REGSZ;
             break;
         }
+        case OE_ACQCLKHZ: {
+            if (*option_len != OE_REGSZ)
+                return OE_EBUFFERSIZE;
 
+            int rc
+                = _oe_read_config(ctx->config.fid, CONFACQCLKHZOFFSET, value);
+            if (rc)
+                return rc;
+
+            *option_len = OE_REGSZ;
+            break;
+        }
         default:
             return OE_EINVALOPT;
     }
@@ -471,6 +484,9 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             break;
         }
         case OE_SYSCLKHZ: {
+            return OE_EREADONLY;
+        }
+        case OE_ACQCLKHZ: {
             return OE_EREADONLY;
         }
         default:
@@ -762,6 +778,9 @@ const char *oe_error_str(int err)
         }
         case OE_EINVALRAWTYPE: {
             return "Invalid raw data type";
+        }
+        case OE_EUNIMPL: {
+            return "Unimplemented feature";
         }
         default:
             return "Unknown error";
