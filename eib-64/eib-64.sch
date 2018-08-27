@@ -1319,7 +1319,7 @@
 <attribute name="DESIGNER" value="JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="EIB-64"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
 </variantdefs>
