@@ -18,7 +18,7 @@
 #include <stdlib.h>
 
 // Dump raw device streams to files?
-#define DUMPFILES
+//#define DUMPFILES
 
 #ifdef DUMPFILES
 FILE **dump_files;
@@ -87,6 +87,7 @@ volatile int quit = 0;
 volatile int display = 0;
 volatile int display_clock = 0;
 int running = 1;
+unsigned long counter = 0;
 
 int parse_reg_cmd(const char *cmd, long *values)
 {
@@ -123,7 +124,7 @@ void *data_loop(void *vargp)
         oe_frame_t *frame;
         rc = oe_read_frame(ctx, &frame);
 
-        if (display_clock)
+        if (display_clock && counter % 100 == 0)
             printf("\tSample: %" PRIu64 "\n\n", frame->clock);
 
         int i;
@@ -138,7 +139,7 @@ void *data_loop(void *vargp)
 #ifdef DUMPFILES
             fwrite(data, 1, data_sz, dump_files[this_idx]);
 #endif
-            if (display) {
+            if (display && counter % 100 == 0) {
                 printf("\tDev: %d (%s)\n",
                     this_idx,
                     oe_device_str(this_dev.id));
@@ -151,6 +152,7 @@ void *data_loop(void *vargp)
             }
         }
 
+        counter++;
         oe_destroy_frame(frame);
     }
 
@@ -278,8 +280,8 @@ int main(int argc, char *argv[])
     while (c != 'q') {
 
         printf("Enter a command and press enter:\n");
-        printf("\tc - toggle clock display\n");
-        printf("\td - toggle display\n");
+        printf("\tc - toggle 1/100 clock display\n");
+        printf("\td - toggle 1/100 display\n");
         printf("\tp - toggle stream pause\n");
         printf("\tr - enter register command\n");
         printf("\tq - quit\n");
