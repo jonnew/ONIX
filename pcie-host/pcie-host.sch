@@ -662,20 +662,17 @@ Source: amp_227161.pdf</description>
 <hole x="5.08" y="0" drill="2"/>
 </package>
 <package name="SOD123">
-<wire x1="-2.6" y1="0.9" x2="2.6" y2="0.9" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="-0.79375" y2="0.63505" width="0.127" layer="21"/>
-<wire x1="-0.79375" y1="0.63505" x2="-0.79375" y2="-0.63505" width="0.127" layer="21"/>
-<wire x1="-0.79375" y1="-0.63505" x2="0.15875" y2="0" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="0.15875" y2="0.63505" width="0.127" layer="21"/>
-<wire x1="0.15875" y1="0" x2="0.15875" y2="-0.63505" width="0.127" layer="21"/>
+<wire x1="0.45875" y1="0" x2="-0.59375" y2="0.63505" width="0.1524" layer="21"/>
+<wire x1="-0.59375" y1="0.63505" x2="-0.59375" y2="-0.63505" width="0.1524" layer="21"/>
+<wire x1="-0.59375" y1="-0.63505" x2="0.45875" y2="0" width="0.1524" layer="21"/>
 <smd name="A" x="-1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
 <smd name="C" x="1.8" y="0" dx="0.9144" dy="1.2192" layer="1"/>
 <text x="-2.54" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.54" y="-2.54" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<wire x1="-2.6" y1="0.9" x2="-2.6" y2="-0.9" width="0.127" layer="21"/>
-<wire x1="-2.6" y1="-0.9" x2="2.6" y2="-0.9" width="0.127" layer="21"/>
-<wire x1="2.6" y1="-0.9" x2="2.6" y2="0.9" width="0.127" layer="21"/>
-<rectangle x1="0.635" y1="-0.9525" x2="0.9525" y2="0.9525" layer="21"/>
+<rectangle x1="0.335" y1="-0.8" x2="0.6525" y2="0.8" layer="21"/>
+<wire x1="-1.3" y1="0.8" x2="1.3" y2="0.8" width="0.1524" layer="21"/>
+<wire x1="-1.3" y1="-0.8" x2="1.3" y2="-0.8" width="0.1524" layer="21"/>
+<rectangle x1="-1.3" y1="-0.8" x2="1.3" y2="0.8" layer="39"/>
 </package>
 <package name="153CLV-0807">
 <description>&lt;b&gt;Aluminum electrolytic capacitors&lt;/b&gt;&lt;p&gt;
@@ -3478,6 +3475,67 @@ grid 2.54 mm</description>
 <wire x1="2.54" y1="-1.524" x2="2.286" y2="-1.778" width="0.1524" layer="21"/>
 <wire x1="2.794" y1="-1.778" x2="2.54" y2="-1.524" width="0.1524" layer="21"/>
 </package>
+<package name="C900">
+<pad name="1" x="-5" y="0" drill="0.8"/>
+<pad name="2" x="5" y="0" drill="0.8"/>
+<wire x1="3.5" y1="0" x2="2.5" y2="1" width="0.254" layer="21" curve="90"/>
+<wire x1="2.5" y1="1" x2="-2.5" y2="1" width="0.254" layer="21"/>
+<wire x1="-2.5" y1="1" x2="-3.5" y2="0" width="0.254" layer="21" curve="90"/>
+<wire x1="-3.5" y1="0" x2="-2.5" y2="-1" width="0.254" layer="21" curve="90"/>
+<wire x1="-2.5" y1="-1" x2="2.5" y2="-1" width="0.254" layer="21"/>
+<wire x1="2.5" y1="-1" x2="3.5" y2="0" width="0.254" layer="21" curve="90"/>
+<wire x1="-4" y1="0" x2="-3.5" y2="0" width="0.254" layer="21"/>
+<wire x1="3.5" y1="0" x2="4" y2="0" width="0.254" layer="21"/>
+<text x="-3.5" y="1.5" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-3.5" y="-2.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="0201_POL">
+<wire x1="-0.254" y1="0.1524" x2="0.254" y2="0.1524" width="0.1016" layer="51"/>
+<wire x1="0.254" y1="-0.1524" x2="-0.254" y2="-0.1524" width="0.1016" layer="51"/>
+<smd name="A" x="-0.3937" y="0" dx="0.4318" dy="0.4318" layer="1"/>
+<smd name="C" x="0.3937" y="0" dx="0.4318" dy="0.4318" layer="1"/>
+<text x="-1.1" y="0.6" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.1" y="-1.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-0.3048" y1="-0.1524" x2="-0.1524" y2="0.1524" layer="51"/>
+<rectangle x1="0.1524" y1="-0.1524" x2="0.3048" y2="0.1524" layer="51"/>
+<wire x1="0.8" y1="-0.4" x2="0.8" y2="0.4" width="0.127" layer="21"/>
+</package>
+<package name="GDZ8V2BLP3">
+<wire x1="-0.3" y1="0.2" x2="-0.1" y2="0.2" width="0.1016" layer="51"/>
+<wire x1="-0.1" y1="0.2" x2="0.3" y2="0.2" width="0.1016" layer="51"/>
+<wire x1="0.3" y1="-0.2" x2="-0.1" y2="-0.2" width="0.1016" layer="51"/>
+<wire x1="-0.1" y1="-0.2" x2="-0.3" y2="-0.2" width="0.1016" layer="51"/>
+<wire x1="0.45" y1="0.2" x2="0.45" y2="-0.2" width="0.127" layer="21"/>
+<smd name="A" x="-0.1775" y="0" dx="0.23" dy="0.3" layer="1"/>
+<smd name="C" x="0.1775" y="0" dx="0.23" dy="0.3" layer="1"/>
+<text x="-1.15" y="0.45" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.2" y="-1.45" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-0.35" y1="-0.3" x2="0.35" y2="0.3" layer="39"/>
+<wire x1="-0.3" y1="0.2" x2="-0.3" y2="-0.2" width="0.1016" layer="51"/>
+<wire x1="0.3" y1="-0.2" x2="0.3" y2="0.2" width="0.1016" layer="51"/>
+<wire x1="-0.1" y1="0.15" x2="-0.1" y2="-0.2" width="0.1016" layer="51"/>
+<wire x1="-0.1" y1="-0.2" x2="0.1" y2="0" width="0.1016" layer="51"/>
+<wire x1="0.1" y1="0" x2="-0.1" y2="0.2" width="0.1016" layer="51"/>
+<wire x1="-0.05" y1="0.05" x2="0" y2="0" width="0.1016" layer="51"/>
+<wire x1="0" y1="0" x2="-0.05" y2="-0.05" width="0.1016" layer="51"/>
+</package>
+<package name="0402P-DFN">
+<wire x1="-0.4572" y1="0.254" x2="0.4572" y2="0.254" width="0.1016" layer="51"/>
+<wire x1="0.4572" y1="-0.254" x2="-0.4572" y2="-0.254" width="0.1016" layer="51"/>
+<wire x1="-0.6668" y1="0.4588" x2="0.6668" y2="0.4588" width="0.127" layer="21"/>
+<wire x1="0.6668" y1="0.4588" x2="0.7668" y2="0.4588" width="0.127" layer="21"/>
+<wire x1="0.7668" y1="0.4588" x2="0.7668" y2="-0.4588" width="0.127" layer="21"/>
+<wire x1="0.7668" y1="-0.4588" x2="0.6668" y2="-0.4588" width="0.127" layer="21"/>
+<wire x1="0.6668" y1="-0.4588" x2="-0.6668" y2="-0.4588" width="0.127" layer="21"/>
+<wire x1="-0.6668" y1="-0.4588" x2="-0.6668" y2="0.4588" width="0.127" layer="21"/>
+<smd name="A" x="-0.325" y="0" dx="0.35" dy="0.6" layer="1"/>
+<smd name="C" x="0.325" y="0" dx="0.35" dy="0.6" layer="1"/>
+<text x="-1.143" y="0.762" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.27" y="-1.778" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-0.508" y1="-0.254" x2="-0.254" y2="0.254" layer="51"/>
+<rectangle x1="0.254" y1="-0.254" x2="0.508" y2="0.254" layer="51"/>
+<wire x1="0.6668" y1="0.4588" x2="0.6668" y2="-0.4588" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="+3V3">
@@ -4870,6 +4928,15 @@ grid 2.54 mm</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_C900" package="C900">
+<connects>
+<connect gate="C" pin="1" pad="1"/>
+<connect gate="C" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="C-POL" prefix="C" uservalue="yes">
@@ -5717,6 +5784,33 @@ grid 2.54 mm</description>
 <connects>
 <connect gate="G$1" pin="A" pad="2"/>
 <connect gate="G$1" pin="C" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_0201" package="0201_POL">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_GDZ" package="GDZ8V2BLP3">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_0402P-DFN" package="0402P-DFN">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -7094,9 +7188,9 @@ grid 2.54 mm</description>
 <part name="C32" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="C48" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
-<part name="DI1" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
+<part name="DI0" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
+<part name="DO0" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
 <part name="DO1" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
-<part name="DO2" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
 <part name="PWR10" library="jonnew" deviceset="+5V" device="" value="+12V_ATX"/>
 <part name="PWR30" library="jonnew" deviceset="+5V" device="" value="12V_FPGA"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
@@ -7126,7 +7220,7 @@ grid 2.54 mm</description>
 <part name="R1" library="jonnew" deviceset="R" device="_0603" value="100"/>
 <part name="R3" library="jonnew" deviceset="R" device="_0603" value="10k"/>
 <part name="C2" library="jonnew" deviceset="C" device="_0603" value="0.1uF"/>
-<part name="DI2" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
+<part name="DI1" library="jonnew" deviceset="COAX" device="_CONREVSMA002-G" value="SMA002"/>
 <part name="F2" library="jonnew" deviceset="FUSE" device="_1812" value="C014F-2"/>
 <part name="R13" library="jonnew" deviceset="R" device="_1206" value="150,0.25W"/>
 <part name="R14" library="jonnew" deviceset="R" device="_1206" value="150,0.25W"/>
@@ -7506,6 +7600,14 @@ grid 2.54 mm</description>
 <part name="GND102" library="jonnew" deviceset="GND_ISO" device=""/>
 <part name="R80" library="jonnew" deviceset="R" device="_0402" value="0"/>
 <part name="R79" library="jonnew" deviceset="R" device="_0402" value="0"/>
+<part name="C82" library="jonnew" deviceset="C" device="_C900" value="2.2nF,X/Y"/>
+<part name="GND103" library="jonnew" deviceset="GND_ISO" device=""/>
+<part name="GND111" library="supply1" deviceset="GND" device=""/>
+<part name="R81" library="jonnew" deviceset="R" device="_1206" value="330k, 1kV"/>
+<part name="R82" library="jonnew" deviceset="R" device="_1206" value="330k,1kV"/>
+<part name="R83" library="jonnew" deviceset="R" device="_1206" value="330k, 1kV"/>
+<part name="D7" library="jonnew" deviceset="Z-DIODE" device="_0402P-DFN" value="SESD0402X1UN-0020-090"/>
+<part name="GND114" library="jonnew" deviceset="GND_ISO" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7556,6 +7658,9 @@ should be provided to LPC connector</text>
 <text x="619.76" y="810.26" size="2.54" layer="97">DNP</text>
 <text x="619.76" y="820.42" size="2.54" layer="97">DNP</text>
 <text x="436.88" y="35.56" size="2.54" layer="97">DNP</text>
+<text x="314.96" y="502.92" size="2.54" layer="97">NB: Keep grounds at 
+appoximately the 
+same potential.</text>
 </plain>
 <instances>
 <instance part="GND3" gate="1" x="520.7" y="276.86"/>
@@ -7574,9 +7679,9 @@ should be provided to LPC connector</text>
 <instance part="C32" gate="C" x="464.82" y="340.36" rot="R180"/>
 <instance part="C48" gate="C" x="464.82" y="284.48" rot="R180"/>
 <instance part="GND29" gate="1" x="642.62" y="721.36" rot="MR0"/>
-<instance part="DI1" gate="G$1" x="38.1" y="868.68"/>
-<instance part="DO1" gate="G$1" x="38.1" y="693.42"/>
-<instance part="DO2" gate="G$1" x="38.1" y="591.82"/>
+<instance part="DI0" gate="G$1" x="38.1" y="868.68"/>
+<instance part="DO0" gate="G$1" x="38.1" y="693.42"/>
+<instance part="DO1" gate="G$1" x="38.1" y="591.82"/>
 <instance part="PWR10" gate="1" x="548.64" y="429.26" smashed="yes">
 <attribute name="VALUE" x="551.815" y="422.91" size="1.27" layer="96" font="vector" ratio="18" rot="R90"/>
 </instance>
@@ -7610,7 +7715,7 @@ should be provided to LPC connector</text>
 <instance part="R1" gate="R" x="152.4" y="868.68"/>
 <instance part="R3" gate="R" x="147.32" y="855.98" rot="R90"/>
 <instance part="C2" gate="C" x="157.48" y="858.52"/>
-<instance part="DI2" gate="G$1" x="38.1" y="779.78"/>
+<instance part="DI1" gate="G$1" x="38.1" y="779.78"/>
 <instance part="F2" gate="G$1" x="60.96" y="779.78"/>
 <instance part="R13" gate="R" x="116.84" y="764.54" rot="R90"/>
 <instance part="R14" gate="R" x="124.46" y="764.54" rot="R90"/>
@@ -8053,6 +8158,17 @@ should be provided to LPC connector</text>
 <instance part="GND102" gate="G$1" x="119.38" y="144.78"/>
 <instance part="R80" gate="R" x="449.58" y="30.48" rot="R270"/>
 <instance part="R79" gate="R" x="439.42" y="40.64"/>
+<instance part="C82" gate="C" x="363.22" y="520.7"/>
+<instance part="GND103" gate="G$1" x="363.22" y="490.22"/>
+<instance part="GND111" gate="1" x="373.38" y="535.94"/>
+<instance part="R81" gate="R" x="353.06" y="530.86" rot="R90"/>
+<instance part="R82" gate="R" x="353.06" y="518.16" rot="R90"/>
+<instance part="R83" gate="R" x="353.06" y="505.46" rot="R90"/>
+<instance part="D7" gate="G$1" x="63.5" y="104.14" smashed="yes" rot="R90">
+<attribute name="NAME" x="64.77" y="99.06" size="1.778" layer="95"/>
+<attribute name="VALUE" x="64.77" y="95.25" size="1.778" layer="96"/>
+</instance>
+<instance part="GND114" gate="G$1" x="63.5" y="93.98"/>
 </instances>
 <busses>
 </busses>
@@ -8450,6 +8566,21 @@ should be provided to LPC connector</text>
 <pinref part="S1" gate="G$1" pin="P"/>
 <wire x1="119.38" y1="162.56" x2="119.38" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="GND102" gate="G$1" pin="GND_ISO"/>
+</segment>
+<segment>
+<pinref part="GND103" gate="G$1" pin="GND_ISO"/>
+<pinref part="C82" gate="C" pin="2"/>
+<wire x1="363.22" y1="490.22" x2="363.22" y2="495.3" width="0.1524" layer="91"/>
+<pinref part="R83" gate="R" pin="1"/>
+<wire x1="363.22" y1="495.3" x2="363.22" y2="515.62" width="0.1524" layer="91"/>
+<wire x1="363.22" y1="495.3" x2="353.06" y2="495.3" width="0.1524" layer="91"/>
+<wire x1="353.06" y1="495.3" x2="353.06" y2="500.38" width="0.1524" layer="91"/>
+<junction x="363.22" y="495.3"/>
+</segment>
+<segment>
+<pinref part="GND114" gate="G$1" pin="GND_ISO"/>
+<pinref part="D7" gate="G$1" pin="A"/>
+<wire x1="63.5" y1="93.98" x2="63.5" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -8925,7 +9056,7 @@ should be provided to LPC connector</text>
 <segment>
 <wire x1="40.64" y1="690.88" x2="50.8" y2="690.88" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="690.88" x2="50.8" y2="675.64" width="0.1524" layer="91"/>
-<pinref part="DO1" gate="G$1" pin="2"/>
+<pinref part="DO0" gate="G$1" pin="2"/>
 <pinref part="GND13" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -8941,13 +9072,13 @@ should be provided to LPC connector</text>
 <segment>
 <wire x1="40.64" y1="777.24" x2="50.8" y2="777.24" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="762" x2="50.8" y2="777.24" width="0.1524" layer="91"/>
-<pinref part="DI2" gate="G$1" pin="2"/>
+<pinref part="DI1" gate="G$1" pin="2"/>
 <pinref part="GND31" gate="1" pin="GND"/>
 </segment>
 <segment>
 <wire x1="40.64" y1="866.14" x2="50.8" y2="866.14" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="850.9" x2="50.8" y2="866.14" width="0.1524" layer="91"/>
-<pinref part="DI1" gate="G$1" pin="2"/>
+<pinref part="DI0" gate="G$1" pin="2"/>
 <pinref part="GND32" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -9023,7 +9154,7 @@ should be provided to LPC connector</text>
 <segment>
 <wire x1="40.64" y1="589.28" x2="50.8" y2="589.28" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="589.28" x2="50.8" y2="574.04" width="0.1524" layer="91"/>
-<pinref part="DO2" gate="G$1" pin="2"/>
+<pinref part="DO1" gate="G$1" pin="2"/>
 <pinref part="GND55" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -9166,6 +9297,17 @@ should be provided to LPC connector</text>
 <pinref part="GND97" gate="1" pin="GND"/>
 <wire x1="508" y1="38.1" x2="513.08" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="513.08" y1="38.1" x2="513.08" y2="27.94" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C82" gate="C" pin="1"/>
+<wire x1="363.22" y1="523.24" x2="363.22" y2="541.02" width="0.1524" layer="91"/>
+<wire x1="363.22" y1="541.02" x2="373.38" y2="541.02" width="0.1524" layer="91"/>
+<pinref part="GND111" gate="1" pin="GND"/>
+<wire x1="373.38" y1="541.02" x2="373.38" y2="538.48" width="0.1524" layer="91"/>
+<pinref part="R81" gate="R" pin="2"/>
+<wire x1="353.06" y1="535.94" x2="353.06" y2="541.02" width="0.1524" layer="91"/>
+<wire x1="353.06" y1="541.02" x2="363.22" y2="541.02" width="0.1524" layer="91"/>
+<junction x="363.22" y="541.02"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -9708,21 +9850,21 @@ should be provided to LPC connector</text>
 <net name="N$11" class="0">
 <segment>
 <wire x1="55.88" y1="868.68" x2="40.64" y2="868.68" width="0.1524" layer="91"/>
-<pinref part="DI1" gate="G$1" pin="1"/>
+<pinref part="DI0" gate="G$1" pin="1"/>
 <pinref part="F1" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
 <wire x1="55.88" y1="693.42" x2="40.64" y2="693.42" width="0.1524" layer="91"/>
-<pinref part="DO1" gate="G$1" pin="1"/>
+<pinref part="DO0" gate="G$1" pin="1"/>
 <pinref part="F3" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$17" class="0">
 <segment>
 <wire x1="55.88" y1="591.82" x2="40.64" y2="591.82" width="0.1524" layer="91"/>
-<pinref part="DO2" gate="G$1" pin="1"/>
+<pinref part="DO1" gate="G$1" pin="1"/>
 <pinref part="F4" gate="G$1" pin="1"/>
 </segment>
 </net>
@@ -9853,7 +9995,7 @@ should be provided to LPC connector</text>
 <net name="N$6" class="0">
 <segment>
 <wire x1="55.88" y1="779.78" x2="40.64" y2="779.78" width="0.1524" layer="91"/>
-<pinref part="DI2" gate="G$1" pin="1"/>
+<pinref part="DI1" gate="G$1" pin="1"/>
 <pinref part="F2" gate="G$1" pin="1"/>
 </segment>
 </net>
@@ -11036,7 +11178,11 @@ should be provided to LPC connector</text>
 <wire x1="99.06" y1="111.76" x2="93.98" y2="111.76" width="0.1524" layer="91"/>
 <junction x="93.98" y="111.76"/>
 <wire x1="93.98" y1="111.76" x2="93.98" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="111.76" x2="93.98" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="111.76" x2="63.5" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="D7" gate="G$1" pin="C"/>
+<wire x1="63.5" y1="111.76" x2="93.98" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="106.68" x2="63.5" y2="111.76" width="0.1524" layer="91"/>
+<junction x="63.5" y="111.76"/>
 </segment>
 </net>
 <net name="N$32" class="0">
@@ -12272,6 +12418,20 @@ should be provided to LPC connector</text>
 <wire x1="548.64" y1="774.7" x2="546.1" y2="774.7" width="0.1524" layer="91"/>
 <label x="546.1" y="774.7" size="1.27" layer="95" rot="MR0" xref="yes"/>
 <pinref part="FMC_LPC" gate="G$1" pin="LA17_N_CC"/>
+</segment>
+</net>
+<net name="N$42" class="0">
+<segment>
+<pinref part="R81" gate="R" pin="1"/>
+<pinref part="R82" gate="R" pin="2"/>
+<wire x1="353.06" y1="525.78" x2="353.06" y2="523.24" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$43" class="0">
+<segment>
+<pinref part="R82" gate="R" pin="1"/>
+<pinref part="R83" gate="R" pin="2"/>
+<wire x1="353.06" y1="510.54" x2="353.06" y2="513.08" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
