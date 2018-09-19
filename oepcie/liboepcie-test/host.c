@@ -10,6 +10,13 @@
 #include "oepcie.h"
 #include "oedevices.h"
 
+// Dump raw device streams to files?
+//#define DUMPFILES
+
+#ifdef DUMPFILES
+FILE **dump_files;
+#endif
+
 // Windows- and UNIX-specific includes etc
 #ifdef _WIN32
 #include <windows.h>
@@ -17,12 +24,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Dump raw device streams to files?
-//#define DUMPFILES
+// Windows does not have a usleep()
+// https://www.c-plusplus.net/forum/topic/109539/usleep-unter-window
+void usleep(__int64 usec)
+{
+    HANDLE timer;
+    LARGE_INTEGER ft;
 
-#ifdef DUMPFILES
-FILE **dump_files;
-#endif
+    ft.QuadPart = -(10*usec); // Convert to 100 nanosecond interval, negative value indicates relative time
+
+    timer = CreateWaitableTimer(NULL, TRUE, NULL);
+    SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
+    WaitForSingleObject(timer, INFINITE);
+    CloseHandle(timer);
+}
 
 // Windows does not have a getline()
 size_t getline(char **lineptr, size_t *n, FILE *stream) {
@@ -236,6 +251,9 @@ int main(int argc, char *argv[])
     rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register write failure.");
+
+    // HACK: "wait" for reset acknowledgement. In real firmware, this will be actual async ACK.
+    usleep(100e3);
 
     oe_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);

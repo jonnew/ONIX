@@ -222,22 +222,6 @@ namespace oe {
 
         inline ~context_t() noexcept { close(); }
 
-        // NB: Called in destructor, no throwing
-        inline void close() noexcept
-        {
-            if (ctx_ == nullptr)
-                return;
-
-            // Reset the hardware, ignore error codes since this may or may not
-            // be appropriate
-            oe_reg_val_t reset = 1;
-            oe_set_opt(ctx_, OE_RESET, &reset, sizeof(reset));
-
-            // Free resources
-            auto rc = oe_destroy_ctx(ctx_);
-            OE_ASSERT(rc == 0);
-            ctx_ = nullptr;
-        }
 
         template <typename opt_type>
         opt_type get_opt(int option) const
@@ -290,6 +274,23 @@ namespace oe {
         {
             auto rc = oe_set_opt(ctx_, option, value, size);
             if (rc != 0) throw error_t(rc);
+        }
+
+        // NB: Called in destructor, no throwing
+        inline void close() noexcept
+        {
+            if (ctx_ == nullptr)
+                return;
+
+            // Reset the hardware, ignore error codes since this may or may not
+            // be appropriate
+            oe_reg_val_t reset = 1;
+            oe_set_opt(ctx_, OE_RESET, &reset, sizeof(reset));
+
+            // Free resources
+            auto rc = oe_destroy_ctx(ctx_);
+            OE_ASSERT(rc == 0);
+            ctx_ = nullptr;
         }
 
         oe_ctx ctx_ = nullptr;
