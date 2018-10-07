@@ -1,0 +1,136 @@
+* ADA4062-2 SPICE Macro-model Typical Values
+* Description: Amplifier
+* Generic Desc: 8/30V, JFET, OP, Low Pwr, Low Ib, 2X
+* Developed by: ADSJ -- VW
+* Revision History: 08/10/2012 - Updated to new header style
+* 1.0 (10/2008)
+* Copyright 2008, 2012 by Analog Devices
+*
+* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement.  Use of this model
+* indicates your acceptance of the terms and provisions in the License Statement.
+*
+* BEGIN Notes:
+*
+* Not Modeled:
+*    
+* Parameters modeled include: 
+*    This model simulates typical value parameters at Vs=±15V
+*
+* END Notes
+*
+* Node Assignments
+*                       noninverting input
+*                       |   inverting input
+*                       |   |    positive supply
+*                       |   |    |   negative supply
+*                       |   |    |   |   output
+*                       |   |    |   |   |
+*                       |   |    |   |   |
+.SUBCKT ADA4062-2       1   2   99  50  30
+
+
+* INPUT STAGE
+R3   5  50  8.609E+03
+R4   6  50  8.609E+03
+CIN  1   2    1.5E-12
+I1   99  4    4.182E-04
+IOS  1   2    2.50E-13
+EOS  60  1    POLY(2)  (17,98) (73,98)  0.5E-03  1 1
+EN   7  60 POLY(2) (81, 98) (70,98) 0 1 1
+J1   5   2    4   JX
+J2   6   7    4   JX
+GB1  2  50    POLY(3) (4,2) (5,2) (50,2) 0 1E-12 1E-12 1E-12
+GB2  7  50    POLY(3) (4,7) (6,7) (50,7) 0 1E-12 1E-12 1E-12
+EREFNEG 1000 0 24 0 -1	
+
+EREF 98 0 POLY(2) (99,0) (50,0) 0 .5 .5 
+
+
+* VOLTAGE NOISE GENERATOR
+VN1  80 98 0
+RN1 80 98 17E-3 
+HN  81 98 VN1 3.54885E1 
+RN2 81 98 1
+
+
+* Flicker noise
+D10 69 98 DNOISE
+VSN 69 98 DC .6551
+H1 70 98 POLY(1) VSN 1e-3 1
+RN 70 98 1
+
+
+* SECOND STAGE 
+R5   9  98    4.24E+04
+C3   9  98    3.95E-8
+G1   98  9    5  6  3.58E-02
+V2   99  8    2.05
+V3   10 1000    -13.35
+D1   9   8    DX
+D2   10  9    DX
+
+
+* COMMON-MODE GAIN NETWORK
+E3   16 98     POLY(2) (1,98)  (2,98)  0  401.67 401.67
+R11  16 17     2.27E+01
+R12  17 98     1.59E-06
+C8   16 17     1E-6
+
+
+* PSRR NETWORK
+EPSY 98 72 POLY(1) (99,50) -10 0.667 
+CPS3 72 73 1E-6
+RPS3 72 73 1.06e3
+RPS4 73 98 1.59E-1
+
+
+* SECOND POLE 
+R13  18 98     1E3
+C9   18 98   1.25e-11
+G5   98 18     9  24  1E-3
+
+
+* OUTPUT STAGE
+R14  24 99     500E3
+R15  24 50     500E3
+CF   24  0     1E-6
+GSY  99 50      POLY(1) 99 50 -1.18e-4 6.73e-15 
+R16  29 99     110
+R17  29 50     110
+L1   29 30     3E-6
+G6   27 50     18 29  9.09E-03
+G7   28 50     29 18  9.09E-03
+G8   29 99     99 18  9.09E-03
+G9   50 29     18 50  9.09E-03
+V4   25 29     0.675
+V5   29 26     0.675
+D3   18 25     DX
+D4   26 18     DX
+D5   99 27     DX
+D6   99 28     DX
+D7   50 27     DY
+D8   50 28     DY
+F1   29  0     V4  1
+F2   0  29     V5  1
+
+
+* MODELS USED
+.MODEL JX PJF(BETA=1.4E-3  VTO=-1.000  IS=20E-12 RD=0
++ RS=0 CGD=1E-12 CGS=1E-12)
+.MODEL DX   D(IS=1E-12 RS=0 CJO=1E-12)
+.MODEL DY   D(IS=1E-12 BV=50 RS=10 CJO=1E-12)
+.MODEL DEN  D(IS=1E-12 RS=200 KF=2.651E-15 AF=6.8E-14)
+.MODEL DIN  D(IS=1E-12 RS=12090 KF=0 AF=1)
+.MODEL DNOISE D(IS=1E-14,RS=0,KF=1.01E-11)
+
+
+.ENDS ADA4062-2
+
+
+
+
+
+
+
+
+
