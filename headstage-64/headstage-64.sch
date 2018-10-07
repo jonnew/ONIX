@@ -895,14 +895,14 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="-0.8" y1="0.9" x2="-0.4" y2="0.9" width="0.127" layer="21"/>
 <wire x1="-0.8" y1="-0.9" x2="-0.4" y2="-0.9" width="0.127" layer="21"/>
 <wire x1="0.4" y1="-0.9" x2="0.8" y2="-0.9" width="0.127" layer="21"/>
-<smd name="P$1" x="-0.7" y="0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R90"/>
-<smd name="P$2" x="-0.7" y="0" dx="0.2" dy="0.55" layer="1" roundness="50" rot="R90"/>
-<smd name="P$3" x="-0.7" y="-0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R90"/>
-<smd name="P$4" x="0" y="-0.7" dx="0.3" dy="0.6" layer="1" roundness="50" rot="R180"/>
-<smd name="P$5" x="0.7" y="-0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R270"/>
-<smd name="P$6" x="0.7" y="0" dx="0.2" dy="0.55" layer="1" roundness="50" rot="R90"/>
-<smd name="P$7" x="0.7" y="0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R270"/>
-<smd name="P$8" x="0" y="0.7" dx="0.3" dy="0.6" layer="1" roundness="50" rot="R180"/>
+<smd name="1" x="-0.7" y="0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R90"/>
+<smd name="2" x="-0.7" y="0" dx="0.2" dy="0.55" layer="1" roundness="50" rot="R90"/>
+<smd name="3" x="-0.7" y="-0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R90"/>
+<smd name="4" x="0" y="-0.7" dx="0.3" dy="0.6" layer="1" roundness="50" rot="R180"/>
+<smd name="5" x="0.7" y="-0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R270"/>
+<smd name="6" x="0.7" y="0" dx="0.2" dy="0.55" layer="1" roundness="50" rot="R90"/>
+<smd name="7" x="0.7" y="0.6" dx="0.25" dy="0.55" layer="1" roundness="50" rot="R270"/>
+<smd name="8" x="0" y="0.7" dx="0.3" dy="0.6" layer="1" roundness="50" rot="R180"/>
 <rectangle x1="-0.75" y1="-0.9" x2="0.75" y2="0.9" layer="39"/>
 <wire x1="-0.8" y1="0.96" x2="-0.4" y2="0.96" width="0.127" layer="21"/>
 <wire x1="-0.8" y1="1.01" x2="-0.4" y2="1.01" width="0.127" layer="21"/>
@@ -2636,51 +2636,6 @@ Source: amp_227161.pdf</description>
 <rectangle x1="-1" y1="-0.6" x2="1" y2="0.6" layer="39"/>
 <wire x1="0.4" y1="0.6" x2="0.4" y2="-0.6" width="0.127" layer="21"/>
 </package>
-<package name="QFN24-3X3MM">
-<wire x1="-1.6" y1="-1.35" x2="-1.6" y2="-1.6" width="0.127" layer="21"/>
-<wire x1="-1.6" y1="-1.6" x2="-1.35" y2="-1.6" width="0.127" layer="21"/>
-<wire x1="1.6" y1="-1.35" x2="1.6" y2="-1.6" width="0.127" layer="21"/>
-<wire x1="1.6" y1="-1.6" x2="1.35" y2="-1.6" width="0.127" layer="21"/>
-<wire x1="1.35" y1="1.6" x2="1.6" y2="1.6" width="0.127" layer="21"/>
-<wire x1="1.6" y1="1.6" x2="1.6" y2="1.35" width="0.127" layer="21"/>
-<rectangle x1="-1.6" y1="-1.6" x2="1.6" y2="1.6" layer="39"/>
-<smd name="1" x="-1.45" y="1" dx="0.25" dy="0.5" layer="1" rot="R90"/>
-<smd name="2" x="-1.45" y="0.6" dx="0.25" dy="0.5" layer="1" rot="R90"/>
-<smd name="3" x="-1.45" y="0.2" dx="0.25" dy="0.5" layer="1" rot="R90"/>
-<smd name="4" x="-1.45" y="-0.2" dx="0.25" dy="0.5" layer="1" rot="R90"/>
-<smd name="5" x="-1.45" y="-0.6" dx="0.25" dy="0.5" layer="1" rot="R90"/>
-<smd name="6" x="-1.45" y="-1" dx="0.25" dy="0.5" layer="1" rot="R90"/>
-<smd name="7" x="-1" y="-1.45" dx="0.25" dy="0.5" layer="1" rot="R180"/>
-<smd name="8" x="-0.6" y="-1.45" dx="0.25" dy="0.5" layer="1" rot="R180"/>
-<smd name="9" x="-0.2" y="-1.45" dx="0.25" dy="0.5" layer="1" rot="R180"/>
-<smd name="10" x="0.2" y="-1.45" dx="0.25" dy="0.5" layer="1" rot="R180"/>
-<smd name="11" x="0.6" y="-1.45" dx="0.25" dy="0.5" layer="1" rot="R180"/>
-<smd name="12" x="1" y="-1.45" dx="0.25" dy="0.5" layer="1" rot="R180"/>
-<smd name="13" x="1.45" y="-1" dx="0.25" dy="0.5" layer="1" rot="R270"/>
-<smd name="14" x="1.45" y="-0.6" dx="0.25" dy="0.5" layer="1" rot="R270"/>
-<smd name="15" x="1.45" y="-0.2" dx="0.25" dy="0.5" layer="1" rot="R270"/>
-<smd name="16" x="1.45" y="0.2" dx="0.25" dy="0.5" layer="1" rot="R270"/>
-<smd name="17" x="1.45" y="0.6" dx="0.25" dy="0.5" layer="1" rot="R270"/>
-<smd name="18" x="1.45" y="1" dx="0.25" dy="0.5" layer="1" rot="R270"/>
-<smd name="19" x="1" y="1.45" dx="0.25" dy="0.5" layer="1"/>
-<smd name="20" x="0.6" y="1.45" dx="0.25" dy="0.5" layer="1"/>
-<smd name="21" x="0.2" y="1.45" dx="0.25" dy="0.5" layer="1"/>
-<smd name="22" x="-0.2" y="1.45" dx="0.25" dy="0.5" layer="1"/>
-<smd name="23" x="-0.6" y="1.45" dx="0.25" dy="0.5" layer="1"/>
-<smd name="24" x="-1" y="1.45" dx="0.25" dy="0.5" layer="1"/>
-<smd name="PAD" x="0" y="0" dx="2" dy="2" layer="1"/>
-<text x="-2.35" y="2.1" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-2.75" y="-3.1" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<wire x1="-1.6" y1="1.4" x2="-1.6" y2="1.6" width="0.127" layer="21"/>
-<wire x1="-1.6" y1="1.6" x2="-1.3" y2="1.6" width="0.127" layer="21"/>
-<wire x1="-1.3" y1="1.6" x2="-1.6" y2="1.3" width="0.127" layer="21"/>
-<wire x1="-1.6" y1="1.3" x2="-1.6" y2="1.4" width="0.127" layer="21"/>
-<wire x1="-1.6" y1="1.4" x2="-1.5" y2="1.5" width="0.127" layer="21"/>
-<wire x1="-1.6" y1="1.3" x2="-1.3" y2="1.3" width="0.127" layer="21"/>
-<wire x1="-1.3" y1="1.3" x2="-1.3" y2="1.5" width="0.127" layer="21"/>
-<wire x1="-1.3" y1="1.6" x2="-1.3" y2="1.5" width="0.127" layer="21"/>
-<wire x1="-1.3" y1="1.5" x2="-1.4" y2="1.4" width="0.127" layer="21"/>
-</package>
 <package name="SOD-323">
 <wire x1="-1.778" y1="0.762" x2="1.778" y2="0.762" width="0.127" layer="21"/>
 <wire x1="0" y1="0" x2="-0.381" y2="0.4763" width="0.127" layer="21"/>
@@ -2914,7 +2869,7 @@ Source: amp_227161.pdf</description>
 <smd name="14" x="0.25" y="1.397" dx="0.3048" dy="0.7112" layer="1" rot="R180"/>
 <smd name="15" x="-0.25" y="1.397" dx="0.3048" dy="0.7112" layer="1" rot="R180"/>
 <smd name="16" x="-0.75" y="1.397" dx="0.3048" dy="0.7112" layer="1" rot="R180"/>
-<smd name="17" x="0" y="0" dx="1.651" dy="1.651" layer="1" cream="no"/>
+<smd name="PAD" x="0" y="0" dx="1.651" dy="1.651" layer="1" cream="no"/>
 <wire x1="0.9144" y1="1.5494" x2="0.6096" y2="1.5494" width="0.1524" layer="51"/>
 <wire x1="0.4064" y1="1.5494" x2="0.1016" y2="1.5494" width="0.1524" layer="51"/>
 <wire x1="-0.1016" y1="1.5494" x2="-0.4064" y2="1.5494" width="0.1524" layer="51"/>
@@ -3030,7 +2985,7 @@ Source: amp_227161.pdf</description>
 <pin name="1" x="0" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
 <pin name="2" x="0" y="-5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
 </symbol>
-<symbol name="MPU9250">
+<symbol name="ICM-20948">
 <wire x1="-12.7" y1="25.4" x2="-12.7" y2="-38.1" width="0.4064" layer="94"/>
 <wire x1="-12.7" y1="-38.1" x2="12.7" y2="-38.1" width="0.4064" layer="94"/>
 <wire x1="12.7" y1="-38.1" x2="12.7" y2="25.4" width="0.4064" layer="94"/>
@@ -3042,15 +2997,16 @@ Source: amp_227161.pdf</description>
 <pin name="FSYNC" x="-17.78" y="-27.94" length="middle" direction="in"/>
 <pin name="GND" x="-17.78" y="-35.56" length="middle" direction="pwr"/>
 <pin name="INT" x="17.78" y="-22.86" length="middle" direction="out" rot="R180"/>
-<pin name="NC" x="17.78" y="17.78" length="middle" direction="out" rot="R180"/>
+<pin name="DNC" x="17.78" y="7.62" length="middle" direction="nc" rot="R180"/>
 <pin name="REGOUT" x="-17.78" y="7.62" length="middle" direction="pas"/>
-<pin name="RESV(DNC)" x="17.78" y="22.86" length="middle" direction="out" rot="R180"/>
+<pin name="RESV(DNC)" x="17.78" y="22.86" length="middle" direction="nc" rot="R180"/>
 <pin name="SCL/SCLK" x="-17.78" y="-5.08" length="middle" direction="in"/>
 <pin name="SDA/SDI" x="-17.78" y="-7.62" length="middle" direction="in"/>
 <pin name="VDD" x="-17.78" y="22.86" length="middle" direction="pwr"/>
 <pin name="VDDIO" x="-17.78" y="15.24" length="middle" direction="pwr"/>
 <text x="-5.3594" y="26.8986" size="2.0828" layer="95" ratio="10" rot="SR0">&gt;NAME</text>
 <text x="-6.5532" y="-41.0718" size="2.0828" layer="96" ratio="10" rot="SR0">&gt;VALUE</text>
+<pin name="RESV(GND)" x="17.78" y="15.24" length="middle" direction="pwr" rot="R180"/>
 </symbol>
 <symbol name="PINHD2X35+4">
 <wire x1="-43.18" y1="-1.27" x2="-43.18" y2="-2.54" width="0.8128" layer="94"/>
@@ -4288,44 +4244,24 @@ Source: amp_227161.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="MPU9250" prefix="U">
+<deviceset name="ICM-20948" prefix="U">
 <gates>
-<gate name="G$1" symbol="MPU9250" x="0" y="7.62"/>
+<gate name="G$1" symbol="ICM-20948" x="0" y="7.62"/>
 </gates>
 <devices>
-<device name="_QFN" package="QFN24-3X3MM">
-<connects>
-<connect gate="G$1" pin="!CS" pad="22"/>
-<connect gate="G$1" pin="AD0/SDO" pad="9"/>
-<connect gate="G$1" pin="AUX_CL" pad="7"/>
-<connect gate="G$1" pin="AUX_DA" pad="21"/>
-<connect gate="G$1" pin="FSYNC" pad="11"/>
-<connect gate="G$1" pin="GND" pad="18"/>
-<connect gate="G$1" pin="INT" pad="12"/>
-<connect gate="G$1" pin="NC" pad="2 3 4 5 6 14 15 16 17"/>
-<connect gate="G$1" pin="REGOUT" pad="10"/>
-<connect gate="G$1" pin="RESV(DNC)" pad="1 19 20"/>
-<connect gate="G$1" pin="SCL/SCLK" pad="23"/>
-<connect gate="G$1" pin="SDA/SDI" pad="24"/>
-<connect gate="G$1" pin="VDD" pad="13"/>
-<connect gate="G$1" pin="VDDIO" pad="8"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
 <device name="_QFN_NO-PAD" package="QFN24-3X3_NO-PAD">
 <connects>
 <connect gate="G$1" pin="!CS" pad="22"/>
 <connect gate="G$1" pin="AD0/SDO" pad="9"/>
 <connect gate="G$1" pin="AUX_CL" pad="7"/>
 <connect gate="G$1" pin="AUX_DA" pad="21"/>
+<connect gate="G$1" pin="DNC" pad="1 2 3 4 5 6 14 15 16 17"/>
 <connect gate="G$1" pin="FSYNC" pad="11"/>
 <connect gate="G$1" pin="GND" pad="18"/>
 <connect gate="G$1" pin="INT" pad="12"/>
-<connect gate="G$1" pin="NC" pad="2 3 4 5 6 14 15 16 17"/>
 <connect gate="G$1" pin="REGOUT" pad="10"/>
-<connect gate="G$1" pin="RESV(DNC)" pad="1 19 20"/>
+<connect gate="G$1" pin="RESV(DNC)" pad="19"/>
+<connect gate="G$1" pin="RESV(GND)" pad="20"/>
 <connect gate="G$1" pin="SCL/SCLK" pad="23"/>
 <connect gate="G$1" pin="SDA/SDI" pad="24"/>
 <connect gate="G$1" pin="VDD" pad="13"/>
@@ -4954,14 +4890,14 @@ Source: amp_227161.pdf</description>
 <devices>
 <device name="_UQFN" package="UQFN">
 <connects>
-<connect gate="G$1" pin="!CS" pad="P$3"/>
-<connect gate="G$1" pin="DIN" pad="P$2"/>
-<connect gate="G$1" pin="GND" pad="P$4"/>
-<connect gate="G$1" pin="HA" pad="P$1"/>
-<connect gate="G$1" pin="LA" pad="P$8"/>
-<connect gate="G$1" pin="SCLK" pad="P$5"/>
-<connect gate="G$1" pin="VDD" pad="P$7"/>
-<connect gate="G$1" pin="WA" pad="P$6"/>
+<connect gate="G$1" pin="!CS" pad="3"/>
+<connect gate="G$1" pin="DIN" pad="2"/>
+<connect gate="G$1" pin="GND" pad="4"/>
+<connect gate="G$1" pin="HA" pad="1"/>
+<connect gate="G$1" pin="LA" pad="8"/>
+<connect gate="G$1" pin="SCLK" pad="5"/>
+<connect gate="G$1" pin="VDD" pad="7"/>
+<connect gate="G$1" pin="WA" pad="6"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -6296,7 +6232,7 @@ Source: amp_227161.pdf</description>
 <connect gate="D" pin="-IN" pad="12"/>
 <connect gate="D" pin="OUT" pad="14"/>
 <connect gate="P" pin="V+" pad="3"/>
-<connect gate="P" pin="V-" pad="10 17"/>
+<connect gate="P" pin="V-" pad="10 PAD"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -6318,7 +6254,7 @@ Source: amp_227161.pdf</description>
 <classes>
 <class number="0" name="default" width="0" drill="0">
 </class>
-<class number="1" name="thick" width="0.1016" drill="0">
+<class number="1" name="thick" width="0.1" drill="0">
 </class>
 <class number="2" name="diff" width="0.0762" drill="0.1">
 <clearance class="2" value="0.0508"/>
@@ -6335,7 +6271,7 @@ Source: amp_227161.pdf</description>
 <part name="SUPPLY2" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY3" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="jonnew" deviceset="GND" device=""/>
-<part name="U7" library="jonnew" deviceset="MPU9250" device="_QFN_NO-PAD" value="MPU9250_QFN_NO-PAD"/>
+<part name="U7" library="jonnew" deviceset="ICM-20948" device="_QFN_NO-PAD" value="ICM-20948_QFN_NO-PAD"/>
 <part name="J8" library="jonnew" deviceset="PINHD-2X35+4" device="_DF40-70HEAD" value="DF40C-70DP-0.4V(51)"/>
 <part name="U3" library="jonnew" deviceset="CAT4016" device="_QFN">
 <attribute name="PARTNO" value="CAT4016HV6-GT2"/>
@@ -6364,7 +6300,7 @@ Source: amp_227161.pdf</description>
 <attribute name="PARTNP" value="CL03A104KA3NNNC"/>
 </part>
 <part name="SUPPLY17" library="jonnew" deviceset="GND" device=""/>
-<part name="C4" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
+<part name="C5" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
 <attribute name="PARTNO" value="CL03A104KA3NNNC"/>
 </part>
 <part name="SUPPLY18" library="jonnew" deviceset="GND" device=""/>
@@ -6414,8 +6350,8 @@ Source: amp_227161.pdf</description>
 <part name="L3" library="jonnew" deviceset="L" device="_0805T" value="CIG21L4R7MNE"/>
 <part name="L4" library="jonnew" deviceset="L" device="_1210T" value="CBC3225T101MR"/>
 <part name="L2" library="jonnew" deviceset="L" device="_0603T" value="BLM18KG601SN1D"/>
-<part name="R11" library="jonnew" deviceset="R" device="_0201T" value="1k"/>
 <part name="R10" library="jonnew" deviceset="R" device="_0201T" value="1k"/>
+<part name="R9" library="jonnew" deviceset="R" device="_0201T" value="1k"/>
 <part name="C8" library="jonnew" deviceset="C" device="_0402T" value="4.7uF">
 <attribute name="PARTNO" value="CL05A475MO5NUNC"/>
 </part>
@@ -6559,7 +6495,7 @@ Source: amp_227161.pdf</description>
 <part name="C65" library="jonnew" deviceset="C" device="_0402T" value="1uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
-<part name="C5" library="jonnew" deviceset="C" device="_0402T" value="1uF">
+<part name="C4" library="jonnew" deviceset="C" device="_0402T" value="1uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
 <part name="C6" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
@@ -6720,21 +6656,21 @@ Source: amp_227161.pdf</description>
 <part name="D3" library="jonnew" deviceset="Z-DIODE" device="_0402T-DFN" value="SESD0402X1UN-0020-090"/>
 <part name="U2" library="jonnew" deviceset="AD5683-VLOGIC" device="_CP_8_10-L" value="AD5681RBCPZ-1RL7"/>
 <part name="U1" library="jonnew" deviceset="QUAD-OPAMP_14PIN" device="_CP_16_27_L" value="ADA4062-4ACPZ-R7"/>
-<part name="R2" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="R4" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
+<part name="R5" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="R1" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
-<part name="R6" library="jonnew" deviceset="R" device="_0201T" value="9k, 0.1%"/>
-<part name="R5" library="jonnew" deviceset="R" device="_0201T" value="1k, 0.1%"/>
+<part name="R11" library="jonnew" deviceset="R" device="_0201T" value="9k, 0.1%"/>
+<part name="R2" library="jonnew" deviceset="R" device="_0201T" value="1k, 0.1%"/>
 <part name="R12" library="jonnew" deviceset="R" device="_0201T" value="100"/>
-<part name="R9" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
+<part name="R8" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="R16" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="R13" library="jonnew" deviceset="R" device="_0201T" value="2.86k"/>
-<part name="R7" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
+<part name="R6" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="R17" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="R18" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
-<part name="R8" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
-<part name="R14" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
-<part name="R19" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
+<part name="R7" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
+<part name="R14" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
+<part name="R19" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="SUPPLY72" library="jonnew" deviceset="GND" device=""/>
 <part name="C2" library="jonnew" deviceset="C" device="_0201T" value="0.1uF">
 <attribute name="PARTNO" value="C0603X5R1C104K030BC"/>
@@ -6742,16 +6678,11 @@ Source: amp_227161.pdf</description>
 <part name="U$7" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="SUPPLY13" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY14" library="jonnew" deviceset="GND" device=""/>
+<part name="SUPPLY15" library="jonnew" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
-<text x="447.04" y="599.44" size="1.778" layer="97">NB:
-ISTIM = (VDAC  - 2.5)/1000.
-e.g. 
-VDAC = 2.5   -&gt; ISTIM = 0
-VDAC = 5.0   -&gt; ISTIM = 2.5 mA
-VDAC = 0.0   -&gt; ISTIM = -2.5mA</text>
 <text x="607.06" y="175.26" size="1.778" layer="97">NB: Inductors pass 250mA DC max
 before they are used to generate a
 flyback voltage. Because we are
@@ -6795,6 +6726,21 @@ problems doing this."</text>
 <wire x1="33.02" y1="586.74" x2="33.02" y2="713.74" width="0.1524" layer="97" style="shortdash"/>
 <text x="35.56" y="589.28" size="1.778" layer="97">NB: IO daughter boards. Multiple allows them to be replaced if 
 coax connector gets worn out.</text>
+<text x="477.52" y="576.58" size="1.778" layer="97">NB:
+ISTIM = (VDAC  - 2.5)/1000.
+e.g. 
+VDAC = 2.5   -&gt; ISTIM = 0
+VDAC = 5.0   -&gt; ISTIM = 2.5 mA
+VDAC = 0.0   -&gt; ISTIM = -2.5mA
+
+and
+
+Imeas = 400 * ISTIM + 1.25V
+e.g. 
+ISTIM = 0          -&gt; IMEAS = 1.25V
+ISTIM = 2.5mA  -&gt; IMEAS = 2.25V
+ISTIM = -2.5mA -&gt; IMEAS = 0.25V
+</text>
 </plain>
 <instances>
 <instance part="U6" gate="G$1" x="421.64" y="500.38"/>
@@ -6841,16 +6787,16 @@ coax connector gets worn out.</text>
 <instance part="SUPPLY10" gate="PE" x="396.24" y="353.06"/>
 <instance part="SUPPLY11" gate="PE" x="370.84" y="353.06"/>
 <instance part="SUPPLY12" gate="PE" x="477.52" y="353.06"/>
-<instance part="C1" gate="C" x="406.4" y="723.9" rot="R90">
-<attribute name="PARTNP" x="406.4" y="723.9" size="1.27" layer="96" rot="R90" display="off"/>
+<instance part="C1" gate="C" x="396.24" y="711.2" rot="R90">
+<attribute name="PARTNP" x="396.24" y="711.2" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="SUPPLY17" gate="PE" x="416.56" y="718.82"/>
-<instance part="C4" gate="C" x="406.4" y="693.42" rot="R90">
-<attribute name="PARTNO" x="406.4" y="693.42" size="1.27" layer="96" rot="R90" display="off"/>
+<instance part="SUPPLY17" gate="PE" x="406.4" y="706.12"/>
+<instance part="C5" gate="C" x="396.24" y="680.72" rot="R90">
+<attribute name="PARTNO" x="396.24" y="680.72" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="SUPPLY18" gate="PE" x="416.56" y="685.8"/>
-<instance part="U$11" gate="PWR1" x="297.18" y="706.12"/>
-<instance part="SUPPLY19" gate="PE" x="297.18" y="673.1"/>
+<instance part="SUPPLY18" gate="PE" x="406.4" y="673.1"/>
+<instance part="U$11" gate="PWR1" x="287.02" y="693.42"/>
+<instance part="SUPPLY19" gate="PE" x="287.02" y="660.4"/>
 <instance part="U$2" gate="PWR1" x="477.52" y="513.08"/>
 <instance part="U$3" gate="PWR1" x="477.52" y="452.12"/>
 <instance part="U$4" gate="PWR1" x="477.52" y="391.16"/>
@@ -6895,8 +6841,8 @@ coax connector gets worn out.</text>
 <instance part="L3" gate="L" x="88.9" y="652.78" rot="MR270"/>
 <instance part="L4" gate="L" x="170.18" y="647.7" rot="MR270"/>
 <instance part="L2" gate="L" x="231.14" y="665.48" rot="MR270"/>
-<instance part="R11" gate="R" x="170.18" y="665.48" rot="MR180"/>
-<instance part="R10" gate="R" x="88.9" y="665.48" rot="MR180"/>
+<instance part="R10" gate="R" x="170.18" y="665.48" rot="MR180"/>
+<instance part="R9" gate="R" x="88.9" y="665.48" rot="MR180"/>
 <instance part="C8" gate="C" x="210.82" y="657.86" rot="MR0">
 <attribute name="PARTNO" x="210.82" y="657.86" size="1.27" layer="96" rot="MR0" display="off"/>
 </instance>
@@ -7031,8 +6977,8 @@ coax connector gets worn out.</text>
 <instance part="C20" gate="C" x="370.84" y="490.22">
 <attribute name="PARTNO" x="370.84" y="490.22" size="1.27" layer="96" display="off"/>
 </instance>
-<instance part="C3" gate="C" x="297.18" y="698.5">
-<attribute name="PARTNO" x="297.18" y="698.5" size="1.27" layer="96" display="off"/>
+<instance part="C3" gate="C" x="287.02" y="685.8">
+<attribute name="PARTNO" x="287.02" y="685.8" size="1.27" layer="96" display="off"/>
 </instance>
 <instance part="C74" gate="C" x="678.18" y="55.88">
 <attribute name="PARTNO" x="678.18" y="55.88" size="1.27" layer="96" display="off"/>
@@ -7046,7 +6992,7 @@ coax connector gets worn out.</text>
 <instance part="C65" gate="C" x="568.96" y="154.94" rot="R90">
 <attribute name="PARTNO" x="568.96" y="154.94" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="C5" gate="C" x="662.94" y="685.8">
+<instance part="C4" gate="C" x="662.94" y="685.8">
 <attribute name="PARTNO" x="662.94" y="685.8" size="1.27" layer="96" display="off"/>
 </instance>
 <instance part="C6" gate="C" x="756.92" y="668.02" rot="R90">
@@ -7203,39 +7149,40 @@ coax connector gets worn out.</text>
 <instance part="U$17" gate="G$1" x="627.38" y="236.22"/>
 <instance part="U$13" gate="G$1" x="627.38" y="149.86"/>
 <instance part="U$15" gate="G$1" x="340.36" y="604.52"/>
-<instance part="U$8" gate="G$1" x="401.32" y="688.34"/>
-<instance part="U$9" gate="G$1" x="401.32" y="726.44"/>
+<instance part="U$8" gate="G$1" x="391.16" y="675.64"/>
+<instance part="U$9" gate="G$1" x="391.16" y="713.74"/>
 <instance part="D1" gate="G$1" x="63.5" y="690.88" rot="R90"/>
 <instance part="D2" gate="G$1" x="63.5" y="652.78" rot="R90"/>
 <instance part="D3" gate="G$1" x="63.5" y="614.68" rot="R90"/>
-<instance part="U2" gate="G$1" x="337.82" y="703.58"/>
-<instance part="U1" gate="A" x="401.32" y="708.66"/>
-<instance part="R2" gate="R" x="370.84" y="711.2"/>
-<instance part="R4" gate="R" x="370.84" y="703.58"/>
-<instance part="R1" gate="R" x="408.94" y="741.68"/>
-<instance part="R6" gate="R" x="398.78" y="675.64"/>
-<instance part="R5" gate="R" x="429.26" y="688.34" rot="R90"/>
+<instance part="U2" gate="G$1" x="327.66" y="690.88"/>
+<instance part="U1" gate="A" x="391.16" y="695.96"/>
+<instance part="R4" gate="R" x="360.68" y="698.5"/>
+<instance part="R5" gate="R" x="360.68" y="690.88"/>
+<instance part="R1" gate="R" x="398.78" y="728.98"/>
+<instance part="R11" gate="R" x="388.62" y="662.94"/>
+<instance part="R2" gate="R" x="419.1" y="711.2" rot="R90"/>
 <instance part="R12" gate="R" x="429.26" y="655.32" rot="R90"/>
-<instance part="R9" gate="R" x="490.22" y="668.02" rot="R90"/>
+<instance part="R8" gate="R" x="490.22" y="668.02" rot="R90"/>
 <instance part="R16" gate="R" x="490.22" y="642.62" rot="R90"/>
 <instance part="R13" gate="R" x="490.22" y="655.32" rot="R90"/>
 <instance part="U1" gate="D" x="525.78" y="655.32" rot="MR180"/>
-<instance part="R7" gate="R" x="502.92" y="673.1" rot="R180"/>
+<instance part="R6" gate="R" x="502.92" y="673.1" rot="R180"/>
 <instance part="R17" gate="R" x="502.92" y="637.54" rot="R180"/>
 <instance part="R18" gate="R" x="523.24" y="637.54" rot="R180"/>
-<instance part="R8" gate="R" x="523.24" y="673.1" rot="R180"/>
+<instance part="R7" gate="R" x="523.24" y="673.1" rot="R180"/>
 <instance part="R14" gate="R" x="561.34" y="647.7" rot="R90"/>
 <instance part="R19" gate="R" x="561.34" y="632.46" rot="R90"/>
 <instance part="SUPPLY72" gate="PE" x="561.34" y="622.3"/>
-<instance part="U1" gate="P" x="398.78" y="708.66"/>
-<instance part="C2" gate="C" x="284.48" y="698.5">
-<attribute name="PARTNO" x="284.48" y="698.5" size="1.27" layer="96" display="off"/>
+<instance part="U1" gate="P" x="388.62" y="695.96"/>
+<instance part="C2" gate="C" x="274.32" y="685.8">
+<attribute name="PARTNO" x="274.32" y="685.8" size="1.27" layer="96" display="off"/>
 </instance>
-<instance part="U$7" gate="G$1" x="284.48" y="716.28" rot="MR0"/>
-<instance part="SUPPLY13" gate="PE" x="284.48" y="673.1"/>
-<instance part="SUPPLY14" gate="PE" x="314.96" y="673.1"/>
+<instance part="U$7" gate="G$1" x="274.32" y="703.58" rot="MR0"/>
+<instance part="SUPPLY13" gate="PE" x="274.32" y="660.4"/>
+<instance part="SUPPLY14" gate="PE" x="304.8" y="660.4"/>
 <instance part="U1" gate="C" x="469.9" y="673.1"/>
 <instance part="U1" gate="B" x="469.9" y="637.54" rot="MR180"/>
+<instance part="SUPPLY15" gate="PE" x="353.06" y="487.68"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -7328,19 +7275,19 @@ coax connector gets worn out.</text>
 </segment>
 <segment>
 <pinref part="C1" gate="C" pin="2"/>
-<wire x1="411.48" y1="723.9" x2="416.56" y2="723.9" width="0.1524" layer="91"/>
+<wire x1="401.32" y1="711.2" x2="406.4" y2="711.2" width="0.1524" layer="91"/>
 <pinref part="SUPPLY17" gate="PE" pin="GND"/>
-<wire x1="416.56" y1="721.36" x2="416.56" y2="723.9" width="0.1524" layer="91"/>
+<wire x1="406.4" y1="708.66" x2="406.4" y2="711.2" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C4" gate="C" pin="2"/>
+<pinref part="C5" gate="C" pin="2"/>
 <pinref part="SUPPLY18" gate="PE" pin="GND"/>
-<wire x1="411.48" y1="693.42" x2="416.56" y2="693.42" width="0.1524" layer="91"/>
-<wire x1="416.56" y1="693.42" x2="416.56" y2="688.34" width="0.1524" layer="91"/>
+<wire x1="401.32" y1="680.72" x2="406.4" y2="680.72" width="0.1524" layer="91"/>
+<wire x1="406.4" y1="680.72" x2="406.4" y2="675.64" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY19" gate="PE" pin="GND"/>
-<wire x1="297.18" y1="675.64" x2="297.18" y2="693.42" width="0.1524" layer="91"/>
+<wire x1="287.02" y1="662.94" x2="287.02" y2="680.72" width="0.1524" layer="91"/>
 <pinref part="C3" gate="C" pin="2"/>
 </segment>
 <segment>
@@ -7360,7 +7307,7 @@ coax connector gets worn out.</text>
 <wire x1="662.94" y1="678.18" x2="662.94" y2="680.72" width="0.1524" layer="91"/>
 <junction x="662.94" y="678.18"/>
 <pinref part="SUPPLY21" gate="PE" pin="GND"/>
-<pinref part="C5" gate="C" pin="2"/>
+<pinref part="C4" gate="C" pin="2"/>
 </segment>
 <segment>
 <pinref part="U16" gate="U1" pin="GND"/>
@@ -7780,14 +7727,20 @@ coax connector gets worn out.</text>
 </segment>
 <segment>
 <pinref part="C2" gate="C" pin="2"/>
-<wire x1="284.48" y1="693.42" x2="284.48" y2="675.64" width="0.1524" layer="91"/>
+<wire x1="274.32" y1="680.72" x2="274.32" y2="662.94" width="0.1524" layer="91"/>
 <pinref part="SUPPLY13" gate="PE" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U2" gate="G$1" pin="GND"/>
-<wire x1="322.58" y1="683.26" x2="314.96" y2="683.26" width="0.1524" layer="91"/>
-<wire x1="314.96" y1="683.26" x2="314.96" y2="675.64" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="670.56" x2="304.8" y2="670.56" width="0.1524" layer="91"/>
+<wire x1="304.8" y1="670.56" x2="304.8" y2="662.94" width="0.1524" layer="91"/>
 <pinref part="SUPPLY14" gate="PE" pin="GND"/>
+</segment>
+<segment>
+<pinref part="SUPPLY15" gate="PE" pin="GND"/>
+<pinref part="U7" gate="G$1" pin="RESV(GND)"/>
+<wire x1="353.06" y1="495.3" x2="353.06" y2="490.22" width="0.1524" layer="91"/>
+<wire x1="342.9" y1="495.3" x2="353.06" y2="495.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DATA1" class="0">
@@ -7967,11 +7920,11 @@ coax connector gets worn out.</text>
 <net name="+15V0" class="0">
 <segment>
 <pinref part="C1" gate="C" pin="1"/>
-<wire x1="401.32" y1="716.28" x2="401.32" y2="726.44" width="0.1524" layer="91"/>
-<wire x1="401.32" y1="716.28" x2="403.86" y2="723.9" width="0.1524" layer="91"/>
+<wire x1="391.16" y1="703.58" x2="391.16" y2="713.74" width="0.1524" layer="91"/>
+<wire x1="391.16" y1="703.58" x2="393.7" y2="711.2" width="0.1524" layer="91"/>
 <pinref part="U$9" gate="G$1" pin="+15V0"/>
 <pinref part="U1" gate="P" pin="V+"/>
-<junction x="401.32" y="716.28"/>
+<junction x="391.16" y="703.58"/>
 </segment>
 <segment>
 <pinref part="U16" gate="U1" pin="VOUT1"/>
@@ -8017,20 +7970,20 @@ coax connector gets worn out.</text>
 <net name="VDAC" class="0">
 <segment>
 <pinref part="U2" gate="G$1" pin="VOUT"/>
-<pinref part="R2" gate="R" pin="1"/>
-<wire x1="353.06" y1="711.2" x2="365.76" y2="711.2" width="0.1524" layer="91"/>
-<label x="355.6" y="711.2" size="1.27" layer="95"/>
+<pinref part="R4" gate="R" pin="1"/>
+<wire x1="342.9" y1="698.5" x2="355.6" y2="698.5" width="0.1524" layer="91"/>
+<label x="345.44" y="698.5" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
 <pinref part="U$11" gate="PWR1" pin="+3V3"/>
-<wire x1="297.18" y1="706.12" x2="297.18" y2="703.58" width="0.1524" layer="91"/>
-<wire x1="297.18" y1="703.58" x2="297.18" y2="701.04" width="0.1524" layer="91"/>
-<junction x="297.18" y="703.58"/>
+<wire x1="287.02" y1="693.42" x2="287.02" y2="690.88" width="0.1524" layer="91"/>
+<wire x1="287.02" y1="690.88" x2="287.02" y2="688.34" width="0.1524" layer="91"/>
+<junction x="287.02" y="690.88"/>
 <pinref part="C3" gate="C" pin="1"/>
 <pinref part="U2" gate="G$1" pin="VLOGIC"/>
-<wire x1="297.18" y1="703.58" x2="322.58" y2="703.58" width="0.1524" layer="91"/>
+<wire x1="287.02" y1="690.88" x2="312.42" y2="690.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U6" gate="G$1" pin="DVDD"/>
@@ -8291,7 +8244,7 @@ coax connector gets worn out.</text>
 <wire x1="645.16" y1="690.88" x2="645.16" y2="693.42" width="0.1524" layer="91"/>
 <wire x1="662.94" y1="688.34" x2="662.94" y2="690.88" width="0.1524" layer="91"/>
 <junction x="662.94" y="690.88"/>
-<pinref part="C5" gate="C" pin="1"/>
+<pinref part="C4" gate="C" pin="1"/>
 <pinref part="U$34" gate="G$1" pin="VCOAX"/>
 </segment>
 <segment>
@@ -8404,12 +8357,12 @@ coax connector gets worn out.</text>
 </segment>
 <segment>
 <pinref part="U2" gate="G$1" pin="AVDD"/>
-<wire x1="322.58" y1="711.2" x2="284.48" y2="711.2" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="698.5" x2="274.32" y2="698.5" width="0.1524" layer="91"/>
 <pinref part="U$7" gate="G$1" pin="VCOAX"/>
-<wire x1="284.48" y1="711.2" x2="284.48" y2="716.28" width="0.1524" layer="91"/>
+<wire x1="274.32" y1="698.5" x2="274.32" y2="703.58" width="0.1524" layer="91"/>
 <pinref part="C2" gate="C" pin="1"/>
-<wire x1="284.48" y1="711.2" x2="284.48" y2="701.04" width="0.1524" layer="91"/>
-<junction x="284.48" y="711.2"/>
+<wire x1="274.32" y1="698.5" x2="274.32" y2="688.34" width="0.1524" layer="91"/>
+<junction x="274.32" y="698.5"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -9330,7 +9283,7 @@ coax connector gets worn out.</text>
 <wire x1="198.12" y1="665.48" x2="198.12" y2="660.4" width="0.1524" layer="91"/>
 <wire x1="198.12" y1="665.48" x2="180.34" y2="665.48" width="0.1524" layer="91"/>
 <junction x="198.12" y="665.48"/>
-<pinref part="R11" gate="R" pin="2"/>
+<pinref part="R10" gate="R" pin="2"/>
 <pinref part="L4" gate="L" pin="2"/>
 <wire x1="180.34" y1="665.48" x2="175.26" y2="665.48" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="647.7" x2="180.34" y2="647.7" width="0.1524" layer="91"/>
@@ -10174,8 +10127,8 @@ coax connector gets worn out.</text>
 </net>
 <net name="MOSI" class="0">
 <segment>
-<wire x1="322.58" y1="690.88" x2="317.5" y2="690.88" width="0.1524" layer="91"/>
-<label x="317.5" y="690.88" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="312.42" y1="678.18" x2="307.34" y2="678.18" width="0.1524" layer="91"/>
+<label x="307.34" y="678.18" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="U2" gate="G$1" pin="DIN"/>
 </segment>
 <segment>
@@ -10254,8 +10207,8 @@ coax connector gets worn out.</text>
 </net>
 <net name="DAC_CS" class="0">
 <segment>
-<wire x1="322.58" y1="695.96" x2="317.5" y2="695.96" width="0.1524" layer="91"/>
-<label x="317.5" y="695.96" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="312.42" y1="683.26" x2="307.34" y2="683.26" width="0.1524" layer="91"/>
+<label x="307.34" y="683.26" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="U2" gate="G$1" pin="!SYNC"/>
 </segment>
 <segment>
@@ -10266,8 +10219,8 @@ coax connector gets worn out.</text>
 </net>
 <net name="SCLK" class="0">
 <segment>
-<wire x1="322.58" y1="693.42" x2="317.5" y2="693.42" width="0.1524" layer="91"/>
-<label x="317.5" y="693.42" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="312.42" y1="680.72" x2="307.34" y2="680.72" width="0.1524" layer="91"/>
+<label x="307.34" y="680.72" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="U2" gate="G$1" pin="SCLK"/>
 </segment>
 <segment>
@@ -10329,7 +10282,7 @@ coax connector gets worn out.</text>
 </net>
 <net name="MIDFILT" class="0">
 <segment>
-<pinref part="R11" gate="R" pin="1"/>
+<pinref part="R10" gate="R" pin="1"/>
 <wire x1="165.1" y1="665.48" x2="160.02" y2="665.48" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="665.48" x2="160.02" y2="647.7" width="0.1524" layer="91"/>
 <junction x="160.02" y="665.48"/>
@@ -10539,7 +10492,7 @@ coax connector gets worn out.</text>
 </net>
 <net name="N$25" class="0">
 <segment>
-<pinref part="R10" gate="R" pin="2"/>
+<pinref part="R9" gate="R" pin="2"/>
 <wire x1="99.06" y1="665.48" x2="93.98" y2="665.48" width="0.1524" layer="91"/>
 <pinref part="L3" gate="L" pin="2"/>
 <wire x1="96.52" y1="652.78" x2="99.06" y2="652.78" width="0.1524" layer="91"/>
@@ -10577,7 +10530,7 @@ coax connector gets worn out.</text>
 <pinref part="J4" gate="G$1" pin="3"/>
 <wire x1="119.38" y1="660.4" x2="104.14" y2="660.4" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="660.4" x2="104.14" y2="642.62" width="0.1524" layer="91"/>
-<pinref part="R10" gate="R" pin="1"/>
+<pinref part="R9" gate="R" pin="1"/>
 <wire x1="83.82" y1="665.48" x2="78.74" y2="665.48" width="0.1524" layer="91"/>
 <pinref part="L3" gate="L" pin="1"/>
 <wire x1="78.74" y1="665.48" x2="71.12" y2="665.48" width="0.1524" layer="91"/>
@@ -10606,12 +10559,12 @@ coax connector gets worn out.</text>
 <pinref part="U$15" gate="G$1" pin="-15V0"/>
 </segment>
 <segment>
-<pinref part="C4" gate="C" pin="1"/>
-<wire x1="401.32" y1="701.04" x2="401.32" y2="688.34" width="0.1524" layer="91"/>
-<wire x1="401.32" y1="701.04" x2="403.86" y2="693.42" width="0.1524" layer="91"/>
+<pinref part="C5" gate="C" pin="1"/>
+<wire x1="391.16" y1="688.34" x2="391.16" y2="675.64" width="0.1524" layer="91"/>
+<wire x1="391.16" y1="688.34" x2="393.7" y2="680.72" width="0.1524" layer="91"/>
 <pinref part="U$8" gate="G$1" pin="-15V0"/>
 <pinref part="U1" gate="P" pin="V-"/>
-<junction x="401.32" y="701.04"/>
+<junction x="391.16" y="688.34"/>
 </segment>
 <segment>
 <pinref part="C59" gate="C" pin="2"/>
@@ -10774,39 +10727,39 @@ coax connector gets worn out.</text>
 </net>
 <net name="N$53" class="0">
 <segment>
-<pinref part="R2" gate="R" pin="2"/>
+<pinref part="R4" gate="R" pin="2"/>
 <pinref part="U1" gate="A" pin="+IN"/>
-<wire x1="375.92" y1="711.2" x2="388.62" y2="711.2" width="0.1524" layer="91"/>
-<wire x1="388.62" y1="711.2" x2="393.7" y2="711.2" width="0.1524" layer="91"/>
-<wire x1="388.62" y1="711.2" x2="388.62" y2="741.68" width="0.1524" layer="91"/>
-<junction x="388.62" y="711.2"/>
+<wire x1="365.76" y1="698.5" x2="378.46" y2="698.5" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="698.5" x2="383.54" y2="698.5" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="698.5" x2="378.46" y2="728.98" width="0.1524" layer="91"/>
+<junction x="378.46" y="698.5"/>
 <pinref part="R1" gate="R" pin="1"/>
-<wire x1="388.62" y1="741.68" x2="403.86" y2="741.68" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="728.98" x2="393.7" y2="728.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$54" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="-IN"/>
-<wire x1="393.7" y1="706.12" x2="388.62" y2="706.12" width="0.1524" layer="91"/>
-<pinref part="R4" gate="R" pin="2"/>
-<wire x1="381" y1="703.58" x2="375.92" y2="703.58" width="0.1524" layer="91"/>
-<wire x1="388.62" y1="706.12" x2="388.62" y2="675.64" width="0.1524" layer="91"/>
-<pinref part="R6" gate="R" pin="1"/>
-<wire x1="388.62" y1="675.64" x2="393.7" y2="675.64" width="0.1524" layer="91"/>
-<wire x1="388.62" y1="706.12" x2="381" y2="706.12" width="0.1524" layer="91"/>
-<junction x="388.62" y="706.12"/>
-<wire x1="381" y1="706.12" x2="381" y2="703.58" width="0.1524" layer="91"/>
+<wire x1="383.54" y1="693.42" x2="378.46" y2="693.42" width="0.1524" layer="91"/>
+<pinref part="R5" gate="R" pin="2"/>
+<wire x1="370.84" y1="690.88" x2="365.76" y2="690.88" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="693.42" x2="378.46" y2="662.94" width="0.1524" layer="91"/>
+<pinref part="R11" gate="R" pin="1"/>
+<wire x1="378.46" y1="662.94" x2="383.54" y2="662.94" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="693.42" x2="370.84" y2="693.42" width="0.1524" layer="91"/>
+<junction x="378.46" y="693.42"/>
+<wire x1="370.84" y1="693.42" x2="370.84" y2="690.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VREF_2V5" class="0">
 <segment>
-<pinref part="R4" gate="R" pin="1"/>
+<pinref part="R5" gate="R" pin="1"/>
 <pinref part="U2" gate="G$1" pin="VREF"/>
-<wire x1="365.76" y1="703.58" x2="358.14" y2="703.58" width="0.1524" layer="91"/>
-<wire x1="358.14" y1="703.58" x2="353.06" y2="703.58" width="0.1524" layer="91"/>
-<wire x1="358.14" y1="703.58" x2="358.14" y2="698.5" width="0.1524" layer="91"/>
-<junction x="358.14" y="703.58"/>
-<label x="358.14" y="698.5" size="1.27" layer="95" rot="R270" xref="yes"/>
+<wire x1="355.6" y1="690.88" x2="347.98" y2="690.88" width="0.1524" layer="91"/>
+<wire x1="347.98" y1="690.88" x2="342.9" y2="690.88" width="0.1524" layer="91"/>
+<wire x1="347.98" y1="690.88" x2="347.98" y2="685.8" width="0.1524" layer="91"/>
+<junction x="347.98" y="690.88"/>
+<label x="347.98" y="685.8" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R18" gate="R" pin="1"/>
@@ -10816,30 +10769,14 @@ coax connector gets worn out.</text>
 </net>
 <net name="N$55" class="0">
 <segment>
-<pinref part="R1" gate="R" pin="2"/>
-<wire x1="414.02" y1="741.68" x2="429.26" y2="741.68" width="0.1524" layer="91"/>
-<wire x1="429.26" y1="741.68" x2="429.26" y2="708.66" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="OUT"/>
-<wire x1="429.26" y1="708.66" x2="408.94" y2="708.66" width="0.1524" layer="91"/>
-<pinref part="R5" gate="R" pin="2"/>
-<wire x1="429.26" y1="693.42" x2="429.26" y2="708.66" width="0.1524" layer="91"/>
-<junction x="429.26" y="708.66"/>
-</segment>
-</net>
-<net name="N$56" class="0">
-<segment>
-<pinref part="R6" gate="R" pin="2"/>
-<pinref part="R5" gate="R" pin="1"/>
-<wire x1="403.86" y1="675.64" x2="429.26" y2="675.64" width="0.1524" layer="91"/>
-<pinref part="R12" gate="R" pin="2"/>
-<wire x1="429.26" y1="675.64" x2="429.26" y2="683.26" width="0.1524" layer="91"/>
-<junction x="429.26" y="675.64"/>
-<wire x1="429.26" y1="675.64" x2="429.26" y2="660.4" width="0.1524" layer="91"/>
-<wire x1="429.26" y1="675.64" x2="434.34" y2="675.64" width="0.1524" layer="91"/>
-<wire x1="434.34" y1="675.64" x2="452.12" y2="635" width="0.1524" layer="91"/>
-<junction x="429.26" y="675.64"/>
-<wire x1="452.12" y1="635" x2="462.28" y2="635" width="0.1524" layer="91"/>
-<pinref part="U1" gate="B" pin="+IN"/>
+<wire x1="419.1" y1="695.96" x2="398.78" y2="695.96" width="0.1524" layer="91"/>
+<pinref part="R2" gate="R" pin="1"/>
+<wire x1="419.1" y1="695.96" x2="419.1" y2="706.12" width="0.1524" layer="91"/>
+<pinref part="R11" gate="R" pin="2"/>
+<wire x1="393.7" y1="662.94" x2="419.1" y2="662.94" width="0.1524" layer="91"/>
+<wire x1="419.1" y1="662.94" x2="419.1" y2="695.96" width="0.1524" layer="91"/>
+<junction x="419.1" y="695.96"/>
 </segment>
 </net>
 <net name="N$57" class="0">
@@ -10867,7 +10804,7 @@ coax connector gets worn out.</text>
 <net name="N$60" class="0">
 <segment>
 <pinref part="R13" gate="R" pin="2"/>
-<pinref part="R9" gate="R" pin="1"/>
+<pinref part="R8" gate="R" pin="1"/>
 <wire x1="490.22" y1="660.4" x2="490.22" y2="662.94" width="0.1524" layer="91"/>
 <wire x1="459.74" y1="660.4" x2="490.22" y2="660.4" width="0.1524" layer="91"/>
 <junction x="490.22" y="660.4"/>
@@ -10878,9 +10815,9 @@ coax connector gets worn out.</text>
 </net>
 <net name="N$61" class="0">
 <segment>
-<pinref part="R9" gate="R" pin="2"/>
+<pinref part="R8" gate="R" pin="2"/>
 <wire x1="490.22" y1="673.1" x2="477.52" y2="673.1" width="0.1524" layer="91"/>
-<pinref part="R7" gate="R" pin="2"/>
+<pinref part="R6" gate="R" pin="2"/>
 <wire x1="497.84" y1="673.1" x2="490.22" y2="673.1" width="0.1524" layer="91"/>
 <junction x="490.22" y="673.1"/>
 <pinref part="U1" gate="C" pin="OUT"/>
@@ -10892,7 +10829,7 @@ coax connector gets worn out.</text>
 <wire x1="533.4" y1="655.32" x2="538.48" y2="655.32" width="0.1524" layer="91"/>
 <wire x1="538.48" y1="655.32" x2="538.48" y2="673.1" width="0.1524" layer="91"/>
 <wire x1="538.48" y1="673.1" x2="528.32" y2="673.1" width="0.1524" layer="91"/>
-<pinref part="R8" gate="R" pin="1"/>
+<pinref part="R7" gate="R" pin="1"/>
 <pinref part="R14" gate="R" pin="2"/>
 <wire x1="561.34" y1="652.78" x2="561.34" y2="655.32" width="0.1524" layer="91"/>
 <wire x1="561.34" y1="655.32" x2="538.48" y2="655.32" width="0.1524" layer="91"/>
@@ -10901,8 +10838,8 @@ coax connector gets worn out.</text>
 </net>
 <net name="N$63" class="0">
 <segment>
-<pinref part="R8" gate="R" pin="2"/>
-<pinref part="R7" gate="R" pin="1"/>
+<pinref part="R7" gate="R" pin="2"/>
+<pinref part="R6" gate="R" pin="1"/>
 <wire x1="518.16" y1="673.1" x2="513.08" y2="673.1" width="0.1524" layer="91"/>
 <wire x1="513.08" y1="673.1" x2="508" y2="673.1" width="0.1524" layer="91"/>
 <wire x1="513.08" y1="673.1" x2="513.08" y2="657.86" width="0.1524" layer="91"/>
@@ -10921,6 +10858,24 @@ coax connector gets worn out.</text>
 <pinref part="R18" gate="R" pin="2"/>
 <wire x1="513.08" y1="637.54" x2="518.16" y2="637.54" width="0.1524" layer="91"/>
 <junction x="513.08" y="637.54"/>
+</segment>
+</net>
+<net name="N$20" class="0">
+<segment>
+<pinref part="R1" gate="R" pin="2"/>
+<wire x1="403.86" y1="728.98" x2="419.1" y2="728.98" width="0.1524" layer="91"/>
+<pinref part="R2" gate="R" pin="2"/>
+<wire x1="419.1" y1="716.28" x2="419.1" y2="728.98" width="0.1524" layer="91"/>
+<wire x1="419.1" y1="728.98" x2="429.26" y2="728.98" width="0.1524" layer="91"/>
+<junction x="419.1" y="728.98"/>
+<pinref part="R12" gate="R" pin="2"/>
+<wire x1="429.26" y1="675.64" x2="429.26" y2="660.4" width="0.1524" layer="91"/>
+<wire x1="429.26" y1="675.64" x2="434.34" y2="675.64" width="0.1524" layer="91"/>
+<wire x1="434.34" y1="675.64" x2="452.12" y2="635" width="0.1524" layer="91"/>
+<wire x1="452.12" y1="635" x2="462.28" y2="635" width="0.1524" layer="91"/>
+<pinref part="U1" gate="B" pin="+IN"/>
+<junction x="429.26" y="675.64"/>
+<wire x1="429.26" y1="675.64" x2="429.26" y2="728.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
