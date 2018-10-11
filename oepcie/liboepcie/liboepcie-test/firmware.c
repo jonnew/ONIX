@@ -2,7 +2,6 @@
 
 #include <assert.h>
 #include <fcntl.h>
-#include <math.h>
 #include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -16,16 +15,17 @@
 
 #include "testfunc.h"
 
-// Sample rate
-//const int fs_hz = 30e3;
+// Number of samples generate 
+const int num_samp = 10e6; // -1; // TODO: program option
+timespec_t start_time, end_time;
 
 // Data acq. params
 const size_t approx_frame_size = 500;
 const size_t fifo_frame_capacity = 1000;
 
 // Config registers
-volatile oe_reg_val_t running = 0;
-const oe_reg_val_t sys_clock_hz = 100e6;
+volatile oe_size_t running = 0;
+const oe_size_t sys_clock_hz = 100e6;
 
 // Global state
 volatile uint64_t sample_tick = 0;
@@ -81,32 +81,6 @@ static oe_device_t my_devices[]
         .read_size = 9 * sizeof(uint16_t),
         .write_size = 0}};
 
-// Normal distribution
-double randn(double mu, double sigma)
-{
-    double U1, U2, W, mult;
-    static double X1, X2;
-    static int call = 0;
-
-    if (call == 1) {
-        call = !call;
-        return (mu + sigma * (double)X2);
-    }
-
-    do {
-        U1 = -1 + ((double)rand() / RAND_MAX) * 2;
-        U2 = -1 + ((double)rand() / RAND_MAX) * 2;
-        W = pow(U1, 2) + pow(U2, 2);
-    } while (W >= 1 || W == 0);
-
-    mult = sqrt((-2 * log(W)) / W);
-    X1 = U1 * mult;
-    X2 = U2 * mult;
-
-    call = !call;
-
-    return (mu + sigma * (double)X1);
-}
 
 uint32_t get_read_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
 {
@@ -160,12 +134,12 @@ void generate_default_config(int config_fd)
 
     // Just put a bunch of 0s in there
     lseek(config_fd, 0, SEEK_SET);
-    oe_reg_val_t regs[100] = {0};
-    write(config_fd, regs, 100 * sizeof(oe_reg_val_t));
+    oe_size_t regs[100] = {0};
+    write(config_fd, regs, 100 * sizeof(oe_size_t));
 
     // Write defaults for registers that need it
-    write_config(config_fd, CONFRUNNINGOFFSET, (void *)&running, sizeof(oe_reg_val_t));
-    write_config(config_fd, CONFSYSCLKHZOFFSET, (void *)&sys_clock_hz, sizeof(oe_reg_val_t));
+    write_config(config_fd, CONFRUNNINGOFFSET, (void *)&running, sizeof(oe_size_t));
+    write_config(config_fd, CONFSYSCLKHZOFFSET, (void *)&sys_clock_hz, sizeof(oe_size_t));
 }
 
 int send_msg_signal(int sig_fd, oe_signal_t type)
@@ -217,96 +191,122 @@ void send_device_map(int sig_fd)
         send_data_signal(sig_fd, DEVICEINST, &my_devices[i], sizeof(oe_device_t));
 }
 
+size_t make_frame(uint8_t **frame) {
+
+    uint16_t num_devs;
+    size_t data_block_size = 0;
+    size_t frame_size;
+
+    if (sample_tick % 100 == 0) { // Include IMU data
+        num_devs = 3;
+        int dev_idxs[] = {0, 1, 2};
+        int i;
+        for (i = 0; i < num_devs; i++)
+            data_block_size += my_devices[dev_idxs[i]].read_size;
+
+        frame_size
+            = get_read_frame_size(my_devices, dev_idxs, num_devs);
+        *frame = malloc(frame_size);
+
+        // Device indicies
+        *(((uint32_t *)(*frame + OE_RFRAMEHEADERSZ)) + 0) = 0;
+        *(((uint32_t *)(*frame + OE_RFRAMEHEADERSZ)) + 1) = 1;
+        *(((uint32_t *)(*frame + OE_RFRAMEHEADERSZ)) + 2) = 2;
+
+    } else {
+        num_devs = 2;
+        int dev_idxs[] = {0, 1};
+        int i;
+        for (i = 0; i < num_devs; i++)
+            data_block_size += my_devices[dev_idxs[i]].read_size;
+
+        frame_size
+            = get_read_frame_size(my_devices, dev_idxs, num_devs);
+        *frame = malloc(frame_size);
+
+        // Device indicies
+        *(((uint32_t *)(*frame + OE_RFRAMEHEADERSZ)) + 0) = 0;
+        *(((uint32_t *)(*frame + OE_RFRAMEHEADERSZ)) + 1) = 1;
+    }
+
+    // Frame header
+    *(uint64_t *)*frame = sample_tick;                      // Sample number
+    *((uint16_t *)(*frame + OE_RFRAMENDEVOFF)) = num_devs;  // Num devices
+    *(*frame + OE_RFRAMENERROFF) = 0;                       // Error
+
+    // Where does the data block start and end
+    uint8_t *data_ptr
+        = *frame + (OE_RFRAMEHEADERSZ + num_devs * sizeof(uint32_t));
+    uint8_t *data_end = data_ptr + data_block_size;
+
+    // Generate frame
+    // TODO: Generate the proper raw type for the device
+    while (data_ptr < data_end) {
+        *(uint16_t *)(data_ptr) = sample_tick % 65535;
+        data_ptr += 2;
+        if (data_ptr >= data_end)
+            break;
+        *(uint16_t *)(data_ptr) = 65535 - (sample_tick % 65535);
+        data_ptr += 2;
+        if (data_ptr >= data_end)
+            break;
+        *(uint16_t *)(data_ptr) = 65535 * (sample_tick % 2);
+        data_ptr += 2;
+        if (data_ptr >= data_end)
+            break;
+    }
+
+    return frame_size;
+}
+
 void *data_loop(void *vargp)
 {
     // Set data pipe capacity
     // Sample number, LFP data, ...
     fcntl(data_fd, F_SETPIPE_SZ, approx_frame_size * fifo_frame_capacity);
 
-    //const int fudge_factor = 1;
+    // Static raw frame used in performance testing is enabled
+    uint8_t *static_frame;
+    size_t static_frame_size = make_frame(&static_frame);
 
     while (!quit) {
+
+        if (sample_tick == num_samp) {
+            clock_gettime(CLOCK_MONOTONIC, &end_time);
+            quit = 1;
+        }
+
         if (running) {
 
-            //usleep(1e6 / fs_hz - fudge_factor); // Simulate finite sampling time
+            if (num_samp <= 0) {
 
-            // Raw frame
-            uint8_t *frame;
-            uint16_t num_devs;
-            size_t data_block_size = 0;
-            size_t frame_size;
-            if (sample_tick % 100 == 0) { // Include IMU data
-                num_devs = 3;
-                int dev_idxs[] = {0, 1, 2};
-                int i;
-                for (i = 0; i < num_devs; i++)
-                    data_block_size += my_devices[dev_idxs[i]].read_size;
+                // Generate raw frame
+                uint8_t *frame;
+                size_t frame_size = make_frame(&frame);
 
-                frame_size
-                    = get_read_frame_size(my_devices, dev_idxs, num_devs);
-                frame = malloc(frame_size);
+                size_t rc = write(data_fd, frame, frame_size);
+                assert(rc == frame_size && "Incomplete write.");
 
-                // Device indicies
-                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 0) = 0;
-                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 1) = 1;
-                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 2) = 2;
+                free(frame);
 
-            } else {
-                num_devs = 2;
-                int dev_idxs[] = {0, 1};
-                int i;
-                for (i = 0; i < num_devs; i++)
-                    data_block_size += my_devices[dev_idxs[i]].read_size;
+            } else { // Performance test
 
-                frame_size
-                    = get_read_frame_size(my_devices, dev_idxs, num_devs);
-                frame = malloc(frame_size);
-
-                // Device indicies
-                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 0) = 0;
-                *(((uint32_t *)(frame + OE_RFRAMEHEADERSZ)) + 1) = 1;
+                size_t rc = write(data_fd, static_frame, static_frame_size);
+                assert(rc == static_frame_size && "Incomplete write.");
             }
-
-            // Frame header
-            *(uint64_t *)frame = sample_tick;                      // Sample number
-            *((uint16_t *)(frame + OE_RFRAMENDEVOFF)) = num_devs;  // Num devices
-            *(frame + OE_RFRAMENERROFF) = 0;                       // Error
-
-            // Where does the data block start and end
-            uint8_t *data_ptr
-                = frame + (OE_RFRAMEHEADERSZ + num_devs * sizeof(uint32_t));
-            uint8_t *data_end = data_ptr + data_block_size;
-
-            // Generate frame
-            // TODO: Generate the proper raw type for the device
-            while (data_ptr < data_end) {
-                *(uint16_t *)(data_ptr) = sample_tick % 65535;
-                data_ptr += 2;
-                if (data_ptr >= data_end)
-                    break;
-                *(uint16_t *)(data_ptr) = 65535 - (sample_tick % 65535);
-                data_ptr += 2;
-                if (data_ptr >= data_end)
-                    break;
-                *(uint16_t *)(data_ptr) = 65535 * (sample_tick % 2);
-                data_ptr += 2;
-                if (data_ptr >= data_end)
-                    break;
-            }
-
-            size_t rc = write(data_fd, frame, frame_size);
-            assert(rc == frame_size && "Incomplete write.");
-            //printf("Write %zu bytes\n", rc);
-
-            free(frame);
 
             // Increment frame count
             sample_tick += 1;
 
         } else {
             usleep(1000); // Prevent CPU tacking
+            
+            // Get new start time
+            clock_gettime(CLOCK_MONOTONIC, &start_time);
         }
     }
+    
+    free(static_frame);
 
     return NULL;
 }
@@ -355,11 +355,11 @@ reset:
         usleep(1000);
 
         // --  Global registers --
-        oe_reg_val_t run;
+        oe_size_t run;
         read_config(config_fd, CONFRUNNINGOFFSET, &run, 4);
         running = run;
 
-        oe_reg_val_t reset;
+        oe_size_t reset;
         read_config(config_fd, CONFRESETOFFSET, &reset, 4);
         if (reset) {
             reset = 0; // untrigger
@@ -372,23 +372,23 @@ reset:
         // NB: It is very important to 0-initalize the register values here
         // because (I think) they are cast to void * in read_config and
         // this is bad for some reason
-        oe_reg_val_t dev_id;
+        oe_size_t dev_id;
         read_config(config_fd, CONFDEVIDOFFSET, &dev_id, 4);
         // printf("Dev ID: %d\n", dev_id);
 
-        oe_reg_val_t reg_addr;
+        oe_size_t reg_addr;
         read_config(config_fd, CONFADDROFFSET, &reg_addr, 4);
         // printf("Reg. Addr: %u\n", reg_addr);
 
-        oe_reg_val_t reg_val;
+        oe_size_t reg_val;
         read_config(config_fd, CONFVALUEOFFSET, &reg_val, 4);
         // printf("Reg. val.: %u\n", reg_val);
 
-        oe_reg_val_t reg_rw;
+        oe_size_t reg_rw;
         read_config(config_fd, CONFRWOFFSET, &reg_rw, 1);
         // printf("Reg. RW: %hhu\n", reg_rw);
 
-        oe_reg_val_t trig_value;
+        oe_size_t trig_value;
         read_config(config_fd, CONFTRIGOFFSET, &trig_value, 1);
         // printf("Trig val.: %hhu\n", trig_value);
 
@@ -424,6 +424,15 @@ reset:
 
     // Join data and signal threads
     pthread_join(tid, NULL);
+
+    // Report runtime if nessesary
+    if (num_samp > 0) {
+        timespec_t diff = timediff(start_time, end_time);
+        printf("Produced %d samples in %ld seconds and %ld nsec.\n",
+               num_samp,
+               diff.tv_sec,
+               diff.tv_nsec);
+    }
 
     // Close pipes/files
     close(sig_fd);

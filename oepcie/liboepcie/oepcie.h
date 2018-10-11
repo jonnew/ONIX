@@ -2,9 +2,9 @@
 #define __OEPCIE_H__
 
 // Version macros for compile-time API version detection
-#define OE_VERSION_MAJOR 1
+#define OE_VERSION_MAJOR 2
 #define OE_VERSION_MINOR 0
-#define OE_VERSION_PATCH 1
+#define OE_VERSION_PATCH 0
 
 #define OE_MAKE_VERSION(major, minor, patch) \
     ((major) * 10000 + (minor) * 100 + (patch))
@@ -18,9 +18,12 @@ extern "C" {
 #include <stddef.h>
 #include <stdint.h>
 
+// Read and write frame constants
+#define OE_MAXDEVPERFRAME     32 // Maximum number of devices in a frame
+
 // Read frame constants
-#define OE_RFRAMEHEADERSZ     32 // [uint64_t sample number, uint16_t n_devs, (22 reserved bytes), ...]
-#define OE_RFRAMESAMPLEOFF    0  // Read frame sample number offset
+#define OE_RFRAMEHEADERSZ     32 // [uint64_t host_clock, uint16_t n_devs, uint8_t frame_err, (22 reserved bytes), ...]
+#define OE_RFRAMESAMPLEOFF    0  // Read frame host clock tick offset
 #define OE_RFRAMENDEVOFF      8  // Read frame number of devices offset
 #define OE_RFRAMENERROFF      10 // Read frame error offset
 
@@ -50,23 +53,22 @@ typedef uint32_t oe_reg_val_t;
 typedef struct {
     oe_dev_id_t id;         // Device ID number (see oedevices.h)
     oe_size_t read_size;    // Device data read size per frame in bytes
-    oe_size_t num_reads;    // Number of frames that must be read to construct a full sample (e.g., for row reads from camera)
+    oe_size_t num_reads;    // Number of frames that must be read to construct a
+                            // full sample (e.g., for row reads from camera)
     oe_size_t write_size;   // Device data write size per frame in bytes
-    oe_size_t num_writes;   // Number of frames that must be written to construct a full output sample
-
+    oe_size_t num_writes;   // Number of frames that must be written to construct
+                            // a full output sample
 } oe_device_t;
 
 // Frame type
 typedef struct oe_frame {
-    uint64_t clock;         // Base clock counter
-    uint16_t num_dev;       // Number of devices in frame
-    uint8_t corrupt;        // Is this frame corrupt?
-    oe_size_t *dev_idxs;    // Array of device indices in frame
-    oe_size_t dev_idxs_sz;  // Size in bytes of dev_idxs buffer
-    oe_size_t *dev_offs;    // Device data offsets within data block
-    oe_size_t dev_offs_sz;  // Size in bytes of dev_idxs buffer
-    uint8_t *data;          // Multi-device raw data block
-    oe_size_t data_sz;      // Size in bytes of data buffer
+    uint64_t clock;                         // Base clock counter
+    uint16_t num_dev;                       // Number of devices in frame
+    uint8_t corrupt;                        // Is this frame corrupt?
+    oe_size_t dev_idxs[OE_MAXDEVPERFRAME];  // Array of device indices in frame
+    oe_size_t dev_offs[OE_MAXDEVPERFRAME];  // Device data offsets within data block
+    uint8_t *data;                          // Multi-device raw data block
+    oe_size_t data_sz;                      // Size in bytes of data buffer
 
 } oe_frame_t;
 
@@ -90,31 +92,27 @@ enum {
 enum {
     OE_ESUCCESS         =  0,  // Success
     OE_EPATHINVALID     = -1,  // Invalid stream path, fail on open
-    OE_EREINITCTX       = -2,  // Double initialization attempt
-    OE_EDEVID           = -3,  // Invalid device ID on init or reg op
-    OE_EREADFAILURE     = -4,  // Failure to read from a stream/register
-    OE_EWRITEFAILURE    = -5,  // Failure to write to a stream/register
-    OE_ENULLCTX         = -6,  // Attempt to call function w null ctx
-    OE_ESEEKFAILURE     = -7,  // Failure to seek on stream
-    OE_EINVALSTATE      = -8,  // Invalid operation for the current context run state
-    OE_EDEVIDX          = -9,  // Invalid device index
+    OE_EDEVID           = -2,  // Invalid device ID on init or reg op
+    OE_EDEVIDX          = -3,  // Invalid device index
+    OE_ETOOMANYDEVS     = -4,  // Frame holds data for more than OE_MAXDEVPERFRAME devices
+    OE_EREADFAILURE     = -5,  // Failure to read from a stream/register
+    OE_EWRITEFAILURE    = -6,  // Failure to write to a stream/register
+    OE_ENULLCTX         = -7,  // Attempt to call function w null ctx
+    OE_ESEEKFAILURE     = -8,  // Failure to seek on stream
+    OE_EINVALSTATE      = -9,  // Invalid operation for the current context run state
     OE_EINVALOPT        = -10, // Invalid context option
     OE_EINVALARG        = -11, // Invalid function arguments
-    OE_ECANTSETOPT      = -12, // Option cannot be set in current context state
-    OE_ECOBSPACK        = -13, // Invalid COBS packet
-    OE_ERETRIG          = -14, // Attempt to trigger an already triggered operation
-    OE_EBUFFERSIZE      = -15, // Supplied buffer is too small
-    OE_EBADDEVMAP       = -16, // Badly formated device map supplied by firmware
-    OE_EBADALLOC        = -17, // Bad dynamic memory allocation
-    OE_ECLOSEFAIL       = -18, // File descriptor close failure, check errno
-    OE_EDATATYPE        = -19, // Invalid underlying data types
-    OE_EREADONLY        = -20, // Attempted write to read only object (register, context option, etc)
-    OE_ERUNSTATESYNC    = -21, // Software and hardware run state out of sync
-    OE_EINVALRAWTYPE    = -22, // Invalid raw data type
-    OE_EUNIMPL          = -23, // Specified, but unimplemented, feature
+    OE_ECOBSPACK        = -12, // Invalid COBS packet
+    OE_ERETRIG          = -13, // Attempt to trigger an already triggered operation
+    OE_EBUFFERSIZE      = -14, // Supplied buffer is too small
+    OE_EBADDEVMAP       = -15, // Badly formated device map supplied by firmware
+    OE_EBADALLOC        = -16, // Bad dynamic memory allocation
+    OE_ECLOSEFAIL       = -17, // File descriptor close failure, check errno
+    OE_EREADONLY        = -18, // Attempted write to read only object (register, context option, etc)
+    OE_EUNIMPL          = -19, // Specified, but unimplemented, feature
 
     // NB: Always at bottom
-    OE_MINERRORNUM      = -24
+    OE_MINERRORNUM      = -20
 };
 
 // Context
@@ -133,7 +131,7 @@ OE_EXPORT int oe_set_opt(oe_ctx ctx, int option, const void* value, size_t size)
 OE_EXPORT int oe_read_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t *value);
 OE_EXPORT int oe_write_reg(const oe_ctx ctx, size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value);
 OE_EXPORT int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame);
-//OE_EXPORT int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
+OE_EXPORT int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame);
 OE_EXPORT void oe_destroy_frame(oe_frame_t *frame);
 
 // Internal type conversion

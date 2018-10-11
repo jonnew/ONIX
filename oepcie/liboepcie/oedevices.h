@@ -16,10 +16,10 @@ extern "C" {
 // NB: Officially supported device IDs for the open-ephys++ project occupy
 // device IDs < 10000. IDs above this value are not reserved and can be used
 // for custom projects.
-// NB: If you add a device here, make sure to update oe_device_str(),
-// oe_device_official(), and update documentation below
-enum oe_device_id {
-    OE_IMMEDIATEIO       = 0, // pci-host board GPIO
+// NB: If you add a device here, make sure to update oe_device_str(), and
+// update documentation below
+typedef enum oe_device_id {
+    OE_INFO              = 0, // Virtual device that provides status and error information
     OE_RHD2132           = 1, // Intan RHD2132 bioamplifier
     OE_RHD2164           = 2, // Intan RHD2162 bioamplifier
     OE_MPU9250           = 3, // MPU9250 9-axis accerometer
@@ -34,11 +34,27 @@ enum oe_device_id {
     OE_MAXDEVICEID       = OE_MAXDEVID,
 
     // >= 10000: Not reserved. Free to use for custom projects
+} oe_devivce_id_t;
+
+
+// # OE_INFO
+// - Input frame data contents
+//
+//  [uint64_t local_clock,
+//   uint32_t info_code]
+
+enum oe_info_codes {
+    OE_INFO_ESERDESPARITY,     // SERDES parity error detected
+    OE_INFO_ESERDESCHKSUM,     // SERDES packet checksum error detected
+    OE_INFO_EWATCHDOG,         // Frame not sent withing watchdog threshold
 };
 
-// # OE_IMMEDIATEIO
 // - Configuration registers
-// TODO
+enum oe_info_regs {
+    OE_INFO_NULLPARM     = 0,  // No command
+    OE_INFO_WATCHDOGEN   = 1,  // Enable frame watchdog (0 = off; 1 = 0n)
+    OE_INFO_WATCHDOGDUR  = 2,  // Watchdog timer threshold (sysclock ticks, default = SYSCLOCK_HZ, 1 second)
+};
 
 // # OE_RHD2132
 // - Input frame data contents
@@ -156,7 +172,6 @@ enum oe_doutput32_regs {
 };
 
 // Human readable string from ID
-OE_EXPORT int oe_device_official(int dev_id);
 OE_EXPORT const char *oe_device_str(int dev_id);
 
 #ifdef __cplusplus

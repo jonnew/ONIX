@@ -1,6 +1,6 @@
 CC=cc
-CFLAGS=-g -g3 -O0 -Wall 
-LDFLAGS=-loepcie
+CFLAGS=-g -g3 -O3 -Wall 
+LDFLAGS=-loepcie #-lprofiler
 
 all: bin/firmware bin/host bin/cobs_test
 

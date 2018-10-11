@@ -23,74 +23,6 @@ FILE **dump_files;
 #pragma comment(lib, "liboepcie")
 #include <stdio.h>
 #include <stdlib.h>
-
-// Windows does not have a usleep()
-// https://www.c-plusplus.net/forum/topic/109539/usleep-unter-window
-void usleep(__int64 usec)
-{
-    HANDLE timer;
-    LARGE_INTEGER ft;
-
-    ft.QuadPart = -(10*usec); // Convert to 100 nanosecond interval, negative value indicates relative time
-
-    timer = CreateWaitableTimer(NULL, TRUE, NULL);
-    SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
-    WaitForSingleObject(timer, INFINITE);
-    CloseHandle(timer);
-}
-
-// Windows does not have a getline()
-size_t getline(char **lineptr, size_t *n, FILE *stream) {
-    char *bufptr = NULL;
-    char *p = bufptr;
-    size_t size;
-    int c;
-
-    if (lineptr == NULL) {
-        return -1;
-    }
-    if (stream == NULL) {
-        return -1;
-    }
-    if (n == NULL) {
-        return -1;
-    }
-    bufptr = *lineptr;
-    size = *n;
-
-    c = fgetc(stream);
-    if (c == EOF) {
-        return -1;
-    }
-    if (bufptr == NULL) {
-        bufptr = malloc(128);
-        if (bufptr == NULL) {
-            return -1;
-        }
-        size = 128;
-    }
-    p = bufptr;
-    while (c != EOF) {
-        if ((p - bufptr) > (size - 1)) {
-            size = size + 128;
-            bufptr = realloc(bufptr, size);
-            if (bufptr == NULL) {
-                return -1;
-            }
-        }
-        *p++ = c;
-        if (c == '\n') {
-            break;
-        }
-        c = fgetc(stream);
-    }
-
-    *p++ = '\0';
-    *lineptr = bufptr;
-    *n = size;
-
-    return p - bufptr - 1;
-}
 #else
 #include <unistd.h>
 #include <pthread.h>
@@ -102,7 +34,6 @@ volatile int quit = 0;
 volatile int display = 0;
 volatile int display_clock = 0;
 int running = 1;
-unsigned long counter = 0;
 
 int parse_reg_cmd(const char *cmd, long *values)
 {
@@ -133,11 +64,18 @@ DWORD WINAPI data_loop(LPVOID lpParam)
 void *data_loop(void *vargp)
 #endif
 {
-    int rc = 0;
-    while (rc == 0 && !quit)  {
+    unsigned long counter = 0;
 
+    while (!quit)  {
+
+        int rc = 0;
         oe_frame_t *frame;
         rc = oe_read_frame(ctx, &frame);
+        if (rc < 0) {
+            printf("Error: %s\n", oe_error_str(rc));
+            quit = 1;
+            break;
+        }
 
         if (display_clock && counter % 100 == 0)
             printf("\tSample: %" PRIu64 "\n\n", frame->clock);
@@ -155,7 +93,7 @@ void *data_loop(void *vargp)
             fwrite(data, 1, data_sz, dump_files[this_idx]);
 #endif
             if (display && counter % 100 == 0) {
-                printf("\tDev: %d (%s)\n",
+                printf("\tDev: %zu (%s)\n",
                     this_idx,
                     oe_device_str(this_dev.id));
 
@@ -186,11 +124,12 @@ int main(int argc, char *argv[])
 
     if (argc != 1 && argc != 4) {
         printf("usage:\n");
-        printf("\thost : run using default stream paths\n");
-        printf("\thost config signal data : specify the configuration, signal and data paths.\n");
+        printf("\thost: run using default stream paths\n");
+        printf("\thost config signal data: specify the configuration, signal and data paths.\n");
         exit(1);
     }
-    else if (argc == 4) {
+
+    if (argc == 4) {
 
         // Set firmware paths
         config_path = argv[1];
@@ -247,7 +186,7 @@ int main(int argc, char *argv[])
     }
 
     // Reset the hardware
-    oe_reg_val_t reset = 1;
+    oe_size_t reset = 1;
     rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register write failure.");
@@ -261,8 +200,8 @@ int main(int argc, char *argv[])
     printf("Max. read frame size: %u bytes\n", frame_size);
 
     // Try to write to base clock freq, which is write only
-    oe_reg_val_t base_hz = (oe_reg_val_t)10e6;
-    rc = oe_set_opt(ctx, OE_SYSCLKHZ, &base_hz, sizeof(oe_reg_val_t));
+    oe_size_t base_hz = (oe_size_t)10e6;
+    rc = oe_set_opt(ctx, OE_SYSCLKHZ, &base_hz, sizeof(oe_size_t));
     assert(rc == OE_EREADONLY && "Successful write to read-only register.");
 
     size_t clk_val_sz = sizeof(base_hz);
@@ -271,7 +210,7 @@ int main(int argc, char *argv[])
     assert(!rc && "Register read failure.");
     printf("System clock rate: %u Hz\n", base_hz);
 
-    oe_reg_val_t acq_hz = 0;
+    oe_size_t acq_hz = 0;
     size_t acq_clk_val_sz = sizeof(acq_hz);
     rc = oe_get_opt(ctx, OE_ACQCLKHZ, &acq_hz, &acq_clk_val_sz);
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
@@ -279,7 +218,7 @@ int main(int argc, char *argv[])
     printf("Acquisition clock rate: %u Hz\n", acq_hz);
 
     // Start acquisition
-    oe_reg_val_t run = 1;
+    oe_size_t run = 1;
     rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
 
@@ -291,7 +230,7 @@ int main(int argc, char *argv[])
 #else
     pthread_t tid;
     pthread_create(&tid, NULL, data_loop, NULL);
-#endif // _WIN32
+#endif
 
     // Read stdin to start (s) or pause (p)
     int c = 's';
@@ -314,7 +253,7 @@ int main(int argc, char *argv[])
 
         if (c == 'p') {
             running = (running == 1) ? 0 : 1;
-            oe_reg_val_t run = running;
+            oe_size_t run = running;
             rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
             if (rc) {
                 printf("Error: %s\n", oe_error_str(rc));
@@ -344,8 +283,8 @@ int main(int argc, char *argv[])
             free(buf);
 
             size_t dev_idx = (size_t)values[0];
-            oe_reg_addr_t addr = (oe_reg_addr_t)values[1];
-            oe_reg_val_t val = (oe_reg_val_t)values[2];
+            oe_size_t addr = (oe_size_t)values[1];
+            oe_size_t val = (oe_size_t)values[2];
 
             oe_write_reg(ctx, dev_idx, addr, val);
         }

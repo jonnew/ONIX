@@ -2,10 +2,11 @@
 
 #include <algorithm>
 #include <cassert>
+#include <cstring>
 #include <exception>
+#include <memory>
 #include <string>
 #include <system_error>
-#include <tuple>
 #include <vector>
 
 #include <oepcie.h>
@@ -49,135 +50,97 @@ namespace oe {
     using device_t = oe_device_t;
     using device_map_t = std::vector<device_t>;
 
+    // TODO: Data held by frame_t is const. This means data needs to be copied
+    // in order to be processed. This is good from a thread safety point of
+    // view but potentially bad from an efficency point of view.
+    // TODO: This frame class can hold a spans for each device into external
+    // storage. Spans are C++20.
     class frame_t
     {
-        friend context_t; // NB: Fills frame_t::frame_;
+        friend context_t; // NB: Fills frame_t::frame_ptr_;
 
         public:
-
-            inline explicit frame_t(const device_map_t &dev_map)
+            inline frame_t(const device_map_t &dev_map, oe_frame_t *frame)
             : dev_map_(dev_map)
+            , frame_ptr_{frame, [=](oe_frame_t *fp) { oe_destroy_frame(fp); }}
             {
                 // Nothing
             }
 
-            inline frame_t(const frame_t &rhs)
-            : dev_map_(rhs.dev_map_)
-            {
-                frame_ = static_cast<oe_frame_t *>(malloc(sizeof(oe_frame_t)));
-                frame_->clock = rhs.frame_->clock;
-                frame_->num_dev = rhs.frame_->num_dev;
-                frame_->corrupt = rhs.frame_->corrupt;
-                frame_->dev_idxs_sz = rhs.frame_->dev_idxs_sz;
-                frame_->dev_offs_sz = rhs.frame_->dev_offs_sz;
-                frame_->data_sz = rhs.frame_->data_sz;
+            // NB: Copy and move assignment operators are going to be deleted
+            // since this class has const members. Copy and move ctors will
+            // implicity delcared. This is good: assignment does not make sense
+            // because we need assurance device map is equal. Only way to do
+            // this is with construction.
 
-                std::memcpy(frame_->dev_offs, rhs.frame_->dev_offs, rhs.frame_->dev_offs_sz);
-                std::memcpy(frame_->dev_idxs, rhs.frame_->dev_idxs, rhs.frame_->dev_idxs_sz);
-                std::memcpy(frame_->data, rhs.frame_->data, rhs.frame_->data_sz);
+            //TODO: Needed? Data is const. Why would we want to clone this?
+            // Access by  multiple threads using shallow copies should be safe.
+            //inline frame_t clone() const
+            //{
+            //    auto fp = (oe_frame_t *)malloc(size_);
+            //    std::memcpy(fp, frame_ptr_.get(), size_);
+            //
+            //    // Create frame with allocated pointer
+            //    return frame_t(dev_map_, fp, size_);
+            //}
+
+            uint64_t clock() const { return frame_ptr_->clock; }
+
+            bool corrupt() const
+            {
+                return static_cast<bool>(frame_ptr_->corrupt);
             }
 
-            inline frame_t(frame_t &&rhs)
-            : dev_map_(rhs.dev_map_)
-            , frame_(rhs.frame_)
-            {
-                rhs.frame_ = nullptr;
-            }
-
-            inline frame_t &operator=(const frame_t &rhs)
-            {
-                if (&rhs == this)
-                    return *this;
-
-                const_cast<device_map_t&>(dev_map_) = rhs.dev_map_;
-
-                oe_destroy_frame(frame_);
-                frame_ = static_cast<oe_frame_t *>(malloc(sizeof(oe_frame_t)));
-                frame_->clock = rhs.frame_->clock;
-                frame_->num_dev = rhs.frame_->num_dev;
-                frame_->corrupt = rhs.frame_->corrupt;
-                frame_->dev_idxs_sz = rhs.frame_->dev_idxs_sz;
-                frame_->dev_offs_sz = rhs.frame_->dev_offs_sz;
-                frame_->data_sz = rhs.frame_->data_sz;
-
-                std::memcpy(frame_->dev_offs, rhs.frame_->dev_offs, rhs.frame_->dev_offs_sz);
-                std::memcpy(frame_->dev_idxs, rhs.frame_->dev_idxs, rhs.frame_->dev_idxs_sz);
-                std::memcpy(frame_->data, rhs.frame_->data, rhs.frame_->data_sz);
-
-                return *this;
-            }
-
-            inline frame_t &operator=(frame_t &&rhs)
-            {
-                if (&rhs == this)
-                    return *this;
-
-                const_cast<device_map_t&>(dev_map_) = rhs.dev_map_;
-
-                oe_destroy_frame(frame_);
-                frame_ = rhs.frame_;
-                rhs.frame_ = nullptr;
-
-                return *this;
-            }
-
-            ~frame_t() noexcept { oe_destroy_frame(frame_); }
-
-            uint64_t time() { return frame_->clock; }
-            bool corrupt() { return static_cast<bool>(frame_->corrupt); }
-
-            // TODO: raw_t should be deduced from call to oe_raw_type() using
-            // c++14 features
             template <typename raw_t>
             raw_t *begin(size_t dev_idx)
             {
                 // Find the position of the requested idx in the frames
                 // dev_idx's array to get offset
                 auto it = std::find(
-                    frame_->dev_idxs, frame_->dev_idxs + frame_->num_dev, dev_idx);
+                    frame_ptr_->dev_idxs, frame_ptr_->dev_idxs + frame_ptr_->num_dev, dev_idx);
 
-                if (it == frame_->dev_idxs + frame_->num_dev)
+                if (it == frame_ptr_->dev_idxs + frame_ptr_->num_dev)
                     throw(error_t(OE_EDEVIDX));
 
                 // Return iterator dev_idx's data begin()
-                auto i = std::distance(frame_->dev_idxs, it);
-                return reinterpret_cast<raw_t *>(frame_->data
-                                                 + frame_->dev_offs[i]);
+                auto i = std::distance(frame_ptr_->dev_idxs, it);
+                return reinterpret_cast<raw_t *>(frame_ptr_->data
+                                                 + frame_ptr_->dev_offs[i]);
             }
 
             template <typename raw_t>
             raw_t *end(size_t dev_idx)
             {
                 auto it = std::find(
-                    frame_->dev_idxs, frame_->dev_idxs + frame_->num_dev, dev_idx);
+                    frame_ptr_->dev_idxs, frame_ptr_->dev_idxs + frame_ptr_->num_dev, dev_idx);
 
-                if (it == frame_->dev_idxs + frame_->num_dev)
+                if (it == frame_ptr_->dev_idxs + frame_ptr_->num_dev)
                     throw(error_t(OE_EDEVIDX));
 
                 // Return iterator dev_idx's data begin()
-                auto i = std::distance(frame_->dev_idxs, it);
-                return reinterpret_cast<raw_t *>(frame_->data
-                                                 + frame_->dev_offs[i]
+                auto i = std::distance(frame_ptr_->dev_idxs, it);
+                return reinterpret_cast<raw_t *>(frame_ptr_->data
+                                                 + frame_ptr_->dev_offs[i]
                                                  + dev_map_[dev_idx].read_size);
             }
 
             std::vector<size_t> device_indices() const
             {
-                return std::vector<size_t>(frame_->dev_idxs,
-                                           frame_->dev_idxs + frame_->num_dev);
+                return std::vector<size_t>(frame_ptr_->dev_idxs,
+                                           frame_ptr_->dev_idxs + frame_ptr_->num_dev);
             }
 
         private:
-            oe_frame_t *frame_ = nullptr;
             const device_map_t &dev_map_;
+            const std::shared_ptr<const oe_frame_t> frame_ptr_;
     };
 
     class context_t {
 
     public:
-        inline context_t(const char* config_path = OE_DEFAULTCONFIGPATH,
-                         const char* read_path = OE_DEFAULTREADPATH,
-                         const char* signal_path = OE_DEFAULTSIGNALPATH)
+        inline context_t(const char *config_path = OE_DEFAULTCONFIGPATH,
+                         const char *read_path = OE_DEFAULTREADPATH,
+                         const char *signal_path = OE_DEFAULTSIGNALPATH)
         {
             // Create
             ctx_ = oe_create_ctx();
@@ -203,17 +166,17 @@ namespace oe {
 
         // No copy
         inline context_t(const context_t &) = delete;
-        inline context_t &operator = (const context_t &) = delete;
+        inline context_t &operator=(const context_t &) = delete;
 
         // Moves OK
         inline context_t(context_t &&rhs) noexcept
-        : ctx_(rhs.ctx_)
-        , device_map_(std::move(rhs.device_map_))
+            : ctx_(rhs.ctx_),
+              device_map_(std::move(rhs.device_map_))
         {
             rhs.ctx_ = nullptr;
         }
 
-        inline context_t &operator = (context_t &&rhs) noexcept
+        inline context_t &operator=(context_t &&rhs) noexcept
         {
             std::swap(ctx_, rhs.ctx_);
             device_map_ = rhs.device_map_;
@@ -221,7 +184,6 @@ namespace oe {
         }
 
         inline ~context_t() noexcept { close(); }
-
 
         template <typename opt_type>
         opt_type get_opt(int option) const
@@ -246,21 +208,25 @@ namespace oe {
             return value;
         }
 
-        inline void write_reg(size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value)
+        inline void
+        write_reg(size_t dev_idx, oe_reg_addr_t addr, oe_reg_val_t value)
         {
             auto rc = oe_write_reg(ctx_, dev_idx, addr, value);
-            if (rc != 0) throw error_t(rc);
+            if (rc != 0)
+                throw error_t(rc);
         }
 
-        inline device_map_t device_map() const { return device_map_; }
+        inline device_map_t device_map() const noexcept { return device_map_; }
 
-        inline frame_t read_frame()
+        inline frame_t read_frame() const
         {
-            frame_t frame(device_map_);
-            oe_read_frame(ctx_, &frame.frame_);
 
-            // TODO: Should be elided, check disassembly
-            return frame;
+            oe_frame_t *fp;
+            auto rc = oe_read_frame(ctx_, &fp);
+            if (rc < 0) throw error_t(rc);
+
+            // TODO: Should use RVO, check disassembly
+            return frame_t(device_map_, fp);
         }
 
     private:
@@ -282,8 +248,8 @@ namespace oe {
             if (ctx_ == nullptr)
                 return;
 
-            // Reset the hardware, ignore error codes since this may or may not
-            // be appropriate
+            // Reset the hardware, ignore error codes since this may or
+            // this is called in destructor and we cannot throw.
             oe_reg_val_t reset = 1;
             oe_set_opt(ctx_, OE_RESET, &reset, sizeof(reset));
 

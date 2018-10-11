@@ -43,7 +43,9 @@ typedef uint32_t oe_reg_val_t;
 #define OE_COBSBUFFERSIZE 255
 
 // Bytes per read() syscall on the data input stream
-// NB: This defines a minimum delay for real-time processing
+// NB: This defines a minimum delay for real-time processing. Larger values
+// will burn less CPU time but result in larger delays with respect to the
+// sensors
 #define OE_READSIZE 512
 
 typedef struct stream_fid {
@@ -114,7 +116,7 @@ typedef enum oe_conf_reg_off {
 } oe_conf_off_t;
 
 // Static helpers
-static inline int _oe_read(int data_fd, void* data, size_t size);
+static int _oe_read(int data_fd, void* data, size_t size);
 //static inline int _oe_write(int data_fd, char* data, size_t size);
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer);
 static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, size_t size);
@@ -124,7 +126,6 @@ static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size);
 static int _oe_write_config(int config_fd, oe_conf_off_t write_offset, oe_reg_val_t value);
 static int _oe_read_config(int config_fd, oe_conf_off_t read_offset, oe_reg_val_t *value);
 static int _oe_read_buffer(oe_ctx ctx, void *data, size_t size);
-//static inline int _oe_raw_size(oe_raw_t type);
 #ifdef OE_BE
 //static int _oe_array_bswap(void *data, oe_raw_t type, size_t size);
 static int _device_map_byte_swap(oe_ctx ctx);
@@ -618,25 +619,26 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     int rc = _oe_read_buffer(ctx, header, OE_RFRAMEHEADERSZ);
     if (rc != 0) return rc;
 
+    // Total frame size
+    int total_size = 0;
+
     // Allocate frame
     *frame = malloc(sizeof(oe_frame_t));
     oe_frame_t *f_ptr = *frame;
+    total_size += sizeof(oe_frame_t);
 
     // Copy frame header members
+    // TODO: Memory continuous, can do with one call
     memcpy(&f_ptr->clock, header, sizeof(uint64_t));
     memcpy(&f_ptr->num_dev,header + OE_RFRAMENDEVOFF, sizeof(uint16_t));
     memcpy(&f_ptr->corrupt, header + OE_RFRAMENERROFF, sizeof(uint8_t));
 
-    // Allocate space for device info
-    f_ptr->dev_idxs_sz = f_ptr->num_dev * sizeof(oe_size_t);
-    f_ptr->dev_offs_sz = f_ptr->num_dev * sizeof(oe_size_t);
-    f_ptr->dev_idxs = malloc(f_ptr->dev_idxs_sz);
-    f_ptr->dev_offs = malloc(f_ptr->dev_offs_sz);
+    if (f_ptr->num_dev > OE_MAXDEVPERFRAME) return OE_ETOOMANYDEVS;
 
     // Read device indices that are in this frame
-    rc = _oe_read_buffer(ctx, f_ptr->dev_idxs, f_ptr->dev_idxs_sz);
+    rc = _oe_read_buffer(
+        ctx, f_ptr->dev_idxs, f_ptr->num_dev * sizeof(oe_size_t));
     if (rc != 0) return rc;
-    //assert((size_t)rc == f_ptr->dev_idxs_sz && "Did not read full dev idxs buffer.");
 
     // Find data read size
     uint16_t i;
@@ -652,17 +654,22 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     // Now we know the frame data size, so we allocate
     f_ptr->data_sz = rsize;
     f_ptr->data = malloc(rsize);
+    total_size += rsize;
 
     // Read data
     rc = _oe_read_buffer(ctx, f_ptr->data, rsize);
     if (rc != 0) return rc;
-    //assert(rc == rsize && "Did not read full data buffer.");
 
-    return 0;
+    return total_size;
 }
 
-//int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
-//{
+int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
+{
+    // TODO:
+    (void)ctx;
+    (void)frame;
+    return OE_EUNIMPL;
+
 //    int num_bytes = OE_WFRAMEHEADERSZ + frame->dev_idxs_sz + frame->data_sz;
 //
 //    // Create serialized write frame
@@ -677,17 +684,13 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 //
 //    if (rc != num_bytes) return rc;
 //    return 0;
-//}
+}
 
 void oe_destroy_frame(oe_frame_t *frame)
 {
     if (frame != NULL) {
 
-        // Free held resources
-        if (frame->dev_idxs != NULL)
-            free(frame->dev_idxs);
-        if (frame->dev_offs != NULL)
-            free(frame->dev_offs);
+        // Free frame data
         if (frame->data != NULL)
             free(frame->data);
 
@@ -715,11 +718,14 @@ const char *oe_error_str(int err)
         case OE_EPATHINVALID: {
             return "Invalid stream path";
         }
-        case OE_EREINITCTX: {
-            return "Double context initialization attempt";
-        }
         case OE_EDEVID: {
             return "Invalid device ID";
+        }
+        case OE_EDEVIDX: {
+            return "Invalid device index";
+        }
+        case OE_ETOOMANYDEVS: {
+            return "Frame holds data for more than OE_MAXDEVPERFRAME devices";
         }
         case OE_EREADFAILURE: {
             return "Failure to read from a stream or register";
@@ -736,17 +742,11 @@ const char *oe_error_str(int err)
         case OE_EINVALSTATE: {
             return "Invalid operation for the current context run state";
         }
-        case OE_EDEVIDX: {
-            return "Invalid device index";
-        }
         case OE_EINVALOPT: {
             return "Invalid context option";
         }
         case OE_EINVALARG: {
             return "Invalid function arguments";
-        }
-        case OE_ECANTSETOPT: {
-            return "Option cannot be set in current context state";
         }
         case OE_ECOBSPACK: {
             return "Invalid COBS packet";
@@ -766,28 +766,19 @@ const char *oe_error_str(int err)
         case OE_ECLOSEFAIL: {
             return "File descriptor close failure (check errno)";
         }
-        case OE_EDATATYPE: {
-            return "Invalid underlying data types";
-        }
         case OE_EREADONLY: {
             return "Attempted write to read only object (register, context "
                    "option, etc)";
         }
-        case OE_ERUNSTATESYNC: {
-            return "Software and hardware run state out of sync";
-        }
-        case OE_EINVALRAWTYPE: {
-            return "Invalid raw data type";
-        }
         case OE_EUNIMPL: {
-            return "Unimplemented feature";
+            return "Unimplemented API feature.";
         }
         default:
             return "Unknown error";
     }
 }
 
-static inline int _oe_read(int data_fd, void *data, size_t size)
+static int _oe_read(int data_fd, void *data, size_t size)
 {
     size_t received = 0;
 
