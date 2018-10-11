@@ -2908,6 +2908,87 @@ Source: amp_227161.pdf</description>
 <text x="-2.6" y="-3.1" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-1.5" y1="-1.5" x2="1.5" y2="1.5" layer="39"/>
 </package>
+<package name="DF40-70HEAD-LESS-SILK">
+<text x="-8.89" y="2.54" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-8.89" y="-3.81" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<smd name="1" x="-6.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<wire x1="-7.8" y1="-1" x2="-7.8" y2="1" width="0.127" layer="21"/>
+<smd name="2" x="-6.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="3" x="-6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="4" x="-5.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="5" x="-5.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="6" x="-4.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="7" x="-4.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="8" x="-4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="9" x="-3.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="10" x="-3.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="11" x="-2.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="12" x="-2.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="13" x="-2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="14" x="-1.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="15" x="-1.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="16" x="-0.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="17" x="-0.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="18" x="0" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="19" x="0.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="20" x="0.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="21" x="1.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="22" x="1.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="23" x="2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="24" x="2.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="25" x="2.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="26" x="3.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="27" x="3.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="28" x="4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="29" x="4.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="30" x="4.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="31" x="5.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="32" x="5.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="33" x="6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="34" x="6.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="35" x="6.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="36" x="6.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="37" x="6.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="38" x="6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="39" x="5.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="40" x="5.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="41" x="4.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="42" x="4.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="43" x="4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="44" x="3.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="45" x="3.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="46" x="2.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="47" x="2.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="48" x="2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="49" x="1.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="50" x="1.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="51" x="0.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="52" x="0.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="53" x="0" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="54" x="-0.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="55" x="-0.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="56" x="-1.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="57" x="-1.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="58" x="-2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="59" x="-2.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="60" x="-2.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="61" x="-3.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="62" x="-3.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="63" x="-4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="64" x="-4.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="65" x="-4.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="66" x="-5.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="67" x="-5.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="68" x="-6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="69" x="-6.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="70" x="-6.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="M3" x="7.275" y="1.585" dx="0.35" dy="0.75" layer="1" rot="R180"/>
+<smd name="M2" x="7.275" y="-1.585" dx="0.35" dy="0.75" layer="1"/>
+<smd name="M1" x="-7.275" y="-1.585" dx="0.35" dy="0.75" layer="1"/>
+<smd name="M4" x="-7.275" y="1.585" dx="0.35" dy="0.75" layer="1" rot="R180"/>
+<wire x1="7.8" y1="1" x2="7.8" y2="-1" width="0.127" layer="21"/>
+<rectangle x1="-8.4" y1="-1.7" x2="8.4" y2="1.7" layer="39"/>
+</package>
 </packages>
 <symbols>
 <symbol name="TS4231">
@@ -4279,6 +4360,87 @@ Source: amp_227161.pdf</description>
 </gates>
 <devices>
 <device name="_DF40-70HEAD" package="DF40-70HEAD">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="11" pad="11"/>
+<connect gate="G$1" pin="12" pad="12"/>
+<connect gate="G$1" pin="13" pad="13"/>
+<connect gate="G$1" pin="14" pad="14"/>
+<connect gate="G$1" pin="15" pad="15"/>
+<connect gate="G$1" pin="16" pad="16"/>
+<connect gate="G$1" pin="17" pad="17"/>
+<connect gate="G$1" pin="18" pad="18"/>
+<connect gate="G$1" pin="19" pad="19"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="20" pad="20"/>
+<connect gate="G$1" pin="21" pad="21"/>
+<connect gate="G$1" pin="22" pad="22"/>
+<connect gate="G$1" pin="23" pad="23"/>
+<connect gate="G$1" pin="24" pad="24"/>
+<connect gate="G$1" pin="25" pad="25"/>
+<connect gate="G$1" pin="26" pad="26"/>
+<connect gate="G$1" pin="27" pad="27"/>
+<connect gate="G$1" pin="28" pad="28"/>
+<connect gate="G$1" pin="29" pad="29"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="30" pad="30"/>
+<connect gate="G$1" pin="31" pad="31"/>
+<connect gate="G$1" pin="32" pad="32"/>
+<connect gate="G$1" pin="33" pad="33"/>
+<connect gate="G$1" pin="34" pad="34"/>
+<connect gate="G$1" pin="35" pad="35"/>
+<connect gate="G$1" pin="36" pad="36"/>
+<connect gate="G$1" pin="37" pad="37"/>
+<connect gate="G$1" pin="38" pad="38"/>
+<connect gate="G$1" pin="39" pad="39"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="40" pad="40"/>
+<connect gate="G$1" pin="41" pad="41"/>
+<connect gate="G$1" pin="42" pad="42"/>
+<connect gate="G$1" pin="43" pad="43"/>
+<connect gate="G$1" pin="44" pad="44"/>
+<connect gate="G$1" pin="45" pad="45"/>
+<connect gate="G$1" pin="46" pad="46"/>
+<connect gate="G$1" pin="47" pad="47"/>
+<connect gate="G$1" pin="48" pad="48"/>
+<connect gate="G$1" pin="49" pad="49"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="50" pad="50"/>
+<connect gate="G$1" pin="51" pad="51"/>
+<connect gate="G$1" pin="52" pad="52"/>
+<connect gate="G$1" pin="53" pad="53"/>
+<connect gate="G$1" pin="54" pad="54"/>
+<connect gate="G$1" pin="55" pad="55"/>
+<connect gate="G$1" pin="56" pad="56"/>
+<connect gate="G$1" pin="57" pad="57"/>
+<connect gate="G$1" pin="58" pad="58"/>
+<connect gate="G$1" pin="59" pad="59"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="60" pad="60"/>
+<connect gate="G$1" pin="61" pad="61"/>
+<connect gate="G$1" pin="62" pad="62"/>
+<connect gate="G$1" pin="63" pad="63"/>
+<connect gate="G$1" pin="64" pad="64"/>
+<connect gate="G$1" pin="65" pad="65"/>
+<connect gate="G$1" pin="66" pad="66"/>
+<connect gate="G$1" pin="67" pad="67"/>
+<connect gate="G$1" pin="68" pad="68"/>
+<connect gate="G$1" pin="69" pad="69"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="70" pad="70"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
+<connect gate="G$1" pin="M1" pad="M1"/>
+<connect gate="G$1" pin="M2" pad="M2"/>
+<connect gate="G$1" pin="M3" pad="M3"/>
+<connect gate="G$1" pin="M4" pad="M4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="DF40-70HEAD-LESS-SILK" package="DF40-70HEAD-LESS-SILK">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="10" pad="10"/>
@@ -6272,7 +6434,7 @@ Source: amp_227161.pdf</description>
 <part name="SUPPLY3" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="jonnew" deviceset="GND" device=""/>
 <part name="U7" library="jonnew" deviceset="ICM-20948" device="_QFN_NO-PAD" value="ICM-20948_QFN_NO-PAD"/>
-<part name="J8" library="jonnew" deviceset="PINHD-2X35+4" device="_DF40-70HEAD" value="DF40C-70DP-0.4V(51)"/>
+<part name="J8" library="jonnew" deviceset="PINHD-2X35+4" device="DF40-70HEAD-LESS-SILK" value="DF40C-70DP-0.4V(51)"/>
 <part name="U3" library="jonnew" deviceset="CAT4016" device="_QFN">
 <attribute name="PARTNO" value="CAT4016HV6-GT2"/>
 </part>
