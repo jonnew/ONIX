@@ -156,12 +156,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="host.c" />
+    <ClCompile Include="testfunc.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\liboepcie\liboepcie.vcxproj">
+    <ProjectReference Include="..\liboepcie.vcxproj">
       <Project>{0b6b9aca-75de-4776-a6ca-b4123ed59f1d}</Project>
-      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="testfunc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

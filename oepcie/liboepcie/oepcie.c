@@ -619,13 +619,12 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     int rc = _oe_read_buffer(ctx, header, OE_RFRAMEHEADERSZ);
     if (rc != 0) return rc;
 
-    // Total frame size
-    int total_size = 0;
-
     // Allocate frame
     *frame = malloc(sizeof(oe_frame_t));
     oe_frame_t *f_ptr = *frame;
-    total_size += sizeof(oe_frame_t);
+
+    // Total frame size
+    int total_size = sizeof(oe_frame_t);
 
     // Copy frame header members
     // TODO: Memory continuous, can do with one call

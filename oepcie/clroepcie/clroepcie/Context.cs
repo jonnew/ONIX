@@ -194,7 +194,7 @@
             Frame frame;
             int rc = NativeMethods.oe_read_frame(handle, out frame);
             frame.Map(DeviceMap);
-            if (rc != 0) { throw new OEException(rc); }
+            if (rc < 0) { throw new OEException(rc); }
             return frame;
         }
 

@@ -4,26 +4,26 @@
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using Microsoft.Win32.SafeHandles;
-
+     
     using lib;
 
     // Make managed version of oe_frame_t
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct frame_t
     {
-        public ulong clock;         // Base clock counter
-        public ushort num_dev;      // Number of devices in frame
-        public byte corrupt;        // Is this frame corrupt?
-        public uint* dev_idxs;      // Array of device indices in frame
-        public uint dev_idxs_sz;    // Size in bytes of dev_idxs buffer
-        public uint* dev_offs;      // Device data offsets within data block
-        public uint dev_offs_sz;    // Size in bytes of dev_idxs buffer
-        public byte* data;          // Multi-device raw data block
-        public uint data_sz;        // Size in bytes of data buffer
+        public ulong clock; // Base clock counter
+        public ushort num_dev; // Number of devices in frame
+        public byte corrupt; // Is this frame corrupt?
+        public fixed uint dev_idxs[Frame.MaxDevPerFrame]; // Array of device indices in frame
+        public fixed uint dev_offs[Frame.MaxDevPerFrame]; // Device data offsets within data block
+        public byte* data; // Multi-device raw data block
+        public uint data_sz; // Size in bytes of data buffer
     }
 
     public unsafe class Frame : SafeHandleZeroOrMinusOneIsInvalid
     {
+        public const int MaxDevPerFrame = 32; // Copy from oepcie.h
+
         protected Frame() 
         : base(true)
         {
@@ -70,7 +70,7 @@
 
             // Get the read size and offset for this device
             var num_bytes = DeviceMap[dev_idx].read_size;
-            var byte_offset = *(frame->dev_offs + pos);
+            var byte_offset = frame->dev_offs[pos];
 
             var buffer = new byte[num_bytes];
             var output = new T[num_bytes / Marshal.SizeOf(default(T))];
@@ -93,8 +93,5 @@
 
         // Global device index -> device_t struct
         private Dictionary<int, device_t> DeviceMap;
-        //private frame_t frame;
-
-        //private IntPtr frame_mem;
     }
 }

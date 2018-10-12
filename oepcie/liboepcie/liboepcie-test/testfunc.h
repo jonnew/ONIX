@@ -1,6 +1,11 @@
 #ifndef OEPCIE_TESTFUNC_H
 #define OEPCIE_TESTFUNC_H
 
+#ifdef _WIN32
+#include <windows.h>
+#include <stdio.h>
+#endif
+
 int oe_cobs_stuff(uint8_t *dst, const uint8_t *src, size_t size);
 double randn(double mu, double sigma);
 

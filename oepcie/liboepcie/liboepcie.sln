@@ -5,10 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboepcie", "liboepcie.vcxproj", "{0B6B9ACA-75DE-4776-A6CA-B4123ED59F1D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboepcie-test", "..\liboepcie-test\liboepcie-test.vcxproj", "{875641A8-A2C1-4B2A-9F04-C71C3887724A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0B6B9ACA-75DE-4776-A6CA-B4123ED59F1D} = {0B6B9ACA-75DE-4776-A6CA-B4123ED59F1D}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboepcie-test", "liboepcie-test\liboepcie-test.vcxproj", "{875641A8-A2C1-4B2A-9F04-C71C3887724A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

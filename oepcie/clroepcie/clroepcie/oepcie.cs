@@ -9,28 +9,24 @@ namespace oe.lib
     {
         SUCCESS = 0,  // Success
         PATHINVALID = -1,  // Invalid stream path, fail on open
-        REINITCTX = -2,  // Double initialization attempt
-        DEVID = -3,  // Invalid device ID on init or reg op
-        READFAILURE = -4,  // Failure to read from a stream/register
-        WRITEFAILURE = -5,  // Failure to write to a stream/register
-        NULLCTX = -6,  // Attempt to call function with null ctx
-        SEEKFAILURE = -7,  // Failure to seek on stream
-        INVALSTATE = -8,  // Invalid operation for the current context run state
-        DEVIDX = -9,  // Invalid device index
+        DEVID = -2,  // Invalid device ID on init or reg op
+        DEVIDX = -3,  // Invalid device index
+        TOOMANYDEVS = -4,  // Frame holds data for more than OE_MAXDEVPERFRAME devices
+        READFAILURE = -5,  // Failure to read from a stream/register
+        WRITEFAILURE = -6,  // Failure to write to a stream/register
+        NULLCTX = -7,  // Attempt to call function w null ctx
+        SEEKFAILURE = -8,  // Failure to seek on stream
+        INVALSTATE = -9,  // Invalid operation for the current context run state
         INVALOPT = -10, // Invalid context option
         INVALARG = -11, // Invalid function arguments
-        CANTSETOPT = -12, // Option cannot be set in current context state
-        COBSPACK = -13, // Invalid COBS packet
-        RETRIG = -14, // Attempt to trigger an already triggered operation
-        BUFFERSIZE = -15, // Supplied buffer is too small
-        BADDEVMAP = -16, // Badly formated device map supplied by firmware
-        BADALLOC = -17, // Bad dynamic memory allocation
-        CLOSEFAIL = -18, // File descriptor close failure, check errno
-        DATATYPE = -19, // Invalid underlying data types
-        READONLY = -20, // Attempted write to read only object (register, context option, etc)
-        RUNSTATESYNC = -21, // Software and hardware run state out of sync
-        INVALRAWTYPE = -22, // Invalid raw data type
-        UNIMPL = -23, // Specified, but unimplemented, feature
+        COBSPACK = -12, // Invalid COBS packet
+        RETRIG = -13, // Attempt to trigger an already triggered operation
+        BUFFERSIZE = -14, // Supplied buffer is too small
+        BADDEVMAP = -15, // Badly formated device map supplied by firmware
+        BADALLOC = -16, // Bad dynamic memory allocation
+        CLOSEFAIL = -17, // File descriptor close failure, check errno
+        READONLY = -18, // Attempted write to read only object (register, context option, etc)
+        UNIMPL = -19, // Specified, but unimplemented, feature
     }
 
     // Make managed version of oe_device_t
@@ -65,8 +61,8 @@ namespace oe.lib
             LibraryVersion = new Version(major, minor, patch);
 
             // Make sure it is supported
-            if (major < 1) {
-                throw VersionNotSupported(null, ">= v1.0.0");
+            if (major < 2) {
+                throw VersionNotSupported(null, ">= v2.0.0");
             }
         }
 
@@ -113,6 +109,9 @@ namespace oe.lib
 
         [DllImport(LibraryName, CallingConvention = CCCdecl, SetLastError = true)]
         public static extern int oe_read_frame(IntPtr ctx, out Frame frame);
+
+        [DllImport(LibraryName, CallingConvention = CCCdecl, SetLastError = true)]
+        public static extern int oe_write_frame(IntPtr ctx, Frame frame);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern void oe_destroy_frame(IntPtr frame);
