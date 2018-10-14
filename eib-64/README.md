@@ -1,9 +1,13 @@
-[back](../README.md)
-
 # eib-64
-64-channel electrode interface board (EIB) with electrical and optical stimulation. Designed for small rodent tetrode electrophysiology.
+64-channel electrode interface board (EIB) with electrical and optical
+stimulation. Designed for small animal (e.g. mouse) tetrode electrophysiology.
 
-## BOM
+![eib-64](./img/eib-64.jpg)
+
+## Gerber Files
+{% include gerber_layers.md %}
+
+## Bill of Materials
 The BOM is located on [this google
 sheet](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit#gid=1934583654).
 

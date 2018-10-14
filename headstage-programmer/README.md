@@ -1,21 +1,24 @@
-[back](../README.md)
-
 # headstage-programmer
 JTAG breakout for the [Intel USB Blaster
 2](https://www.digikey.com/short/qqw7hm) used to program the headstages' MAX10
 FPGA.
 
+![headstage-programmer](./img/headstage-programmer.png)
+
 ## Purpose
 The dense layout required by the headstages in this repository makes exposing a
-FPGA programming interface challenging. We have choosen to expose a JTAG
+FPGA programming interface challenging. We have chosen to expose a JTAG
 programming interface as a linear, 50 mil pitch array of small copper ["test
 points"](https://en.wikipedia.org/wiki/Test_point). This programmer adapter
 routes JTAG signals through a set of small ["pogo
 pins"](https://en.wikipedia.org/wiki/Pogo_pin) that can reliably make a
-temporarly electrical connection with the test point array. Additionally, it
+temporary electrical connection with the test point array. Additionally, it
 contains a AAA battery and boost converter to generate power for the headstage
 during programming and to illuminate a white LED on the bottom of the board
 that eases pogo-pin/test-point alignment.
+
+## Gerber Files
+{% include gerber_layers.md %}
 
 ## BOM
 The BOM is located on [this google

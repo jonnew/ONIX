@@ -1,11 +1,14 @@
-[back](../README.md)
-
 # nanoz-adapter-128-256
 Multiplexed adapter to interface eib-128 and eib-256 with the popular
 [nanoZ](http://www.white-matter.com/nanoz/) electrode impedance tester and
 plating device.
 
-## BOM
+![nanoz-128](./img/nanoz-adapter-128-256.png)
+
+## Gerber Files
+{% include gerber_layers.md %}
+
+## Bill of Materials
 The BOM is located on [this google
 sheet](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit#gid=889124438).
 

@@ -1,40 +1,48 @@
-# Open Ephys++
-Hardware, firmware, communication protocols, and APIs for serialized, very-high
-channel count, closed-loop electrophysiology.
+__Open Ephys++__ is hardware, firmware, communication protocols,
+specifications, and APIs for serialized, very-high channel count, closed-loop
+electrophysiology. It is an evolution of the hardware and software introduced
+in [open ephys project](http://www.open-ephys.org/) and involves many of the
+same developers. The firmware and API are general purpose -- they can be used
+to acquire from and control custom headstages with arbitrary arrangements of
+sensors and actuators (e.g. cameras, bioamplifier chips, LED drivers, etc.) and
+are not limited to the hardware in this repository.
 
-__Maintainer__: [jonnew](https://github.com/jonnew)
-
-__Note__: This work is a second-order fork. It was based on the following open
-source designs:
-
-1. [Intan's headstages](http://intantech.com/index.html): no license provided.
-2. [Open Ephys headstages](https://github.com/open-ephys/headstage): Open
-   Hardware license. Based upon (1).
+This project is currently maintained by [jonnew](https://github.com/jonnew).
 
 __Citing this work__: TODO
 
 ## Features
-- Integrated electrophysiology (>1000 channels), optogenetic or electrical
-  micro stimulation (i.e. no fiber optic tether), 6 DOF pose measurement, etc.
-- Submillisecond round-trip communication with host PC's main memory
-- Data, user control, and power transmitted over one tiny coaxial cable
-- Modular design allows custom integration of individual project components.
-- Integrated electrode plating and impedance testing
-- Low profile, flat form factor headstage design which minimizes torque
-  applied to skull
-- High level language bindings and integration with [Open Ephys
+- Firmware and API permit acquisition and control of arbitrary arrangements of
+  sensors and actuators:
+
+    - Miniscopes
+    - Headstages
+    - Photometry systems
+    - Etc. 
+
+- Submillisecond round-trip communication from brain, through host PC's main
+  memory, and back again.
+- Flagship headstages:
+
+    - 64-, 128-, 256-channels of electrophysiology
+    - Optogenetic stimulation
+    - Electrical stimulation
+    - 3D-pose measurement
+    - Data, user control, and power via a tiny coaxial cable 
+    - Wireless communication 
+
+- High-level API language bindings and existing integration with [Open Ephys
   GUI](http://www.open-ephys.org/gui/) and [Bonsai](http://bonsai-rx.org/).
 - Quality documentation and easy routes to purchasing assembled devices.
 
-## Repository Contents
+## Repository Contents and Licensing
 Each top level directory of this repository corresponds to a distinct system
-module. These can be hardware components (e.g. `headstage-64`), firmware (e.g.
-`oepcie-host-firmware`), or software/APIs (e.g. `oepcie`). Each may have
-distinct contributors and/or licenses. Please refer to the README file within
-each directory for further information on usage, licensing, etc.
+module. These can be hardware components (e.g. `headstage-64`), or
+firmware/software/APIs (e.g. `oepcie`). __Each subdirectory may have distinct
+contributors and/or licenses__. Please refer to the README file within each
+directory for further information on usage, licensing, etc.
 
 ## Hardware
-
 ### [eib-64](eib-64/README.md)
 64 Channel electrode interface board. Designed for small rodent tetrode
 electrophysiology. Works with [headstage-64](./headstage-64/README.md).
@@ -51,35 +59,15 @@ electrophysiology. Works with [headstage-256](./headstage-256/README.md).
 Serialized, multifunction headstage for small rodents. Supports 64 channels.
 Designed to interface with [eib-64](./eib-64/README.md).
 
-### headstage-256 [WIP]
+### [headstage-256](headstage-256/README.md)
 Serialized, multifunction headstage for large rodents. Supports both 128 or 256
 channels. Designed to interface with [eib-128](./eib-128/README.md) or
 [eib-256](./eib-256/README.md)
 
-### headstage
-A low profile 128-channel digital headstage module for amplifying, filtering,
-and digitizing microelectrode voltage data from a rat microdrive implant. Up to
-256 wires (64 tetrodes) can be acquired by stacking two modules. _Note_ This
-design is deprecated and will be removed upon completion of headstage-256.
-
-### serdes-interface
-Data serialization board for headstage. Designed for rat tetrode
-electrophysiology. _Note_ This design is deprecated and will be removed upon
-completion of headstage-256.
-
-### pcie-host
+### [pcie-host](pcie-host/README.md)
 Base board for facilitating PCIe communication, via KC705 or similar, with host
 computer. This board fits into an empty PCIe slot and communicates with KC705
 via an FMC ribbon cable.
-
-### led-board
-Simple board for making pig-tailed, drivable stimulation LEDs for optogenetic
-manipulation.
-
-### led-flex-Board
-Simple flexible board for making pig-tailed, driveable stimulation LEDs for
-optogenetic manipulation using standard chip scale LEDs or direct-attach micro
-LEDs.
 
 ### [nanoz-adapter-64](./nanoz-adapter-64/README.md)
 Adapter to interface eib-64 with the popular
@@ -91,12 +79,12 @@ Multiplexed adapter to interface eib-128 and eib-256 with the popular
 [nanoZ](http://www.white-matter.com/nanoz/) electrode impedance tester and
 plating device.
 
-### test-board-64
+### [test-board-64](./test-board-64)
 Test board for headstage-64. Allows injecting simulated biopotentials into
 headstage modules via a selectable passive attenuator. Provides LEDs and
 simulated electrical loads for optical and electrical stimulation.
 
-### test-board-128-256
+### [test-board-128-256](./test-board-128-256)
 Test board for headstage, and headstage-256 modules. Allows injecting simulated
 biopotentials into headstage modules via a selectable passive attenuator.
 Provides LEDs and simulated electrical loads for optical and electrical
@@ -107,29 +95,15 @@ JTAG breakout for the [Intel USB Blaster 2](https://www.digikey.com/short/qqw7hm
 used to program the headstages' MAX10 FPGA.
 
 ### pcie-analog-io [WIP]
-General purpose analog IO board which sits next to pcie-host board.
+General purpose analog IO expansion board which communicates with the host
+computer via the  sits next to [pcie-host]() board.
 
 ## Software
+### [liboepcie](oepcie/README.md)
+Host API specification and implementation.
 
-### oepcie
-Host libraries and language bindings for creating software applications that
-acquire data from hardware in this project.
+## Firmware [WIP]
+Binary files for headstage and host FPGAs are available [here](TODO) Firmware
+source code is currently available under controlled release. Contact the
+maintainer for more information.
 
-## Firmware
-
-### kc705-host-firmware
-HDL code used by the KC705 to drive the host deserializer board. _Note_
-Deprecated. Will be removed upon completion of oepcie-host-firmware.
-
-### oepcie-host-firmware
-HDL code for the pcie-host board.
-
-## Bills of Materials
-The bills of materials for all hardware components can be found on [this google
-doc](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit?usp=sharing).
-Each subdirectory containing a hardware project will also have a README file
-with a link to the corresponding BOM for that specific device.
-
-## Licensing
-Each subdirectory will contain a license or, possibly, a set of licenses if it
-involves both hardware and software.

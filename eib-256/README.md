@@ -1,12 +1,13 @@
-[back](../README.md)
-
 # eib-256
 256-channel electrode interface board (EIB) with electrical and optical
-stimulation. Designed for large rodent tetrode electrophysiology.
+stimulation. Designed for large animal (e.g. rat) tetrode electrophysiology.
 
 ![eib-256](./img/eib-256.jpg)
 
-## BOM
+## Gerber Files
+{% include gerber_layers.md %}
+
+## Bill of Materials
 The BOM is located on [this google
 sheet](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit#gid=1934583654).
 

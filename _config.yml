@@ -1,1 +1,7 @@
 theme: jekyll-theme-minimal
+
+title: ["Open Ephys++"]
+
+exclude:
+    - oepcie/spec.md
+    - deprecated

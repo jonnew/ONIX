@@ -24,3 +24,6 @@ Project Logs for *
 ProjectOutputs/
 __Previews
 *.$$$
+
+# Local Jekyl build
+_site

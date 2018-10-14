@@ -1,10 +1,15 @@
-[back](../README.md)
-
-# Headstage-64
+# headstage-64
 Serialized, multifunction headstage for small rodents. Designed to function
-with [eib-64](../eib-64)
+with [eib-64](../eib-64/README.md).
 
-## BOM
+![headstage-64](./img/headstage-64.png)
+
+## Gerber Files
+{% include gerber_layers.md %}
+
+![headstage-64 Gerbers](./img/headstage-64_gerbers.png)
+
+## Bill of Materials
 The BOM is located on [this google
 sheet](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit#gid=138167638).
 
