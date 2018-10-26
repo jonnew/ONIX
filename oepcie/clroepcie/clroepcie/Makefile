@@ -1,5 +1,5 @@
-oepcie.dll: oepcie.cs
-	mcs -unsafe -t:library oepcie.cs Context.cs DispoIntPtr.cs Frame.cs OEException.cs
+oepcie.dll: oepcie.cs oedevices.cs
+	mcs -unsafe -t:library oepcie.cs oedevices.cs Context.cs Device.cs Frame.cs OEException.cs
 
 .PHONY: clean
 clean:

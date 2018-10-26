@@ -49,9 +49,9 @@
 
             var map = GetOption(Option.DEVICEMAP, size);
 
-            // TODO: This seems very inefficient. We allocate memory in value and then copy
-            // each element into device_map.  Would be better to directly provide device map's
-            // memory as buffer.
+            // TODO: This seems very inefficient. We allocate memory in value
+            // and then copy each element into device_map.  Would be better to
+            // directly provide device map's memory as buffer.
             for (int i = 0; i < num_devs; i++)
             {
                 DeviceMap.Add(i, (device_t)Marshal.PtrToStructure(map, typeof(device_t)));

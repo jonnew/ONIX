@@ -5,3 +5,6 @@ title: ["Open Ephys++"]
 exclude:
     - oepcie/spec.md
     - deprecated
+
+site.url: https://jonnew.github.io/open-ephys-pcie/
+

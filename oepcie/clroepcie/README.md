@@ -1,11 +1,47 @@
-# liboepcie CLR/.NET binding
+# clroepcie 
+CLR/.NET bindings for [`liboepcie`](../liboepcie/README.md).
 
-## Build notes
-- I removed the Any CPU build option because I don't understand how to use it properly. Instead, I build two times for each x64 and x86
-- Each build type has a post build event in which the liboepcie.dll (of appropriate architecture) is copied from the Externals folder to the target directory so that it will be included in the nuget package (I think).
+## Build
 
-## Creating the nuget package
-Use the following command:
+### Visual Studio (Windows)
+1. Open the `clrpepcie.sln` solution in visual studio. 
+2. Running the solution will combine the library and test program, and then run
+   the test program
+
+__Notes__
+
+- I removed the Any CPU build option because I don't understand how to use it
+  properly. Instead, I build two times for each x64 and x86
+- Each build type has a post build event in which the liboepcie.dll (of
+  appropriate architecture) is copied from the Externals folder to the target
+  directory so that it will be included in the nuget package.
+
+__Creating the nuget package__
 ```
 nuget pack clroepcie.csproj -properties Configuration=Release
 ```
+
+### Mono
+[Mono](https://github.com/mono/mono) is an open source .NET implementation.
+`mcs` is the mono C# compiler.
+
+```
+$ cd clroepcie
+$ make
+```
+
+## Test Programs
+The [clroepcie-test](clroepcie-test) directory contains minimal working
+programs that use this library
+
+1. `Host.exe` : Basic data acquisition loop. Communicate with
+   `liboepoe-test/firmware` or actual hardware.
+
+This will be automatically built when the visual studio solution is built. It
+can also be built using mono via
+
+```
+$ cd clroepcie-test
+$ make
+```
+

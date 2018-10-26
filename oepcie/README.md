@@ -8,7 +8,7 @@
     - [liboepcie](liboepcie) is an ANSI-C open-ephys++ API implementation.
     It contains functions for configuring and stream data to and from hardware.
     - [cppoepcie](cppoepcie) C++14 bindings for liboepcie.
-    - [clroepcie](liboepcie) .NET bindings for liboepcie.
+    - [clroepcie](clroepcie) CLR/.NET bindings for liboepcie.
 
     Example host programs for each of these libraries can be found in the
     \*-test folder within each library directory.

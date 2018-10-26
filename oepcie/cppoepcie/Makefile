@@ -1,12 +1,11 @@
-NAME    :=  liboepcie
-PREFIX  := /usr/local
+PREFIX  := /usr/local/include/
 
 .PHONY: install
-install: $(SNAME) $(DNAME)
-	@[ -d $(DESTDIR)$(PREFIX)/include/ ] || mkdir -p $(DESTDIR)$(PREFIX)/include/oepcie
-	cp oepcie.hpp oedevices.hpp $(DESTDIR)$(PREFIX)/include/
+install: 
+	@[ -d $(DESTDIR)$(PREFIX) ] || mkdir -p $(DESTDIR)$(PREFIX)oepcie
+	cp oepcie.hpp oedevices.hpp $(DESTDIR)$(PREFIX)
 
 .PHONY: uninstall
 uninstall:
-	$(RM) -r $(DESTDIR)$(PREFIX)/include/oepcie.hpp
-	$(RM) -r $(DESTDIR)$(PREFIX)/include/oedevices.hpp
+	$(RM) -r $(DESTDIR)$(PREFIX)oepcie.hpp
+	$(RM) -r $(DESTDIR)$(PREFIX)oedevices.hpp

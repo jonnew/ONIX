@@ -31,6 +31,9 @@ __Citing this work__: TODO
     - Data, user control, and power via a tiny coaxial cable 
     - Wireless communication 
 
+- Formal specifications: serialization protocols, host communication protocols,
+  and host API
+- Low-level API implementation
 - High-level API language bindings and existing integration with [Open Ephys
   GUI](http://www.open-ephys.org/gui/) and [Bonsai](http://bonsai-rx.org/).
 - Quality documentation and easy routes to purchasing assembled devices.

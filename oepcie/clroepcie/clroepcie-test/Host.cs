@@ -3,12 +3,10 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using oe;
 
-
 namespace clroepcie_test
 {
 
-
-    class DataProcessor
+class DataProcessor
 {
     private oe.Context ctx;
 
@@ -57,116 +55,125 @@ class Host
         var ver = oe.lib.NativeMethods.LibraryVersion;
         Console.WriteLine("Using liboepcie version: " + ver);
         bool running = true;
-
+        
         try
         {
-                // Open context
-                /*using (var ctx = new oe.Context("/tmp/rat128_config",
-                                                "/tmp/rat128_read",
-                                                "/tmp/rat128_signal"))*/
-                using (var ctx = new oe.Context())
-                {
+            string conf, read, sig;
+            Console.WriteLine("length {0}", args.Length);
+            if (args.Length != 0 && args.Length != 3) {
+                throw new ArgumentException("Invalid program args.");
+            } else if (args.Length == 3) {
+                conf = args[0];
+                sig = args[1];
+                read = args[2];
+            } else {
+                conf = oe.lib.NativeMethods.DefaultConfigPath;
+                read = oe.lib.NativeMethods.DefaultReadPath;
+                sig = oe.lib.NativeMethods.DefaultSignalPath;
+            }
 
-                    Console.WriteLine("Found the following devices:");
-                    foreach (var elem in ctx.DeviceMap)
-                    {
-                        var index = elem.Key;
-                        var device = elem.Value;
+            using(var ctx = new oe.Context(conf, read, sig))
+            {
 
-                        Console.WriteLine("\t{0}) ID: {1}, Read size: {2}",
-                        index,
-                        device.id,
-                        device.read_size);
-                    }
+                Console.WriteLine("Found the following devices:");
+                foreach (var elem in ctx.DeviceMap) {
+                    var index = elem.Key;
+                    var device = elem.Value;
 
-                    // See how big max frames are
-                    Console.WriteLine("Max read frame size: " + ctx.MaxReadFrameSize);
-                    Console.WriteLine("Max write frame size: " + ctx.MaxWriteFrameSize);
+                    Console.WriteLine("\t{0}) ID: {1}, Read size: {2}",
+                                      index,
+                                      device.id,
+                                      device.read_size);
+                }
 
-                    // See the hardware clock
-                    Console.WriteLine("System clock frequency: " + ctx.SystemClockHz);
+                // See how big max frames are
+                Console.WriteLine("Max read frame size: "
+                                  + ctx.MaxReadFrameSize);
+                Console.WriteLine("Max write frame size: "
+                                  + ctx.MaxWriteFrameSize);
 
-                    // Start acqusisition
-                    ctx.Start();
+                // See the hardware clock
+                Console.WriteLine("System clock frequency: "
+                                  + ctx.SystemClockHz);
 
-                    // Start processor in background
-                    var processor = new DataProcessor(ctx);
-                    var proc_thread = new Thread(new ThreadStart(processor.CaptureData));
-                    proc_thread.Start();
+                // Start acqusisition
+                ctx.Start();
 
-                    int c = 's';
-                    while (c != 'q')
-                    {
-                        Console.WriteLine("Enter a command and press enter:");
-                        Console.WriteLine("\tc - toggle 1/100 clock display");
-                        Console.WriteLine("\td - toggle 1/100 sample display");
-                        Console.WriteLine("\tp - toggle stream pause");
-                        Console.WriteLine("\tr - enter register command");
-                        Console.WriteLine("\tq - quit");
-                        Console.Write(">>> ");
+                // Start processor in background
+                var processor = new DataProcessor(ctx);
+                var proc_thread
+                    = new Thread(new ThreadStart(processor.CaptureData));
+                proc_thread.Start();
 
-                        var cmd = Console.ReadLine();
-                        c = cmd[0];
+                int c = 's';
+                while (c != 'q') {
+                    Console.WriteLine("Enter a command and press enter:");
+                    Console.WriteLine("\tc - toggle 1/100 clock display");
+                    Console.WriteLine("\td - toggle 1/100 sample display");
+                    Console.WriteLine("\tp - toggle stream pause");
+                    Console.WriteLine("\tr - enter register command");
+                    Console.WriteLine("\tq - quit");
+                    Console.Write(">>> ");
 
-                        if (c == 'p') {
-                            running = !running;
-                            if (running)
-                            {
-                                ctx.Start();
-                            }
-                            else
-                            {
-                                ctx.Stop();
-                                Console.WriteLine("\tPuased.");
-                            }
-                        } else if (c == 'c') {
-                            processor.display_clock = !processor.display_clock;
+                    var cmd = Console.ReadLine();
+                    c = cmd[0];
+
+                    if (c == 'p') {
+                        running = !running;
+                        if (running) {
+                            ctx.Start();
+                        } else {
+                            ctx.Stop();
+                            Console.WriteLine("\tPuased.");
                         }
-                        else if (c == 'd')
-                        {
-                            processor.display = !processor.display;
-                        }
-                        //else if (c == 'r') {
-
-                        //    printf("Enter dev_idx reg_addr reg_val\n");
-                        //    printf(">>> ");
-
-                        //    // Read the command
-                        //    char *buf = NULL;
-                        //    size_t len = 0;
-                        //    rc = getline(&buf, &len, stdin);
-                        //    if (rc == -1) { printf("Error: bad command\n"); continue;}
-
-                        //    // Parse the command string
-                        //    long values[3];
-                        //    rc = parse_reg_cmd(buf, values);
-                        //    if (rc == -1) { printf("Error: bad command\n"); continue;}
-                        //    free(buf);
-
-                        //    size_t dev_idx = (size_t)values[0];
-                        //    oe_reg_addr_t addr = (oe_reg_addr_t)values[1];
-                        //    oe_reg_val_t val = (oe_reg_val_t)values[2];
-
-                        //    oe_write_reg(ctx, dev_idx, addr, val);
-                        //}
+                    } else if (c == 'c') {
+                        processor.display_clock = !processor.display_clock;
+                    } else if (c == 'd') {
+                        processor.display = !processor.display;
                     }
+                    // else if (c == 'r') {
 
-                    // Join data and signal threads
-                    processor.quit = true;
+                    //    printf("Enter dev_idx reg_addr reg_val\n");
+                    //    printf(">>> ");
 
-                    // Stop hardware, join data collection thread, and reset
-                    ctx.Stop();
-                    proc_thread.Join();
-                    ctx.Reset();
+                    //    // Read the command
+                    //    char *buf = NULL;
+                    //    size_t len = 0;
+                    //    rc = getline(&buf, &len, stdin);
+                    //    if (rc == -1) { printf("Error: bad command\n");
+                    //    continue;}
 
-                } // ctx.Dispose() is called.
+                    //    // Parse the command string
+                    //    long values[3];
+                    //    rc = parse_reg_cmd(buf, values);
+                    //    if (rc == -1) { printf("Error: bad command\n");
+                    //    continue;}
+                    //    free(buf);
 
-        }
-        catch (OEException ex)
-        {
-            Console.Error.WriteLine("liboepcie failed with the following error: " + ex.ToString());
-            Console.Error.WriteLine("Current errno: " + Marshal.GetLastWin32Error());
+                    //    size_t dev_idx = (size_t)values[0];
+                    //    oe_reg_addr_t addr = (oe_reg_addr_t)values[1];
+                    //    oe_reg_val_t val = (oe_reg_val_t)values[2];
+
+                    //    oe_write_reg(ctx, dev_idx, addr, val);
+                    //}
+                }
+
+                // Join data and signal threads
+                processor.quit = true;
+
+                // Stop hardware, join data collection thread, and reset
+                ctx.Stop();
+                proc_thread.Join();
+                ctx.Reset();
+
+            } // ctx.Dispose() is called.
+
+        } catch (OEException ex) {
+            Console.Error.WriteLine("Host.exe failed with the following error: "
+                                    + ex.ToString());
+            Console.Error.WriteLine("Current errno: "
+                                    + Marshal.GetLastWin32Error());
         }
     }
-}
-}
+    }
+    }

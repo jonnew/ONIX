@@ -11,7 +11,7 @@
 #include <oedevices.hpp>
 
 // Dump raw device streams to files?
-#define DUMPFILES
+//#define DUMPFILES
 
 #ifdef DUMPFILES
 std::vector<FILE *> dump_files;
