@@ -16,7 +16,7 @@
 #include "testfunc.h"
 
 // Number of samples generate 
-const int num_samp = 10e6; // -1; // TODO: program option
+int num_samp = -1;
 timespec_t start_time, end_time;
 
 // Data acq. params
@@ -311,8 +311,24 @@ void *data_loop(void *vargp)
     return NULL;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    if (argc != 1 && argc != 2) {
+usage:
+        printf("usage:\n");
+        printf("\tfirmware: generate fake dataa indefinately\n");
+        printf("\tfirmware num_frames: create a single, static frame and push "
+               "it num_frames times for performance testing.\n");
+        exit(1);
+    }
+
+    if (argc == 2) {
+        num_samp = atoi(argv[1]);
+
+        if (num_samp <= 0)
+            goto usage;
+    }
+
     // Start fresh
     unlink(sig_path);
     unlink(data_path);

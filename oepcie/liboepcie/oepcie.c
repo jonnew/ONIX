@@ -46,21 +46,39 @@ typedef uint32_t oe_reg_val_t;
 // NB: This defines a minimum delay for real-time processing. Larger values
 // will burn less CPU time but result in larger delays with respect to the
 // sensors
-#define OE_READSIZE 512
+#define OE_READSIZE 512 // e.g 2048, 1024, 512
 
-typedef struct stream_fid {
+struct stream_fid {
     char *path;
     int fid;
-} stream_fid_t;
+};
 
-// Context implementation
-typedef struct oe_ctx_impl {
+struct ref {
+    void (*free)(const struct ref *);
+    int count;
+};
+
+// Reference-counted buffer
+struct oe_buf_impl {
+
+    // Raw data buffer
+    uint8_t *buffer;
+    uint8_t *read_pos;
+    uint8_t *end_pos;
+
+    // Reference count
+    struct ref count;
+
+};
+
+// Acqusition context
+struct oe_ctx_impl {
 
     // Communication channels
-    stream_fid_t config;
-    stream_fid_t read;
-    stream_fid_t write;
-    stream_fid_t signal;
+    struct stream_fid config;
+    struct stream_fid read;
+    struct stream_fid write;
+    struct stream_fid signal;
 
     // Devices
     oe_size_t num_dev;
@@ -70,10 +88,8 @@ typedef struct oe_ctx_impl {
     oe_size_t max_read_frame_size;
     oe_size_t max_write_frame_size;
 
-    // Data buffer
-    uint8_t *buffer;
-    uint8_t *buff_read_pos;
-    uint8_t *buff_end_pos;
+    // Current, attached buffer
+    struct oe_buf_impl *shared_buf;
 
     // Acqusition state
     enum {
@@ -83,7 +99,7 @@ typedef struct oe_ctx_impl {
         RUNNING
     } run_state;
 
-} oe_ctx_impl_t;
+};
 
 // Signal flags
 typedef enum oe_signal {
@@ -125,7 +141,10 @@ static int _oe_pump_signal_data(int signal_fd, int flags, oe_signal_t *type, voi
 static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size);
 static int _oe_write_config(int config_fd, oe_conf_off_t write_offset, oe_reg_val_t value);
 static int _oe_read_config(int config_fd, oe_conf_off_t read_offset, oe_reg_val_t *value);
-static int _oe_read_buffer(oe_ctx ctx, void *data, size_t size);
+static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size);
+static void _oe_destroy_buffer(const struct ref *ref);
+static inline void _ref_inc(const struct ref *ref);
+static inline void _ref_dec(const struct ref *ref);
 #ifdef OE_BE
 //static int _oe_array_bswap(void *data, oe_raw_t type, size_t size);
 static int _device_map_byte_swap(oe_ctx ctx);
@@ -241,10 +260,6 @@ int oe_init_ctx(oe_ctx ctx)
 #ifdef OE_BE
     _device_map_byte_swap(ctx);
 #endif
-
-    // Initialize buffer
-    ctx->buff_read_pos = NULL;
-    ctx->buff_end_pos = NULL;
 
     // We are now initialized and idle
     ctx->run_state = IDLE;
@@ -615,49 +630,52 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     assert(ctx->run_state >= IDLE && "Context is not acquiring.");
 
     // Get the header and figure out how many devies are in the frame
-    uint8_t header[OE_RFRAMEHEADERSZ];
-    int rc = _oe_read_buffer(ctx, header, OE_RFRAMEHEADERSZ);
+    uint8_t *header = NULL;
+    int rc = _oe_read_buffer(ctx, (void **)&header, OE_RFRAMEHEADERSZ);
     if (rc != 0) return rc;
 
     // Allocate frame
     *frame = malloc(sizeof(oe_frame_t));
-    oe_frame_t *f_ptr = *frame;
+    oe_frame_t *fptr = *frame;
 
     // Total frame size
     int total_size = sizeof(oe_frame_t);
 
-    // Copy frame header members
-    // TODO: Memory continuous, can do with one call
-    memcpy(&f_ptr->clock, header, sizeof(uint64_t));
-    memcpy(&f_ptr->num_dev,header + OE_RFRAMENDEVOFF, sizeof(uint16_t));
-    memcpy(&f_ptr->corrupt, header + OE_RFRAMENERROFF, sizeof(uint8_t));
+    // Copy frame header members (contiuous)
+    // 1. clock (8)
+    // 2. n_dev (2)
+    // 3. corrupt (1)
+    memcpy(&fptr->clock, header, sizeof(uint64_t) + sizeof(uint16_t) + sizeof(uint8_t));
 
-    if (f_ptr->num_dev > OE_MAXDEVPERFRAME) return OE_ETOOMANYDEVS;
+    // TODO: Is it really worth saving a malloc here?
+    // num_dev is fixed length array
+    if (fptr->num_dev > OE_MAXDEVPERFRAME) return OE_ETOOMANYDEVS;
 
     // Read device indices that are in this frame
     rc = _oe_read_buffer(
-        ctx, f_ptr->dev_idxs, f_ptr->num_dev * sizeof(oe_size_t));
+        ctx, (void **)&fptr->dev_idxs, fptr->num_dev * sizeof(oe_size_t));
     if (rc != 0) return rc;
 
     // Find data read size
     uint16_t i;
     int rsize = 0;
-    for (i = 0; i < f_ptr->num_dev; i++) {
-        *(f_ptr->dev_offs + i) = rsize;
-        rsize += ctx->dev_map[*(f_ptr->dev_idxs + i)].read_size;
+    for (i = 0; i < fptr->num_dev; i++) {
+        fptr->dev_offs[i] = rsize;
+        rsize += ctx->dev_map[*(fptr->dev_idxs + i)].read_size;
     }
 
-    // Read size + padding
+    // Find read size (+ padding)
     rsize += rsize % 4;
-
-    // Now we know the frame data size, so we allocate
-    f_ptr->data_sz = rsize;
-    f_ptr->data = malloc(rsize);
+    fptr->data_sz = rsize;
     total_size += rsize;
 
     // Read data
-    rc = _oe_read_buffer(ctx, f_ptr->data, rsize);
+    rc = _oe_read_buffer(ctx, (void **)&fptr->data, rsize);
     if (rc != 0) return rc;
+
+    // Update buffer ref count and provide reference to frame
+    _ref_inc(&(ctx->shared_buf->count));
+    fptr->buffer = ctx->shared_buf;
 
     return total_size;
 }
@@ -689,9 +707,8 @@ void oe_destroy_frame(oe_frame_t *frame)
 {
     if (frame != NULL) {
 
-        // Free frame data
-        if (frame->data != NULL)
-            free(frame->data);
+        // Decrement buffer reference count
+        _ref_dec(&(frame->buffer->count));
 
         // Free the container
         free(frame);
@@ -946,7 +963,7 @@ static int _oe_pump_signal_data(
 static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size)
 {
     // Minimal COBS packet is 1 overhead byte + 1 data byte
-    // Maximal COBS packet is 1 overhead byte + 254 datate bytes
+    // Maximal COBS packet is 1 overhead byte + 254 data bytes
     assert(size >= 2 && size <= 255 && "Invalid COBS packet buffer size.");
 
     const uint8_t *end = src + size;
@@ -988,38 +1005,78 @@ static int _oe_read_config(int config_fd,
     return 0;
 }
 
-static int _oe_read_buffer(oe_ctx ctx, void *data, size_t size)
+static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
 {
     // Check if we have less than size remaining
-    size_t remaining = ctx->buff_end_pos - ctx->buff_read_pos;
+    size_t remaining;
+    if (ctx->shared_buf != NULL)
+        remaining = ctx->shared_buf->end_pos - ctx->shared_buf->read_pos;
+    else
+        remaining = 0;
 
-    // Buffer reup?
-    if (remaining < size) {
+    // NB: Frames must reference a single buffer, so we must refill if less
+    // than max possible frame size. Making this limit smaller will result in
+    // memory corruption, so don't do it.
+    if (remaining < ctx->max_read_frame_size) {
 
-        // Allocate space in buffer
-        uint8_t *old_buffer = ctx->buffer;
-        ctx->buffer = malloc(remaining + OE_READSIZE);
+        // New buffer allocated, old_buffer saved
+        struct oe_buf_impl *old_buffer = ctx->shared_buf;
+        ctx->shared_buf = malloc(sizeof(struct oe_buf_impl));
+
+        // Allocate data block in buffer
+        ctx->shared_buf->buffer = malloc(remaining + OE_READSIZE);
 
         // Transfer remaining data to new buffer
         if (old_buffer != NULL) {
-            memcpy(ctx->buffer, ctx->buff_read_pos, remaining);
-            free(old_buffer);
+
+            // Context releases control of old buffer
+            memcpy(ctx->shared_buf->buffer, old_buffer->read_pos, remaining);
+            _ref_dec(&(old_buffer->count));
         }
 
-        // Reset read and end positions
-        ctx->buff_read_pos = ctx->buffer;
-        ctx->buff_end_pos = ctx->buffer + remaining + OE_READSIZE;
+        // (Re)set buffer state
+        ctx->shared_buf->count = (struct ref) {_oe_destroy_buffer, 1};
+        ctx->shared_buf->read_pos = ctx->shared_buf->buffer;
+        ctx->shared_buf->end_pos = ctx->shared_buf->buffer + remaining + OE_READSIZE;
 
-        // Fill the buffer
-        int rc = _oe_read(ctx->read.fid, ctx->buffer + remaining, OE_READSIZE);
+        // Fill the buffer with new data
+        int rc = _oe_read(ctx->read.fid, ctx->shared_buf->buffer + remaining, OE_READSIZE);
         if (rc != OE_READSIZE) return rc;
     }
 
-    // Read from buffer
-    memcpy(data, ctx->buff_read_pos, size);
-    ctx->buff_read_pos += size;
+    // "Read" (reference) buffer and update buffer read position
+    *data = ctx->shared_buf->read_pos;
+    ctx->shared_buf->read_pos += size;
 
     return 0;
+}
+
+// NB: Used to get buffer holding a given reference count for buffer freeing
+#define container_of(ptr, type, member) \
+    ((type *)((char *)(ptr) - offsetof(type, member)))
+
+static void _oe_destroy_buffer(const struct ref *ref)
+{
+    struct oe_buf_impl *buf = container_of(ref, struct oe_buf_impl, count);
+    free(buf->buffer);
+    free(buf);
+}
+
+static inline void _ref_inc(const struct ref *ref)
+{
+    // TODO: If _oe_read_buffer and oe_read_frame can be proven thread safe
+    // __sync_add_and_fetch((int *)&ref->count, 1);
+
+    ((struct ref *)ref)->count++;
+}
+
+static inline void _ref_dec(const struct ref *ref)
+{
+    // TODO: If _oe_read_buffer and oe_read_frame can be proven thread safe
+    //if (__sync_sub_and_fetch((int *)&ref->count, 1) == 0)
+
+    if (--((struct ref *)ref)->count == 0)
+        ref->free(ref);
 }
 
 #ifdef OE_BE

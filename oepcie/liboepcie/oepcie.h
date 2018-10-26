@@ -60,15 +60,25 @@ typedef struct {
                             // a full output sample
 } oe_device_t;
 
+// Opaque handle to reference counting buffer.
+typedef struct oe_buf_impl *oe_buffer;
+
 // Frame type
 typedef struct oe_frame {
+
+    // Header 
     uint64_t clock;                         // Base clock counter
     uint16_t num_dev;                       // Number of devices in frame
     uint8_t corrupt;                        // Is this frame corrupt?
-    oe_size_t dev_idxs[OE_MAXDEVPERFRAME];  // Array of device indices in frame
-    oe_size_t dev_offs[OE_MAXDEVPERFRAME];  // Device data offsets within data block
+
+    // Data
+    oe_size_t *dev_idxs;                    // Array of device indices in frame
+    oe_size_t dev_offs[OE_MAXDEVPERFRAME];  // Device data offsets within data block 
     uint8_t *data;                          // Multi-device raw data block
     oe_size_t data_sz;                      // Size in bytes of data buffer
+
+    // External buffer, don't touch
+    oe_buffer buffer;                       // Handle to external buffer
 
 } oe_frame_t;
 
