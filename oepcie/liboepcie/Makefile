@@ -3,7 +3,8 @@
 # make install                  // Installs library at default PREFIX
 # make install PREFIX=somedir   // Installs library in somedir
 # make debug                    // Makes the library with debug symbols
-# make ENDFLAG=OE_BIGEND        // Turn on hardware endianess conversion
+# make DEFS=-DOE_BIGEND         // Turn on hardware endianess conversion
+# make DEFS=-DOE_READSIZE=1024  // Define the block read size
 SHELL   :=  /bin/bash
 NAME    :=  liboepcie
 SNAME   :=  $(NAME).a
@@ -12,7 +13,7 @@ DNAMELN :=  $(NAME).so
 HDR     :=  $(wildcard *.h)
 SRC     :=  $(wildcard *.c)
 OBJ     :=  $(SRC:.c=.o)
-CFLAGS  :=  -pedantic -Wall -W -Werror -fPIC -O3 $(ENDFLAG)
+CFLAGS  :=  -pedantic -Wall -W -Werror -fPIC -O3 $(DEFS)
 LDFLAGS :=  -L.
 PREFIX  := /usr/local
 

@@ -45,8 +45,12 @@ typedef uint32_t oe_reg_val_t;
 // Bytes per read() syscall on the data input stream
 // NB: This defines a minimum delay for real-time processing. Larger values
 // will burn less CPU time but result in larger delays with respect to the
-// sensors
-#define OE_READSIZE 512 // e.g 2048, 1024, 512
+// sensors. e.g 512, 1024, 2048 -> increasing delay
+#ifndef OE_READSIZE
+#define OE_RSIZE 512 // Default to small value
+#else
+#define OE_RSIZE OE_READSIZE
+#endif
 
 struct stream_fid {
     char *path;
@@ -132,7 +136,7 @@ typedef enum oe_conf_reg_off {
 } oe_conf_off_t;
 
 // Static helpers
-static int _oe_read(int data_fd, void* data, size_t size);
+static inline int _oe_read(int data_fd, void* data, size_t size);
 //static inline int _oe_write(int data_fd, char* data, size_t size);
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer);
 static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, size_t size);
@@ -254,7 +258,7 @@ int oe_init_ctx(oe_ctx ctx)
 #endif
     }
 
-    assert(ctx->max_read_frame_size < OE_READSIZE &&
+    assert(ctx->max_read_frame_size < OE_RSIZE &&
         "Block read size is too small given the possible frame size.");
 
 #ifdef OE_BE
@@ -794,7 +798,7 @@ const char *oe_error_str(int err)
     }
 }
 
-static int _oe_read(int data_fd, void *data, size_t size)
+static inline int _oe_read(int data_fd, void *data, size_t size)
 {
     size_t received = 0;
 
@@ -1007,7 +1011,7 @@ static int _oe_read_config(int config_fd,
 
 static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
 {
-    // Check if we have less than size remaining
+    // Remaining bytes in buffer
     size_t remaining;
     if (ctx->shared_buf != NULL)
         remaining = ctx->shared_buf->end_pos - ctx->shared_buf->read_pos;
@@ -1024,7 +1028,7 @@ static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
         ctx->shared_buf = malloc(sizeof(struct oe_buf_impl));
 
         // Allocate data block in buffer
-        ctx->shared_buf->buffer = malloc(remaining + OE_READSIZE);
+        ctx->shared_buf->buffer = malloc(remaining + OE_RSIZE);
 
         // Transfer remaining data to new buffer
         if (old_buffer != NULL) {
@@ -1037,11 +1041,11 @@ static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
         // (Re)set buffer state
         ctx->shared_buf->count = (struct ref) {_oe_destroy_buffer, 1};
         ctx->shared_buf->read_pos = ctx->shared_buf->buffer;
-        ctx->shared_buf->end_pos = ctx->shared_buf->buffer + remaining + OE_READSIZE;
+        ctx->shared_buf->end_pos = ctx->shared_buf->buffer + remaining + OE_RSIZE;
 
         // Fill the buffer with new data
-        int rc = _oe_read(ctx->read.fid, ctx->shared_buf->buffer + remaining, OE_READSIZE);
-        if (rc != OE_READSIZE) return rc;
+        int rc = _oe_read(ctx->read.fid, ctx->shared_buf->buffer + remaining, OE_RSIZE);
+        if (rc != OE_RSIZE) return rc;
     }
 
     // "Read" (reference) buffer and update buffer read position
@@ -1051,7 +1055,8 @@ static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
     return 0;
 }
 
-// NB: Used to get buffer holding a given reference count for buffer freeing
+// NB: Stolen from Linux kernel. Used to get the buffer holding a given
+// reference count for buffer freeing.
 #define container_of(ptr, type, member) \
     ((type *)((char *)(ptr) - offsetof(type, member)))
 
@@ -1065,17 +1070,17 @@ static void _oe_destroy_buffer(const struct ref *ref)
 static inline void _ref_inc(const struct ref *ref)
 {
     // TODO: If _oe_read_buffer and oe_read_frame can be proven thread safe
-    // __sync_add_and_fetch((int *)&ref->count, 1);
+    __sync_add_and_fetch((int *)&ref->count, 1);
 
-    ((struct ref *)ref)->count++;
+    //((struct ref *)ref)->count++;
 }
 
 static inline void _ref_dec(const struct ref *ref)
 {
     // TODO: If _oe_read_buffer and oe_read_frame can be proven thread safe
-    //if (__sync_sub_and_fetch((int *)&ref->count, 1) == 0)
+    if (__sync_sub_and_fetch((int *)&ref->count, 1) == 0)
 
-    if (--((struct ref *)ref)->count == 0)
+    //if (--((struct ref *)ref)->count == 0)
         ref->free(ref);
 }
 
