@@ -1,4 +1,4 @@
-__Open Ephys++__ is hardware, firmware, communication protocols,
+[__Open Ephys++__](https://jonnew.github.io/open-ephys-pcie/) is hardware, firmware, communication protocols,
 specifications, and APIs for serialized, very-high channel count, closed-loop
 electrophysiology. It is an evolution of the hardware and software introduced
 in [open ephys project](http://www.open-ephys.org/) and involves many of the

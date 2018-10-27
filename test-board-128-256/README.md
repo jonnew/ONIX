@@ -1,5 +1,5 @@
 # test-board-128-256
-Test board for headstage, and headstage-256 modules. Allows injecting simulated
+Test board for [headstage-256](../headstage-256). Allows injecting simulated
 biopotentials into headstage modules via a selectable passive attenuator.
 Provides LEDs and simulated electrical loads for optical and electrical
 stimulation.

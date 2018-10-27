@@ -19,7 +19,7 @@ programs that use this library
 1. `host` : Basic data acquisition loop. Communicate with `liboepoe-test/firmware` or actual
    hardware.
 
-## Performance testing with google perftools (Linux only)
+## Performance testing
 1. Install google perftools:
 ```
 $ sudo apt-get install google-perftools

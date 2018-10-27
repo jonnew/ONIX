@@ -8,24 +8,24 @@ $ make <options>
 $ make install PREFIX=/path/to/install
 ```
 to place headers in whatever path is specified by PREFIX. PREFIX defaults to
-`/usr/lib/include`. You can uninstall (delete headers and libraries) via 
+`/usr/lib/include`. You can uninstall (delete headers and libraries) via
 ```
 $ make uninstall PREFIX=/path/to/uninstall
 ```
 
 ## Test Programs
-The [liboepcie-test](liboepcie-test) directory contains minimal working programs that use this library. 
+The [liboepcie-test](liboepcie-test) directory contains minimal working programs that use this library.
 
 1. `firmware` : Emulate hardware. Stream fake data over UNIX pipes (Linux only)
 1. `host` : Basic data acquisition loop. Communicate with `firmware` or actual
    hardware.
 
-## Performance testing with google perftools
-1. Install google perftools: 
+## Performance testing
+1. Install google perftools:
 ```
 $ sudo apt-get install google-perftools
 ```
-2. Link test programs against the CPU profiler: 
+2. Link test programs against the CPU profiler:
 ```
 $ cd liboepcie-test
 $ make profile
@@ -38,7 +38,7 @@ $ make profile
 $ cd bin
 $ ./firmware 10e6
 ```
-4. Run the `host` program while dumping profile info: 
+4. Run the `host` program while dumping profile info:
 ```
 $ env CPUPROFILE=/tmp/host.prof ./host /tmp/xillybus_cmd_mem_32 /tmp/xillybus_async_read_8 /tmp/xillybus_data_read_32
 ```
