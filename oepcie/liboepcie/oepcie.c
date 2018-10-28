@@ -12,6 +12,8 @@
 #define write _write
 #define close _close
 #define lseek _lseek
+#pragma intrinsic (_InterlockedIncrement)
+#pragma intrinsic (_InterlockedDecrement)
 #else
 #include <unistd.h>
 #define _O_BINARY 0
@@ -1069,18 +1071,20 @@ static void _oe_destroy_buffer(const struct ref *ref)
 
 static inline void _ref_inc(const struct ref *ref)
 {
-    // TODO: If _oe_read_buffer and oe_read_frame can be proven thread safe
+#ifdef _WIN32
+    _InterlockedIncrement((int *)&ref->count);
+#else
     __sync_add_and_fetch((int *)&ref->count, 1);
-
-    //((struct ref *)ref)->count++;
+#endif
 }
 
 static inline void _ref_dec(const struct ref *ref)
 {
-    // TODO: If _oe_read_buffer and oe_read_frame can be proven thread safe
+#ifdef _WIN32
+    if (_InterlockedDecrement((int *)&ref->count) == 0)
+#else
     if (__sync_sub_and_fetch((int *)&ref->count, 1) == 0)
-
-    //if (--((struct ref *)ref)->count == 0)
+#endif
         ref->free(ref);
 }
 
