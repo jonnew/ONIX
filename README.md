@@ -12,6 +12,9 @@ This project is currently maintained by [jonnew](https://github.com/jonnew).
 __Citing this work__: TODO
 
 ## Features
+
+[![Join the chat at https://gitter.im/open-ephys-pcie/Lobby](https://badges.gitter.im/open-ephys-pcie/Lobby.svg)](https://gitter.im/open-ephys-pcie/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 - Firmware and API permit acquisition and control of arbitrary arrangements of
   sensors and actuators:
 
