@@ -6,14 +6,10 @@
     
     public static class Device
     {
-        public static string Name(int id)
-        {
-            return Marshal.PtrToStringAnsi(NativeMethods.oe_device_str(id));
-        }
-
+        // Global device enumeration (see oedevices.c)
         public enum DeviceID
         {
-            IMMEDIATEIO = 0,
+            INFO = 0,
             RHD2132 = 1,
             RHD2164 = 2,
             MPU9250 = 3,
@@ -25,77 +21,49 @@
             DOUTPUT32 = 9
         }
 
-        // ** IMMEDIATEIO device configuration registers **
-        // TODO
-
-        // ** RHD2132 device configuration registers **
-        // TODO
-
-        // ** RHD2164 device configuration registers **
-        // TODO
-
-        // ** MPU9250 device configuration registers **
-        // TODO
-
-        public enum EstimRegister
+        public static string Name(int id)
         {
-            NULLPARM = 0,  // No command
-            BIPHASIC = 1,  // Biphasic pulse (0 = monophasic, 1 = biphasic; NB: currently ignored)
-            CURRENT1 = 2,  // Phase 1 current, (0 to 255 = -1.5 mA to +1.5mA)
-            CURRENT2 = 3,  // Phase 2 voltage, (0 to 255 = -1.5 mA to +1.5mA)
-            PULSEDUR1 = 4,  // Phase 1 duration, 10 microsecond steps
-            IPI = 5,  // Inter-phase interval, 10 microsecond steps
-            PULSEDUR2 = 6,  // Phase 2 duration, 10 microsecond steps
-            PULSEPERIOD = 7,  // Inter-pulse interval, 10 microsecond steps
-            BURSTCOUNT = 8,  // Burst duration, number of pulses in burst
-            IBI = 9,  // Inter-burst interval, microseconds
-            TRAINCOUNT = 10, // Pulse train duration, number of bursts in train
-            TRAINDELAY = 11, // Pulse train delay, microseconds
-            TRIGGER = 12, // Trigger stimulation (1 = deliver)
-            POWERON = 13, // Control estim sub-circuit power (0 = off, 1 = on)
-            ENABLE = 14, // Control null switch (0 = stim output shorted to ground, 1 = stim output attached to electrode during pulses)
-            RESTCURR = 15, // Resting current between pulse phases, (0 to 255 = -1.5 mA to +1.5mA)
-            RESET = 16, // Reset all parameters to default
+            return Marshal.PtrToStringAnsi(NativeMethods.oe_device_str(id));
         }
 
-         public enum OstimRegsiter
-        {
-            OSTIM_NULLPARM = 0,  // No command
-            OSTIM_MAXCURRENT = 2,  // Max LED/LD current, (0 to 255 = 0 to 800mA)
-            OSTIM_CURRENTLVL = 3,  // Selected current level (0 to 7. Fraction of max current delivered)
-            OSTIM_PULSEDUR = 5,  // Pulse duration, 10 microsecond steps
-            OSTIM_PULSEPERIOD = 6,  // Inter-pulse interval, 10 microsecond steps
-            OSTIM_BURSTCOUNT = 7,  // Burst duration, number of pulses in burst
-            OSTIM_IBI = 8,  // Inter-burst interval, microseconds
-            OSTIM_TRAINCOUNT = 9,  // Pulse train duration, number of bursts in train
-            OSTIM_TRAINDELAY = 10, // Pulse train delay, microseconds
-            OSTIM_TRIGGER = 11, // Trigger stimulation (1 = deliver)
-            OSTIM_ENABLE = 12, // Control null switch (0 = stim output shorted to ground, 1 = stim output attached to electrode during pulses)
-            OSTIM_RESTCURR = 13, // Resting current between pulse phases, (0 to 255 = -1.5 mA to +1.5mA)
-            OSTIM_RESET = 14, // Reset all parameters to default
-        }
+        // TODO: Everything below needs to be moved to appropriate device class once it exists
 
-        public enum SerdesGPORegister
-        {
-            SERDESGPO_NULLPARM = 0, // No command
-            SERDESGPO_NUM = 1, // Select a GPO pin to control (0-3)
-            SERDESGPO_STATE = 2, // Set the state of the selected pin (0 = LOW, other = HIGH)
-            SERDESGPO_RESET = 3, // Reset all parameters to default pull all GPO pins LOW.
-        }
 
-        enum DigitalInput32Register
-        {
-            DINPUT32_NULLPARM = 0, // No command
-            DINPUT32_NUM = 1, // Select a digital input pin to control (0-31)
-            DINPUT32_TERM = 2, // Toggle 50 ohm termination (0 = Off, other = On)
-            DINPUT32_LLEVEL = 3, // Set logic threshold level (0-255, actual voltage depends on circuitry)
-        }
+        // TODO: Move to OStim device
+        // public enum OstimRegsiter
+        //{
+        //    OSTIM_NULLPARM = 0,  // No command
+        //    OSTIM_MAXCURRENT = 2,  // Max LED/LD current, (0 to 255 = 0 to 800mA)
+        //    OSTIM_CURRENTLVL = 3,  // Selected current level (0 to 7. Fraction of max current delivered)
+        //    OSTIM_PULSEDUR = 5,  // Pulse duration, 10 microsecond steps
+        //    OSTIM_PULSEPERIOD = 6,  // Inter-pulse interval, 10 microsecond steps
+        //    OSTIM_BURSTCOUNT = 7,  // Burst duration, number of pulses in burst
+        //    OSTIM_IBI = 8,  // Inter-burst interval, microseconds
+        //    OSTIM_TRAINCOUNT = 9,  // Pulse train duration, number of bursts in train
+        //    OSTIM_TRAINDELAY = 10, // Pulse train delay, microseconds
+        //    OSTIM_TRIGGER = 11, // Trigger stimulation (1 = deliver)
+        //    OSTIM_ENABLE = 12, // Control null switch (0 = stim output shorted to ground, 1 = stim output attached to electrode during pulses)
+        //    OSTIM_RESTCURR = 13, // Resting current between pulse phases, (0 to 255 = -1.5 mA to +1.5mA)
+        //    OSTIM_RESET = 14, // Reset all parameters to default
+        //}
 
-        enum DigitalOutput32Register
-        {
-            DOUTPUT32_NULLPARM = 0, // No command
-            DOUTPUT32_STATE = 1, // Set the port state (32-bit unsigned integer)
-            DOUTPUT32_LLEVEL = 2, // Set logic threshold level (0-255, actual voltage depends on circuitry)
-        };
+        // TODO: Move to SerdesGPO
+        //public enum SerdesGPORegister
+        //{
+        //    SERDESGPO_NULLPARM = 0, // No command
+        //    SERDESGPO_NUM = 1, // Select a GPO pin to control (0-3)
+        //    SERDESGPO_STATE = 2, // Set the state of the selected pin (0 = LOW, other = HIGH)
+        //    SERDESGPO_RESET = 3, // Reset all parameters to default pull all GPO pins LOW.
+        //}
+
+
+
+        // TODO: Move to DigitalOutput32
+        //enum DigitalOutput32Register
+        //{
+        //    DOUTPUT32_NULLPARM = 0, // No command
+        //    DOUTPUT32_STATE = 1, // Set the port state (32-bit unsigned integer)
+        //    DOUTPUT32_LLEVEL = 2, // Set logic threshold level (0-255, actual voltage depends on circuitry)
+        //};
     }
 }

@@ -7,6 +7,7 @@
 #include <sstream>
 #include <string>
 
+#include <testfunc.h>
 #include <oepcie.hpp>
 #include <oedevices.hpp>
 
