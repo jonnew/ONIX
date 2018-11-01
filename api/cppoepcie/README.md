@@ -45,3 +45,6 @@ $ env CPUPROFILE=/tmp/host.prof ./host /tmp/xillybus_cmd_mem_32 /tmp/xillybus_as
 ```
 $ pprof ./host /tmp/host.prof
 ```
+
+## License
+[MIT](https://en.wikipedia.org/wiki/MIT_License)

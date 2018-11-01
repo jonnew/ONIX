@@ -5,10 +5,10 @@ CLR/.NET bindings for [`liboepcie`](../liboepcie/README.md).
 
 ### Visual Studio (Windows)
 1. Open the `clrpepcie.sln` solution in visual studio. 
-2. Running the solution will combine the library and test program, and then run
-   the test program
+2. "Running" the solution will compile the library and test program, and then
+   run the test program
 
-__Notes__
+__Notes (aka please help...)__
 
 - I removed the Any CPU build option because I don't understand how to use it
   properly. Instead, I build two times for each x64 and x86
@@ -45,3 +45,5 @@ $ cd clroepcie-test
 $ make
 ```
 
+## License
+[MIT](https://en.wikipedia.org/wiki/MIT_License)

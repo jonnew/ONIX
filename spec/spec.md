@@ -1,7 +1,7 @@
 ---
 title: |
     Open Ephys++ Communication Protocol and API Specification \
-    Version 0.0
+    Version 0.1
 author: Jonathan P. Newman, Wilson Lab, MIT
 institution:
 date: \today{}
@@ -38,6 +38,10 @@ abstract: |
 - Cross platform
 - Low level: aimed at the creation of language bindings and
   application-specific libraries
+
+\newpage
+# Headstage Serialization Protocol {#ser-protocol}
+TODO
 
 \newpage
 # FPGA/Host PC communication {#comm-protocol}
@@ -238,6 +242,11 @@ input channel.
 
 \newpage
 
+\newpage
+# Device Driver Specification  {#driver-protocol}
+TODO
+
+\newpage
 # Required API Types and Behavior {#api-spec}
 In the following sections we define required API datatypes and how they are
 used by the API to communicate with hardware. An implementation of this API,

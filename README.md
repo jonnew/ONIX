@@ -1,24 +1,27 @@
-[__Open Ephys++__](https://jonnew.github.io/open-ephys-pcie/) is hardware, firmware, communication protocols,
-specifications, and APIs for serialized, very-high channel count, closed-loop
-electrophysiology. It is an evolution of the hardware and software introduced
-in [open ephys project](http://www.open-ephys.org/) and involves many of the
-same developers. The firmware and API are general purpose -- they can be used
-to acquire from and control custom headstages with arbitrary arrangements of
-sensors and actuators (e.g. cameras, bioamplifier chips, LED drivers, etc.) and
-are not limited to the hardware in this repository.
+[__Open Ephys++__](https://jonnew.github.io/open-ephys-pcie/) is hardware,
+firmware, communication protocols, specifications, and APIs for serialized,
+very-high channel count, closed-loop electrophysiology. It is an evolution of
+the hardware and software introduced in [Open Ephys
+project](http://www.open-ephys.org/) and involves many of the same developers.
+The firmware and API are general purpose -- they can be used to acquire from
+and control custom headstages with arbitrary arrangements of sensors and
+actuators (e.g. cameras, bioamplifier chips, LED drivers, etc.) and are not
+limited to the hardware in this repository.
 
-This project is currently maintained by [jonnew](https://github.com/jonnew).
+[![Join the chat at https://gitter.im/open-ephys-pcie/Lobby](https://badges.gitter.im/open-ephys-pcie/Lobby.svg)](https://gitter.im/open-ephys-pcie/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 __Citing this work__: TODO
 
 ## Features
+- Formal specifications: serialization protocols, host communication protocols,
+  device drivers, and host API
 - Firmware and API permit acquisition and control of arbitrary arrangements of
   sensors and actuators:
 
-    - Miniscopes
     - Headstages
+    - Miniscopes
     - Photometry systems
-    - Etc. 
+    - Etc.
 
 - Submillisecond round-trip communication from brain, through host PC's main
   memory, and back again.
@@ -28,11 +31,9 @@ __Citing this work__: TODO
     - Optogenetic stimulation
     - Electrical stimulation
     - 3D-pose measurement
-    - Data, user control, and power via a tiny coaxial cable 
-    - Wireless communication 
+    - Data, user control, and power via a tiny coaxial cable
+    - Wireless communication
 
-- Formal specifications: serialization protocols, host communication protocols,
-  and host API
 - Low-level API implementation
 - High-level API language bindings and existing integration with [Open Ephys
   GUI](http://www.open-ephys.org/gui/) and [Bonsai](http://bonsai-rx.org/).
@@ -40,12 +41,42 @@ __Citing this work__: TODO
 
 ## Repository Contents and Licensing
 Each top level directory of this repository corresponds to a distinct system
-module. These can be hardware components (e.g. `headstage-64`), or
-firmware/software/APIs (e.g. `oepcie`). __Each subdirectory may have distinct
-contributors and/or licenses__. Please refer to the README file within each
-directory for further information on usage, licensing, etc.
+module. These can be specifications (e.g. `spec`), hardware components (e.g.
+`headstage-64`), or programming interfaces (e.g. `api`). __Each subdirectory
+may have distinct contributors and/or licenses__. Please refer to the README
+file within each directory for further information on usage, licensing, etc.
+
+## Specification
+The [Open Ephys++ Specification](spec/README.md) formally specifies data
+serialization, host/PC communication, firmware blocks, device drivers and
+programming interfaces for this project. All firmware, software, and hardware
+artifacts in this repository implementations of this specification.
+Therefor, third party implementations that maintain compatibility with the spec
+will interoperate with the software and hardware within this project.
+Seriously, do a better job than us, we will be grateful! Also, if you have
+concerns with the spec, please get in touch. We want this to be
+used and applicable in a variety of circumstances.
+
+## Software
+
+### [Programming Interface](api/README.md)
+High-performance, host-side programming interfaces for integration with
+existing software and the creation of high level language bindings. 
+
+### [Bonsai Package]()
+- TODO: Myget distribution
+
+### [Open Ephys Plugin]()
+- TODO: Integration into open-ephys master
+
+## Firmware [WIP]
+
+Binary files for headstage and host FPGAs are available [here](TODO). Firmware
+source code is currently available under controlled release. Contact the
+maintainer for more information.
 
 ## Hardware
+
 ### [eib-64](eib-64/README.md)
 64 Channel electrode interface board. Designed for small rodent tetrode
 electrophysiology. Works with [headstage-64](./headstage-64/README.md).
@@ -94,19 +125,9 @@ Provides LEDs and simulated electrical loads for optical and electrical
 stimulation.
 
 ### [headstage-programmer](headstage-programmer/README.md)
-JTAG breakout for the [Intel USB Blaster 2](https://www.digikey.com/short/qqw7hm) 
+JTAG breakout for the [Intel USB Blaster 2](https://www.digikey.com/short/qqw7hm)
 used to program the headstages' MAX10 FPGA.
 
 ### pcie-analog-io [WIP]
 General purpose analog IO expansion board which communicates with the host
 computer via the  sits next to [pcie-host]() board.
-
-## Software
-### [liboepcie](oepcie/README.md)
-Host API specification and implementation.
-
-## Firmware [WIP]
-Binary files for headstage and host FPGAs are available [here](TODO) Firmware
-source code is currently available under controlled release. Contact the
-maintainer for more information.
-

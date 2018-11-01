@@ -15,7 +15,7 @@
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
-        
+
         {% if site.logo %}
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
@@ -27,32 +27,35 @@
         {% if site.github.is_user_page %}
         <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
         {% endif %}
-
-        <a href="{{site.url}}/eib-64">eib-64</a>
-        <br>
-        <a href="{{site.url}}/eib-128">eib-128</a>
-        <br>
-        <a href="{{site.url}}/eib-256">eib-256</a>
-        <br>
-        <a href="{{site.url}}/headstage-64">headstage-64</a>
-        <br>
-        <a href="{{site.url}}/headstage-256">headstage-256</a>
-        <br>
-        <a href="{{site.url}}/pcie-host">host board</a>
-        <br>
-        <a href="{{site.url}}/nanoz-adapter-64">nanoz-64</a>
-        <br>
-        <a href="{{site.url}}/nanoz-adapter-128-256">nanoz-128/256</a>
-        <br>
-        <a href="{{site.url}}/test-board-64">test-board-64</a>
-        <br>
-        <a href="{{site.url}}/test-board-128-256">test-board-128/256</a>
-        <br>
-        <a href="{{site.url}}/oepcie">API</a>
-        <br>
-        <br>
-        <a href="{{site.url}}/oepcie/spec.pdf">Open Ephys++ Spec.</a>
         
+        
+        <h4>
+        <a href="{{ "/" | absolute_url }}/spec">Specification</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/api">API</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/firmware">Firmware</a>
+        </h4>
+        <a href="{{ "/" | absolute_url }}/eib-64">eib-64</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/eib-128">eib-128</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/eib-256">eib-256</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/headstage-64">headstage-64</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/headstage-256">headstage-256</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/pcie-host">host board</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/nanoz-adapter-64">nanoz-64</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/nanoz-adapter-128-256">nanoz-128/256</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/test-board-64">test-board-64</a>
+        <br>
+        <a href="{{ "/" | absolute_url }}/test-board-128-256">test-board-128/256</a>
+
       </header>
       <section>
 
