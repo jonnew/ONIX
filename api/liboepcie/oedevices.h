@@ -44,9 +44,9 @@ typedef enum oe_device_id {
 //   uint32_t info_code]
 
 enum oe_info_codes {
+    OE_INFO_EWATCHDOG,          // Frame not sent withing watchdog threshold
     OE_INFO_ESERDESPARITY,     // SERDES parity error detected
     OE_INFO_ESERDESCHKSUM,     // SERDES packet checksum error detected
-    OE_INFO_EWATCHDOG,         // Frame not sent withing watchdog threshold
 };
 
 // - Configuration registers
