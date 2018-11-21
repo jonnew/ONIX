@@ -7549,8 +7549,8 @@ the external 32.768 kHz crystal.</text>
 <instance part="C65" gate="C" x="568.96" y="154.94" rot="R90">
 <attribute name="PARTNO" x="568.96" y="154.94" size="1.27" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="C4" gate="C" x="662.94" y="685.8">
-<attribute name="PARTNO" x="662.94" y="685.8" size="1.27" layer="96" display="off"/>
+<instance part="C4" gate="C" x="701.04" y="739.14">
+<attribute name="PARTNO" x="701.04" y="739.14" size="1.27" layer="96" display="off"/>
 </instance>
 <instance part="C6" gate="C" x="756.92" y="668.02" rot="R90">
 <attribute name="PARTNO" x="756.92" y="668.02" size="1.27" layer="96" rot="R90" display="off"/>
@@ -7739,7 +7739,7 @@ the external 32.768 kHz crystal.</text>
 <instance part="SUPPLY14" gate="PE" x="304.8" y="660.4"/>
 <instance part="U1" gate="C" x="469.9" y="673.1"/>
 <instance part="U1" gate="B" x="469.9" y="637.54" rot="MR180"/>
-<instance part="C76" gate="C" x="223.52" y="398.78" rot="MR0"/>
+<instance part="C76" gate="C" x="241.3" y="330.2" rot="MR0"/>
 <instance part="C77" gate="C" x="213.36" y="398.78" rot="MR0">
 <attribute name="PARTNO" x="213.36" y="398.78" size="1.27" layer="96" rot="MR0" display="off"/>
 </instance>
@@ -7886,7 +7886,7 @@ the external 32.768 kHz crystal.</text>
 <wire x1="670.56" y1="678.18" x2="662.94" y2="678.18" width="0.1524" layer="91"/>
 <wire x1="662.94" y1="678.18" x2="645.16" y2="678.18" width="0.1524" layer="91"/>
 <wire x1="645.16" y1="678.18" x2="645.16" y2="660.4" width="0.1524" layer="91"/>
-<wire x1="662.94" y1="678.18" x2="662.94" y2="680.72" width="0.1524" layer="91"/>
+<wire x1="662.94" y1="678.18" x2="701.04" y2="734.06" width="0.1524" layer="91"/>
 <junction x="662.94" y="678.18"/>
 <pinref part="SUPPLY21" gate="PE" pin="GND"/>
 <pinref part="C4" gate="C" pin="2"/>
@@ -8328,7 +8328,7 @@ the external 32.768 kHz crystal.</text>
 </segment>
 <segment>
 <pinref part="C76" gate="C" pin="2"/>
-<wire x1="223.52" y1="393.7" x2="223.52" y2="391.16" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="325.12" x2="223.52" y2="391.16" width="0.1524" layer="91"/>
 <pinref part="C77" gate="C" pin="2"/>
 <wire x1="213.36" y1="355.6" x2="213.36" y2="365.76" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="365.76" x2="213.36" y2="391.16" width="0.1524" layer="91"/>
@@ -8796,7 +8796,7 @@ the external 32.768 kHz crystal.</text>
 </segment>
 <segment>
 <pinref part="C76" gate="C" pin="1"/>
-<wire x1="223.52" y1="401.32" x2="223.52" y2="408.94" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="332.74" x2="223.52" y2="408.94" width="0.1524" layer="91"/>
 <wire x1="264.16" y1="408.94" x2="228.6" y2="408.94" width="0.1524" layer="91"/>
 <pinref part="C77" gate="C" pin="1"/>
 <wire x1="228.6" y1="408.94" x2="223.52" y2="408.94" width="0.1524" layer="91"/>
@@ -8865,7 +8865,7 @@ the external 32.768 kHz crystal.</text>
 <wire x1="670.56" y1="690.88" x2="662.94" y2="690.88" width="0.1524" layer="91"/>
 <wire x1="662.94" y1="690.88" x2="645.16" y2="690.88" width="0.1524" layer="91"/>
 <wire x1="645.16" y1="690.88" x2="645.16" y2="693.42" width="0.1524" layer="91"/>
-<wire x1="662.94" y1="688.34" x2="662.94" y2="690.88" width="0.1524" layer="91"/>
+<wire x1="701.04" y1="741.68" x2="662.94" y2="690.88" width="0.1524" layer="91"/>
 <junction x="662.94" y="690.88"/>
 <pinref part="C4" gate="C" pin="1"/>
 <pinref part="U$34" gate="G$1" pin="VCOAX"/>
