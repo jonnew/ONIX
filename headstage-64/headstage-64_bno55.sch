@@ -7242,6 +7242,10 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="C80" library="jonnew" deviceset="C" device="_0402T" value="22pF, NP0 2%"/>
 <part name="C81" library="jonnew" deviceset="C" device="_0402T" value="22pF, NP0 2%"/>
 <part name="GND37" library="jonnew" deviceset="GND" device=""/>
+<part name="R56" library="jonnew" deviceset="R" device="_0201T" value="4.7k"/>
+<part name="U$19" library="jonnew" deviceset="+3V3" device=""/>
+<part name="R57" library="jonnew" deviceset="R" device="_0201T" value="4.7k"/>
+<part name="U$40" library="jonnew" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7765,6 +7769,10 @@ the external 32.768 kHz crystal.</text>
 <instance part="C80" gate="C" x="327.66" y="370.84"/>
 <instance part="C81" gate="C" x="347.98" y="370.84"/>
 <instance part="GND37" gate="PE" x="337.82" y="353.06"/>
+<instance part="R56" gate="R" x="101.6" y="264.16" rot="R270"/>
+<instance part="U$19" gate="PWR1" x="101.6" y="256.54" rot="R180"/>
+<instance part="R57" gate="R" x="111.76" y="137.16" rot="R270"/>
+<instance part="U$40" gate="PWR1" x="111.76" y="129.54" rot="R180"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -8816,6 +8824,16 @@ the external 32.768 kHz crystal.</text>
 <pinref part="R54" gate="R" pin="1"/>
 <pinref part="U$18" gate="PWR1" pin="+3V3"/>
 <wire x1="325.12" y1="424.18" x2="325.12" y2="426.72" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R56" gate="R" pin="2"/>
+<pinref part="U$19" gate="PWR1" pin="+3V3"/>
+<wire x1="101.6" y1="256.54" x2="101.6" y2="259.08" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R57" gate="R" pin="2"/>
+<pinref part="U$40" gate="PWR1" pin="+3V3"/>
+<wire x1="111.76" y1="129.54" x2="111.76" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LED-2" class="0">
@@ -11533,8 +11551,11 @@ the external 32.768 kHz crystal.</text>
 </segment>
 <segment>
 <pinref part="U14" gate="G$1" pin="E3"/>
-<wire x1="93.98" y1="269.24" x2="106.68" y2="269.24" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="269.24" x2="101.6" y2="269.24" width="0.1524" layer="91"/>
 <label x="106.68" y="269.24" size="1.778" layer="95"/>
+<pinref part="R56" gate="R" pin="1"/>
+<wire x1="101.6" y1="269.24" x2="106.68" y2="269.24" width="0.1524" layer="91"/>
+<junction x="101.6" y="269.24"/>
 </segment>
 </net>
 <net name="IMU_SDA" class="0">
@@ -11545,8 +11566,11 @@ the external 32.768 kHz crystal.</text>
 </segment>
 <segment>
 <pinref part="U14" gate="G$4" pin="DIFFIO_RX_R10N/F9"/>
-<wire x1="93.98" y1="142.24" x2="116.84" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="142.24" x2="111.76" y2="142.24" width="0.1524" layer="91"/>
 <label x="116.84" y="142.24" size="1.778" layer="95"/>
+<pinref part="R57" gate="R" pin="1"/>
+<wire x1="111.76" y1="142.24" x2="116.84" y2="142.24" width="0.1524" layer="91"/>
+<junction x="111.76" y="142.24"/>
 </segment>
 </net>
 </nets>
