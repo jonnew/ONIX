@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.0.1">
+<eagle version="8.4.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -10247,11 +10247,6 @@ the external 32.768 kHz crystal.</text>
 <wire x1="142.24" y1="228.6" x2="93.98" y2="228.6" width="0.1524" layer="91"/>
 <junction x="142.24" y="228.6"/>
 </segment>
-<segment>
-<pinref part="U21" gate="G$1" pin="COM1/SCL/RX"/>
-<wire x1="264.16" y1="383.54" x2="256.54" y2="383.54" width="0.1524" layer="91"/>
-<label x="256.54" y="383.54" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
 </net>
 <net name="SDA" class="0">
 <segment>
@@ -10267,11 +10262,6 @@ the external 32.768 kHz crystal.</text>
 <pinref part="U14" gate="G$4" pin="DIFFIO_RX_R10P/F8"/>
 <wire x1="93.98" y1="144.78" x2="132.08" y2="144.78" width="0.1524" layer="91"/>
 <junction x="132.08" y="144.78"/>
-</segment>
-<segment>
-<pinref part="U21" gate="G$1" pin="COM0/SDA/TX"/>
-<wire x1="264.16" y1="381" x2="256.54" y2="381" width="0.1524" layer="91"/>
-<label x="256.54" y="381" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$34" class="0">
@@ -10860,13 +10850,6 @@ the external 32.768 kHz crystal.</text>
 <label x="662.94" y="637.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="IMU_CS" class="0">
-<segment>
-<label x="116.84" y="142.24" size="1.27" layer="95" xref="yes"/>
-<wire x1="116.84" y1="142.24" x2="93.98" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="U14" gate="G$4" pin="DIFFIO_RX_R10N/F9"/>
-</segment>
-</net>
 <net name="LED_LATCH" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="LATCH"/>
@@ -11324,13 +11307,6 @@ the external 32.768 kHz crystal.</text>
 <label x="116.84" y="187.96" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="MISO" class="0">
-<segment>
-<pinref part="U14" gate="G$1" pin="E3"/>
-<wire x1="93.98" y1="269.24" x2="142.24" y2="269.24" width="0.1524" layer="91"/>
-<label x="142.24" y="269.24" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
 <net name="N$53" class="0">
 <segment>
 <pinref part="R4" gate="R" pin="2"/>
@@ -11547,6 +11523,30 @@ the external 32.768 kHz crystal.</text>
 <pinref part="C80" gate="C" pin="1"/>
 <wire x1="327.66" y1="373.38" x2="327.66" y2="378.46" width="0.1524" layer="91"/>
 <junction x="327.66" y="378.46"/>
+</segment>
+</net>
+<net name="IMU_SCL" class="0">
+<segment>
+<pinref part="U21" gate="G$1" pin="COM1/SCL/RX"/>
+<wire x1="264.16" y1="383.54" x2="256.54" y2="383.54" width="0.1524" layer="91"/>
+<label x="256.54" y="383.54" size="1.778" layer="95" rot="R180"/>
+</segment>
+<segment>
+<pinref part="U14" gate="G$1" pin="E3"/>
+<wire x1="93.98" y1="269.24" x2="106.68" y2="269.24" width="0.1524" layer="91"/>
+<label x="106.68" y="269.24" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="IMU_SDA" class="0">
+<segment>
+<pinref part="U21" gate="G$1" pin="COM0/SDA/TX"/>
+<wire x1="264.16" y1="381" x2="256.54" y2="381" width="0.1524" layer="91"/>
+<label x="256.54" y="381" size="1.778" layer="95" rot="R180"/>
+</segment>
+<segment>
+<pinref part="U14" gate="G$4" pin="DIFFIO_RX_R10N/F9"/>
+<wire x1="93.98" y1="142.24" x2="116.84" y2="142.24" width="0.1524" layer="91"/>
+<label x="116.84" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
