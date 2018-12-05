@@ -2050,7 +2050,7 @@ einem neuen Namen ab.</description>
 <element name="Y2" library="jonnew" package="ECX-1210" value="ECS-.327-12.5-1210-TR" x="6.66" y="-12.49" rot="R90"/>
 <element name="C80" library="jonnew" package="0402T" value="22pF, NP0 2%" x="7.23" y="-14.28" rot="R270"/>
 <element name="C81" library="jonnew" package="0402T" value="22pF, NP0 2%" x="6.14" y="-14.28" rot="R270"/>
-<element name="R56" library="jonnew" package="0201T" value="4.7k" x="-3.95" y="1.9"/>
+<element name="R56" library="jonnew" package="0201T" value="4.7k" x="-3.9" y="1.85"/>
 <element name="R57" library="jonnew" package="0201T" value="4.7k" x="-0.65" y="4.3" rot="MR270"/>
 </elements>
 <signals>
@@ -3141,7 +3141,7 @@ einem neuen Namen ab.</description>
 <contactref element="R57" pad="2"/>
 <wire x1="-0.65" y1="4" x2="-0.6203" y2="4" width="0.0762" layer="16"/>
 <via x="-0.6203" y="4" extent="7-16" drill="0.1"/>
-<wire x1="-3.65" y1="1.9" x2="-3.4889" y2="1.7389" width="0.0762" layer="1"/>
+<wire x1="-3.6" y1="1.85" x2="-3.4889" y2="1.7389" width="0.0762" layer="1"/>
 <wire x1="-3.4889" y1="1.7389" x2="-3.4889" y2="1.333175" width="0.0762" layer="1"/>
 <wire x1="-3" y1="0.844275" x2="-3" y2="0.8" width="0.0762" layer="1"/>
 <wire x1="-3.4889" y1="1.333175" x2="-3" y2="0.844275" width="0.0762" layer="1"/>
@@ -3316,7 +3316,6 @@ einem neuen Namen ab.</description>
 <wire x1="-2.5" y1="1.210303125" x2="-2.5" y2="-1.6" width="0.2" layer="3"/>
 <via x="10.3366" y="0.15" extent="1-6" drill="0.0762"/>
 <wire x1="4.92" y1="2.54" x2="10.3366" y2="0.15" width="0" layer="19" extent="1-1"/>
-<wire x1="-5.18" y1="1.94" x2="-4.2" y2="3.66" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$2">
 <contactref element="U16" pad="4"/>
@@ -6614,6 +6613,7 @@ einem neuen Namen ab.</description>
 <via x="-4.25" y="1.9" extent="1-6" drill="0.1"/>
 <wire x1="-4.25" y1="1.9" x2="-4.50744375" y2="1.64255625" width="0.0762" layer="3"/>
 <wire x1="-4.50744375" y1="1.64255625" x2="-4.575" y2="1.64255625" width="0.0762" layer="3"/>
+<wire x1="-4.25" y1="1.9" x2="-4.2" y2="1.85" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IMU_SDA">
 <contactref element="U21" pad="20"/>
