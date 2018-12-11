@@ -6,7 +6,7 @@
     
     public static class Device
     {
-        // Global device enumeration (see oedevices.c)
+        // Global device enumeration (see oedevices.h)
         public enum DeviceID
         {
             INFO = 0,
@@ -18,7 +18,8 @@
             TS4231 = 6,
             SERDESGPO = 7,
             DINPUT32 = 8,
-            DOUTPUT32 = 9
+            DOUTPUT32 = 9,
+            BNO055 = 10,
         }
 
         public static string Name(int id)

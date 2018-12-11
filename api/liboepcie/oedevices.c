@@ -36,6 +36,9 @@ const char *oe_device_str(int dev_id)
         case OE_DOUTPUT32: {
             return "32-bit digital output port";
         }
+        case OE_BNO055: {
+            return "BNO055 9-axis IMU";
+        }
         default:
             return "Unknown device";
     }
