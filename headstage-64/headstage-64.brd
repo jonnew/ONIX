@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.2">
+<eagle version="8.4.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="GND1" color="13" fill="1" visible="yes" active="yes"/>
-<layer number="3" name="Route2/PWR" color="11" fill="9" visible="yes" active="yes"/>
-<layer number="4" name="GND2" color="1" fill="4" visible="yes" active="yes"/>
-<layer number="5" name="Route3" color="41" fill="1" visible="yes" active="yes"/>
-<layer number="6" name="GND3" color="1" fill="8" visible="yes" active="yes"/>
-<layer number="7" name="AGND/PWR" color="4" fill="8" visible="yes" active="yes"/>
+<layer number="2" name="GND1" color="13" fill="1" visible="no" active="yes"/>
+<layer number="3" name="Route2/PWR" color="11" fill="9" visible="no" active="yes"/>
+<layer number="4" name="GND2" color="1" fill="4" visible="no" active="yes"/>
+<layer number="5" name="Route3" color="41" fill="1" visible="no" active="yes"/>
+<layer number="6" name="GND3" color="1" fill="8" visible="no" active="yes"/>
+<layer number="7" name="AGND/PWR" color="4" fill="8" visible="no" active="yes"/>
 <layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
 <layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
 <layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
@@ -24,14 +24,14 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
 <layer number="18" name="Vias" color="10" fill="1" visible="yes" active="yes"/>
-<layer number="19" name="Unrouted" color="14" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="14" fill="1" visible="no" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
@@ -59,8 +59,8 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="14" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="14" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="14" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -205,7 +205,7 @@ Rev1.2</text>
 CERN OHL v.1.2</text>
 <text x="8.4800125" y="1.09998125" size="0.8128" layer="21" font="vector" ratio="19" distance="30" rot="R180" align="center">G</text>
 <text x="7.5600125" y="-5.28001875" size="0.8128" layer="21" font="vector" ratio="19" distance="30" rot="R154.7" align="center">0</text>
-<text x="-0.4000125" y="-6.96998125" size="0.8128" layer="21" font="vector" ratio="19" distance="30" align="center">HS
+<text x="5.2299875" y="-10.00998125" size="0.8128" layer="21" font="vector" ratio="19" distance="30" align="center">HS
 64</text>
 <text x="-7.018478125" y="-4.35385625" size="0.8128" layer="22" font="vector" ratio="19" distance="30" rot="MR334.2" align="center">G</text>
 <text x="5.37" y="-7.13" size="0.8128" layer="22" font="vector" ratio="19" distance="30" rot="MR141.8" align="center">IN2</text>
@@ -1376,10 +1376,9 @@ einem neuen Namen ab.</description>
 <param name="slThermalsForVias" value="0"/>
 <param name="dpMaxLengthDifference" value="10mm"/>
 <param name="dpGapFactor" value="2.5"/>
-<param name="checkGrid" value="0"/>
-<param name="checkAngle" value="0"/>
 <param name="checkFont" value="1"/>
 <param name="checkRestrict" value="1"/>
+<param name="checkStop" value="0"/>
 <param name="useDiameter" value="13"/>
 <param name="maxErrors" value="50"/>
 </designrules>
