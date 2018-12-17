@@ -1494,12 +1494,12 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="-2.4638" y="-2.8448" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
 <package name="XBGA6_1.2X0.8">
-<smd name="A1" x="0.2" y="-0.4" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="B1" x="0.2" y="0" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="C1" x="0.2" y="0.4" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="A2" x="-0.2" y="-0.4" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="B2" x="-0.2" y="0" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="C2" x="-0.2" y="0.4" dx="0.2" dy="0.2" layer="1" roundness="100"/>
+<smd name="A1" x="0.2" y="-0.4" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="B1" x="0.2" y="0" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="C1" x="0.2" y="0.4" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="A2" x="-0.2" y="-0.4" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="B2" x="-0.2" y="0" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="C2" x="-0.2" y="0.4" dx="0.23" dy="0.23" layer="1" roundness="100"/>
 <wire x1="-0.45" y1="0.6" x2="-0.45" y2="-0.6" width="0.127" layer="21"/>
 <wire x1="-0.45" y1="-0.6" x2="0.45" y2="-0.6" width="0.127" layer="21"/>
 <wire x1="0.45" y1="-0.6" x2="0.45" y2="0.6" width="0.127" layer="21"/>
@@ -6395,7 +6395,7 @@ Source: amp_227161.pdf</description>
 <connect gate="G$1" pin="INT" pad="14"/>
 <connect gate="G$1" pin="PS0" pad="6"/>
 <connect gate="G$1" pin="PS1" pad="5"/>
-<connect gate="G$1" pin="RESV(DNC)" pad="1 7 8 12 13 21 22 23 24"/>
+<connect gate="G$1" pin="RESV(DNC)" pad="1 7 8 12 13 21 22 23 24" route="any"/>
 <connect gate="G$1" pin="VDD" pad="3"/>
 <connect gate="G$1" pin="VDDIO" pad="28"/>
 <connect gate="G$1" pin="XIN32" pad="27"/>

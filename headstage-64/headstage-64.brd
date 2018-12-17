@@ -1019,12 +1019,12 @@ JV</text>
 <text x="-3" y="-5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
 <package name="XBGA6_1.2X0.8">
-<smd name="A1" x="0.2" y="-0.4" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="B1" x="0.2" y="0" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="C1" x="0.2" y="0.4" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="A2" x="-0.2" y="-0.4" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="B2" x="-0.2" y="0" dx="0.2" dy="0.2" layer="1" roundness="100"/>
-<smd name="C2" x="-0.2" y="0.4" dx="0.2" dy="0.2" layer="1" roundness="100"/>
+<smd name="A1" x="0.2" y="-0.4" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="B1" x="0.2" y="0" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="C1" x="0.2" y="0.4" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="A2" x="-0.2" y="-0.4" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="B2" x="-0.2" y="0" dx="0.23" dy="0.23" layer="1" roundness="100"/>
+<smd name="C2" x="-0.2" y="0.4" dx="0.23" dy="0.23" layer="1" roundness="100"/>
 <wire x1="-0.45" y1="0.6" x2="-0.45" y2="-0.6" width="0.127" layer="21"/>
 <wire x1="-0.45" y1="-0.6" x2="0.45" y2="-0.6" width="0.127" layer="21"/>
 <wire x1="0.45" y1="-0.6" x2="0.45" y2="0.6" width="0.127" layer="21"/>
