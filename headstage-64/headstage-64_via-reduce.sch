@@ -6812,8 +6812,8 @@ Source: amp_227161.pdf</description>
 <part name="U1" library="jonnew" deviceset="QUAD-OPAMP_14PIN" device="_CP_16_27_L" value="ADA4062-4ACPZ-R7"/>
 <part name="R4" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="R5" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
-<part name="R1" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
-<part name="R11" library="jonnew" deviceset="R" device="_0201T" value="9k, 0.1%"/>
+<part name="R1" library="jonnew" deviceset="R" device="_0201T" value="9k, 0.1%"/>
+<part name="R11" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
 <part name="R2" library="jonnew" deviceset="R" device="_0201T" value="1k, 0.1%"/>
 <part name="R12" library="jonnew" deviceset="R" device="_0201T" value="100"/>
 <part name="R8" library="jonnew" deviceset="R" device="_0201T" value="10k, 0.1%"/>
