@@ -92,7 +92,7 @@ namespace oe {
             }
 
             template <typename raw_t>
-            raw_t *begin(size_t dev_idx)
+            raw_t const *begin(size_t dev_idx)
             {
                 // Find the position of the requested idx in the frames
                 // dev_idx's array to get offset
@@ -109,7 +109,7 @@ namespace oe {
             }
 
             template <typename raw_t>
-            raw_t *end(size_t dev_idx)
+            raw_t const *end(size_t dev_idx)
             {
                 auto it = std::find(
                     frame_ptr_->dev_idxs, frame_ptr_->dev_idxs + frame_ptr_->num_dev, dev_idx);
@@ -140,6 +140,7 @@ namespace oe {
     public:
         inline context_t(const char *config_path = OE_DEFAULTCONFIGPATH,
                          const char *read_path = OE_DEFAULTREADPATH,
+                         const char *write_path = OE_DEFAULTWRITEPATH,
                          const char *signal_path = OE_DEFAULTSIGNALPATH)
         {
             // Create
@@ -151,6 +152,7 @@ namespace oe {
             set_opt(OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
             set_opt(OE_SIGNALSTREAMPATH, signal_path, strlen(signal_path) + 1);
             set_opt(OE_READSTREAMPATH, read_path, strlen(read_path) + 1);
+            set_opt(OE_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
 
             // Initialize
             auto rc = oe_init_ctx(ctx_);
@@ -220,13 +222,20 @@ namespace oe {
 
         inline frame_t read_frame() const
         {
-
             oe_frame_t *fp;
             auto rc = oe_read_frame(ctx_, &fp);
             if (rc < 0) throw error_t(rc);
 
             // TODO: Should use RVO, check disassembly
             return frame_t(device_map_, fp);
+        }
+
+        template <typename data_t>
+        inline void write(size_t dev_idx, std::vector<data_t> data) const 
+        {
+            auto rc = oe_write(
+                ctx_, dev_idx, data.data, data.size * sizeof(data_t));
+            if (rc < 0) throw error_t(rc);
         }
 
     private:

@@ -15,7 +15,7 @@
 
 #include "testfunc.h"
 
-// Number of samples generate 
+// Number of samples generate
 int num_samp = -1;
 timespec_t start_time, end_time;
 
@@ -26,6 +26,7 @@ const size_t fifo_frame_capacity = 1000;
 // Config registers
 volatile oe_size_t running = 0;
 const oe_size_t sys_clock_hz = 100e6;
+const oe_size_t acq_clock_hz = 42e6;
 
 // Global state
 volatile uint64_t sample_tick = 0;
@@ -36,10 +37,12 @@ volatile int quit = 0;
 // FIFO file path and desciptor handles to mimic xillybus streams
 const char *config_path = "/tmp/xillybus_cmd_mem_32";
 const char *sig_path = "/tmp/xillybus_async_read_8";
-const char *data_path = "/tmp/xillybus_data_read_32";
+const char *read_path = "/tmp/xillybus_data_read_32";
+const char *write_path = "/tmp/xillybus_data_write_32";
 
 int config_fd = -1;
-int data_fd = -1;
+int read_fd = -1;
+int write_fd = -1;
 int sig_fd = -1;
 
 // These enums are REDEFINED here (from oepcie.c) because they are static there.
@@ -67,19 +70,31 @@ typedef enum oe_conf_reg_off {
     CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
+    CONFACQCLKHZOFFSET  = 32,  // Configuration acquisition clock frequency register byte offset
 } oe_conf_reg_off_t;
 
 // Devices handled by this firmware
 static oe_device_t my_devices[]
     = {{.id = OE_RHD2164,
         .read_size = 67 * sizeof(uint16_t),
-        .write_size = 0},
+        .num_reads = 1,
+        .write_size = 0,
+        .num_writes = 1},
        {.id = OE_RHD2164,
         .read_size = 67 * sizeof(uint16_t),
-        .write_size = 0},
+        .num_reads = 1,
+        .write_size = 0,
+        .num_writes = 1},
        {.id = OE_MPU9250,
         .read_size = 9 * sizeof(uint16_t),
-        .write_size = 0}};
+        .num_reads = 1,
+        .write_size = 0,
+        .num_writes = 1},
+       {.id = 10000, // Non-standard device
+        .read_size = 550,
+        .num_reads = 256,
+        .write_size = 550,
+        .num_writes = 256}};
 
 
 uint32_t get_read_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
@@ -97,20 +112,20 @@ uint32_t get_read_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
     return read_frame_size;
 }
 
-uint32_t get_write_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
-{
-    int i;
-    size_t write_frame_size = OE_RFRAMEHEADERSZ + sizeof(uint32_t) * n_devs;
-    for (i = 0; i < n_devs; i++) {
-
-        oe_device_t cur_dev = dev_map[devs[i]];
-        write_frame_size += cur_dev.read_size;
-    }
-
-    write_frame_size += write_frame_size % 4; // padding
-
-    return write_frame_size;
-}
+//uint32_t get_write_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
+//{
+//    int i;
+//    size_t write_frame_size = OE_RFRAMEHEADERSZ + sizeof(uint32_t) * n_devs;
+//    for (i = 0; i < n_devs; i++) {
+//
+//        oe_device_t cur_dev = dev_map[devs[i]];
+//        write_frame_size += cur_dev.read_size;
+//    }
+//
+//    write_frame_size += write_frame_size % 4; // padding
+//
+//    return write_frame_size;
+//}
 
 int read_config(int config_fd, oe_conf_reg_off_t offset, void *result, size_t size)
 {
@@ -140,6 +155,7 @@ void generate_default_config(int config_fd)
     // Write defaults for registers that need it
     write_config(config_fd, CONFRUNNINGOFFSET, (void *)&running, sizeof(oe_size_t));
     write_config(config_fd, CONFSYSCLKHZOFFSET, (void *)&sys_clock_hz, sizeof(oe_size_t));
+    write_config(config_fd, CONFACQCLKHZOFFSET, (void *)&acq_clock_hz, sizeof(oe_size_t));
 }
 
 int send_msg_signal(int sig_fd, oe_signal_t type)
@@ -259,11 +275,37 @@ size_t make_frame(uint8_t **frame) {
     return frame_size;
 }
 
-void *data_loop(void *vargp)
+// Write from host to firmware
+void *write_loop(void *vargp)
+{
+    while (!quit) {
+
+        oe_size_t dev_idx;
+        ssize_t rc = read(write_fd, &dev_idx, sizeof(oe_size_t));
+        assert(rc == sizeof(oe_size_t) && "Incomplete read.");
+
+        oe_device_t this_dev = my_devices[dev_idx];
+        char *buffer = malloc(this_dev.write_size);
+        rc = read(write_fd, buffer, this_dev.write_size);
+        assert(rc == this_dev.write_size && "Incomplete read.");
+
+        // Dump to terminal
+        printf("Host wrote to device at index %u:\n[", dev_idx);
+        int i;
+        for (i = 0; i < this_dev.write_size; i++)
+            printf("%02x ", buffer[i]);
+        printf("]\n");
+    }
+
+    return NULL;
+}
+
+// Read from firmware to host
+void *read_loop(void *vargp)
 {
     // Set data pipe capacity
     // Sample number, LFP data, ...
-    fcntl(data_fd, F_SETPIPE_SZ, approx_frame_size * fifo_frame_capacity);
+    fcntl(read_fd, F_SETPIPE_SZ, approx_frame_size * fifo_frame_capacity);
 
     // Static raw frame used in performance testing is enabled
     uint8_t *static_frame;
@@ -284,14 +326,14 @@ void *data_loop(void *vargp)
                 uint8_t *frame;
                 size_t frame_size = make_frame(&frame);
 
-                size_t rc = write(data_fd, frame, frame_size);
+                size_t rc = write(read_fd, frame, frame_size);
                 assert(rc == frame_size && "Incomplete write.");
 
                 free(frame);
 
             } else { // Performance test
 
-                size_t rc = write(data_fd, static_frame, static_frame_size);
+                size_t rc = write(read_fd, static_frame, static_frame_size);
                 assert(rc == static_frame_size && "Incomplete write.");
             }
 
@@ -300,12 +342,12 @@ void *data_loop(void *vargp)
 
         } else {
             usleep(1000); // Prevent CPU tacking
-            
+
             // Get new start time
             clock_gettime(CLOCK_MONOTONIC, &start_time);
         }
     }
-    
+
     free(static_frame);
 
     return NULL;
@@ -331,11 +373,13 @@ usage:
 
     // Start fresh
     unlink(sig_path);
-    unlink(data_path);
+    unlink(read_path);
+    unlink(write_path);
     unlink(config_path);
 
     // Async streams are similar to pipes
-    mkfifo(data_path, 0666);
+    mkfifo(read_path, 0666);
+    mkfifo(write_path, 0666);
     mkfifo(sig_path, 0666);
 
     // Open FIFOs for write only and config file for read/write
@@ -349,13 +393,16 @@ usage:
     // programs will deadlock. The ordering is hidden in oe_init_ctx(), so its
     // up to firmware to do it correctly. I need to make sure this won't be an
     // issue when using xillybus
-    data_fd = open(data_path, O_WRONLY);
+    read_fd = open(read_path, O_WRONLY);
+    write_fd = open(write_path, O_RDONLY);
     sig_fd = open(sig_path, O_WRONLY);
 
     // Generate data thread and continue here config/signal handling in parallel
-    pthread_t tid;
-    pthread_create(&tid, NULL, data_loop, NULL);
+    pthread_t tid_read;
+    pthread_create(&tid_read, NULL, read_loop, NULL);
 
+    pthread_t tid_write;
+    pthread_create(&tid_write, NULL, write_loop, NULL);
 reset:
 
     // Reset run state by generating default configuration
@@ -439,7 +486,8 @@ reset:
     }
 
     // Join data and signal threads
-    pthread_join(tid, NULL);
+    pthread_join(tid_read, NULL);
+    pthread_join(tid_write, NULL);
 
     // Report runtime if nessesary
     if (num_samp > 0) {
@@ -452,12 +500,13 @@ reset:
 
     // Close pipes/files
     close(sig_fd);
-    close(data_fd);
+    close(read_fd);
+    close(write_fd);
     close(config_fd);
 
     // Delete files
     unlink(sig_path);
-    unlink(data_path);
+    unlink(read_path);
     unlink(config_path);
 
     return 0;

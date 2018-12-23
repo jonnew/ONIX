@@ -29,7 +29,7 @@ typedef enum oe_device_id {
     OE_SERDESGPO            = 7,   // SERDES GPIO pins
     OE_DINPUT32             = 8,   // 32-bit digital input port
     OE_DOUTPUT32            = 9,   // 32-bit digital output port
-    OE_BNO055               = 10,  // 32-bit digital output port
+    OE_BNO055               = 10,  // BNO055 9-DOF IMU
 
     // NB: Final reserved device ID. Always on bottom
     OE_MAXDEVICEID          = OE_MAXDEVID,
@@ -94,10 +94,10 @@ enum oe_estim_regs {
     OE_ESTIM_BIPHASIC       = 1,   // Biphasic pulse (0 = monophasic, 1 = biphasic; NB: currently ignored)
     OE_ESTIM_CURRENT1       = 2,   // Phase 1 current, (0 to 255 = -1.5 mA to +1.5mA)
     OE_ESTIM_CURRENT2       = 3,   // Phase 2 voltage, (0 to 255 = -1.5 mA to +1.5mA)
-    OE_ESTIM_PULSEDUR1      = 4,   // Phase 1 duration, 10 microsecond steps
-    OE_ESTIM_IPI            = 5,   // Inter-phase interval, 10 microsecond steps
-    OE_ESTIM_PULSEDUR2      = 6,   // Phase 2 duration, 10 microsecond steps
-    OE_ESTIM_PULSEPERIOD    = 7,   // Inter-pulse interval, 10 microsecond steps
+    OE_ESTIM_PULSEDUR1      = 4,   // Phase 1 duration, microseconds
+    OE_ESTIM_IPI            = 5,   // Inter-phase interval, microseconds
+    OE_ESTIM_PULSEDUR2      = 6,   // Phase 2 duration, microseconds
+    OE_ESTIM_PULSEPERIOD    = 7,   // Inter-pulse interval, microseconds
     OE_ESTIM_BURSTCOUNT     = 8,   // Burst duration, number of pulses in burst
     OE_ESTIM_IBI            = 9,   // Inter-burst interval, microseconds
     OE_ESTIM_TRAINCOUNT     = 10,  // Pulse train duration, number of bursts in train
@@ -116,18 +116,18 @@ enum oe_estim_regs {
 //      for a visual definition: https://sites.google.com/site/pulsepalwiki/parameter-guide
 enum oe_ostim_regs {
     OE_OSTIM_NULLPARM       = 0,   // No command
-    OE_OSTIM_MAXCURRENT     = 2,   // Max LED/LD current, (0 to 255 = 0 to 800mA)
-    OE_OSTIM_CURRENTLVL     = 3,   // Selected current level (0 to 7. Fraction of max current delivered)
-    OE_OSTIM_PULSEDUR       = 5,   // Pulse duration, 10 microsecond steps
-    OE_OSTIM_PULSEPERIOD    = 6,   // Inter-pulse interval, 10 microsecond steps
-    OE_OSTIM_BURSTCOUNT     = 7,   // Burst duration, number of pulses in burst
-    OE_OSTIM_IBI            = 8,   // Inter-burst interval, microseconds
-    OE_OSTIM_TRAINCOUNT     = 9,   // Pulse train duration, number of bursts in train
-    OE_OSTIM_TRAINDELAY     = 10,  // Pulse train delay, microseconds
-    OE_OSTIM_TRIGGER        = 11,  // Trigger stimulation (1 = deliver)
-    OE_OSTIM_ENABLE         = 12,  // Control null switch (0 = stim output shorted to ground, 1 = stim output attached to electrode during pulses)
-    OE_OSTIM_RESTCURR       = 13,  // Resting current between pulse phases, (0 to 255 = -1.5 mA to +1.5mA)
-    OE_OSTIM_RESET          = 14,  // Reset all parameters to default
+    OE_OSTIM_MAXCURRENT     = 1,   // Max LED/LD current, (0 to 255 = 0 to 800mA)
+    OE_OSTIM_CURRENTLVL     = 2,   // Selected current level (0 to 7. Fraction of max current delivered)
+    OE_OSTIM_PULSEDUR       = 3,   // Pulse duration, microseconds
+    OE_OSTIM_PULSEPERIOD    = 4,   // Inter-pulse interval, microseconds
+    OE_OSTIM_BURSTCOUNT     = 5,   // Burst duration, number of pulses in burst
+    OE_OSTIM_IBI            = 6,   // Inter-burst interval, microseconds
+    OE_OSTIM_TRAINCOUNT     = 7,   // Pulse train duration, number of bursts in train (0 = continuous)
+    OE_OSTIM_TRAINDELAY     = 8,  // Pulse train delay, microseconds
+    OE_OSTIM_TRIGGER        = 9,  // Trigger stimulation (1 = deliver)
+    OE_OSTIM_ENABLE         = 10,  // Control null switch (0 = stim output shorted to ground, 1 = stim output attached to electrode during pulses)
+    OE_OSTIM_RESTCURR       = 11,  // Resting current between pulse phases, (0 to 7. Fraction of max current)
+    OE_OSTIM_RESET          = 12,  // Reset all parameters to default
 };
 
 // # OE_TS4231

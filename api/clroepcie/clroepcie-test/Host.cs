@@ -55,24 +55,25 @@ class Host
         var ver = oe.lib.NativeMethods.LibraryVersion;
         Console.WriteLine("Using liboepcie version: " + ver);
         bool running = true;
-        
+
         try
         {
-            string conf, read, sig;
-            Console.WriteLine("length {0}", args.Length);
-            if (args.Length != 0 && args.Length != 3) {
+            string conf, read, write, sig;
+            if (args.Length != 0 && args.Length != 4) {
                 throw new ArgumentException("Invalid program args.");
-            } else if (args.Length == 3) {
+            } else if (args.Length == 4) {
                 conf = args[0];
                 sig = args[1];
                 read = args[2];
+                write = args[3];
             } else {
                 conf = oe.lib.NativeMethods.DefaultConfigPath;
-                read = oe.lib.NativeMethods.DefaultReadPath;
                 sig = oe.lib.NativeMethods.DefaultSignalPath;
+                read = oe.lib.NativeMethods.DefaultReadPath;
+                write = oe.lib.NativeMethods.DefaultWritePath;
             }
 
-            using(var ctx = new oe.Context(conf, read, sig))
+            using(var ctx = new oe.Context(conf, read, write, sig))
             {
 
                 Console.WriteLine("Found the following devices:");
@@ -175,5 +176,5 @@ class Host
                                     + Marshal.GetLastWin32Error());
         }
     }
-    }
-    }
+}
+}

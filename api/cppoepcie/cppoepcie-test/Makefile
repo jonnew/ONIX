@@ -1,7 +1,7 @@
 # Examples:
 # make 			// Makes all test programs
 # make debug 	// Makes all test programs with debug symbols
-# make profile 	// Makes all test programes and links in the gperftool's profiler
+# make profile 	// Makes all test programs and links in the gperftool's profiler
 
 CC=c++
 

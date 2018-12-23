@@ -7,6 +7,7 @@
      
     using lib;
 
+
     // Make managed version of oe_frame_t
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct frame_t
@@ -15,13 +16,16 @@
         public ushort num_dev; // Number of devices in frame
         public byte corrupt; // Is this frame corrupt?
         public uint* dev_idxs; // Array of device indices in frame
-        public fixed uint dev_offs[Frame.MaxDevPerFrame]; // Device data offsets within data block
+        public uint* dev_offs; // Device data offsets within data block
         public byte* data; // Multi-device raw data block
         public uint data_sz; // Size in bytes of data buffer
     }
 
     public unsafe class Frame : SafeHandleZeroOrMinusOneIsInvalid
     {
+        //[DllImport("kernel32.dll", EntryPoint = "RtlMoveMemory", SetLastError = false)]
+        //static extern void CopyMemory(IntPtr Destination, IntPtr Source, uint Length);
+
         public const int MaxDevPerFrame = 32; // Copy from oepcie.h
 
         protected Frame() 
@@ -109,6 +113,7 @@
             Buffer.BlockCopy(buffer, 0, output, 0, (int)num_bytes);
             return output;
         }
+
         protected override bool ReleaseHandle()
         {
             NativeMethods.oe_destroy_frame(handle);

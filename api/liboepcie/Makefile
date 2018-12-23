@@ -4,7 +4,6 @@
 # make install PREFIX=somedir   // Installs library in somedir
 # make debug                    // Makes the library with debug symbols
 # make DEFS=-DOE_BIGEND         // Turn on hardware endianess conversion
-# make DEFS=-DOE_READSIZE=1024  // Define the block read size
 SHELL   :=  /bin/bash
 NAME    :=  liboepcie
 SNAME   :=  $(NAME).a

@@ -17,6 +17,7 @@
 
         public Context(string config_path = NativeMethods.DefaultConfigPath,
                        string read_path = NativeMethods.DefaultReadPath,
+                       string write_path = NativeMethods.DefaultWritePath,
                        string signal_path = NativeMethods.DefaultSignalPath)
         :base (true)
         {
@@ -30,6 +31,7 @@
             // Set stream paths
             SetStringOption(Option.CONFIGSTREAMPATH, config_path);
             SetStringOption(Option.READSTREAMPATH, read_path);
+            SetStringOption(Option.WRITESTREAMPATH, write_path);
             SetStringOption(Option.SIGNALSTREAMPATH, signal_path);
 
             int rc = NativeMethods.oe_init_ctx(handle);
@@ -203,7 +205,7 @@
         {
             CONFIGSTREAMPATH = 0,
             READSTREAMPATH,
-            WRITESREAMPATH,
+            WRITESTREAMPATH,
             SIGNALSTREAMPATH,
             DEVICEMAP,
             NUMDEVICES,

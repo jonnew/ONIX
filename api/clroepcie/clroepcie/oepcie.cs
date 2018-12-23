@@ -11,7 +11,7 @@ namespace oe.lib
         PATHINVALID = -1,  // Invalid stream path, fail on open
         DEVID = -2,  // Invalid device ID on init or reg op
         DEVIDX = -3,  // Invalid device index
-        TOOMANYDEVS = -4,  // Frame holds data for more than OE_MAXDEVPERFRAME devices
+        WRITESIZE = -4,  // Data write size is incorrect for designated device
         READFAILURE = -5,  // Failure to read from a stream/register
         WRITEFAILURE = -6,  // Failure to write to a stream/register
         NULLCTX = -7,  // Attempt to call function w null ctx
@@ -27,6 +27,7 @@ namespace oe.lib
         CLOSEFAIL = -17, // File descriptor close failure, check errno
         READONLY = -18, // Attempted write to read only object (register, context option, etc)
         UNIMPL = -19, // Specified, but unimplemented, feature
+        INVALREADSIZE = -20, // Block read size is smaller than the maximal frame size
     }
 
     // Make managed version of oe_device_t
@@ -48,9 +49,10 @@ namespace oe.lib
         private const CallingConvention CCCdecl = CallingConvention.Cdecl;
 
         private const string LibraryName = "liboepcie";
-        public const string DefaultConfigPath = "\\\\.\\xillybus_cmd_mem_32";
+        public const string DefaultConfigPath = "\\\\.\\xillybus_cmd_32";
+        public const string DefaultSignalPath = "\\\\.\\xillybus_signal_8";
         public const string DefaultReadPath = "\\\\.\\xillybus_data_read_32";
-        public const string DefaultSignalPath = "\\\\.\\xillybus_async_read_8";
+        public const string DefaultWritePath = "\\\\.\\xillybus_data_write_32";
 
         // The static constructor prepares static readonly fields
         static NativeMethods()
@@ -111,7 +113,7 @@ namespace oe.lib
         public static extern int oe_read_frame(IntPtr ctx, out Frame frame);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl, SetLastError = true)]
-        public static extern int oe_write_frame(IntPtr ctx, Frame frame);
+        public static extern int oe_write(IntPtr ctx, uint dev_idx, IntPtr data, uint data_sz);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern void oe_destroy_frame(IntPtr frame);

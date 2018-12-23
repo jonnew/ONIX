@@ -59,9 +59,9 @@ int parse_reg_cmd(const char *cmd, long *values)
 }
 
 #ifdef _WIN32
-DWORD WINAPI data_loop(LPVOID lpParam)
+DWORD WINAPI read_loop(LPVOID lpParam)
 #else
-void *data_loop(void *vargp)
+void *read_loop(void *vargp)
 #endif
 {
     unsigned long counter = 0;
@@ -112,6 +112,46 @@ void *data_loop(void *vargp)
     return NULL;
 }
 
+//#ifdef _WIN32
+//DWORD WINAPI write_loop(LPVOID lpParam)
+//#else
+//void *write_loop(void *vargp)
+//#endif
+//{
+//    // Write zeros to device 3
+//
+//    while (!quit)  {
+//
+//        int row_num = 0;
+//        while (row_num < 256) {
+//
+//            int rc = 0;
+//            uint16_t data[275];
+//
+//            // Header
+//            data[0] = 16384 + row_num;
+//
+//            // Row update
+//            int i = 0;
+//            for (i = 0; i < 256; i++)
+//                data[i + 19]  = row_num;
+//
+//            rc = oe_write(ctx, 0, data, sizeof(data));
+//            printf("%d: %d\n", row_num, rc);
+//
+//            if (rc < 0) {
+//                printf("Error: %s\n", oe_error_str(rc));
+//                quit = 1;
+//                break;
+//            }
+//
+//            row_num++;
+//        }
+//    }
+//
+//    return NULL;
+//}
+
 int main(int argc, char *argv[])
 {
     // Generate context
@@ -120,27 +160,30 @@ int main(int argc, char *argv[])
 
     const char *config_path = OE_DEFAULTCONFIGPATH;
     const char *sig_path = OE_DEFAULTSIGNALPATH;
-    const char *data_path = OE_DEFAULTREADPATH;
+    const char *read_path = OE_DEFAULTREADPATH;
+    const char *write_path = OE_DEFAULTWRITEPATH;
 
-    if (argc != 1 && argc != 4) {
+    if (argc != 1 && argc != 5) {
         printf("usage:\n");
         printf("\thost: run using default stream paths\n");
-        printf("\thost config signal data: specify the configuration, signal and data paths.\n");
+        printf("\thost config signal read write: specify the configuration, signal, read, and write paths.\n");
         exit(1);
     }
 
-    if (argc == 4) {
+    if (argc == 5) {
 
         // Set firmware paths
         config_path = argv[1];
         sig_path = argv[2];
-        data_path = argv[3];
+        read_path = argv[3];
+        write_path = argv[4];
     }
 
     // Set paths in context
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
-    oe_set_opt(ctx, OE_READSTREAMPATH, data_path, strlen(data_path) + 1);
+    oe_set_opt(ctx, OE_READSTREAMPATH, read_path, strlen(read_path) + 1);
+    oe_set_opt(ctx, OE_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
 
     // Initialize context and discover hardware
     int rc = oe_init_ctx(ctx);
@@ -192,12 +235,20 @@ int main(int argc, char *argv[])
     assert(!rc && "Register write failure.");
 
     // HACK: "wait" for reset acknowledgement. In real firmware, this will be actual async ACK.
-    //usleep(100e3);
+    usleep(100e3);
 
     oe_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);
     oe_get_opt(ctx, OE_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
     printf("Max. read frame size: %u bytes\n", frame_size);
+
+    size_t block_size = 2048;
+    size_t block_size_sz = sizeof(block_size);
+    oe_set_opt(ctx, OE_BLOCKREADSIZE, &block_size, block_size_sz);
+    printf("Setting block read size to : %zu bytes\n", block_size);
+
+    oe_get_opt(ctx, OE_BLOCKREADSIZE, &block_size, &block_size_sz);
+    printf("Block read size: %zu bytes\n", block_size);
 
     // Try to write to base clock freq, which is write only
     oe_size_t base_hz = (oe_size_t)10e6;
@@ -222,14 +273,20 @@ int main(int argc, char *argv[])
     rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
 
-    // Generate data thread and continue here config/signal handling in parallel
+    // Generate data read_thread and continue here config/signal handling in parallel
 #ifdef _WIN32
-    DWORD tid;
-    HANDLE thread;
-    thread = CreateThread(NULL, 0, data_loop, NULL, 0, &tid);
+    DWORD read_tid;
+    HANDLE read_thread;
+    read_thread = CreateThread(NULL, 0, read_loop, NULL, 0, &read_tid);
+
+    //DWORD write_tid;
+    //HANDLE write_thread;
+    //write_thread = CreateThread(NULL, 0, write_loop, NULL, 0, &write_tid);
 #else
-    pthread_t tid;
-    pthread_create(&tid, NULL, data_loop, NULL);
+    pthread_t read_tid;
+    pthread_create(&read_tid, NULL, read_loop, NULL);
+    //pthread_t write_tid;
+    //pthread_create(&write_tid, NULL, write_loop, NULL);
 #endif
 
     // Read stdin to start (s) or pause (p)
@@ -293,10 +350,14 @@ int main(int argc, char *argv[])
     // Join data and signal threads
     quit = 1;
 #ifdef _WIN32
-    WaitForSingleObject(thread, INFINITE);
-    CloseHandle(thread);
+    WaitForSingleObject(read_thread, INFINITE);
+    CloseHandle(read_thread);
+
+    WaitForSingleObject(write_thread, INFINITE);
+    CloseHandle(write_thread);
 #else
-    pthread_join(tid, NULL);
+    pthread_join(read_tid, NULL);
+    //pthread_join(write_tid, NULL);
 #endif
 #ifdef DUMPFILES
     // Close dump files

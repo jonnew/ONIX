@@ -30,7 +30,7 @@ typedef uint32_t oe_reg_val_t;
 // Define if hardware produces byte-reversed types from compile command
 #ifdef OE_BIGEND
 
-// NB: Nested define allows compile command to define OE_BE
+// NB: Nested defines allows compile command to define OE_BE, etc.
 #define OE_BE
 
 #define BSWAP_32(val)                                                          \
@@ -44,15 +44,8 @@ typedef uint32_t oe_reg_val_t;
 // Consistent overhead bytestuffing buffer size
 #define OE_COBSBUFFERSIZE 255
 
-// Bytes per read() syscall on the data input stream
-// NB: This defines a minimum delay for real-time processing. Larger values
-// will burn less CPU time but result in larger delays with respect to the
-// sensors. e.g 512, 1024, 2048 -> increasing delay
-#ifndef OE_READSIZE
-#define OE_RSIZE 512 // Default to small value
-#else
-#define OE_RSIZE OE_READSIZE
-#endif
+// Minimal high-bandwidth fifo read size (bytes)
+#define OE_DATAFIFOWIDTH 4
 
 struct stream_fid {
     char *path;
@@ -64,7 +57,7 @@ struct ref {
     int count;
 };
 
-// Reference-counted buffer
+// Reference-counted read buffer
 struct oe_buf_impl {
 
     // Raw data buffer
@@ -74,7 +67,6 @@ struct oe_buf_impl {
 
     // Reference count
     struct ref count;
-
 };
 
 // Acqusition context
@@ -94,6 +86,9 @@ struct oe_ctx_impl {
     oe_size_t max_read_frame_size;
     oe_size_t max_write_frame_size;
 
+    // Block read size (bytes, defaults to max_read_frame_size)
+    size_t block_read_size;
+
     // Current, attached buffer
     struct oe_buf_impl *shared_buf;
 
@@ -104,7 +99,6 @@ struct oe_ctx_impl {
         IDLE,
         RUNNING
     } run_state;
-
 };
 
 // Signal flags
@@ -133,13 +127,11 @@ typedef enum oe_conf_reg_off {
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
     CONFACQCLKHZOFFSET  = 32,  // Configuration acquisition clock frequency register byte offset
-    CONFACQCLKMOFFSET   = 36,  // Configuration acquisition clock multiplier register byte offset
-    CONFACQCLKDOFFSET   = 40,  // Configuration acquisition clock divider register byte offset
 } oe_conf_off_t;
 
 // Static helpers
 static inline int _oe_read(int data_fd, void* data, size_t size);
-//static inline int _oe_write(int data_fd, char* data, size_t size);
+static inline int _oe_write(int data_fd, char* data, size_t size);
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer);
 static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, size_t size);
 static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type);
@@ -198,11 +190,11 @@ int oe_init_ctx(oe_ctx ctx)
         return OE_EPATHINVALID;
     }
 
-    //ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
-    //if (ctx->write.fid == -1) {
-    //    fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
-    //    return OE_EPATHINVALID;
-    //}
+    ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
+    if (ctx->write.fid == -1) {
+        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->write.path);
+        return OE_EPATHINVALID;
+    }
 
     ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
     if (ctx->signal.fid == -1) {
@@ -260,8 +252,10 @@ int oe_init_ctx(oe_ctx ctx)
 #endif
     }
 
-    assert(ctx->max_read_frame_size < OE_RSIZE &&
-        "Block read size is too small given the possible frame size.");
+    // NB: Default the block read size to a single max sized frame. This is bad
+    // for high bandwidth performance and good for closed-loop delay.
+    ctx->block_read_size = ctx->max_read_frame_size
+                           + ctx->max_read_frame_size % OE_DATAFIFOWIDTH;
 
 #ifdef OE_BE
     _device_map_byte_swap(ctx);
@@ -281,7 +275,7 @@ int oe_destroy_ctx(oe_ctx ctx)
 
         if (close(ctx->config.fid) == -1) goto oe_close_ctx_fail;
         if (close(ctx->read.fid) == -1) goto oe_close_ctx_fail;
-        //if (close(ctx->write.fid) == -1) goto oe_close_ctx_fail;
+        if (close(ctx->write.fid) == -1) goto oe_close_ctx_fail;
         if (close(ctx->signal.fid) == -1) goto oe_close_ctx_fail;
     }
 
@@ -425,6 +419,15 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             *option_len = OE_REGSZ;
             break;
         }
+        case OE_BLOCKREADSIZE: {
+            size_t required_bytes = sizeof(size_t);
+            if (*option_len < required_bytes)
+                return OE_EBUFFERSIZE;
+
+            *(size_t *)value = ctx->block_read_size;
+            *option_len = required_bytes;
+            break;
+        }
         default:
             return OE_EINVALOPT;
     }
@@ -510,6 +513,28 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
         }
         case OE_ACQCLKHZ: {
             return OE_EREADONLY;
+        }
+        case OE_BLOCKREADSIZE: {
+            // NB: If we are careful, this could be changed during RUNNING
+            // state. However, i would need to perform runtime size check of
+            // the block readsize. Also, what if it occured on a separate
+            // thread during a call to oe_read_frame?
+            assert(ctx->run_state == IDLE && "Context state must be IDLE.");
+            if (ctx->run_state != IDLE)
+                return OE_EINVALSTATE;
+
+            if (option_len != sizeof(size_t))
+                return OE_EBUFFERSIZE;
+
+            // Make sure the block read size is greater than max frame size
+            size_t block_read_size = *(size_t *)value;
+            if (block_read_size < ctx->max_read_frame_size)
+                return OE_EINVALREADSIZE;
+
+            ctx->block_read_size = block_read_size;
+
+            break;
+
         }
         default:
             return OE_EINVALOPT;
@@ -635,14 +660,21 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     // a different thread
     assert(ctx->run_state >= IDLE && "Context is not acquiring.");
 
+    // TODO: There is no need for all of this. The header feilds in oe_frame_t
+    // should just point into the shared buffer.
+ 
     // Get the header and figure out how many devies are in the frame
     uint8_t *header = NULL;
     int rc = _oe_read_buffer(ctx, (void **)&header, OE_RFRAMEHEADERSZ);
     if (rc != 0) return rc;
 
-    // Allocate frame
-    *frame = malloc(sizeof(oe_frame_t));
+    // Allocate space for frame container and device offset list
+    uint16_t num_dev = *(uint16_t *)(header + sizeof(uint64_t));
+    *frame = malloc(sizeof(oe_frame_t) + num_dev * sizeof(oe_size_t));
     oe_frame_t *fptr = *frame;
+
+    // Device offset list points to extra space after frame
+    fptr->dev_offs = (oe_size_t *)((char *)fptr + sizeof(oe_frame_t));
 
     // Total frame size
     int total_size = sizeof(oe_frame_t);
@@ -653,10 +685,6 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     // 3. corrupt (1)
     memcpy(&fptr->clock, header, sizeof(uint64_t) + sizeof(uint16_t) + sizeof(uint8_t));
 
-    // TODO: Is it really worth saving a malloc here?
-    // num_dev is fixed length array
-    if (fptr->num_dev > OE_MAXDEVPERFRAME) return OE_ETOOMANYDEVS;
-
     // Read device indices that are in this frame
     rc = _oe_read_buffer(
         ctx, (void **)&fptr->dev_idxs, fptr->num_dev * sizeof(oe_size_t));
@@ -666,12 +694,12 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     uint16_t i;
     int rsize = 0;
     for (i = 0; i < fptr->num_dev; i++) {
-        fptr->dev_offs[i] = rsize;
+        *(fptr->dev_offs + i) = rsize;
         rsize += ctx->dev_map[*(fptr->dev_idxs + i)].read_size;
     }
 
     // Find read size (+ padding)
-    rsize += rsize % 4;
+    rsize += rsize % OE_DATAFIFOWIDTH;
     fptr->data_sz = rsize;
     total_size += rsize;
 
@@ -686,27 +714,40 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     return total_size;
 }
 
-int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
+int oe_write(const oe_ctx ctx, size_t dev_idx, void *data, size_t data_sz)
 {
-    // TODO:
-    (void)ctx;
-    (void)frame;
-    return OE_EUNIMPL;
+    assert(ctx != NULL && "Context is NULL");
 
-//    int num_bytes = OE_WFRAMEHEADERSZ + frame->dev_idxs_sz + frame->data_sz;
-//
-//    // Create serialized write frame
-//    char *write_frame = malloc(num_bytes);
-//    // TODO: Header
-//    memcpy(write_frame + OE_WFRAMEHEADERSZ, frame->dev_idxs, frame->dev_idxs_sz);
-//    memcpy(write_frame + OE_WFRAMEHEADERSZ + frame->dev_idxs_sz, frame->data, frame->data_sz);
-//
-//    int rc = _oe_write(ctx->write.fid, write_frame, num_bytes);
-//
-//    free(write_frame);
-//
-//    if (rc != num_bytes) return rc;
-//    return 0;
+    // NB: We don't need run_state == RUNNING because this could be changed in
+    // a different thread
+    assert(ctx->run_state >= IDLE && "Context is not acquiring.");
+
+    // Checks that the device index is valid
+    if (dev_idx >= ctx->num_dev)
+        return OE_EDEVIDX;
+
+    // Get the device from the map
+    oe_device_t *this_dev = ctx->dev_map + dev_idx;
+
+    // Make sure this device is writable and write size is correct
+    if (this_dev->write_size == 0 || data_sz != this_dev->write_size)
+        return OE_EWRITESIZE;
+
+    // TODO: Seems unncessary to copy here but of I dont I perform two writes
+    size_t wsize = data_sz + sizeof(oe_size_t);
+    wsize += wsize % OE_DATAFIFOWIDTH;
+    char *buffer = malloc(wsize);
+    memcpy(buffer, (oe_size_t *)&dev_idx, sizeof(oe_size_t));
+    memcpy(buffer + sizeof(oe_size_t), data, data_sz);
+
+    int rc = _oe_write(ctx->write.fid, buffer, wsize);
+
+    free(buffer);
+
+    if (rc != (int)wsize)
+        return OE_EWRITEFAILURE;
+
+    return rc;
 }
 
 void oe_destroy_frame(oe_frame_t *frame)
@@ -746,8 +787,8 @@ const char *oe_error_str(int err)
         case OE_EDEVIDX: {
             return "Invalid device index";
         }
-        case OE_ETOOMANYDEVS: {
-            return "Frame holds data for more than OE_MAXDEVPERFRAME devices";
+        case OE_EWRITESIZE: {
+            return "Data write size is incorrect for designated device";
         }
         case OE_EREADFAILURE: {
             return "Failure to read from a stream or register";
@@ -793,7 +834,10 @@ const char *oe_error_str(int err)
                    "option, etc)";
         }
         case OE_EUNIMPL: {
-            return "Unimplemented API feature.";
+            return "Unimplemented API feature";
+        }
+        case OE_EINVALREADSIZE: {
+            return "Block read size is smaller than the maximal frame size";
         }
         default:
             return "Unknown error";
@@ -820,23 +864,25 @@ static inline int _oe_read(int data_fd, void *data, size_t size)
     return received;
 }
 
-//static inline int _oe_write(int data_fd, char *data, size_t size)
-//{
-//    int written = 0;
-//
-//    while (1) {
-//
-//        written = write(data_fd, data, size);
-//
-//        if ((written < 0) && (errno == EINTR))
-//            continue;
-//
-//        if (written <= 0)
-//            return OE_EWRITEFAILURE;
-//    }
-//
-//    return written;
-//}
+static inline int _oe_write(int data_fd, char *data, size_t size)
+{
+    size_t written = 0;
+
+    while (written < size) {
+
+        int rc = write(data_fd, data + written, size - written);
+
+        if ((rc < 0) && (errno == EINTR))
+            continue;
+
+        if (rc <= 0)
+            return OE_EWRITEFAILURE;
+
+        written += rc;
+    }
+
+    return written;
+}
 
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer)
 {
@@ -1025,12 +1071,15 @@ static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
     // memory corruption, so don't do it.
     if (remaining < ctx->max_read_frame_size) {
 
+        assert(ctx->max_read_frame_size <= ctx->block_read_size &&
+            "Block read size is too small given the possible frame size.");
+
         // New buffer allocated, old_buffer saved
         struct oe_buf_impl *old_buffer = ctx->shared_buf;
         ctx->shared_buf = malloc(sizeof(struct oe_buf_impl));
 
         // Allocate data block in buffer
-        ctx->shared_buf->buffer = malloc(remaining + OE_RSIZE);
+        ctx->shared_buf->buffer = malloc(remaining + ctx->block_read_size);
 
         // Transfer remaining data to new buffer
         if (old_buffer != NULL) {
@@ -1043,11 +1092,14 @@ static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
         // (Re)set buffer state
         ctx->shared_buf->count = (struct ref) {_oe_destroy_buffer, 1};
         ctx->shared_buf->read_pos = ctx->shared_buf->buffer;
-        ctx->shared_buf->end_pos = ctx->shared_buf->buffer + remaining + OE_RSIZE;
+        ctx->shared_buf->end_pos
+            = ctx->shared_buf->buffer + remaining + ctx->block_read_size;
 
         // Fill the buffer with new data
-        int rc = _oe_read(ctx->read.fid, ctx->shared_buf->buffer + remaining, OE_RSIZE);
-        if (rc != OE_RSIZE) return rc;
+        int rc = _oe_read(ctx->read.fid,
+                          ctx->shared_buf->buffer + remaining,
+                          ctx->block_read_size);
+        if ((size_t)rc != ctx->block_read_size) return rc;
     }
 
     // "Read" (reference) buffer and update buffer read position

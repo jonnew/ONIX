@@ -7,7 +7,6 @@
 #include <sstream>
 #include <string>
 
-#include <testfunc.h>
 #include <oepcie.hpp>
 #include <oedevices.hpp>
 
@@ -110,24 +109,28 @@ int main(int argc, char *argv[])
 {
     const char *config_path = OE_DEFAULTCONFIGPATH;
     const char *sig_path = OE_DEFAULTSIGNALPATH;
-    const char *data_path = OE_DEFAULTREADPATH;
+    const char *read_path = OE_DEFAULTREADPATH;
+    const char *write_path = OE_DEFAULTWRITEPATH;
 
-    if (argc != 1 && argc != 4) {
+    if (argc != 1 && argc != 5) {
         std::cout << "usage:\n";
         std::cout << "\thost : run using default stream paths\n";
-        std::cout << "\thost config signal data : specify the configuration, signal and data paths.\n";
+        std::cout << "\thost config signal read write: specify the "
+                     "configuration, signal, read, and write paths.\n";
         exit(1);
     }
-    else if (argc == 4) {
+    else if (argc == 5) {
 
         // Set firmware paths
         config_path = argv[1];
         sig_path = argv[2];
-        data_path = argv[3];
+        read_path = argv[3];
+        write_path = argv[4];
     }
 
     // Create context
-    auto ctx = std::make_shared<oe::context_t>(config_path, data_path, sig_path);
+    auto ctx = std::make_shared<oe::context_t>(
+        config_path, read_path, write_path, sig_path);
 
     // Examine device map
     auto dev_map = ctx->device_map();
@@ -169,6 +172,10 @@ int main(int argc, char *argv[])
 
     std::cout << "Max. read frame size: " 
               << ctx->get_opt<uint32_t>(OE_MAXREADFRAMESIZE)
+              << " bytes\n";
+
+    std::cout << "Block read size: " 
+              << ctx->get_opt<size_t>(OE_BLOCKREADSIZE)
               << " bytes\n";
 
     // TODO: If I specify a 64-bit type param  here, i get a buffer too small
