@@ -218,8 +218,8 @@ control over, the entire acquisition system:
   clock frequency in Hz. The clock counter in the read [frame](#frame) header
   is incremented at this frequency.
 
-## Data input channel (32-bit, asynchronous, read-only)
-The _data input_ channel provides high bandwidth communication from the FPGA
+## Data read channel (32-bit, asynchronous, read-only)
+The _data read_ channel provides high bandwidth communication from the FPGA
 firmware to the host computer using direct memory access (DMA). From the host's
 perspective, its behavior is equivalent to a read-only, blocking UNIX named
 pipe with the exception that data can only be read on 32-bit, instead of 8-bit,
@@ -232,8 +232,8 @@ an input buffer that occupies a 512 MB segment of kernal RAM. Increased
 bandwidth demands will necessitate the creation of a user-space buffer. This
 change shall have no effect on the API.
 
-## Data output channel (32-bit, asynchronous, write-only)
-The _data output_ channel provides high bandwidth communication from the host
+## Data write channel (32-bit, asynchronous, write-only)
+The _data write_ channel provides high bandwidth communication from the host
 computer to the FPGA firmware using DMA via calls. From the host's perspective,
 its behavior is equivalent to a write-only, blocking UNIX named pipe with the
 exception that data can only be written on 32-bit, instead of 8-bit,
@@ -269,7 +269,7 @@ int api_function(context *ctx, ...);
 A _device_ is defined as configurable piece of hardware with its own register
 address space (e.g. an integrated circuit) or something programmed within the
 firmware to emulate this (e.g. an electrical stimulation sub-circuit made to
-look like a Master-8). Host interaction with a device is facilitated using a
+behave like a Master-8). Host interaction with a device is facilitated using a
 device description, which should hold the following elements:
 
 - `device_id`: Device ID number
@@ -456,7 +456,7 @@ typedef struct oe_ctx_impl {
 ```
 
 Each context manages a single device map. Following a hardware reset, which is
-triggered either by a call to `oe_init_ctx` or to `oe_set_ctx` using the
+triggered either by a call to `oe_init_ctx` or to `oe_set_opt` using the
 `OE_RESET` option, the context `run_state` is set to UNINTIALIZED and the device map is
 pushed onto the signal stream by the FPGA as
 [COBS](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing) encode
@@ -536,20 +536,26 @@ These registers may be familiar to those who have used a Master-8 or
 [pulse-pal](https://sites.google.com/site/pulsepalwiki/) stimulus sequencer.
 
 ### `oe_frame_t`
-[Frame](#frame) implementation. Frames are produced by calls `oe_read_frame`
-and provided to calls to `oe_write_frame`.
+[Frame](#frame) implementation. Frames are produced by calls `oe_read_frame`.
+Frames are actually zero-copy `views` into an external, RAII-capable circular
+buffer (the `buffer` handle). When implementing language bindings, simply
+ignore this member's existence.
 
 ``` {.c}
 typedef struct oe_frame {
+    // Header
     uint64_t clock;         // Base clock counter
     uint16_t num_dev;       // Number of devices in frame
     uint8_t corrupt;        // Is this frame corrupt?
+
+    // Data
     oe_size_t *dev_idxs;    // Array of device indices in frame
-	oe_size_t dev_idxs_sz;  // Size in bytes of dev_idxs buffer
-	oe_size_t *dev_offs;    // Device data offsets within data block
-	oe_size_t dev_offs_sz;  // Size in bytes of dev_idxs buffer
+    oe_size_t *dev_offs;    // Device data offsets within data block
     uint8_t *data;          // Multi-device raw data block
-	oe_size_t data_sz;      // Size in bytes of data buffer
+    oe_size_t data_sz;      // Size in bytes of data buffer
+
+    // External buffer, don't touch
+    oe_buffer buffer;       // Handle to external buffer
 
 } oe_frame_t;
 ```
@@ -565,28 +571,25 @@ Error code enumeration.
 typedef enum oe_error {
     OE_ESUCCESS         =  0,  // Success
     OE_EPATHINVALID     = -1,  // Invalid stream path, fail on open
-    OE_EREINITCTX       = -2,  // Double initialization attempt
-    OE_EDEVID           = -3,  // Invalid device ID on init or reg op
-    OE_EREADFAILURE     = -4,  // Failure to read from a stream/register
-    OE_EWRITEFAILURE    = -5,  // Failure to write to a stream/register
-    OE_ENULLCTX         = -6,  // Attempt to call function w null ctx
-    OE_ESEEKFAILURE     = -7,  // Failure to seek on stream
-    OE_EINVALSTATE      = -8,  // Invalid operation for the current context run state
-    OE_EDEVIDX          = -9,  // Invalid device index
+    OE_EDEVID           = -2,  // Invalid device ID on init or reg op
+    OE_EDEVIDX          = -3,  // Invalid device index
+    OE_EWRITESIZE       = -4,  // Data write size is incorrect for designated device
+    OE_EREADFAILURE     = -5,  // Failure to read from a stream/register
+    OE_EWRITEFAILURE    = -6,  // Failure to write to a stream/register
+    OE_ENULLCTX         = -7,  // Attempt to call function w null ctx
+    OE_ESEEKFAILURE     = -8,  // Failure to seek on stream
+    OE_EINVALSTATE      = -9,  // Invalid operation for the current context run state
     OE_EINVALOPT        = -10, // Invalid context option
     OE_EINVALARG        = -11, // Invalid function arguments
-    OE_ECANTSETOPT      = -12, // Option cannot be set in current context state
-    OE_ECOBSPACK        = -13, // Invalid COBS packet
-    OE_ERETRIG          = -14, // Attempt to trigger an already triggered operation
-    OE_EBUFFERSIZE      = -15, // Supplied buffer is too small
-    OE_EBADDEVMAP       = -16, // Badly formated device map supplied by firmware
-    OE_EBADALLOC        = -17, // Bad dynamic memory allocation
-    OE_ECLOSEFAIL       = -18, // File descriptor close failure, check errno
-    OE_EDATATYPE        = -19, // Invalid underlying data types
-    OE_EREADONLY        = -20, // Attempted write to read only object (register, context option, etc)
-    OE_ERUNSTATESYNC    = -21, // Software and hardware run state out of sync
-    OE_EINVALRAWTYPE    = -22, // Invalid raw data type
-    OE_EUNIMPL          = -23, // Specified, but unimplemented, feature
+    OE_ECOBSPACK        = -12, // Invalid COBS packet
+    OE_ERETRIG          = -13, // Attempt to trigger an already triggered operation
+    OE_EBUFFERSIZE      = -14, // Supplied buffer is too small
+    OE_EBADDEVMAP       = -15, // Badly formated device map supplied by firmware
+    OE_EBADALLOC        = -16, // Bad dynamic memory allocation
+    OE_ECLOSEFAIL       = -17, // File descriptor close failure, check errno
+    OE_EREADONLY        = -18, // Attempted write to read only object (register, context option, etc)
+    OE_EUNIMPL          = -19, // Specified, but unimplemented, feature
+    OE_EINVALREADSIZE   = -20, // Block read size is smaller than the maximal frame size
 } oe_error_t;
 ```
 
@@ -795,6 +798,19 @@ Clock values within frame data are incremented at this rate.
 | default value       | 42000000 |
 
 
+#### `OE_BLOCKREADSIZE`
+Number of bytes read during each `read()` syscall to the data read stream. This
+option allows control over a fundamental trade-off between closed-loop response
+time and overall performance. The minimum (default) value will provide the
+lowest response latency. Larger values will reduce syscall frequency and may
+improve processing performance for high-bandwidth data sources.
+
+| | |
+|---------------------|--------------------------------------------------------------------|
+| option value type   | `size_t` |
+| option description  | Size, in bytes, of `read()` syscalls |
+| default value       | value of `OE_MAXREADFRAMESIZE` |
+
 ## oe_set_opt
 Set context options.
 
@@ -877,11 +893,27 @@ sample counters, etc) is defaulted.
 | option description 	    | Any value greater than 0 will trigger a reset |
 | default value     	    | Untriggered |
 
+#### `OE_BLOCKREADSIZE`\*\*\*
+Number of bytes read during each `read()` syscall to the data read stream. This
+option allows control over a fundamental trade-off between closed-loop response
+time and overall performance. The minimum (default) value will provide the
+lowest response latency. Larger values will reduce syscall frequency and may
+improve processing performance for high-bandwidth data sources.
+
+| | |
+|---------------------|--------------------------------------------------------------------|
+| option value type   | `size_t` |
+| option description  | Size, in bytes, of `read()` syscalls |
+| default value       | value of `OE_MAXREADFRAMESIZE` |
 
 \* Invalid following a successful call to `oe_init_ctx`. Before this, will
 return with error code `OE_EINVALSTATE`.
 
 \*\* Invalid until a successful call to `oe_init_ctx`. After this, will
+return with error code `OE_EINVALSTATE`.
+
+\*\*\* Invalid until a successful call to `oe_init_ctx` and before acquisition
+is started by setting the `OE_RUNNING` context option. In other states, will
 return with error code `OE_EINVALSTATE`.
 
 ## oe_read_reg
@@ -936,7 +968,7 @@ been properly set. Confirmation of the register value can be made using a call
 to `oe_read_reg`.
 
 ## oe_read_frame
-Read high-bandwidth input data stream.
+Read high-bandwidth data from the read channel.
 
 ``` {.c}
 int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
@@ -959,28 +991,6 @@ a frame is available on the data input stream or
 to free the resources allocated by this call by passing the resulting frame
 pointer to [`oe_destroy_frame`](#oe_destroy_frame).
 
-## oe_write_frame
-Write a frame to the output data channel.
-
-``` {.c}
-int oe_write_frame(const oe_ctx ctx, oe_frame_t *frame)
-```
-
-### Arguments
-- `ctx` context
-- `frame` pointer to an `oe_frame_t`
-
-### Returns `int`
-- 0: success
-- Less than 0: `oe_error_t`
-
-### Description
-`oe_write_frame` writes a pre-allocated and populated `stuct` corresponding to
-a single [frame](#frame), with a write header, into the asynchronous data
-output channel from host memory. If the frame specifies that devices without
-write capabilities should be written to, this function will return
-`OE_EWRITEFAILURE`.
-
 ## oe_destroy_frame
 Free heap-allocated frame.
 
@@ -997,6 +1007,29 @@ There is no return value.
 ### Description
 `oe_destroy_frame` frees a heap-allocated frame. It is generally used to clean
 up the resources allocated by [`oe_read_frame`](#oe_read_frame).
+
+## oe_write
+Write data to the data write channel.
+
+``` {.c}
+int oe_write_frame(const oe_ctx ctx, size_t dev_idx, void *data, size_t data_sz)
+```
+
+### Arguments
+- `ctx` context
+- `dev_idx` device to write to
+- `data` pointer to data to write
+- `data_sz` number of bytes to write
+
+### Returns `int`
+- 0: success
+- Less than 0: `oe_error_t`
+
+### Description
+`oe_write_frame` writes block data to a particular device from the device map
+using the asynchronous data write channel. If `dev_idx` is not a writable
+device, or if `data_sz` does not equal to `write_size` the of the device, this
+function will return `OE_EDEVIDX` and `OE_EWRITESIZE`, respectively.
 
 ## oe_version
 Report the oepcie library version.
