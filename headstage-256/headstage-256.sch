@@ -2832,8 +2832,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="0.3" y1="-0.2" x2="-0.1" y2="-0.2" width="0.1016" layer="51"/>
 <wire x1="-0.1" y1="-0.2" x2="-0.3" y2="-0.2" width="0.1016" layer="51"/>
 <wire x1="0.45" y1="0.2" x2="0.45" y2="-0.2" width="0.127" layer="21"/>
-<smd name="A" x="-0.1775" y="0" dx="0.23" dy="0.3" layer="1"/>
-<smd name="C" x="0.1775" y="0" dx="0.23" dy="0.3" layer="1"/>
+<smd name="A" x="-0.1775" y="0" dx="0.23" dy="0.3" layer="1" cream="no"/>
+<smd name="C" x="0.1775" y="0" dx="0.23" dy="0.3" layer="1" cream="no"/>
 <text x="-1.15" y="0.45" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.2" y="-1.45" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.35" y1="-0.3" x2="0.35" y2="0.3" layer="39"/>
@@ -2844,6 +2844,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="0.1" y1="0" x2="-0.1" y2="0.2" width="0.1016" layer="51"/>
 <wire x1="-0.05" y1="0.05" x2="0" y2="0" width="0.1016" layer="51"/>
 <wire x1="0" y1="0" x2="-0.05" y2="-0.05" width="0.1016" layer="51"/>
+<rectangle x1="-0.25" y1="-0.13" x2="-0.105" y2="0.13" layer="31"/>
+<rectangle x1="0.105" y1="-0.13" x2="0.25" y2="0.13" layer="31"/>
 </package>
 <package name="COAX-ADAPTER-8X8MM">
 <smd name="GND1" x="5.25" y="2.5" dx="2.5" dy="1" layer="1" roundness="50" rot="R90"/>
@@ -4636,7 +4638,7 @@ clearance</text>
 <text x="10.16" y="-12.7" size="1.778" layer="95">&gt;NAME</text>
 <text x="10.16" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="LA" x="5.08" y="-15.24" visible="off" length="middle" direction="pas" rot="R90"/>
-<pin name="HA" x="5.08" y="15.24" visible="off" length="middle" direction="pas" rot="R270"/>
+<pin name="HA" x="5.08" y="15.24" visible="pad" length="middle" direction="pas" rot="R270"/>
 <pin name="WA" x="17.78" y="0" visible="off" length="middle" direction="pas" rot="R180"/>
 <wire x1="7.62" y1="0" x2="7.62" y2="-1.27" width="0.2032" layer="94"/>
 <wire x1="7.62" y1="0" x2="12.7" y2="0" width="0.1524" layer="94"/>
@@ -4651,6 +4653,8 @@ clearance</text>
 <pin name="DIN" x="-22.86" y="0" visible="pin" length="middle" direction="in"/>
 <pin name="!CS" x="-22.86" y="-5.08" visible="pin" length="middle" direction="in"/>
 <pin name="GND" x="-5.08" y="-15.24" visible="pin" length="middle" direction="pwr" rot="R90"/>
+<text x="6.35" y="8.89" size="1.524" layer="104" rot="R270">HA</text>
+<text x="7.62" y="-7.62" size="1.524" layer="104" rot="R90">LA</text>
 </symbol>
 <symbol name="+VCOAX">
 <wire x1="1.27" y1="0.635" x2="0" y2="2.54" width="0.254" layer="94"/>

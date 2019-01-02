@@ -39,9 +39,10 @@
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
@@ -1428,8 +1429,8 @@ clearance</text>
 <wire x1="0.3" y1="-0.2" x2="-0.1" y2="-0.2" width="0.1016" layer="51"/>
 <wire x1="-0.1" y1="-0.2" x2="-0.3" y2="-0.2" width="0.1016" layer="51"/>
 <wire x1="0.45" y1="0.2" x2="0.45" y2="-0.2" width="0.127" layer="21"/>
-<smd name="A" x="-0.1775" y="0" dx="0.23" dy="0.3" layer="1"/>
-<smd name="C" x="0.1775" y="0" dx="0.23" dy="0.3" layer="1"/>
+<smd name="A" x="-0.1775" y="0" dx="0.23" dy="0.3" layer="1" cream="no"/>
+<smd name="C" x="0.1775" y="0" dx="0.23" dy="0.3" layer="1" cream="no"/>
 <text x="-1.15" y="0.45" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.2" y="-1.45" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.35" y1="-0.3" x2="0.35" y2="0.3" layer="39"/>
@@ -1440,6 +1441,8 @@ clearance</text>
 <wire x1="0.1" y1="0" x2="-0.1" y2="0.2" width="0.1016" layer="51"/>
 <wire x1="-0.05" y1="0.05" x2="0" y2="0" width="0.1016" layer="51"/>
 <wire x1="0" y1="0" x2="-0.05" y2="-0.05" width="0.1016" layer="51"/>
+<rectangle x1="-0.25" y1="-0.13" x2="-0.105" y2="0.13" layer="31"/>
+<rectangle x1="0.105" y1="-0.13" x2="0.25" y2="0.13" layer="31"/>
 </package>
 <package name="LED-0201T">
 <wire x1="-0.254" y1="0.1524" x2="0.254" y2="0.1524" width="0.1016" layer="51"/>
