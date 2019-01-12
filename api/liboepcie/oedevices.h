@@ -11,25 +11,26 @@ extern "C" {
 #define OE_EXPORT
 #endif
 
-#define OE_MAXDEVID 9999
+#define OE_MAXDEVID 1999
 
 // NB: Officially supported device IDs for the open-ephys++ project occupy
-// device IDs < 10000. IDs above this value are not reserved and can be used
+// device IDs < 2000. IDs above this value are not reserved and can be used
 // for custom projects.
 // NB: If you add a device here, make sure to update oe_device_str(), and
 // update documentation below
 typedef enum oe_device_id {
-    OE_INFO                 = 0,   // Virtual device that provides status and error information
-    OE_RHD2132              = 1,   // Intan RHD2132 bioamplifier
-    OE_RHD2164              = 2,   // Intan RHD2162 bioamplifier
-    OE_MPU9250              = 3,   // MPU9250 9-axis accerometer
-    OE_ESTIM                = 4,   // Electrical stimulation subcircuit
-    OE_OSTIM                = 5,   // Optical stimulation subcircuit
-    OE_TS4231               = 6,   // Triad semiconductor TS421 optical to digital converter
-    OE_SERDESGPO            = 7,   // SERDES GPIO pins
-    OE_DINPUT32             = 8,   // 32-bit digital input port
-    OE_DOUTPUT32            = 9,   // 32-bit digital output port
-    OE_BNO055               = 10,  // BNO055 9-DOF IMU
+    OE_NULL                 = 0,   // Virtual device that provides status and error information
+    OE_INFO                 = 1,   // Virtual device that provides status and error information
+    OE_RHD2132              = 2,   // Intan RHD2132 bioamplifier
+    OE_RHD2164              = 3,   // Intan RHD2162 bioamplifier
+    OE_MPU9250              = 4,   // MPU9250 9-axis accerometer
+    OE_ESTIM                = 5,   // Electrical stimulation subcircuit
+    OE_OSTIM                = 6,   // Optical stimulation subcircuit
+    OE_TS4231               = 7,   // Triad semiconductor TS421 optical to digital converter
+    OE_SERDESGPO            = 8,   // SERDES GPIO pins
+    OE_DINPUT32             = 9,   // 32-bit digital input port
+    OE_DOUTPUT32            = 10,  // 32-bit digital output port
+    OE_BNO055               = 11,  // BNO055 9-DOF IMU
 
     // NB: Final reserved device ID. Always on bottom
     OE_MAXDEVICEID          = OE_MAXDEVID,

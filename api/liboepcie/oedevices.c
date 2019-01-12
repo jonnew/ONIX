@@ -6,6 +6,9 @@
 const char *oe_device_str(int dev_id)
 {
     switch (dev_id) {
+        case OE_NULL: {
+            return "Placeholder device. Neither generates or accepts data.";
+        }
         case OE_INFO: {
             return "Host status and error information.";
         }

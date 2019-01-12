@@ -3,7 +3,7 @@
 
 // Version macros for compile-time API version detection
 #define OE_VERSION_MAJOR 2
-#define OE_VERSION_MINOR 1
+#define OE_VERSION_MINOR 2
 #define OE_VERSION_PATCH 0
 
 #define OE_MAKE_VERSION(major, minor, patch) \

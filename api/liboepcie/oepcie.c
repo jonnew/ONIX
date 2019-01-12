@@ -104,17 +104,16 @@ struct oe_ctx_impl {
 // Signal flags
 typedef enum oe_signal {
     NULLSIG             = (1u << 0),
-    CONFIGWACK          = (1u << 1), // Configuration write-acknowledgement
-    CONFIGWNACK         = (1u << 2), // Configuration no-write-acknowledgement
-    CONFIGRACK          = (1u << 3), // Configuration read-acknowledgement
-    CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgement
-    DEVICEMAPACK        = (1u << 5), // Device map start acnknowledgement
-    DEVICEINST          = (1u << 6), // Deivce map instance
+    CONFIGWACK          = (1u << 1), // Configuration write-acknowledgment
+    CONFIGWNACK         = (1u << 2), // Configuration no-write-acknowledgment
+    CONFIGRACK          = (1u << 3), // Configuration read-acknowledgment
+    CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgment
+    DEVICEMAPACK        = (1u << 5), // Device map start acknowledgment
+    DEVICEINST          = (1u << 6), // Device map instance
 } oe_signal_t;
 
 // Configuration file offsets
 typedef enum oe_conf_reg_off {
-
     // Register R/W interface
     CONFDEVIDOFFSET     = 0,   // Configuration device id register byte offset
     CONFADDROFFSET      = 4,   // Configuration register address register byte offset
@@ -592,7 +591,7 @@ int oe_write_reg(const oe_ctx ctx,
     if (rc) return rc;
 
     if (type == CONFIGWNACK)
-        return OE_EREADONLY;
+        return OE_EWRITEFAILURE;
 
     return 0;
 }
@@ -647,7 +646,7 @@ int oe_read_reg(const oe_ctx ctx,
     if (rc) return rc;
 
     if (type == CONFIGRNACK)
-        return OE_EREADONLY;
+        return OE_EREADFAILURE;
 
     return 0;
 }
@@ -660,10 +659,10 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     // a different thread
     assert(ctx->run_state >= IDLE && "Context is not acquiring.");
 
-    // TODO: There is no need for all of this. The header feilds in oe_frame_t
+    // TODO: There is no need for all of this. The header fields in oe_frame_t
     // should just point into the shared buffer.
- 
-    // Get the header and figure out how many devies are in the frame
+
+    // Get the header and figure out how many devices are in the frame
     uint8_t *header = NULL;
     int rc = _oe_read_buffer(ctx, (void **)&header, OE_RFRAMEHEADERSZ);
     if (rc != 0) return rc;
@@ -673,7 +672,7 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     *frame = malloc(sizeof(oe_frame_t) + num_dev * sizeof(oe_size_t));
     oe_frame_t *fptr = *frame;
 
-    // Device offset list points to extra space after frame
+    // Device offset list points to extra space after frame container
     fptr->dev_offs = (oe_size_t *)((char *)fptr + sizeof(oe_frame_t));
 
     // Total frame size

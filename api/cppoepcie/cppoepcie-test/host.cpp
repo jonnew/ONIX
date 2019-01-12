@@ -86,7 +86,7 @@ void data_loop(std::shared_ptr<oe::context_t> ctx)
 #endif
 
             if (display && counter % 100 == 0) {
-                std::cout << "\tDev: " << i << "("
+                std::cout << "\tDev: " << i << " ("
                           << oe::device_str(dev_map[i].id) << ")\n";
 
                 std::cout << "\tData: [";
@@ -170,18 +170,18 @@ int main(int argc, char *argv[])
     // TODO: Shouldn't this block until ack?
     usleep(100e3);
 
-    std::cout << "Max. read frame size: " 
+    std::cout << "Max. read frame size: "
               << ctx->get_opt<uint32_t>(OE_MAXREADFRAMESIZE)
               << " bytes\n";
 
-    std::cout << "Block read size: " 
+    std::cout << "Block read size: "
               << ctx->get_opt<size_t>(OE_BLOCKREADSIZE)
               << " bytes\n";
 
     // TODO: If I specify a 64-bit type param  here, i get a buffer too small
     // exception. If buffer is fixed to size of actual option register in c
-    // library, then why am I specify a type parameter here? 
-    std::cout << "System clock rate: " 
+    // library, then why am I specify a type parameter here?
+    std::cout << "System clock rate: "
               << ctx->get_opt<uint32_t>(OE_SYSCLKHZ)
               << " Hz\n";
 
@@ -196,7 +196,7 @@ int main(int argc, char *argv[])
     // parallel
     std::thread tid(data_loop, ctx);
 
-    // Read stdin 
+    // Read stdin
     std::string cmd;
     while (cmd != "q") {
 
@@ -214,9 +214,9 @@ int main(int argc, char *argv[])
             running = (running == 1) ? 0 : 1;
             ctx->set_opt(OE_RUNNING, running);
 
-            if (running) 
+            if (running)
                 std::cout << "Running.\n";
-            else 
+            else
                 std::cout << "Paused\n";
         }
         else if (cmd == "c") {
