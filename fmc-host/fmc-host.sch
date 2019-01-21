@@ -8124,6 +8124,7 @@ FMC MODULE</text>
 <part name="TP1" library="jonnew" deviceset="TP" device="B1,27"/>
 <part name="TP2" library="jonnew" deviceset="TP" device="B1,27"/>
 <part name="J3" library="jonnew" deviceset="PINHD-2X8" device="_SMD"/>
+<part name="GND58" library="jonnew" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8155,7 +8156,6 @@ XX mil FR4 core
 <text x="657.86" y="464.82" size="2.54" layer="97">DNP</text>
 <text x="657.86" y="474.98" size="2.54" layer="97">DNP</text>
 <text x="38.1" y="314.96" size="1.27" layer="97" rot="R90">NB: Override internal pullup</text>
-<text x="726.44" y="447.04" size="1.27" layer="97">TODO: Debug out</text>
 <text x="317.5" y="728.98" size="2.54" layer="97">NB: Use both 
 MISO lines</text>
 <text x="88.9" y="878.84" size="2.54" layer="97" rot="R90">TODO: Analog MUX to selected between ADC and DAC?</text>
@@ -8171,6 +8171,7 @@ this is 1W dissipation.</text>
 <wire x1="38.1" y1="1008.38" x2="472.44" y2="1008.38" width="0.1524" layer="97" style="shortdash"/>
 <text x="45.72" y="1000.76" size="2.54" layer="97">ANALOG IO</text>
 <frame x1="0" y1="0" x2="792.48" y2="1054.1" columns="8" rows="5" layer="94"/>
+<text x="723.9" y="447.04" size="2.54" layer="97">DEBUG PORT</text>
 </plain>
 <instances>
 <instance part="GND14" gate="PE" x="398.78" y="375.92"/>
@@ -8590,6 +8591,7 @@ this is 1W dissipation.</text>
 <instance part="TP1" gate="G$1" x="264.16" y="414.02"/>
 <instance part="TP2" gate="G$1" x="269.24" y="414.02"/>
 <instance part="J3" gate="G$1" x="734.06" y="431.8"/>
+<instance part="GND58" gate="PE" x="718.82" y="411.48"/>
 </instances>
 <busses>
 </busses>
@@ -9564,6 +9566,40 @@ this is 1W dissipation.</text>
 <pinref part="TP13" gate="G$1" pin="TP"/>
 <pinref part="GND29" gate="PE" pin="GND"/>
 <wire x1="292.1" y1="406.4" x2="292.1" y2="401.32" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND58" gate="PE" pin="GND"/>
+<pinref part="J3" gate="G$1" pin="1"/>
+<wire x1="718.82" y1="414.02" x2="718.82" y2="421.64" width="0.1524" layer="91"/>
+<wire x1="718.82" y1="421.64" x2="718.82" y2="424.18" width="0.1524" layer="91"/>
+<wire x1="718.82" y1="424.18" x2="718.82" y2="426.72" width="0.1524" layer="91"/>
+<wire x1="718.82" y1="426.72" x2="718.82" y2="429.26" width="0.1524" layer="91"/>
+<wire x1="718.82" y1="429.26" x2="718.82" y2="431.8" width="0.1524" layer="91"/>
+<wire x1="718.82" y1="431.8" x2="718.82" y2="434.34" width="0.1524" layer="91"/>
+<wire x1="718.82" y1="434.34" x2="718.82" y2="436.88" width="0.1524" layer="91"/>
+<wire x1="718.82" y1="436.88" x2="718.82" y2="439.42" width="0.1524" layer="91"/>
+<wire x1="718.82" y1="439.42" x2="726.44" y2="439.42" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="3"/>
+<wire x1="726.44" y1="436.88" x2="718.82" y2="436.88" width="0.1524" layer="91"/>
+<junction x="718.82" y="436.88"/>
+<pinref part="J3" gate="G$1" pin="5"/>
+<wire x1="726.44" y1="434.34" x2="718.82" y2="434.34" width="0.1524" layer="91"/>
+<junction x="718.82" y="434.34"/>
+<pinref part="J3" gate="G$1" pin="7"/>
+<wire x1="726.44" y1="431.8" x2="718.82" y2="431.8" width="0.1524" layer="91"/>
+<junction x="718.82" y="431.8"/>
+<pinref part="J3" gate="G$1" pin="9"/>
+<wire x1="726.44" y1="429.26" x2="718.82" y2="429.26" width="0.1524" layer="91"/>
+<junction x="718.82" y="429.26"/>
+<pinref part="J3" gate="G$1" pin="11"/>
+<wire x1="726.44" y1="426.72" x2="718.82" y2="426.72" width="0.1524" layer="91"/>
+<junction x="718.82" y="426.72"/>
+<pinref part="J3" gate="G$1" pin="13"/>
+<wire x1="726.44" y1="424.18" x2="718.82" y2="424.18" width="0.1524" layer="91"/>
+<junction x="718.82" y="424.18"/>
+<pinref part="J3" gate="G$1" pin="15"/>
+<wire x1="726.44" y1="421.64" x2="718.82" y2="421.64" width="0.1524" layer="91"/>
+<junction x="718.82" y="421.64"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -12564,6 +12600,102 @@ this is 1W dissipation.</text>
 <pinref part="R66" gate="R" pin="2"/>
 <pinref part="D13" gate="G$1" pin="A"/>
 <wire x1="434.34" y1="708.66" x2="434.34" y2="706.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="DEBUG1" class="0">
+<segment>
+<pinref part="FMC_LPC" gate="G$1" pin="LA01_N_CC"/>
+<wire x1="586.74" y1="459.74" x2="579.12" y2="459.74" width="0.1524" layer="91"/>
+<label x="579.12" y="459.74" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<wire x1="741.68" y1="436.88" x2="749.3" y2="436.88" width="0.1524" layer="91"/>
+<label x="749.3" y="436.88" size="1.27" layer="95" xref="yes"/>
+<pinref part="J3" gate="G$1" pin="4"/>
+</segment>
+</net>
+<net name="DEBUG0" class="0">
+<segment>
+<pinref part="FMC_LPC" gate="G$1" pin="LA01_P_CC"/>
+<wire x1="586.74" y1="462.28" x2="579.12" y2="462.28" width="0.1524" layer="91"/>
+<label x="579.12" y="462.28" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<wire x1="741.68" y1="439.42" x2="749.3" y2="439.42" width="0.1524" layer="91"/>
+<label x="749.3" y="439.42" size="1.27" layer="95" xref="yes"/>
+<pinref part="J3" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="DEBUG2" class="0">
+<segment>
+<wire x1="741.68" y1="434.34" x2="749.3" y2="434.34" width="0.1524" layer="91"/>
+<label x="749.3" y="434.34" size="1.27" layer="95" xref="yes"/>
+<pinref part="J3" gate="G$1" pin="6"/>
+</segment>
+<segment>
+<wire x1="655.32" y1="457.2" x2="662.94" y2="457.2" width="0.1524" layer="91"/>
+<label x="662.94" y="457.2" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<pinref part="FMC_LPC" gate="G$1" pin="LA06_P"/>
+</segment>
+</net>
+<net name="DEBUG3" class="0">
+<segment>
+<wire x1="741.68" y1="431.8" x2="749.3" y2="431.8" width="0.1524" layer="91"/>
+<label x="749.3" y="431.8" size="1.27" layer="95" xref="yes"/>
+<pinref part="J3" gate="G$1" pin="8"/>
+</segment>
+<segment>
+<wire x1="655.32" y1="454.66" x2="662.94" y2="454.66" width="0.1524" layer="91"/>
+<label x="662.94" y="454.66" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<pinref part="FMC_LPC" gate="G$1" pin="LA06_N"/>
+</segment>
+</net>
+<net name="DEBUG4" class="0">
+<segment>
+<wire x1="741.68" y1="429.26" x2="749.3" y2="429.26" width="0.1524" layer="91"/>
+<label x="749.3" y="429.26" size="1.27" layer="95" xref="yes"/>
+<pinref part="J3" gate="G$1" pin="10"/>
+</segment>
+<segment>
+<wire x1="586.74" y1="454.66" x2="579.12" y2="454.66" width="0.1524" layer="91"/>
+<label x="579.12" y="454.66" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="FMC_LPC" gate="G$1" pin="LA05_P"/>
+</segment>
+</net>
+<net name="DEBUG5" class="0">
+<segment>
+<wire x1="741.68" y1="426.72" x2="749.3" y2="426.72" width="0.1524" layer="91"/>
+<label x="749.3" y="426.72" size="1.27" layer="95" xref="yes"/>
+<pinref part="J3" gate="G$1" pin="12"/>
+</segment>
+<segment>
+<wire x1="586.74" y1="452.12" x2="579.12" y2="452.12" width="0.1524" layer="91"/>
+<label x="579.12" y="452.12" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="FMC_LPC" gate="G$1" pin="LA05_N"/>
+</segment>
+</net>
+<net name="DEBUG6" class="0">
+<segment>
+<wire x1="741.68" y1="424.18" x2="749.3" y2="424.18" width="0.1524" layer="91"/>
+<label x="749.3" y="424.18" size="1.27" layer="95" xref="yes"/>
+<pinref part="J3" gate="G$1" pin="14"/>
+</segment>
+<segment>
+<wire x1="655.32" y1="447.04" x2="662.94" y2="447.04" width="0.1524" layer="91"/>
+<label x="662.94" y="447.04" size="1.27" layer="95" xref="yes"/>
+<pinref part="FMC_LPC" gate="G$1" pin="LA10_P"/>
+</segment>
+</net>
+<net name="DEBUG7" class="0">
+<segment>
+<wire x1="741.68" y1="421.64" x2="749.3" y2="421.64" width="0.1524" layer="91"/>
+<label x="749.3" y="421.64" size="1.27" layer="95" xref="yes"/>
+<pinref part="J3" gate="G$1" pin="16"/>
+</segment>
+<segment>
+<wire x1="586.74" y1="444.5" x2="579.12" y2="444.5" width="0.1524" layer="91"/>
+<label x="579.12" y="444.5" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="FMC_LPC" gate="G$1" pin="LA09_N"/>
 </segment>
 </net>
 </nets>
