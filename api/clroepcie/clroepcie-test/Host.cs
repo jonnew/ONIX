@@ -31,7 +31,7 @@ class DataProcessor
                 if (counter++ % display_downsample == 0)
                 {
                     if (display_clock)
-                        Console.WriteLine("\tSample: {0}\n", frame.Time());
+                        Console.WriteLine("\tFrame clock: {0}\n", frame.Clock());
 
                     if (display)
                     {
