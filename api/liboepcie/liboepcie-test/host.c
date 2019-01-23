@@ -235,7 +235,7 @@ int main(int argc, char *argv[])
     assert(!rc && "Register write failure.");
 
     // HACK: "wait" for reset acknowledgement. In real firmware, this will be actual async ACK.
-    usleep(100e3);
+    //usleep(100e3);
 
     oe_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);
