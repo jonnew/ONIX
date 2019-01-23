@@ -353,8 +353,8 @@ int main(int argc, char *argv[])
     WaitForSingleObject(read_thread, INFINITE);
     CloseHandle(read_thread);
 
-    WaitForSingleObject(write_thread, INFINITE);
-    CloseHandle(write_thread);
+    //WaitForSingleObject(write_thread, INFINITE);
+    //CloseHandle(write_thread);
 #else
     pthread_join(read_tid, NULL);
     //pthread_join(write_tid, NULL);

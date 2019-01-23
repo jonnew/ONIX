@@ -45,16 +45,14 @@
             }
         }
 
-        public ulong Time()
+        public ulong Clock()
         {
             return ((frame_t*)handle.ToPointer())->clock;
-            //return frame.clock;
         }
 
         public bool Corrupt()
         {
             return ((frame_t*)handle.ToPointer())->corrupt != 0;
-            //return frame.corrupt != 0;
         }
 
         // Ideally, I would like this to be a "Span" into the exsting, allocated frame

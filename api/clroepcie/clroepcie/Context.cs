@@ -200,6 +200,22 @@
             return frame;
         }
 
+        // Byte array write specialization
+        public void Write(uint dev_idx, IntPtr data, int length)
+        {
+            int rc = NativeMethods.oe_write(handle, dev_idx, data, length);
+            if (rc < 0) { throw new OEException(rc); }
+        }
+
+        // TODO: C# 7.3
+        // Generic write with array type cast
+        //public void Write<T>(uint dev_idx, T[] data) where T : unmanaged
+        //{
+        //    var byte_data = Array.ConvertAll(data, item => (byte)item);
+        //    int rc = NativeMethods.oe_write(handle, dev_idx, byte_data, byte_data.Length);
+        //    if (rc < 0) { throw new OEException(rc); }
+        //}
+
         // NB: These need to be redeclared unfortuately
         public enum Option : int
         {
