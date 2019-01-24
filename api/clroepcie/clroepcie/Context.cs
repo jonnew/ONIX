@@ -203,7 +203,7 @@
         // Byte array write specialization
         public void Write(uint dev_idx, IntPtr data, int length)
         {
-            int rc = NativeMethods.oe_write(handle, dev_idx, data, length);
+            int rc = NativeMethods.oe_write(handle, dev_idx, data, (uint)length);
             if (rc < 0) { throw new OEException(rc); }
         }
 
