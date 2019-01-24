@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="5" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.0125" altunitdist="inch" altunit="inch"/>
+<grid distance="2.5" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.0125" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -328,6 +328,14 @@ JV, MIT
 <hole x="75" y="75" drill="6.5"/>
 <hole x="60" y="-35" drill="6.5"/>
 <hole x="-15" y="-35" drill="6.5"/>
+<text x="-12.5" y="77.5" size="1" layer="21" font="vector" ratio="16" rot="SR315" align="center">M3</text>
+<text x="-20" y="77.5" size="1" layer="21" font="vector" ratio="16" rot="SR315" align="center">M6 / 1/4"-20</text>
+<hole x="49.6" y="75" drill="6.5"/>
+<hole x="34.6" y="-35" drill="6.5"/>
+<hole x="49.6" y="-100" drill="6.5"/>
+<text x="62.5" y="75" size="1" layer="21" font="vector" ratio="16" rot="SR0" align="center">&lt;- 1" -&gt;</text>
+<text x="47.5" y="-35" size="1" layer="21" font="vector" ratio="16" rot="SR0" align="center">&lt;- 1" -&gt;</text>
+<text x="62.5" y="-100" size="1" layer="21" font="vector" ratio="16" rot="SR0" align="center">&lt;- 1" -&gt;</text>
 </plain>
 <libraries>
 <library name="jonnew">
