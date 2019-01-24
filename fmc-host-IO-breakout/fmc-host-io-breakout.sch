@@ -1913,11 +1913,13 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-GND" gate="G$1" pin="1"/>
 <pinref part="SUPPLY9" gate="G$1" pin="AGND"/>
 <wire x1="58.42" y1="167.64" x2="58.42" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="177.8" x2="58.42" y2="167.64" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SCREW-GND" gate="G$1" pin="2"/>
 <pinref part="SUPPLY10" gate="G$1" pin="AGND"/>
 <wire x1="63.5" y1="167.64" x2="63.5" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="177.8" x2="63.5" y2="167.64" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY11" gate="G$1" pin="AGND"/>
@@ -2295,6 +2297,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-IN" gate="G$1" pin="1"/>
 <wire x1="116.84" y1="127" x2="124.46" y2="127" width="0.1524" layer="91"/>
 <label x="124.46" y="127" size="1.778" layer="95"/>
+<wire x1="104.14" y1="127" x2="116.84" y2="127" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-IN" gate="G$1" pin="3"/>
@@ -2325,6 +2328,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-IN" gate="G$1" pin="2"/>
 <wire x1="116.84" y1="132.08" x2="124.46" y2="132.08" width="0.1524" layer="91"/>
 <label x="124.46" y="132.08" size="1.778" layer="95"/>
+<wire x1="104.14" y1="132.08" x2="116.84" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-IN" gate="G$1" pin="4"/>
@@ -2355,6 +2359,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-IN" gate="G$1" pin="3"/>
 <wire x1="116.84" y1="137.16" x2="124.46" y2="137.16" width="0.1524" layer="91"/>
 <label x="124.46" y="137.16" size="1.778" layer="95"/>
+<wire x1="104.14" y1="137.16" x2="116.84" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-IN" gate="G$1" pin="5"/>
@@ -2385,6 +2390,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-IN" gate="G$1" pin="4"/>
 <wire x1="116.84" y1="142.24" x2="124.46" y2="142.24" width="0.1524" layer="91"/>
 <label x="124.46" y="142.24" size="1.778" layer="95"/>
+<wire x1="104.14" y1="142.24" x2="116.84" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-IN" gate="G$1" pin="6"/>
@@ -2415,6 +2421,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-IN" gate="G$1" pin="5"/>
 <wire x1="116.84" y1="147.32" x2="124.46" y2="147.32" width="0.1524" layer="91"/>
 <label x="124.46" y="147.32" size="1.778" layer="95"/>
+<wire x1="104.14" y1="147.32" x2="116.84" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-IN" gate="G$1" pin="7"/>
@@ -2445,6 +2452,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-IN" gate="G$1" pin="6"/>
 <wire x1="116.84" y1="152.4" x2="124.46" y2="152.4" width="0.1524" layer="91"/>
 <label x="124.46" y="152.4" size="1.778" layer="95"/>
+<wire x1="104.14" y1="152.4" x2="116.84" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-IN" gate="G$1" pin="8"/>
@@ -2475,6 +2483,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-IN" gate="G$1" pin="7"/>
 <wire x1="116.84" y1="157.48" x2="124.46" y2="157.48" width="0.1524" layer="91"/>
 <label x="124.46" y="157.48" size="1.778" layer="95"/>
+<wire x1="104.14" y1="157.48" x2="116.84" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-IN" gate="G$1" pin="9"/>
@@ -2505,6 +2514,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-IN" gate="G$1" pin="8"/>
 <wire x1="116.84" y1="162.56" x2="124.46" y2="162.56" width="0.1524" layer="91"/>
 <label x="124.46" y="162.56" size="1.778" layer="95"/>
+<wire x1="104.14" y1="162.56" x2="116.84" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-IN" gate="G$1" pin="10"/>
@@ -2735,6 +2745,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-OUT" gate="G$1" pin="2"/>
 <wire x1="116.84" y1="78.74" x2="124.46" y2="78.74" width="0.1524" layer="91"/>
 <label x="124.46" y="78.74" size="1.778" layer="95"/>
+<wire x1="104.14" y1="78.74" x2="116.84" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-OUT" gate="G$1" pin="5"/>
@@ -2775,6 +2786,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-OUT" gate="G$1" pin="3"/>
 <wire x1="116.84" y1="83.82" x2="124.46" y2="83.82" width="0.1524" layer="91"/>
 <label x="124.46" y="83.82" size="1.778" layer="95"/>
+<wire x1="104.14" y1="83.82" x2="116.84" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-OUT" gate="G$1" pin="7"/>
@@ -2810,6 +2822,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-OUT" gate="G$1" pin="5"/>
 <wire x1="116.84" y1="93.98" x2="124.46" y2="93.98" width="0.1524" layer="91"/>
 <label x="124.46" y="93.98" size="1.778" layer="95"/>
+<wire x1="104.14" y1="93.98" x2="116.84" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-OUT" gate="G$1" pin="11"/>
@@ -2845,6 +2858,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-OUT" gate="G$1" pin="6"/>
 <wire x1="116.84" y1="99.06" x2="124.46" y2="99.06" width="0.1524" layer="91"/>
 <label x="124.46" y="99.06" size="1.778" layer="95"/>
+<wire x1="104.14" y1="99.06" x2="116.84" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-OUT" gate="G$1" pin="13"/>
@@ -2880,6 +2894,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-OUT" gate="G$1" pin="7"/>
 <wire x1="116.84" y1="104.14" x2="124.46" y2="104.14" width="0.1524" layer="91"/>
 <label x="124.46" y="104.14" size="1.778" layer="95"/>
+<wire x1="104.14" y1="104.14" x2="116.84" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-OUT" gate="G$1" pin="15"/>
@@ -2915,6 +2930,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-OUT" gate="G$1" pin="4"/>
 <wire x1="116.84" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
 <label x="124.46" y="88.9" size="1.778" layer="95"/>
+<wire x1="104.14" y1="88.9" x2="116.84" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-OUT" gate="G$1" pin="9"/>
@@ -2947,8 +2963,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <label x="20.32" y="73.66" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="SCREW-OUT" gate="G$1" pin="1"/>
-<wire x1="124.46" y1="73.66" x2="116.84" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="73.66" x2="104.14" y2="73.66" width="0.1524" layer="91"/>
 <label x="124.46" y="73.66" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -2990,6 +3005,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <pinref part="SCREW-OUT" gate="G$1" pin="8"/>
 <wire x1="116.84" y1="109.22" x2="124.46" y2="109.22" width="0.1524" layer="91"/>
 <label x="124.46" y="109.22" size="1.778" layer="95"/>
+<wire x1="104.14" y1="109.22" x2="116.84" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="HEADER-OUT" gate="G$1" pin="17"/>

@@ -113,7 +113,7 @@ namespace oe.lib
         public static extern int oe_read_frame(IntPtr ctx, out Frame frame);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl, SetLastError = true)]
-        public static extern int oe_write(IntPtr ctx, uint dev_idx, IntPtr data, int data_sz);
+        public static extern int oe_write(IntPtr ctx, uint dev_idx, IntPtr data, uint data_sz);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern void oe_destroy_frame(IntPtr frame);
