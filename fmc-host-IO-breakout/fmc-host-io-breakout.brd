@@ -7,9 +7,9 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="2.5" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.0125" altunitdist="inch" altunit="inch"/>
+<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.0125" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -29,16 +29,16 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="15" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="15" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -47,9 +47,9 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
@@ -59,8 +59,8 @@
 <layer number="48" name="Document" color="5" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="15" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -336,6 +336,8 @@ JV, MIT
 <text x="62.5" y="75" size="1" layer="21" font="vector" ratio="16" rot="SR0" align="center">&lt;- 1" -&gt;</text>
 <text x="47.5" y="-35" size="1" layer="21" font="vector" ratio="16" rot="SR0" align="center">&lt;- 1" -&gt;</text>
 <text x="62.5" y="-100" size="1" layer="21" font="vector" ratio="16" rot="SR0" align="center">&lt;- 1" -&gt;</text>
+<rectangle x1="-38" y1="-93" x2="-34" y2="-90" layer="30"/>
+<rectangle x1="-38" y1="-100" x2="-34" y2="-97" layer="30"/>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -1968,6 +1970,12 @@ design rules under a new name.</description>
 <wire x1="-20.32" y1="-48.26" x2="-24.13" y2="-48.26" width="0.254" layer="1"/>
 <via x="-24.13" y="-48.26" extent="1-16" drill="0.35"/>
 <wire x1="-17.145" y1="-45.085" x2="-19.685" y2="-47.625" width="0.254" layer="16"/>
+<polygon width="0.1524" layer="16" thermals="no">
+<vertex x="-34" y="-90"/>
+<vertex x="-38" y="-90"/>
+<vertex x="-38" y="-93"/>
+<vertex x="-34" y="-93"/>
+</polygon>
 </signal>
 <signal name="AOUT2">
 <contactref element="J4" pad="25"/>
@@ -2190,6 +2198,12 @@ design rules under a new name.</description>
 <wire x1="-22.86" y1="-51.35" x2="-25.4" y2="-53.89" width="0.254" layer="16"/>
 <wire x1="-10" y1="-50" x2="-21.51" y2="-50" width="0.254" layer="16"/>
 <wire x1="-21.51" y1="-50" x2="-22.86" y2="-51.35" width="0.254" layer="16"/>
+<polygon width="0.1524" layer="16" thermals="no">
+<vertex x="-34" y="-97"/>
+<vertex x="-38" y="-97"/>
+<vertex x="-38" y="-100"/>
+<vertex x="-34" y="-100"/>
+</polygon>
 </signal>
 <signal name="AOUT7">
 <contactref element="J4" pad="10"/>
