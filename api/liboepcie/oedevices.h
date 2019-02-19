@@ -31,6 +31,7 @@ typedef enum oe_device_id {
     OE_DINPUT32             = 9,   // 32-bit digital input port
     OE_DOUTPUT32            = 10,  // 32-bit digital output port
     OE_BNO055               = 11,  // BNO055 9-DOF IMU
+    OE_TEST0                = 12,  // Test device
 
     // NB: Final reserved device ID. Always on bottom
     OE_MAXDEVICEID          = OE_MAXDEVID,
@@ -49,6 +50,8 @@ enum oe_info_codes {
     OE_INFO_EWATCHDOG       = 0,   // Frame not sent withing watchdog threshold
     OE_INFO_ESERDESPARITY   = 1,   // SERDES parity error detected
     OE_INFO_ESERDESCHKSUM   = 2,   // SERDES packet checksum error detected
+    OE_INFO_ETOOMANYREMOTE  = 3,   // TOO many remote devices for host to support
+    OE_INFO_EREMOTEINIT     = 4,   // Remote initialization error
 };
 
 // - Configuration registers
