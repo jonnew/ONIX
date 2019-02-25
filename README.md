@@ -98,10 +98,17 @@ Serialized, multifunction headstage for large rodents. Supports both 128 or 256
 channels. Designed to interface with [eib-128](./eib-128/README.md) or
 [eib-256](./eib-256/README.md)
 
-### [pcie-host](pcie-host/README.md)
-Base board for facilitating PCIe communication, via KC705 or similar, with host
-computer. This board fits into an empty PCIe slot and communicates with KC705
-via an FMC ribbon cable.
+### [fmc-host](fmc-host/README.md)
+Base board for facilitating PCIe communication, via FMC compatiable and
+PCIe-capable FPGA based board (e.g. [Numato Lab
+Nereid](https://numato.com/product/nereid-kintex-7-pci-express-fpga-development-board).
+This board plugs into the FMC connector on the base board. It provides
+communication with one headstage and lots of other analog and digital IO.
+
+### [analog-io-breakout](analog-io-breakout/README.md)
+Passive breakout board for acquiring and generating analog signals through BNC,
+SMA, ribbon, or straight wire connections. Plugs into fmc-host using a 26-pin
+shrunk delta ribbon cable.
 
 ### [nanoz-adapter-64](./nanoz-adapter-64/README.md)
 Adapter to interface eib-64 with the popular

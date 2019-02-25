@@ -189,17 +189,19 @@ int oe_init_ctx(oe_ctx ctx)
         return OE_EPATHINVALID;
     }
 
-    ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
-    if (ctx->write.fid == -1) {
-        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->write.path);
-        return OE_EPATHINVALID;
-    }
+    //ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
+    //if (ctx->write.fid == -1) {
+    //    fprintf(stderr, "%s: %s\n", strerror(errno), ctx->write.path);
+    //    return OE_EPATHINVALID;
+    //}
 
     ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
     if (ctx->signal.fid == -1) {
         fprintf(stderr, "%s: %s\n", strerror(errno), ctx->signal.path);
         return OE_EPATHINVALID;
     }
+
+    // TODO: This should be a sub-routine that is called when the OE_RESET register is set as well!
 
     // Reset the run and reset states of the hardware. This will push a frame
     // header onto the signal stream
@@ -498,6 +500,8 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             if (option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
+            // TODO: get fresh device map
+            // TODO: set running to 0
             int rc = _oe_write_config(
                 ctx->config.fid, CONFRESETOFFSET, *(oe_reg_val_t*)value);
             if (rc) return rc;
@@ -917,10 +921,12 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
     int pack_size = _oe_read_signal_packet(signal_fd, buffer);
     if (pack_size < 0) return pack_size;
 
-    // Unstuff the packet (last byte is the 0, so we decrement
+    // Unstuff the packet
     int rc = _oe_cobs_unstuff(buffer, buffer, pack_size);
     if (rc < 0) return rc;
 
+    // Remove the overhead byte and signal type
+    // and make sure the buffer size is sufficient
     if ((int)size < (--pack_size - 4))
         return OE_EBUFFERSIZE;
 
@@ -931,7 +937,7 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
 #endif
 
     // pack_size still has overhead byte and header, so we remove those
-    size_t data_size = pack_size - 1 - sizeof(oe_signal_t);
+    size_t data_size = pack_size - sizeof(oe_signal_t);
     if (size < data_size)
         return OE_EBUFFERSIZE;
 

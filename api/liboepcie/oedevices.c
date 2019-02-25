@@ -42,6 +42,9 @@ const char *oe_device_str(int dev_id)
         case OE_BNO055: {
             return "BNO055 9-axis IMU";
         }
+        case OE_TEST0: {
+            return "Open Ephys test device 0.";
+        }
         default:
             return "Unknown device";
     }
