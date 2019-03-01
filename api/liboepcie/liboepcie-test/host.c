@@ -84,7 +84,14 @@ void *read_loop(void *vargp)
         for (i = 0; i < frame->num_dev; i++) {
 
             // Pull data
+            if (i >= frame->num_dev)
+                continue;
+
             size_t this_idx = frame->dev_idxs[i];
+
+            if (this_idx > 3)
+                continue;
+
             oe_device_t this_dev = devices[this_idx];
             uint8_t *data = (uint8_t *)(frame->data + frame->dev_offs[i]);
             size_t data_sz = this_dev.read_size;
@@ -92,7 +99,7 @@ void *read_loop(void *vargp)
 #ifdef DUMPFILES
             fwrite(data, 1, data_sz, dump_files[this_idx]);
 #endif
-            if (display && counter % 100 == 0) {
+            if (display) { // && counter % 100 == 0) {
                 printf("\tDev: %zu (%s)\n",
                     this_idx,
                     oe_device_str(this_dev.id));
@@ -228,11 +235,13 @@ int main(int argc, char *argv[])
 #endif
     }
 
-    // Reset the hardware
-    oe_size_t reset = 1;
-    rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-    assert(!rc && "Register write failure.");
+    // TODO: This type of reset is useless!!!! We must wait until the device map and clock rates are updated, the same as oe_init_ctx(). 
+    // Figure out a way to get this behavior when setting this register.
+    //// Reset the hardware
+    // oe_size_t reset = 1;
+    //rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
+    //if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    //assert(!rc && "Register write failure.");
 
     // HACK: "wait" for reset acknowledgement. In real firmware, this will be actual async ACK.
     //usleep(100e3);
@@ -245,7 +254,7 @@ int main(int argc, char *argv[])
     size_t block_size = 2048;
     size_t block_size_sz = sizeof(block_size);
     oe_set_opt(ctx, OE_BLOCKREADSIZE, &block_size, block_size_sz);
-    printf("Setting block read size to : %zu bytes\n", block_size);
+    printf("Setting block read size to: %zu bytes\n", block_size);
 
     oe_get_opt(ctx, OE_BLOCKREADSIZE, &block_size, &block_size_sz);
     printf("Block read size: %zu bytes\n", block_size);
@@ -367,7 +376,7 @@ int main(int argc, char *argv[])
 #endif
 
     // Reset the hardware
-    reset = 1;
+    oe_size_t reset = 1;
     rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register write failure.");
