@@ -237,14 +237,14 @@ int main(int argc, char *argv[])
 
     // TODO: This type of reset is useless!!!! We must wait until the device map and clock rates are updated, the same as oe_init_ctx(). 
     // Figure out a way to get this behavior when setting this register.
-    //// Reset the hardware
-    // oe_size_t reset = 1;
-    //rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
-    //if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-    //assert(!rc && "Register write failure.");
+    // Reset the hardware
+    oe_size_t reset = 1;
+    rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
+    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    assert(!rc && "Register write failure.");
 
     // HACK: "wait" for reset acknowledgement. In real firmware, this will be actual async ACK.
-    //usleep(100e3);
+    usleep(100e3);
 
     oe_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);
@@ -376,7 +376,7 @@ int main(int argc, char *argv[])
 #endif
 
     // Reset the hardware
-    oe_size_t reset = 1;
+    reset = 1;
     rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
     if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
     assert(!rc && "Register write failure.");

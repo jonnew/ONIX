@@ -378,9 +378,9 @@ usage:
     unlink(config_path);
 
     // Async streams are similar to pipes
+    mkfifo(sig_path, 0666);
     mkfifo(read_path, 0666);
     mkfifo(write_path, 0666);
-    mkfifo(sig_path, 0666);
 
     // Open FIFOs for write only and config file for read/write
 
@@ -393,9 +393,9 @@ usage:
     // programs will deadlock. The ordering is hidden in oe_init_ctx(), so its
     // up to firmware to do it correctly. I need to make sure this won't be an
     // issue when using xillybus
+    sig_fd = open(sig_path, O_WRONLY);
     read_fd = open(read_path, O_WRONLY);
     write_fd = open(write_path, O_RDONLY);
-    sig_fd = open(sig_path, O_WRONLY);
 
     // Generate data thread and continue here config/signal handling in parallel
     pthread_t tid_read;

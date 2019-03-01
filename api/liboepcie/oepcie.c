@@ -129,6 +129,7 @@ typedef enum oe_conf_reg_off {
 } oe_conf_off_t;
 
 // Static helpers
+static int _oe_reset_routine();
 static inline int _oe_read(int data_fd, void* data, size_t size);
 static inline int _oe_write(int data_fd, char* data, size_t size);
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer);
@@ -183,89 +184,43 @@ int oe_init_ctx(oe_ctx ctx)
         return OE_EPATHINVALID;
     }
 
-    ctx->read.fid = open(ctx->read.path, O_RDONLY | _O_BINARY);
-    if (ctx->read.fid == -1) {
-        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
-        return OE_EPATHINVALID;
-    }
-
-    //ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
-    //if (ctx->write.fid == -1) {
-    //    fprintf(stderr, "%s: %s\n", strerror(errno), ctx->write.path);
-    //    return OE_EPATHINVALID;
-    //}
-
     ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
     if (ctx->signal.fid == -1) {
         fprintf(stderr, "%s: %s\n", strerror(errno), ctx->signal.path);
         return OE_EPATHINVALID;
     }
 
-    // TODO: This should be a sub-routine that is called when the OE_RESET register is set as well!
+    ctx->read.fid = open(ctx->read.path, O_RDONLY | _O_BINARY);
+    if (ctx->read.fid == -1) {
+        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
+        return OE_EPATHINVALID;
+    }
 
-    // Reset the run and reset states of the hardware. This will push a frame
-    // header onto the signal stream
+    ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
+    if (ctx->write.fid == -1) {
+        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->write.path);
+        return OE_EPATHINVALID;
+    }
+
+    // NB: Trigger reset routine (populates device map and key acqusition
+    // parameters) Success will set run_state to IDLE
+
+    // If running, stop acqusition
     int rc = _oe_write_config(ctx->config.fid, CONFRUNNINGOFFSET, 0);
     if (rc) return rc;
 
+    // Set the reset register
     rc = _oe_write_config(ctx->config.fid, CONFRESETOFFSET, 1);
     if (rc) return rc;
 
-    // Get number of devices
-    oe_signal_t sig_type = NULLSIG;
-    rc = _oe_pump_signal_data(
-        ctx->signal.fid, DEVICEMAPACK, &sig_type, &(ctx->num_dev), sizeof(ctx->num_dev));
-#ifdef OE_BE
-    ctx->num_dev = BSWAP_32(ctx->num_dev);
-#endif
+    // Get device map etc
+    rc = _oe_reset_routine(ctx);
     if (rc) return rc;
 
-    // Make space for the device map
-    oe_device_t *new_map
-        = realloc(ctx->dev_map, ctx->num_dev * sizeof(oe_device_t));
-    if (new_map)
-        ctx->dev_map = new_map;
-    else
-        return OE_EBADALLOC;
-
-    oe_size_t i;
-    ctx->max_read_frame_size = 0;
-    ctx->max_write_frame_size = 0;
-    for (i = 0; i < ctx->num_dev; i++) {
-
-        sig_type = NULLSIG;
-        uint8_t buffer[OE_COBSBUFFERSIZE];
-        rc = _oe_read_signal_data(ctx->signal.fid, &sig_type, buffer, OE_COBSBUFFERSIZE);
-        if (rc) return rc;
-
-        // We should see num_dev device instances appear on the signal stream
-        if (sig_type != DEVICEINST)
-            return OE_EBADDEVMAP;
-
-        // Append the device onto the map
-        memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
-#ifdef OE_BE
-        ctx->max_read_frame_size += BSWAP_32((ctx->dev_map + i)->read_size);
-        ctx->max_write_frame_size += BSWAP_32((ctx->dev_map + i)->write_size);
-#else
-        ctx->max_read_frame_size += (ctx->dev_map + i)->read_size;
-        ctx->max_write_frame_size += (ctx->dev_map + i)->write_size;
-#endif
-    }
-
-    // NB: Default the block read size to a single max sized frame. This is bad
-    // for high bandwidth performance and good for closed-loop delay.
-    ctx->block_read_size = ctx->max_read_frame_size
-                           + ctx->max_read_frame_size % OE_DATAFIFOWIDTH;
-
-#ifdef OE_BE
-    _device_map_byte_swap(ctx);
-#endif
-
-    // We are now initialized and idle
+    // Run state is now IDLE
     ctx->run_state = IDLE;
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 int oe_destroy_ctx(oe_ctx ctx)
@@ -287,7 +242,7 @@ int oe_destroy_ctx(oe_ctx ctx)
     free(ctx->dev_map);
     free(ctx);
 
-    return 0;
+    return OE_ESUCCESS;
 
 oe_close_ctx_fail:
     return OE_ECLOSEFAIL;
@@ -433,7 +388,7 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             return OE_EINVALOPT;
     }
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
@@ -500,14 +455,24 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             if (option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            // TODO: get fresh device map
-            // TODO: set running to 0
-            int rc = _oe_write_config(
-                ctx->config.fid, CONFRESETOFFSET, *(oe_reg_val_t*)value);
-            if (rc) return rc;
+            if (*(oe_reg_val_t *)value != 0) { //
 
-            if (*(oe_reg_val_t *)value != 0)
+                // If running, stop acqusition
+                int rc = _oe_write_config(
+                    ctx->config.fid, CONFRUNNINGOFFSET, *(oe_reg_val_t*)value);
+                if (rc) return rc;
+
+                // Set the reset register
+                rc = _oe_write_config(
+                    ctx->config.fid, CONFRESETOFFSET, *(oe_reg_val_t*)value);
+                if (rc) return rc;
+
+                // Get device map etc
+                _oe_reset_routine(ctx);
+
+                // Run state is now IDLE
                 ctx->run_state = IDLE;
+            }
 
             break;
         }
@@ -543,7 +508,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             return OE_EINVALOPT;
     }
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 int oe_write_reg(const oe_ctx ctx,
@@ -597,7 +562,7 @@ int oe_write_reg(const oe_ctx ctx,
     if (type == CONFIGWNACK)
         return OE_EWRITEFAILURE;
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 int oe_read_reg(const oe_ctx ctx,
@@ -652,7 +617,7 @@ int oe_read_reg(const oe_ctx ctx,
     if (type == CONFIGRNACK)
         return OE_EREADFAILURE;
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
@@ -847,6 +812,63 @@ const char *oe_error_str(int err)
     }
 }
 
+static int _oe_reset_routine(oe_ctx ctx) {
+    // NB: Subroutine to get device map etc after reset is issue
+
+    // Get number of devices
+    oe_signal_t sig_type = NULLSIG;
+    int rc = _oe_pump_signal_data(
+        ctx->signal.fid, DEVICEMAPACK, &sig_type, &(ctx->num_dev), sizeof(ctx->num_dev));
+#ifdef OE_BE
+    ctx->num_dev = BSWAP_32(ctx->num_dev);
+#endif
+    if (rc) return rc;
+
+    // Make space for the device map
+    oe_device_t *new_map
+        = realloc(ctx->dev_map, ctx->num_dev * sizeof(oe_device_t));
+    if (new_map)
+        ctx->dev_map = new_map;
+    else
+        return OE_EBADALLOC;
+
+    oe_size_t i;
+    ctx->max_read_frame_size = 0;
+    ctx->max_write_frame_size = 0;
+    for (i = 0; i < ctx->num_dev; i++) {
+
+        sig_type = NULLSIG;
+        uint8_t buffer[OE_COBSBUFFERSIZE];
+        rc = _oe_read_signal_data(ctx->signal.fid, &sig_type, buffer, OE_COBSBUFFERSIZE);
+        if (rc) return rc;
+
+        // We should see num_dev device instances appear on the signal stream
+        if (sig_type != DEVICEINST)
+            return OE_EBADDEVMAP;
+
+        // Append the device onto the map
+        memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
+#ifdef OE_BE
+        ctx->max_read_frame_size += BSWAP_32((ctx->dev_map + i)->read_size);
+        ctx->max_write_frame_size += BSWAP_32((ctx->dev_map + i)->write_size);
+#else
+        ctx->max_read_frame_size += (ctx->dev_map + i)->read_size;
+        ctx->max_write_frame_size += (ctx->dev_map + i)->write_size;
+#endif
+    }
+
+    // NB: Default the block read size to a single max sized frame. This is bad
+    // for high bandwidth performance and good for closed-loop delay.
+    ctx->block_read_size = ctx->max_read_frame_size
+                           + ctx->max_read_frame_size % OE_DATAFIFOWIDTH;
+
+#ifdef OE_BE
+    _device_map_byte_swap(ctx);
+#endif
+
+    return OE_ESUCCESS;
+}
+
 static inline int _oe_read(int data_fd, void *data, size_t size)
 {
     size_t received = 0;
@@ -945,7 +967,7 @@ static int _oe_read_signal_data(int signal_fd, oe_signal_t *type, void *data, si
     // actual data payload size
     memcpy(data, buffer + sizeof(oe_signal_t), data_size);
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type)
@@ -974,7 +996,7 @@ static int _oe_pump_signal_type(int signal_fd, int flags, oe_signal_t *type)
 
     *type = packet_type;
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 static int _oe_pump_signal_data(
@@ -1014,7 +1036,7 @@ static int _oe_pump_signal_data(
     // actual data payload size
     memcpy(data, buffer + sizeof(oe_signal_t), data_size);
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size)
@@ -1033,7 +1055,7 @@ static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size)
             *dst++ = 0;
     }
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 static int _oe_write_config(int config_fd,
@@ -1046,7 +1068,7 @@ static int _oe_write_config(int config_fd,
     if (write(config_fd, &value, OE_REGSZ) != OE_REGSZ)
         return OE_EWRITEFAILURE;
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 static int _oe_read_config(int config_fd,
@@ -1059,7 +1081,7 @@ static int _oe_read_config(int config_fd,
     if (read(config_fd, value, OE_REGSZ) != OE_REGSZ)
         return OE_EREADFAILURE;
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
@@ -1111,7 +1133,7 @@ static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
     *data = ctx->shared_buf->read_pos;
     ctx->shared_buf->read_pos += size;
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 // NB: Stolen from Linux kernel. Used to get the buffer holding a given
@@ -1157,7 +1179,7 @@ static int _device_map_byte_swap(oe_ctx ctx)
         ctx->dev_map[i].num_writes = BSWAP_32(ctx->dev_map[i].num_writes);
     }
 
-    return 0;
+    return OE_ESUCCESS;
 }
 
 #endif
