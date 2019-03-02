@@ -238,10 +238,10 @@ distributor Farnell 149-452</description>
 <wire x1="2.1" y1="4.1" x2="4.1" y2="2.1" width="0.254" layer="51" curve="-35.757393"/>
 <wire x1="-2.1" y1="4.1" x2="2.1" y2="4.1" width="0.254" layer="21" curve="-54.242607"/>
 <pad name="1" x="0" y="0" drill="1.2"/>
-<pad name="2" x="3.0988" y="3.0988" drill="1.3"/>
-<pad name="3" x="-3.0988" y="3.0988" drill="1.3"/>
-<pad name="4" x="-3.0988" y="-3.0988" drill="1.3"/>
-<pad name="5" x="3.0988" y="-3.0988" drill="1.3"/>
+<pad name="2" x="3.0988" y="3.0988" drill="2.794"/>
+<pad name="3" x="-3.0988" y="3.0988" drill="2.794"/>
+<pad name="4" x="-3.0988" y="-3.0988" drill="2.794"/>
+<pad name="5" x="3.0988" y="-3.0988" drill="2.794"/>
 <text x="-3.81" y="5.08" size="1.27" layer="25">&gt;NAME</text>
 <text x="-3.81" y="-6.35" size="1.27" layer="27">&gt;VALUE</text>
 <text x="-1.27" y="-2.54" size="0.6096" layer="51">B35 N61</text>
@@ -825,9 +825,12 @@ Source: amp_227161.pdf</description>
 </package>
 </packages>
 <packages3d>
-<package3d name="DIOC7026X260" urn="urn:adsk.eagle:package:8344427/1" type="model">
+<package3d name="DIOC7026X260" urn="urn:adsk.eagle:package:8344427/1" locally_modified="yes" type="model">
 <description>Chip, 7.05 X 2.65 X 2.60 mm body
 &lt;p&gt;Chip package with body size 7.05 X 2.65 X 2.60 mm&lt;/p&gt;</description>
+<packageinstances>
+<packageinstance name="DIOC7026X260"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
@@ -1326,6 +1329,9 @@ W = angled&lt;p&gt;
 <packages3d>
 <package3d name="FE10-2" urn="urn:adsk.eagle:package:8177/1" type="box" library_version="1">
 <description>FEMALE HEADER</description>
+<packageinstances>
+<packageinstance name="FE10-2"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
@@ -1474,6 +1480,9 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 Klinkeneinbaukupplung nach JISC 6560, 3,5 mm, 3-polig/stereo,
 abgewinkelte Ausführung, Surface-Mount-Technik (SMT)
 Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
+<packageinstances>
+<packageinstance name="1503_02"/>
+</packageinstances>
 </package3d>
 </packages3d>
 <symbols>
