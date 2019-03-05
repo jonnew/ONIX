@@ -70,7 +70,7 @@
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
@@ -242,9 +242,8 @@ distributor Farnell 149-452</description>
 <pad name="3" x="-3.0988" y="3.0988" drill="1.3"/>
 <pad name="4" x="-3.0988" y="-3.0988" drill="1.3"/>
 <pad name="5" x="3.0988" y="-3.0988" drill="1.3"/>
-<text x="-3.81" y="5.08" size="1.27" layer="25">&gt;NAME</text>
-<text x="-3.81" y="-6.35" size="1.27" layer="27">&gt;VALUE</text>
-<text x="-1.27" y="-2.54" size="0.6096" layer="51">B35 N61</text>
+<text x="-2.7" y="5.5" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.9" y="-6.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
 <package name="TE_5-1634503-1">
 <wire x1="-1.5" y1="0.5" x2="1.5" y2="0.5" width="0.3048" layer="21" curve="-143.130102"/>
@@ -1348,6 +1347,29 @@ MCX STRAIGHT, EDGE MOUNT JACK - 50OHM.</description>
 <wire x1="1.6" y1="-1.2" x2="-1.6" y2="-1.2" width="0.127" layer="21"/>
 <wire x1="-1.6" y1="-1.2" x2="-1.6" y2="1.2" width="0.127" layer="21"/>
 </package>
+<package name="B35N61_LARGE-HOLES">
+<wire x1="-4.572" y1="1.016" x2="-5.461" y2="1.016" width="0.254" layer="21"/>
+<wire x1="-5.461" y1="1.016" x2="-5.461" y2="-1.016" width="0.254" layer="21"/>
+<wire x1="-5.461" y1="-1.016" x2="-4.572" y2="-1.016" width="0.254" layer="21"/>
+<wire x1="4.572" y1="-1.016" x2="5.461" y2="-1.016" width="0.254" layer="21"/>
+<wire x1="5.461" y1="-1.016" x2="5.461" y2="1.016" width="0.254" layer="21"/>
+<wire x1="5.461" y1="1.016" x2="4.572" y2="1.016" width="0.254" layer="21"/>
+<wire x1="-4.1" y1="2.1" x2="-2.1" y2="4.1" width="0.254" layer="51" curve="-35.757393"/>
+<wire x1="-4.1" y1="-2.1" x2="-4.1" y2="2.1" width="0.254" layer="21" curve="-54.242607"/>
+<wire x1="-4.1" y1="-2.1" x2="-2.1" y2="-4.1" width="0.254" layer="51" curve="35.757393"/>
+<wire x1="-2.1" y1="-4.1" x2="2.1" y2="-4.1" width="0.254" layer="21" curve="54.242607"/>
+<wire x1="2.1" y1="-4.1" x2="4.1" y2="-2.1" width="0.254" layer="51" curve="35.757393"/>
+<wire x1="4.1" y1="2.1" x2="4.1" y2="-2.1" width="0.254" layer="21" curve="-54.242607"/>
+<wire x1="2.1" y1="4.1" x2="4.1" y2="2.1" width="0.254" layer="51" curve="-35.757393"/>
+<wire x1="-2.1" y1="4.1" x2="2.1" y2="4.1" width="0.254" layer="21" curve="-54.242607"/>
+<pad name="1" x="0" y="0" drill="2"/>
+<pad name="2" x="3.0988" y="3.0988" drill="2"/>
+<pad name="3" x="-3.0988" y="3.0988" drill="2"/>
+<pad name="4" x="-3.0988" y="-3.0988" drill="2"/>
+<pad name="5" x="3.0988" y="-3.0988" drill="2"/>
+<text x="-2.7" y="5.5" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.9" y="-6.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
 </packages>
 <packages3d>
 <package3d name="DIOC7026X260" urn="urn:adsk.eagle:package:8344427/1" type="model">
@@ -1788,6 +1810,15 @@ MCX STRAIGHT, EDGE MOUNT JACK - 50OHM.</description>
 </technologies>
 </device>
 <device name="_0731010360" package="0731010360">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2 3 4 5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_B35N61-LARGE-HOLES" package="B35N61_LARGE-HOLES">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2 3 4 5"/>
@@ -2725,7 +2756,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <part name="J4" library="jonnew" deviceset="PINHD-1X26" device="_122" value="12226-8250-00FR"/>
 <part name="SUPPLY41" library="jonnew" deviceset="AGND" device=""/>
 <part name="SUPPLY49" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN0" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN0" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN0" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SCREW-IN" library="jonnew" deviceset="SCREW8" device=""/>
 <part name="SCREW-OUT" library="jonnew" deviceset="SCREW8" device=""/>
@@ -2744,73 +2775,73 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <part name="SUPPLY10" library="jonnew" deviceset="AGND" device=""/>
 <part name="SUPPLY11" library="jonnew" deviceset="AGND" device=""/>
 <part name="SUPPLY13" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN1" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN1" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN1" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY12" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN2" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN2" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN2" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY14" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN3" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN3" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN3" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY15" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN4" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN4" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN4" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY16" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN5" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN5" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN5" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY17" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN6" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN6" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN6" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY18" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN7" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN7" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN7" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY19" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN8" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN8" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN8" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY20" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN9" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN9" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN9" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY21" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN10" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN10" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN10" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY22" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN11" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN11" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN11" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY23" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN12" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN12" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN12" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY24" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN13" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN13" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN13" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY25" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN14" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN14" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN14" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY26" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-IN15" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-IN15" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-IN15" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY27" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-OUT0" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-OUT0" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-OUT0" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY28" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-OUT1" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-OUT1" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-OUT1" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY29" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-OUT2" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-OUT2" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-OUT2" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY30" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-OUT3" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-OUT3" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-OUT3" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY31" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-OUT4" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-OUT4" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-OUT4" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY32" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-OUT5" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-OUT5" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-OUT5" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY33" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-OUT6" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-OUT6" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-OUT6" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY34" library="jonnew" deviceset="AGND" device=""/>
-<part name="BNC-OUT7" library="jonnew" deviceset="COAX" device="_B35N61"/>
+<part name="BNC-OUT7" library="jonnew" deviceset="COAX" device="_B35N61-LARGE-HOLES"/>
 <part name="SMA-OUT7" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY35" library="jonnew" deviceset="AGND" device=""/>
 <part name="U$1" library="jonnew" deviceset="DIODE-ESD-BIDIRECTIONAL" device="DO-214AA" package3d_urn="urn:adsk.eagle:package:8344427/1"/>
@@ -2878,8 +2909,6 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <part name="SUPPLY64" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY65" library="jonnew" deviceset="GND" device=""/>
 <part name="TP1" library="jonnew" deviceset="TP" device="_2MM"/>
-<part name="TP2" library="jonnew" deviceset="TP" device="_2MM"/>
-<part name="SUPPLY66" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY67" library="jonnew" deviceset="GND" device=""/>
 <part name="U$25" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
 </parts>
@@ -3054,8 +3083,6 @@ https://jlcpcb.com/client/index.html#/impedance. 0.2 mm prepeg</text>
 <instance part="SUPPLY64" gate="PE" x="525.78" y="261.62"/>
 <instance part="SUPPLY65" gate="PE" x="525.78" y="241.3"/>
 <instance part="TP1" gate="G$1" x="558.8" y="302.26"/>
-<instance part="TP2" gate="G$1" x="558.8" y="279.4"/>
-<instance part="SUPPLY66" gate="PE" x="558.8" y="269.24"/>
 <instance part="SUPPLY67" gate="PE" x="558.8" y="292.1"/>
 <instance part="U$25" gate="G$1" x="5.08" y="5.08"/>
 </instances>
@@ -4309,11 +4336,6 @@ https://jlcpcb.com/client/index.html#/impedance. 0.2 mm prepeg</text>
 <wire x1="525.78" y1="246.38" x2="518.16" y2="246.38" width="0.1524" layer="91"/>
 <wire x1="525.78" y1="243.84" x2="525.78" y2="246.38" width="0.1524" layer="91"/>
 <junction x="525.78" y="246.38"/>
-</segment>
-<segment>
-<pinref part="SUPPLY66" gate="PE" pin="GND"/>
-<wire x1="558.8" y1="271.78" x2="558.8" y2="276.86" width="0.1524" layer="91"/>
-<pinref part="TP2" gate="G$1" pin="TP"/>
 </segment>
 <segment>
 <pinref part="SUPPLY67" gate="PE" pin="GND"/>
