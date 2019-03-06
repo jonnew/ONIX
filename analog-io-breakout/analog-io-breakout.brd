@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.0125" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.0125" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -465,10 +465,10 @@ JV, JPN, MIT
 <wire x1="2.1" y1="4.1" x2="4.1" y2="2.1" width="0.254" layer="51" curve="-35.757393"/>
 <wire x1="-2.1" y1="4.1" x2="2.1" y2="4.1" width="0.254" layer="21" curve="-54.242607"/>
 <pad name="1" x="0" y="0" drill="2"/>
-<pad name="2" x="3.0988" y="3.0988" drill="2"/>
-<pad name="3" x="-3.0988" y="3.0988" drill="2"/>
-<pad name="4" x="-3.0988" y="-3.0988" drill="2"/>
-<pad name="5" x="3.0988" y="-3.0988" drill="2"/>
+<pad name="2" x="3.0988" y="3.0988" drill="2.5"/>
+<pad name="3" x="-3.0988" y="3.0988" drill="2.5"/>
+<pad name="4" x="-3.0988" y="-3.0988" drill="2.5"/>
+<pad name="5" x="3.0988" y="-3.0988" drill="2.5"/>
 <text x="-2.7" y="5.5" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.9" y="-6.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
@@ -1370,13 +1370,13 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="33.825" y1="-69.325" x2="35" y2="-70.5" width="0.254" layer="15"/>
 <wire x1="14.7206" y1="-125.8806" x2="25.2844" y2="-125.8806" width="0.254" layer="16"/>
 <wire x1="25.2844" y1="-125.8806" x2="31.665" y2="-119.5" width="0.254" layer="16"/>
-<wire x1="34.4" y1="-105.065" x2="34.4" y2="-103.8" width="0.254" layer="16"/>
-<wire x1="34.4" y1="-103.8" x2="32.5" y2="-101.9" width="0.254" layer="16"/>
-<wire x1="34.45" y1="-98.15" x2="32.5" y2="-100.1" width="0.254" layer="16"/>
 <wire x1="31.665" y1="-107.8" x2="34.4" y2="-105.065" width="0.254" layer="16"/>
-<wire x1="32.5" y1="-101.9" x2="32.5" y2="-100.1" width="0.254" layer="16"/>
 <wire x1="31.665" y1="-93.7" x2="34.45" y2="-96.485" width="0.254" layer="16"/>
-<wire x1="34.45" y1="-96.485" x2="34.45" y2="-98.15" width="0.254" layer="16"/>
+<wire x1="34.45" y1="-98.55" x2="32.75" y2="-100.25" width="0.254" layer="16"/>
+<wire x1="34.45" y1="-96.485" x2="34.45" y2="-98.55" width="0.254" layer="16"/>
+<wire x1="34.4" y1="-103.4" x2="34.4" y2="-105.065" width="0.254" layer="16"/>
+<wire x1="32.75" y1="-100.25" x2="32.75" y2="-101.75" width="0.254" layer="16"/>
+<wire x1="32.75" y1="-101.75" x2="34.4" y2="-103.4" width="0.254" layer="16"/>
 </signal>
 <signal name="AIN1">
 <contactref element="J4" pad="15"/>
@@ -1399,7 +1399,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <via x="30.395" y="-83.9375" extent="1-16" drill="0.35"/>
 <wire x1="30.395" y1="-83.9375" x2="31.0225" y2="-84.565" width="0.254" layer="16"/>
 <wire x1="31.0225" y1="-84.565" x2="31.03" y2="-84.565" width="0.254" layer="16"/>
-<wire x1="31.03" y1="-118.9" x2="31.03" y2="-107.2" width="0.254" layer="16"/>
+<wire x1="31.03" y1="-111.4" x2="31.03" y2="-118.9" width="0.254" layer="16"/>
 <wire x1="14.140325" y1="-123.8994" x2="14.175925" y2="-123.935" width="0.254" layer="15"/>
 <wire x1="14.175925" y1="-123.935" x2="16.425" y2="-123.935" width="0.254" layer="15"/>
 <wire x1="13.2856" y1="-123.8994" x2="11.98" y2="-125.205" width="0.254" layer="15"/>
@@ -1411,14 +1411,14 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="11.98" y1="-143.98" x2="7.5" y2="-148.46" width="0.254" layer="15"/>
 <contactref element="SCREW-OUT1" pad="2"/>
 <wire x1="7.5" y1="-148.46" x2="2.5" y2="-148.46" width="0.254" layer="15"/>
-<wire x1="29.7" y1="-105.87" x2="31.03" y2="-107.2" width="0.254" layer="16"/>
 <wire x1="48.81" y1="-90.28" x2="60" y2="-79.09" width="0.254" layer="16"/>
 <wire x1="60" y1="-79.09" x2="60" y2="-76" width="0.254" layer="16"/>
 <wire x1="16.27" y1="-124.89" x2="25.04" y2="-124.89" width="0.254" layer="16"/>
 <wire x1="25.04" y1="-124.89" x2="31.03" y2="-118.9" width="0.254" layer="16"/>
 <wire x1="31.03" y1="-84.565" x2="31.03" y2="-95.5" width="0.254" layer="16"/>
 <wire x1="31.03" y1="-95.5" x2="29.7" y2="-96.83" width="0.254" layer="16"/>
-<wire x1="29.7" y1="-96.83" x2="29.7" y2="-105.87" width="0.254" layer="16"/>
+<wire x1="29.7" y1="-110.07" x2="31.03" y2="-111.4" width="0.254" layer="16"/>
+<wire x1="29.7" y1="-96.83" x2="29.7" y2="-110.07" width="0.254" layer="16"/>
 </signal>
 <signal name="AIN2">
 <contactref element="J4" pad="3"/>
@@ -1443,8 +1443,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <via x="34.84" y="-85.835" extent="1-16" drill="0.35"/>
 <wire x1="34.84" y1="-85.835" x2="29.76" y2="-85.835" width="0.254" layer="15"/>
 <via x="29.76" y="-85.835" extent="1-16" drill="0.35"/>
-<wire x1="29.125" y1="-106.155" x2="29.76" y2="-106.79" width="0.254" layer="16"/>
-<wire x1="29.76" y1="-119.2" x2="29.76" y2="-106.79" width="0.254" layer="16"/>
+<wire x1="29.76" y1="-111.2" x2="29.76" y2="-119.2" width="0.254" layer="16"/>
 <wire x1="13.73" y1="-122.35" x2="14.7206" y2="-123.3406" width="0.254" layer="16"/>
 <wire x1="11.345" y1="-124.57" x2="13.565" y2="-122.35" width="0.254" layer="15"/>
 <wire x1="13.565" y1="-122.35" x2="13.73" y2="-122.35" width="0.254" layer="15"/>
@@ -1459,7 +1458,8 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="29.76" y1="-86.47" x2="30.1975" y2="-86.9075" width="0.254" layer="16"/>
 <wire x1="30.1975" y1="-86.9075" x2="30.1975" y2="-95" width="0.254" layer="16"/>
 <wire x1="30.1975" y1="-95" x2="29.125" y2="-96.0725" width="0.254" layer="16"/>
-<wire x1="29.125" y1="-96.0725" x2="29.125" y2="-106.155" width="0.254" layer="16"/>
+<wire x1="29.125" y1="-110.565" x2="29.76" y2="-111.2" width="0.254" layer="16"/>
+<wire x1="29.125" y1="-96.0725" x2="29.125" y2="-110.565" width="0.254" layer="16"/>
 </signal>
 <signal name="AIN3">
 <contactref element="J4" pad="16"/>
@@ -1870,17 +1870,17 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="24.68" y1="-106.79" x2="25.315" y2="-107.425" width="0.254" layer="15"/>
 <wire x1="25.315" y1="-107.425" x2="34.205" y2="-107.425" width="0.254" layer="15"/>
 <via x="34.205" y="-107.425" extent="1-16" drill="0.35"/>
-<wire x1="34.205" y1="-107.425" x2="39.92" y2="-113.14" width="0.254" layer="16"/>
-<wire x1="39.92" y1="-115.045" x2="39.92" y2="-113.14" width="0.254" layer="16"/>
+<wire x1="35.84" y1="-109.06" x2="34.205" y2="-107.425" width="0.254" layer="16"/>
 <wire x1="125.01" y1="-151.24" x2="122.6799" y2="-153.5701" width="0.254" layer="16"/>
 <wire x1="122.6799" y1="-153.5701" x2="120" y2="-153.5701" width="0.254" layer="16"/>
 <wire x1="125.01" y1="-151.24" x2="125.01" y2="-123.3" width="0.254" layer="16"/>
 <wire x1="19.6" y1="-74.405" x2="24.045" y2="-78.85" width="0.254" layer="16"/>
-<wire x1="40.555" y1="-115.68" x2="39.92" y2="-115.045" width="0.254" layer="16"/>
 <wire x1="117.39" y1="-115.68" x2="40.555" y2="-115.68" width="0.254" layer="16"/>
 <wire x1="125.01" y1="-123.3" x2="117.39" y2="-115.68" width="0.254" layer="16"/>
 <wire x1="24.045" y1="-103.43" x2="25.315" y2="-104.7" width="0.254" layer="16"/>
 <wire x1="24.045" y1="-78.85" x2="24.045" y2="-103.43" width="0.254" layer="16"/>
+<wire x1="35.84" y1="-110.965" x2="35.84" y2="-109.06" width="0.254" layer="16"/>
+<wire x1="40.555" y1="-115.68" x2="35.84" y2="-110.965" width="0.254" layer="16"/>
 </signal>
 <signal name="AOUT1">
 <contactref element="J4" pad="26"/>
@@ -2054,9 +2054,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="14.875" y1="-200.76" x2="15.695" y2="-201.58" width="0.254" layer="15"/>
 <wire x1="7.5" y1="-200.76" x2="14.875" y2="-200.76" width="0.254" layer="15"/>
 <wire x1="16.077409375" y1="-201.669590625" x2="17.669590625" y2="-201.669590625" width="0.254" layer="16"/>
-<wire x1="17.669590625" y1="-201.669590625" x2="21" y2="-205" width="0.254" layer="16"/>
-<wire x1="21" y1="-205" x2="84" y2="-205" width="0.254" layer="16"/>
-<wire x1="84" y1="-205" x2="85" y2="-206" width="0.254" layer="16"/>
+<wire x1="17.669590625" y1="-201.669590625" x2="20.5" y2="-204.5" width="0.254" layer="16"/>
 <wire x1="9.79" y1="-157" x2="8.805" y2="-156.015" width="0.254" layer="16"/>
 <wire x1="8.805" y1="-102.345" x2="8.805" y2="-156.015" width="0.254" layer="16"/>
 <wire x1="4.1" y1="-80.1275" x2="2.3" y2="-81.9275" width="0.254" layer="16"/>
@@ -2065,6 +2063,8 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="12.5" y1="-166.8" x2="9.79" y2="-164.09" width="0.254" layer="16"/>
 <wire x1="18.33" y1="-167.75" x2="17.38" y2="-166.8" width="0.254" layer="16"/>
 <wire x1="9.79" y1="-164.09" x2="9.79" y2="-157" width="0.254" layer="16"/>
+<wire x1="20.5" y1="-204.5" x2="83.5" y2="-204.5" width="0.254" layer="16"/>
+<wire x1="83.5" y1="-204.5" x2="85" y2="-206" width="0.254" layer="16"/>
 </signal>
 <signal name="AOUT5">
 <contactref element="J4" pad="11"/>
@@ -2101,12 +2101,12 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <contactref element="SCREW-OUT2" pad="6"/>
 <wire x1="7.5" y1="-203.3" x2="2.5" y2="-203.3" width="0.254" layer="15"/>
 <wire x1="13.25" y1="-203.39" x2="17.39" y2="-203.39" width="0.254" layer="16"/>
-<wire x1="17.39" y1="-203.39" x2="20" y2="-206" width="0.254" layer="16"/>
-<wire x1="20" y1="-206" x2="58.485" y2="-206" width="0.254" layer="16"/>
-<wire x1="58.485" y1="-206" x2="60" y2="-207.515" width="0.254" layer="16"/>
+<wire x1="17.39" y1="-203.39" x2="19.4" y2="-205.4" width="0.254" layer="16"/>
 <wire x1="3" y1="-95.27" x2="9.44" y2="-101.71" width="0.254" layer="16"/>
 <wire x1="4.5" y1="-80.755" x2="3" y2="-82.255" width="0.254" layer="16"/>
 <wire x1="3" y1="-82.255" x2="3" y2="-95.27" width="0.254" layer="16"/>
+<wire x1="19.4" y1="-205.4" x2="57.885" y2="-205.4" width="0.254" layer="16"/>
+<wire x1="57.885" y1="-205.4" x2="60" y2="-207.515" width="0.254" layer="16"/>
 </signal>
 <signal name="AOUT3">
 <contactref element="J4" pad="12"/>
@@ -2199,9 +2199,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="22.14" y1="-135.66" x2="22.14" y2="-187.35" width="0.254" layer="16"/>
 <wire x1="13.5" y1="-217.7" x2="10.8925" y2="-215.0925" width="0.254" layer="16"/>
 <wire x1="32.4" y1="-93.1" x2="32.4" y2="-82.500003125" width="0.254" layer="16"/>
-<wire x1="32.4" y1="-93.1" x2="36.20419375" y2="-96.90419375" width="0.254" layer="16"/>
-<wire x1="36.20419375" y1="-96.90419375" x2="36.20419375" y2="-99.3" width="0.254" layer="16"/>
-<wire x1="36.20419375" y1="-99.3" x2="37.1" y2="-100.19580625" width="0.254" layer="16"/>
+<wire x1="32.4" y1="-93.1" x2="35.7" y2="-96.4" width="0.254" layer="16"/>
 <wire x1="37.1" y1="-100.19580625" x2="37.1" y2="-102" width="0.254" layer="16"/>
 <wire x1="35.185925" y1="-103.914075" x2="35.185925" y2="-105.585925" width="0.254" layer="16"/>
 <wire x1="37.1" y1="-102" x2="35.185925" y2="-103.914075" width="0.254" layer="16"/>
@@ -2209,6 +2207,8 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="29.7" y1="-79.800003125" x2="29.7" y2="-70.5" width="0.254" layer="16"/>
 <wire x1="29.7" y1="-70.5" x2="28" y2="-68.8" width="0.254" layer="16"/>
 <wire x1="28" y1="-68.8" x2="26.0525" y2="-68.8" width="0.254" layer="16"/>
+<wire x1="35.7" y1="-96.4" x2="35.7" y2="-98.79580625" width="0.254" layer="16"/>
+<wire x1="35.7" y1="-98.79580625" x2="37.1" y2="-100.19580625" width="0.254" layer="16"/>
 </signal>
 <signal name="AOUT7">
 <contactref element="J4" pad="10"/>
@@ -2227,7 +2227,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="12.2" y1="-79.4925" x2="4.3675" y2="-79.4925" width="0.254" layer="16"/>
 <wire x1="4.36" y1="-79.485" x2="4.3675" y2="-79.4925" width="0.254" layer="16"/>
 <wire x1="4.36" y1="-79.485" x2="3.5" y2="-79.485" width="0.254" layer="16"/>
-<wire x1="110" y1="-211" x2="110" y2="-207.35" width="0.254" layer="16"/>
+<wire x1="110" y1="-207.35" x2="110" y2="-211" width="0.254" layer="16"/>
 <via x="17.6" y="-200.31" extent="1-16" drill="0.35"/>
 <wire x1="8.17" y1="-129.65" x2="6.265" y2="-131.555" width="0.254" layer="16"/>
 <wire x1="6.265" y1="-131.555" x2="6.265" y2="-152.9" width="0.254" layer="16"/>
@@ -2239,9 +2239,7 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="5.5" y1="-164.445" x2="13.5825" y2="-172.5275" width="0.254" layer="16"/>
 <contactref element="SCREW-OUT2" pad="8"/>
 <wire x1="2.5" y1="-198.22" x2="7.5" y2="-198.22" width="0.254" layer="15"/>
-<wire x1="21.29" y1="-204" x2="17.6" y2="-200.31" width="0.254" layer="16"/>
-<wire x1="110" y1="-207.35" x2="106.65" y2="-204" width="0.254" layer="16"/>
-<wire x1="106.65" y1="-204" x2="21.29" y2="-204" width="0.254" layer="16"/>
+<wire x1="17.6" y1="-200.31" x2="20.895" y2="-203.605" width="0.254" layer="16"/>
 <wire x1="16.87" y1="-199.58" x2="17.6" y2="-200.31" width="0.254" layer="15"/>
 <wire x1="11" y1="-199.58" x2="16.87" y2="-199.58" width="0.254" layer="15"/>
 <wire x1="7.5" y1="-198.22" x2="9.64" y2="-198.22" width="0.254" layer="15"/>
@@ -2249,6 +2247,8 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <wire x1="1.6" y1="-96.41" x2="8.17" y2="-102.98" width="0.254" layer="16"/>
 <wire x1="3.5" y1="-79.485" x2="1.6" y2="-81.385" width="0.254" layer="16"/>
 <wire x1="1.6" y1="-81.385" x2="1.6" y2="-96.41" width="0.254" layer="16"/>
+<wire x1="20.895" y1="-203.605" x2="106.255" y2="-203.605" width="0.254" layer="16"/>
+<wire x1="106.255" y1="-203.605" x2="110" y2="-207.35" width="0.254" layer="16"/>
 </signal>
 <signal name="ANGD">
 <polygon width="0.2" layer="16">
@@ -2357,14 +2357,14 @@ Source: http://www.lumberg.com/Produkte/PDFs/1503_02.pdf</description>
 <approved hash="7,39,6ab92a0daa05eab1"/>
 <approved hash="7,39,17fadbf85bf197f3"/>
 <approved hash="7,39,5501e76d6762d50e"/>
-<approved hash="4,16,778edae8b7f7f93f"/>
-<approved hash="4,16,574ccf31842ed9f1"/>
-<approved hash="4,16,6008e39b98d4edf1"/>
-<approved hash="4,16,664ea24edf11e873"/>
-<approved hash="4,16,674ef332803de633"/>
-<approved hash="4,16,680e179c64d3e5f7"/>
-<approved hash="4,16,6780d697abc8e931"/>
-<approved hash="4,16,730c18e5718afd31"/>
+<approved hash="4,16,630ed1e4aa8bed37"/>
+<approved hash="4,16,684cca8db9e2e671"/>
+<approved hash="4,16,7780e1c79298f971"/>
+<approved hash="4,16,720eb89ad1d5fdf3"/>
+<approved hash="4,16,504ece7e85e1de73"/>
+<approved hash="4,16,678ee5d89e87e97f"/>
+<approved hash="4,16,6b08ade3de8ce531"/>
+<approved hash="4,16,678c16216b3ee831"/>
 </errors>
 </board>
 </drawing>

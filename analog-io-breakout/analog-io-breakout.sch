@@ -1363,10 +1363,10 @@ MCX STRAIGHT, EDGE MOUNT JACK - 50OHM.</description>
 <wire x1="2.1" y1="4.1" x2="4.1" y2="2.1" width="0.254" layer="51" curve="-35.757393"/>
 <wire x1="-2.1" y1="4.1" x2="2.1" y2="4.1" width="0.254" layer="21" curve="-54.242607"/>
 <pad name="1" x="0" y="0" drill="2"/>
-<pad name="2" x="3.0988" y="3.0988" drill="2"/>
-<pad name="3" x="-3.0988" y="3.0988" drill="2"/>
-<pad name="4" x="-3.0988" y="-3.0988" drill="2"/>
-<pad name="5" x="3.0988" y="-3.0988" drill="2"/>
+<pad name="2" x="3.0988" y="3.0988" drill="2.5"/>
+<pad name="3" x="-3.0988" y="3.0988" drill="2.5"/>
+<pad name="4" x="-3.0988" y="-3.0988" drill="2.5"/>
+<pad name="5" x="3.0988" y="-3.0988" drill="2.5"/>
 <text x="-2.7" y="5.5" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.9" y="-6.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
