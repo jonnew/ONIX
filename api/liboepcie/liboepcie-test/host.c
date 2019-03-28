@@ -43,7 +43,6 @@ int parse_reg_cmd(const char *cmd, long *values)
          cmd != end;
          i = strtol(cmd, &end, 10))
     {
-
         cmd = end;
         if (errno == ERANGE){ return -1; }
 

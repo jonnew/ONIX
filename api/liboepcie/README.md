@@ -2,6 +2,8 @@
 ANSI C implementation of the [Open Ephys++ API Specification](../spec.pdf).
 
 ## Build
+
+### Linux
 For build options, look at the [Makefile](Makefile). To build and install:
 ```
 $ make <options>
@@ -12,25 +14,42 @@ to place headers in whatever path is specified by PREFIX. PREFIX defaults to
 ```
 $ make uninstall PREFIX=/path/to/uninstall
 ```
+Then update dynamic library cache via
+```
+$ ldconfig
+```
 
-## Test Programs
+### Windows
+Open the included Visual Studio solution and press play. For whatever reason,
+it seems that the startup project is not consistently saved with the solution.
+So make sure that is set to `liboepcie-test` in the solution properties.
+
+## Test Programs (Linux Only)
 The [liboepcie-test](liboepcie-test) directory contains minimal working programs that use this library.
 
 1. `firmware` : Emulate hardware. Stream fake data over UNIX pipes (Linux only)
 1. `host` : Basic data acquisition loop. Communicate with `firmware` or actual
    hardware (Linux and Windows).
 
-## Performance testing
+## Performance Testing (Linux Only)
 1. Install google perftools:
 ```
 $ sudo apt-get install google-perftools
 ```
-2. Link test programs against the CPU profiler:
+2. Check what library is installed:
+```
+ldconfig -p | grep profiler
+```
+if `libprofiler.so` is not there, but `libprofiler.so.x` exists, create a softlink:
+```
+sudo ln -rs /path/to/libprofiler.so.x /path/to/libprofiler.so
+```
+3. Link test programs against the CPU profiler:
 ```
 $ cd liboepcie-test
 $ make profile
 ```
-5. Run the `firmware` program to serve fake data. Provide a numerical argument
+4. Run the `firmware` program to serve fake data. Provide a numerical argument
    specifying the number of fake frames to produce. It will tell you how long
    it takes `host` to sink all these frames. This is host processing time +
    UNIX pipe read/write.
@@ -38,16 +57,16 @@ $ make profile
 $ cd bin
 $ ./firmware 10e6
 ```
-4. Run the `host` program while dumping profile info:
+5. Run the `host` program while dumping profile info:
 ```
 $ env CPUPROFILE=/tmp/host.prof ./host /tmp/xillybus_cmd_mem_32 /tmp/xillybus_async_read_8 /tmp/xillybus_data_read_32
 ```
-5. Examine output
+6. Examine output
 ```
 $ pprof ./host /tmp/host.prof
 ```
 
-## Memory testing
+## Memory Testing (Linux Only)
 Run the `host` program with valgrind using full leak check
 ```
 $ valgrind --leak-check=full ./host /tmp/xillybus_cmd_mem_32 /tmp/xillybus_async_read_8 /tmp/xillybus_data_read_32

@@ -1,3 +1,5 @@
+// "NB" indicates why. General comments indicate what.
+
 #include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -82,9 +84,8 @@ struct oe_ctx_impl {
     oe_size_t num_dev;
     oe_device_t* dev_map;
 
-    // Maximum frame sizes (bytes)
+    // Maximum read frame size (bytes, includes header)
     oe_size_t max_read_frame_size;
-    oe_size_t max_write_frame_size;
 
     // Block read size (bytes, defaults to max_read_frame_size)
     size_t block_read_size;
@@ -144,7 +145,6 @@ static void _oe_destroy_buffer(const struct ref *ref);
 static inline void _ref_inc(const struct ref *ref);
 static inline void _ref_dec(const struct ref *ref);
 #ifdef OE_BE
-//static int _oe_array_bswap(void *data, oe_raw_t type, size_t size);
 static int _device_map_byte_swap(oe_ctx ctx);
 #endif
 
@@ -320,15 +320,6 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             *option_len = required_bytes;
             break;
         }
-        case OE_MAXWRITEFRAMESIZE: {
-            size_t required_bytes = sizeof(oe_size_t);
-            if (*option_len < required_bytes)
-                return OE_EBUFFERSIZE;
-
-            *(oe_size_t *)value = ctx->max_write_frame_size;
-            *option_len = required_bytes;
-            break;
-        }
         case OE_RUNNING: {
             if (*option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
@@ -455,7 +446,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             if (option_len != OE_REGSZ)
                 return OE_EBUFFERSIZE;
 
-            if (*(oe_reg_val_t *)value != 0) { //
+            if (*(oe_reg_val_t *)value != 0) {
 
                 // If running, stop acqusition
                 int rc = _oe_write_config(
@@ -484,7 +475,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
         }
         case OE_BLOCKREADSIZE: {
             // NB: If we are careful, this could be changed during RUNNING
-            // state. However, i would need to perform runtime size check of
+            // state. However, I would need to perform runtime size check of
             // the block readsize. Also, what if it occured on a separate
             // thread during a call to oe_read_frame?
             assert(ctx->run_state == IDLE && "Context state must be IDLE.");
@@ -494,9 +485,14 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             if (option_len != sizeof(size_t))
                 return OE_EBUFFERSIZE;
 
-            // Make sure the block read size is greater than max frame size
             size_t block_read_size = *(size_t *)value;
+
+            // Make sure the block read size is greater than max frame size
             if (block_read_size < ctx->max_read_frame_size)
+                return OE_EINVALREADSIZE;
+
+            // Make sure the block read size is a multiple of the FIFO width
+            if (block_read_size % OE_DATAFIFOWIDTH != 0)
                 return OE_EINVALREADSIZE;
 
             ctx->block_read_size = block_read_size;
@@ -627,6 +623,9 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     // NB: We don't need run_state == RUNNING because this could be changed in
     // a different thread
     assert(ctx->run_state >= IDLE && "Context is not acquiring.");
+
+    if (ctx->max_read_frame_size == 0)
+        return OE_ENOREADDEV;
 
     // TODO: There is no need for all of this. The header fields in oe_frame_t
     // should just point into the shared buffer.
@@ -807,13 +806,15 @@ const char *oe_error_str(int err)
         case OE_EINVALREADSIZE: {
             return "Block read size is smaller than the maximal frame size";
         }
+        case OE_ENOREADDEV: {
+            return "Frame read attempted when there are no readable devices in the device map";
+        }
         default:
             return "Unknown error";
     }
 }
 
 static int _oe_reset_routine(oe_ctx ctx) {
-    // NB: Subroutine to get device map etc after reset is issue
 
     // Get number of devices
     oe_signal_t sig_type = NULLSIG;
@@ -833,8 +834,8 @@ static int _oe_reset_routine(oe_ctx ctx) {
         return OE_EBADALLOC;
 
     oe_size_t i;
-    ctx->max_read_frame_size = 0;
-    ctx->max_write_frame_size = 0;
+    ctx->max_read_frame_size = OE_RFRAMEHEADERSZ;
+    size_t total_write_sz = 0;
     for (i = 0; i < ctx->num_dev; i++) {
 
         sig_type = NULLSIG;
@@ -850,17 +851,20 @@ static int _oe_reset_routine(oe_ctx ctx) {
         memcpy(ctx->dev_map + i, buffer, sizeof(oe_device_t));
 #ifdef OE_BE
         ctx->max_read_frame_size += BSWAP_32((ctx->dev_map + i)->read_size);
-        ctx->max_write_frame_size += BSWAP_32((ctx->dev_map + i)->write_size);
+        total_write_sz += BSWAP_32((ctx->dev_map + i)->write_size);
 #else
         ctx->max_read_frame_size += (ctx->dev_map + i)->read_size;
-        ctx->max_write_frame_size += (ctx->dev_map + i)->write_size;
+        total_write_sz += (ctx->dev_map + i)->write_size;
 #endif
     }
 
+    // Fail if there are no devices to control or acquire from
+    if (ctx->max_read_frame_size == 0 && total_write_sz == 0)
+        return OE_EBADDEVMAP;
+
     // NB: Default the block read size to a single max sized frame. This is bad
     // for high bandwidth performance and good for closed-loop delay.
-    ctx->block_read_size = ctx->max_read_frame_size
-                           + ctx->max_read_frame_size % OE_DATAFIFOWIDTH;
+    ctx->block_read_size += ctx->max_read_frame_size + ctx->max_read_frame_size % OE_DATAFIFOWIDTH;
 
 #ifdef OE_BE
     _device_map_byte_swap(ctx);
@@ -1111,8 +1115,10 @@ static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
         // Transfer remaining data to new buffer
         if (old_buffer != NULL) {
 
-            // Context releases control of old buffer
+            // Copy remaining contents into new buffer
             memcpy(ctx->shared_buf->buffer, old_buffer->read_pos, remaining);
+
+            // Context releases control of old buffer
             _ref_dec(&(old_buffer->count));
         }
 

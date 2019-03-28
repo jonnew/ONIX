@@ -3,7 +3,7 @@
 
 // Version macros for compile-time API version detection
 #define OE_VERSION_MAJOR 2
-#define OE_VERSION_MINOR 2
+#define OE_VERSION_MINOR 3
 #define OE_VERSION_PATCH 0
 
 #define OE_MAKE_VERSION(major, minor, patch) \
@@ -31,10 +31,6 @@ extern "C" {
 #define OE_DEFAULTWRITEPATH   "\\\\.\\xillybus_data_write_32"
 #define OE_DEFAULTSIGNALPATH  "\\\\.\\xillybus_signal_8"
 
-//#define OE_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_mem_32"
-//#define OE_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
-//#define OE_DEFAULTWRITEPATH   "\\\\.\\xillybus_data_write_32"
-//#define OE_DEFAULTSIGNALPATH  "\\\\.\\xillybus_async_read_8"
 #define OE_EXPORT __declspec(dllexport)
 #else
 #define OE_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_32"
@@ -92,7 +88,6 @@ enum {
     OE_DEVICEMAP,
     OE_NUMDEVICES,
     OE_MAXREADFRAMESIZE,
-    OE_MAXWRITEFRAMESIZE,
     OE_RUNNING,
     OE_RESET,
     OE_SYSCLKHZ,
@@ -123,9 +118,10 @@ enum {
     OE_EREADONLY        = -18, // Attempted write to read only object (register, context option, etc)
     OE_EUNIMPL          = -19, // Specified, but unimplemented, feature
     OE_EINVALREADSIZE   = -20, // Block read size is smaller than the maximal frame size
+    OE_ENOREADDEV       = -21, // Frame read attempted when there are no readable devices in the device map
 
     // NB: Always at bottom
-    OE_MINERRORNUM      = -21
+    OE_MINERRORNUM      = -22
 };
 
 // Context
