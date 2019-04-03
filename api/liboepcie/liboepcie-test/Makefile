@@ -1,7 +1,7 @@
 # Examples:
 # make 			// Makes all test programs
 # make debug 	// Makes all test programs with debug symbols
-# make profile 	// Makes all test programes and links in the gperftool's profiler
+# make profile 	// Makes all test programs and links in the gperftool's profiler
 
 CC=cc
 CFLAGS=-O3 -Wall
@@ -11,7 +11,7 @@ LDFLAGS=-loepcie
 all: bin/firmware bin/host bin/cobs_test
 
 .PHONY: debug
-debug: CFLAGS += -DDEBUG -g3 
+debug: CFLAGS += -DDEBUG -g3
 debug: all
 
 .PHONY: profile

@@ -35,8 +35,8 @@ volatile uint64_t sample_tick = 0;
 volatile int quit = 0;
 
 // FIFO file path and desciptor handles to mimic xillybus streams
-const char *config_path = "/tmp/xillybus_cmd_mem_32";
-const char *sig_path = "/tmp/xillybus_async_read_8";
+const char *config_path = "/tmp/xillybus_cmd_32";
+const char *sig_path = "/tmp/xillybus_signal_8";
 const char *read_path = "/tmp/xillybus_data_read_32";
 const char *write_path = "/tmp/xillybus_data_write_32";
 
@@ -130,15 +130,13 @@ uint32_t get_read_frame_size(oe_device_t *dev_map, int *devs, size_t n_devs)
 int read_config(int config_fd, oe_conf_reg_off_t offset, void *result, size_t size)
 {
     lseek(config_fd, offset, SEEK_SET);
-    read(config_fd, result, size);
-    return 0;
+    return read(config_fd, result, size);
 }
 
 int write_config(int config_fd, oe_conf_reg_off_t offset, void *value, size_t size)
 {
     lseek(config_fd, offset, SEEK_SET);
-    write(config_fd, value, size);
-    return 0;
+    return write(config_fd, value, size);
 }
 
 void generate_default_config(int config_fd)
@@ -165,9 +163,7 @@ int send_msg_signal(int sig_fd, oe_signal_t type)
     uint8_t dst[sizeof(oe_signal_t) + 2] = {0};
 
     oe_cobs_stuff(dst, (uint8_t *)&type, sizeof(type));
-    write(sig_fd, dst, sizeof(dst));
-
-    return 0;
+    return write(sig_fd, dst, sizeof(dst));
 }
 
 int send_data_signal(int sig_fd, oe_signal_t type, void *data, size_t n)
@@ -191,9 +187,7 @@ int send_data_signal(int sig_fd, oe_signal_t type, void *data, size_t n)
     oe_cobs_stuff(dst, src, packet_size);
 
     // COBS data, 1 overhead byte + 0x0 delimiter
-    write(sig_fd, dst, packet_size + 2);
-
-    return 0;
+    return write(sig_fd, dst, packet_size + 2);
 }
 
 void send_device_map(int sig_fd)
@@ -282,11 +276,19 @@ void *write_loop(void *vargp)
 
         oe_size_t dev_idx;
         ssize_t rc = read(write_fd, &dev_idx, sizeof(oe_size_t));
+
+        // Return without read due to quit
+        if (quit) break;
+
         assert(rc == sizeof(oe_size_t) && "Incomplete read.");
 
         oe_device_t this_dev = my_devices[dev_idx];
         char *buffer = malloc(this_dev.write_size);
         rc = read(write_fd, buffer, this_dev.write_size);
+
+        // Return without read due to quit
+        if (quit) break;
+
         assert(rc == this_dev.write_size && "Incomplete read.");
 
         // Dump to terminal
@@ -402,7 +404,9 @@ usage:
     pthread_create(&tid_read, NULL, read_loop, NULL);
 
     pthread_t tid_write;
-    pthread_create(&tid_write, NULL, write_loop, NULL);
+    if (num_samp == -1)
+        pthread_create(&tid_write, NULL, write_loop, NULL);
+
 reset:
 
     // Reset run state by generating default configuration
@@ -487,7 +491,9 @@ reset:
 
     // Join data and signal threads
     pthread_join(tid_read, NULL);
-    pthread_join(tid_write, NULL);
+
+    if (num_samp == -1)
+        pthread_join(tid_write, NULL);
 
     // Report runtime if nessesary
     if (num_samp > 0) {
@@ -507,6 +513,7 @@ reset:
     // Delete files
     unlink(sig_path);
     unlink(read_path);
+    unlink(write_path);
     unlink(config_path);
 
     return 0;

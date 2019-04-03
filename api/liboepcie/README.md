@@ -59,7 +59,7 @@ $ ./firmware 10e6
 ```
 5. Run the `host` program while dumping profile info:
 ```
-$ env CPUPROFILE=/tmp/host.prof ./host /tmp/xillybus_cmd_mem_32 /tmp/xillybus_async_read_8 /tmp/xillybus_data_read_32
+$ env CPUPROFILE=/tmp/host.prof ./host /tmp/xillybus_cmd_32 /tmp/xillybus_signal_8 /tmp/xillybus_data_read_32
 ```
 6. Examine output
 ```
@@ -69,7 +69,7 @@ $ pprof ./host /tmp/host.prof
 ## Memory Testing (Linux Only)
 Run the `host` program with valgrind using full leak check
 ```
-$ valgrind --leak-check=full ./host /tmp/xillybus_cmd_mem_32 /tmp/xillybus_async_read_8 /tmp/xillybus_data_read_32
+$ valgrind --leak-check=full ./host /tmp/xillybus_cmd_32 /tmp/xillybus_signal_8 /tmp/xillybus_data_read_32
 ```
 
 ## License

@@ -88,9 +88,6 @@ void *read_loop(void *vargp)
 
             size_t this_idx = frame->dev_idxs[i];
 
-            if (this_idx > 3)
-                continue;
-
             oe_device_t this_dev = devices[this_idx];
             uint8_t *data = (uint8_t *)(frame->data + frame->dev_offs[i]);
             size_t data_sz = this_dev.read_size;
@@ -234,17 +231,6 @@ int main(int argc, char *argv[])
 #endif
     }
 
-    // TODO: This type of reset is useless!!!! We must wait until the device map and clock rates are updated, the same as oe_init_ctx(). 
-    // Figure out a way to get this behavior when setting this register.
-    // Reset the hardware
-    oe_size_t reset = 1;
-    rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-    assert(!rc && "Register write failure.");
-
-    // HACK: "wait" for reset acknowledgement. In real firmware, this will be actual async ACK.
-    usleep(100e3);
-
     oe_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);
     oe_get_opt(ctx, OE_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
@@ -373,12 +359,6 @@ int main(int argc, char *argv[])
         fclose(dump_files[dev_idx]);
     }
 #endif
-
-    // Reset the hardware
-    reset = 1;
-    rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
-    assert(!rc && "Register write failure.");
 
     // Free dynamic stuff
     oe_destroy_ctx(ctx);
