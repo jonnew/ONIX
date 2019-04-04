@@ -130,7 +130,7 @@ typedef enum oe_conf_reg_off {
 } oe_conf_off_t;
 
 // Static helpers
-static int _oe_reset_routine();
+static int _oe_reset_routine(oe_ctx ctx);
 static inline int _oe_read(int data_fd, void* data, size_t size);
 static inline int _oe_write(int data_fd, char* data, size_t size);
 static inline int _oe_read_signal_packet(int signal_fd, uint8_t *buffer);
@@ -140,7 +140,7 @@ static int _oe_pump_signal_data(int signal_fd, int flags, oe_signal_t *type, voi
 static int _oe_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size);
 static int _oe_write_config(int config_fd, oe_conf_off_t write_offset, oe_reg_val_t value);
 static int _oe_read_config(int config_fd, oe_conf_off_t read_offset, oe_reg_val_t *value);
-static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size);
+static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size, int);
 static void _oe_destroy_buffer(const struct ref *ref);
 static inline void _ref_inc(const struct ref *ref);
 static inline void _ref_dec(const struct ref *ref);
@@ -632,7 +632,7 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 
     // Get the header and figure out how many devices are in the frame
     uint8_t *header = NULL;
-    int rc = _oe_read_buffer(ctx, (void **)&header, OE_RFRAMEHEADERSZ);
+    int rc = _oe_read_buffer(ctx, (void **)&header, OE_RFRAMEHEADERSZ, 1);
     if (rc != 0) return rc;
 
     // Allocate space for frame container and device offset list
@@ -654,7 +654,7 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
 
     // Read device indices that are in this frame
     rc = _oe_read_buffer(
-        ctx, (void **)&fptr->dev_idxs, fptr->num_dev * sizeof(oe_size_t));
+        ctx, (void **)&fptr->dev_idxs, fptr->num_dev * sizeof(oe_size_t), 0);
     if (rc != 0) return rc;
 
     // Find data read size
@@ -671,7 +671,7 @@ int oe_read_frame(const oe_ctx ctx, oe_frame_t **frame)
     total_size += rsize;
 
     // Read data
-    rc = _oe_read_buffer(ctx, (void **)&fptr->data, rsize);
+    rc = _oe_read_buffer(ctx, (void **)&fptr->data, rsize, 0);
     if (rc != 0) return rc;
 
     // Update buffer ref count and provide reference to frame
@@ -1088,7 +1088,7 @@ static int _oe_read_config(int config_fd,
     return OE_ESUCCESS;
 }
 
-static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
+static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size, int allow_refill)
 {
     // Remaining bytes in buffer
     size_t remaining;
@@ -1097,10 +1097,13 @@ static int _oe_read_buffer(oe_ctx ctx, void **data, size_t size)
     else
         remaining = 0;
 
+    // TODO: Is there a way to get rid of allow_refill?
     // NB: Frames must reference a single buffer, so we must refill if less
-    // than max possible frame size. Making this limit smaller will result in
-    // memory corruption, so don't do it.
-    if (remaining < ctx->max_read_frame_size) {
+    // than max possible frame size on the first read within oe_read_frame(). 
+    // Making this limit smaller will result in memory corruption, so don't do it. 
+    // Allowing refills multiple times during one call to oe_read_frame() will 
+    // also cause memory corruption.
+    if (remaining < ctx->max_read_frame_size && allow_refill) {
 
         assert(ctx->max_read_frame_size <= ctx->block_read_size &&
             "Block read size is too small given the possible frame size.");
