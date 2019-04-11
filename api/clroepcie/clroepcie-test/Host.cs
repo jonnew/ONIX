@@ -90,12 +90,14 @@ class Host
                 // See how big max frames are
                 Console.WriteLine("Max read frame size: "
                                   + ctx.MaxReadFrameSize);
-                Console.WriteLine("Max write frame size: "
-                                  + ctx.MaxWriteFrameSize);
 
                 // See the hardware clock
                 Console.WriteLine("System clock frequency: "
                                   + ctx.SystemClockHz);
+
+                // See the hardware clock
+                Console.WriteLine("Acquisition clock frequency: "
+                                    + ctx.AcquisitionClockHz);
 
                 // Start acqusisition
                 ctx.Start();

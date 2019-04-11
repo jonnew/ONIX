@@ -872,9 +872,11 @@ Set path specifying hardware signal data stream
 | default value       | /dev/xillybus_oe_signal_8, \\\\.\\xillybus_oe_signal_8 (Windows) |
 
 #### `OE_RUNNING`\*\*
-Set/clear master clock gate. Any value greater than 0 will start acquisition.
+Set/clear data input gate. Any value greater than 0 will start acquisition.
 Writing 0 to this option will stop acquisition, but will not reset context
-options or the sample counter.
+options or the sample counter. All data not shifted out of hardware will be
+cleared. To obtain the very first samples produced by high-bandwidth devices,
+set `OE_RUNNING` _before_ a call to OE_RESET.
 
 | | |
 |---------------------|--------------------------------------------------------------------|

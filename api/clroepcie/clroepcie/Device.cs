@@ -10,17 +10,18 @@
         public enum DeviceID
         {
             NULL = 0,
-            INFO,
-            RHD2132,
-            RHD2164,
-            MPU9250,
-            ESTIM,
-            OSTIM,
-            TS4231,
-            SERDESGPO,
-            DINPUT32,
-            DOUTPUT32,
-            BNO055,
+            INFO = 1,
+            RHD2132 = 2,
+            RHD2164 = 3,
+            MPU9250 = 4,
+            ESTIM = 5,
+            OSTIM = 6,
+            TS4231 = 7,
+            SERDESGPO = 8,
+            DINPUT32 = 9,
+            DOUTPUT32 = 10,
+            BNO055 = 11,
+            TEST = 12
         }
 
         public static string Name(int id)
