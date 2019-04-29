@@ -95,7 +95,7 @@ void *read_loop(void *vargp)
 #ifdef DUMPFILES
             fwrite(data, 1, data_sz, dump_files[this_idx]);
 #endif
-            if (display) { // && counter % 100 == 0) {
+            if (display && counter % 100 == 0) {
                 printf("\tDev: %zu (%s)\n",
                     this_idx,
                     oe_device_str(this_dev.id));

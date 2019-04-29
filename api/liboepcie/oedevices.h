@@ -52,6 +52,8 @@ enum oe_info_codes {
     OE_INFO_ESERDESCHKSUM   = 2,   // SERDES packet checksum error detected
     OE_INFO_ETOOMANYREMOTE  = 3,   // TOO many remote devices for host to support
     OE_INFO_EREMOTEINIT     = 4,   // Remote initialization error
+    OE_INFO_EBADPACKET      = 5,   // Malformed packet during SERDES demultiplexing
+    OE_INFO_ELOSTREMOTE     = 6,   // Lost remote lock
 };
 
 // - Configuration registers

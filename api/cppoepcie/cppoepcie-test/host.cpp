@@ -162,14 +162,6 @@ int main(int argc, char *argv[])
         k++;
     }
 
-    // Reset the hardware
-    ctx->set_opt(OE_RESET, 1);
-
-    // HACK: "wait" for reset acknowledgement. In real firmware, this will be
-    // actual async ACK.
-    // TODO: Shouldn't this block until ack?
-    usleep(100e3);
-
     std::cout << "Max. read frame size: "
               << ctx->get_opt<uint32_t>(OE_MAXREADFRAMESIZE)
               << " bytes\n";
@@ -178,9 +170,9 @@ int main(int argc, char *argv[])
               << ctx->get_opt<size_t>(OE_BLOCKREADSIZE)
               << " bytes\n";
 
-    // TODO: If I specify a 64-bit type param  here, i get a buffer too small
+    // TODO: If I specify a 64-bit type param  here, I get a buffer too small
     // exception. If buffer is fixed to size of actual option register in c
-    // library, then why am I specify a type parameter here?
+    // library, then why must I specify a type parameter here?
     std::cout << "System clock rate: "
               << ctx->get_opt<uint32_t>(OE_SYSCLKHZ)
               << " Hz\n";
