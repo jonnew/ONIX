@@ -9,6 +9,7 @@
 
 #include "oepcie.h"
 #include "oedevices.h"
+#include "oelogo.h"
 
 // Dump raw device streams to files?
 //#define DUMPFILES
@@ -157,23 +158,19 @@ void *read_loop(void *vargp)
 
 int main(int argc, char *argv[])
 {
-    // Generate context
-    ctx = oe_create_ctx();
-    if (!ctx) exit(EXIT_FAILURE);
-
+    // Default paths
     const char *config_path = OE_DEFAULTCONFIGPATH;
     const char *sig_path = OE_DEFAULTSIGNALPATH;
     const char *read_path = OE_DEFAULTREADPATH;
     const char *write_path = OE_DEFAULTWRITEPATH;
 
+    printf(logo_med);
     if (argc != 1 && argc != 5) {
         printf("usage:\n");
         printf("\thost: run using default stream paths\n");
         printf("\thost config signal read write: specify the configuration, signal, read, and write paths.\n");
         exit(1);
-    }
-
-    if (argc == 5) {
+    } else if (argc == 5) {
 
         // Set firmware paths
         config_path = argv[1];
@@ -181,6 +178,10 @@ int main(int argc, char *argv[])
         read_path = argv[3];
         write_path = argv[4];
     }
+
+    // Generate context
+    ctx = oe_create_ctx();
+    if (!ctx) exit(EXIT_FAILURE);
 
     // Set paths in context
     oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);

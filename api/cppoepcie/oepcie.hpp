@@ -8,9 +8,11 @@
 #include <string>
 #include <system_error>
 #include <vector>
+#include <span>
 
 #include <oepcie.h>
 #include <oedevices.h>
+#include <oelogo.h>
 
 // In order to prevent unused variable warnings when building in non-debug
 // mode use this macro to make assertions.
@@ -69,12 +71,12 @@ namespace oe {
 
             // NB: Copy and move assignment operators are going to be deleted
             // since this class has const members. Copy and move ctors will
-            // implicity delcared. This is good: assignment does not make sense
+            // implicity delclared. This is good: assignment does not make sense
             // because we need assurance device map is equal. Only way to do
             // this is with construction.
 
             //TODO: Needed? Data is const. Why would we want to clone this?
-            // Access by  multiple threads using shallow copies should be safe.
+            // Access by multiple threads using shallow copies should be safe.
             //inline frame_t clone() const
             //{
             //    auto fp = (oe_frame_t *)malloc(size_);
@@ -166,11 +168,11 @@ namespace oe {
             get_opt(OE_DEVICEMAP, device_map_.data(), &devices_sz);
         }
 
-        // No copy
+        // No copies
         inline context_t(const context_t &) = delete;
         inline context_t &operator=(const context_t &) = delete;
 
-        // Moves OK
+        // Moves are OK
         inline context_t(context_t &&rhs) noexcept
             : ctx_(rhs.ctx_),
               device_map_(std::move(rhs.device_map_))

@@ -5,7 +5,7 @@
 
 CC=c++
 
-CFLAGS=-O3 -std=c++14 -stdlib=libc++ -Wall
+CFLAGS=-O3 -std=c++14 -Wall
 LDFLAGS=-loepcie
 
 .PHONY: all

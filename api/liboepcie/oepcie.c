@@ -859,7 +859,7 @@ static int _oe_reset_routine(oe_ctx ctx) {
     }
 
     // Fail if there are no devices to control or acquire from
-    if (ctx->max_read_frame_size == 0 && total_write_sz == 0)
+    if (ctx->max_read_frame_size == OE_RFRAMEHEADERSZ && total_write_sz == 0)
         return OE_EBADDEVMAP;
 
     // NB: Default the block read size to a single max sized frame. This is bad

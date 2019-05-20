@@ -112,6 +112,8 @@ int main(int argc, char *argv[])
     const char *read_path = OE_DEFAULTREADPATH;
     const char *write_path = OE_DEFAULTWRITEPATH;
 
+    std::cout << logo_med;
+
     if (argc != 1 && argc != 5) {
         std::cout << "usage:\n";
         std::cout << "\thost : run using default stream paths\n";
@@ -134,10 +136,6 @@ int main(int argc, char *argv[])
 
     // Examine device map
     auto dev_map = ctx->device_map();
-
-#ifdef DUMPFILES
-    // Make room for dump files
-#endif
 
     // Show device map
     std::cout << "Found the following devices:\n";
