@@ -62,5 +62,5 @@ const char logo_big[] =
 "   Supporting open science                       .,.......,(((((((//        \n"
 "   since 2010.                                        .,...,/(####/         \n"
 "                                                           .,,####/         \n"
-"                                                                ,           \n";
-"                                                                            \n"
+"                                                                ,           \n"
+"                                                                            \n";
