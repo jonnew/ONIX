@@ -10,7 +10,15 @@ limited to the hardware in this repository.
 
 [![Join the chat at https://gitter.im/open-ephys-pcie/Lobby](https://badges.gitter.im/open-ephys-pcie/Lobby.svg)](https://gitter.im/open-ephys-pcie/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-__Citing this work__: TODO
+__Citing this work__: 
+
+1. Citing the paper
+
+  - TODO
+
+2. Citing the repository itself
+
+  - [![DOI](https://zenodo.org/badge/95248663.svg)](https://zenodo.org/badge/latestdoi/95248663)
 
 ## Features
 - Formal specifications: serialization protocols, host communication protocols,
