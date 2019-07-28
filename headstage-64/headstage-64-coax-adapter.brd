@@ -936,22 +936,25 @@ JV</text>
 <wire x1="0" y1="64" x2="69" y2="64" width="0" layer="20"/>
 <wire x1="69" y1="64" x2="69" y2="0" width="0" layer="20"/>
 <wire x1="69" y1="0" x2="0" y2="0" width="0" layer="20"/>
-<text x="28.836" y="58.466" size="1.27" layer="21" font="vector" ratio="18" align="center">CERN OHL v1.2
+<text x="42.736" y="58.566" size="1.27" layer="21" font="vector" ratio="18" align="center">CERN OHL v1.2
 JPN, MWL@MIT
 2019
 </text>
-<text x="10.836" y="58.466" size="1.27" layer="21" font="vector" ratio="18" align="center">Headstage-64
+<text x="24.736" y="58.566" size="1.27" layer="21" font="vector" ratio="18" align="center">Headstage-64
 Coax Adapter
 Rev. 1.0
 </text>
-<wire x1="21" y1="56" x2="21" y2="63" width="0.254" layer="21"/>
-<wire x1="21" y1="63" x2="36" y2="63" width="0.254" layer="21"/>
-<wire x1="36" y1="63" x2="36" y2="56" width="0.254" layer="21"/>
-<wire x1="36" y1="56" x2="21" y2="56" width="0.254" layer="21"/>
-<wire x1="2" y1="56" x2="2" y2="63" width="0.254" layer="21"/>
-<wire x1="2" y1="63" x2="20" y2="63" width="0.254" layer="21"/>
-<wire x1="20" y1="63" x2="20" y2="56" width="0.254" layer="21"/>
-<wire x1="20" y1="56" x2="2" y2="56" width="0.254" layer="21"/>
+<wire x1="34.9" y1="56.1" x2="34.9" y2="63.1" width="0.254" layer="21"/>
+<wire x1="34.9" y1="63.1" x2="49.9" y2="63.1" width="0.254" layer="21"/>
+<wire x1="49.9" y1="63.1" x2="49.9" y2="56.1" width="0.254" layer="21"/>
+<wire x1="49.9" y1="56.1" x2="34.9" y2="56.1" width="0.254" layer="21"/>
+<wire x1="15.9" y1="56.1" x2="15.9" y2="63.1" width="0.254" layer="21"/>
+<wire x1="15.9" y1="63.1" x2="33.9" y2="63.1" width="0.254" layer="21"/>
+<wire x1="33.9" y1="63.1" x2="33.9" y2="56.1" width="0.254" layer="21"/>
+<wire x1="33.9" y1="56.1" x2="15.9" y2="56.1" width="0.254" layer="21"/>
+<text x="6" y="8" size="1.27" layer="21" font="vector" ratio="18" align="center">(6, 11)</text>
+<text x="65" y="10" size="1.27" layer="21" font="vector" ratio="18" align="center">(65, 13)</text>
+<text x="63" y="46" size="1.27" layer="21" font="vector" ratio="18" align="center">(61, 49)</text>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -1347,9 +1350,9 @@ Rev. 1.0
 <element name="J85" library="jonnew" package="X_FL_R_SMT_1(02)" value="X.FL-R-SMT-1(02)" x="55.05" y="52.2" smashed="yes"/>
 <element name="J86" library="jonnew" package="HEADSTAGE64-DAUGHER-CARD-CASTELLATED" value="" x="54.95" y="50" smashed="yes"/>
 <element name="D43" library="jonnew" package="0402T-DFN" value="SESD0402X1UN-0020-090" x="53.53" y="51.83" smashed="yes" rot="MR270"/>
-<element name="E$4" library="fiducial" package="FIDUCIAL" value="" x="6.062509375" y="10.97118125"/>
-<element name="E$1" library="fiducial" package="FIDUCIAL" value="" x="65.062509375" y="12.97118125"/>
-<element name="E$2" library="fiducial" package="FIDUCIAL" value="" x="61.062509375" y="48.97118125"/>
+<element name="E$4" library="fiducial" package="FIDUCIAL" value="" x="6" y="11"/>
+<element name="E$1" library="fiducial" package="FIDUCIAL" value="" x="65" y="13"/>
+<element name="E$2" library="fiducial" package="FIDUCIAL" value="" x="61" y="49"/>
 </elements>
 <signals>
 <signal name="GND1">
