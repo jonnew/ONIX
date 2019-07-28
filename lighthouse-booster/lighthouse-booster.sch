@@ -734,9 +734,12 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <vertex x="-1.95" y="1.15"/>
 </polygon>
 <wire x1="-0.7" y1="-1.3" x2="0.7" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="-0.7" y1="1.3" x2="0.7" y2="1.3" width="0.127" layer="21"/>
+<wire x1="-0.7" y1="1.3" x2="-0.4" y2="1.3" width="0.127" layer="21"/>
 <text x="-1.4" y="1.5" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.5" y="-2.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<wire x1="-0.4" y1="1.3" x2="0.4" y2="1.3" width="0.127" layer="21"/>
+<wire x1="0.4" y1="1.3" x2="0.7" y2="1.3" width="0.127" layer="21"/>
+<wire x1="-0.4" y1="1.3" x2="0.4" y2="1.3" width="0.127" layer="21" curve="180"/>
 </package>
 <package name="Y5B/Y5BW-28">
 <smd name="1" x="-6.75" y="0" dx="0.3" dy="0.8" layer="1"/>
@@ -1765,7 +1768,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <attribute name="DESIGNER" value="JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="LIGHHOUSE SYNC. BOOSTER"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -1775,40 +1778,40 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </classes>
 <parts>
 <part name="U$2" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
-<part name="R75" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R76" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R75" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R76" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="Q7" library="jonnew" deviceset="N-MOSFET" device="_TSDSON-8" value="BSZ034N04LSATMA1"/>
 <part name="SUPPLY1" library="jonnew" deviceset="GND" device=""/>
 <part name="D116" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D106" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D96" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="SUPPLY2" library="jonnew" deviceset="+12V" device=""/>
-<part name="C77" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C76" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C75" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C74" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C82" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C83" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C84" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C85" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="C77" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C76" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C75" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C74" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C82" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C83" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C84" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C85" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY3" library="jonnew" deviceset="GND" device=""/>
-<part name="R73" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R74" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R73" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R74" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D115" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D105" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D95" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R71" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R72" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R71" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R72" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D114" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D104" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D94" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R69" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R70" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R69" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R70" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D113" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D103" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D93" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R67" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R68" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R67" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R68" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D112" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D102" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D92" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
@@ -1818,46 +1821,46 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P+1" library="jonnew" deviceset="+5V" device=""/>
 <part name="SUPPLY4" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY5" library="jonnew" deviceset="GND" device=""/>
-<part name="R87" library="jonnew" deviceset="R" device="_0402T" value="0"/>
+<part name="R87" library="jonnew" deviceset="R" device="_0402T" value="47k"/>
 <part name="J1" library="jonnew" deviceset="PINHD-1X28" device="_Y5B" value="AYF532835"/>
 <part name="D91" library="jonnew" deviceset="LED-RGB" device="_LTST" value="LTST-C19HE1WT"/>
 <part name="P+3" library="jonnew" deviceset="+5V" device=""/>
-<part name="C73" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C86" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="R42" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R43" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="C73" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C86" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="R42" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R43" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="Q4" library="jonnew" deviceset="N-MOSFET" device="_TSDSON-8" value="BSZ034N04LSATMA1"/>
 <part name="SUPPLY10" library="jonnew" deviceset="GND" device=""/>
 <part name="D80" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D65" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D50" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="SUPPLY11" library="jonnew" deviceset="+12V" device=""/>
-<part name="C41" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C40" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C39" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C38" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C52" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C53" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C54" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C55" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="C41" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C40" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C39" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C38" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C52" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C53" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C54" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C55" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY12" library="jonnew" deviceset="GND" device=""/>
-<part name="R40" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R41" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R40" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R41" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D79" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D64" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D49" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R38" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R39" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R38" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R39" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D78" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D63" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D48" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R36" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R37" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R36" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R37" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D77" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D62" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D47" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R34" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R35" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R34" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R35" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D76" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D61" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D46" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
@@ -1867,43 +1870,43 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P+4" library="jonnew" deviceset="+5V" device=""/>
 <part name="SUPPLY13" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY14" library="jonnew" deviceset="GND" device=""/>
-<part name="R64" library="jonnew" deviceset="R" device="_0402T" value="0"/>
-<part name="C37" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C56" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="R9" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R10" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R64" library="jonnew" deviceset="R" device="_0402T" value="47k"/>
+<part name="C37" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C56" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="R9" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R10" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="Q1" library="jonnew" deviceset="N-MOSFET" device="_TSDSON-8" value="BSZ034N04LSATMA1"/>
 <part name="SUPPLY15" library="jonnew" deviceset="GND" device=""/>
 <part name="D35" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D20" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D5" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="SUPPLY16" library="jonnew" deviceset="+12V" device=""/>
-<part name="C5" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C4" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C3" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C2" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C16" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C17" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C18" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C19" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="C5" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C4" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C3" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C2" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C16" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C17" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C18" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C19" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY17" library="jonnew" deviceset="GND" device=""/>
-<part name="R7" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R8" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R7" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R8" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D34" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D19" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D4" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R5" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R6" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R5" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R6" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D33" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D18" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D3" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R3" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R4" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R3" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R4" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D32" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D17" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D2" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R1" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R2" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R1" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R2" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D31" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D16" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D1" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
@@ -1913,43 +1916,43 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P+5" library="jonnew" deviceset="+5V" device=""/>
 <part name="SUPPLY18" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY19" library="jonnew" deviceset="GND" device=""/>
-<part name="R31" library="jonnew" deviceset="R" device="_0402T" value="0"/>
-<part name="C1" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C20" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="R19" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R20" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R31" library="jonnew" deviceset="R" device="_0402T" value="47k"/>
+<part name="C1" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C20" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="R19" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R20" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="Q2" library="jonnew" deviceset="N-MOSFET" device="_TSDSON-8" value="BSZ034N04LSATMA1"/>
 <part name="SUPPLY20" library="jonnew" deviceset="GND" device=""/>
 <part name="D40" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D25" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D10" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="SUPPLY21" library="jonnew" deviceset="+12V" device=""/>
-<part name="C10" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C9" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C8" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C7" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C21" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C22" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C23" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C24" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="C10" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C9" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C8" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C7" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C21" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C22" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C23" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C24" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY22" library="jonnew" deviceset="GND" device=""/>
-<part name="R17" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R18" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R17" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R18" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D39" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D24" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D9" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R15" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R16" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R15" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R16" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D38" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D23" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D8" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R13" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R14" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R13" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R14" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D37" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D22" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D7" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R11" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R12" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R11" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R12" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D36" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D21" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D6" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
@@ -1959,43 +1962,43 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P+6" library="jonnew" deviceset="+5V" device=""/>
 <part name="SUPPLY23" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY24" library="jonnew" deviceset="GND" device=""/>
-<part name="R32" library="jonnew" deviceset="R" device="_0402T" value="0"/>
-<part name="C6" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C25" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="R29" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R30" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R32" library="jonnew" deviceset="R" device="_0402T" value="47k"/>
+<part name="C6" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C25" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="R29" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R30" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="Q3" library="jonnew" deviceset="N-MOSFET" device="_TSDSON-8" value="BSZ034N04LSATMA1"/>
 <part name="SUPPLY25" library="jonnew" deviceset="GND" device=""/>
 <part name="D45" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D30" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D15" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="SUPPLY26" library="jonnew" deviceset="+12V" device=""/>
-<part name="C15" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C14" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C13" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C12" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C26" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C27" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C28" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C29" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="C15" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C14" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C13" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C12" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C26" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C27" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C28" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C29" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY27" library="jonnew" deviceset="GND" device=""/>
-<part name="R27" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R28" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R27" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R28" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D44" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D29" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D14" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R25" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R26" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R25" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R26" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D43" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D28" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D13" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R23" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R24" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R23" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R24" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D42" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D27" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D12" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R21" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R22" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R21" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R22" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D41" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D26" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D11" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
@@ -2005,43 +2008,43 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P+7" library="jonnew" deviceset="+5V" device=""/>
 <part name="SUPPLY28" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY29" library="jonnew" deviceset="GND" device=""/>
-<part name="R33" library="jonnew" deviceset="R" device="_0402T" value="0"/>
-<part name="C11" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C30" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="R52" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R53" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R33" library="jonnew" deviceset="R" device="_0402T" value="47k"/>
+<part name="C11" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C30" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="R52" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R53" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="Q5" library="jonnew" deviceset="N-MOSFET" device="_TSDSON-8" value="BSZ034N04LSATMA1"/>
 <part name="SUPPLY30" library="jonnew" deviceset="GND" device=""/>
 <part name="D85" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D70" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D55" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="SUPPLY31" library="jonnew" deviceset="+12V" device=""/>
-<part name="C46" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C45" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C44" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C43" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C57" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C58" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C59" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C60" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="C46" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C45" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C44" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C43" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C57" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C58" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C59" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C60" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY32" library="jonnew" deviceset="GND" device=""/>
-<part name="R50" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R51" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R50" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R51" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D84" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D69" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D54" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R48" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R49" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R48" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R49" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D83" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D68" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D53" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R46" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R47" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R46" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R47" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D82" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D67" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D52" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R44" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R45" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R44" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R45" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D81" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D66" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D51" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
@@ -2051,43 +2054,43 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P+8" library="jonnew" deviceset="+5V" device=""/>
 <part name="SUPPLY33" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY34" library="jonnew" deviceset="GND" device=""/>
-<part name="R65" library="jonnew" deviceset="R" device="_0402T" value="0"/>
-<part name="C42" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C61" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="R62" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R63" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R65" library="jonnew" deviceset="R" device="_0402T" value="47k"/>
+<part name="C42" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C61" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="R62" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R63" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="Q6" library="jonnew" deviceset="N-MOSFET" device="_TSDSON-8" value="BSZ034N04LSATMA1"/>
 <part name="SUPPLY35" library="jonnew" deviceset="GND" device=""/>
 <part name="D90" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D75" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D60" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="SUPPLY36" library="jonnew" deviceset="+12V" device=""/>
-<part name="C51" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C50" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C49" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C48" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C62" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C63" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C64" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C65" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="C51" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C50" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C49" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C48" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C62" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C63" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C64" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C65" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY37" library="jonnew" deviceset="GND" device=""/>
-<part name="R60" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R61" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R60" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R61" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D89" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D74" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D59" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R58" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R59" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R58" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R59" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D88" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D73" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D58" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R56" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R57" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R56" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R57" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D87" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D72" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D57" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R54" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R55" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R54" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R55" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D86" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D71" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D56" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
@@ -2097,42 +2100,42 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P+9" library="jonnew" deviceset="+5V" device=""/>
 <part name="SUPPLY38" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY39" library="jonnew" deviceset="GND" device=""/>
-<part name="R66" library="jonnew" deviceset="R" device="_0402T" value="0"/>
-<part name="C47" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C66" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="R85" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R86" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R66" library="jonnew" deviceset="R" device="_0402T" value="47k"/>
+<part name="C47" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C66" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="R85" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R86" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="Q8" library="jonnew" deviceset="N-MOSFET" device="_TSDSON-8" value="BSZ034N04LSATMA1"/>
 <part name="SUPPLY40" library="jonnew" deviceset="GND" device=""/>
 <part name="D121" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D111" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D101" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="SUPPLY41" library="jonnew" deviceset="+12V" device=""/>
-<part name="C81" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C80" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C79" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C88" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C89" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C90" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C91" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="C81" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C80" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C79" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C88" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C89" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C90" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C91" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY42" library="jonnew" deviceset="GND" device=""/>
-<part name="R83" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R84" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R83" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R84" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D120" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D110" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D100" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R81" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R82" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R81" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R82" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D119" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D109" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D99" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R79" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R80" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R79" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R80" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D118" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D108" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D98" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
-<part name="R77" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
-<part name="R78" library="jonnew" deviceset="R" device="_0805T" value="0.75"/>
+<part name="R77" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
+<part name="R78" library="jonnew" deviceset="R" device="_0805T" value="0.36"/>
 <part name="D117" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D107" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
 <part name="D97" library="jonnew" deviceset="LED" device="_LUXEON-3.7MM"/>
@@ -2142,10 +2145,10 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="P+10" library="jonnew" deviceset="+5V" device=""/>
 <part name="SUPPLY43" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY44" library="jonnew" deviceset="GND" device=""/>
-<part name="R88" library="jonnew" deviceset="R" device="_0402T" value="0"/>
-<part name="C78" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C92" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
-<part name="C87" library="jonnew" deviceset="C" device="_0805T" value="6.8uF"/>
+<part name="R88" library="jonnew" deviceset="R" device="_0402T" value="47k"/>
+<part name="C78" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C92" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
+<part name="C87" library="jonnew" deviceset="C" device="_0805T" value="22uF"/>
 <part name="SUPPLY6" library="jonnew" deviceset="+12V" device=""/>
 <part name="SUPPLY7" library="jonnew" deviceset="GND" device=""/>
 <part name="P+11" library="jonnew" deviceset="+5V" device=""/>
@@ -2207,7 +2210,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="P+1" gate="1" x="220.98" y="63.5"/>
 <instance part="SUPPLY4" gate="PE" x="220.98" y="33.02"/>
 <instance part="SUPPLY5" gate="PE" x="297.18" y="33.02"/>
-<instance part="R87" gate="R" x="299.72" y="58.42"/>
+<instance part="R87" gate="R" x="297.18" y="50.8" rot="R270"/>
 <instance part="J1" gate="G$1" x="149.86" y="119.38"/>
 <instance part="D91" gate="G$1" x="38.1" y="134.62"/>
 <instance part="P+3" gate="1" x="25.4" y="139.7"/>
@@ -2256,7 +2259,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="P+4" gate="1" x="53.34" y="213.36"/>
 <instance part="SUPPLY13" gate="PE" x="53.34" y="182.88"/>
 <instance part="SUPPLY14" gate="PE" x="129.54" y="182.88"/>
-<instance part="R64" gate="R" x="132.08" y="208.28"/>
+<instance part="R64" gate="R" x="129.54" y="200.66" rot="R270"/>
 <instance part="C37" gate="C" x="48.26" y="287.02" rot="MR0"/>
 <instance part="C56" gate="C" x="139.7" y="284.48" rot="MR180"/>
 <instance part="R9" gate="R" x="147.32" y="386.08" rot="R90"/>
@@ -2302,7 +2305,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="P+5" gate="1" x="53.34" y="370.84"/>
 <instance part="SUPPLY18" gate="PE" x="53.34" y="340.36"/>
 <instance part="SUPPLY19" gate="PE" x="129.54" y="340.36"/>
-<instance part="R31" gate="R" x="132.08" y="365.76"/>
+<instance part="R31" gate="R" x="129.54" y="358.14" rot="R270"/>
 <instance part="C1" gate="C" x="48.26" y="444.5" rot="MR0"/>
 <instance part="C20" gate="C" x="139.7" y="441.96" rot="MR180"/>
 <instance part="R19" gate="R" x="314.96" y="386.08" rot="R90"/>
@@ -2348,7 +2351,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="P+6" gate="1" x="220.98" y="370.84"/>
 <instance part="SUPPLY23" gate="PE" x="220.98" y="340.36"/>
 <instance part="SUPPLY24" gate="PE" x="297.18" y="340.36"/>
-<instance part="R32" gate="R" x="299.72" y="365.76"/>
+<instance part="R32" gate="R" x="297.18" y="358.14" rot="R270"/>
 <instance part="C6" gate="C" x="215.9" y="444.5" rot="MR0"/>
 <instance part="C25" gate="C" x="307.34" y="441.96" rot="MR180"/>
 <instance part="R29" gate="R" x="487.68" y="386.08" rot="R90"/>
@@ -2394,7 +2397,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="P+7" gate="1" x="393.7" y="370.84"/>
 <instance part="SUPPLY28" gate="PE" x="393.7" y="340.36"/>
 <instance part="SUPPLY29" gate="PE" x="469.9" y="340.36"/>
-<instance part="R33" gate="R" x="472.44" y="365.76"/>
+<instance part="R33" gate="R" x="469.9" y="358.14" rot="R270"/>
 <instance part="C11" gate="C" x="388.62" y="444.5" rot="MR0"/>
 <instance part="C30" gate="C" x="480.06" y="441.96" rot="MR180"/>
 <instance part="R52" gate="R" x="314.96" y="228.6" rot="R90"/>
@@ -2440,7 +2443,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="P+8" gate="1" x="220.98" y="213.36"/>
 <instance part="SUPPLY33" gate="PE" x="220.98" y="182.88"/>
 <instance part="SUPPLY34" gate="PE" x="297.18" y="182.88"/>
-<instance part="R65" gate="R" x="299.72" y="208.28"/>
+<instance part="R65" gate="R" x="297.18" y="200.66" rot="R270"/>
 <instance part="C42" gate="C" x="215.9" y="287.02" rot="MR0"/>
 <instance part="C61" gate="C" x="307.34" y="284.48" rot="MR180"/>
 <instance part="R62" gate="R" x="487.68" y="228.6" rot="R90"/>
@@ -2486,7 +2489,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="P+9" gate="1" x="393.7" y="213.36"/>
 <instance part="SUPPLY38" gate="PE" x="393.7" y="182.88"/>
 <instance part="SUPPLY39" gate="PE" x="469.9" y="182.88"/>
-<instance part="R66" gate="R" x="472.44" y="208.28"/>
+<instance part="R66" gate="R" x="469.9" y="200.66" rot="R270"/>
 <instance part="C47" gate="C" x="388.62" y="287.02" rot="MR0"/>
 <instance part="C66" gate="C" x="480.06" y="284.48" rot="MR180"/>
 <instance part="R85" gate="R" x="487.68" y="78.74" rot="R90"/>
@@ -2531,7 +2534,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="P+10" gate="1" x="393.7" y="63.5"/>
 <instance part="SUPPLY43" gate="PE" x="393.7" y="33.02"/>
 <instance part="SUPPLY44" gate="PE" x="469.9" y="33.02"/>
-<instance part="R88" gate="R" x="472.44" y="58.42"/>
+<instance part="R88" gate="R" x="469.9" y="50.8" rot="R270"/>
 <instance part="C78" gate="C" x="388.62" y="137.16" rot="MR0"/>
 <instance part="C92" gate="C" x="480.06" y="134.62" rot="MR180"/>
 <instance part="C87" gate="C" x="429.26" y="134.62" rot="MR180"/>
@@ -3233,6 +3236,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY5" gate="PE" pin="GND"/>
 <wire x1="289.56" y1="38.1" x2="297.18" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="297.18" y1="38.1" x2="297.18" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="R87" gate="R" pin="2"/>
+<wire x1="297.18" y1="45.72" x2="297.18" y2="38.1" width="0.1524" layer="91"/>
+<junction x="297.18" y="38.1"/>
 </segment>
 <segment>
 <pinref part="Q4" gate="G$1" pin="S"/>
@@ -3302,6 +3308,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY14" gate="PE" pin="GND"/>
 <wire x1="121.92" y1="187.96" x2="129.54" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="187.96" x2="129.54" y2="185.42" width="0.1524" layer="91"/>
+<pinref part="R64" gate="R" pin="2"/>
+<wire x1="129.54" y1="195.58" x2="129.54" y2="187.96" width="0.1524" layer="91"/>
+<junction x="129.54" y="187.96"/>
 </segment>
 <segment>
 <pinref part="Q1" gate="G$1" pin="S"/>
@@ -3371,6 +3380,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY19" gate="PE" pin="GND"/>
 <wire x1="121.92" y1="345.44" x2="129.54" y2="345.44" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="345.44" x2="129.54" y2="342.9" width="0.1524" layer="91"/>
+<pinref part="R31" gate="R" pin="2"/>
+<wire x1="129.54" y1="353.06" x2="129.54" y2="345.44" width="0.1524" layer="91"/>
+<junction x="129.54" y="345.44"/>
 </segment>
 <segment>
 <pinref part="Q2" gate="G$1" pin="S"/>
@@ -3440,6 +3452,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY24" gate="PE" pin="GND"/>
 <wire x1="289.56" y1="345.44" x2="297.18" y2="345.44" width="0.1524" layer="91"/>
 <wire x1="297.18" y1="345.44" x2="297.18" y2="342.9" width="0.1524" layer="91"/>
+<pinref part="R32" gate="R" pin="2"/>
+<wire x1="297.18" y1="353.06" x2="297.18" y2="345.44" width="0.1524" layer="91"/>
+<junction x="297.18" y="345.44"/>
 </segment>
 <segment>
 <pinref part="Q3" gate="G$1" pin="S"/>
@@ -3509,6 +3524,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY29" gate="PE" pin="GND"/>
 <wire x1="462.28" y1="345.44" x2="469.9" y2="345.44" width="0.1524" layer="91"/>
 <wire x1="469.9" y1="345.44" x2="469.9" y2="342.9" width="0.1524" layer="91"/>
+<pinref part="R33" gate="R" pin="2"/>
+<wire x1="469.9" y1="353.06" x2="469.9" y2="345.44" width="0.1524" layer="91"/>
+<junction x="469.9" y="345.44"/>
 </segment>
 <segment>
 <pinref part="Q5" gate="G$1" pin="S"/>
@@ -3578,6 +3596,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY34" gate="PE" pin="GND"/>
 <wire x1="289.56" y1="187.96" x2="297.18" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="297.18" y1="187.96" x2="297.18" y2="185.42" width="0.1524" layer="91"/>
+<pinref part="R65" gate="R" pin="2"/>
+<wire x1="297.18" y1="195.58" x2="297.18" y2="187.96" width="0.1524" layer="91"/>
+<junction x="297.18" y="187.96"/>
 </segment>
 <segment>
 <pinref part="Q6" gate="G$1" pin="S"/>
@@ -3647,6 +3668,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY39" gate="PE" pin="GND"/>
 <wire x1="462.28" y1="187.96" x2="469.9" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="469.9" y1="187.96" x2="469.9" y2="185.42" width="0.1524" layer="91"/>
+<pinref part="R66" gate="R" pin="2"/>
+<wire x1="469.9" y1="195.58" x2="469.9" y2="187.96" width="0.1524" layer="91"/>
+<junction x="469.9" y="187.96"/>
 </segment>
 <segment>
 <pinref part="Q8" gate="G$1" pin="S"/>
@@ -3716,6 +3740,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY44" gate="PE" pin="GND"/>
 <wire x1="462.28" y1="38.1" x2="469.9" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="469.9" y1="38.1" x2="469.9" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="R88" gate="R" pin="2"/>
+<wire x1="469.9" y1="45.72" x2="469.9" y2="38.1" width="0.1524" layer="91"/>
+<junction x="469.9" y="38.1"/>
 </segment>
 <segment>
 <wire x1="142.24" y1="142.24" x2="114.3" y2="142.24" width="0.1524" layer="91"/>
@@ -3773,13 +3800,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY9" gate="PE" pin="GND"/>
 <wire x1="48.26" y1="86.36" x2="48.26" y2="83.82" width="0.1524" layer="91"/>
 <junction x="48.26" y="86.36"/>
-</segment>
-</net>
-<net name="N$5" class="0">
-<segment>
-<pinref part="Q7" gate="G$1" pin="G"/>
-<pinref part="R87" gate="R" pin="2"/>
-<wire x1="304.8" y1="58.42" x2="314.96" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -4059,7 +4079,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R87" gate="R" pin="1"/>
 <pinref part="U7" gate="G$1" pin="OUT"/>
-<wire x1="289.56" y1="58.42" x2="294.64" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="289.56" y1="58.42" x2="297.18" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="297.18" y1="58.42" x2="297.18" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="Q7" gate="G$1" pin="G"/>
+<wire x1="297.18" y1="58.42" x2="314.96" y2="58.42" width="0.1524" layer="91"/>
+<junction x="297.18" y="58.42"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -4199,13 +4223,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <junction x="91.44" y="220.98"/>
 </segment>
 </net>
-<net name="N$22" class="0">
-<segment>
-<pinref part="Q4" gate="G$1" pin="G"/>
-<pinref part="R64" gate="R" pin="2"/>
-<wire x1="137.16" y1="208.28" x2="147.32" y2="208.28" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$29" class="0">
 <segment>
 <pinref part="R40" gate="R" pin="2"/>
@@ -4318,7 +4335,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R64" gate="R" pin="1"/>
 <pinref part="U4" gate="G$1" pin="OUT"/>
-<wire x1="121.92" y1="208.28" x2="127" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="208.28" x2="129.54" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="208.28" x2="129.54" y2="205.74" width="0.1524" layer="91"/>
+<pinref part="Q4" gate="G$1" pin="G"/>
+<wire x1="129.54" y1="208.28" x2="147.32" y2="208.28" width="0.1524" layer="91"/>
+<junction x="129.54" y="208.28"/>
 </segment>
 </net>
 <net name="N$47" class="0">
@@ -4391,13 +4412,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <junction x="63.5" y="378.46"/>
 <junction x="45.72" y="378.46"/>
 <junction x="91.44" y="378.46"/>
-</segment>
-</net>
-<net name="N$51" class="0">
-<segment>
-<pinref part="Q1" gate="G$1" pin="G"/>
-<pinref part="R31" gate="R" pin="2"/>
-<wire x1="137.16" y1="365.76" x2="147.32" y2="365.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$52" class="0">
@@ -4512,7 +4526,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R31" gate="R" pin="1"/>
 <pinref part="U1" gate="G$1" pin="OUT"/>
-<wire x1="121.92" y1="365.76" x2="127" y2="365.76" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="365.76" x2="129.54" y2="365.76" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="365.76" x2="129.54" y2="363.22" width="0.1524" layer="91"/>
+<pinref part="Q1" gate="G$1" pin="G"/>
+<wire x1="129.54" y1="365.76" x2="147.32" y2="365.76" width="0.1524" layer="91"/>
+<junction x="129.54" y="365.76"/>
 </segment>
 </net>
 <net name="N$70" class="0">
@@ -4585,13 +4603,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <junction x="231.14" y="378.46"/>
 <junction x="213.36" y="378.46"/>
 <junction x="259.08" y="378.46"/>
-</segment>
-</net>
-<net name="N$74" class="0">
-<segment>
-<pinref part="Q2" gate="G$1" pin="G"/>
-<pinref part="R32" gate="R" pin="2"/>
-<wire x1="304.8" y1="365.76" x2="314.96" y2="365.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$75" class="0">
@@ -4706,7 +4717,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R32" gate="R" pin="1"/>
 <pinref part="U2" gate="G$1" pin="OUT"/>
-<wire x1="289.56" y1="365.76" x2="294.64" y2="365.76" width="0.1524" layer="91"/>
+<wire x1="289.56" y1="365.76" x2="297.18" y2="365.76" width="0.1524" layer="91"/>
+<wire x1="297.18" y1="365.76" x2="297.18" y2="363.22" width="0.1524" layer="91"/>
+<pinref part="Q2" gate="G$1" pin="G"/>
+<wire x1="297.18" y1="365.76" x2="314.96" y2="365.76" width="0.1524" layer="91"/>
+<junction x="297.18" y="365.76"/>
 </segment>
 </net>
 <net name="N$93" class="0">
@@ -4779,13 +4794,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <junction x="403.86" y="378.46"/>
 <junction x="386.08" y="378.46"/>
 <junction x="431.8" y="378.46"/>
-</segment>
-</net>
-<net name="N$97" class="0">
-<segment>
-<pinref part="Q3" gate="G$1" pin="G"/>
-<pinref part="R33" gate="R" pin="2"/>
-<wire x1="477.52" y1="365.76" x2="487.68" y2="365.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$98" class="0">
@@ -4900,7 +4908,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R33" gate="R" pin="1"/>
 <pinref part="U3" gate="G$1" pin="OUT"/>
-<wire x1="462.28" y1="365.76" x2="467.36" y2="365.76" width="0.1524" layer="91"/>
+<wire x1="462.28" y1="365.76" x2="469.9" y2="365.76" width="0.1524" layer="91"/>
+<wire x1="469.9" y1="365.76" x2="469.9" y2="363.22" width="0.1524" layer="91"/>
+<pinref part="Q3" gate="G$1" pin="G"/>
+<wire x1="469.9" y1="365.76" x2="487.68" y2="365.76" width="0.1524" layer="91"/>
+<junction x="469.9" y="365.76"/>
 </segment>
 </net>
 <net name="N$116" class="0">
@@ -4973,13 +4985,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <junction x="231.14" y="220.98"/>
 <junction x="213.36" y="220.98"/>
 <junction x="259.08" y="220.98"/>
-</segment>
-</net>
-<net name="N$120" class="0">
-<segment>
-<pinref part="Q5" gate="G$1" pin="G"/>
-<pinref part="R65" gate="R" pin="2"/>
-<wire x1="304.8" y1="208.28" x2="314.96" y2="208.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$121" class="0">
@@ -5094,7 +5099,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R65" gate="R" pin="1"/>
 <pinref part="U5" gate="G$1" pin="OUT"/>
-<wire x1="289.56" y1="208.28" x2="294.64" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="289.56" y1="208.28" x2="297.18" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="297.18" y1="208.28" x2="297.18" y2="205.74" width="0.1524" layer="91"/>
+<pinref part="Q5" gate="G$1" pin="G"/>
+<wire x1="297.18" y1="208.28" x2="314.96" y2="208.28" width="0.1524" layer="91"/>
+<junction x="297.18" y="208.28"/>
 </segment>
 </net>
 <net name="N$139" class="0">
@@ -5167,13 +5176,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <junction x="403.86" y="220.98"/>
 <junction x="386.08" y="220.98"/>
 <junction x="431.8" y="220.98"/>
-</segment>
-</net>
-<net name="N$143" class="0">
-<segment>
-<pinref part="Q6" gate="G$1" pin="G"/>
-<pinref part="R66" gate="R" pin="2"/>
-<wire x1="477.52" y1="208.28" x2="487.68" y2="208.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$144" class="0">
@@ -5288,7 +5290,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R66" gate="R" pin="1"/>
 <pinref part="U6" gate="G$1" pin="OUT"/>
-<wire x1="462.28" y1="208.28" x2="467.36" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="462.28" y1="208.28" x2="469.9" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="469.9" y1="208.28" x2="469.9" y2="205.74" width="0.1524" layer="91"/>
+<pinref part="Q6" gate="G$1" pin="G"/>
+<wire x1="469.9" y1="208.28" x2="487.68" y2="208.28" width="0.1524" layer="91"/>
+<junction x="469.9" y="208.28"/>
 </segment>
 </net>
 <net name="N$162" class="0">
@@ -5361,13 +5367,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <junction x="403.86" y="71.12"/>
 <junction x="386.08" y="71.12"/>
 <junction x="431.8" y="71.12"/>
-</segment>
-</net>
-<net name="N$166" class="0">
-<segment>
-<pinref part="Q8" gate="G$1" pin="G"/>
-<pinref part="R88" gate="R" pin="2"/>
-<wire x1="477.52" y1="58.42" x2="487.68" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$167" class="0">
@@ -5482,7 +5481,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <segment>
 <pinref part="R88" gate="R" pin="1"/>
 <pinref part="U8" gate="G$1" pin="OUT"/>
-<wire x1="462.28" y1="58.42" x2="467.36" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="462.28" y1="58.42" x2="469.9" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="469.9" y1="58.42" x2="469.9" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="Q8" gate="G$1" pin="G"/>
+<wire x1="469.9" y1="58.42" x2="487.68" y2="58.42" width="0.1524" layer="91"/>
+<junction x="469.9" y="58.42"/>
 </segment>
 </net>
 </nets>

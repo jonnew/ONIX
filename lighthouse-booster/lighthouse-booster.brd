@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -30,14 +30,14 @@
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -174,7 +174,7 @@
 <wire x1="1" y1="-30" x2="0" y2="-29" width="0" layer="20" curve="-90"/>
 <hole x="-2" y="-5" drill="2"/>
 <hole x="-5" y="-2" drill="2"/>
-<hole x="-26" y="-1.5" drill="2"/>
+<hole x="-26" y="-2" drill="2"/>
 <hole x="-2" y="-26" drill="2"/>
 <polygon width="0" layer="40">
 <vertex x="0" y="0"/>
@@ -186,7 +186,7 @@
 <vertex x="-34" y="-9"/>
 <vertex x="-34" y="0"/>
 </polygon>
-<text x="-16.076290625" y="-12.50579375" size="1.2" layer="22" font="vector" ratio="21" rot="SMR0" align="center">Rev. 1.0
+<text x="-16.076290625" y="-12.50579375" size="1.2" layer="22" font="vector" ratio="21" rot="SMR0" align="center">Rev. 1.1
 CERN OHL v1.2
 JPN, MWL@MIT
 2019</text>
@@ -265,9 +265,12 @@ JPN, MWL@MIT
 <vertex x="-1.95" y="1.15"/>
 </polygon>
 <wire x1="-0.7" y1="-1.3" x2="0.7" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="-0.7" y1="1.3" x2="0.7" y2="1.3" width="0.127" layer="21"/>
+<wire x1="-0.7" y1="1.3" x2="-0.4" y2="1.3" width="0.127" layer="21"/>
 <text x="-1.4" y="1.5" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1.5" y="-2.5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<wire x1="-0.4" y1="1.3" x2="0.4" y2="1.3" width="0.127" layer="21"/>
+<wire x1="0.4" y1="1.3" x2="0.7" y2="1.3" width="0.127" layer="21"/>
+<wire x1="-0.4" y1="1.3" x2="0.4" y2="1.3" width="0.127" layer="21" curve="180"/>
 </package>
 <package name="LUXEON-3.7MM">
 <smd name="C" x="-1.075" y="0" dx="2.5" dy="0.45" layer="1" rot="R90"/>
@@ -577,8 +580,8 @@ Please make sure your boards conform to these design rules.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="R75" library="jonnew" package="0805T" value="0.75" x="-39.3" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R76" library="jonnew" package="0805T" value="0.75" x="-40.9" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R75" library="jonnew" package="0805T" value="0.36" x="-39.3" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R76" library="jonnew" package="0805T" value="0.36" x="-40.9" y="-40.1" smashed="yes" rot="MR270"/>
 <element name="Q7" library="jonnew" package="PG-TSDSON-8" value="BSZ034N04LSATMA1" x="-33.2" y="-37" smashed="yes" rot="MR180">
 <attribute name="NAME" x="-33.8" y="-37.8" size="1.016" layer="26" font="vector" ratio="18" rot="MR90"/>
 </element>
@@ -591,16 +594,16 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D96" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-31.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-37" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="C77" library="jonnew" package="0805T" value="6.8uF" x="-40.9" y="-33.9" smashed="yes" rot="MR90"/>
-<element name="C76" library="jonnew" package="0805T" value="6.8uF" x="-39.3" y="-33.9" smashed="yes" rot="MR90"/>
-<element name="C75" library="jonnew" package="0805T" value="6.8uF" x="-37.7" y="-33.9" smashed="yes" rot="MR90"/>
-<element name="C74" library="jonnew" package="0805T" value="6.8uF" x="-36.2" y="-33.9" smashed="yes" rot="MR90"/>
-<element name="C82" library="jonnew" package="0805T" value="6.8uF" x="-34.7" y="-33.9" smashed="yes" rot="MR270"/>
-<element name="C83" library="jonnew" package="0805T" value="6.8uF" x="-33.2" y="-33.9" smashed="yes" rot="MR270"/>
-<element name="C84" library="jonnew" package="0805T" value="6.8uF" x="-33.7" y="-31.6" smashed="yes" rot="MR0"/>
-<element name="C85" library="jonnew" package="0805T" value="6.8uF" x="-31.7" y="-34.2" smashed="yes" rot="MR270"/>
-<element name="R73" library="jonnew" package="0805T" value="0.75" x="-37" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R74" library="jonnew" package="0805T" value="0.75" x="-35.4" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="C77" library="jonnew" package="0805T" value="22uF" x="-40.9" y="-33.9" smashed="yes" rot="MR90"/>
+<element name="C76" library="jonnew" package="0805T" value="22uF" x="-39.3" y="-33.9" smashed="yes" rot="MR90"/>
+<element name="C75" library="jonnew" package="0805T" value="22uF" x="-37.7" y="-33.9" smashed="yes" rot="MR90"/>
+<element name="C74" library="jonnew" package="0805T" value="22uF" x="-36.2" y="-33.9" smashed="yes" rot="MR90"/>
+<element name="C82" library="jonnew" package="0805T" value="22uF" x="-34.7" y="-33.9" smashed="yes" rot="MR270"/>
+<element name="C83" library="jonnew" package="0805T" value="22uF" x="-33.2" y="-33.9" smashed="yes" rot="MR270"/>
+<element name="C84" library="jonnew" package="0805T" value="22uF" x="-33.7" y="-31.6" smashed="yes" rot="MR0"/>
+<element name="C85" library="jonnew" package="0805T" value="22uF" x="-31.7" y="-34.2" smashed="yes" rot="MR270"/>
+<element name="R73" library="jonnew" package="0805T" value="0.36" x="-37" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R74" library="jonnew" package="0805T" value="0.36" x="-35.4" y="-40.1" smashed="yes" rot="MR270"/>
 <element name="D115" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-39.5" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-41.4" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -610,8 +613,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D95" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-31.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R71" library="jonnew" package="0805T" value="0.75" x="-33.1" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R72" library="jonnew" package="0805T" value="0.75" x="-31.5" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R71" library="jonnew" package="0805T" value="0.36" x="-33.1" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R72" library="jonnew" package="0805T" value="0.36" x="-31.5" y="-40.1" smashed="yes" rot="MR270"/>
 <element name="D114" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-39.5" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-41.4" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -621,8 +624,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D94" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-31.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R69" library="jonnew" package="0805T" value="0.75" x="-28.4" y="-41.1" smashed="yes" rot="MR180"/>
-<element name="R70" library="jonnew" package="0805T" value="0.75" x="-28.4" y="-39.6" smashed="yes" rot="MR180"/>
+<element name="R69" library="jonnew" package="0805T" value="0.36" x="-28.4" y="-41.1" smashed="yes" rot="MR180"/>
+<element name="R70" library="jonnew" package="0805T" value="0.36" x="-28.4" y="-39.6" smashed="yes" rot="MR180"/>
 <element name="D113" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-39.5" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-41.4" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -632,8 +635,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D93" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-31.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R67" library="jonnew" package="0805T" value="0.75" x="-29.6" y="-37.9" smashed="yes" rot="MR180"/>
-<element name="R68" library="jonnew" package="0805T" value="0.75" x="-29.6" y="-36.5" smashed="yes" rot="MR180"/>
+<element name="R67" library="jonnew" package="0805T" value="0.36" x="-29.6" y="-37.9" smashed="yes" rot="MR180"/>
+<element name="R68" library="jonnew" package="0805T" value="0.36" x="-29.6" y="-36.5" smashed="yes" rot="MR180"/>
 <element name="D112" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-39.5" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-21.4" y="-41.4" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -648,15 +651,15 @@ Please make sure your boards conform to these design rules.</description>
 </element>
 <element name="C98" library="jonnew" package="0402T" value="10nF" x="-40.4" y="-37.5" smashed="yes" rot="MR90"/>
 <element name="C97" library="jonnew" package="0402T" value="0.1uF" x="-41.2" y="-37.5" smashed="yes" rot="MR90"/>
-<element name="R87" library="jonnew" package="0402T" value="0" x="-35.7" y="-37.1" smashed="yes" rot="MR90"/>
+<element name="R87" library="jonnew" package="0402T" value="47k" x="-35.6" y="-37" smashed="yes" rot="MR270"/>
 <element name="J1" library="jonnew" package="Y5B/Y5BW-28" value="AYF532835" x="-18.5" y="-37.6" locked="yes" smashed="yes" rot="MR0">
 <attribute name="NAME" x="-17.75" y="-39.4" size="1.016" layer="26" font="vector" ratio="18" rot="MR0"/>
 </element>
 <element name="D91" library="jonnew" package="LTST-C19HE1WT" value="LTST-C19HE1WT" x="-37.75" y="-15.8" smashed="yes" rot="R90"/>
-<element name="C73" library="jonnew" package="0805T" value="6.8uF" x="-36.7" y="-31.6" smashed="yes" rot="MR0"/>
-<element name="C86" library="jonnew" package="0805T" value="6.8uF" x="-40.1" y="-31.6" smashed="yes" rot="MR180"/>
-<element name="R42" library="jonnew" package="0805T" value="0.75" x="-39.3" y="-28.3" smashed="yes" rot="MR270"/>
-<element name="R43" library="jonnew" package="0805T" value="0.75" x="-40.9" y="-28.3" smashed="yes" rot="MR270"/>
+<element name="C73" library="jonnew" package="0805T" value="22uF" x="-36.7" y="-31.6" smashed="yes" rot="MR0"/>
+<element name="C86" library="jonnew" package="0805T" value="22uF" x="-40.1" y="-31.6" smashed="yes" rot="MR180"/>
+<element name="R42" library="jonnew" package="0805T" value="0.36" x="-39.3" y="-28.3" smashed="yes" rot="MR270"/>
+<element name="R43" library="jonnew" package="0805T" value="0.36" x="-40.9" y="-28.3" smashed="yes" rot="MR270"/>
 <element name="Q4" library="jonnew" package="PG-TSDSON-8" value="BSZ034N04LSATMA1" x="-33.2" y="-24.9" smashed="yes" rot="MR180"/>
 <element name="D80" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-37" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
@@ -667,16 +670,16 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D50" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-19.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-37" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="C41" library="jonnew" package="0805T" value="6.8uF" x="-40.9" y="-21.8" smashed="yes" rot="MR90"/>
-<element name="C40" library="jonnew" package="0805T" value="6.8uF" x="-39.3" y="-21.8" smashed="yes" rot="MR90"/>
-<element name="C39" library="jonnew" package="0805T" value="6.8uF" x="-37.7" y="-21.8" smashed="yes" rot="MR90"/>
-<element name="C38" library="jonnew" package="0805T" value="6.8uF" x="-36.1" y="-21.8" smashed="yes" rot="MR90"/>
-<element name="C52" library="jonnew" package="0805T" value="6.8uF" x="-34.5" y="-21.8" smashed="yes" rot="MR270"/>
-<element name="C53" library="jonnew" package="0805T" value="6.8uF" x="-34.5" y="-18.7" smashed="yes" rot="MR90"/>
-<element name="C54" library="jonnew" package="0805T" value="6.8uF" x="-36.1" y="-18.7" smashed="yes" rot="MR90"/>
-<element name="C55" library="jonnew" package="0805T" value="6.8uF" x="-37.7" y="-18.7" smashed="yes" rot="MR90"/>
-<element name="R40" library="jonnew" package="0805T" value="0.75" x="-37.7" y="-28.3" smashed="yes" rot="MR270"/>
-<element name="R41" library="jonnew" package="0805T" value="0.75" x="-36.1" y="-28.3" smashed="yes" rot="MR270"/>
+<element name="C41" library="jonnew" package="0805T" value="22uF" x="-40.9" y="-21.8" smashed="yes" rot="MR90"/>
+<element name="C40" library="jonnew" package="0805T" value="22uF" x="-39.3" y="-21.8" smashed="yes" rot="MR90"/>
+<element name="C39" library="jonnew" package="0805T" value="22uF" x="-37.7" y="-21.8" smashed="yes" rot="MR90"/>
+<element name="C38" library="jonnew" package="0805T" value="22uF" x="-36.1" y="-21.8" smashed="yes" rot="MR90"/>
+<element name="C52" library="jonnew" package="0805T" value="22uF" x="-34.5" y="-21.8" smashed="yes" rot="MR270"/>
+<element name="C53" library="jonnew" package="0805T" value="22uF" x="-34.5" y="-18.7" smashed="yes" rot="MR90"/>
+<element name="C54" library="jonnew" package="0805T" value="22uF" x="-36.1" y="-18.7" smashed="yes" rot="MR90"/>
+<element name="C55" library="jonnew" package="0805T" value="22uF" x="-37.7" y="-18.7" smashed="yes" rot="MR90"/>
+<element name="R40" library="jonnew" package="0805T" value="0.36" x="-37.7" y="-28.3" smashed="yes" rot="MR270"/>
+<element name="R41" library="jonnew" package="0805T" value="0.36" x="-36.1" y="-28.3" smashed="yes" rot="MR270"/>
 <element name="D79" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -686,8 +689,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D49" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-19.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R38" library="jonnew" package="0805T" value="0.75" x="-34.5" y="-28.3" smashed="yes" rot="MR270"/>
-<element name="R39" library="jonnew" package="0805T" value="0.75" x="-32.9" y="-28.3" smashed="yes" rot="MR270"/>
+<element name="R38" library="jonnew" package="0805T" value="0.36" x="-34.5" y="-28.3" smashed="yes" rot="MR270"/>
+<element name="R39" library="jonnew" package="0805T" value="0.36" x="-32.9" y="-28.3" smashed="yes" rot="MR270"/>
 <element name="D78" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -697,8 +700,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D48" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-19.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R36" library="jonnew" package="0805T" value="0.75" x="-29.9" y="-28.3" smashed="yes" rot="MR270"/>
-<element name="R37" library="jonnew" package="0805T" value="0.75" x="-31.4" y="-28.3" smashed="yes" rot="MR270"/>
+<element name="R36" library="jonnew" package="0805T" value="0.36" x="-29.9" y="-28.3" smashed="yes" rot="MR270"/>
+<element name="R37" library="jonnew" package="0805T" value="0.36" x="-31.4" y="-28.3" smashed="yes" rot="MR270"/>
 <element name="D77" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -708,8 +711,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D47" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-19.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R34" library="jonnew" package="0805T" value="0.75" x="-30.8" y="-22.6" smashed="yes" rot="MR180"/>
-<element name="R35" library="jonnew" package="0805T" value="0.75" x="-30.8" y="-21.2" smashed="yes" rot="MR180"/>
+<element name="R34" library="jonnew" package="0805T" value="0.36" x="-30.8" y="-22.6" smashed="yes" rot="MR180"/>
+<element name="R35" library="jonnew" package="0805T" value="0.36" x="-30.8" y="-21.2" smashed="yes" rot="MR180"/>
 <element name="D76" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-21.4" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -722,11 +725,11 @@ Please make sure your boards conform to these design rules.</description>
 <element name="U4" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-38" y="-24.9" smashed="yes" rot="MR90"/>
 <element name="C68" library="jonnew" package="0402T" value="10nF" x="-40.4" y="-25.4" smashed="yes" rot="MR90"/>
 <element name="C67" library="jonnew" package="0402T" value="0.1uF" x="-41.2" y="-25.4" smashed="yes" rot="MR90"/>
-<element name="R64" library="jonnew" package="0402T" value="0" x="-35.7" y="-25" smashed="yes" rot="MR90"/>
-<element name="C37" library="jonnew" package="0805T" value="6.8uF" x="-39.3" y="-18.7" smashed="yes" rot="MR270"/>
-<element name="C56" library="jonnew" package="0805T" value="6.8uF" x="-40.9" y="-18.7" smashed="yes" rot="MR90"/>
-<element name="R9" library="jonnew" package="0805T" value="0.75" x="-39.3" y="-13.5" smashed="yes" rot="MR270"/>
-<element name="R10" library="jonnew" package="0805T" value="0.75" x="-40.9" y="-13.5" smashed="yes" rot="MR270"/>
+<element name="R64" library="jonnew" package="0402T" value="47k" x="-35.6" y="-25.1" smashed="yes" rot="MR270"/>
+<element name="C37" library="jonnew" package="0805T" value="22uF" x="-39.3" y="-18.7" smashed="yes" rot="MR270"/>
+<element name="C56" library="jonnew" package="0805T" value="22uF" x="-40.9" y="-18.7" smashed="yes" rot="MR90"/>
+<element name="R9" library="jonnew" package="0805T" value="0.36" x="-39.3" y="-13.5" smashed="yes" rot="MR270"/>
+<element name="R10" library="jonnew" package="0805T" value="0.36" x="-40.9" y="-13.5" smashed="yes" rot="MR270"/>
 <element name="Q1" library="jonnew" package="PG-TSDSON-8" value="BSZ034N04LSATMA1" x="-34.5" y="-10.6" smashed="yes" rot="MR180">
 <attribute name="NAME" x="-34.95" y="-11.35" size="1.016" layer="26" font="vector" ratio="18" rot="MR90"/>
 </element>
@@ -739,16 +742,16 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D5" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-4.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-37" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="C5" library="jonnew" package="0805T" value="6.8uF" x="-40.9" y="-5.3" smashed="yes" rot="MR90"/>
-<element name="C4" library="jonnew" package="0805T" value="6.8uF" x="-39.4" y="-5.3" smashed="yes" rot="MR90"/>
-<element name="C3" library="jonnew" package="0805T" value="6.8uF" x="-37.9" y="-5.3" smashed="yes" rot="MR90"/>
-<element name="C2" library="jonnew" package="0805T" value="6.8uF" x="-36.4" y="-5.3" smashed="yes" rot="MR90"/>
-<element name="C16" library="jonnew" package="0805T" value="6.8uF" x="-29.4" y="-1.6" smashed="yes" rot="R90"/>
-<element name="C17" library="jonnew" package="0805T" value="6.8uF" x="-27.8" y="-1.6" smashed="yes" rot="R90"/>
-<element name="C18" library="jonnew" package="0805T" value="6.8uF" x="-31.8" y="-2.2" smashed="yes" rot="R180"/>
-<element name="C19" library="jonnew" package="0805T" value="6.8uF" x="-36.1" y="-2.2" smashed="yes" rot="R180"/>
-<element name="R7" library="jonnew" package="0805T" value="0.75" x="-37.8" y="-13.5" smashed="yes" rot="MR270"/>
-<element name="R8" library="jonnew" package="0805T" value="0.75" x="-36.3" y="-13.5" smashed="yes" rot="MR270"/>
+<element name="C5" library="jonnew" package="0805T" value="22uF" x="-40.9" y="-5.3" smashed="yes" rot="MR90"/>
+<element name="C4" library="jonnew" package="0805T" value="22uF" x="-39.4" y="-5.3" smashed="yes" rot="MR90"/>
+<element name="C3" library="jonnew" package="0805T" value="22uF" x="-37.9" y="-5.3" smashed="yes" rot="MR90"/>
+<element name="C2" library="jonnew" package="0805T" value="22uF" x="-36.4" y="-5.3" smashed="yes" rot="MR90"/>
+<element name="C16" library="jonnew" package="0805T" value="22uF" x="-29.4" y="-1.6" smashed="yes" rot="R90"/>
+<element name="C17" library="jonnew" package="0805T" value="22uF" x="-27.8" y="-1.6" smashed="yes" rot="R90"/>
+<element name="C18" library="jonnew" package="0805T" value="22uF" x="-31.8" y="-2.2" smashed="yes" rot="R180"/>
+<element name="C19" library="jonnew" package="0805T" value="22uF" x="-36.1" y="-2.2" smashed="yes" rot="R180"/>
+<element name="R7" library="jonnew" package="0805T" value="0.36" x="-37.8" y="-13.5" smashed="yes" rot="MR270"/>
+<element name="R8" library="jonnew" package="0805T" value="0.36" x="-36.3" y="-13.5" smashed="yes" rot="MR270"/>
 <element name="D34" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-12.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-14.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -758,8 +761,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D4" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-4.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R5" library="jonnew" package="0805T" value="0.75" x="-34.8" y="-13.5" smashed="yes" rot="MR270"/>
-<element name="R6" library="jonnew" package="0805T" value="0.75" x="-33.4" y="-13.5" smashed="yes" rot="MR270"/>
+<element name="R5" library="jonnew" package="0805T" value="0.36" x="-34.8" y="-13.5" smashed="yes" rot="MR270"/>
+<element name="R6" library="jonnew" package="0805T" value="0.36" x="-33.4" y="-13.5" smashed="yes" rot="MR270"/>
 <element name="D33" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-12.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-14.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -769,8 +772,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D3" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-4.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R3" library="jonnew" package="0805T" value="0.75" x="-30.4" y="-13.5" smashed="yes" rot="MR270"/>
-<element name="R4" library="jonnew" package="0805T" value="0.75" x="-31.9" y="-13.5" smashed="yes" rot="MR270"/>
+<element name="R3" library="jonnew" package="0805T" value="0.36" x="-30.4" y="-13.5" smashed="yes" rot="MR270"/>
+<element name="R4" library="jonnew" package="0805T" value="0.36" x="-31.9" y="-13.5" smashed="yes" rot="MR270"/>
 <element name="D32" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-12.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-14.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -780,8 +783,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D2" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-4.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R1" library="jonnew" package="0805T" value="0.75" x="-30.6" y="-11.3" smashed="yes" rot="MR180"/>
-<element name="R2" library="jonnew" package="0805T" value="0.75" x="-30.6" y="-9.9" smashed="yes" rot="MR180"/>
+<element name="R1" library="jonnew" package="0805T" value="0.36" x="-30.6" y="-11.3" smashed="yes" rot="MR180"/>
+<element name="R2" library="jonnew" package="0805T" value="0.36" x="-30.6" y="-9.9" smashed="yes" rot="MR180"/>
 <element name="D31" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-12.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-21.4" y="-14.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -796,11 +799,11 @@ Please make sure your boards conform to these design rules.</description>
 </element>
 <element name="C32" library="jonnew" package="0402T" value="10nF" x="-39" y="-11.2" smashed="yes" rot="MR180"/>
 <element name="C31" library="jonnew" package="0402T" value="0.1uF" x="-40.7" y="-11.2" smashed="yes" rot="MR0"/>
-<element name="R31" library="jonnew" package="0402T" value="0" x="-37" y="-9.8" smashed="yes" rot="MR90"/>
-<element name="C1" library="jonnew" package="0805T" value="6.8uF" x="-23.6" y="-1.5" smashed="yes" rot="R270"/>
-<element name="C20" library="jonnew" package="0805T" value="6.8uF" x="-34.9" y="-5.3" smashed="yes" rot="MR270"/>
-<element name="R19" library="jonnew" package="0805T" value="0.75" x="-16.8" y="-16.2" smashed="yes" rot="R90"/>
-<element name="R20" library="jonnew" package="0805T" value="0.75" x="-18.3" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R31" library="jonnew" package="0402T" value="47k" x="-37" y="-9.2" smashed="yes" rot="MR90"/>
+<element name="C1" library="jonnew" package="0805T" value="22uF" x="-23.6" y="-1.5" smashed="yes" rot="R270"/>
+<element name="C20" library="jonnew" package="0805T" value="22uF" x="-34.9" y="-5.3" smashed="yes" rot="MR270"/>
+<element name="R19" library="jonnew" package="0805T" value="0.36" x="-16.8" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R20" library="jonnew" package="0805T" value="0.36" x="-18.3" y="-16.2" smashed="yes" rot="R90"/>
 <element name="Q2" library="jonnew" package="PG-TSDSON-8" value="BSZ034N04LSATMA1" x="-21.2" y="-16.3" smashed="yes">
 <attribute name="NAME" x="-20.75" y="-16.9" size="1.016" layer="25" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -813,16 +816,16 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D10" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-4.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-17.3" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="C10" library="jonnew" package="0805T" value="6.8uF" x="-21.2" y="-1.5" smashed="yes" rot="R270"/>
-<element name="C9" library="jonnew" package="0805T" value="6.8uF" x="-19.7" y="-1.5" smashed="yes" rot="R270"/>
-<element name="C8" library="jonnew" package="0805T" value="6.8uF" x="-17.2" y="-1.5" smashed="yes" rot="R270"/>
-<element name="C7" library="jonnew" package="0805T" value="6.8uF" x="-15.7" y="-1.5" smashed="yes" rot="R270"/>
-<element name="C21" library="jonnew" package="0805T" value="6.8uF" x="-13.3" y="-1.5" smashed="yes" rot="R90"/>
-<element name="C22" library="jonnew" package="0805T" value="6.8uF" x="-11.8" y="-1.5" smashed="yes" rot="R90"/>
-<element name="C23" library="jonnew" package="0805T" value="6.8uF" x="-9.5" y="-1.5" smashed="yes" rot="R90"/>
-<element name="C24" library="jonnew" package="0805T" value="6.8uF" x="-8" y="-1.5" smashed="yes" rot="R90"/>
-<element name="R17" library="jonnew" package="0805T" value="0.75" x="-15.3" y="-16.2" smashed="yes" rot="R90"/>
-<element name="R18" library="jonnew" package="0805T" value="0.75" x="-13.8" y="-16.2" smashed="yes" rot="R90"/>
+<element name="C10" library="jonnew" package="0805T" value="22uF" x="-21.2" y="-1.5" smashed="yes" rot="R270"/>
+<element name="C9" library="jonnew" package="0805T" value="22uF" x="-19.7" y="-1.5" smashed="yes" rot="R270"/>
+<element name="C8" library="jonnew" package="0805T" value="22uF" x="-17.2" y="-1.5" smashed="yes" rot="R270"/>
+<element name="C7" library="jonnew" package="0805T" value="22uF" x="-15.7" y="-1.5" smashed="yes" rot="R270"/>
+<element name="C21" library="jonnew" package="0805T" value="22uF" x="-13.3" y="-1.5" smashed="yes" rot="R90"/>
+<element name="C22" library="jonnew" package="0805T" value="22uF" x="-11.8" y="-1.5" smashed="yes" rot="R90"/>
+<element name="C23" library="jonnew" package="0805T" value="22uF" x="-9.5" y="-1.5" smashed="yes" rot="R90"/>
+<element name="C24" library="jonnew" package="0805T" value="22uF" x="-8" y="-1.5" smashed="yes" rot="R90"/>
+<element name="R17" library="jonnew" package="0805T" value="0.36" x="-15.3" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R18" library="jonnew" package="0805T" value="0.36" x="-13.8" y="-16.2" smashed="yes" rot="R90"/>
 <element name="D39" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-12.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-14.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -832,8 +835,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D9" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-4.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R15" library="jonnew" package="0805T" value="0.75" x="-12.3" y="-16.2" smashed="yes" rot="R90"/>
-<element name="R16" library="jonnew" package="0805T" value="0.75" x="-10.8" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R15" library="jonnew" package="0805T" value="0.36" x="-12.3" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R16" library="jonnew" package="0805T" value="0.36" x="-10.8" y="-16.2" smashed="yes" rot="R90"/>
 <element name="D38" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-12.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-14.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -843,8 +846,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D8" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-4.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R13" library="jonnew" package="0805T" value="0.75" x="-7.8" y="-16.2" smashed="yes" rot="R90"/>
-<element name="R14" library="jonnew" package="0805T" value="0.75" x="-9.3" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R13" library="jonnew" package="0805T" value="0.36" x="-7.8" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R14" library="jonnew" package="0805T" value="0.36" x="-9.3" y="-16.2" smashed="yes" rot="R90"/>
 <element name="D37" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-12.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-14.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -854,8 +857,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D7" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-4.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R11" library="jonnew" package="0805T" value="0.75" x="-6.3" y="-16.2" smashed="yes" rot="R90"/>
-<element name="R12" library="jonnew" package="0805T" value="0.75" x="-4.8" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R11" library="jonnew" package="0805T" value="0.36" x="-6.3" y="-16.2" smashed="yes" rot="R90"/>
+<element name="R12" library="jonnew" package="0805T" value="0.36" x="-4.8" y="-16.2" smashed="yes" rot="R90"/>
 <element name="D36" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-12.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-1.7" y="-14.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -870,11 +873,11 @@ Please make sure your boards conform to these design rules.</description>
 </element>
 <element name="C34" library="jonnew" package="0402T" value="10nF" x="-28.6" y="-17.1" smashed="yes" rot="R270"/>
 <element name="C33" library="jonnew" package="0402T" value="0.1uF" x="-28.6" y="-15.5" smashed="yes" rot="R90"/>
-<element name="R32" library="jonnew" package="0402T" value="0" x="-23.7" y="-16.7" smashed="yes" rot="R270"/>
-<element name="C6" library="jonnew" package="0805T" value="6.8uF" x="-2.95" y="-1.5" smashed="yes" rot="R270"/>
-<element name="C25" library="jonnew" package="0805T" value="6.8uF" x="-1.45" y="-1.5" smashed="yes" rot="R90"/>
-<element name="R29" library="jonnew" package="0805T" value="0.75" x="-29.2" y="-31.3" smashed="yes" rot="MR90"/>
-<element name="R30" library="jonnew" package="0805T" value="0.75" x="-30.7" y="-31.3" smashed="yes" rot="MR90"/>
+<element name="R32" library="jonnew" package="0402T" value="47k" x="-23.7" y="-15.9" smashed="yes" rot="R90"/>
+<element name="C6" library="jonnew" package="0805T" value="22uF" x="-2.95" y="-1.5" smashed="yes" rot="R270"/>
+<element name="C25" library="jonnew" package="0805T" value="22uF" x="-1.45" y="-1.5" smashed="yes" rot="R90"/>
+<element name="R29" library="jonnew" package="0805T" value="0.36" x="-29.2" y="-31.3" smashed="yes" rot="MR90"/>
+<element name="R30" library="jonnew" package="0805T" value="0.36" x="-30.7" y="-31.3" smashed="yes" rot="MR90"/>
 <element name="Q3" library="jonnew" package="PG-TSDSON-8" value="BSZ034N04LSATMA1" x="-28.7" y="-34.2" smashed="yes" rot="MR0">
 <attribute name="NAME" x="-28.2" y="-33.5" size="1.016" layer="26" font="vector" ratio="18" rot="MR270"/>
 </element>
@@ -887,16 +890,16 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D15" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-19.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-17.3" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="C15" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-10.2" smashed="yes" rot="R180"/>
-<element name="C14" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-11.7" smashed="yes" rot="R180"/>
-<element name="C13" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-13.2" smashed="yes" rot="R180"/>
-<element name="C12" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-14.7" smashed="yes" rot="R180"/>
-<element name="C26" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-16.2" smashed="yes"/>
-<element name="C27" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-17.8" smashed="yes"/>
-<element name="C28" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-19.3" smashed="yes"/>
-<element name="C29" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-20.8" smashed="yes"/>
-<element name="R27" library="jonnew" package="0805T" value="0.75" x="-27.7" y="-31.3" smashed="yes" rot="MR90"/>
-<element name="R28" library="jonnew" package="0805T" value="0.75" x="-26.2" y="-31.3" smashed="yes" rot="MR90"/>
+<element name="C15" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-10.2" smashed="yes" rot="R180"/>
+<element name="C14" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-11.7" smashed="yes" rot="R180"/>
+<element name="C13" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-13.2" smashed="yes" rot="R180"/>
+<element name="C12" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-14.7" smashed="yes" rot="R180"/>
+<element name="C26" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-16.2" smashed="yes"/>
+<element name="C27" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-17.8" smashed="yes"/>
+<element name="C28" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-19.3" smashed="yes"/>
+<element name="C29" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-20.8" smashed="yes"/>
+<element name="R27" library="jonnew" package="0805T" value="0.36" x="-27.7" y="-31.3" smashed="yes" rot="MR90"/>
+<element name="R28" library="jonnew" package="0805T" value="0.36" x="-26.2" y="-31.3" smashed="yes" rot="MR90"/>
 <element name="D44" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -906,8 +909,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D14" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-19.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R25" library="jonnew" package="0805T" value="0.75" x="-24.7" y="-31.3" smashed="yes" rot="MR90"/>
-<element name="R26" library="jonnew" package="0805T" value="0.75" x="-23.2" y="-31.3" smashed="yes" rot="MR90"/>
+<element name="R25" library="jonnew" package="0805T" value="0.36" x="-24.7" y="-31.3" smashed="yes" rot="MR90"/>
+<element name="R26" library="jonnew" package="0805T" value="0.36" x="-23.2" y="-31.3" smashed="yes" rot="MR90"/>
 <element name="D43" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -917,8 +920,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D13" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-19.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R23" library="jonnew" package="0805T" value="0.75" x="-21.7" y="-31.3" smashed="yes" rot="MR90"/>
-<element name="R24" library="jonnew" package="0805T" value="0.75" x="-20.2" y="-31.3" smashed="yes" rot="MR90"/>
+<element name="R23" library="jonnew" package="0805T" value="0.36" x="-21.7" y="-31.3" smashed="yes" rot="MR90"/>
+<element name="R24" library="jonnew" package="0805T" value="0.36" x="-20.2" y="-31.3" smashed="yes" rot="MR90"/>
 <element name="D42" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -928,8 +931,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D12" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-19.9" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R21" library="jonnew" package="0805T" value="0.75" x="-21.7" y="-34.9" smashed="yes" rot="MR180"/>
-<element name="R22" library="jonnew" package="0805T" value="0.75" x="-21.7" y="-33.5" smashed="yes" rot="MR180"/>
+<element name="R21" library="jonnew" package="0805T" value="0.36" x="-21.7" y="-34.9" smashed="yes" rot="MR180"/>
+<element name="R22" library="jonnew" package="0805T" value="0.36" x="-21.7" y="-33.5" smashed="yes" rot="MR180"/>
 <element name="D41" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-27.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-1.7" y="-29.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -942,11 +945,11 @@ Please make sure your boards conform to these design rules.</description>
 <element name="U3" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-24.8" y="-34.7" smashed="yes" rot="MR0"/>
 <element name="C36" library="jonnew" package="0402T" value="10nF" x="-22.2" y="-36" smashed="yes" rot="MR180"/>
 <element name="C35" library="jonnew" package="0402T" value="0.1uF" x="-22.2" y="-36.7" smashed="yes" rot="MR180"/>
-<element name="R33" library="jonnew" package="0402T" value="0" x="-27.2" y="-36.16" smashed="yes" rot="MR0"/>
-<element name="C11" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-22.3" smashed="yes" rot="R180"/>
-<element name="C30" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-23.8" smashed="yes"/>
-<element name="R52" library="jonnew" package="0805T" value="0.75" x="-17.8" y="-35.4" smashed="yes" rot="MR270"/>
-<element name="R53" library="jonnew" package="0805T" value="0.75" x="-19.3" y="-35.4" smashed="yes" rot="MR270"/>
+<element name="R33" library="jonnew" package="0402T" value="47k" x="-27.2" y="-36.16" smashed="yes" rot="MR0"/>
+<element name="C11" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-22.3" smashed="yes" rot="R180"/>
+<element name="C30" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-23.8" smashed="yes"/>
+<element name="R52" library="jonnew" package="0805T" value="0.36" x="-17.8" y="-35.4" smashed="yes" rot="MR270"/>
+<element name="R53" library="jonnew" package="0805T" value="0.36" x="-19.3" y="-35.4" smashed="yes" rot="MR270"/>
 <element name="Q5" library="jonnew" package="PG-TSDSON-8" value="BSZ034N04LSATMA1" x="-2.9" y="-39.3" smashed="yes" rot="MR180">
 <attribute name="NAME" x="-3.4" y="-40" size="1.016" layer="26" font="vector" ratio="18" rot="MR90"/>
 </element>
@@ -959,16 +962,16 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D55" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-31.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-17.3" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="C46" library="jonnew" package="0805T" value="6.8uF" x="-2.1" y="-31.8" smashed="yes" rot="R90"/>
-<element name="C45" library="jonnew" package="0805T" value="6.8uF" x="-18.8" y="-32.4" smashed="yes" rot="MR90"/>
-<element name="C44" library="jonnew" package="0805T" value="6.8uF" x="-17.3" y="-32.4" smashed="yes" rot="MR90"/>
-<element name="C43" library="jonnew" package="0805T" value="6.8uF" x="-15.8" y="-32.4" smashed="yes" rot="MR90"/>
-<element name="C57" library="jonnew" package="0805T" value="6.8uF" x="-14.3" y="-32.4" smashed="yes" rot="MR270"/>
-<element name="C58" library="jonnew" package="0805T" value="6.8uF" x="-12.8" y="-32.4" smashed="yes" rot="MR270"/>
-<element name="C59" library="jonnew" package="0805T" value="6.8uF" x="-11.3" y="-32.4" smashed="yes" rot="MR270"/>
-<element name="C60" library="jonnew" package="0805T" value="6.8uF" x="-9.8" y="-32.4" smashed="yes" rot="MR270"/>
-<element name="R50" library="jonnew" package="0805T" value="0.75" x="-14.7" y="-35.4" smashed="yes" rot="MR270"/>
-<element name="R51" library="jonnew" package="0805T" value="0.75" x="-13.2" y="-35.4" smashed="yes" rot="MR270"/>
+<element name="C46" library="jonnew" package="0805T" value="22uF" x="-2.1" y="-31.8" smashed="yes" rot="R90"/>
+<element name="C45" library="jonnew" package="0805T" value="22uF" x="-18.8" y="-32.4" smashed="yes" rot="MR90"/>
+<element name="C44" library="jonnew" package="0805T" value="22uF" x="-17.3" y="-32.4" smashed="yes" rot="MR90"/>
+<element name="C43" library="jonnew" package="0805T" value="22uF" x="-15.8" y="-32.4" smashed="yes" rot="MR90"/>
+<element name="C57" library="jonnew" package="0805T" value="22uF" x="-14.3" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="C58" library="jonnew" package="0805T" value="22uF" x="-12.8" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="C59" library="jonnew" package="0805T" value="22uF" x="-11.3" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="C60" library="jonnew" package="0805T" value="22uF" x="-9.8" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="R50" library="jonnew" package="0805T" value="0.36" x="-14.7" y="-35.4" smashed="yes" rot="MR270"/>
+<element name="R51" library="jonnew" package="0805T" value="0.36" x="-13.2" y="-35.4" smashed="yes" rot="MR270"/>
 <element name="D84" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-39.5" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-41.4" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -978,8 +981,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D54" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-31.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R48" library="jonnew" package="0805T" value="0.75" x="-11.6" y="-35.4" smashed="yes" rot="MR270"/>
-<element name="R49" library="jonnew" package="0805T" value="0.75" x="-10" y="-35.4" smashed="yes" rot="MR270"/>
+<element name="R48" library="jonnew" package="0805T" value="0.36" x="-11.6" y="-35.4" smashed="yes" rot="MR270"/>
+<element name="R49" library="jonnew" package="0805T" value="0.36" x="-10" y="-35.4" smashed="yes" rot="MR270"/>
 <element name="D83" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-39.5" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-41.4" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -989,8 +992,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D53" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-31.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R46" library="jonnew" package="0805T" value="0.75" x="-8.3" y="-36.2" smashed="yes" rot="MR270"/>
-<element name="R47" library="jonnew" package="0805T" value="0.75" x="-6.8" y="-36.2" smashed="yes" rot="MR270"/>
+<element name="R46" library="jonnew" package="0805T" value="0.36" x="-8.3" y="-36.2" smashed="yes" rot="MR270"/>
+<element name="R47" library="jonnew" package="0805T" value="0.36" x="-6.8" y="-36.2" smashed="yes" rot="MR270"/>
 <element name="D82" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-39.5" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-41.4" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -1000,8 +1003,8 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D52" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-31.7" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R44" library="jonnew" package="0805T" value="0.75" x="-5.2" y="-36.2" smashed="yes" rot="MR270"/>
-<element name="R45" library="jonnew" package="0805T" value="0.75" x="-3.8" y="-36.2" smashed="yes" rot="MR270"/>
+<element name="R44" library="jonnew" package="0805T" value="0.36" x="-5.2" y="-36.2" smashed="yes" rot="MR270"/>
+<element name="R45" library="jonnew" package="0805T" value="0.36" x="-3.8" y="-36.2" smashed="yes" rot="MR270"/>
 <element name="D81" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-39.5" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-1.7" y="-41.4" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -1016,9 +1019,9 @@ Please make sure your boards conform to these design rules.</description>
 </element>
 <element name="C70" library="jonnew" package="0402T" value="10nF" x="-7.05" y="-41.2" smashed="yes" rot="MR180"/>
 <element name="C69" library="jonnew" package="0402T" value="0.1uF" x="-9.15" y="-41.2" smashed="yes" rot="MR0"/>
-<element name="R65" library="jonnew" package="0402T" value="0" x="-5.5" y="-39.2" smashed="yes" rot="MR90"/>
-<element name="C42" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-29.3" smashed="yes" rot="R180"/>
-<element name="C61" library="jonnew" package="0805T" value="6.8uF" x="-1.5" y="-27.8" smashed="yes"/>
+<element name="R65" library="jonnew" package="0402T" value="47k" x="-5.4" y="-39.4" smashed="yes" rot="MR270"/>
+<element name="C42" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-29.3" smashed="yes" rot="R180"/>
+<element name="C61" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-27.8" smashed="yes"/>
 <element name="D90" library="jonnew" package="LUXEON-3.7MM" value="" x="0.6" y="-40" smashed="yes" rot="R90">
 <attribute name="VALUE" x="3.7" y="-41.9" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
@@ -1064,35 +1067,35 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D56" library="jonnew" package="LUXEON-3.7MM" value="" x="16.2" y="-32.2" smashed="yes" rot="R90">
 <attribute name="VALUE" x="19.3" y="-34.1" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="R62" library="jonnew" package="0805T" value="0.75" x="1.7" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R63" library="jonnew" package="0805T" value="0.75" x="0.3" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R62" library="jonnew" package="0805T" value="0.36" x="1.7" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R63" library="jonnew" package="0805T" value="0.36" x="0.3" y="-40.1" smashed="yes" rot="MR270"/>
 <element name="Q6" library="jonnew" package="PG-TSDSON-8" value="BSZ034N04LSATMA1" x="14.6" y="-36.4" smashed="yes" rot="MR180">
 <attribute name="NAME" x="14.15" y="-37.1" size="1.016" layer="26" font="vector" ratio="18" rot="MR90"/>
 </element>
-<element name="C51" library="jonnew" package="0805T" value="6.8uF" x="4.5" y="-32.4" smashed="yes" rot="MR90"/>
-<element name="C50" library="jonnew" package="0805T" value="6.8uF" x="9.6" y="-32.4" smashed="yes" rot="MR90"/>
-<element name="C49" library="jonnew" package="0805T" value="6.8uF" x="11.4" y="-32.4" smashed="yes" rot="MR90"/>
-<element name="C48" library="jonnew" package="0805T" value="6.8uF" x="13.2" y="-32.4" smashed="yes" rot="MR90"/>
-<element name="C62" library="jonnew" package="0805T" value="6.8uF" x="14.9" y="-32.4" smashed="yes" rot="MR270"/>
-<element name="C63" library="jonnew" package="0805T" value="6.8uF" x="16.6" y="-32.4" smashed="yes" rot="MR270"/>
-<element name="C64" library="jonnew" package="0805T" value="6.8uF" x="7.9" y="-32.4" smashed="yes" rot="MR270"/>
-<element name="C65" library="jonnew" package="0805T" value="6.8uF" x="6.2" y="-32.4" smashed="yes" rot="MR270"/>
-<element name="R60" library="jonnew" package="0805T" value="0.75" x="5.3" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R61" library="jonnew" package="0805T" value="0.75" x="3.7" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R58" library="jonnew" package="0805T" value="0.75" x="7.6" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R59" library="jonnew" package="0805T" value="0.75" x="9.2" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R56" library="jonnew" package="0805T" value="0.75" x="11.5" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R57" library="jonnew" package="0805T" value="0.75" x="13.1" y="-40.1" smashed="yes" rot="MR270"/>
-<element name="R54" library="jonnew" package="0805T" value="0.75" x="15.2" y="-40.2" smashed="yes" rot="MR270"/>
-<element name="R55" library="jonnew" package="0805T" value="0.75" x="16.8" y="-40.2" smashed="yes" rot="MR270"/>
+<element name="C51" library="jonnew" package="0805T" value="22uF" x="4.5" y="-32.4" smashed="yes" rot="MR90"/>
+<element name="C50" library="jonnew" package="0805T" value="22uF" x="9.6" y="-32.4" smashed="yes" rot="MR90"/>
+<element name="C49" library="jonnew" package="0805T" value="22uF" x="11.4" y="-32.4" smashed="yes" rot="MR90"/>
+<element name="C48" library="jonnew" package="0805T" value="22uF" x="13.2" y="-32.4" smashed="yes" rot="MR90"/>
+<element name="C62" library="jonnew" package="0805T" value="22uF" x="14.9" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="C63" library="jonnew" package="0805T" value="22uF" x="16.6" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="C64" library="jonnew" package="0805T" value="22uF" x="7.9" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="C65" library="jonnew" package="0805T" value="22uF" x="6.2" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="R60" library="jonnew" package="0805T" value="0.36" x="5.3" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R61" library="jonnew" package="0805T" value="0.36" x="3.7" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R58" library="jonnew" package="0805T" value="0.36" x="7.6" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R59" library="jonnew" package="0805T" value="0.36" x="9.2" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R56" library="jonnew" package="0805T" value="0.36" x="11.5" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R57" library="jonnew" package="0805T" value="0.36" x="13.1" y="-40.1" smashed="yes" rot="MR270"/>
+<element name="R54" library="jonnew" package="0805T" value="0.36" x="15.2" y="-40.2" smashed="yes" rot="MR270"/>
+<element name="R55" library="jonnew" package="0805T" value="0.36" x="16.8" y="-40.2" smashed="yes" rot="MR270"/>
 <element name="U6" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="9.8" y="-36.4" smashed="yes" rot="MR90">
 <attribute name="NAME" x="9.35" y="-37.2" size="1.016" layer="26" font="vector" ratio="18" rot="MR90"/>
 </element>
 <element name="C72" library="jonnew" package="0402T" value="10nF" x="7.4" y="-36.9" smashed="yes" rot="MR90"/>
 <element name="C71" library="jonnew" package="0402T" value="0.1uF" x="6.6" y="-36.9" smashed="yes" rot="MR90"/>
-<element name="R66" library="jonnew" package="0402T" value="0" x="12.1" y="-36.5" smashed="yes" rot="MR90"/>
-<element name="C47" library="jonnew" package="0805T" value="6.8uF" x="2.8" y="-32.4" smashed="yes" rot="MR90"/>
-<element name="C66" library="jonnew" package="0805T" value="6.8uF" x="1.1" y="-32.4" smashed="yes" rot="MR270"/>
+<element name="R66" library="jonnew" package="0402T" value="47k" x="12.1" y="-36.6" smashed="yes" rot="MR270"/>
+<element name="C47" library="jonnew" package="0805T" value="22uF" x="2.8" y="-32.4" smashed="yes" rot="MR90"/>
+<element name="C66" library="jonnew" package="0805T" value="22uF" x="1.1" y="-32.4" smashed="yes" rot="MR270"/>
 <element name="D121" library="jonnew" package="LUXEON-3.7MM" value="" x="-39.9" y="16.4" smashed="yes">
 <attribute name="VALUE" x="-41.8" y="13.3" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
@@ -1138,35 +1141,35 @@ Please make sure your boards conform to these design rules.</description>
 <element name="D97" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.1" y="0.8" smashed="yes">
 <attribute name="VALUE" x="-34" y="-2.3" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="R85" library="jonnew" package="0805T" value="0.75" x="-39.5" y="15.6" smashed="yes" rot="MR0"/>
-<element name="R86" library="jonnew" package="0805T" value="0.75" x="-39.5" y="17" smashed="yes" rot="MR0"/>
+<element name="R85" library="jonnew" package="0805T" value="0.36" x="-39.5" y="15.6" smashed="yes" rot="MR0"/>
+<element name="R86" library="jonnew" package="0805T" value="0.36" x="-39.5" y="17" smashed="yes" rot="MR0"/>
 <element name="Q8" library="jonnew" package="PG-TSDSON-8" value="BSZ034N04LSATMA1" x="-35.7" y="2.2" smashed="yes" rot="MR270">
 <attribute name="NAME" x="-36.5" y="2.7" size="1.016" layer="26" font="vector" ratio="18" rot="MR180"/>
 </element>
-<element name="C81" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="13.3" smashed="yes" rot="MR180"/>
-<element name="C80" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="7.9" smashed="yes" rot="MR180"/>
-<element name="C79" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="5.8" smashed="yes" rot="MR180"/>
-<element name="C88" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="4.3" smashed="yes" rot="MR0"/>
-<element name="C89" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="2.4" smashed="yes" rot="MR0"/>
-<element name="C90" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="0.8" smashed="yes" rot="MR0"/>
-<element name="C91" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="9.3" smashed="yes" rot="MR0"/>
-<element name="C78" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="11.8" smashed="yes" rot="MR180"/>
-<element name="R83" library="jonnew" package="0805T" value="0.75" x="-39.5" y="11.8" smashed="yes" rot="MR0"/>
-<element name="R84" library="jonnew" package="0805T" value="0.75" x="-39.5" y="13.3" smashed="yes" rot="MR0"/>
-<element name="R81" library="jonnew" package="0805T" value="0.75" x="-39.5" y="9.3" smashed="yes" rot="MR0"/>
-<element name="R82" library="jonnew" package="0805T" value="0.75" x="-39.5" y="7.9" smashed="yes" rot="MR0"/>
-<element name="R79" library="jonnew" package="0805T" value="0.75" x="-39.5" y="5.4" smashed="yes" rot="MR0"/>
-<element name="R80" library="jonnew" package="0805T" value="0.75" x="-39.5" y="4" smashed="yes" rot="MR0"/>
-<element name="R77" library="jonnew" package="0805T" value="0.75" x="-39.5" y="1.5" smashed="yes" rot="MR0"/>
-<element name="R78" library="jonnew" package="0805T" value="0.75" x="-39.5" y="0.1" smashed="yes" rot="MR0"/>
+<element name="C81" library="jonnew" package="0805T" value="22uF" x="-32.1" y="13.3" smashed="yes" rot="MR180"/>
+<element name="C80" library="jonnew" package="0805T" value="22uF" x="-32.1" y="7.9" smashed="yes" rot="MR180"/>
+<element name="C79" library="jonnew" package="0805T" value="22uF" x="-32.1" y="5.8" smashed="yes" rot="MR180"/>
+<element name="C88" library="jonnew" package="0805T" value="22uF" x="-32.1" y="4.3" smashed="yes" rot="MR0"/>
+<element name="C89" library="jonnew" package="0805T" value="22uF" x="-32.1" y="2.4" smashed="yes" rot="MR0"/>
+<element name="C90" library="jonnew" package="0805T" value="22uF" x="-32.1" y="0.8" smashed="yes" rot="MR0"/>
+<element name="C91" library="jonnew" package="0805T" value="22uF" x="-32.1" y="9.3" smashed="yes" rot="MR0"/>
+<element name="C78" library="jonnew" package="0805T" value="22uF" x="-32.1" y="11.8" smashed="yes" rot="MR180"/>
+<element name="R83" library="jonnew" package="0805T" value="0.36" x="-39.5" y="11.8" smashed="yes" rot="MR0"/>
+<element name="R84" library="jonnew" package="0805T" value="0.36" x="-39.5" y="13.3" smashed="yes" rot="MR0"/>
+<element name="R81" library="jonnew" package="0805T" value="0.36" x="-39.5" y="9.3" smashed="yes" rot="MR0"/>
+<element name="R82" library="jonnew" package="0805T" value="0.36" x="-39.5" y="7.9" smashed="yes" rot="MR0"/>
+<element name="R79" library="jonnew" package="0805T" value="0.36" x="-39.5" y="5.4" smashed="yes" rot="MR0"/>
+<element name="R80" library="jonnew" package="0805T" value="0.36" x="-39.5" y="4" smashed="yes" rot="MR0"/>
+<element name="R77" library="jonnew" package="0805T" value="0.36" x="-39.5" y="1.5" smashed="yes" rot="MR0"/>
+<element name="R78" library="jonnew" package="0805T" value="0.36" x="-39.5" y="0.1" smashed="yes" rot="MR0"/>
 <element name="U8" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-35.9" y="7.3" smashed="yes" rot="MR180">
 <attribute name="NAME" x="-36.7" y="7.85" size="1.016" layer="26" font="vector" ratio="18" rot="MR180"/>
 </element>
 <element name="C100" library="jonnew" package="0402T" value="10nF" x="-36.5" y="9.8" smashed="yes" rot="MR180"/>
 <element name="C99" library="jonnew" package="0402T" value="0.1uF" x="-36.5" y="10.6" smashed="yes" rot="MR180"/>
-<element name="R88" library="jonnew" package="0402T" value="0" x="-36.4" y="4.9" smashed="yes" rot="MR180"/>
-<element name="C92" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="15.5" smashed="yes" rot="MR0"/>
-<element name="C87" library="jonnew" package="0805T" value="6.8uF" x="-32.1" y="17" smashed="yes" rot="MR0"/>
+<element name="R88" library="jonnew" package="0402T" value="47k" x="-36" y="4.8" smashed="yes" rot="MR0"/>
+<element name="C92" library="jonnew" package="0805T" value="22uF" x="-32.1" y="15.5" smashed="yes" rot="MR0"/>
+<element name="C87" library="jonnew" package="0805T" value="22uF" x="-32.1" y="17" smashed="yes" rot="MR0"/>
 <element name="C93" library="jonnew" package="1210" value="47uF" x="2.8" y="-36.4" smashed="yes" rot="MR180"/>
 <element name="C94" library="jonnew" package="1210" value="47uF" x="-35.6" y="14.1" smashed="yes" rot="MR270"/>
 <element name="C95" library="jonnew" package="1210" value="47uF" x="-31" y="-17.9" smashed="yes" rot="MR90"/>
@@ -1733,9 +1736,9 @@ Please make sure your boards conform to these design rules.</description>
 <via x="-21.2" y="-3.2" extent="1-16" drill="0.2"/>
 <via x="-20.4" y="-3.2" extent="1-16" drill="0.2"/>
 <via x="-19.6" y="-3.2" extent="1-16" drill="0.2"/>
-<via x="-26.3" y="-3.2" extent="1-16" drill="0.2"/>
-<via x="-25.5" y="-3.2" extent="1-16" drill="0.2"/>
-<via x="-24.7" y="-3.2" extent="1-16" drill="0.2"/>
+<via x="-26.6" y="-3.4" extent="1-16" drill="0.2"/>
+<via x="-25.2" y="-3.2" extent="1-16" drill="0.2"/>
+<via x="-24.6" y="-2.5" extent="1-16" drill="0.2"/>
 <via x="-17.4" y="-18.2" extent="1-16" drill="0.2"/>
 <via x="-16.6" y="-18.2" extent="1-16" drill="0.2"/>
 <via x="-15.8" y="-18.2" extent="1-16" drill="0.2"/>
@@ -1812,8 +1815,9 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-38.7" y1="-30.5" x2="-37.95085" y2="-30.5" width="0.2" layer="15"/>
 <wire x1="-37.225425" y1="-29.774575" x2="-37.225425" y2="-29.474575" width="0.2" layer="15"/>
 <wire x1="-37.95085" y1="-30.5" x2="-37.225425" y2="-29.774575" width="0.2" layer="15"/>
-<wire x1="-35.8" y1="-37.7" x2="-36.4" y2="-37.1" width="0.2" layer="15"/>
-<wire x1="-36.4" y1="-37.1" x2="-36.4" y2="-35.2" width="0.2" layer="15"/>
+<wire x1="-32.2" y1="-37.7" x2="-35.1" y2="-37.7" width="0.2" layer="15"/>
+<wire x1="-35.1" y1="-37.7" x2="-36.4" y2="-36.4" width="0.2" layer="15"/>
+<wire x1="-36.4" y1="-36.4" x2="-36.4" y2="-35.2" width="0.2" layer="15"/>
 <wire x1="-36.4" y1="-35.2" x2="-37.1" y2="-34.5" width="0.2" layer="15"/>
 <wire x1="-37.1" y1="-34.5" x2="-38.8" y2="-34.5" width="0.2" layer="15"/>
 <wire x1="-23.25" y1="-37.6" x2="-23.261490625" y2="-37.588509375" width="0.2" layer="16"/>
@@ -1821,7 +1825,6 @@ Please make sure your boards conform to these design rules.</description>
 <via x="-23.261490625" y="-37.233090625" extent="1-16" drill="0.2"/>
 <wire x1="-23.261490625" y1="-37.233090625" x2="-23.033090625" y2="-37.233090625" width="0.2" layer="15"/>
 <wire x1="-32.2" y1="-37.7" x2="-26.9" y2="-32.4" width="0.2" layer="15"/>
-<wire x1="-32.2" y1="-37.7" x2="-35.8" y2="-37.7" width="0.2" layer="15"/>
 <wire x1="-21.55" y1="-32.4" x2="-21.4" y2="-32.55" width="0.2" layer="15"/>
 <wire x1="-26.9" y1="-32.4" x2="-21.55" y2="-32.4" width="0.2" layer="15"/>
 <wire x1="-21.4" y1="-32.55" x2="-21.4" y2="-35.6" width="0.2" layer="15"/>
@@ -2444,6 +2447,23 @@ Please make sure your boards conform to these design rules.</description>
 <via x="6.39" y="-41.53" extent="1-16" drill="0.2"/>
 <via x="-6.81" y="-26.03" extent="1-16" drill="0.2"/>
 <via x="-6.86" y="-20.38" extent="1-16" drill="0.2"/>
+<via x="-26.11" y="-0.49" extent="1-16" drill="0.2"/>
+<via x="-25.01" y="-0.49" extent="1-16" drill="0.2"/>
+<contactref element="R31" pad="2"/>
+<contactref element="R32" pad="2"/>
+<contactref element="R33" pad="2"/>
+<contactref element="R64" pad="2"/>
+<contactref element="R65" pad="2"/>
+<contactref element="R66" pad="2"/>
+<contactref element="R88" pad="2"/>
+<contactref element="R87" pad="2"/>
+<wire x1="-23.7" y1="-15.3666" x2="-23.7" y2="-15" width="0.3" layer="1"/>
+<wire x1="-23.7" y1="-15" x2="-23.5" y2="-14.8" width="0.3" layer="1"/>
+<via x="-34" y="-26.5" extent="1-16" drill="0.2"/>
+<via x="-34.6" y="-26.5" extent="1-16" drill="0.2"/>
+<via x="-37.2" y="-11" extent="1-16" drill="0.2"/>
+<via x="-38.9" y="-2.5" extent="1-16" drill="0.2"/>
+<via x="-35.7" y="-37.8" extent="1-16" drill="0.2"/>
 </signal>
 <signal name="GREEN_C">
 <contactref element="J1" pad="23"/>
@@ -2456,13 +2476,13 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-39.82350625" y1="-28.12350625" x2="-38.8" y2="-27.1" width="0.2" layer="15"/>
 <wire x1="-38.8" y1="-27.1" x2="-37.6" y2="-27.1" width="0.2" layer="15"/>
 <wire x1="-36.6" y1="-26.1" x2="-37.6" y2="-27.1" width="0.2" layer="15"/>
-<wire x1="-37.2" y1="-37.8" x2="-36.2" y2="-38.8" width="0.2" layer="15"/>
-<wire x1="-37.2" y1="-37.8" x2="-37.2" y2="-35.6" width="0.2" layer="15"/>
+<wire x1="-37.2" y1="-35.6" x2="-37.2" y2="-38.2" width="0.2" layer="15"/>
+<wire x1="-37.2" y1="-38.2" x2="-36.6" y2="-38.8" width="0.2" layer="15"/>
+<wire x1="-36.6" y1="-38.8" x2="-31.6" y2="-38.8" width="0.2" layer="15"/>
 <wire x1="-37.2" y1="-35.6" x2="-37.6470125" y2="-35.1529875" width="0.2" layer="15"/>
 <wire x1="-37.6470125" y1="-35.1529875" x2="-39.3470125" y2="-35.1529875" width="0.2" layer="15"/>
 <wire x1="-39.3470125" y1="-35.1529875" x2="-39.82350625" y2="-34.67649375" width="0.2" layer="15"/>
 <wire x1="-39.82350625" y1="-34.67649375" x2="-39.82350625" y2="-28.12350625" width="0.2" layer="15"/>
-<wire x1="-36.2" y1="-38.8" x2="-31.6" y2="-38.8" width="0.2" layer="15"/>
 <wire x1="-31.6" y1="-38.8" x2="-29" y2="-36.2" width="0.2" layer="15"/>
 <wire x1="-25.3" y1="-36.2" x2="-29" y2="-36.2" width="0.2" layer="15"/>
 <wire x1="-22.771909375" y1="-38.228090625" x2="-23.271909375" y2="-38.228090625" width="0.2" layer="15"/>
@@ -2526,7 +2546,7 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="R70" pad="1"/>
 <contactref element="R67" pad="1"/>
 <polygon width="0.127" layer="16" thermals="no">
-<vertex x="-41.6" y="-38.6"/>
+<vertex x="-41.6" y="-38.7"/>
 <vertex x="-41.6" y="-39.5"/>
 <vertex x="-29.9" y="-39.5"/>
 <vertex x="-29.9" y="-41.9"/>
@@ -2534,16 +2554,13 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="-28.9" y="-39.1"/>
 <vertex x="-30" y="-38.2"/>
 <vertex x="-30" y="-35.8"/>
-<vertex x="-33.8" y="-35.8"/>
-<vertex x="-33.8" y="-38.6"/>
+<vertex x="-33.7" y="-35.8"/>
+<vertex x="-33.7" y="-38.7"/>
+<vertex x="-35.3" y="-38.7"/>
+<vertex x="-35.5" y="-38.9"/>
+<vertex x="-37.7" y="-38.9"/>
+<vertex x="-37.9" y="-38.7"/>
 </polygon>
-</signal>
-<signal name="N$5">
-<contactref element="R87" pad="2"/>
-<contactref element="Q7" pad="4"/>
-<wire x1="-35.7" y1="-36.5666" x2="-35.7" y2="-36.3" width="0.3" layer="16"/>
-<wire x1="-35.7" y1="-36.3" x2="-35.425" y2="-36.025" width="0.3" layer="16"/>
-<wire x1="-35.425" y1="-36.025" x2="-34.65" y2="-36.025" width="0.3" layer="16"/>
 </signal>
 <signal name="N$6">
 <contactref element="R71" pad="2"/>
@@ -2759,18 +2776,19 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="-33.8" y="-26.9"/>
 </polygon>
 </signal>
-<signal name="N$22">
-<contactref element="R64" pad="2"/>
-<contactref element="Q4" pad="4"/>
-<wire x1="-35.7" y1="-24.4666" x2="-35.7" y2="-24.3" width="0.3" layer="16"/>
-<wire x1="-35.7" y1="-24.3" x2="-35.325" y2="-23.925" width="0.3" layer="16"/>
-<wire x1="-35.325" y1="-23.925" x2="-34.65" y2="-23.925" width="0.3" layer="16"/>
-</signal>
 <signal name="N$23">
 <contactref element="U7" pad="5"/>
 <contactref element="R87" pad="1"/>
-<wire x1="-36.65" y1="-37.95" x2="-36.0166" y2="-37.95" width="0.3" layer="16"/>
-<wire x1="-36.0166" y1="-37.95" x2="-35.7" y2="-37.6334" width="0.3" layer="16"/>
+<contactref element="Q7" pad="4"/>
+<wire x1="-35.6" y1="-36.48041875" x2="-35.6" y2="-36.4666" width="0.3" layer="16"/>
+<wire x1="-36.65" y1="-37.95" x2="-36.65" y2="-37.53041875" width="0.3" layer="16"/>
+<wire x1="-36.65" y1="-37.53041875" x2="-35.6" y2="-36.48041875" width="0.3" layer="16"/>
+<wire x1="-35.6" y1="-36.4666" x2="-35.426490625" y2="-36.293090625" width="0.3" layer="16"/>
+<wire x1="-35.426490625" y1="-36.293090625" x2="-35.426490625" y2="-36.223509375" width="0.3" layer="16"/>
+<wire x1="-35.22798125" y1="-36.025" x2="-35.426490625" y2="-36.223509375" width="0.3" layer="16"/>
+<wire x1="-35.22798125" y1="-36.025" x2="-34.65" y2="-36.025" width="0.3" layer="16"/>
+<wire x1="-35.426490625" y1="-36.223509375" x2="-35.6" y2="-36.39701875" width="0.3" layer="16"/>
+<wire x1="-35.6" y1="-36.39701875" x2="-35.6" y2="-36.48041875" width="0.3" layer="16"/>
 </signal>
 <signal name="N$29">
 <contactref element="R40" pad="2"/>
@@ -2908,8 +2926,13 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="N$41">
 <contactref element="U4" pad="5"/>
 <contactref element="R64" pad="1"/>
-<wire x1="-36.65" y1="-25.85" x2="-36.0166" y2="-25.85" width="0.3" layer="16"/>
-<wire x1="-36.0166" y1="-25.85" x2="-35.7" y2="-25.5334" width="0.3" layer="16"/>
+<contactref element="Q4" pad="4"/>
+<wire x1="-36.65" y1="-25.85" x2="-36.65" y2="-25.6166" width="0.3" layer="16"/>
+<wire x1="-36.65" y1="-25.6166" x2="-35.6" y2="-24.5666" width="0.3" layer="16"/>
+<wire x1="-35.6" y1="-24.5666" x2="-35.42899375" y2="-24.39559375" width="0.3" layer="16"/>
+<wire x1="-35.42899375" y1="-24.39559375" x2="-35.42899375" y2="-24.1260125" width="0.3" layer="16"/>
+<wire x1="-35.42899375" y1="-24.1260125" x2="-35.22798125" y2="-23.925" width="0.3" layer="16"/>
+<wire x1="-35.22798125" y1="-23.925" x2="-34.65" y2="-23.925" width="0.3" layer="16"/>
 </signal>
 <signal name="N$47">
 <contactref element="R9" pad="2"/>
@@ -2971,12 +2994,6 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="-41.5" y="-12.9"/>
 <vertex x="-29.7" y="-12.9"/>
 </polygon>
-</signal>
-<signal name="N$51">
-<contactref element="R31" pad="2"/>
-<contactref element="Q1" pad="4"/>
-<wire x1="-35.95" y1="-9.625" x2="-36.6416" y2="-9.625" width="0.3" layer="16"/>
-<wire x1="-36.6416" y1="-9.625" x2="-37" y2="-9.2666" width="0.3" layer="16"/>
 </signal>
 <signal name="N$52">
 <contactref element="R7" pad="2"/>
@@ -3119,8 +3136,11 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="N$64">
 <contactref element="U1" pad="5"/>
 <contactref element="R31" pad="1"/>
-<wire x1="-37" y1="-10.3334" x2="-38.15" y2="-10.3334" width="0.3" layer="16"/>
-<wire x1="-38.15" y1="-10.3334" x2="-38.15" y2="-10.25" width="0.3" layer="16"/>
+<contactref element="Q1" pad="4"/>
+<wire x1="-38.15" y1="-10.25" x2="-37.5166" y2="-10.25" width="0.3" layer="16"/>
+<wire x1="-37" y1="-9.7334" x2="-37.5166" y2="-10.25" width="0.3" layer="16"/>
+<wire x1="-35.95" y1="-9.625" x2="-36.8916" y2="-9.625" width="0.3" layer="16"/>
+<wire x1="-36.8916" y1="-9.625" x2="-37" y2="-9.7334" width="0.3" layer="16"/>
 </signal>
 <signal name="N$70">
 <contactref element="R19" pad="2"/>
@@ -3176,12 +3196,6 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="-21.8" y="-14.9"/>
 <vertex x="-21.8" y="-17.7"/>
 </polygon>
-</signal>
-<signal name="N$74">
-<contactref element="R32" pad="2"/>
-<contactref element="Q2" pad="4"/>
-<wire x1="-22.65" y1="-17.275" x2="-22.6916" y2="-17.2334" width="0.3" layer="1"/>
-<wire x1="-22.6916" y1="-17.2334" x2="-23.7" y2="-17.2334" width="0.3" layer="1"/>
 </signal>
 <signal name="N$75">
 <contactref element="R17" pad="2"/>
@@ -3310,8 +3324,12 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="N$87">
 <contactref element="U2" pad="5"/>
 <contactref element="R32" pad="1"/>
-<wire x1="-23.7" y1="-16.1666" x2="-24.5166" y2="-15.35" width="0.3" layer="1"/>
-<wire x1="-24.5166" y1="-15.35" x2="-24.75" y2="-15.35" width="0.3" layer="1"/>
+<contactref element="Q2" pad="4"/>
+<wire x1="-24.75" y1="-15.35" x2="-24.75" y2="-15.3834" width="0.3" layer="1"/>
+<wire x1="-24.75" y1="-15.3834" x2="-23.7" y2="-16.4334" width="0.3" layer="1"/>
+<wire x1="-23.7" y1="-16.80298125" x2="-23.7" y2="-16.4334" width="0.3" layer="1"/>
+<wire x1="-22.65" y1="-17.275" x2="-23.22798125" y2="-17.275" width="0.3" layer="1"/>
+<wire x1="-23.22798125" y1="-17.275" x2="-23.7" y2="-16.80298125" width="0.3" layer="1"/>
 </signal>
 <signal name="N$93">
 <contactref element="R29" pad="2"/>
@@ -3384,12 +3402,6 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="-19.7" y="-31.9"/>
 <vertex x="-20.4" y="-31.2"/>
 </polygon>
-</signal>
-<signal name="N$97">
-<contactref element="R33" pad="2"/>
-<contactref element="Q3" pad="4"/>
-<wire x1="-27.7334" y1="-35.6584" x2="-27.25" y2="-35.175" width="0.3" layer="16"/>
-<wire x1="-27.7334" y1="-36.16" x2="-27.7334" y2="-35.6584" width="0.3" layer="16"/>
 </signal>
 <signal name="N$98">
 <contactref element="R27" pad="2"/>
@@ -3550,6 +3562,9 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-25.862196875" y1="-34.834215625" x2="-24.334215625" y2="-34.834215625" width="0.3" layer="16"/>
 <wire x1="-24.334215625" y1="-34.834215625" x2="-23.85" y2="-34.35" width="0.3" layer="16"/>
 <wire x1="-23.85" y1="-34.35" x2="-23.85" y2="-33.35" width="0.3" layer="16"/>
+<contactref element="Q3" pad="4"/>
+<wire x1="-26.4333" y1="-35.40531875" x2="-26.66361875" y2="-35.175" width="0.3" layer="16"/>
+<wire x1="-26.66361875" y1="-35.175" x2="-27.25" y2="-35.175" width="0.3" layer="16"/>
 </signal>
 <signal name="N$116">
 <contactref element="R52" pad="2"/>
@@ -3616,12 +3631,6 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="-8.6" y="-34.8"/>
 <vertex x="-9.3" y="-34.1"/>
 </polygon>
-</signal>
-<signal name="N$120">
-<contactref element="R65" pad="2"/>
-<contactref element="Q5" pad="4"/>
-<wire x1="-5.5" y1="-38.6666" x2="-5.1584" y2="-38.325" width="0.3" layer="16"/>
-<wire x1="-5.1584" y1="-38.325" x2="-4.35" y2="-38.325" width="0.3" layer="16"/>
 </signal>
 <signal name="N$121">
 <contactref element="R50" pad="2"/>
@@ -3766,8 +3775,13 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="N$133">
 <contactref element="U5" pad="5"/>
 <contactref element="R65" pad="1"/>
-<wire x1="-6.45" y1="-40.25" x2="-6.0166" y2="-40.25" width="0.3" layer="16"/>
-<wire x1="-6.0166" y1="-40.25" x2="-5.5" y2="-39.7334" width="0.3" layer="16"/>
+<contactref element="Q5" pad="4"/>
+<wire x1="-6.45" y1="-39.9166" x2="-5.4" y2="-38.8666" width="0.3" layer="16"/>
+<wire x1="-6.45" y1="-39.9166" x2="-6.45" y2="-40.25" width="0.3" layer="16"/>
+<wire x1="-5.4" y1="-38.8666" x2="-5.126490625" y2="-38.593090625" width="0.3" layer="16"/>
+<wire x1="-5.126490625" y1="-38.593090625" x2="-5.126490625" y2="-38.523509375" width="0.3" layer="16"/>
+<wire x1="-5.126490625" y1="-38.523509375" x2="-4.92798125" y2="-38.325" width="0.3" layer="16"/>
+<wire x1="-4.92798125" y1="-38.325" x2="-4.35" y2="-38.325" width="0.3" layer="16"/>
 </signal>
 <signal name="N$139">
 <contactref element="R62" pad="2"/>
@@ -3825,13 +3839,6 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="14" y="-38.6"/>
 <vertex x="-0.3" y="-38.6"/>
 </polygon>
-</signal>
-<signal name="N$143">
-<contactref element="R66" pad="2"/>
-<contactref element="Q6" pad="4"/>
-<wire x1="13.15" y1="-35.425" x2="12.57201875" y2="-35.425" width="0.3" layer="16"/>
-<wire x1="12.1" y1="-35.89701875" x2="12.1" y2="-35.9666" width="0.3" layer="16"/>
-<wire x1="12.57201875" y1="-35.425" x2="12.1" y2="-35.89701875" width="0.3" layer="16"/>
 </signal>
 <signal name="N$144">
 <contactref element="R60" pad="2"/>
@@ -3977,8 +3984,12 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="N$156">
 <contactref element="U6" pad="5"/>
 <contactref element="R66" pad="1"/>
-<wire x1="11.15" y1="-37.35" x2="11.4666" y2="-37.0334" width="0.3" layer="16"/>
-<wire x1="11.4666" y1="-37.0334" x2="12.1" y2="-37.0334" width="0.3" layer="16"/>
+<contactref element="Q6" pad="4"/>
+<wire x1="12.1" y1="-36.0666" x2="11.15" y2="-37.0166" width="0.3" layer="16"/>
+<wire x1="11.15" y1="-37.0166" x2="11.15" y2="-37.35" width="0.3" layer="16"/>
+<wire x1="13.15" y1="-35.425" x2="12.57201875" y2="-35.425" width="0.3" layer="16"/>
+<wire x1="12.1" y1="-35.89701875" x2="12.1" y2="-36.0666" width="0.3" layer="16"/>
+<wire x1="12.57201875" y1="-35.425" x2="12.1" y2="-35.89701875" width="0.3" layer="16"/>
 </signal>
 <signal name="N$162">
 <contactref element="R85" pad="2"/>
@@ -4035,14 +4046,6 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="-34.5" y="-0.6"/>
 <vertex x="-38.8" y="-0.6"/>
 </polygon>
-</signal>
-<signal name="N$166">
-<contactref element="R88" pad="2"/>
-<contactref element="Q8" pad="4"/>
-<wire x1="-35.39559375" y1="4.42899375" x2="-35.8666" y2="4.9" width="0.3" layer="16"/>
-<wire x1="-34.9260125" y1="4.42899375" x2="-35.39559375" y2="4.42899375" width="0.3" layer="16"/>
-<wire x1="-34.725" y1="3.65" x2="-34.725" y2="4.22798125" width="0.3" layer="16"/>
-<wire x1="-34.725" y1="4.22798125" x2="-34.9260125" y2="4.42899375" width="0.3" layer="16"/>
 </signal>
 <signal name="N$167">
 <contactref element="R83" pad="2"/>
@@ -4181,8 +4184,12 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="N$179">
 <contactref element="U8" pad="5"/>
 <contactref element="R88" pad="1"/>
-<wire x1="-36.85" y1="5.95" x2="-36.85" y2="4.9834" width="0.3" layer="16"/>
-<wire x1="-36.85" y1="4.9834" x2="-36.9334" y2="4.9" width="0.3" layer="16"/>
+<contactref element="Q8" pad="4"/>
+<wire x1="-35.4666" y1="4.8" x2="-36.6166" y2="5.95" width="0.3" layer="16"/>
+<wire x1="-36.6166" y1="5.95" x2="-36.85" y2="5.95" width="0.3" layer="16"/>
+<wire x1="-34.725" y1="3.65" x2="-34.725" y2="4.22798125" width="0.3" layer="16"/>
+<wire x1="-34.725" y1="4.22798125" x2="-35.29701875" y2="4.8" width="0.3" layer="16"/>
+<wire x1="-35.29701875" y1="4.8" x2="-35.4666" y2="4.8" width="0.3" layer="16"/>
 </signal>
 <signal name="RED_C">
 <contactref element="J1" pad="22"/>
@@ -4197,18 +4204,16 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-36.5" y1="-27.5" x2="-35.8" y2="-26.8" width="0.2" layer="15"/>
 <wire x1="-39.4" y1="-28.40085" x2="-38.49915" y2="-27.5" width="0.2" layer="15"/>
 <wire x1="-38.49915" y1="-27.5" x2="-36.5" y2="-27.5" width="0.2" layer="15"/>
-<wire x1="-36.77350625" y1="-37.42649375" x2="-35.89190625" y2="-38.30809375" width="0.2" layer="15"/>
-<wire x1="-36.77350625" y1="-37.42649375" x2="-36.77350625" y2="-35.42649375" width="0.2" layer="15"/>
+<wire x1="-36.77350625" y1="-37.92649375" x2="-36.77350625" y2="-35.42649375" width="0.2" layer="15"/>
 <wire x1="-36.77350625" y1="-35.42649375" x2="-37.37350625" y2="-34.82649375" width="0.2" layer="15"/>
 <wire x1="-37.37350625" y1="-34.82649375" x2="-39.07350625" y2="-34.82649375" width="0.2" layer="15"/>
 <wire x1="-39.07350625" y1="-34.82649375" x2="-39.4" y2="-34.5" width="0.2" layer="15"/>
 <wire x1="-39.4" y1="-34.5" x2="-39.4" y2="-28.40085" width="0.2" layer="15"/>
-<wire x1="-35.89190625" y1="-38.30809375" x2="-32" y2="-38.30809375" width="0.2" layer="15"/>
 <wire x1="-22.25" y1="-36.8" x2="-22.093090625" y2="-36.643090625" width="0.2" layer="16"/>
 <wire x1="-22.093090625" y1="-36.643090625" x2="-22.093090625" y2="-35.473509375" width="0.2" layer="16"/>
 <wire x1="-22.093090625" y1="-35.473509375" x2="-22" y2="-35.38041875" width="0.2" layer="16"/>
 <wire x1="-22" y1="-35.38041875" x2="-22" y2="-35.371909375" width="0.2" layer="16"/>
-<wire x1="-32" y1="-38.30809375" x2="-29.09190625" y2="-35.4" width="0.2" layer="15"/>
+<wire x1="-29.09190625" y1="-35.4" x2="-32" y2="-38.30809375" width="0.2" layer="15"/>
 <wire x1="-29.09190625" y1="-35.4" x2="-22.028090625" y2="-35.4" width="0.2" layer="15"/>
 <wire x1="-39.3" y1="-16.15" x2="-38.552" y2="-16.15" width="0.2" layer="1"/>
 <wire x1="-38.552" y1="-16.15" x2="-38.475" y2="-16.227" width="0.2" layer="1"/>
@@ -4216,6 +4221,10 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-37.25" y1="-20.35" x2="-37.85" y2="-20.35" width="0.2" layer="15"/>
 <wire x1="-37.85" y1="-20.35" x2="-39.3" y2="-18.9" width="0.2" layer="15"/>
 <wire x1="-39.3" y1="-18.9" x2="-39.3" y2="-16.15" width="0.2" layer="15"/>
+<wire x1="-34.8345875" y1="-38.30809375" x2="-35" y2="-38.47350625" width="0.2" layer="15"/>
+<wire x1="-35" y1="-38.47350625" x2="-36.22649375" y2="-38.47350625" width="0.2" layer="15"/>
+<wire x1="-32" y1="-38.30809375" x2="-34.8345875" y2="-38.30809375" width="0.2" layer="15"/>
+<wire x1="-36.22649375" y1="-38.47350625" x2="-36.77350625" y2="-37.92649375" width="0.2" layer="15"/>
 </signal>
 <signal name="SYNC">
 <contactref element="U7" pad="3"/>
@@ -4265,7 +4274,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-40.25" y1="-35.7" x2="-40.25" y2="-38.5" width="0.2" layer="15"/>
 <wire x1="-40.25" y1="-35.7" x2="-40.25" y2="-23.9" width="0.2" layer="15"/>
 <wire x1="-40.25" y1="-38.5" x2="-39.45" y2="-39.3" width="0.2" layer="15"/>
-<wire x1="-39.45" y1="-39.3" x2="-31.05" y2="-39.3" width="0.2" layer="15"/>
+<wire x1="-31.05" y1="-39.3" x2="-39.45" y2="-39.3" width="0.2" layer="15"/>
 <wire x1="-26.703815625" y1="-36.87190625" x2="-26.77" y2="-36.818090625" width="0.2" layer="15"/>
 <wire x1="-10.078090625" y1="-37" x2="-9.278090625" y2="-37.8" width="0.127" layer="16"/>
 <wire x1="-10.078090625" y1="-37" x2="-20.7" y2="-37" width="0.127" layer="16"/>
@@ -4292,8 +4301,6 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-27.7" y1="-16" x2="-30.8" y2="-16" width="0.2" layer="15"/>
 <wire x1="-30.8" y1="-16" x2="-32.1" y2="-14.7" width="0.2" layer="15"/>
 <wire x1="-32.1" y1="-14.7" x2="-40.25" y2="-14.7" width="0.2" layer="15"/>
-<wire x1="-31.05" y1="-39.3" x2="-28.648090625" y2="-36.898090625" width="0.2" layer="15"/>
-<wire x1="-28.648090625" y1="-36.898090625" x2="-26.77" y2="-36.818090625" width="0.2" layer="15"/>
 <wire x1="-25.846909375" y1="-36.798090625" x2="-26.77" y2="-36.818090625" width="0.2" layer="15"/>
 <wire x1="-25.75" y1="-36.05" x2="-25.75" y2="-36.45" width="0.2" layer="16"/>
 <wire x1="-25.75" y1="-36.45" x2="-26.098090625" y2="-36.798090625" width="0.2" layer="16"/>
@@ -4306,13 +4313,19 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="-23.4" y1="-41.6" x2="-24.9" y2="-40.1" width="0.2" layer="15"/>
 <wire x1="-24.9" y1="-40.1" x2="-24.9" y2="-37.745" width="0.2" layer="15"/>
 <wire x1="-24.9" y1="-37.745" x2="-25.846909375" y2="-36.798090625" width="0.2" layer="15"/>
+<wire x1="-26.77" y1="-36.818090625" x2="-28.568090625" y2="-36.818090625" width="0.2" layer="15"/>
+<wire x1="-28.568090625" y1="-36.818090625" x2="-31.05" y2="-39.3" width="0.2" layer="15"/>
 </signal>
 <signal name="WHITE_C">
 <contactref element="J1" pad="16"/>
 </signal>
 </signals>
 <errors>
-<approved hash="18,30,79bf76380bd5fcbf"/>
+<approved hash="18,30,19ea285f7fcab692"/>
+<approved hash="18,30,c702728a178b5efa"/>
+<approved hash="18,30,376bde3c5e3bb76c"/>
+<approved hash="18,30,69b3feccfeab6998"/>
+<approved hash="18,30,a89626e91d712136"/>
 <approved hash="3,16,2af9ecc7ecbf2a81"/>
 <approved hash="3,16,08bf3681368108bf"/>
 <approved hash="3,16,2affecc1ecdd2ae3"/>
@@ -4330,11 +4343,6 @@ Please make sure your boards conform to these design rules.</description>
 <approved hash="3,16,f3d6c9e8c9e8f3d6"/>
 <approved hash="3,16,f164d35ad362f15c"/>
 <approved hash="3,1,02fe060606fd0205"/>
-<approved hash="18,30,19ea285f7fcab692"/>
-<approved hash="18,30,c702728a178b5efa"/>
-<approved hash="18,30,376bde3c5e3bb76c"/>
-<approved hash="18,30,69b3feccfeab6998"/>
-<approved hash="18,30,a89626e91d712136"/>
 </errors>
 </board>
 </drawing>
