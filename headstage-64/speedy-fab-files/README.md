@@ -2,6 +2,7 @@
 
 - These are the post-fabrication files of headstage-64 rev. 1.3 from [Speedy
   Circuits](http://www.speedy-circuits.com.tw/)
+- Order number: M212I00018A83
 - Board Specs:
   - Layer count: 8
   - Board thickness: 0.8 mm
