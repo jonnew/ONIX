@@ -2235,6 +2235,18 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 <text x="-7.2" y="-2.1" size="1.27" layer="25">1</text>
 <text x="6.3" y="-2.1" size="1.27" layer="25">45</text>
 </package>
+<package name="QFM8">
+<smd name="P$1" x="-1.85" y="2.54" dx="1.4" dy="1" layer="1" roundness="10" rot="R90"/>
+<smd name="P$2" x="-1.85" y="0" dx="1.4" dy="1" layer="1" roundness="10" rot="R90"/>
+<smd name="P$3" x="-1.85" y="-2.54" dx="1.4" dy="1" layer="1" roundness="10" rot="R90"/>
+<smd name="P$4" x="1.85" y="-2.54" dx="1.4" dy="1" layer="1" roundness="10" rot="R90"/>
+<smd name="P$5" x="1.85" y="0" dx="1.4" dy="1" layer="1" roundness="10" rot="R90"/>
+<smd name="P$6" x="1.85" y="2.54" dx="1.4" dy="1" layer="1" roundness="10" rot="R90"/>
+<smd name="P$7" x="0" y="2.865" dx="0.8" dy="0.8" layer="1" roundness="10" rot="R90"/>
+<smd name="P$8" x="0" y="-2.865" dx="0.8" dy="0.8" layer="1" roundness="10" rot="R90"/>
+<wire x1="-0.8" y1="3.2" x2="-0.8" y2="1.2" width="0.127" layer="21"/>
+<wire x1="-0.8" y1="1.2" x2="-2.4" y2="1.2" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PE">
@@ -2725,6 +2737,20 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 <wire x1="-35.56" y1="22.86" x2="-33.02" y2="22.86" width="0.254" layer="94"/>
 <wire x1="60.96" y1="7.62" x2="60.96" y2="35.56" width="0.254" layer="94"/>
 <wire x1="-50.8" y1="7.62" x2="-50.8" y2="35.56" width="0.254" layer="94"/>
+</symbol>
+<symbol name="LMK61E2">
+<pin name="OE" x="-15.24" y="5.08" length="middle"/>
+<pin name="ADD" x="-15.24" y="0" length="middle"/>
+<pin name="GND" x="-15.24" y="-5.08" length="middle"/>
+<pin name="OUTP" x="15.24" y="-5.08" length="middle" rot="R180"/>
+<pin name="OUTN" x="15.24" y="0" length="middle" rot="R180"/>
+<pin name="VDD" x="15.24" y="5.08" length="middle" rot="R180"/>
+<pin name="SDA" x="0" y="15.24" length="middle" rot="R270"/>
+<pin name="SCL" x="0" y="-15.24" length="middle" rot="R90"/>
+<wire x1="-10.16" y1="10.16" x2="-10.16" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-10.16" x2="10.16" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-10.16" x2="10.16" y2="10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="10.16" x2="-10.16" y2="10.16" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -4460,6 +4486,28 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="LMK61E2">
+<gates>
+<gate name="G$1" symbol="LMK61E2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="QFM8">
+<connects>
+<connect gate="G$1" pin="ADD" pad="P$2"/>
+<connect gate="G$1" pin="GND" pad="P$3"/>
+<connect gate="G$1" pin="OE" pad="P$1"/>
+<connect gate="G$1" pin="OUTN" pad="P$5"/>
+<connect gate="G$1" pin="OUTP" pad="P$4"/>
+<connect gate="G$1" pin="SCL" pad="P$8"/>
+<connect gate="G$1" pin="SDA" pad="P$7"/>
+<connect gate="G$1" pin="VDD" pad="P$6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="con-lsta" urn="urn:adsk.eagle:library:161">
@@ -5180,6 +5228,8 @@ W = angled&lt;p&gt;
 <part name="U$1" library="jonnew" deviceset="+3V3" device=""/>
 <part name="SUPPLY2" library="jonnew" deviceset="GND" device=""/>
 <part name="U$2" library="jonnew" deviceset="CONNFPCBOTTOM45POS0.30MMR/A" device=""/>
+<part name="U$3" library="jonnew" deviceset="LMK61E2" device=""/>
+<part name="SUPPLY3" library="jonnew" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5773,6 +5823,10 @@ everything else = DGND</text>
 <attribute name="VALUE" x="248.539" y="273.685" size="1.778" layer="96" rot="MR270"/>
 </instance>
 <instance part="U$2" gate="G$1" x="462.28" y="256.54" smashed="yes"/>
+<instance part="U$3" gate="G$1" x="447.04" y="198.12" smashed="yes"/>
+<instance part="SUPPLY3" gate="PE" x="424.18" y="193.04" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="419.481" y="188.595" size="1.778" layer="96" rot="MR90"/>
+</instance>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
@@ -6084,6 +6138,11 @@ everything else = DGND</text>
 <pinref part="JP1" gate="A" pin="10"/>
 <pinref part="SUPPLY2" gate="PE" pin="GND"/>
 <wire x1="241.3" y1="269.24" x2="236.22" y2="269.24" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$3" gate="G$1" pin="GND"/>
+<pinref part="SUPPLY3" gate="PE" pin="GND"/>
+<wire x1="426.72" y1="193.04" x2="431.8" y2="193.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DATA1" class="0">
