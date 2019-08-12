@@ -6087,16 +6087,16 @@ everything else = DGND</text>
 <instance part="TP1" gate="G$1" x="78.74" y="408.94" smashed="yes">
 <attribute name="NAME" x="78.74" y="410.21" size="1.778" layer="95" rot="R90" align="center-left"/>
 </instance>
-<instance part="SUPPLY5" gate="PE" x="495.3" y="139.7" smashed="yes">
-<attribute name="VALUE" x="490.855" y="135.001" size="1.778" layer="96"/>
+<instance part="SUPPLY5" gate="PE" x="497.84" y="142.24" smashed="yes">
+<attribute name="VALUE" x="493.395" y="137.541" size="1.778" layer="96"/>
 </instance>
 <instance part="SUPPLY6" gate="G$1" x="508" y="144.78" smashed="yes">
 <attribute name="VALUE" x="505.333" y="141.605" size="1.778" layer="96"/>
 </instance>
 <instance part="U$8" gate="G$1" x="490.22" y="274.32" smashed="yes"/>
 <instance part="U$9" gate="G$1" x="497.84" y="274.32" smashed="yes"/>
-<instance part="U$10" gate="G$1" x="502.92" y="165.1" smashed="yes" rot="R90"/>
-<instance part="U$11" gate="G$1" x="502.92" y="175.26" smashed="yes" rot="R90"/>
+<instance part="U$10" gate="G$1" x="502.92" y="165.1" smashed="yes"/>
+<instance part="U$11" gate="G$1" x="502.92" y="175.26" smashed="yes"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,PCLK,VSYNC">
