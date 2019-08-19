@@ -4581,9 +4581,12 @@ https://jlcpcb.com/client/index.html#/impedance. 0.2 mm prepeg</text>
 <text x="10.16" y="195.58" size="2.54" layer="97" rot="MR90">NB: P,N order 
 matches SDR
 datasheet spec.</text>
-<text x="195.58" y="96.52" size="1.778" layer="91">add CAN tranceiver
-add filipes odd bus - teensy
-add LVDS-SE to chooch all LVDS to teensy and SMAs </text>
+<text x="195.58" y="96.52" size="1.778" layer="91">add CAN tranceiver DONE
+add filipes odd bus - teensy XXX
+add LVDS-SE to chooch all LVDS to teensy
+and SMAs  DONW
+
+what stuff to ad to .1" header? i1c? some V lines?</text>
 <wire x1="168.91" y1="3.81" x2="163.83" y2="3.81" width="0.1524" layer="97"/>
 <wire x1="163.83" y1="3.81" x2="163.83" y2="-6.35" width="0.1524" layer="97"/>
 <wire x1="163.83" y1="-6.35" x2="168.91" y2="-6.35" width="0.1524" layer="97"/>
@@ -5556,114 +5559,6 @@ datasheet spec.</text>
 <wire x1="30.48" y1="243.84" x2="22.86" y2="243.84" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="AIN0" class="0">
-<segment>
-<pinref part="SCREW-IN" gate="G$1" pin="1"/>
-<wire x1="167.64" y1="165.1" x2="175.26" y2="165.1" width="0.1524" layer="91"/>
-<label x="175.26" y="165.1" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="3"/>
-<wire x1="203.2" y1="167.64" x2="200.66" y2="167.64" width="0.1524" layer="91"/>
-<label x="200.66" y="167.64" size="1.778" layer="95" rot="R180"/>
-</segment>
-</net>
-<net name="AIN1" class="0">
-<segment>
-<pinref part="SCREW-IN" gate="G$1" pin="2"/>
-<wire x1="167.64" y1="170.18" x2="175.26" y2="170.18" width="0.1524" layer="91"/>
-<label x="175.26" y="170.18" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="4"/>
-<wire x1="218.44" y1="167.64" x2="220.98" y2="167.64" width="0.1524" layer="91"/>
-<label x="220.98" y="167.64" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="AIN2" class="0">
-<segment>
-<pinref part="SCREW-IN" gate="G$1" pin="3"/>
-<wire x1="167.64" y1="175.26" x2="175.26" y2="175.26" width="0.1524" layer="91"/>
-<label x="175.26" y="175.26" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="5"/>
-<wire x1="203.2" y1="170.18" x2="200.66" y2="170.18" width="0.1524" layer="91"/>
-<label x="200.66" y="170.18" size="1.778" layer="95" rot="R180"/>
-</segment>
-</net>
-<net name="AIN3" class="0">
-<segment>
-<pinref part="SCREW-IN" gate="G$1" pin="4"/>
-<wire x1="167.64" y1="180.34" x2="175.26" y2="180.34" width="0.1524" layer="91"/>
-<label x="175.26" y="180.34" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="6"/>
-<wire x1="218.44" y1="170.18" x2="220.98" y2="170.18" width="0.1524" layer="91"/>
-<label x="220.98" y="170.18" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="AIN4" class="0">
-<segment>
-<pinref part="SCREW-IN" gate="G$1" pin="5"/>
-<wire x1="167.64" y1="185.42" x2="175.26" y2="185.42" width="0.1524" layer="91"/>
-<label x="175.26" y="185.42" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="7"/>
-<wire x1="203.2" y1="172.72" x2="200.66" y2="172.72" width="0.1524" layer="91"/>
-<label x="200.66" y="172.72" size="1.778" layer="95" rot="R180"/>
-</segment>
-</net>
-<net name="AIN5" class="0">
-<segment>
-<pinref part="SCREW-IN" gate="G$1" pin="6"/>
-<wire x1="167.64" y1="190.5" x2="175.26" y2="190.5" width="0.1524" layer="91"/>
-<label x="175.26" y="190.5" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="8"/>
-<wire x1="218.44" y1="172.72" x2="220.98" y2="172.72" width="0.1524" layer="91"/>
-<label x="220.98" y="172.72" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="AIN6" class="0">
-<segment>
-<pinref part="SCREW-IN" gate="G$1" pin="7"/>
-<wire x1="167.64" y1="195.58" x2="175.26" y2="195.58" width="0.1524" layer="91"/>
-<label x="175.26" y="195.58" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="9"/>
-<wire x1="203.2" y1="175.26" x2="200.66" y2="175.26" width="0.1524" layer="91"/>
-<label x="200.66" y="175.26" size="1.778" layer="95" rot="R180"/>
-</segment>
-</net>
-<net name="AIN7" class="0">
-<segment>
-<pinref part="SCREW-IN" gate="G$1" pin="8"/>
-<wire x1="167.64" y1="200.66" x2="175.26" y2="200.66" width="0.1524" layer="91"/>
-<label x="175.26" y="200.66" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="10"/>
-<wire x1="218.44" y1="175.26" x2="220.98" y2="175.26" width="0.1524" layer="91"/>
-<label x="220.98" y="175.26" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="AIN8" class="0">
-<segment>
-<pinref part="HEADER-IN" gate="G$1" pin="11"/>
-<wire x1="203.2" y1="177.8" x2="200.66" y2="177.8" width="0.1524" layer="91"/>
-<label x="200.66" y="177.8" size="1.778" layer="95" rot="R180"/>
-</segment>
-<segment>
-<pinref part="SCREW-OUT1" gate="G$1" pin="1"/>
-<wire x1="167.64" y1="205.74" x2="175.26" y2="205.74" width="0.1524" layer="91"/>
-<label x="175.26" y="205.74" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="AOUT1" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="1"/>
@@ -6108,6 +6003,16 @@ datasheet spec.</text>
 <wire x1="167.64" y1="309.88" x2="167.64" y2="312.42" width="0.1524" layer="91"/>
 <label x="167.64" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
 </segment>
+<segment>
+<pinref part="SCREW-IN" gate="G$1" pin="1"/>
+<wire x1="167.64" y1="165.1" x2="175.26" y2="165.1" width="0.1524" layer="91"/>
+<label x="175.26" y="165.1" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="3"/>
+<wire x1="203.2" y1="167.64" x2="200.66" y2="167.64" width="0.1524" layer="91"/>
+<label x="200.66" y="167.64" size="1.778" layer="95" rot="R180"/>
+</segment>
 </net>
 <net name="AIO_1" class="0">
 <segment>
@@ -6127,6 +6032,16 @@ datasheet spec.</text>
 <pinref part="U$2" gate="G$1" pin="P$2"/>
 <wire x1="182.88" y1="309.88" x2="182.88" y2="312.42" width="0.1524" layer="91"/>
 <label x="182.88" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
+</segment>
+<segment>
+<pinref part="SCREW-IN" gate="G$1" pin="2"/>
+<wire x1="167.64" y1="170.18" x2="175.26" y2="170.18" width="0.1524" layer="91"/>
+<label x="175.26" y="170.18" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="4"/>
+<wire x1="218.44" y1="167.64" x2="220.98" y2="167.64" width="0.1524" layer="91"/>
+<label x="220.98" y="167.64" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="AIO_2" class="0">
@@ -6148,6 +6063,16 @@ datasheet spec.</text>
 <wire x1="198.12" y1="309.88" x2="198.12" y2="312.42" width="0.1524" layer="91"/>
 <label x="198.12" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
 </segment>
+<segment>
+<pinref part="SCREW-IN" gate="G$1" pin="3"/>
+<wire x1="167.64" y1="175.26" x2="175.26" y2="175.26" width="0.1524" layer="91"/>
+<label x="175.26" y="175.26" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="5"/>
+<wire x1="203.2" y1="170.18" x2="200.66" y2="170.18" width="0.1524" layer="91"/>
+<label x="200.66" y="170.18" size="1.778" layer="95" rot="R180"/>
+</segment>
 </net>
 <net name="AIO_3" class="0">
 <segment>
@@ -6167,6 +6092,16 @@ datasheet spec.</text>
 <pinref part="U$4" gate="G$1" pin="P$2"/>
 <wire x1="213.36" y1="309.88" x2="213.36" y2="312.42" width="0.1524" layer="91"/>
 <label x="213.36" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
+</segment>
+<segment>
+<pinref part="SCREW-IN" gate="G$1" pin="4"/>
+<wire x1="167.64" y1="180.34" x2="175.26" y2="180.34" width="0.1524" layer="91"/>
+<label x="175.26" y="180.34" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="6"/>
+<wire x1="218.44" y1="170.18" x2="220.98" y2="170.18" width="0.1524" layer="91"/>
+<label x="220.98" y="170.18" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="AIO_4" class="0">
@@ -6188,6 +6123,16 @@ datasheet spec.</text>
 <wire x1="228.6" y1="309.88" x2="228.6" y2="312.42" width="0.1524" layer="91"/>
 <label x="228.6" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
 </segment>
+<segment>
+<pinref part="SCREW-IN" gate="G$1" pin="5"/>
+<wire x1="167.64" y1="185.42" x2="175.26" y2="185.42" width="0.1524" layer="91"/>
+<label x="175.26" y="185.42" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="7"/>
+<wire x1="203.2" y1="172.72" x2="200.66" y2="172.72" width="0.1524" layer="91"/>
+<label x="200.66" y="172.72" size="1.778" layer="95" rot="R180"/>
+</segment>
 </net>
 <net name="AIO_5" class="0">
 <segment>
@@ -6207,6 +6152,16 @@ datasheet spec.</text>
 <pinref part="U$6" gate="G$1" pin="P$2"/>
 <wire x1="243.84" y1="309.88" x2="243.84" y2="312.42" width="0.1524" layer="91"/>
 <label x="243.84" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
+</segment>
+<segment>
+<pinref part="SCREW-IN" gate="G$1" pin="6"/>
+<wire x1="167.64" y1="190.5" x2="175.26" y2="190.5" width="0.1524" layer="91"/>
+<label x="175.26" y="190.5" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="8"/>
+<wire x1="218.44" y1="172.72" x2="220.98" y2="172.72" width="0.1524" layer="91"/>
+<label x="220.98" y="172.72" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="AIO_6" class="0">
@@ -6228,6 +6183,16 @@ datasheet spec.</text>
 <wire x1="259.08" y1="309.88" x2="259.08" y2="312.42" width="0.1524" layer="91"/>
 <label x="259.08" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
 </segment>
+<segment>
+<pinref part="SCREW-IN" gate="G$1" pin="7"/>
+<wire x1="167.64" y1="195.58" x2="175.26" y2="195.58" width="0.1524" layer="91"/>
+<label x="175.26" y="195.58" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="9"/>
+<wire x1="203.2" y1="175.26" x2="200.66" y2="175.26" width="0.1524" layer="91"/>
+<label x="200.66" y="175.26" size="1.778" layer="95" rot="R180"/>
+</segment>
 </net>
 <net name="AIO_7" class="0">
 <segment>
@@ -6248,6 +6213,16 @@ datasheet spec.</text>
 <wire x1="274.32" y1="309.88" x2="274.32" y2="312.42" width="0.1524" layer="91"/>
 <label x="274.32" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
 </segment>
+<segment>
+<pinref part="SCREW-IN" gate="G$1" pin="8"/>
+<wire x1="167.64" y1="200.66" x2="175.26" y2="200.66" width="0.1524" layer="91"/>
+<label x="175.26" y="200.66" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="10"/>
+<wire x1="218.44" y1="175.26" x2="220.98" y2="175.26" width="0.1524" layer="91"/>
+<label x="220.98" y="175.26" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="AIO_8" class="0">
 <segment>
@@ -6267,6 +6242,16 @@ datasheet spec.</text>
 <pinref part="U$17" gate="G$1" pin="P$2"/>
 <wire x1="289.56" y1="309.88" x2="289.56" y2="312.42" width="0.1524" layer="91"/>
 <label x="289.56" y="312.42" size="1.778" layer="95" rot="R90" xref="yes"/>
+</segment>
+<segment>
+<pinref part="SCREW-OUT1" gate="G$1" pin="1"/>
+<wire x1="167.64" y1="205.74" x2="175.26" y2="205.74" width="0.1524" layer="91"/>
+<label x="175.26" y="205.74" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HEADER-IN" gate="G$1" pin="11"/>
+<wire x1="203.2" y1="177.8" x2="200.66" y2="177.8" width="0.1524" layer="91"/>
+<label x="200.66" y="177.8" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="AIO_9" class="0">
