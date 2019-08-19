@@ -27,7 +27,7 @@
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="yes"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
@@ -1421,71 +1421,45 @@ einem neuen Namen ab.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="C38" library="jonnew" package="0201T" value="10nF" x="-5.3" y="12.1" smashed="yes" rot="MR180"/>
-<element name="C41" library="jonnew" package="0201T" value="0.1uF" x="-5.3" y="11.6" smashed="yes" rot="MR180"/>
-<element name="C46" library="jonnew" package="0402T" value="4.7uF" x="-4.1" y="12.7" smashed="yes" rot="MR270">
-<attribute name="PARTNO" value="GRM155R61A475MEAAD" x="25.11" y="-35.56" size="1.778" layer="28" rot="MR270" display="off"/>
-</element>
-<element name="C31" library="jonnew" package="0201T" value="0.1uF" x="-2.4" y="10.6" smashed="yes" rot="MR0"/>
-<element name="C33" library="jonnew" package="0201T" value="10nF" x="-2.4" y="10" smashed="yes" rot="MR0"/>
-<element name="C39" library="jonnew" package="0201T" value="10nF" x="-5.3" y="11.1" smashed="yes" rot="MR180"/>
-<element name="C42" library="jonnew" package="0201T" value="0.1uF" x="-5.3" y="10.6" smashed="yes" rot="MR180"/>
-<element name="C47" library="jonnew" package="0402T" value="4.7uF" x="-6.3" y="10.18" smashed="yes" rot="MR283">
-<attribute name="PARTNO" value="GRM155R61A475MEAAD" x="10.162459375" y="-48.36371875" size="1.778" layer="28" rot="MR283" display="off"/>
-</element>
-<element name="C32" library="jonnew" package="0201T" value="0.1uF" x="-1.7" y="7.9" smashed="yes" rot="MR270"/>
-<element name="C34" library="jonnew" package="0201T" value="10nF" x="-1.2" y="7.9" smashed="yes" rot="MR270"/>
-<element name="C40" library="jonnew" package="0201T" value="10nF" x="-5.3" y="9.8" smashed="yes" rot="MR180"/>
-<element name="C43" library="jonnew" package="0201T" value="0.1uF" x="-5.3" y="9.3" smashed="yes" rot="MR180"/>
-<element name="C48" library="jonnew" package="0402T" value="15uF" x="-5" y="8.7" smashed="yes" rot="MR180">
-<attribute name="PARTNO" value="CL05A226MQ5QUNC" x="63.58" y="37.91" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="C44" library="jonnew" package="0201T" value="0.1uF" x="-6.9" y="11.5" smashed="yes" rot="R270">
-<attribute name="PARTNO" value="C1005X7R1H104K050BB" x="-51.35" y="-10.09" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
-<element name="C45" library="jonnew" package="0201T" value="47nF" x="-6.9" y="11.2" smashed="yes" rot="MR270">
-<attribute name="PARTNO" value="C1005X7R1H473K050BB" x="42.63" y="-40.87" size="1.778" layer="28" rot="MR270" display="off"/>
-</element>
-<element name="C28" library="jonnew" package="0402T" value="1uF" x="1.5" y="16.55" smashed="yes" rot="MR0">
-<attribute name="PARTNO" value="CL05A105KO5NNNC" x="-41.68" y="-17.74" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="C35" library="jonnew" package="0402T" value="10uF" x="2.65" y="17.75" smashed="yes" rot="MR270">
-<attribute name="PARTNO" value="CL05A106MQ5NUNC" x="36.94" y="-2.57" size="1.778" layer="28" rot="MR270" display="off"/>
-</element>
-<element name="C51" library="jonnew" package="0201T" value="0.1uF" x="3.71" y="15.69" smashed="yes">
-<attribute name="PARTNO" value="C0603X5R1C104K030BC" x="48.16" y="-23.68" size="1.778" layer="27" display="off"/>
-</element>
-<element name="C50" library="jonnew" package="0402T" value="4.7uF" x="4.05" y="14.91" smashed="yes">
-<attribute name="PARTNO" value="CL05A475MO5NUNC" x="47.23" y="-14.3" size="1.778" layer="27" display="off"/>
-</element>
-<element name="C30" library="jonnew" package="0402T" value="1uF" x="6.4" y="3.3" smashed="yes" rot="MR0">
-<attribute name="PARTNO" value="CL05A105KO5NNNC" x="-52.02" y="-30.99" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="C37" library="jonnew" package="0402T" value="15uF" x="6.45" y="1.48" smashed="yes" rot="MR180">
-<attribute name="PARTNO" value="CL05A226MQ6ZUN8" x="42.01" y="35.77" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
+<element name="C36" library="jonnew" package="0201T" value="10nF" x="-5.3" y="12.1" smashed="yes" rot="MR180"/>
+<element name="C39" library="jonnew" package="0201T" value="0.1uF" x="-5.3" y="11.6" smashed="yes" rot="MR180"/>
+<element name="C45" library="jonnew" package="0402T" value="4.7uF" x="-4.1" y="12.7" smashed="yes" rot="MR270"/>
+<element name="C30" library="jonnew" package="0201T" value="0.1uF" x="-2.4" y="10.6" smashed="yes" rot="MR0"/>
+<element name="C32" library="jonnew" package="0201T" value="10nF" x="-2.4" y="10" smashed="yes" rot="MR0"/>
+<element name="C37" library="jonnew" package="0201T" value="10nF" x="-5.3" y="11.1" smashed="yes" rot="MR180"/>
+<element name="C40" library="jonnew" package="0201T" value="0.1uF" x="-5.3" y="10.6" smashed="yes" rot="MR180"/>
+<element name="C46" library="jonnew" package="0402T" value="4.7uF" x="-6.3" y="10.18" smashed="yes" rot="MR283"/>
+<element name="C31" library="jonnew" package="0201T" value="0.1uF" x="-1.7" y="7.9" smashed="yes" rot="MR270"/>
+<element name="C33" library="jonnew" package="0201T" value="10nF" x="-1.2" y="7.9" smashed="yes" rot="MR270"/>
+<element name="C38" library="jonnew" package="0201T" value="10nF" x="-5.3" y="9.8" smashed="yes" rot="MR180"/>
+<element name="C41" library="jonnew" package="0201T" value="0.1uF" x="-5.3" y="9.3" smashed="yes" rot="MR180"/>
+<element name="C47" library="jonnew" package="0402T" value="15uF" x="-5" y="8.7" smashed="yes" rot="MR180"/>
+<element name="C43" library="jonnew" package="0201T" value="0.1uF" x="-6.9" y="11.5" smashed="yes" rot="R270"/>
+<element name="C44" library="jonnew" package="0201T" value="47nF" x="-6.9" y="11.2" smashed="yes" rot="MR270"/>
+<element name="C27" library="jonnew" package="0402T" value="1uF" x="1.5" y="16.55" smashed="yes" rot="MR0"/>
+<element name="C35" library="jonnew" package="0402T" value="10uF" x="2.65" y="17.75" smashed="yes" rot="MR270"/>
+<element name="C53" library="jonnew" package="0201T" value="0.1uF" x="3.71" y="15.69" smashed="yes"/>
+<element name="C52" library="jonnew" package="0402T" value="4.7uF" x="4.05" y="14.91" smashed="yes"/>
+<element name="C26" library="jonnew" package="0402T" value="1uF" x="6.4" y="3.3" smashed="yes" rot="MR0"/>
+<element name="C34" library="jonnew" package="0402T" value="15uF" x="6.45" y="1.48" smashed="yes" rot="MR180"/>
 <element name="L8" library="jonnew" package="0603T" value="BLM18KG601SN1D" x="2.58" y="15.18" smashed="yes" rot="MR0"/>
 <element name="L9" library="jonnew" package="1210T" value="CBC3225T101MR" x="1.9" y="16.3" smashed="yes" rot="R270"/>
-<element name="L6" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="-4.8" y="13.3" smashed="yes" rot="MR270">
-<attribute name="PARTNO" value="BLM15PX601SN1D" x="19.33" y="-38.77" size="1.778" layer="28" rot="MR270" display="off"/>
-</element>
-<element name="L7" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="-6.6" y="9" smashed="yes" rot="MR180">
-<attribute name="PARTNO" value="BLM15PX601SN1D" x="59.44" y="33.13" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="R22" library="jonnew" package="0201T" value="1k" x="3.55" y="17.89" smashed="yes" rot="R270"/>
-<element name="R17" library="jonnew" package="0201T" value="49.9" x="-6.9" y="12.2" smashed="yes" rot="MR270"/>
-<element name="R18" library="jonnew" package="0201T" value="10k" x="-5.5" y="13.5" smashed="yes" rot="MR270"/>
-<element name="R19" library="jonnew" package="0201T" value="100k" x="-6" y="13.5" smashed="yes" rot="MR90"/>
-<element name="R16" library="jonnew" package="0201T" value="10k" x="-6.5" y="13.4" smashed="yes" rot="MR270"/>
+<element name="L6" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="-4.8" y="13.3" smashed="yes" rot="MR270"/>
+<element name="L7" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="-6.6" y="9" smashed="yes" rot="MR180"/>
+<element name="R24" library="jonnew" package="0201T" value="1k" x="3.55" y="17.89" smashed="yes" rot="R270"/>
+<element name="R18" library="jonnew" package="0201T" value="49.9" x="-6.9" y="12.2" smashed="yes" rot="MR270"/>
+<element name="R19" library="jonnew" package="0201T" value="10k" x="-5.5" y="13.5" smashed="yes" rot="MR270"/>
+<element name="R20" library="jonnew" package="0201T" value="100k" x="-6" y="13.5" smashed="yes" rot="MR90"/>
+<element name="R17" library="jonnew" package="0201T" value="10k" x="-6.5" y="13.4" smashed="yes" rot="MR270"/>
 <element name="TP9" library="jonnew" package="TP09R" value="" x="6.96" y="-0.14" smashed="yes" rot="MR270">
 <attribute name="TP_SIGNAL_NAME" value="" x="8.865" y="-0.14" size="1" layer="38" rot="MR270"/>
 <attribute name="VALUE" x="7.468" y="0.241" size="0.0254" layer="28" rot="MR270"/>
 </element>
-<element name="U3" library="jonnew" package="X2SON" value="TLV70733" x="1.7" y="17.75" smashed="yes" rot="MR270"/>
-<element name="U6" library="jonnew" package="X2SON" value="TLV70712" x="6.4" y="2.4" smashed="yes" rot="MR180"/>
+<element name="U5" library="jonnew" package="X2SON" value="TLV70733" x="1.7" y="17.75" smashed="yes" rot="MR270"/>
+<element name="U4" library="jonnew" package="X2SON" value="TLV70712" x="6.4" y="2.4" smashed="yes" rot="MR180"/>
 <element name="U7" library="jonnew" package="WQFN32-5X5" value="DS90UB913A_WQFN" x="-3.84" y="10.4" smashed="yes"/>
 <element name="L10" library="jonnew" package="0805T" value="CIG21L4R7MNE" x="-0.14" y="16.61" smashed="yes" rot="R90"/>
-<element name="R23" library="jonnew" package="0201T" value="1k" x="-0.31" y="14.95" smashed="yes"/>
+<element name="R25" library="jonnew" package="0201T" value="1k" x="-0.31" y="14.95" smashed="yes"/>
 <element name="J5" library="jonnew" package="X_FL_R_SMT_1(02)" value="X.FL-R-SMT-1(02)" x="-2.23" y="16.37" smashed="yes"/>
 <element name="D3" library="jonnew" package="0402T-DFN" value="SESD0402X1UN-0020-090" x="-1.24" y="14.7" smashed="yes" rot="R90"/>
 <element name="U1" library="jonnew" package="MBGA153-8X8" value="10M08SAM15317G" x="3.8" y="9.5" smashed="yes"/>
@@ -1525,13 +1499,11 @@ einem neuen Namen ab.</description>
 <attribute name="TP_SIGNAL_NAME" value="" x="-5.275" y="1.76" size="1" layer="38" rot="MR270"/>
 <attribute name="VALUE" x="-6.672" y="2.141" size="0.0254" layer="28" rot="MR270"/>
 </element>
-<element name="R14" library="jonnew" package="0201T" value="10k" x="2.8" y="11.3" smashed="yes" rot="MR180"/>
-<element name="R15" library="jonnew" package="0201T" value="10k" x="2.1" y="10.7" smashed="yes" rot="MR180"/>
-<element name="R13" library="jonnew" package="0201T" value="10k" x="4.88" y="10.81" smashed="yes" rot="MR0"/>
-<element name="R12" library="jonnew" package="0201T" value="10k" x="5.3" y="11.5" smashed="yes" rot="MR180"/>
-<element name="L1" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="6.8" y="7" smashed="yes" rot="MR0">
-<attribute name="PARTNO" value="BLM15PX601SN1D" x="20.3" y="-71.4" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
+<element name="R13" library="jonnew" package="0201T" value="10k" x="2.8" y="11.3" smashed="yes" rot="MR180"/>
+<element name="R14" library="jonnew" package="0201T" value="10k" x="2.1" y="10.7" smashed="yes" rot="MR180"/>
+<element name="R12" library="jonnew" package="0201T" value="10k" x="4.88" y="10.81" smashed="yes" rot="MR0"/>
+<element name="R11" library="jonnew" package="0201T" value="10k" x="5.3" y="11.5" smashed="yes" rot="MR180"/>
+<element name="L1" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="6.8" y="7" smashed="yes" rot="MR0"/>
 <element name="C2" library="jonnew" package="0201T" value="22nF" x="3.5" y="8.6" smashed="yes" rot="MR270"/>
 <element name="C4" library="jonnew" package="0201T" value="0.1uF" x="4" y="8.6" smashed="yes" rot="MR270"/>
 <element name="C6" library="jonnew" package="0402T" value="4.7uF" x="4.6" y="8.9" smashed="yes" rot="MR270"/>
@@ -1539,43 +1511,35 @@ einem neuen Namen ab.</description>
 <element name="C1" library="jonnew" package="0201T" value="22nF" x="1.3" y="12.7" smashed="yes" rot="MR90"/>
 <element name="C5" library="jonnew" package="0402T" value="4.7uF" x="6.9" y="11.06" smashed="yes" rot="MR180"/>
 <element name="C7" library="jonnew" package="0402T" value="10uF" x="6.8" y="6.3" smashed="yes" rot="MR180"/>
-<element name="C13" library="jonnew" package="0201T" value="22nF" x="5.49" y="12.86" smashed="yes" rot="MR180"/>
-<element name="C18" library="jonnew" package="0201T" value="0.1uF" x="2.31" y="12.88" smashed="yes" rot="MR90"/>
+<element name="C15" library="jonnew" package="0201T" value="22nF" x="5.49" y="12.86" smashed="yes" rot="MR180"/>
+<element name="C19" library="jonnew" package="0201T" value="0.1uF" x="2.31" y="12.88" smashed="yes" rot="MR90"/>
 <element name="C22" library="jonnew" package="0402T" value="10uF" x="7.18" y="8.48" smashed="yes" rot="MR270"/>
-<element name="C9" library="jonnew" package="0201T" value="22nF" x="0.1" y="11.2" smashed="yes" rot="MR0"/>
-<element name="C14" library="jonnew" package="0201T" value="0.1uF" x="0.1" y="10.7" smashed="yes" rot="MR0"/>
+<element name="C12" library="jonnew" package="0201T" value="22nF" x="0.1" y="11.2" smashed="yes" rot="MR0"/>
+<element name="C16" library="jonnew" package="0201T" value="0.1uF" x="0.1" y="10.7" smashed="yes" rot="MR0"/>
 <element name="C23" library="jonnew" package="0402T" value="10uF" x="-0.1" y="11.8" smashed="yes" rot="MR0"/>
-<element name="L3" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="-0.1" y="12.5" smashed="yes" rot="MR180">
-<attribute name="PARTNO" value="BLM15PX601SN1D" x="-0.1" y="163.3" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
+<element name="L2" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="-0.1" y="12.5" smashed="yes" rot="MR180"/>
 <element name="C3" library="jonnew" package="0201T" value="0.1uF" x="1.87" y="7.02" smashed="yes" rot="MR180"/>
 <element name="R9" library="jonnew" package="0201T" value="4.7k" x="-2.91" y="14.22" smashed="yes" rot="R90"/>
-<element name="R11" library="jonnew" package="0201T" value="4.7k" x="-4.7" y="13.7" smashed="yes" rot="R90"/>
-<element name="C24" library="jonnew" package="0201T" value="10nF" x="0.48" y="3.39" smashed="yes" rot="MR180"/>
-<element name="J3" library="jonnew" package="FH23-45S-0.3SHW(05)" value="FH23-45S-0.3HW(05)" x="0" y="-0.04" smashed="yes"/>
+<element name="R10" library="jonnew" package="0201T" value="4.7k" x="-4.7" y="13.7" smashed="yes" rot="R90"/>
+<element name="C11" library="jonnew" package="0201T" value="10nF" x="0.48" y="3.39" smashed="yes" rot="MR180"/>
+<element name="J3" library="jonnew" package="FH23-45S-0.3SHW(05)" value="FH23-45S-0.3SHW(05)" x="0" y="-0.04" smashed="yes"/>
 <element name="J1" library="jonnew" package="2X05_IDC" value="" x="-33.7" y="9.3" smashed="yes" rot="R270">
 <attribute name="VALUE" x="-40.304" y="16.92" size="1.27" layer="27" font="vector" ratio="18" rot="R270"/>
 </element>
-<element name="L5" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="6.94" y="9.65" smashed="yes" rot="MR0">
-<attribute name="PARTNO" value="BLM15PX601SN1D" x="6.94" y="9.65" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="C12" library="jonnew" package="0201T" value="22nF" x="5.59" y="6.95" smashed="yes" rot="MR90"/>
-<element name="C17" library="jonnew" package="0201T" value="0.1uF" x="5.1" y="6.95" smashed="yes" rot="MR90"/>
+<element name="L5" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="6.94" y="9.65" smashed="yes" rot="MR0"/>
+<element name="C14" library="jonnew" package="0201T" value="22nF" x="5.59" y="6.95" smashed="yes" rot="MR90"/>
+<element name="C18" library="jonnew" package="0201T" value="0.1uF" x="5.1" y="6.95" smashed="yes" rot="MR90"/>
 <element name="C21" library="jonnew" package="0402T" value="10uF" x="3.25" y="6.95" smashed="yes" rot="MR90"/>
-<element name="L4" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="5" y="5.6" smashed="yes" rot="MR90">
-<attribute name="PARTNO" value="BLM15PX601SN1D" x="-12" y="5.6" size="1.778" layer="28" rot="MR90" display="off"/>
-</element>
+<element name="L4" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="5" y="5.6" smashed="yes" rot="MR90"/>
 <element name="R2" library="jonnew" package="0201T" value="4.7k" x="-0.86" y="5.17" smashed="yes" rot="MR180"/>
 <element name="R3" library="jonnew" package="0201T" value="4.7k" x="-0.86" y="5.78" smashed="yes" rot="MR180"/>
-<element name="U5" library="jonnew" package="MICROSIP9-3X2.3" value="TPS8268180" x="-0.2" y="14.8" smashed="yes" rot="MR0"/>
-<element name="L2" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="0" y="8.4" smashed="yes" rot="MR180">
-<attribute name="PARTNO" value="BLM15PX601SN1D" x="0" y="8.4" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="C15" library="jonnew" package="0201T" value="0.1uF" x="-0.2" y="9" smashed="yes" rot="MR0"/>
+<element name="U3" library="jonnew" package="MICROSIP9-3X2.3" value="TPS8268180" x="-0.2" y="14.8" smashed="yes" rot="MR0"/>
+<element name="L3" library="jonnew" package="0402T" value="BLM15PX601SN1D" x="0" y="8.4" smashed="yes" rot="MR180"/>
+<element name="C17" library="jonnew" package="0201T" value="0.1uF" x="-0.2" y="9" smashed="yes" rot="MR0"/>
 <element name="U2" library="jonnew" package="ASCO" value="ASCO2-24.000MHZ-EK-T3" x="0.47" y="4.53" smashed="yes" rot="MR90"/>
-<element name="R20" library="jonnew" package="0201T" value="20k" x="-6.32" y="1.12" smashed="yes" rot="MR0"/>
-<element name="C49" library="jonnew" package="0201T" value="330nF" x="-6.26" y="1.9" smashed="yes" rot="MR270"/>
-<element name="R21" library="jonnew" package="0201T" value="100" x="-6.26" y="3" smashed="yes" rot="MR270"/>
+<element name="R22" library="jonnew" package="0201T" value="20k" x="-6.32" y="1.12" smashed="yes" rot="MR0"/>
+<element name="C50" library="jonnew" package="0201T" value="0.33nF" x="-6.26" y="1.9" smashed="yes" rot="MR270"/>
+<element name="R23" library="jonnew" package="0201T" value="100" x="-6.26" y="3" smashed="yes" rot="MR270"/>
 <element name="TP10" library="jonnew" package="TP09R" value="" x="-7.17" y="8.09" smashed="yes">
 <attribute name="TP_SIGNAL_NAME" value="" x="-7.17" y="6.185" size="1" layer="37"/>
 <attribute name="VALUE" x="-7.551" y="7.582" size="0.0254" layer="27"/>
@@ -1602,59 +1566,55 @@ einem neuen Namen ab.</description>
 <attribute name="VALUE" x="-7.571" y="5.082" size="0.0254" layer="27"/>
 </element>
 <element name="X2" library="jonnew" package="OE-LOGO-14X10" value="OE-LOGO_14X10" x="-19.4" y="12" smashed="yes"/>
-<element name="C10" library="jonnew" package="0201T" value="22nF" x="-0.2" y="9.5" smashed="yes" rot="MR0"/>
-<element name="C19" library="jonnew" package="0402T" value="10uF" x="0.9" y="9.62" smashed="yes" rot="MR238.2"/>
-<element name="C20" library="jonnew" package="0201T" value="0.1uF" x="-1.1" y="0.7" smashed="yes" rot="MR270"/>
-<element name="C25" library="jonnew" package="0201T" value="6.8nF" x="-0.6" y="0.7" smashed="yes" rot="MR270">
-<attribute name="PARTNO" value="CL03B103KP3NNNC" x="50.2" y="15.6" size="1.778" layer="28" rot="MR270" display="off"/>
-</element>
-<element name="C26" library="jonnew" package="0201T" value="0.1uF" x="-2.7" y="0" smashed="yes" rot="MR180"/>
-<element name="U17" library="jonnew" package="LGA-28-3.8X5.2" value="BNO055" x="-3.3" y="3" smashed="yes" rot="MR90"/>
-<element name="C27" library="jonnew" package="0201T" value="0.1uF" x="-5.5" y="2.6" smashed="yes" rot="MR270">
-<attribute name="PARTNO" value="C0603X5R1C104K030BC" x="53.7" y="32.6" size="1.778" layer="28" rot="MR270" display="off"/>
-</element>
-<element name="R57" library="jonnew" package="0201T" value="10k" x="-5.51" y="4.26" smashed="yes" rot="MR90"/>
-<element name="R55" library="jonnew" package="0201T" value="10k" x="-3.8" y="0" smashed="yes" rot="MR180"/>
-<element name="Y2" library="jonnew" package="ECX-1210" value="ECS-.327-12.5-1210-TR" x="-0.5" y="2.2" smashed="yes" rot="MR0"/>
-<element name="C29" library="jonnew" package="0402T" value="22pF, NP0 2%" x="0.43" y="0.75" smashed="yes" rot="MR180"/>
-<element name="C36" library="jonnew" package="0402T" value="22pF, NP0 2%" x="0.75" y="2.26" smashed="yes" rot="MR270"/>
-<element name="C11" library="jonnew" package="0201T" value="22nF" x="0.17" y="7.62" smashed="yes" rot="MR0"/>
-<element name="C16" library="jonnew" package="0201T" value="22nF" x="5.9" y="9.09" smashed="yes" rot="MR90"/>
-<element name="U4" library="jonnew" package="XTAL-3.2X5.0" value="500SJAE93M6000ACF" x="3.2" y="2.4" smashed="yes" rot="MR270"/>
-<element name="R10" library="jonnew" package="0201T" value="22" x="2.91" y="-0.31" smashed="yes" rot="MR180"/>
-<element name="C52" library="jonnew" package="0201T" value="300pF NP0" x="4.31" y="-0.3" smashed="yes" rot="MR0"/>
-<element name="C53" library="jonnew" package="0201T" value="10nF" x="2.26" y="5.06" smashed="yes" rot="MR0"/>
+<element name="C13" library="jonnew" package="0201T" value="22nF" x="-0.2" y="9.5" smashed="yes" rot="MR0"/>
+<element name="C20" library="jonnew" package="0402T" value="10uF" x="0.9" y="9.62" smashed="yes" rot="MR238.2"/>
+<element name="C28" library="jonnew" package="0201T" value="0.1uF" x="-1.1" y="0.7" smashed="yes" rot="MR270"/>
+<element name="C25" library="jonnew" package="0201T" value="6.8nF" x="-0.6" y="0.7" smashed="yes" rot="MR270"/>
+<element name="C24" library="jonnew" package="0201T" value="0.1uF" x="-2.7" y="0" smashed="yes" rot="MR180"/>
+<element name="U6" library="jonnew" package="LGA-28-3.8X5.2" value="BNO055" x="-3.3" y="3" smashed="yes" rot="MR90"/>
+<element name="C29" library="jonnew" package="0201T" value="0.1uF" x="-5.5" y="2.6" smashed="yes" rot="MR270"/>
+<element name="R15" library="jonnew" package="0201T" value="10k" x="-5.51" y="4.26" smashed="yes" rot="MR90"/>
+<element name="R16" library="jonnew" package="0201T" value="10k" x="-3.8" y="0" smashed="yes" rot="MR180"/>
+<element name="Y1" library="jonnew" package="ECX-1210" value="ECS-.327-12.5-1210-TR" x="-0.5" y="2.2" smashed="yes" rot="MR0"/>
+<element name="C42" library="jonnew" package="0402T" value="22pF, NP0 2%" x="0.43" y="0.75" smashed="yes" rot="MR180"/>
+<element name="C48" library="jonnew" package="0402T" value="22pF, NP0 2%" x="0.75" y="2.26" smashed="yes" rot="MR270"/>
+<element name="C9" library="jonnew" package="0201T" value="22nF" x="0.17" y="7.62" smashed="yes" rot="MR0"/>
+<element name="C10" library="jonnew" package="0201T" value="22nF" x="5.9" y="9.09" smashed="yes" rot="MR90"/>
+<element name="U8" library="jonnew" package="XTAL-3.2X5.0" value="500SJAE93M6000ACF" x="3.2" y="2.4" smashed="yes" rot="MR270"/>
+<element name="R21" library="jonnew" package="0201T" value="22" x="2.91" y="-0.31" smashed="yes" rot="MR180"/>
+<element name="C51" library="jonnew" package="0201T" value="300pF NP0" x="4.31" y="-0.3" smashed="yes" rot="MR0"/>
+<element name="C49" library="jonnew" package="0201T" value="10nF" x="2.26" y="5.06" smashed="yes" rot="MR0"/>
 </elements>
 <signals>
 <signal name="GND">
-<contactref element="C28" pad="2"/>
-<contactref element="U3" pad="2"/>
-<contactref element="U3" pad="PAD"/>
+<contactref element="C27" pad="2"/>
+<contactref element="U5" pad="2"/>
+<contactref element="U5" pad="PAD"/>
 <contactref element="C35" pad="2"/>
-<contactref element="U6" pad="2"/>
-<contactref element="U6" pad="PAD"/>
-<contactref element="C30" pad="2"/>
-<contactref element="C37" pad="2"/>
-<contactref element="C51" pad="2"/>
-<contactref element="C50" pad="2"/>
-<contactref element="R17" pad="1"/>
+<contactref element="U4" pad="2"/>
+<contactref element="U4" pad="PAD"/>
+<contactref element="C26" pad="2"/>
+<contactref element="C34" pad="2"/>
+<contactref element="C53" pad="2"/>
+<contactref element="C52" pad="2"/>
+<contactref element="R18" pad="1"/>
 <contactref element="U7" pad="PAD"/>
 <contactref element="U7" pad="7"/>
 <contactref element="U7" pad="6"/>
-<contactref element="R19" pad="2"/>
-<contactref element="C32" pad="2"/>
-<contactref element="C34" pad="2"/>
+<contactref element="R20" pad="2"/>
 <contactref element="C31" pad="2"/>
 <contactref element="C33" pad="2"/>
-<contactref element="C48" pad="2"/>
-<contactref element="C43" pad="2"/>
-<contactref element="C40" pad="2"/>
-<contactref element="C46" pad="2"/>
+<contactref element="C30" pad="2"/>
+<contactref element="C32" pad="2"/>
+<contactref element="C47" pad="2"/>
 <contactref element="C41" pad="2"/>
 <contactref element="C38" pad="2"/>
-<contactref element="C47" pad="2"/>
-<contactref element="C42" pad="2"/>
+<contactref element="C45" pad="2"/>
 <contactref element="C39" pad="2"/>
+<contactref element="C36" pad="2"/>
+<contactref element="C46" pad="2"/>
+<contactref element="C40" pad="2"/>
+<contactref element="C37" pad="2"/>
 <contactref element="TP9" pad="TP"/>
 <contactref element="J5" pad="P$3"/>
 <contactref element="J5" pad="P$2"/>
@@ -1680,7 +1640,7 @@ einem neuen Namen ab.</description>
 <contactref element="U1" pad="H8"/>
 <contactref element="R7" pad="2"/>
 <contactref element="TP7" pad="TP"/>
-<contactref element="R12" pad="2"/>
+<contactref element="R11" pad="2"/>
 <contactref element="C2" pad="2"/>
 <contactref element="C8" pad="2"/>
 <contactref element="C6" pad="2"/>
@@ -1689,12 +1649,12 @@ einem neuen Namen ab.</description>
 <contactref element="C7" pad="2"/>
 <contactref element="C5" pad="2"/>
 <contactref element="C3" pad="2"/>
-<contactref element="C13" pad="2"/>
+<contactref element="C15" pad="2"/>
 <contactref element="C22" pad="2"/>
-<contactref element="C18" pad="2"/>
-<contactref element="C9" pad="2"/>
+<contactref element="C19" pad="2"/>
+<contactref element="C12" pad="2"/>
 <contactref element="C23" pad="2"/>
-<contactref element="C14" pad="2"/>
+<contactref element="C16" pad="2"/>
 <contactref element="J3" pad="45"/>
 <contactref element="J3" pad="44"/>
 <contactref element="J3" pad="41"/>
@@ -1711,13 +1671,13 @@ einem neuen Namen ab.</description>
 <contactref element="J3" pad="13"/>
 <contactref element="J1" pad="10"/>
 <contactref element="J1" pad="2"/>
-<contactref element="C12" pad="2"/>
+<contactref element="C14" pad="2"/>
 <contactref element="C21" pad="2"/>
-<contactref element="C17" pad="2"/>
-<contactref element="C24" pad="1"/>
-<contactref element="U5" pad="C1"/>
-<contactref element="U5" pad="C2"/>
-<contactref element="U5" pad="C3"/>
+<contactref element="C18" pad="2"/>
+<contactref element="C11" pad="1"/>
+<contactref element="U3" pad="C1"/>
+<contactref element="U3" pad="C2"/>
+<contactref element="U3" pad="C3"/>
 <wire x1="-5" y1="9.8" x2="-5" y2="9.3" width="0.3" layer="16"/>
 <wire x1="-5" y1="11.1" x2="-5" y2="10.6" width="0.3" layer="16"/>
 <wire x1="-5" y1="11.6" x2="-5" y2="11.1" width="0.3" layer="16"/>
@@ -1767,7 +1727,7 @@ einem neuen Namen ab.</description>
 <wire x1="-0.6334" y1="11.8" x2="-0.2" y2="11.3666" width="0.3" layer="16"/>
 <wire x1="-0.2" y1="11.3666" x2="-0.2" y2="11.2" width="0.3" layer="16"/>
 <wire x1="-0.2" y1="11.2" x2="-0.2" y2="10.7" width="0.3" layer="16"/>
-<contactref element="C15" pad="2"/>
+<contactref element="C17" pad="2"/>
 <contactref element="U1" pad="E4"/>
 <via x="-3.2" y="10.6" extent="1-16" drill="0.2"/>
 <via x="-3.2" y="10.1" extent="1-16" drill="0.2"/>
@@ -1775,8 +1735,8 @@ einem neuen Namen ab.</description>
 <via x="1.27" y="11.42" extent="1-16" drill="0.2"/>
 <via x="2.46" y="7.09" extent="1-16" drill="0.2"/>
 <contactref element="U2" pad="2"/>
-<contactref element="C49" pad="1"/>
-<contactref element="R21" pad="2"/>
+<contactref element="C50" pad="1"/>
+<contactref element="R23" pad="2"/>
 <via x="4.8" y="8.5" extent="1-16" drill="0.2"/>
 <via x="5.55" y="7.11" extent="1-16" drill="0.2"/>
 <contactref element="J3" pad="1"/>
@@ -1854,29 +1814,29 @@ einem neuen Namen ab.</description>
 <wire x1="-6" y1="15.31" x2="-6" y2="15.295875" width="0.09" layer="16"/>
 <contactref element="TP8" pad="TP"/>
 <via x="-7.42" y="11.5" extent="1-16" drill="0.2"/>
-<contactref element="C10" pad="2"/>
-<contactref element="C19" pad="2"/>
+<contactref element="C13" pad="2"/>
+<contactref element="C20" pad="2"/>
 <via x="-4.53" y="14.46" extent="1-16" drill="0.2"/>
 <via x="-3.64" y="15.69" extent="1-16" drill="0.2"/>
-<contactref element="U17" pad="2"/>
-<contactref element="U17" pad="17"/>
-<contactref element="C27" pad="1"/>
-<contactref element="U17" pad="5"/>
-<contactref element="U17" pad="6"/>
-<contactref element="U17" pad="18"/>
-<contactref element="C26" pad="2"/>
-<contactref element="C20" pad="2"/>
+<contactref element="U6" pad="2"/>
+<contactref element="U6" pad="17"/>
+<contactref element="C29" pad="1"/>
+<contactref element="U6" pad="5"/>
+<contactref element="U6" pad="6"/>
+<contactref element="U6" pad="18"/>
+<contactref element="C24" pad="2"/>
+<contactref element="C28" pad="2"/>
 <contactref element="C25" pad="2"/>
-<contactref element="U17" pad="16"/>
-<contactref element="U17" pad="15"/>
-<contactref element="U17" pad="25"/>
-<contactref element="C36" pad="2"/>
-<contactref element="C29" pad="2"/>
-<contactref element="C11" pad="2"/>
-<contactref element="C16" pad="2"/>
-<contactref element="C53" pad="1"/>
-<contactref element="U4" pad="2"/>
-<contactref element="C52" pad="1"/>
+<contactref element="U6" pad="16"/>
+<contactref element="U6" pad="15"/>
+<contactref element="U6" pad="25"/>
+<contactref element="C48" pad="2"/>
+<contactref element="C42" pad="2"/>
+<contactref element="C9" pad="2"/>
+<contactref element="C10" pad="2"/>
+<contactref element="C49" pad="1"/>
+<contactref element="U8" pad="2"/>
+<contactref element="C51" pad="1"/>
 <via x="6.29" y="5.04" extent="1-16" drill="0.2"/>
 <via x="-3.36" y="1.99" extent="1-16" drill="0.2"/>
 <via x="-2.61" y="3.36" extent="1-16" drill="0.2"/>
@@ -1913,12 +1873,12 @@ einem neuen Namen ab.</description>
 <wire x1="-10.4" y1="11.9" x2="-10.4" y2="13.4" width="0.09" layer="1"/>
 </signal>
 <signal name="+3V3">
-<contactref element="U3" pad="1"/>
+<contactref element="U5" pad="1"/>
 <contactref element="C35" pad="1"/>
-<contactref element="R16" pad="1"/>
-<contactref element="C32" pad="1"/>
+<contactref element="R17" pad="1"/>
+<contactref element="C31" pad="1"/>
 <contactref element="U7" pad="25"/>
-<contactref element="C34" pad="1"/>
+<contactref element="C33" pad="1"/>
 <contactref element="U1" pad="H9"/>
 <contactref element="U1" pad="J8"/>
 <contactref element="U1" pad="H7"/>
@@ -1933,18 +1893,18 @@ einem neuen Namen ab.</description>
 <contactref element="R6" pad="1"/>
 <contactref element="R1" pad="1"/>
 <contactref element="TP6" pad="TP"/>
-<contactref element="R14" pad="1"/>
-<contactref element="R15" pad="1"/>
 <contactref element="R13" pad="1"/>
+<contactref element="R14" pad="1"/>
+<contactref element="R12" pad="1"/>
 <contactref element="L1" pad="1"/>
-<contactref element="L3" pad="1"/>
+<contactref element="L2" pad="1"/>
 <contactref element="R9" pad="2"/>
-<contactref element="R11" pad="2"/>
+<contactref element="R10" pad="2"/>
 <contactref element="J1" pad="4"/>
 <contactref element="L5" pad="1"/>
 <contactref element="R2" pad="2"/>
 <contactref element="R3" pad="2"/>
-<contactref element="C24" pad="2"/>
+<contactref element="C11" pad="2"/>
 <via x="-3.98" y="14.34" extent="1-16" drill="0.2"/>
 <via x="2.8" y="9.7" extent="1-16" drill="0.2"/>
 <via x="4.8" y="9.1" extent="1-16" drill="0.2"/>
@@ -1977,7 +1937,7 @@ einem neuen Namen ab.</description>
 <wire x1="-1.441215625" y1="8.651215625" x2="-1.741215625" y2="8.651215625" width="0.2" layer="1"/>
 <wire x1="-1.741215625" y1="8.651215625" x2="-1.7" y2="8.61" width="0.3" layer="16"/>
 <wire x1="-1.7" y1="8.61" x2="-1.7" y2="8.2" width="0.3" layer="16"/>
-<contactref element="L2" pad="1"/>
+<contactref element="L3" pad="1"/>
 <wire x1="-0.5334" y1="8.4" x2="-0.7334" y2="8.2" width="0.3" layer="16"/>
 <wire x1="-0.7334" y1="8.2" x2="-1.2" y2="8.2" width="0.3" layer="16"/>
 <wire x1="1.8" y1="10.7" x2="2.3" y2="10.2" width="0.09" layer="16"/>
@@ -2059,13 +2019,13 @@ einem neuen Namen ab.</description>
 <wire x1="-4.46314375" y1="14" x2="-4.26494375" y2="14.1982" width="0.09" layer="1"/>
 <wire x1="-4.7" y1="14" x2="-4.46314375" y2="14" width="0.09" layer="1"/>
 <contactref element="U2" pad="1"/>
-<contactref element="C26" pad="1"/>
-<contactref element="U17" pad="3"/>
-<contactref element="C20" pad="1"/>
+<contactref element="C24" pad="1"/>
+<contactref element="U6" pad="3"/>
+<contactref element="C28" pad="1"/>
 <contactref element="C25" pad="1"/>
-<contactref element="R57" pad="2"/>
-<contactref element="U17" pad="28"/>
-<contactref element="R55" pad="1"/>
+<contactref element="R15" pad="2"/>
+<contactref element="U6" pad="28"/>
+<contactref element="R16" pad="1"/>
 <wire x1="-0.56" y1="5.78" x2="-0.56" y2="5.17" width="0.09" layer="16"/>
 <via x="-0.86" y="3.81" extent="1-16" drill="0.2"/>
 <wire x1="0.78" y1="3.39" x2="0.78" y2="3.89" width="0.2" layer="16"/>
@@ -2101,15 +2061,15 @@ einem neuen Namen ab.</description>
 <wire x1="-8" y1="2.2" x2="-7.7228" y2="2.4772" width="0.09" layer="5"/>
 </signal>
 <signal name="VCOAX">
-<contactref element="C28" pad="1"/>
-<contactref element="U3" pad="4"/>
-<contactref element="U3" pad="3"/>
+<contactref element="C27" pad="1"/>
+<contactref element="U5" pad="4"/>
+<contactref element="U5" pad="3"/>
 <contactref element="L8" pad="2"/>
 <contactref element="TP1" pad="TP"/>
-<contactref element="U5" pad="B3"/>
-<contactref element="U5" pad="A3"/>
-<contactref element="U5" pad="B1"/>
-<contactref element="U5" pad="B2"/>
+<contactref element="U3" pad="B3"/>
+<contactref element="U3" pad="A3"/>
+<contactref element="U3" pad="B1"/>
+<contactref element="U3" pad="B2"/>
 <wire x1="1.76" y1="16.2766" x2="2.0334" y2="16.55" width="0.4" layer="16"/>
 <wire x1="1.76" y1="16.2766" x2="1.76" y2="15.18" width="0.4" layer="16"/>
 <wire x1="2.0334" y1="16.55" x2="2.03" y2="16.5534" width="0.4" layer="16"/>
@@ -2160,8 +2120,8 @@ einem neuen Namen ab.</description>
 <wire x1="-1.9" y1="14.8" x2="-1.2" y2="14.8" width="0.3" layer="16"/>
 </signal>
 <signal name="+1V2">
-<contactref element="U6" pad="1"/>
-<contactref element="C37" pad="1"/>
+<contactref element="U4" pad="1"/>
+<contactref element="C34" pad="1"/>
 <contactref element="J3" pad="7"/>
 <contactref element="J3" pad="8"/>
 <contactref element="J3" pad="38"/>
@@ -2198,9 +2158,9 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="N$13">
 <contactref element="L8" pad="1"/>
-<contactref element="C50" pad="1"/>
-<contactref element="C51" pad="1"/>
-<contactref element="R22" pad="2"/>
+<contactref element="C52" pad="1"/>
+<contactref element="C53" pad="1"/>
+<contactref element="R24" pad="2"/>
 <contactref element="L9" pad="2"/>
 <wire x1="3.55" y1="17.59" x2="3.41" y2="17.45" width="0.2" layer="1"/>
 <wire x1="3.41" y1="17.45" x2="3.41" y2="15.69" width="0.2" layer="1"/>
@@ -2215,8 +2175,8 @@ einem neuen Namen ab.</description>
 <wire x1="3.4266" y1="15" x2="1.9" y2="15" width="0.4" layer="1"/>
 </signal>
 <signal name="SIGOUT">
-<contactref element="C44" pad="1"/>
-<contactref element="R23" pad="1"/>
+<contactref element="C43" pad="1"/>
+<contactref element="R25" pad="1"/>
 <contactref element="L10" pad="1"/>
 <contactref element="J5" pad="P$1"/>
 <contactref element="D3" pad="C"/>
@@ -2435,7 +2395,7 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="N$28">
 <contactref element="U7" pad="13"/>
-<contactref element="C44" pad="2"/>
+<contactref element="C43" pad="2"/>
 <wire x1="-6.9" y1="11.12485625" x2="-6.9" y2="11.2" width="0.15" layer="1"/>
 <wire x1="-6.9" y1="11.2" x2="-6.9" y2="11.17485625" width="0.15" layer="1"/>
 <wire x1="-6.9" y1="11.17485625" x2="-7.2182" y2="10.85665625" width="0.15" layer="1"/>
@@ -2445,21 +2405,21 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="N$31">
 <contactref element="U7" pad="12"/>
-<contactref element="C45" pad="2"/>
+<contactref element="C44" pad="2"/>
 <wire x1="-6.84" y1="10.7" x2="-6.9" y2="10.9" width="0.15" layer="16"/>
 <via x="-6.84" y="10.7" extent="1-16" drill="0.2"/>
 <wire x1="-6.84" y1="10.7" x2="-6.29" y2="10.7" width="0.15" layer="1"/>
 <wire x1="-6.29" y1="10.7" x2="-6.24" y2="10.65" width="0.15" layer="1"/>
 </signal>
 <signal name="N$32">
-<contactref element="C45" pad="1"/>
-<contactref element="R17" pad="2"/>
+<contactref element="C44" pad="1"/>
+<contactref element="R18" pad="2"/>
 <wire x1="-6.9" y1="11.5" x2="-6.9" y2="11.8" width="0.15" layer="16"/>
 <wire x1="-6.9" y1="11.9" x2="-6.9" y2="11.5" width="0.09" layer="16"/>
 </signal>
 <signal name="N$30">
 <contactref element="U7" pad="9"/>
-<contactref element="R16" pad="2"/>
+<contactref element="R17" pad="2"/>
 <via x="-6.34" y="12.35" extent="1-16" drill="0.2"/>
 <wire x1="-6.5" y1="13.1" x2="-6.34" y2="12.94" width="0.09" layer="16"/>
 <wire x1="-6.34" y1="12.94" x2="-6.34" y2="12.35" width="0.09" layer="16"/>
@@ -2467,23 +2427,23 @@ einem neuen Namen ab.</description>
 <wire x1="-6.34" y1="12.25" x2="-6.34" y2="12.35" width="0.09" layer="1"/>
 </signal>
 <signal name="+1V8">
-<contactref element="R18" pad="1"/>
-<contactref element="C31" pad="1"/>
-<contactref element="C33" pad="1"/>
+<contactref element="R19" pad="1"/>
+<contactref element="C30" pad="1"/>
+<contactref element="C32" pad="1"/>
 <contactref element="U7" pad="28"/>
 <contactref element="L6" pad="1"/>
 <contactref element="L7" pad="1"/>
-<contactref element="C47" pad="1"/>
-<contactref element="C42" pad="1"/>
-<contactref element="C39" pad="1"/>
+<contactref element="C46" pad="1"/>
+<contactref element="C40" pad="1"/>
+<contactref element="C37" pad="1"/>
 <contactref element="U7" pad="11"/>
 <contactref element="J3" pad="3"/>
 <contactref element="J3" pad="4"/>
 <contactref element="J3" pad="42"/>
 <contactref element="J3" pad="43"/>
 <contactref element="L4" pad="1"/>
-<contactref element="U5" pad="A1"/>
-<contactref element="U5" pad="A2"/>
+<contactref element="U3" pad="A1"/>
+<contactref element="U3" pad="A2"/>
 <wire x1="-1.8368" y1="10.15" x2="-1.44" y2="10.15" width="0.2" layer="1"/>
 <wire x1="-1.8368" y1="10.15" x2="-1.8868" y2="10.2" width="0.2" layer="1"/>
 <via x="-1.8868" y="10.2" extent="1-16" drill="0.2"/>
@@ -2518,9 +2478,9 @@ einem neuen Namen ab.</description>
 <via x="-6.8432" y="9" extent="1-16" drill="0.2"/>
 <wire x1="-6.8432" y1="9" x2="-6.75" y2="9" width="0.2" layer="5"/>
 <wire x1="-6.75" y1="9" x2="-6.2" y2="8.45" width="0.2" layer="5"/>
-<contactref element="U6" pad="4"/>
-<contactref element="U6" pad="3"/>
-<contactref element="C30" pad="1"/>
+<contactref element="U4" pad="4"/>
+<contactref element="U4" pad="3"/>
+<contactref element="C26" pad="1"/>
 <wire x1="6.9334" y1="3.3" x2="6.9334" y2="2.81949375" width="0.3" layer="16"/>
 <wire x1="6.9334" y1="2.81949375" x2="6.84390625" y2="2.73" width="0.3" layer="16"/>
 <wire x1="6.83" y1="2.67319375" x2="6.83" y2="2.73" width="0.2" layer="16"/>
@@ -2579,9 +2539,9 @@ einem neuen Namen ab.</description>
 <wire x1="-0.2" y1="16.07483125" x2="-0.2" y2="15.6" width="0.4" layer="16"/>
 <wire x1="-0.3002" y1="15.7781625" x2="-0.3002" y2="16.2668" width="0.4" layer="5"/>
 <wire x1="-2.9365625" y1="13.1418" x2="-0.3002" y2="15.7781625" width="0.4" layer="5"/>
-<contactref element="U4" pad="4"/>
-<contactref element="C53" pad="2"/>
-<contactref element="U4" pad="1"/>
+<contactref element="U8" pad="4"/>
+<contactref element="C49" pad="2"/>
+<contactref element="U8" pad="1"/>
 <wire x1="6.46" y1="1.01" x2="6" y2="0.53" width="0.2" layer="1"/>
 <wire x1="6" y1="0.53" x2="6" y2="0.028" width="0.2" layer="1"/>
 <wire x1="5.5" y1="5.2" x2="6.9334" y2="3.7666" width="0.2" layer="16"/>
@@ -2612,8 +2572,8 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="N$33">
 <contactref element="U7" pad="8"/>
-<contactref element="R18" pad="2"/>
-<contactref element="R19" pad="1"/>
+<contactref element="R19" pad="2"/>
+<contactref element="R20" pad="1"/>
 <via x="-5.92" y="12.82" extent="1-16" drill="0.2"/>
 <wire x1="-6" y1="13.3" x2="-6" y2="13.2" width="0.09" layer="16"/>
 <wire x1="-5.59" y1="12.8" x2="-5.69" y2="12.7" width="0.09" layer="1"/>
@@ -2625,9 +2585,9 @@ einem neuen Namen ab.</description>
 <signal name="N$34">
 <contactref element="U7" pad="10"/>
 <contactref element="L6" pad="2"/>
-<contactref element="C46" pad="1"/>
-<contactref element="C41" pad="1"/>
-<contactref element="C38" pad="1"/>
+<contactref element="C45" pad="1"/>
+<contactref element="C39" pad="1"/>
+<contactref element="C36" pad="1"/>
 <wire x1="-5.6" y1="11.7" x2="-5.6" y2="12.1" width="0.3" layer="16"/>
 <wire x1="-5.6" y1="11.7" x2="-5.6" y2="11.6" width="0.3" layer="16"/>
 <wire x1="-6.24" y1="11.65" x2="-5.7432" y2="11.65" width="0.2" layer="1"/>
@@ -2647,9 +2607,9 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="N$35">
 <contactref element="L7" pad="2"/>
-<contactref element="C48" pad="1"/>
-<contactref element="C43" pad="1"/>
-<contactref element="C40" pad="1"/>
+<contactref element="C47" pad="1"/>
+<contactref element="C41" pad="1"/>
+<contactref element="C38" pad="1"/>
 <contactref element="U7" pad="14"/>
 <wire x1="-5.6" y1="9.8" x2="-5.6" y2="9.3" width="0.3" layer="16"/>
 <wire x1="-5.568321875" y1="9.014615625" x2="-5.5334" y2="8.7" width="0.3" layer="16"/>
@@ -2786,9 +2746,9 @@ einem neuen Namen ab.</description>
 <wire x1="-7.955" y1="6.345" x2="-7.18" y2="5.57" width="0.09" layer="16"/>
 </signal>
 <signal name="MIDFILT">
-<contactref element="R22" pad="1"/>
+<contactref element="R24" pad="1"/>
 <contactref element="L9" pad="1"/>
-<contactref element="R23" pad="2"/>
+<contactref element="R25" pad="2"/>
 <contactref element="L10" pad="2"/>
 <wire x1="-0.01" y1="14.95" x2="0.2532" y2="14.93" width="0.09" layer="1"/>
 <via x="0.2532" y="14.93" extent="1-16" drill="0.2"/>
@@ -2834,7 +2794,7 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="SERDES_SDA">
 <contactref element="U7" pad="5"/>
-<contactref element="R11" pad="1"/>
+<contactref element="R10" pad="1"/>
 <wire x1="-4.081225" y1="13.132159375" x2="-4.09" y2="13.11" width="0.09" layer="1"/>
 <via x="-3.5" y="14.1" extent="1-16" drill="0.2"/>
 <wire x1="-4.7" y1="13.4" x2="-4.349065625" y2="13.4" width="0.09" layer="1"/>
@@ -2944,7 +2904,7 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="NCONFIG">
 <contactref element="U1" pad="E8"/>
-<contactref element="R13" pad="2"/>
+<contactref element="R12" pad="2"/>
 <via x="4.046175" y="10.5918" extent="1-16" drill="0.2"/>
 <wire x1="3.8" y1="10.837975" x2="3.8" y2="11" width="0.09" layer="1"/>
 <wire x1="3.8" y1="10.837975" x2="4.046175" y2="10.5918" width="0.09" layer="1"/>
@@ -2953,7 +2913,7 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="CONFIG_SEL">
 <contactref element="U1" pad="D8"/>
-<contactref element="R12" pad="1"/>
+<contactref element="R11" pad="1"/>
 <wire x1="3.8" y1="11.5" x2="4.2018" y2="11.9018" width="0.09" layer="1"/>
 <wire x1="4.2018" y1="11.9018" x2="4.50376875" y2="11.9018" width="0.09" layer="1"/>
 <via x="4.50376875" y="11.9018" extent="1-16" drill="0.2"/>
@@ -2962,14 +2922,14 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="CONF_DONE">
 <contactref element="U1" pad="E6"/>
-<contactref element="R15" pad="2"/>
+<contactref element="R14" pad="2"/>
 <wire x1="2.8" y1="11" x2="2.8" y2="10.7212125" width="0.09" layer="1"/>
 <via x="2.8" y="10.7212125" extent="1-16" drill="0.2"/>
 <wire x1="2.8" y1="10.7212125" x2="2.7787875" y2="10.7" width="0.09" layer="16"/>
 <wire x1="2.7787875" y1="10.7" x2="2.4" y2="10.7" width="0.09" layer="16"/>
 </signal>
 <signal name="NSTATUS">
-<contactref element="R14" pad="2"/>
+<contactref element="R13" pad="2"/>
 <contactref element="U1" pad="D6"/>
 <via x="2.72576875" y="11.8032" extent="1-16" drill="0.2"/>
 <wire x1="2.8" y1="11.5" x2="2.72576875" y2="11.57423125" width="0.09" layer="1"/>
@@ -3038,8 +2998,8 @@ einem neuen Namen ab.</description>
 <wire x1="6.0683" y1="7.3001" x2="6.0683" y2="7.1983" width="0.2" layer="16"/>
 </signal>
 <signal name="VCCIO">
-<contactref element="C13" pad="1"/>
-<contactref element="C18" pad="1"/>
+<contactref element="C15" pad="1"/>
+<contactref element="C19" pad="1"/>
 <contactref element="C22" pad="1"/>
 <contactref element="L5" pad="2"/>
 <contactref element="U1" pad="L14"/>
@@ -3087,15 +3047,15 @@ einem neuen Namen ab.</description>
 <wire x1="4.8" y1="12.47" x2="2.82235625" y2="12.47" width="0.2" layer="3"/>
 <wire x1="4.8" y1="12.47" x2="5.9736" y2="12.47" width="0.2" layer="3"/>
 <wire x1="4.8" y1="12.8546" x2="4.8" y2="12.47" width="0.2" layer="3"/>
-<contactref element="C16" pad="1"/>
+<contactref element="C10" pad="1"/>
 <wire x1="6.44" y1="8.76" x2="5.94" y2="8.76" width="0.2" layer="16"/>
 <wire x1="5.94" y1="8.76" x2="5.9" y2="8.79" width="0.2" layer="16"/>
 </signal>
 <signal name="VCCIOA">
-<contactref element="C9" pad="1"/>
-<contactref element="C14" pad="1"/>
+<contactref element="C12" pad="1"/>
+<contactref element="C16" pad="1"/>
 <contactref element="C23" pad="1"/>
-<contactref element="L3" pad="2"/>
+<contactref element="L2" pad="2"/>
 <contactref element="U1" pad="F2"/>
 <wire x1="0.4" y1="11.2" x2="0.4" y2="10.7" width="0.3" layer="16"/>
 <wire x1="0.4" y1="11.2" x2="0.4334" y2="11.2334" width="0.3" layer="16"/>
@@ -3242,9 +3202,9 @@ einem neuen Namen ab.</description>
 </signal>
 <signal name="CAL_SIGNAL">
 <contactref element="J3" pad="11"/>
-<contactref element="C49" pad="2"/>
-<contactref element="R20" pad="2"/>
-<contactref element="R21" pad="1"/>
+<contactref element="C50" pad="2"/>
+<contactref element="R22" pad="2"/>
+<contactref element="R23" pad="1"/>
 <via x="-5.6968" y="1.74" extent="1-16" drill="0.2"/>
 <wire x1="-3.6" y1="0.028" x2="-3.6" y2="1.65" width="0.09" layer="1"/>
 <wire x1="-3.6" y1="1.65" x2="-4.1" y2="2.15" width="0.09" layer="1"/>
@@ -3308,8 +3268,8 @@ einem neuen Namen ab.</description>
 <wire x1="0.8518" y1="5.08" x2="0.8518" y2="7.3918" width="0.09" layer="16"/>
 </signal>
 <signal name="VCCIO2">
-<contactref element="C12" pad="1"/>
-<contactref element="C17" pad="1"/>
+<contactref element="C14" pad="1"/>
+<contactref element="C18" pad="1"/>
 <contactref element="C21" pad="1"/>
 <contactref element="L4" pad="2"/>
 <contactref element="U1" pad="P11"/>
@@ -3339,7 +3299,7 @@ einem neuen Namen ab.</description>
 <wire x1="5" y1="6.1334" x2="3.5332" y2="6.1334" width="0.3" layer="16"/>
 <wire x1="3.5332" y1="6.1334" x2="3.2218" y2="6.4448" width="0.3" layer="16"/>
 <contactref element="U1" pad="L2"/>
-<contactref element="C11" pad="1"/>
+<contactref element="C9" pad="1"/>
 <wire x1="2.3" y1="6.5" x2="0.8" y2="8" width="0.2" layer="1"/>
 <wire x1="0.8" y1="8" x2="0.86903125" y2="8.06903125" width="0.2" layer="1"/>
 <wire x1="0.86903125" y1="8.06903125" x2="1.0366" y2="8.06903125" width="0.2" layer="1"/>
@@ -3351,7 +3311,7 @@ einem neuen Namen ab.</description>
 <contactref element="R3" pad="1"/>
 <contactref element="U1" pad="K2"/>
 <wire x1="0.8" y1="8.5" x2="0.1" y2="8.5" width="0.09" layer="1"/>
-<contactref element="U17" pad="19"/>
+<contactref element="U6" pad="19"/>
 <wire x1="0.1" y1="8.5" x2="-1.2082" y2="7.1918" width="0.09" layer="1"/>
 <wire x1="-1.2082" y1="7.1918" x2="-1.2082" y2="6.39" width="0.09" layer="1"/>
 <wire x1="-1.2082" y1="6.39" x2="-1.4118" y2="6.1864" width="0.09" layer="1"/>
@@ -3365,7 +3325,7 @@ einem neuen Namen ab.</description>
 <signal name="BNO_SDA">
 <contactref element="R2" pad="1"/>
 <contactref element="U1" pad="L1"/>
-<contactref element="U17" pad="20"/>
+<contactref element="U6" pad="20"/>
 <wire x1="0.3" y1="8" x2="-0.86" y2="6.84" width="0.09" layer="1"/>
 <wire x1="-0.86" y1="6.84" x2="-0.86" y2="6.2587875" width="0.09" layer="1"/>
 <via x="-0.86" y="6.2587875" extent="1-16" drill="0.2"/>
@@ -3377,16 +3337,16 @@ einem neuen Namen ab.</description>
 <wire x1="-1.24" y1="5.25" x2="-1.74" y2="5.25" width="0.09" layer="16"/>
 </signal>
 <signal name="N$4" class="1">
-<contactref element="L2" pad="2"/>
-<contactref element="C15" pad="1"/>
+<contactref element="L3" pad="2"/>
+<contactref element="C17" pad="1"/>
 <contactref element="U1" pad="H2"/>
 <wire x1="0.5334" y1="8.4" x2="0.5" y2="8.4334" width="0.3" layer="16"/>
 <wire x1="0.1" y1="9" x2="0.5" y2="8.4334" width="0.3" layer="16"/>
 <via x="0.4282" y="9.5076" extent="1-16" drill="0.2"/>
 <wire x1="0.4282" y1="9.5076" x2="0.4358" y2="9.5" width="0.2" layer="1"/>
 <wire x1="0.4358" y1="9.5" x2="0.8" y2="9.5" width="0.2" layer="1"/>
-<contactref element="C10" pad="1"/>
-<contactref element="C19" pad="1"/>
+<contactref element="C13" pad="1"/>
+<contactref element="C20" pad="1"/>
 <wire x1="0.3566625" y1="9.279634375" x2="0.1" y2="9" width="0.3" layer="16"/>
 <wire x1="0.4282" y1="9.882609375" x2="0.4282" y2="9.5076" width="0.2" layer="16"/>
 <wire x1="0.532796875" y1="9.98720625" x2="0.4282" y2="9.882609375" width="0.2" layer="16"/>
@@ -3401,7 +3361,7 @@ einem neuen Namen ab.</description>
 <wire x1="0.4282" y1="9.351171875" x2="0.3566625" y2="9.279634375" width="0.2" layer="16"/>
 </signal>
 <signal name="CAL_1.3KHZ">
-<contactref element="R20" pad="1"/>
+<contactref element="R22" pad="1"/>
 <via x="-5.55" y="1.15" extent="1-16" drill="0.2"/>
 <wire x1="-5.55" y1="1.15" x2="-4.2" y2="2.6" width="0.09" layer="3"/>
 <via x="4.1" y="7.12" extent="1-16" drill="0.2"/>
@@ -3533,28 +3493,28 @@ einem neuen Namen ab.</description>
 </polygon>
 </signal>
 <signal name="N$67">
-<contactref element="U17" pad="9"/>
-<contactref element="C27" pad="2"/>
+<contactref element="U6" pad="9"/>
+<contactref element="C29" pad="2"/>
 <wire x1="-4.86" y1="2.25" x2="-4.91" y2="2.3" width="0.09" layer="16"/>
 <wire x1="-4.91" y1="2.3" x2="-5.5" y2="2.3" width="0.09" layer="16"/>
 </signal>
 <signal name="!IMU_RESET">
-<contactref element="R57" pad="1"/>
-<contactref element="U17" pad="11"/>
+<contactref element="R15" pad="1"/>
+<contactref element="U6" pad="11"/>
 <wire x1="-5.51" y1="3.96" x2="-5.51" y2="3.8481375" width="0.09" layer="16"/>
 <wire x1="-4.9118625" y1="3.25" x2="-4.86" y2="3.25" width="0.09" layer="16"/>
 <wire x1="-5.51" y1="3.8481375" x2="-4.9118625" y2="3.25" width="0.09" layer="16"/>
 </signal>
 <signal name="!IMU_BL">
-<contactref element="U17" pad="4"/>
-<contactref element="R55" pad="2"/>
+<contactref element="U6" pad="4"/>
+<contactref element="R16" pad="2"/>
 <wire x1="-3.55" y1="0.7" x2="-3.55" y2="0.05" width="0.2" layer="16"/>
 <wire x1="-3.55" y1="0.05" x2="-3.5" y2="0" width="0.2" layer="16"/>
 </signal>
 <signal name="N$17">
-<contactref element="U17" pad="26"/>
-<contactref element="Y2" pad="P$2"/>
-<contactref element="C36" pad="1"/>
+<contactref element="U6" pad="26"/>
+<contactref element="Y1" pad="P$2"/>
+<contactref element="C48" pad="1"/>
 <wire x1="-0.79020625" y1="2.4628" x2="-0.6497" y2="2.4628" width="0.09" layer="16"/>
 <wire x1="-0.6497" y1="2.4628" x2="-0.5" y2="2.6125" width="0.09" layer="16"/>
 <wire x1="-1.74" y1="2.25" x2="-1.00300625" y2="2.25" width="0.09" layer="16"/>
@@ -3563,23 +3523,23 @@ einem neuen Namen ab.</description>
 <wire x1="0.5691" y1="2.6125" x2="0.75" y2="2.7934" width="0.09" layer="16"/>
 </signal>
 <signal name="N$21">
-<contactref element="U17" pad="27"/>
-<contactref element="Y2" pad="P$1"/>
-<contactref element="C29" pad="1"/>
+<contactref element="U6" pad="27"/>
+<contactref element="Y1" pad="P$1"/>
+<contactref element="C42" pad="1"/>
 <wire x1="-0.5" y1="1.7875" x2="-1.7025" y2="1.7875" width="0.09" layer="16"/>
 <wire x1="-1.7025" y1="1.7875" x2="-1.74" y2="1.75" width="0.09" layer="16"/>
 <wire x1="-0.1034" y1="0.75" x2="-0.1034" y2="1.3909" width="0.09" layer="16"/>
 <wire x1="-0.1034" y1="1.3909" x2="-0.5" y2="1.7875" width="0.09" layer="16"/>
 </signal>
 <signal name="N$1">
-<contactref element="U4" pad="3"/>
-<contactref element="R10" pad="1"/>
+<contactref element="U8" pad="3"/>
+<contactref element="R21" pad="1"/>
 <wire x1="2.61" y1="-0.31" x2="2.61" y2="0.95" width="0.09" layer="16"/>
 <wire x1="2.61" y1="0.95" x2="2" y2="0.95" width="0.09" layer="16"/>
 </signal>
 <signal name="N$3">
-<contactref element="R10" pad="2"/>
-<contactref element="C52" pad="2"/>
+<contactref element="R21" pad="2"/>
+<contactref element="C51" pad="2"/>
 <contactref element="J3" pad="35"/>
 <wire x1="3.21" y1="-0.31" x2="3.61" y2="-0.3" width="0.09" layer="16"/>
 <wire x1="3.61" y1="-0.3" x2="4.01" y2="-0.3" width="0.09" layer="16"/>
