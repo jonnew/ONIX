@@ -1,0 +1,471 @@
+*****************************************************************
+* OSRAM OS                                                      *
+* PSPICE Library for IR-LEDs                                    *
+* Version 11/2018 / as                                          *
+*****************************************************************
+* internet          :  www.osram-os.com                         *
+*****************************************************************
+*                                                               *
+* Models provided by OSRAM are not warranted by OSRAM as        *
+* fully representing all the specifications and operating       *
+* characteristics of the semiconductor product to which the     *
+* model relates. The models describe the characteristics of     *
+* typical devices.                                              *
+* In all cases, the current data sheet information for a given  *
+* device is the final design guideline and the only actual      *
+* performance specification.                                    *
+* Although models can be a useful tool in evaluating device     *
+* performance, they cannot model exact device performance under *
+* all conditions, nor are they intended to replace bread-       *
+* boarding for final verification. OSRAM therefore does not     *
+* assume any liability arising from their use.                  *
+* OSRAM reserves the right to change models without prior       *
+* notice.                                                       *
+*                                                               *
+*****************************************************************
+*                                                               *
+* This library contains models of the following OSRAM           *
+*  OSLON   /   OSLON Compact                                    *
+*   SFH4703AS	SFH4710		SFH4713A	SFH4714A	*
+*   SFH4715	SFH4715A	SFH4715AS	SFH4715S	*
+*   SFH4716A	SFH4716AS	SFH4716S	SFH4725AS	*
+*   SFH4725S	SFH4725AS_A01	SFH4726S	SFH4726AS_A01	*
+*   SFH4727AS_A01						*
+*****************************************************************
+* Please read before using the OSRAM PSpice libraries!          *
+* - The typ. IR LED characteristic varies slightly in reality   *
+* - The PSPICe model only simulates electrical behaviour,       *
+*     but no optical / light behaviour                          *
+* - The models only work at a ambient temperature of 25°C       *
+* - The provided PSpice parameters are calculated values,       *
+*     they might not be identical with the real physical values *
+* - Some of the models only contain information about forward   *
+*     bias direction and no other information - please check    *
+*****************************************************************
+
+.subckt SFH_4703AS Ano Cath
+L1 Ano 2 1.1n
+L2 2 3 1.2n
+L3 2 4 0.5n
+C1 2 Cath 0.5p
+D_LED 3 Cath F3571W
+D_ESD Cath 4 esd_50v
+.model F3571W D(
++	IS = 	3.94E-20
++	N = 	2.619703771
++	RS = 	0.356385267
++	IKF = 	0.043791544
++	IBV = 	1.00E-08
++	NBV =	180
++	IBVL =	1.00E-07
++	NBVL =	10
++	BV =	28
++	CJO =	1.24E-10
++	TT =	2.00E-08
++	EG =	1.53
+)
+
+.model esd_50v D(IS=3.2e-15 N=1.04 RS=1 IKF=14e-3 BV=50 IBV=1e-9 NBV=8
++ IBVL=1e-10 NBVL=1000 CJO=7.71p M=0.23 VJ=0.4 TT=500e-9 FC=0.4)
+.ends
+
+.subckt SFH_4710 Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3573C
+.model F3573C D(
++	IS = 	8.76E-19
++	N = 	1.333940636
++	RS = 	0.304014758
++	IKF = 	813.4956119
++	IBV = 	2.00E-09
++	NBV =	80
++	IBVL =	1.00E-07
++	NBVL =	5
++	BV =	14
++	CJO =	2.25E-10
++	TT =	2.00E-08
++	EG =	1.46
+)
+.ends
+
+.subckt SFH_4713A Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3573C
+.model F3573C D(
++	IS = 	8.76E-19
++	N = 	1.333940636
++	RS = 	0.304014758
++	IKF = 	813.4956119
++	IBV = 	2.00E-09
++	NBV =	80
++	IBVL =	1.00E-07
++	NBVL =	5
++	BV =	14
++	CJO =	2.25E-10
++	TT =	2.00E-08
++	EG =	1.46
+)
+.ends
+
+.subckt SFH_4714A Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3573C
+.model F3573C D(
++	IS = 	8.76E-19
++	N = 	1.333940636
++	RS = 	0.304014758
++	IKF = 	813.4956119
++	IBV = 	2.00E-09
++	NBV =	80
++	IBVL =	1.00E-07
++	NBVL =	5
++	BV =	14
++	CJO =	2.25E-10
++	TT =	2.00E-08
++	EG =	1.46
+)
+.ends
+
+.subckt SFH_4715 Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3483
+D_ESD Cath 4 esd_5v
+.model F3483 D(IS=	2.50392E-19
++	N=	1.270815378
++	RS=	0.093150061
++	IKF=	715.8820544
++	IBV = 	0.0000001
++	NBV =	2
++	IBVL =	0.00000001
++	NBVL =	150
++	BV =	14
++	CJO =	4.51E-10
++	VJ =	0.18
++	M =	0.06
++	FC =	-0.4
++	TT =	0.000000035
++	EG =	1.46)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4715A Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3583C
+.model F3583C D(
++	IS = 	1.66E-19
++	N = 	1.263312037
++	RS = 	0.231945063
++	IKF = 	516.3736594
++	IBV = 	5.00E-08
++	NBV =	40
++	IBVL =	1.00E-07
++	NBVL =	3
++	BV =	7
++	CJO =	4.18E-10
++	TT =	3.50E-08
++	EG =	1.46
+)
+.ends
+
+.subckt SFH_4715AS Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3583W
+D_ESD Cath 4 esd_5v
+.model F3583W D(
++	IS = 	5.34E-16
++	N = 	3.186659616
++	RS = 	0.272510378
++	IKF = 	506.7107657
++	IBV = 	5.00E-10
++	NBV =	70
++	IBVL =	1.00E-08
++	NBVL =	1
++	BV =	6
++	CJO =	2.95E-10
++	TT =	3.50E-08
++	EG =	1.46
+)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4715S Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3483s
+D_ESD Cath 4 esd_5v
+.model F3483s D(IS=	4.23705E-19
++	N=	2.569754409
++	RS=	0.125346406
++	IKF=	43.4819778
++	IBV = 	0.00000005
++	NBV =	4
++	IBVL =	0.000000005
++	NBVL =	150
++	BV =	30
++	CJO =	2.19E-10
++	VJ =	5.8
++	M =	0.2
++	FC =	0.6
++	TT =	0.000000035
++	EG =	1.46)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4716A Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3583C
+.model F3583C D(
++	IS = 	1.66E-19
++	N = 	1.263312037
++	RS = 	0.231945063
++	IKF = 	516.3736594
++	IBV = 	5.00E-08
++	NBV =	40
++	IBVL =	1.00E-07
++	NBVL =	3
++	BV =	7
++	CJO =	4.18E-10
++	TT =	3.50E-08
++	EG =	1.46
+)
+.ends
+
+.subckt SFH_4716AS Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3583W
+D_ESD Cath 4 esd_5v
+.model F3583W D(
++	IS = 	5.34E-16
++	N = 	3.186659616
++	RS = 	0.272510378
++	IKF = 	506.7107657
++	IBV = 	5.00E-10
++	NBV =	70
++	IBVL =	1.00E-08
++	NBVL =	1
++	BV =	6
++	CJO =	2.95E-10
++	TT =	3.50E-08
++	EG =	1.46
+)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4716S Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3483U
+D_ESD Cath 4 esd_5v
+.model F3483U D(
++	IS = 	4.23705E-19
++	N = 	2.569754409
++	RS = 	0.125346406
++	IKF = 	43.4819778
++	IBV = 	5.00E-08
++	NBV =	4
++	IBVL =	5.00E-09
++	NBVL =	150
++	BV =	30
++	CJO =	2.19E-10
++	VJ =	5.8
++	M =	0.2
++	FC =	0.6
++	TT =	3.50E-08
++	EG =	1.46
+)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4725AS Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3487as
+D_ESD Cath 4 esd_5v
+.model F3487as D(IS=	1.24E-14
++	N=	3.15E+00
++	RS=	1.36E-01
++	IKF=	2.03E+02
++	IBV = 	1.00E-06
++	NBV =	2.50E+01
++	IBVL =	2.00E-07
++	NBVL =	2.50E+02
++	BV =	5.20E+01
++	CJO =	9.83E-11
++	VJ =	7.00E+00
++	M =	2.00E-01
++	FC =	4.00E-01
++	TT =	4.00E-08
++	EG =	1.30E+00)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4725S Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3487U
+D_ESD Cath 4 esd_5v
+.model F3487U D(
++	IS = 	1.23649E-14
++	N = 	3.152528546
++	RS = 	0.135915872
++	IKF = 	202.8300333
++	IBV = 	0.000001
++	NBV =	25
++	IBVL =	2.00E-07
++	NBVL =	250
++	BV =	52
++	CJO =	9.83E-11
++	VJ =	7
++	M =	0.2
++	FC =	0.4
++	TT =	4.00E-08
++	EG =	1.3
+)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4725AS_A01 Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath 4725AS_A01
+D_ESD Cath 4 esd_5v
+.model 4725AS_A01 D(
++	IS = 	1.23649E-14
++	N = 	 3.081577206716
++	RS = 	0.1035825792256
++	IKF = 	202.8300333
++	IBV = 	0.000001
++	NBV =	25
++	IBVL =	2.00E-07
++	NBVL =	250
++	BV =	52
++	CJO =	9.83E-11
++	VJ =	7
++	M =	0.2
++	FC =	0.4
++	TT =	4.00E-08
++	EG =	1.3
+)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4726S Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath F3487U
+D_ESD Cath 4 esd_5v
+.model F3487U D(
++	IS = 	1.23649E-14
++	N = 	3.152528546
++	RS = 	0.135915872
++	IKF = 	202.8300333
++	IBV = 	0.000001
++	NBV =	25
++	IBVL =	2.00E-07
++	NBVL =	250
++	BV =	52
++	CJO =	9.83E-11
++	VJ =	7
++	M =	0.2
++	FC =	0.4
++	TT =	4.00E-08
++	EG =	1.3
+)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4726AS_A01 Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath 4726AS_A01
+D_ESD Cath 4 esd_5v
+.model 4726AS_A01 D(
++	IS = 	1.23649E-14
++	N = 	 3.081577206716
++	RS = 	0.1035825792256
++	IKF = 	202.8300333
++	IBV = 	0.000001
++	NBV =	25
++	IBVL =	2.00E-07
++	NBVL =	250
++	BV =	52
++	CJO =	9.83E-11
++	VJ =	7
++	M =	0.2
++	FC =	0.4
++	TT =	4.00E-08
++	EG =	1.3
+)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends
+
+.subckt SFH_4727AS_A01 Ano Cath
+L1 Ano 2 0.1n
+L2 2 3 0.3n
+L3 2 4 0.3n
+C1 2 Cath 1p
+D_LED 3 Cath 4727AS_A01
+D_ESD Cath 4 esd_5v
+.model 4727AS_A01 D(
++	IS = 	1.23649E-14
++	N = 	 3.081577206716
++	RS = 	0.1035825792256
++	IKF = 	202.8300333
++	IBV = 	0.000001
++	NBV =	25
++	IBVL =	2.00E-07
++	NBVL =	250
++	BV =	52
++	CJO =	9.83E-11
++	VJ =	7
++	M =	0.2
++	FC =	0.4
++	TT =	4.00E-08
++	EG =	1.3
+)
+.model esd_5v D(IS=2.9e-15 N=1.1 RS=10 IKF=3e-3 BV=5.5 IBVL=1e-6 NBVL=15
++ CJO=61.5p M=0.3 VJ=0.57 TT=100e-9 FC=0.3)
+.ends

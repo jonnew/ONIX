@@ -1,7 +1,7 @@
 # Lighthouse Synchronization Booster
 This board is a modification for [HTC Vive Base
 Stations](https://www.vive.com/us/accessory/base-station/) ("lighthouses") that
-increases their range tracking range.
+increases their tracking range.
 
 ## Principle of Operation
 HTC base stations work by producing alternating global synchronization flashes
@@ -18,11 +18,14 @@ so they are easily received by the headstage at large distances without
 modification.
 
 This board is a drop in replacement for the standard LED array inside the HTC
-Vive base station. It replaces the standard 15-LED array with an array of 120
+Vive base station. It replaces the standard 9-LED array with an array of 120
 LEDs.  Each set of 15 is controlled by a fast, low-side transistor switch. The
 board draws about 700 mA DC at 12V. The pulse current (~60 us long, 2
 MHz-modulated pulses operating at ~1% duty-cycle) is approximately 200A, with
-5A for each LED.
+5A for each LED. During a pulse, the LED array is decoupled from the input power
+using a high-side load-switch. This means that all pulse energy is taken from local
+capacitance such that the rails the driving motors inside the base station
+are not transiently loaded.
 
 ## Power, Thermals, and Effective Tracking Distances
 TODO
