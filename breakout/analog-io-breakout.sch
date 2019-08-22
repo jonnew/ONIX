@@ -8903,6 +8903,75 @@ Op. Temp:</text>
 </deviceset>
 </devicesets>
 </library>
+<library name="con-molex" urn="urn:adsk.eagle:library:165">
+<description>&lt;b&gt;Molex Connectors&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="22-23-2021" urn="urn:adsk.eagle:footprint:8078259/1" library_version="3">
+<description>&lt;b&gt;KK® 254 Solid Header, Vertical, with Friction Lock, 2 Circuits, Tin (Sn) Plating&lt;/b&gt;&lt;p&gt;&lt;a href =http://www.molex.com/pdm_docs/sd/022232021_sd.pdf&gt;Datasheet &lt;/a&gt;</description>
+<wire x1="-2.54" y1="3.175" x2="2.54" y2="3.175" width="0.254" layer="21"/>
+<wire x1="2.54" y1="3.175" x2="2.54" y2="1.27" width="0.254" layer="21"/>
+<wire x1="2.54" y1="1.27" x2="2.54" y2="-3.175" width="0.254" layer="21"/>
+<wire x1="2.54" y1="-3.175" x2="-2.54" y2="-3.175" width="0.254" layer="21"/>
+<wire x1="-2.54" y1="-3.175" x2="-2.54" y2="1.27" width="0.254" layer="21"/>
+<wire x1="-2.54" y1="1.27" x2="-2.54" y2="3.175" width="0.254" layer="21"/>
+<wire x1="-2.54" y1="1.27" x2="2.54" y2="1.27" width="0.254" layer="21"/>
+<pad name="1" x="-1.27" y="0" drill="1" shape="long" rot="R90"/>
+<pad name="2" x="1.27" y="0" drill="1" shape="long" rot="R90"/>
+<text x="-2.54" y="3.81" size="1.016" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.54" y="-5.08" size="1.016" layer="27" ratio="10">&gt;VALUE</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="22-23-2021" urn="urn:adsk.eagle:package:8078633/1" type="box" library_version="3">
+<description>&lt;b&gt;KK® 254 Solid Header, Vertical, with Friction Lock, 2 Circuits, Tin (Sn) Plating&lt;/b&gt;&lt;p&gt;&lt;a href =http://www.molex.com/pdm_docs/sd/022232021_sd.pdf&gt;Datasheet &lt;/a&gt;</description>
+<packageinstances>
+<packageinstance name="22-23-2021"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="MV" urn="urn:adsk.eagle:symbol:8078125/1" library_version="3">
+<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
+<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
+<text x="-0.762" y="1.397" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+</symbol>
+<symbol name="M" urn="urn:adsk.eagle:symbol:8078124/1" library_version="3">
+<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
+<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
+<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="22-23-2021" urn="urn:adsk.eagle:component:8078938/1" prefix="X" library_version="3">
+<description>.100" (2.54mm) Center Header - 2 Pin</description>
+<gates>
+<gate name="-1" symbol="MV" x="0" y="0" addlevel="always" swaplevel="1"/>
+<gate name="-2" symbol="M" x="0" y="-2.54" addlevel="always" swaplevel="1"/>
+</gates>
+<devices>
+<device name="" package="22-23-2021">
+<connects>
+<connect gate="-1" pin="S" pad="1"/>
+<connect gate="-2" pin="S" pad="2"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:8078633/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="MOLEX" constant="no"/>
+<attribute name="MPN" value="22-23-2021" constant="no"/>
+<attribute name="OC_FARNELL" value="1462926" constant="no"/>
+<attribute name="OC_NEWARK" value="25C3832" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="DESIGNER" value="JAKOB VOIGTS &amp; JON NEWMAN"/>
@@ -9175,6 +9244,7 @@ Op. Temp:</text>
 <part name="R21" library="jonnew" deviceset="R" device="_0402" value="1k"/>
 <part name="SUPPLY50" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY68" library="jonnew" deviceset="GND" device=""/>
+<part name="X1" library="con-molex" library_urn="urn:adsk.eagle:library:165" deviceset="22-23-2021" device="" package3d_urn="urn:adsk.eagle:package:8078633/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -9256,6 +9326,7 @@ LEFT/2 + RIGHT/2 = 1.011M (222.2*VDD-100)</text>
 low Z at low F). Try to block everything
 &gt;1MHz or so.</text>
 <text x="88.9" y="-134.62" size="1.778" layer="97">Gain=9dB</text>
+<text x="33.02" y="-83.82" size="8.89" layer="97">Amplified audio out</text>
 </plain>
 <instances>
 <instance part="BNC-IN0" gate="G$1" x="241.3" y="185.42" smashed="yes">
@@ -10047,6 +10118,13 @@ low Z at low F). Try to block everything
 </instance>
 <instance part="SUPPLY68" gate="PE" x="83.82" y="195.58" smashed="yes">
 <attribute name="VALUE" x="79.375" y="190.881" size="1.778" layer="96"/>
+</instance>
+<instance part="X1" gate="-1" x="134.62" y="-137.16" smashed="yes">
+<attribute name="NAME" x="137.16" y="-137.922" size="1.524" layer="95"/>
+<attribute name="VALUE" x="133.858" y="-135.763" size="1.778" layer="96"/>
+</instance>
+<instance part="X1" gate="-2" x="134.62" y="-139.7" smashed="yes">
+<attribute name="NAME" x="137.16" y="-140.462" size="1.524" layer="95"/>
 </instance>
 </instances>
 <busses>
@@ -12122,7 +12200,11 @@ low Z at low F). Try to block everything
 <label x="116.84" y="-124.46" size="1.778" layer="95"/>
 <wire x1="121.92" y1="-124.46" x2="121.92" y2="-127" width="0.1524" layer="91"/>
 <pinref part="AUDIO_OUT_TEENSY" gate="G$1" pin="5"/>
-<wire x1="137.16" y1="-127" x2="121.92" y2="-127" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="-127" x2="132.08" y2="-127" width="0.1524" layer="91"/>
+<pinref part="X1" gate="-1" pin="S"/>
+<wire x1="132.08" y1="-127" x2="121.92" y2="-127" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="-137.16" x2="132.08" y2="-127" width="0.1524" layer="91"/>
+<junction x="132.08" y="-127"/>
 </segment>
 </net>
 <net name="VO+" class="0">
@@ -12140,7 +12222,12 @@ low Z at low F). Try to block everything
 <wire x1="137.16" y1="-121.92" x2="137.16" y2="-119.38" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="-119.38" x2="137.16" y2="-114.3" width="0.1524" layer="91"/>
 <junction x="137.16" y="-119.38"/>
-<wire x1="121.92" y1="-114.3" x2="137.16" y2="-114.3" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="-114.3" x2="127" y2="-114.3" width="0.1524" layer="91"/>
+<wire x1="127" y1="-114.3" x2="137.16" y2="-114.3" width="0.1524" layer="91"/>
+<wire x1="127" y1="-114.3" x2="127" y2="-139.7" width="0.1524" layer="91"/>
+<junction x="127" y="-114.3"/>
+<pinref part="X1" gate="-2" pin="S"/>
+<wire x1="127" y1="-139.7" x2="132.08" y2="-139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="BCLK" class="0">
