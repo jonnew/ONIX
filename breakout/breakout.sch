@@ -6856,10 +6856,10 @@ Op. Temp:</text>
 <part name="L2" library="jonnew" deviceset="L" device="_2020" value="NFZ5BBW520LN10L"/>
 <part name="P+5" library="jonnew" deviceset="+5V" device=""/>
 <part name="P+6" library="jonnew" deviceset="+5V" device=""/>
-<part name="S2" library="jonnew" deviceset="SPDT" device="_CK-710"/>
-<part name="S3" library="jonnew" deviceset="SPDT" device="_CK-710"/>
-<part name="S4" library="jonnew" deviceset="SPDT" device="_CK-710"/>
-<part name="S1" library="jonnew" deviceset="SPDT" device="_CK-710"/>
+<part name="S2" library="jonnew" deviceset="SPDT" device="_CK-710" value="7101J1V3BE2"/>
+<part name="S3" library="jonnew" deviceset="SPDT" device="_CK-710" value="7101J1V3BE2"/>
+<part name="S4" library="jonnew" deviceset="SPDT" device="_CK-710" value="7101J1V3BE2"/>
+<part name="S1" library="jonnew" deviceset="SPDT" device="_CK-710" value="7101J1V3BE2"/>
 <part name="P13" library="jonnew" deviceset="+3V3" device=""/>
 <part name="P14" library="jonnew" deviceset="+3V3" device=""/>
 <part name="P15" library="jonnew" deviceset="+3V3" device=""/>
@@ -7227,10 +7227,22 @@ low Z at low F). Try to block everything
 <instance part="L2" gate="L" x="101.6" y="104.14" rot="R270"/>
 <instance part="P+5" gate="1" x="462.28" y="157.48"/>
 <instance part="P+6" gate="1" x="50.8" y="375.92"/>
-<instance part="S2" gate="G$1" x="172.72" y="530.86" rot="R180"/>
-<instance part="S3" gate="G$1" x="314.96" y="530.86" rot="R180"/>
-<instance part="S4" gate="G$1" x="449.58" y="530.86" rot="R180"/>
-<instance part="S1" gate="G$1" x="43.18" y="530.86" rot="R180"/>
+<instance part="S2" gate="G$1" x="172.72" y="530.86" smashed="yes" rot="R180">
+<attribute name="NAME" x="172.72" y="537.21" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="180.34" y="539.75" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="S3" gate="G$1" x="314.96" y="530.86" smashed="yes" rot="R180">
+<attribute name="NAME" x="314.96" y="537.21" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="322.58" y="539.75" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="S4" gate="G$1" x="449.58" y="530.86" smashed="yes" rot="R180">
+<attribute name="NAME" x="449.58" y="537.21" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="457.2" y="539.75" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="S1" gate="G$1" x="43.18" y="530.86" smashed="yes" rot="R180">
+<attribute name="NAME" x="43.18" y="537.21" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="50.8" y="539.75" size="1.778" layer="96" rot="R180"/>
+</instance>
 <instance part="P13" gate="PWR1" x="205.74" y="406.4" rot="MR0"/>
 <instance part="P14" gate="PWR1" x="213.36" y="406.4" rot="MR0"/>
 <instance part="P15" gate="PWR1" x="220.98" y="406.4" rot="MR0"/>
@@ -7323,15 +7335,24 @@ low Z at low F). Try to block everything
 <instance part="P21" gate="PWR1" x="520.7" y="312.42" rot="MR0"/>
 <instance part="C33" gate="C" x="520.7" y="289.56" rot="MR180"/>
 <instance part="SUPPLY55" gate="PE" x="520.7" y="271.78"/>
-<instance part="U15" gate="G$1" x="398.78" y="289.56"/>
-<instance part="U17" gate="G$1" x="447.04" y="289.56"/>
+<instance part="U15" gate="G$1" x="398.78" y="289.56" smashed="yes">
+<attribute name="NAME" x="392.43" y="308.8386" size="1.778" layer="95"/>
+<attribute name="VALUE" x="387.35" y="306.578" size="1.778" layer="96"/>
+</instance>
+<instance part="U17" gate="G$1" x="447.04" y="289.56" smashed="yes">
+<attribute name="NAME" x="440.69" y="308.8386" size="1.778" layer="95"/>
+<attribute name="VALUE" x="435.61" y="306.578" size="1.778" layer="96"/>
+</instance>
 <instance part="C34" gate="C" x="370.84" y="292.1" rot="MR180"/>
 <instance part="C35" gate="C" x="419.1" y="292.1" rot="MR180"/>
 <instance part="P22" gate="PWR1" x="419.1" y="312.42" rot="MR0"/>
 <instance part="SUPPLY56" gate="PE" x="419.1" y="269.24"/>
 <instance part="P23" gate="PWR1" x="370.84" y="312.42" rot="MR0"/>
 <instance part="SUPPLY57" gate="PE" x="370.84" y="269.24"/>
-<instance part="U18" gate="G$1" x="495.3" y="289.56"/>
+<instance part="U18" gate="G$1" x="495.3" y="289.56" smashed="yes">
+<attribute name="NAME" x="488.95" y="308.8386" size="1.778" layer="95"/>
+<attribute name="VALUE" x="483.87" y="306.578" size="1.778" layer="96"/>
+</instance>
 <instance part="C36" gate="C" x="467.36" y="292.1" rot="MR180"/>
 <instance part="P24" gate="PWR1" x="467.36" y="312.42" rot="MR0"/>
 <instance part="SUPPLY70" gate="PE" x="467.36" y="269.24"/>
