@@ -6,7 +6,7 @@ channels. Designed to interface with [eib-128](../eib-128/README.md) or
 ![headstage-256](./img/headstage-256.png)
 
 ## Schematic 
-![headstage-64](./img/headstage-256_schematic.png)
+![headstage-256 Schematic](./img/headstage-256_schematic.png)
 
 ## Gerber Files
 {% include gerber_layers.md %}

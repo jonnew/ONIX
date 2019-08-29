@@ -4,6 +4,9 @@ with [eib-64](../eib-64/README.md).
 
 ![headstage-64](./img/headstage-64.png)
 
+## Schematic
+![headstage-64 Schematic](./img/headstage-64_schematic.png)
+
 ## Gerber Files
 {% include gerber_layers.md %}
 
