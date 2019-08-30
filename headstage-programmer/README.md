@@ -5,6 +5,9 @@ FPGA.
 
 ![headstage-programmer](./img/headstage-programmer.png)
 
+## Schematic
+![headstage-programmer Schematic](./img/headstage-programmer_schematic.png)
+
 ## Purpose
 The dense layout required by the headstages in this repository makes exposing a
 FPGA programming interface challenging. We have chosen to expose a JTAG
