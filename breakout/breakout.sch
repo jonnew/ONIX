@@ -3319,6 +3319,31 @@ grid 2.54 mm</description>
 <text x="-5.9" y="-13" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-5.9" y="-15.1" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
+<package name="SCREW8-2">
+<wire x1="-1.905" y1="8.175" x2="-1.905" y2="-3.175" width="0.127" layer="21"/>
+<wire x1="-1.905" y1="-3.175" x2="19.685" y2="-3.175" width="0.127" layer="21"/>
+<wire x1="19.685" y1="-3.175" x2="19.685" y2="8.175" width="0.127" layer="21"/>
+<wire x1="19.685" y1="8.175" x2="-1.905" y2="8.175" width="0.127" layer="21"/>
+<pad name="2" x="2.54" y="0" drill="1.1" shape="octagon"/>
+<pad name="1" x="0" y="0" drill="1.1" shape="square"/>
+<pad name="3" x="5.08" y="0" drill="1.1" shape="octagon"/>
+<pad name="4" x="7.62" y="0" drill="1.1" shape="octagon"/>
+<pad name="5" x="10.16" y="0" drill="1.1" shape="octagon"/>
+<text x="-1.27" y="9.81" size="1.27" layer="25" font="vector" ratio="18" align="center-left">&gt;NAME</text>
+<rectangle x1="-1.905" y1="-3.102" x2="19.685" y2="8.2" layer="39"/>
+<pad name="6" x="12.7" y="0" drill="1.1" shape="octagon"/>
+<pad name="7" x="15.24" y="0" drill="1.1" shape="octagon"/>
+<pad name="8" x="17.78" y="0" drill="1.1" shape="octagon"/>
+<text x="-1.27" y="-5.08" size="1.27" layer="27" font="vector" ratio="18" align="center-left">&gt;VALUE</text>
+<pad name="9" x="0" y="5.08" drill="1.1" shape="octagon"/>
+<pad name="10" x="2.54" y="5.08" drill="1.1" shape="octagon"/>
+<pad name="11" x="5.08" y="5.08" drill="1.1" shape="octagon"/>
+<pad name="12" x="7.62" y="5.08" drill="1.1" shape="octagon"/>
+<pad name="13" x="10.16" y="5.08" drill="1.1" shape="octagon"/>
+<pad name="14" x="12.7" y="5.08" drill="1.1" shape="octagon"/>
+<pad name="15" x="15.24" y="5.08" drill="1.1" shape="octagon"/>
+<pad name="16" x="17.78" y="5.08" drill="1.1" shape="octagon"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PINHD1X26">
@@ -4058,6 +4083,14 @@ grid 2.54 mm</description>
 <pin name="VIN" x="22.86" y="27.94" visible="pin" length="middle" direction="pwr" rot="R180"/>
 <pin name="ON/OFF" x="22.86" y="10.16" visible="pin" length="middle" rot="R180"/>
 </symbol>
+<symbol name="TEENSY-14-PIN-HEADER">
+<wire x1="0" y1="0" x2="0" y2="5.08" width="0.254" layer="94"/>
+<wire x1="0" y1="5.08" x2="7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="7.62" y2="0" width="0.254" layer="94"/>
+<wire x1="7.62" y1="0" x2="0" y2="0" width="0.254" layer="94"/>
+<text x="1.905" y="1.905" size="1.27" layer="94">14-Pin</text>
+<text x="-2.54" y="5.08" size="1.27" layer="96" rot="R270">&gt;VALUE</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="PINHD-1X26" prefix="J" uservalue="yes">
@@ -4322,7 +4355,7 @@ grid 2.54 mm</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="SCREW8">
+<deviceset name="SCREW8" prefix="J" uservalue="yes">
 <description>&lt;b&gt;Screw Terminal&lt;\b&gt;</description>
 <gates>
 <gate name="G$1" symbol="SCREW8" x="0" y="0"/>
@@ -4338,6 +4371,21 @@ grid 2.54 mm</description>
 <connect gate="G$1" pin="6" pad="6"/>
 <connect gate="G$1" pin="7" pad="7"/>
 <connect gate="G$1" pin="8" pad="8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_2" package="SCREW8-2">
+<connects>
+<connect gate="G$1" pin="1" pad="1 9"/>
+<connect gate="G$1" pin="2" pad="2 10"/>
+<connect gate="G$1" pin="3" pad="3 11"/>
+<connect gate="G$1" pin="4" pad="4 12"/>
+<connect gate="G$1" pin="5" pad="5 13"/>
+<connect gate="G$1" pin="6" pad="6 14"/>
+<connect gate="G$1" pin="7" pad="7 15"/>
+<connect gate="G$1" pin="8" pad="8 16"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -6188,6 +6236,18 @@ grid 2.54 mm</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="TEENSY-14-PIN-HEADER" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="TEENSY-14-PIN-HEADER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="con-lsta" urn="urn:adsk.eagle:library:161">
@@ -6654,7 +6714,7 @@ Op. Temp:</text>
 <attribute name="DESIGNER" value="JAKOB VOIGTS &amp; JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="BREAKOUT BOARD"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -6671,7 +6731,7 @@ Op. Temp:</text>
 <parts>
 <part name="J15" library="jonnew" deviceset="COAX" device="_0731010360"/>
 <part name="J22" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
-<part name="J21" library="jonnew" deviceset="SCREW8" device="" value="1789472"/>
+<part name="J21" library="jonnew" deviceset="SCREW8" device="_2" value="1789472"/>
 <part name="J35" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE10-2" device="" package3d_urn="urn:adsk.eagle:package:8177/1"/>
 <part name="SUPPLY6" library="jonnew" deviceset="AGND" device=""/>
 <part name="SUPPLY7" library="jonnew" deviceset="AGND" device=""/>
@@ -6709,7 +6769,7 @@ Op. Temp:</text>
 <part name="J34" library="jonnew" deviceset="COAX" device="_0731010360"/>
 <part name="J41" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="SUPPLY23" library="jonnew" deviceset="AGND" device=""/>
-<part name="J28" library="jonnew" deviceset="SCREW8" device="" value="1789472"/>
+<part name="J28" library="jonnew" deviceset="SCREW8" device="_2" value="1789472"/>
 <part name="J2" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="J8" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
 <part name="J4" library="jonnew" deviceset="COAX" device="_SMA-VERT"/>
@@ -6972,6 +7032,8 @@ Op. Temp:</text>
 <part name="SUPPLY54" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY72" library="jonnew" deviceset="GND" device=""/>
 <part name="U5" library="jonnew" deviceset="TEENSY_4.0_BASIC" device=""/>
+<part name="J48" library="jonnew" deviceset="TEENSY-14-PIN-HEADER" device="" value="PPPC141LFBN-RC"/>
+<part name="J47" library="jonnew" deviceset="TEENSY-14-PIN-HEADER" device="" value="PPPC141LFBN-RC"/>
 </parts>
 <sheets>
 <sheet>
@@ -7365,6 +7427,8 @@ low Z at low F). Try to block everything
 <instance part="SUPPLY54" gate="PE" x="556.26" y="185.42"/>
 <instance part="SUPPLY72" gate="PE" x="576.58" y="185.42"/>
 <instance part="U5" gate="G$1" x="78.74" y="370.84" rot="R180"/>
+<instance part="J48" gate="G$1" x="35.56" y="403.86" rot="R270"/>
+<instance part="J47" gate="G$1" x="35.56" y="391.16" rot="R270"/>
 </instances>
 <busses>
 </busses>
