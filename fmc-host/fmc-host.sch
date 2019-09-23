@@ -3174,6 +3174,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="0.8" y1="0.4" x2="0.8" y2="-0.2" width="0.127" layer="21"/>
 <wire x1="-0.1" y1="-0.4" x2="0.1" y2="-0.4" width="0.127" layer="21"/>
 <rectangle x1="-0.8" y1="-0.4" x2="0.8" y2="0.4" layer="39"/>
+<text x="-1.1" y="1.3" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 </package>
 <package name="FMC_HPC_MALE">
 <pad name="GNDA" x="-31.496" y="-2.032" drill="2.6924"/>
@@ -4889,24 +4890,6 @@ ALLOWED HERE
 <text x="-2.286" y="2.794" size="1.016" layer="25" font="vector" ratio="18" rot="SR0">&gt;NAME</text>
 <text x="-2.794" y="-3.81" size="1.016" layer="27" font="vector" ratio="18" rot="SR0">&gt;VALUE</text>
 </package>
-<package name="VSSOP-N8-3X3">
-<smd name="2" x="-1.3" y="0.325" dx="0.45" dy="1.345" layer="1" rot="R90"/>
-<smd name="1" x="-1.3" y="0.975" dx="0.45" dy="1.345" layer="1" rot="R90"/>
-<smd name="3" x="-1.3" y="-0.325" dx="0.45" dy="1.345" layer="1" rot="R90"/>
-<smd name="4" x="-1.3" y="-0.975" dx="0.45" dy="1.345" layer="1" rot="R90"/>
-<smd name="5" x="1.3" y="-0.325" dx="0.45" dy="1.345" layer="1" rot="R270"/>
-<smd name="6" x="1.3" y="-0.975" dx="0.45" dy="1.345" layer="1" rot="R270"/>
-<smd name="7" x="1.3" y="0.325" dx="0.45" dy="1.345" layer="1" rot="R270"/>
-<smd name="8" x="1.3" y="0.975" dx="0.45" dy="1.345" layer="1" rot="R270"/>
-<rectangle x1="-1.5" y1="-1.5" x2="1.5" y2="1.5" layer="1"/>
-<wire x1="-1.5" y1="1.5" x2="-0.4" y2="1.5" width="0.127" layer="21"/>
-<wire x1="-0.4" y1="1.5" x2="0.4" y2="1.5" width="0.127" layer="21"/>
-<wire x1="0.4" y1="1.5" x2="1.5" y2="1.5" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="-1.5" x2="1.5" y2="-1.5" width="0.127" layer="21"/>
-<wire x1="-0.4" y1="1.5" x2="0.4" y2="1.5" width="0.127" layer="21" curve="180"/>
-<text x="-2.2" y="1.7" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
-<text x="-2.2" y="-2.7" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-</package>
 <package name="MSOP-8-PAD-3X3">
 <smd name="2" x="-2.1" y="0.325" dx="0.4" dy="1.6" layer="1" rot="R90"/>
 <smd name="1" x="-2.1" y="0.975" dx="0.4" dy="1.6" layer="1" rot="R90"/>
@@ -5864,6 +5847,77 @@ package type P</description>
 <wire x1="1.45" y1="-0.87" x2="1.415" y2="-0.92" width="0.09" layer="29"/>
 <wire x1="1.415" y1="-0.92" x2="1.37" y2="-0.93" width="0.09" layer="29"/>
 <wire x1="1.37" y1="-0.93" x2="1.345" y2="-0.93" width="0.09" layer="29"/>
+</package>
+<package name="CHS-02TB">
+<smd name="4" x="-0.635" y="3.81" dx="0.76" dy="1.27" layer="1"/>
+<smd name="3" x="0.635" y="3.81" dx="0.76" dy="1.27" layer="1"/>
+<smd name="1" x="-0.635" y="-3.81" dx="0.76" dy="1.27" layer="1"/>
+<smd name="2" x="0.635" y="-3.81" dx="0.76" dy="1.27" layer="1"/>
+<wire x1="2.1" y1="2.6" x2="-2.1" y2="2.6" width="0.127" layer="21"/>
+<wire x1="-2.1" y1="2.6" x2="-2.1" y2="-2.6" width="0.127" layer="21"/>
+<wire x1="-2.1" y1="-2.6" x2="2.1" y2="-2.6" width="0.127" layer="21"/>
+<wire x1="2.1" y1="-2.6" x2="2.1" y2="2.6" width="0.127" layer="21"/>
+<rectangle x1="-1.5" y1="-2" x2="-0.5" y2="0" layer="21"/>
+<rectangle x1="0.5" y1="-2" x2="1.5" y2="0" layer="21"/>
+<text x="-1" y="1" size="1.016" layer="21" font="vector" ratio="18">ON</text>
+<rectangle x1="-2" y1="-2.5" x2="2" y2="2.5" layer="39"/>
+<text x="-2.5" y="-2.5" size="1.016" layer="25" font="vector" ratio="18" rot="R90">&gt;NAME</text>
+</package>
+<package name="TP35SQ">
+<smd name="TP" x="0" y="0" dx="3.5" dy="3.5" layer="1" cream="no"/>
+<text x="-1.9" y="2.1" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+</package>
+<package name="DO-220AA">
+<smd name="C" x="-1.27" y="0.01" dx="2.54" dy="2.67" layer="1"/>
+<smd name="A" x="1.01" y="0" dx="1.27" dy="0.762" layer="1" rot="R90"/>
+<text x="-2.1668" y="1.6788" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.2238" y="-2.5048" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="SMA-DO214AC">
+<description>&lt;B&gt;DIODE&lt;/B&gt;</description>
+<wire x1="-3.4925" y1="1.5875" x2="2.2225" y2="1.5875" width="0.127" layer="21"/>
+<wire x1="0.3" y1="0" x2="-0.635" y2="0.7763" width="0.127" layer="21"/>
+<wire x1="-0.635" y1="0.7763" x2="-0.635" y2="-0.7763" width="0.127" layer="21"/>
+<wire x1="-0.635" y1="-0.7763" x2="0.3" y2="0" width="0.127" layer="21"/>
+<smd name="A" x="-2" y="0" dx="2.3" dy="2.5" layer="1"/>
+<smd name="C" x="2" y="0" dx="2.3" dy="2.5" layer="1"/>
+<wire x1="-3.4925" y1="1.5875" x2="-3.4925" y2="-1.5875" width="0.127" layer="21"/>
+<wire x1="-3.4925" y1="-1.5875" x2="3.4925" y2="-1.5875" width="0.127" layer="21"/>
+<wire x1="3.4925" y1="-1.5875" x2="3.4925" y2="1.5875" width="0.127" layer="21"/>
+<wire x1="3.4925" y1="1.5875" x2="1.905" y2="1.5875" width="0.127" layer="21"/>
+<rectangle x1="0.3175" y1="-1.5875" x2="0.635" y2="1.5875" layer="21"/>
+<text x="-3.4" y="1.9" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+</package>
+<package name="2020">
+<smd name="1" x="-1.825" y="0" dx="4.1" dy="1.85" layer="1" rot="R90"/>
+<smd name="2" x="1.825" y="0" dx="4.1" dy="1.85" layer="1" rot="R90"/>
+<wire x1="-2.5" y1="2.3" x2="-2.5" y2="2.5" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="2.5" x2="2.5" y2="2.5" width="0.127" layer="21"/>
+<wire x1="2.5" y1="2.5" x2="2.5" y2="2.3" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="-2.3" x2="-2.5" y2="-2.5" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="-2.5" x2="2.5" y2="-2.5" width="0.127" layer="21"/>
+<wire x1="2.5" y1="-2.5" x2="2.5" y2="-2.3" width="0.127" layer="21"/>
+<rectangle x1="-2.5" y1="-2.5" x2="2.5" y2="2.5" layer="39"/>
+<text x="-2.6" y="2.8" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.5" y="-3.7" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="VSSOP-N8-3X3">
+<smd name="2" x="-1.7" y="0.325" dx="0.4" dy="1.6" layer="1" rot="R90"/>
+<smd name="1" x="-1.7" y="0.975" dx="0.4" dy="1.6" layer="1" rot="R90"/>
+<smd name="3" x="-1.7" y="-0.325" dx="0.4" dy="1.6" layer="1" rot="R90"/>
+<smd name="4" x="-1.7" y="-0.975" dx="0.4" dy="1.6" layer="1" rot="R90"/>
+<smd name="5" x="1.7" y="-0.325" dx="0.4" dy="1.6" layer="1" rot="R270"/>
+<smd name="6" x="1.7" y="-0.975" dx="0.4" dy="1.6" layer="1" rot="R270"/>
+<smd name="7" x="1.7" y="0.325" dx="0.4" dy="1.6" layer="1" rot="R270"/>
+<smd name="8" x="1.7" y="0.975" dx="0.4" dy="1.6" layer="1" rot="R270"/>
+<wire x1="-1.5" y1="1.5" x2="-0.4" y2="1.5" width="0.127" layer="21"/>
+<wire x1="-0.4" y1="1.5" x2="0.4" y2="1.5" width="0.127" layer="21"/>
+<wire x1="0.4" y1="1.5" x2="1.5" y2="1.5" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="-1.5" x2="1.5" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="-0.4" y1="1.5" x2="0.4" y2="1.5" width="0.127" layer="21" curve="180"/>
+<text x="-2.2" y="1.7" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.2" y="-2.7" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-1.5" y1="-1.5" x2="1.5" y2="1.5" layer="39"/>
 </package>
 </packages>
 <symbols>
@@ -8996,6 +9050,14 @@ FMC MODULE</text>
 <technology name=""/>
 </technologies>
 </device>
+<device name="TP35SQ" package="TP35SQ">
+<connects>
+<connect gate="G$1" pin="TP" pad="TP"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="FUSE" prefix="F" uservalue="yes">
@@ -9174,6 +9236,24 @@ FMC MODULE</text>
 </technologies>
 </device>
 <device name="_0402T-DFN" package="0402T-DFN">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_DO-220AA" package="DO-220AA">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_DO214" package="SMA-DO214AC">
 <connects>
 <connect gate="G$1" pin="A" pad="A"/>
 <connect gate="G$1" pin="C" pad="C"/>
@@ -9375,6 +9455,15 @@ FMC MODULE</text>
 </technologies>
 </device>
 <device name="_DR125" package="DR125">
+<connects>
+<connect gate="L" pin="1" pad="1"/>
+<connect gate="L" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_2020" package="2020">
 <connects>
 <connect gate="L" pin="1" pad="1"/>
 <connect gate="L" pin="2" pad="2"/>
@@ -10865,6 +10954,17 @@ FMC MODULE</text>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_CHS-02TB" package="CHS-02TB">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="LED_3X" prefix="D" uservalue="yes">
@@ -11697,7 +11797,7 @@ I2C</description>
 <attribute name="DESIGNER" value="JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="FMC DESERIALIZER"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.1"/>
+<attribute name="REVISION" value="1.3"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -11800,8 +11900,8 @@ I2C</description>
 <part name="R40" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="C2" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
 <part name="R7" library="jonnew" deviceset="R" device="_0402" value="10k"/>
-<part name="R54" library="jonnew" deviceset="R" device="_0402" value="10k"/>
-<part name="R59" library="jonnew" deviceset="R" device="_0402" value="10k"/>
+<part name="R54" library="jonnew" deviceset="R" device="_0402" value="DNP"/>
+<part name="R59" library="jonnew" deviceset="R" device="_0402" value="DNP"/>
 <part name="R30" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="R55" library="jonnew" deviceset="R" device="_0402" value="0"/>
 <part name="R60" library="jonnew" deviceset="R" device="_0402" value="0"/>
@@ -11829,8 +11929,8 @@ I2C</description>
 <part name="R77" library="jonnew" deviceset="R" device="_0402" value="649k"/>
 <part name="R76" library="jonnew" deviceset="R" device="_0402" value="3.16k"/>
 <part name="R75" library="jonnew" deviceset="R" device="_0402" value="3.16k"/>
-<part name="C84" library="jonnew" deviceset="C" device="_1210" value="22uF"/>
-<part name="C89" library="jonnew" deviceset="C" device="_1210" value="22uF"/>
+<part name="C84" library="jonnew" deviceset="C" device="_1210" value="47uF"/>
+<part name="C89" library="jonnew" deviceset="C" device="_1210" value="47uF"/>
 <part name="C56" library="jonnew" deviceset="C" device="_0402" value="10nF"/>
 <part name="P33" library="jonnew" deviceset="+3V3" device=""/>
 <part name="P35" library="jonnew" deviceset="+3V3" device=""/>
@@ -11909,7 +12009,7 @@ I2C</description>
 <part name="U23" library="jonnew" deviceset="LTM8049" device="_BGA"/>
 <part name="SUPPLY124" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY181" library="jonnew" deviceset="GND" device=""/>
-<part name="C121" library="jonnew" deviceset="C" device="_1210" value="22uF"/>
+<part name="C121" library="jonnew" deviceset="C" device="_1210" value="47uF"/>
 <part name="C122" library="jonnew" deviceset="C" device="_1210" value="47uF"/>
 <part name="R93" library="jonnew" deviceset="R" device="_0402" value="165k"/>
 <part name="R94" library="jonnew" deviceset="R" device="_0402" value="178k"/>
@@ -11960,8 +12060,8 @@ I2C</description>
 <part name="SUPPLY131" library="jonnew" deviceset="GND" device=""/>
 <part name="C47" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
 <part name="C80" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
-<part name="C126" library="jonnew" deviceset="C" device="_1210" value="22uF"/>
-<part name="C120" library="jonnew" deviceset="C" device="_1210" value="22uF"/>
+<part name="C126" library="jonnew" deviceset="C" device="_1210" value="47uF"/>
+<part name="C120" library="jonnew" deviceset="C" device="_1210" value="47uF"/>
 <part name="SUPPLY111" library="jonnew" deviceset="AGND" device=""/>
 <part name="SUPPLY87" library="jonnew" deviceset="AGND" device=""/>
 <part name="SUPPLY115" library="jonnew" deviceset="AGND" device=""/>
@@ -11999,7 +12099,7 @@ I2C</description>
 <part name="SUPPLY143" library="jonnew" deviceset="GND" device=""/>
 <part name="C115" library="jonnew" deviceset="C" device="_0402" value="10nF"/>
 <part name="SUPPLY146" library="jonnew" deviceset="GND" device=""/>
-<part name="R87" library="jonnew" deviceset="R" device="_0402" value="15k"/>
+<part name="R87" library="jonnew" deviceset="R" device="_0402" value="43k"/>
 <part name="R88" library="jonnew" deviceset="R" device="_0402" value="4.7k"/>
 <part name="SUPPLY140" library="jonnew" deviceset="GND" device=""/>
 <part name="C112" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
@@ -12013,7 +12113,7 @@ I2C</description>
 <part name="SUPPLY144" library="jonnew" deviceset="GND" device=""/>
 <part name="C116" library="jonnew" deviceset="C" device="_0402" value="10nF"/>
 <part name="SUPPLY147" library="jonnew" deviceset="GND" device=""/>
-<part name="R89" library="jonnew" deviceset="R" device="_0402" value="15k"/>
+<part name="R89" library="jonnew" deviceset="R" device="_0402" value="43k"/>
 <part name="R90" library="jonnew" deviceset="R" device="_0402" value="4.7k"/>
 <part name="SUPPLY141" library="jonnew" deviceset="GND" device=""/>
 <part name="C113" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
@@ -12167,8 +12267,8 @@ I2C</description>
 <part name="R39" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="C1" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
 <part name="R6" library="jonnew" deviceset="R" device="_0402" value="10k"/>
-<part name="R52" library="jonnew" deviceset="R" device="_0402" value="10k"/>
-<part name="R57" library="jonnew" deviceset="R" device="_0402" value="10k"/>
+<part name="R52" library="jonnew" deviceset="R" device="_0402" value="DNP"/>
+<part name="R57" library="jonnew" deviceset="R" device="_0402" value="DNP"/>
 <part name="R28" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="R53" library="jonnew" deviceset="R" device="_0402" value="0"/>
 <part name="R58" library="jonnew" deviceset="R" device="_0402" value="0"/>
@@ -12251,7 +12351,7 @@ I2C</description>
 <part name="C68" library="jonnew" deviceset="C" device="_0402" value="10nF"/>
 <part name="C64" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="SUPPLY101" library="jonnew" deviceset="GND" device=""/>
-<part name="S3" library="jonnew" deviceset="DIPSW-002" device="" value="CHS-02TB"/>
+<part name="S3" library="jonnew" deviceset="DIPSW-002" device="_CHS-02TB" value="CHS-02TB"/>
 <part name="SUPPLY171" library="jonnew" deviceset="GND" device=""/>
 <part name="R95" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="R96" library="jonnew" deviceset="R" device="_0402" value="10k"/>
@@ -12270,7 +12370,7 @@ I2C</description>
 <part name="SUPPLY179" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY180" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY178" library="jonnew" deviceset="GND" device=""/>
-<part name="C129" library="jonnew" deviceset="C" device="_1210" value="22uF"/>
+<part name="C129" library="jonnew" deviceset="C" device="_1210" value="47uF"/>
 <part name="P51" library="jonnew" deviceset="+1V8" device=""/>
 <part name="P54" library="jonnew" deviceset="+3V3" device=""/>
 <part name="TP16" library="jonnew" deviceset="TP" device="B1,27"/>
@@ -12281,8 +12381,8 @@ I2C</description>
 <part name="SUPPLY29" library="jonnew" deviceset="GND" device=""/>
 <part name="U3" library="jonnew" deviceset="LVDS_RECEIVER_QUAD" device="_TSSOP" value="FIN1032MTCX"/>
 <part name="U2" library="jonnew" deviceset="LVDS_DRIVER_DUAL" device="_MSOP" value="SN65LVDS9638DGN"/>
-<part name="C30" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
-<part name="C29" library="jonnew" deviceset="C" device="_0402" value="1nF"/>
+<part name="C30" library="jonnew" deviceset="C" device="_0402" value="4.7nF"/>
+<part name="C29" library="jonnew" deviceset="C" device="_0402" value="4.7nF"/>
 <part name="C35" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="C36" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="SUPPLY61" library="jonnew" deviceset="GND" device=""/>
@@ -12898,8 +12998,8 @@ to form a star connection.</text>
 <instance part="R1" gate="R" x="60.96" y="1224.28" rot="MR90"/>
 <instance part="D2" gate="G$1" x="76.2" y="1211.58"/>
 <instance part="R2" gate="R" x="76.2" y="1224.28" rot="MR90"/>
-<instance part="D3" gate="G$1" x="76.2" y="1170.94"/>
-<instance part="R3" gate="R" x="76.2" y="1181.1" rot="MR270"/>
+<instance part="D3" gate="G$1" x="76.2" y="1186.18"/>
+<instance part="R3" gate="R" x="76.2" y="1170.94" rot="MR270"/>
 <instance part="TP1" gate="G$1" x="48.26" y="1234.44"/>
 <instance part="TP2" gate="G$1" x="88.9" y="1234.44"/>
 <instance part="TP3" gate="G$1" x="88.9" y="1198.88"/>
@@ -16664,13 +16764,13 @@ to form a star connection.</text>
 <pinref part="D2" gate="G$1" pin="C"/>
 <wire x1="76.2" y1="1206.5" x2="76.2" y2="1196.34" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="1196.34" x2="88.9" y2="1196.34" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="1186.18" x2="76.2" y2="1196.34" width="0.1524" layer="91"/>
-<junction x="76.2" y="1196.34"/>
-<pinref part="R3" gate="R" pin="1"/>
 <pinref part="TP3" gate="G$1" pin="TP"/>
 <pinref part="SUPPLY11" gate="G$1" pin="AGND"/>
 <wire x1="88.9" y1="1193.8" x2="88.9" y2="1196.34" width="0.1524" layer="91"/>
 <junction x="88.9" y="1196.34"/>
+<pinref part="D3" gate="G$1" pin="A"/>
+<wire x1="76.2" y1="1196.34" x2="76.2" y2="1188.72" width="0.1524" layer="91"/>
+<junction x="76.2" y="1196.34"/>
 </segment>
 <segment>
 <pinref part="U15" gate="G$1" pin="GND"/>
@@ -16784,12 +16884,12 @@ to form a star connection.</text>
 <pinref part="U13" gate="A" pin="AVSS"/>
 </segment>
 <segment>
-<wire x1="76.2" y1="1165.86" x2="76.2" y2="1163.32" width="0.1524" layer="91"/>
 <label x="76.2" y="1158.24" size="1.27" layer="95" rot="R270" xref="yes"/>
-<pinref part="D3" gate="G$1" pin="C"/>
 <pinref part="TP4" gate="G$1" pin="TP"/>
 <wire x1="76.2" y1="1163.32" x2="76.2" y2="1158.24" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="1163.32" x2="76.2" y2="1163.32" width="0.1524" layer="91"/>
+<pinref part="R3" gate="R" pin="2"/>
+<wire x1="76.2" y1="1165.86" x2="76.2" y2="1163.32" width="0.1524" layer="91"/>
 <junction x="76.2" y="1163.32"/>
 </segment>
 <segment>
@@ -17643,13 +17743,6 @@ to form a star connection.</text>
 <pinref part="D2" gate="G$1" pin="A"/>
 <wire x1="76.2" y1="1219.2" x2="76.2" y2="1214.12" width="0.1524" layer="91"/>
 <pinref part="R2" gate="R" pin="1"/>
-</segment>
-</net>
-<net name="N$70" class="0">
-<segment>
-<pinref part="R3" gate="R" pin="2"/>
-<pinref part="D3" gate="G$1" pin="A"/>
-<wire x1="76.2" y1="1176.02" x2="76.2" y2="1173.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DEBUG1" class="0">
@@ -18754,9 +18847,9 @@ to form a star connection.</text>
 <pinref part="U11" gate="G$1" pin="PCLK"/>
 </segment>
 <segment>
-<label x="805.18" y="266.7" size="1.27" layer="95" xref="yes"/>
-<wire x1="805.18" y1="266.7" x2="795.02" y2="266.7" width="0.1524" layer="91"/>
-<pinref part="J10" gate="G$5" pin="HB06_N_CC"/>
+<label x="805.18" y="269.24" size="1.27" layer="95" xref="yes"/>
+<pinref part="J10" gate="G$5" pin="HB06_P_CC"/>
+<wire x1="795.02" y1="269.24" x2="805.18" y2="269.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -19031,9 +19124,9 @@ to form a star connection.</text>
 <pinref part="U10" gate="G$1" pin="ROUT1"/>
 </segment>
 <segment>
-<label x="716.28" y="434.34" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<wire x1="716.28" y1="434.34" x2="726.44" y2="434.34" width="0.1524" layer="91"/>
-<pinref part="J10" gate="G$4" pin="LA25_N"/>
+<label x="805.18" y="434.34" size="1.27" layer="95" xref="yes"/>
+<wire x1="795.02" y1="434.34" x2="805.18" y2="434.34" width="0.1524" layer="91"/>
+<pinref part="J10" gate="G$4" pin="LA24_P"/>
 </segment>
 </net>
 <net name="DES_B_D0" class="0">
@@ -19055,9 +19148,9 @@ to form a star connection.</text>
 <pinref part="U10" gate="G$1" pin="ROUT2"/>
 </segment>
 <segment>
-<label x="805.18" y="434.34" size="1.27" layer="95" xref="yes"/>
-<wire x1="795.02" y1="434.34" x2="805.18" y2="434.34" width="0.1524" layer="91"/>
-<pinref part="J10" gate="G$4" pin="LA24_P"/>
+<label x="716.28" y="434.34" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<wire x1="716.28" y1="434.34" x2="726.44" y2="434.34" width="0.1524" layer="91"/>
+<pinref part="J10" gate="G$4" pin="LA25_N"/>
 </segment>
 </net>
 <net name="DES_B_D3" class="0">
@@ -19937,6 +20030,13 @@ to form a star connection.</text>
 <wire x1="726.44" y1="287.02" x2="716.28" y2="287.02" width="0.1524" layer="91"/>
 <label x="716.28" y="287.02" size="1.27" layer="95" rot="MR0" xref="yes"/>
 <pinref part="J10" gate="G$5" pin="HA22_P"/>
+</segment>
+</net>
+<net name="N$36" class="0">
+<segment>
+<pinref part="D3" gate="G$1" pin="C"/>
+<pinref part="R3" gate="R" pin="1"/>
+<wire x1="76.2" y1="1181.1" x2="76.2" y2="1176.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
