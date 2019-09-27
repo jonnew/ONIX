@@ -171,7 +171,7 @@
 <wire x1="0.25" y1="71.25" x2="0" y2="73" width="0.254" layer="21"/>
 <wire x1="2.5" y1="71.25" x2="1.5" y2="73" width="0.254" layer="21"/>
 <wire x1="4.75" y1="71.25" x2="3" y2="73" width="0.254" layer="21"/>
-<wire x1="6.5" y1="71" x2="4.25" y2="73.25" width="0.254" layer="21"/>
+<wire x1="6.2" y1="71.3" x2="4.25" y2="73.25" width="0.254" layer="21"/>
 <text x="0.04" y="31.0075" size="1.27" layer="22" font="vector" ratio="17" rot="MR0" align="center">Rev. 1.2
 CERN OHL v1.2
 JPN, MWL@MIT
@@ -200,6 +200,13 @@ Rev. 1.2</text>
 <wire x1="-9.7525" y1="12.24" x2="-9.7525" y2="27.48" width="0.254" layer="21"/>
 <wire x1="-9.7525" y1="27.48" x2="-1.6725" y2="27.48" width="0.254" layer="21"/>
 <wire x1="-1.6725" y1="27.48" x2="-1.6725" y2="12.24" width="0.254" layer="21"/>
+<text x="-6.3" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">gnd</text>
+<text x="-4.2" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">VIN</text>
+<text x="-2" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">VCC</text>
+<text x="0.3" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">TDI</text>
+<text x="2.6" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">TDO</text>
+<text x="4.8" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">TMS</text>
+<text x="6.6" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">TCK</text>
 </plain>
 <libraries>
 <library name="jonnew">
@@ -620,27 +627,21 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="0" y="9.25" size="1.27" layer="25" font="vector" ratio="17" align="center"/>
 </element>
 <element name="TP8" library="jonnew" package="POGO_S500-6350-P2" value="" x="3.81" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="6.81" y="70.66" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
 <attribute name="VALUE" x="6.35" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="TP4" library="jonnew" package="POGO_S500-6350-P2" value="" x="0" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="0.25" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
 <attribute name="VALUE" x="2.54" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="TP5" library="jonnew" package="POGO_S500-6350-P2" value="" x="-1.27" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="-2.02" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
 <attribute name="VALUE" x="1.27" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="TP9" library="jonnew" package="POGO_S500-6350-P2" value="" x="1.27" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="2.52" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
 <attribute name="VALUE" x="3.81" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="TP7" library="jonnew" package="POGO_S500-6350-P2" value="" x="-2.54" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="-4.24" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
 <attribute name="VALUE" x="0" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="TP3" library="jonnew" package="POGO_S500-6350-P2" value="" x="2.54" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="4.79" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
 <attribute name="VALUE" x="5.08" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="U2" library="jonnew" package="PWSON-N10+4-3X3" value="TPS61202" x="-3.5" y="37.5" smashed="yes">
@@ -677,7 +678,6 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="-2.3" y="40.4" size="1.27" layer="27" font="vector" ratio="17" align="center-left"/>
 </element>
 <element name="TP6" library="jonnew" package="POGO_S500-6350-P2" value="" x="-3.81" y="73.66" smashed="yes" rot="R180">
-<attribute name="NAME" x="-6.33" y="71.16" size="1.27" layer="25" font="vector" ratio="17" rot="R270" align="center-left"/>
 <attribute name="VALUE" x="-1.27" y="76.2" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
 </element>
 <element name="TP1" library="jonnew" package="TESTPOINT_1MM" value="" x="-9.75" y="41.25" smashed="yes">
