@@ -1,6 +1,9 @@
 # Ignore the backup files created by solidworks
 *~*
 
+# Ignore kicad backups
+*bak
+
 # Apple craps
 .DS_Store
 
