@@ -1,0 +1,460 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr User 16499 9762
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	7800 1100 8700 1100
+Text Label 8100 1100 2    70   ~ 0
+REF_C0
+Wire Wire Line
+	9300 1100 9600 1100
+Wire Wire Line
+	9600 1100 9600 1200
+Wire Wire Line
+	9600 1200 9300 1200
+Wire Wire Line
+	9600 1200 10200 1200
+Text Label 9600 1100 0    70   ~ 0
+AGND_C0
+Connection ~ 9600 1200
+Wire Wire Line
+	10200 4500 9300 4500
+Text Label 9400 4500 0    70   ~ 0
+REF_C1
+Wire Wire Line
+	8500 4400 8700 4400
+Wire Wire Line
+	8700 4500 8500 4500
+Wire Wire Line
+	8500 4500 8500 4400
+Wire Wire Line
+	8500 4500 7800 4500
+Connection ~ 8500 4500
+Text Label 8400 4500 2    70   ~ 0
+AGND_C1
+Wire Wire Line
+	3450 6500 3950 6500
+Wire Wire Line
+	3950 6100 3450 6100
+Wire Wire Line
+	3450 6200 3950 6200
+Wire Wire Line
+	3950 6300 3450 6300
+Wire Wire Line
+	3450 6400 3950 6400
+Wire Wire Line
+	3950 6600 3450 6600
+Wire Wire Line
+	3450 6700 3950 6700
+Wire Wire Line
+	3950 6800 3450 6800
+Wire Wire Line
+	3950 7000 2850 7000
+Wire Wire Line
+	4950 6800 5150 6800
+Wire Wire Line
+	4950 6900 5150 6900
+Wire Wire Line
+	5150 7000 4950 7000
+Wire Wire Line
+	4950 7100 5150 7100
+Wire Wire Line
+	5150 7200 4950 7200
+Wire Wire Line
+	4950 7300 5150 7300
+Wire Wire Line
+	5150 7400 4950 7400
+Wire Wire Line
+	4950 7500 5150 7500
+Wire Wire Line
+	4950 6100 5150 6100
+Wire Wire Line
+	5150 6200 4950 6200
+Wire Wire Line
+	4950 6300 5150 6300
+Wire Wire Line
+	5150 6400 4950 6400
+Wire Wire Line
+	4950 6500 5150 6500
+Wire Wire Line
+	5150 6600 4950 6600
+Wire Wire Line
+	4950 6700 5150 6700
+Wire Wire Line
+	6300 4200 6500 4200
+Wire Wire Line
+	6300 4300 6500 4300
+Text Label 6300 4300 0    10   ~ 0
+GND
+Wire Wire Line
+	3950 3600 3750 3400
+Text Label 3750 3400 1    70   ~ 0
+GND
+Wire Wire Line
+	4950 5300 5150 5500
+Text Label 5150 5500 0    70   ~ 0
+GND
+Wire Wire Line
+	3950 6000 3750 5800
+Text Label 3750 5800 2    70   ~ 0
+GND
+Wire Wire Line
+	4950 7700 5150 7900
+Text Label 5150 7900 0    70   ~ 0
+GND
+Wire Wire Line
+	6500 4400 6300 4400
+Wire Wire Line
+	6300 4500 6500 4500
+Wire Wire Line
+	6500 4600 6300 4600
+Wire Wire Line
+	6300 4700 6500 4700
+Wire Wire Line
+	6500 4800 6300 4800
+Wire Wire Line
+	6300 4900 6500 4900
+Wire Wire Line
+	2850 7200 3950 7200
+Wire Wire Line
+	3950 7300 3450 7300
+Wire Wire Line
+	3450 7400 3950 7400
+Wire Wire Line
+	3950 7500 3450 7500
+Wire Wire Line
+	3450 7600 3950 7600
+Wire Wire Line
+	3750 3700 3950 3700
+Wire Wire Line
+	3750 3800 3950 3800
+Wire Wire Line
+	3950 3900 3750 3900
+Wire Wire Line
+	3750 4000 3950 4000
+Wire Wire Line
+	3950 4100 3750 4100
+Wire Wire Line
+	3750 4200 3950 4200
+Wire Wire Line
+	3950 4300 3750 4300
+Wire Wire Line
+	3750 4400 3950 4400
+Wire Wire Line
+	6600 3300 6800 3300
+Wire Wire Line
+	6600 3400 6800 3400
+Wire Wire Line
+	6800 3500 6600 3500
+Wire Wire Line
+	6600 3600 6800 3600
+Wire Wire Line
+	6800 3700 6600 3700
+Wire Wire Line
+	6600 3800 6800 3800
+Wire Wire Line
+	6800 3900 6600 3900
+Wire Wire Line
+	6600 4000 6800 4000
+Wire Wire Line
+	4950 3700 5150 3700
+Wire Wire Line
+	4950 3800 5150 3800
+Wire Wire Line
+	5150 3900 4950 3900
+Wire Wire Line
+	4950 4000 5150 4000
+Wire Wire Line
+	5850 4100 4950 4100
+Wire Wire Line
+	4950 4200 5850 4200
+Wire Wire Line
+	4950 4500 5850 4500
+Wire Wire Line
+	4950 4800 5850 4800
+Wire Wire Line
+	5150 4900 4950 4900
+Wire Wire Line
+	4950 5000 5150 5000
+Wire Wire Line
+	5150 5100 4950 5100
+Wire Wire Line
+	4950 5200 5150 5200
+Wire Wire Line
+	3750 4500 3950 4500
+Wire Wire Line
+	3750 4600 3950 4600
+Wire Wire Line
+	3950 4700 3750 4700
+Wire Wire Line
+	3750 4800 3950 4800
+Wire Wire Line
+	3950 4900 3050 4900
+Wire Wire Line
+	3050 5000 3950 5000
+Wire Wire Line
+	3950 5100 3050 5100
+Wire Wire Line
+	3050 5200 3950 5200
+Wire Wire Line
+	5850 4400 4950 4400
+Wire Wire Line
+	5850 4700 4950 4700
+Wire Wire Line
+	4950 4600 5850 4600
+Wire Wire Line
+	2850 6900 3950 6900
+Wire Wire Line
+	3950 7100 2850 7100
+Wire Wire Line
+	4950 4300 5850 4300
+Wire Wire Line
+	4950 7600 5150 7600
+Wire Wire Line
+	4950 3600 5150 3400
+Text Label 5150 3400 0    70   ~ 0
+REF
+Wire Wire Line
+	3950 5300 3750 5500
+Text Label 3750 5500 2    70   ~ 0
+REF
+Wire Wire Line
+	3950 7700 3750 7900
+Text Label 3750 7900 2    70   ~ 0
+REF
+Wire Wire Line
+	4950 6000 5150 5800
+Text Label 5150 5800 0    70   ~ 0
+REF
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:FRAME_A_L #FRAME1
+U 2 1 73DA64C6
+P 11700 8900
+F 0 "#FRAME1" H 11700 8900 50  0001 C CNN
+F 1 "FRAME_A_L" H 11700 8900 50  0001 C CNN
+F 2 "" H 11700 8900 50  0001 C CNN
+F 3 "" H 11700 8900 50  0001 C CNN
+	2    11700 8900
+	1    0    0    -1  
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:FRAME #FRAME2
+U 2 1 DFE0E5AC
+P 900 8900
+F 0 "#FRAME2" H 900 8900 50  0001 C CNN
+F 1 "FRAME" H 900 8900 50  0001 C CNN
+F 2 "" H 900 8900 50  0001 C CNN
+F 3 "" H 900 8900 50  0001 C CNN
+	2    900  8900
+	1    0    0    -1  
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET0
+U 1 1 19423863
+P 3850 4300
+F 0 "TET0" H 3850 4300 50  0001 C CNN
+F 1 "0" H 3850 4300 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 3850 4300 50  0001 C CNN
+F 3 "" H 3850 4300 50  0001 C CNN
+	1    3850 4300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET1
+U 1 1 24213985
+P 3850 3900
+F 0 "TET1" H 3850 3900 50  0001 C CNN
+F 1 "1" H 3850 3900 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 3850 3900 50  0001 C CNN
+F 3 "" H 3850 3900 50  0001 C CNN
+	1    3850 3900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET2
+U 1 1 4587CABD
+P 5750 4200
+F 0 "TET2" H 5750 4200 50  0001 C CNN
+F 1 "2" H 5750 4200 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 5750 4200 50  0001 C CNN
+F 3 "" H 5750 4200 50  0001 C CNN
+	1    5750 4200
+	0    1    1    0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET3
+U 1 1 CA13F710
+P 5050 3800
+F 0 "TET3" H 5050 3800 50  0001 C CNN
+F 1 "3" H 5050 3800 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 5050 3800 50  0001 C CNN
+F 3 "" H 5050 3800 50  0001 C CNN
+	1    5050 3800
+	0    1    1    0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET8
+U 1 1 BBE4D291
+P 3550 6300
+F 0 "TET8" H 3550 6300 50  0001 C CNN
+F 1 "8" H 3550 6300 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 3550 6300 50  0001 C CNN
+F 3 "" H 3550 6300 50  0001 C CNN
+	1    3550 6300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET9
+U 1 1 17FB5BE5
+P 3550 6700
+F 0 "TET9" H 3550 6700 50  0001 C CNN
+F 1 "9" H 3550 6700 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 3550 6700 50  0001 C CNN
+F 3 "" H 3550 6700 50  0001 C CNN
+	1    3550 6700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET10
+U 1 1 7E2519BC
+P 5050 6200
+F 0 "TET10" H 5050 6200 50  0001 C CNN
+F 1 "10" H 5050 6200 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 5050 6200 50  0001 C CNN
+F 3 "" H 5050 6200 50  0001 C CNN
+	1    5050 6200
+	0    1    1    0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET11
+U 1 1 91E83F9A
+P 5050 6600
+F 0 "TET11" H 5050 6600 50  0001 C CNN
+F 1 "11" H 5050 6600 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 5050 6600 50  0001 C CNN
+F 3 "" H 5050 6600 50  0001 C CNN
+	1    5050 6600
+	0    1    1    0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET12
+U 1 1 D2408D79
+P 5050 7000
+F 0 "TET12" H 5050 7000 50  0001 C CNN
+F 1 "12" H 5050 7000 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 5050 7000 50  0001 C CNN
+F 3 "" H 5050 7000 50  0001 C CNN
+	1    5050 7000
+	0    1    1    0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET13
+U 1 1 66FD37B2
+P 5050 7400
+F 0 "TET13" H 5050 7400 50  0001 C CNN
+F 1 "13" H 5050 7400 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 5050 7400 50  0001 C CNN
+F 3 "" H 5050 7400 50  0001 C CNN
+	1    5050 7400
+	0    1    1    0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET14
+U 1 1 E457B1AB
+P 2950 7100
+F 0 "TET14" H 2950 7100 50  0001 C CNN
+F 1 "14" H 2950 7100 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 2950 7100 50  0001 C CNN
+F 3 "" H 2950 7100 50  0001 C CNN
+	1    2950 7100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET15
+U 1 1 6E3EC9F9
+P 3550 7500
+F 0 "TET15" H 3550 7500 50  0001 C CNN
+F 1 "15" H 3550 7500 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 3550 7500 50  0001 C CNN
+F 3 "" H 3550 7500 50  0001 C CNN
+	1    3550 7500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET20
+U 1 1 AC25F28C
+P 5050 5000
+F 0 "TET20" H 5050 5000 50  0001 C CNN
+F 1 "20" H 5050 5000 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 5050 5000 50  0001 C CNN
+F 3 "" H 5050 5000 50  0001 C CNN
+	1    5050 5000
+	0    1    1    0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET21
+U 1 1 F1F7536E
+P 5750 4600
+F 0 "TET21" H 5750 4600 50  0001 C CNN
+F 1 "21" H 5750 4600 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 5750 4600 50  0001 C CNN
+F 3 "" H 5750 4600 50  0001 C CNN
+	1    5750 4600
+	0    1    1    0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET22
+U 1 1 FD3E969F
+P 3150 5100
+F 0 "TET22" H 3150 5100 50  0001 C CNN
+F 1 "22" H 3150 5100 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 3150 5100 50  0001 C CNN
+F 3 "" H 3150 5100 50  0001 C CNN
+	1    3150 5100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:TET32 TET23
+U 1 1 3C813885
+P 3850 4700
+F 0 "TET23" H 3850 4700 50  0001 C CNN
+F 1 "23" H 3850 4700 50  0001 C CNN
+F 2 "eib-64-intan-hs v1.0 revA:TET32" H 3850 4700 50  0001 C CNN
+F 3 "" H 3850 4700 50  0001 C CNN
+	1    3850 4700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:NPD-36-VV-GS TET4
+U 1 1 BC47F0E8
+P 4250 5100
+F 0 "TET4" H 4150 4600 85  0000 L BNN
+F 1 "NPD-36-VV-GS" H 4150 4400 85  0000 L BNN
+F 2 "eib-64-intan-hs v1.0 revA:NPD-36-VV-GS" H 4250 5100 50  0001 C CNN
+F 3 "" H 4250 5100 50  0001 C CNN
+	1    4250 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L eib-64-intan-hs_v1.0_revA-eagle-import:NPD-36-VV-GS TET5
+U 1 1 A791DA12
+P 4250 7500
+F 0 "TET5" H 4150 7000 85  0000 L BNN
+F 1 "NPD-36-VV-GS" H 4150 6800 85  0000 L BNN
+F 2 "eib-64-intan-hs v1.0 revA:NPD-36-VV-GS" H 4250 7500 50  0001 C CNN
+F 3 "" H 4250 7500 50  0001 C CNN
+	1    4250 7500
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

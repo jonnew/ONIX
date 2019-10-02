@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name eib-128-eagle-import)(type Legacy)(uri ${KIPRJMOD}/eib-128-eagle-import.lib)(options "")(descr ""))
+)
