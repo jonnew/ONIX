@@ -200,7 +200,7 @@ Rev. 1.2</text>
 <wire x1="-9.7525" y1="12.24" x2="-9.7525" y2="27.48" width="0.254" layer="21"/>
 <wire x1="-9.7525" y1="27.48" x2="-1.6725" y2="27.48" width="0.254" layer="21"/>
 <wire x1="-1.6725" y1="27.48" x2="-1.6725" y2="12.24" width="0.254" layer="21"/>
-<text x="-6.3" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">gnd</text>
+<text x="-6.3" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">GND</text>
 <text x="-4.2" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">VIN</text>
 <text x="-2" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">VCC</text>
 <text x="0.3" y="71" size="1.27" layer="21" font="vector" ratio="18" rot="R270" align="center-left">TDI</text>
@@ -279,7 +279,7 @@ Rev. 1.2</text>
 <rectangle x1="4.826" y1="1.016" x2="5.334" y2="1.524" layer="51"/>
 </package>
 <package name="POGO_S500-6350-P2">
-<pad name="P$1" x="0" y="0" drill="0.396240625" shape="octagon"/>
+<pad name="P$1" x="0" y="0" drill="0.55" shape="octagon"/>
 <text x="-2.54" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.54" y="-2.54" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>

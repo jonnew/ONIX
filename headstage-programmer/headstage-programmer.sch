@@ -734,7 +734,7 @@
 <pad name="1" x="0" y="0" drill="2" shape="octagon"/>
 </package>
 <package name="POGO_S500-6350-P2">
-<pad name="P$1" x="0" y="0" drill="0.396240625" shape="octagon"/>
+<pad name="P$1" x="0" y="0" drill="0.55" shape="octagon"/>
 <text x="-2.54" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.54" y="-2.54" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
@@ -1742,6 +1742,10 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="-1.1" y="1.9" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-1" y="-2.9" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
+<package name="TP35SQ">
+<smd name="TP" x="0" y="0" dx="3.5" dy="3.5" layer="1" cream="no"/>
+<text x="-1.9" y="2.1" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="PINH2X5">
@@ -2638,6 +2642,14 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <device name="_S7121-42R" package="S7121-42R">
 <connects>
 <connect gate="G$1" pin="TP" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="TP35SQ" package="TP35SQ">
+<connects>
+<connect gate="G$1" pin="TP" pad="TP"/>
 </connects>
 <technologies>
 <technology name=""/>
