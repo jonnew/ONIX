@@ -1,7 +1,7 @@
 ---
 title: |
-    Open Ephys++ Communication Protocol and API Specification \
-    Version 0.1
+    Open Neuro Interface Specification \
+    Version 0.2
 author: Jonathan P. Newman, Wilson Lab, MIT
 institution:
 date: \today{}
@@ -15,44 +15,45 @@ toc: true
 toc-depth: 2
 secnumdepth: 2
 abstract: |
-    This document specifies requirements for implementing the Open Ephys++ data
-    acquisition system. This specification entails two basic elements: (1)
-    Communication protocols between acquisition firmware and host software and
-    (2) an application programming interface (API) for utilizing this
-    communication protocol. This document is incomplete and we gratefully
-    welcome criticisms and amendments.
+    This document specifies requirements for implementing an Open Neuro
+    Interface (ONI) acquisition system in hardware and software. This
+    specification entails two basic elements: (1) Communication protocols
+    between acquisition firmware and host software and (2) an application
+    programming interface (API) for utilizing this communication protocol. This
+    document is incomplete and we gratefully welcome criticisms and amendments.
 ---
 
 \newpage
 # Intentions and capabilities
-- Low latency (sub millisecond)
-- High bandwidth (> 1000 neural data channels)
-- Bidirectional
+- Potential for low latency round trip times (sub millisecond)
+- Potential for high bandwidth communication (> 1000 neural data channels)
+- Bidirectional communication
 - Acquisition and control of arbitrary of hardware components using a single
   communication medium
-    - Support generic mixes of hardware elements
+    - Support generic mixes of hardware elements from multiple, asynchronous
+      pieces of hardware
     - Generic hardware configuration
-    - Generic data input stream
-    - Generic data output stream
+    - Generic data input streams
+    - Generic data output streams
 - Support multiple acquisition systems on one computer
 - Cross platform
-- Low level: aimed at the creation of language bindings and
+- Low level: aimed at the creation of firmware, APIs, language bindings and
   application-specific libraries
 
-\newpage
-# Headstage Serialization Protocol {#ser-protocol}
-TODO
 
 \newpage
 # FPGA/Host PC communication {#comm-protocol}
 Communication between the acquisition board firmware and API shall occur
-over four communication channels:
+at least four communication channels:
 
-1. Signal: Read-only, short-message, asynchronous hardware events
+1. Signal: Read-only, short-message, asynchronous hardware events. Only one
+   signal channel is permitted.
 2. Configuration: Bidirectional, register-based, synchronous configuration
-   setting and getting
-3. Input: Read-only, asynchronous, high-bandwidth firmware to host streaming
-4. Output: Write-only, asynchronous, high-bandwidth host to firmware streaming
+   setting and getting. Only one configuration channel is permitted.
+3. Input: Read-only, asynchronous, high-bandwidth firmware to host streaming.
+   More than one input channel is permitted.
+4. Output: Write-only, asynchronous, high-bandwidth host to firmware streaming.
+   More than one output channel is permitted.
 
 Required characteristics of these channels are described in the following
 paragraphs.
@@ -118,14 +119,13 @@ stream, should be hard-coded into the API implementation file and used in the
 background to manipulate register state.
 
 ### Device register programming interface
-
 The device programming interface is composed of the following configuration
 channel registers:
 
-- `uint32_t config_device_id`: Device ID register. Specify a device endpoint as
-  enumerated by the firmware (e.g. an Intan chip, or a IMU chip) and to which
-  communication will be directed using `config_reg_addr` and
-  `config_reg_value`, as described below.
+- `uint32_t config_device_idx`: Device index register. Specify a device
+  endpoint as enumerated in the device map by the firmware (e.g. an Intan chip,
+  or a IMU chip) and to which communication will be directed using
+  `config_reg_addr` and `config_reg_value`, as described below.
 
 - `uint32_t config_reg_addr`: The register address of configuration to be
   written
@@ -152,7 +152,7 @@ determined by:
 - Looking at a device's data sheet if the device is an integrated circuit
 - Examining the open ephys++ devices header file (oedevices.h) which
   contains off register addresses and descriptions for devices officially
-  supported by this project (device id < 10000).
+  supported by this project.
 
 When a host requests a device register _read_, the following following actions
 take place:
@@ -214,9 +214,9 @@ control over, the entire acquisition system:
   device map to the host and reset hardware to its default state. Set to 0 by
   host firmware upon entering the reset state.
 
-- `uint32_t sys_clock_hz`: A read-only register specifying the base hardware
-  clock frequency in Hz. The clock counter in the read [frame](#frame) header
-  is incremented at this frequency.
+- `uint32_t sys_clock_hz`: A read-only register specifying the master (clock
+  domain 0) hardware clock frequency in Hz. The clock counter in the read
+  [frame](#frame) header is incremented at this frequency.
 
 ## Data read channel (32-bit, asynchronous, read-only)
 The _data read_ channel provides high bandwidth communication from the FPGA
@@ -254,12 +254,11 @@ used by the API to communicate with hardware. An implementation of this API,
 
 ## Context
 A _context_ shall hold all state required to manage single [FPGA/Host
-communication system](#comm-protocol). This includes a
-map of devices being acquired from, data buffering elements, etc. API calls
-will typically take a context handle as the first argument and use it to
-reference required state information to enable communication and/or to mutate
-the context to reflect some function side effect (e.g. add device map
-information):
+communication system](#comm-protocol). This includes a device map (simple list
+of _devices_) being acquired from, data buffering elements, etc. API calls will
+typically take a context handle as the first argument and use it to reference
+required state information to enable communication and/or to mutate the context
+to reflect some function side effect (e.g. add device map information):
 
 ```
 int api_function(context *ctx, ...);
@@ -270,9 +269,14 @@ A _device_ is defined as configurable piece of hardware with its own register
 address space (e.g. an integrated circuit) or something programmed within the
 firmware to emulate this (e.g. an electrical stimulation sub-circuit made to
 behave like a Master-8). Host interaction with a device is facilitated using a
-device description, which should hold the following elements:
+device description, which holds the following elements:
 
 - `device_id`: Device ID number
+- `slot`: The index of the physical interface that this device uses for host
+  communication
+- `clock_dom`: Device clock domain (0 is master, 1 or greater are slaves
+  synchronized to master)
+- `clock_hz`: Clock rate in Hz of clock converning `clock_dom`
 - `read_size`: Device data read size per frame in bytes
 - `num_reads`: Number of frames that must be read to construct a full
   sample (e.g., for row reads from camera)
@@ -298,23 +302,36 @@ instance is as follows:
       to use for custom hardware projects.
     - The use of device IDs less than 10000 not specified within this
       enumeration will result in OE_EDEVID errors.
-    - Device numbers greater than 1000 are allowed for general purpose use and
+    - Device numbers greater than 9999 are allowed for general purpose use and
       will not be verified by the API.
     - Incorporation into the official device enum (device IDs < 10000) can be
-      achieved via pull-request to this repo.
+      achieved via pull-request to the ONI repository.
 
-2. `read_size`: Number of bytes of data transmitted by this device during a
+2. `slot`: The index of the physical interface that this device uses for host
+   communication
+    - e.g. the PCIe slot index
+    - e.g. the USB port index
+    - Typically, host hardware will be assigned an index in non-volatile memory
+      or via dip switch configuration.
+
+2. `clock_dom`: The clock domain that the device is sychronized to. 
+    - All devices exist in a single clock domain
+    - There are one or more clock domains per device_map
+
+3. `clock_hz`: The clock rate in Hz of the clock governing `clock_dom`
+
+4. `read_size`: Number of bytes of data transmitted by this device during a
     single read.
     - 0 indicates that it does not send data.
 
-3. `num_reads`: Number of reads required to construct a full device read sample
+5. `num_reads`: Number of reads required to construct a full device read sample
    (e.g., number of columns when `read_size` corresponds to a single row of
    pixels from a camera sensor)
 
-4. `write_size`: Number of bytes accepted by the device during a single write
+6. `write_size`: Number of bytes accepted by the device during a single write
     - 0 indicates that it does not send data.
 
-5. `num_writes`: Number of writes required to construct a full device output
+7. `num_writes`: Number of writes required to construct a full device output
    sample.
 
 ## Frame
@@ -356,8 +373,8 @@ Each frame memory sector is described below:
       within the _device map index_ portion of the frame
     - The read/write size for each device-specific block is provided in the
       device map
-    - Perhaps in the future, data type casting information can be provided in
-      the device map, but this is not currently required.
+    - If timing informaiton is passed in the data block, it should be specified
+      how to interpret it (using plain text).
 
 \newpage
 # `liboepcie`: An Open Ephys ++ API Implementation {#api-imp }
@@ -484,6 +501,9 @@ examined via calls to [`oe_get_opt`](#oe_get_opt).
 ``` {.c}
 typedef struct {
     oe_dev_id_t id;         // Device ID number
+    oe_size_t slot;         // Device slot
+    oe_size_t clock_dom;    // Device clock domain
+    oe_size_t clock_hz;     // Clock rate in Hz of clock_dom
     oe_size_t read_size;    // Device data read size per frame in bytes
     oe_size_t num_reads;    // Number of read frames to construct a full sample
     oe_size_t write_size;   // Device data write size per frame in bytes
@@ -778,7 +798,7 @@ running.
 | default value       | False |
 
 #### `OE_SYSCLKHZ`
-System clock frequency in Hz. The PCIe bus is operated at this rate. Read-frame clock values 
+System clock frequency in Hz. The PCIe bus is operated at this rate. Read-frame clock values
 are incremented at this rate.
 
 | | |
@@ -788,7 +808,7 @@ are incremented at this rate.
 | default value       | N/A |
 
 #### `OE_ACQCLKHZ`
-Acquisition clock frequency in Hz. Reads from devices are synchronized to this clock. 
+Acquisition clock frequency in Hz. Reads from devices are synchronized to this clock.
 Clock values within frame data are incremented at this rate.
 
 | | |
@@ -1079,3 +1099,7 @@ const char *oe_device(ind dev_id)
 
 ### Returns `const char *`
 Pointer to a device id string
+
+\newpage
+# Example Headstage Serialization Protocol {#ser-protocol}
+TODO
