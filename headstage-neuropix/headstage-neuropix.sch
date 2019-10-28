@@ -3830,6 +3830,17 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 <wire x1="1.415" y1="-0.92" x2="1.37" y2="-0.93" width="0.09" layer="29"/>
 <wire x1="1.37" y1="-0.93" x2="1.345" y2="-0.93" width="0.09" layer="29"/>
 </package>
+<package name="0402TW">
+<wire x1="-0.4572" y1="0.254" x2="0.4572" y2="0.254" width="0.1016" layer="51"/>
+<wire x1="0.4572" y1="-0.254" x2="-0.4572" y2="-0.254" width="0.1016" layer="51"/>
+<smd name="1" x="-0.5334" y="0" dx="0.4" dy="0.8" layer="1"/>
+<smd name="2" x="0.5334" y="0" dx="0.4" dy="0.8" layer="1"/>
+<text x="-1.193" y="0.662" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.27" y="-1.578" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-0.508" y1="-0.254" x2="-0.254" y2="0.254" layer="51"/>
+<rectangle x1="0.254" y1="-0.254" x2="0.508" y2="0.254" layer="51"/>
+<rectangle x1="-0.45" y1="-0.25" x2="0.45" y2="0.25" layer="39"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PE">
@@ -4838,6 +4849,15 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_0402TW" package="0402TW">
+<connects>
+<connect gate="C" pin="1" pad="1"/>
+<connect gate="C" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="DS90UB913A" prefix="U">
@@ -5652,7 +5672,7 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="+VCOAX" prefix="P">
+<deviceset name="+VCOAX">
 <gates>
 <gate name="G$1" symbol="+VCOAX" x="0" y="0"/>
 </gates>
@@ -6805,7 +6825,7 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <attribute name="DESIGNER" value="JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="HEADSTAGE-NEUROPIX"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.1"/>
+<attribute name="REVISION" value="1.2"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -6837,7 +6857,7 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="C44" library="jonnew" deviceset="C" device="_0201T" value="47nF"/>
 <part name="R18" library="jonnew" deviceset="R" device="_0201T" value="49.9"/>
 <part name="SUPPLY29" library="jonnew" deviceset="GND" device=""/>
-<part name="C47" library="jonnew" deviceset="C" device="_0402T" value="15uF"/>
+<part name="C47" library="jonnew" deviceset="C" device="_0402TW" value="15uF"/>
 <part name="SUPPLY22" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY30" library="jonnew" deviceset="GND" device=""/>
 <part name="P34" library="jonnew" deviceset="+3V3" device=""/>
@@ -6867,7 +6887,7 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="C37" library="jonnew" deviceset="C" device="_0201T" value="10nF"/>
 <part name="SUPPLY26" library="jonnew" deviceset="GND" device=""/>
 <part name="C26" library="jonnew" deviceset="C" device="_0402T" value="1uF"/>
-<part name="C34" library="jonnew" deviceset="C" device="_0402T" value="15uF"/>
+<part name="C34" library="jonnew" deviceset="C" device="_0402TW" value="15uF"/>
 <part name="C35" library="jonnew" deviceset="C" device="_0402T" value="10uF"/>
 <part name="P26" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="P40" library="jonnew" deviceset="+VCOAX" device=""/>
@@ -7031,6 +7051,10 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <part name="J6" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
 <part name="SUPPLY43" library="jonnew" deviceset="GND" device=""/>
 <part name="P25" library="jonnew" deviceset="+3V3" device=""/>
+<part name="U$35" library="jonnew" deviceset="+VCOAX" device=""/>
+<part name="R48" library="jonnew" deviceset="R" device="_0201T" value="9k, 0.1%"/>
+<part name="R51" library="jonnew" deviceset="R" device="_0201T" value="1k, 0.1%"/>
+<part name="SUPPLY79" library="jonnew" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7505,6 +7529,10 @@ the external 32.768 kHz crystal.</text>
 <attribute name="VALUE" x="605.155" y="531.241" size="1.778" layer="96"/>
 </instance>
 <instance part="P25" gate="PWR1" x="299.72" y="665.48" rot="MR0"/>
+<instance part="U$35" gate="G$1" x="182.88" y="822.96" rot="MR0"/>
+<instance part="R48" gate="R" x="182.88" y="812.8" rot="R270"/>
+<instance part="R51" gate="R" x="182.88" y="792.48" rot="R90"/>
+<instance part="SUPPLY79" gate="PE" x="182.88" y="779.78" rot="MR0"/>
 </instances>
 <busses>
 <bus name="DIN[0..11],HSYNC,PCLK,VSYNC">
@@ -8023,6 +8051,11 @@ the external 32.768 kHz crystal.</text>
 <wire x1="607.06" y1="541.02" x2="609.6" y2="541.02" width="0.1524" layer="91"/>
 <junction x="609.6" y="541.02"/>
 </segment>
+<segment>
+<pinref part="R51" gate="R" pin="1"/>
+<pinref part="SUPPLY79" gate="PE" pin="GND"/>
+<wire x1="182.88" y1="787.4" x2="182.88" y2="782.32" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
@@ -8279,6 +8312,11 @@ the external 32.768 kHz crystal.</text>
 <wire x1="589.28" y1="541.02" x2="584.2" y2="541.02" width="0.1524" layer="91"/>
 <pinref part="P45" gate="G$1" pin="VCOAX"/>
 <wire x1="584.2" y1="541.02" x2="584.2" y2="561.34" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$35" gate="G$1" pin="VCOAX"/>
+<pinref part="R48" gate="R" pin="1"/>
+<wire x1="182.88" y1="822.96" x2="182.88" y2="817.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+1V2" class="0">
@@ -9481,6 +9519,17 @@ the external 32.768 kHz crystal.</text>
 <wire x1="556.26" y1="680.72" x2="556.26" y2="675.64" width="0.1524" layer="91"/>
 <pinref part="J3" gate="G$1" pin="P$35"/>
 <wire x1="556.26" y1="675.64" x2="596.9" y2="675.64" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$52" class="0">
+<segment>
+<pinref part="R48" gate="R" pin="2"/>
+<pinref part="R51" gate="R" pin="2"/>
+<wire x1="182.88" y1="807.72" x2="182.88" y2="802.64" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="802.64" x2="182.88" y2="797.56" width="0.1524" layer="91"/>
+<junction x="182.88" y="802.64"/>
+<pinref part="U1" gate="G$1" pin="ANAIN1/D4"/>
+<wire x1="86.36" y1="802.64" x2="182.88" y2="802.64" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
