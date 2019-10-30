@@ -1,5 +1,5 @@
-#ifndef OEPCIE_TESTFUNC_H
-#define OEPCIE_TESTFUNC_H
+#ifndef ONI_TESTFUNC_H
+#define ONI_TESTFUNC_H
 
 #ifdef _WIN32
 #include <windows.h>
@@ -24,4 +24,4 @@ timespec_t timediff(timespec_t start, timespec_t end);
 
 #endif
 
-#endif // OEPCIE_TESTFUNC_H
+#endif // ONI_TESTFUNC_H

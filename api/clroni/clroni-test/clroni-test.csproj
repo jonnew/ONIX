@@ -7,8 +7,8 @@
     <ProjectGuid>{982B345C-3A0D-46E8-B57F-B8232D780666}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>clroepcie_test</RootNamespace>
-    <AssemblyName>clroepcie-test</AssemblyName>
+    <RootNamespace>clroni_test</RootNamespace>
+    <AssemblyName>clroni-test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -106,9 +106,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\clroepcie\clroepcie.csproj">
+    <ProjectReference Include="..\clroni\clroni.csproj">
       <Project>{1524a9f6-323d-472d-b2f0-cadaea637fd2}</Project>
-      <Name>clroepcie</Name>
+      <Name>clroni</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -130,11 +130,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>if $(PlatformName) == x64 (
-    copy $(SolutionDir)\Externals\oepcie\x64\liboepcie.dll $(TargetDir)
-    echo "Copying x64 liboepcie.dll"
+    copy $(SolutionDir)\Externals\oni\x64\liboni.dll $(TargetDir)
+    echo "Copying x64 liboni.dll"
 ) ELSE (
-    copy $(SolutionDir)\Externals\oepcie\x86\liboepcie.dll $(TargetDir)
-    echo "Copying x86 liboepcie.dll"
+    copy $(SolutionDir)\Externals\oni\x86\liboni.dll $(TargetDir)
+    echo "Copying x86 liboni.dll"
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

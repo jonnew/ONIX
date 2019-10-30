@@ -1,5 +1,5 @@
-#ifndef __OEDEVICES_H__
-#define __OEDEVICES_H__
+#ifndef __ONIDEVICES_H__
+#define __ONIDEVICES_H__
 
 #ifdef __cplusplus
 extern "C" {

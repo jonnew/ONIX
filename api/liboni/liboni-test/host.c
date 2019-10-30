@@ -7,8 +7,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "oepcie.h"
-#include "oedevices.h"
+#include "oni.h"
+#include "onidevices.h"
 #include "oelogo.h"
 
 // Dump raw device streams to files?
@@ -21,7 +21,7 @@ FILE **dump_files;
 // Windows- and UNIX-specific includes etc
 #ifdef _WIN32
 #include <windows.h>
-#pragma comment(lib, "liboepcie")
+#pragma comment(lib, "liboni")
 #include <stdio.h>
 #include <stdlib.h>
 #else
@@ -29,8 +29,8 @@ FILE **dump_files;
 #include <pthread.h>
 #endif
 
-volatile oe_ctx ctx = NULL;
-oe_device_t *devices = NULL;
+volatile oni_ctx ctx = NULL;
+oni_device_t *devices = NULL;
 volatile int quit = 0;
 volatile int display = 0;
 volatile int display_clock = 0;
@@ -69,10 +69,10 @@ void *read_loop(void *vargp)
     while (!quit)  {
 
         int rc = 0;
-        oe_frame_t *frame;
-        rc = oe_read_frame(ctx, &frame);
+        oni_frame_t *frame;
+        rc = oni_read_frame(ctx, &frame);
         if (rc < 0) {
-            printf("Error: %s\n", oe_error_str(rc));
+            printf("Error: %s\n", oni_error_str(rc));
             quit = 1;
             break;
         }
@@ -89,7 +89,7 @@ void *read_loop(void *vargp)
 
             size_t this_idx = frame->dev_idxs[i];
 
-            oe_device_t this_dev = devices[this_idx];
+            oni_device_t this_dev = devices[this_idx];
             uint8_t *data = (uint8_t *)(frame->data + frame->dev_offs[i]);
             size_t data_sz = this_dev.read_size;
 
@@ -99,7 +99,7 @@ void *read_loop(void *vargp)
             if (display && counter % 1000 == 0) { // && this_idx == 5 ) { //
                 printf("\tDev: %zu (%s)\n",
                     this_idx,
-                    oe_device_str(this_dev.id));
+                    oni_device_str(this_dev.id));
 
                 int i;
                 printf("\tData: [");
@@ -110,7 +110,7 @@ void *read_loop(void *vargp)
         }
 
         counter++;
-        oe_destroy_frame(frame);
+        oni_destroy_frame(frame);
     }
 
     return NULL;
@@ -140,11 +140,11 @@ void *read_loop(void *vargp)
 //            for (i = 0; i < 256; i++)
 //                data[i + 19]  = row_num;
 //
-//            rc = oe_write(ctx, 0, data, sizeof(data));
+//            rc = oni_write(ctx, 0, data, sizeof(data));
 //            printf("%d: %d\n", row_num, rc);
 //
 //            if (rc < 0) {
-//                printf("Error: %s\n", oe_error_str(rc));
+//                printf("Error: %s\n", oni_error_str(rc));
 //                quit = 1;
 //                break;
 //            }
@@ -159,10 +159,10 @@ void *read_loop(void *vargp)
 int main(int argc, char *argv[])
 {
     // Default paths
-    const char *config_path = OE_DEFAULTCONFIGPATH;
-    const char *sig_path = OE_DEFAULTSIGNALPATH;
-    const char *read_path = OE_DEFAULTREADPATH;
-    const char *write_path = OE_DEFAULTWRITEPATH;
+    const char *config_path = ONI_DEFAULTCONFIGPATH;
+    const char *sig_path = ONI_DEFAULTSIGNALPATH;
+    const char *read_path = ONI_DEFAULTREADPATH;
+    const char *write_path = ONI_DEFAULTWRITEPATH;
 
     printf(logo_med);
     if (argc != 1 && argc != 5) {
@@ -181,30 +181,30 @@ int main(int argc, char *argv[])
     }
 
     // Generate context
-    ctx = oe_create_ctx();
+    ctx = oni_create_ctx();
     if (!ctx) exit(EXIT_FAILURE);
 
     // Set paths in context
-    oe_set_opt(ctx, OE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
-    oe_set_opt(ctx, OE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
-    oe_set_opt(ctx, OE_READSTREAMPATH, read_path, strlen(read_path) + 1);
-    oe_set_opt(ctx, OE_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
+    oni_set_opt(ctx, ONI_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
+    oni_set_opt(ctx, ONI_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
+    oni_set_opt(ctx, ONI_READSTREAMPATH, read_path, strlen(read_path) + 1);
+    oni_set_opt(ctx, ONI_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
 
     // Initialize context and discover hardware
-    int rc = oe_init_ctx(ctx);
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    int rc = oni_init_ctx(ctx);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
     assert(rc == 0);
 
     // Examine device map
-    oe_size_t num_devs = 0;
+    oni_size_t num_devs = 0;
     size_t num_devs_sz = sizeof(num_devs);
-    oe_get_opt(ctx, OE_NUMDEVICES, &num_devs, &num_devs_sz);
+    oni_get_opt(ctx, ONI_NUMDEVICES, &num_devs, &num_devs_sz);
 
     // Get the device map
-    size_t devices_sz = sizeof(oe_device_t) * num_devs;
-    devices = (oe_device_t *)realloc(devices, devices_sz);
+    size_t devices_sz = sizeof(oni_device_t) * num_devs;
+    devices = (oni_device_t *)realloc(devices, devices_sz);
     if (devices == NULL) { exit(EXIT_FAILURE); }
-    oe_get_opt(ctx, OE_DEVICEMAP, devices, &devices_sz);
+    oni_get_opt(ctx, ONI_DEVICEMAP, devices, &devices_sz);
 
 #ifdef DUMPFILES
     // Make room for dump files
@@ -216,7 +216,7 @@ int main(int argc, char *argv[])
     size_t dev_idx;
     for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
 
-        const char *dev_str = oe_device_str(devices[dev_idx].id);
+        const char *dev_str = oni_device_str(devices[dev_idx].id);
 
         printf("\t%zd) ID: %d (%s), Read size: %u\n",
             dev_idx,
@@ -233,41 +233,41 @@ int main(int argc, char *argv[])
 #endif
     }
 
-    oe_size_t frame_size = 0;
+    oni_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);
-    oe_get_opt(ctx, OE_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
+    oni_get_opt(ctx, ONI_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
     printf("Max. read frame size: %u bytes\n", frame_size);
 
-    oe_size_t block_size = 2048;
+    oni_size_t block_size = 2048;
     size_t block_size_sz = sizeof(block_size);
-    oe_set_opt(ctx, OE_BLOCKREADSIZE, &block_size, block_size_sz);
+    oni_set_opt(ctx, ONI_BLOCKREADSIZE, &block_size, block_size_sz);
     printf("Setting block read size to: %zu bytes\n", block_size);
 
-    oe_get_opt(ctx, OE_BLOCKREADSIZE, &block_size, &block_size_sz);
+    oni_get_opt(ctx, ONI_BLOCKREADSIZE, &block_size, &block_size_sz);
     printf("Block read size: %zu bytes\n", block_size);
 
     // Try to write to base clock freq, which is write only
-    oe_size_t base_hz = (oe_size_t)10e6;
-    rc = oe_set_opt(ctx, OE_SYSCLKHZ, &base_hz, sizeof(oe_size_t));
-    assert(rc == OE_EREADONLY && "Successful write to read-only register.");
+    oni_size_t base_hz = (oni_size_t)10e6;
+    rc = oni_set_opt(ctx, ONI_SYSCLKHZ, &base_hz, sizeof(oni_size_t));
+    assert(rc == ONI_EREADONLY && "Successful write to read-only register.");
 
     size_t clk_val_sz = sizeof(base_hz);
-    rc = oe_get_opt(ctx, OE_SYSCLKHZ, &base_hz, &clk_val_sz);
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    rc = oni_get_opt(ctx, ONI_SYSCLKHZ, &base_hz, &clk_val_sz);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
     assert(!rc && "Register read failure.");
     printf("System clock rate: %u Hz\n", base_hz);
 
-    oe_size_t acq_hz = 0;
+    oni_size_t acq_hz = 0;
     size_t acq_clk_val_sz = sizeof(acq_hz);
-    rc = oe_get_opt(ctx, OE_ACQCLKHZ, &acq_hz, &acq_clk_val_sz);
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    rc = oni_get_opt(ctx, ONI_ACQCLKHZ, &acq_hz, &acq_clk_val_sz);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
     assert(!rc && "Register read failure.");
     printf("Acquisition clock rate: %u Hz\n", acq_hz);
 
     // Start acquisition
-    oe_size_t run = 1;
-    rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
-    if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+    oni_size_t run = 1;
+    rc = oni_set_opt(ctx, ONI_RUNNING, &run, sizeof(run));
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
 
     // Generate data read_thread and continue here config/signal handling in parallel
 #ifdef _WIN32
@@ -307,17 +307,17 @@ int main(int argc, char *argv[])
 
         if (c == 'p') {
             running = (running == 1) ? 0 : 1;
-            oe_size_t run = running;
-            rc = oe_set_opt(ctx, OE_RUNNING, &run, sizeof(run));
+            oni_size_t run = running;
+            rc = oni_set_opt(ctx, ONI_RUNNING, &run, sizeof(run));
             if (rc) {
-                printf("Error: %s\n", oe_error_str(rc));
+                printf("Error: %s\n", oni_error_str(rc));
             }
             printf("Paused\n");
         }
         else if (c == 'x') {
-            oe_size_t reset = 1;
-            rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
-            if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
+            oni_size_t reset = 1;
+            rc = oni_set_opt(ctx, ONI_RESET, &reset, sizeof(reset));
+            if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
         }
         else if (c == 'c') {
             display_clock = (display_clock == 0) ? 1 : 0;
@@ -342,10 +342,10 @@ int main(int argc, char *argv[])
             free(buf);
 
             size_t dev_idx = (size_t)values[0];
-            oe_size_t addr = (oe_size_t)values[1];
-            oe_size_t val = (oe_size_t)values[2];
+            oni_size_t addr = (oni_size_t)values[1];
+            oni_size_t val = (oni_size_t)values[2];
 
-            oe_write_reg(ctx, dev_idx, addr, val);
+            oni_write_reg(ctx, dev_idx, addr, val);
         }
     }
 
@@ -372,7 +372,7 @@ int main(int argc, char *argv[])
 #endif
 
     // Free dynamic stuff
-    oe_destroy_ctx(ctx);
+    oni_destroy_ctx(ctx);
     free(devices);
 
     return 0;

@@ -127,12 +127,12 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="oni.c" />
     <ClCompile Include="onidevices.c" />
-    <ClCompile Include="onipcie.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="oni.h" />
     <ClInclude Include="onidevices.h" />
-    <ClInclude Include="onipcie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

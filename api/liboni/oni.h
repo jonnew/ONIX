@@ -1,5 +1,5 @@
-#ifndef __OEPCIE_H__
-#define __OEPCIE_H__
+#ifndef __ONI_H__
+#define __ONI_H__
 
 // Version macros for compile-time API version detection
 #define ONI_VERSION_MAJOR 2
