@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="oepcie.c">
+    <ClCompile Include="onipcie.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="oedevices.c">
+    <ClCompile Include="onidevices.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="oedevices.h">
+    <ClInclude Include="onidevices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="oepcie.h">
+    <ClInclude Include="onipcie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
