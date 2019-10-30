@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/jonnew/open-ephys-pcie/blob/master/api/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jonnew/open-ephys-pcie</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Jon Newman © 2019</copyright>
+    <tags>Open Neuro Interface ONI Open Ephys Electrophysiology PCIe Neuro Science</tags>
+  </metadata>
+  <files>
+    <file src="clroni.targets" target="lib\net45"/>
+    <file src="..\Externals\oni\**\*.dll" target="build\native\bin"/>
+  </files>
+</package>

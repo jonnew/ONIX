@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="clroni_AfterBuild" AfterTargets="AfterBuild">
+    <Copy SourceFiles="@(CopyToOutput)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" UseHardlinksIfPossible="true">
+      <Output TaskParameter="DestinationFiles" PropertyName="DestinationFiles" />
+      <Output TaskParameter="DestinationFiles" ItemName="DestinationFiles" />
+      <Output TaskParameter="CopiedFiles" PropertyName="CopiedFiles" />
+      <Output TaskParameter="CopiedFiles" ItemName="CopiedFiles" />
+    </Copy>
+  </Target>
+  <Target Name="clroni_BeforeBuild" BeforeTargets="BeforeBuild">
+    <ItemGroup Label="x64" Condition="'$(Platform.ToLower())' == 'x64'">
+      <CopyToOutput Include="$(MSBuildThisFileDirectory)../../build/native/bin/x64/*.dll" />
+      <None Include="$(MSBuildThisFileDirectory)../../build/native/bin/x64/*.dll">
+        <DeploymentContent>true</DeploymentContent>
+      </None>
+    </ItemGroup>
+    <ItemGroup Label="x86" Condition="'$(Platform.ToLower())' == 'x86' Or '$(Platform.ToLower())' == 'anycpu'">
+      <CopyToOutput Include="$(MSBuildThisFileDirectory)../../build/native/bin/x86/*.dll" />
+      <None Include="$(MSBuildThisFileDirectory)../../build/native/bin/x86/*.dll">
+        <DeploymentContent>true</DeploymentContent>
+      </None>
+    </ItemGroup>
+  </Target>
+</Project>
