@@ -21,7 +21,9 @@
             DINPUT32 = 9,
             DOUTPUT32 = 10,
             BNO055 = 11,
-            TEST = 12
+            TEST = 12,
+            NEUROPIX1R0 = 13,
+            HEARTBEAT = 14
         }
 
         public static string Name(int id)

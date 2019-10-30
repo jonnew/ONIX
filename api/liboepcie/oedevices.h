@@ -32,6 +32,8 @@ typedef enum oe_device_id {
     OE_DOUTPUT32            = 10,  // 32-bit digital output port
     OE_BNO055               = 11,  // BNO055 9-DOF IMU
     OE_TEST0                = 12,  // Test device
+    OE_NEUROPIX1R0          = 13,  // Neuropixels 6B device
+    OE_HEARTBEAT            = 14,  // Host heartbeat
 
     // NB: Final reserved device ID. Always on bottom
     OE_MAXDEVICEID          = OE_MAXDEVID,
@@ -47,13 +49,14 @@ typedef enum oe_device_id {
 //   uint32_t info_code]
 
 enum oe_info_codes {
-    OE_INFO_EWATCHDOG       = 0,   // Frame not sent withing watchdog threshold
-    OE_INFO_ESERDESPARITY   = 1,   // SERDES parity error detected
-    OE_INFO_ESERDESCHKSUM   = 2,   // SERDES packet checksum error detected
-    OE_INFO_ETOOMANYREMOTE  = 3,   // TOO many remote devices for host to support
-    OE_INFO_EREMOTEINIT     = 4,   // Remote initialization error
-    OE_INFO_EBADPACKET      = 5,   // Malformed packet during SERDES demultiplexing
-    OE_INFO_ELOSTREMOTE     = 6,   // Lost remote lock
+    OE_INFO_HEARTBEAT       = 0,   // Heartbeat
+    OE_INFO_EWATCHDOG       = 1,   // Frame not sent withing watchdog threshold
+    OE_INFO_ESERDESPARITY   = 2,   // SERDES parity error detected
+    OE_INFO_ESERDESCHKSUM   = 3,   // SERDES packet checksum error detected
+    OE_INFO_ETOOMANYREMOTE  = 4,   // TOO many remote devices for host to support
+    OE_INFO_EREMOTEINIT     = 5,   // Remote initialization error
+    OE_INFO_EBADPACKET      = 6,   // Malformed packet during SERDES demultiplexing
+    OE_INFO_ELOSTREMOTE     = 7,   // Lost remote lock
 };
 
 // - Configuration registers

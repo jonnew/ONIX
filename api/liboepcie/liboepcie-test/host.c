@@ -77,7 +77,7 @@ void *read_loop(void *vargp)
             break;
         }
 
-        if (display_clock && counter % 100 == 0)
+        if (display_clock && counter % 1000 == 0)
             printf("\tSample: %" PRIu64 "\n\n", frame->clock);
 
         int i;
@@ -96,7 +96,7 @@ void *read_loop(void *vargp)
 #ifdef DUMPFILES
             fwrite(data, 1, data_sz, dump_files[this_idx]);
 #endif
-            if (display && counter % 100 == 0) {
+            if (display && counter % 1000 == 0) { // && this_idx == 5 ) { //
                 printf("\tDev: %zu (%s)\n",
                     this_idx,
                     oe_device_str(this_dev.id));
@@ -170,7 +170,8 @@ int main(int argc, char *argv[])
         printf("\thost: run using default stream paths\n");
         printf("\thost config signal read write: specify the configuration, signal, read, and write paths.\n");
         exit(1);
-    } else if (argc == 5) {
+    }
+    else if (argc == 5) {
 
         // Set firmware paths
         config_path = argv[1];
@@ -237,7 +238,7 @@ int main(int argc, char *argv[])
     oe_get_opt(ctx, OE_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
     printf("Max. read frame size: %u bytes\n", frame_size);
 
-    size_t block_size = 2048;
+    oe_size_t block_size = 2048;
     size_t block_size_sz = sizeof(block_size);
     oe_set_opt(ctx, OE_BLOCKREADSIZE, &block_size, block_size_sz);
     printf("Setting block read size to: %zu bytes\n", block_size);
@@ -289,9 +290,10 @@ int main(int argc, char *argv[])
     while (c != 'q') {
 
         printf("Enter a command and press enter:\n");
-        printf("\tc - toggle 1/100 clock display\n");
-        printf("\td - toggle 1/100 display\n");
+        printf("\tc - toggle 1/1000 clock display\n");
+        printf("\td - toggle 1/1000 display\n");
         printf("\tp - toggle stream pause\n");
+        printf("\tx - issue a hardware reset\n");
         printf("\tr - enter register command\n");
         printf("\tq - quit\n");
         printf(">>> ");
@@ -311,6 +313,11 @@ int main(int argc, char *argv[])
                 printf("Error: %s\n", oe_error_str(rc));
             }
             printf("Paused\n");
+        }
+        else if (c == 'x') {
+            oe_size_t reset = 1;
+            rc = oe_set_opt(ctx, OE_RESET, &reset, sizeof(reset));
+            if (rc) { printf("Error: %s\n", oe_error_str(rc)); }
         }
         else if (c == 'c') {
             display_clock = (display_clock == 0) ? 1 : 0;
@@ -345,13 +352,16 @@ int main(int argc, char *argv[])
     // Join data and signal threads
     quit = 1;
 #ifdef _WIN32
-    WaitForSingleObject(read_thread, INFINITE);
+
+    WaitForSingleObject(read_thread, 200); // INFINITE);
     CloseHandle(read_thread);
+
 
     //WaitForSingleObject(write_thread, INFINITE);
     //CloseHandle(write_thread);
 #else
-    pthread_join(read_tid, NULL);
+    if(running)
+        pthread_join(read_tid, NULL);
     //pthread_join(write_tid, NULL);
 #endif
 #ifdef DUMPFILES

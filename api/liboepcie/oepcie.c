@@ -88,7 +88,7 @@ struct oe_ctx_impl {
     oe_size_t max_read_frame_size;
 
     // Block read size (bytes, defaults to max_read_frame_size)
-    size_t block_read_size;
+    oe_size_t block_read_size;
 
     // Current, attached buffer
     struct oe_buf_impl *shared_buf;
@@ -180,25 +180,25 @@ int oe_init_ctx(oe_ctx ctx)
     // Open the device files
     ctx->config.fid = open(ctx->config.path, O_RDWR | _O_BINARY);
     if (ctx->config.fid == -1) {
-        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->config.path);
+        //fprintf(stderr, "%s: %s\n", strerror(errno), ctx->config.path);
         return OE_EPATHINVALID;
     }
 
     ctx->signal.fid = open(ctx->signal.path, O_RDONLY | _O_BINARY);
     if (ctx->signal.fid == -1) {
-        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->signal.path);
+        //fprintf(stderr, "%s: %s\n", strerror(errno), ctx->signal.path);
         return OE_EPATHINVALID;
     }
 
     ctx->read.fid = open(ctx->read.path, O_RDONLY | _O_BINARY);
     if (ctx->read.fid == -1) {
-        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
+        //fprintf(stderr, "%s: %s\n", strerror(errno), ctx->read.path);
         return OE_EPATHINVALID;
     }
 
     ctx->write.fid = open(ctx->write.path, O_WRONLY | _O_BINARY);
     if (ctx->write.fid == -1) {
-        fprintf(stderr, "%s: %s\n", strerror(errno), ctx->write.path);
+        //fprintf(stderr, "%s: %s\n", strerror(errno), ctx->write.path);
         return OE_EPATHINVALID;
     }
 
@@ -367,11 +367,11 @@ int oe_get_opt(const oe_ctx ctx, int option, void *value, size_t *option_len)
             break;
         }
         case OE_BLOCKREADSIZE: {
-            size_t required_bytes = sizeof(size_t);
+            oe_size_t required_bytes = sizeof(oe_size_t);
             if (*option_len < required_bytes)
                 return OE_EBUFFERSIZE;
 
-            *(size_t *)value = ctx->block_read_size;
+            *(oe_size_t *)value = ctx->block_read_size;
             *option_len = required_bytes;
             break;
         }
@@ -440,7 +440,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
         }
         case OE_RESET: {
             assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
-            if (ctx->run_state < IDLE)
+            if (ctx->run_state != IDLE)
                 return OE_EINVALSTATE;
 
             if (option_len != OE_REGSZ)
@@ -448,13 +448,14 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
 
             if (*(oe_reg_val_t *)value != 0) {
 
+                // NB: Removed because it makes no sense. Just make the required state IDLE
                 // If running, stop acqusition
-                int rc = _oe_write_config(
-                    ctx->config.fid, CONFRUNNINGOFFSET, *(oe_reg_val_t*)value);
-                if (rc) return rc;
+                //int rc = _oe_write_config(
+                //    ctx->config.fid, CONFRUNNINGOFFSET, *(oe_reg_val_t*)value);
+                //if (rc) return rc;
 
                 // Set the reset register
-                rc = _oe_write_config(
+                int rc = _oe_write_config(
                     ctx->config.fid, CONFRESETOFFSET, *(oe_reg_val_t*)value);
                 if (rc) return rc;
 
@@ -462,7 +463,7 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
                 _oe_reset_routine(ctx);
 
                 // Run state is now IDLE
-                ctx->run_state = IDLE;
+                //ctx->run_state = IDLE;
             }
 
             break;
@@ -482,10 +483,10 @@ int oe_set_opt(oe_ctx ctx, int option, const void *value, size_t option_len)
             if (ctx->run_state != IDLE)
                 return OE_EINVALSTATE;
 
-            if (option_len != sizeof(size_t))
+            if (option_len != sizeof(oe_size_t))
                 return OE_EBUFFERSIZE;
 
-            size_t block_read_size = *(size_t *)value;
+            oe_size_t block_read_size = *(oe_size_t *)value;
 
             // Make sure the block read size is greater than max frame size
             if (block_read_size < ctx->max_read_frame_size)

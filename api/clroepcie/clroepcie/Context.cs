@@ -8,6 +8,13 @@
 
     using lib;
 
+    // TODO: Make the following context options editable somehow
+    // Option.BLOCKREADSIZE
+    // Option.CONFIGSTREAMPATH
+    // Option.READSTREAMPATH
+    // Option.WRITESTREAMPATH
+    // Option.SIGNALSTREAMPATH
+
     public class Context : SafeHandleZeroOrMinusOneIsInvalid
     {
         protected Context() 
@@ -27,7 +34,7 @@
             {
                 throw new InvalidProgramException("oe_create_ctx");
             }
-
+            
             // Set stream paths
             SetStringOption(Option.CONFIGSTREAMPATH, config_path);
             SetStringOption(Option.READSTREAMPATH, read_path);
@@ -68,6 +75,7 @@
         public readonly int SystemClockHz = 0;
         public readonly int AcquisitionClockHz = 0;
         public readonly int MaxReadFrameSize = 0;
+        public readonly int ReadBytes = 0;
 
         protected override bool ReleaseHandle()
         {
@@ -144,6 +152,11 @@
             SetIntOption(Context.Option.RESET, 1);
         }
 
+        public void SetBlockReadSize(int block_read_size)
+        {
+            SetIntOption(Context.Option.BLOCKREADSIZE, block_read_size);
+        }
+
         public uint ReadRegister(uint dev_idx, uint reg_addr)
         {
             lock (context_lock)
@@ -181,7 +194,7 @@
 
         //    if (await Task.WhenAny(t, Task.Delay(RegisterTimeoutMillis)) == t)
         //    {
-        //        return;
+        //        return;   
         //    }
         //    else
         //    {
