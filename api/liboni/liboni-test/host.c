@@ -36,7 +36,7 @@ volatile int display = 0;
 volatile int display_clock = 0;
 int running = 1;
 
-int parse_reg_cmd(const char *cmd, long *values)
+int parse_reg_cmd(const char *cmd, long *values, int len)
 {
     char *end;
     int k = 0;
@@ -52,7 +52,7 @@ int parse_reg_cmd(const char *cmd, long *values)
             break;
     }
 
-    if (k < 3)
+    if (k < len)
         return -1;
 
     return 0;
@@ -241,10 +241,10 @@ int main(int argc, char *argv[])
     oni_size_t block_size = 2048;
     size_t block_size_sz = sizeof(block_size);
     oni_set_opt(ctx, ONI_BLOCKREADSIZE, &block_size, block_size_sz);
-    printf("Setting block read size to: %zu bytes\n", block_size);
+    printf("Setting block read size to: %u bytes\n", block_size);
 
     oni_get_opt(ctx, ONI_BLOCKREADSIZE, &block_size, &block_size_sz);
-    printf("Block read size: %zu bytes\n", block_size);
+    printf("Block read size: %u bytes\n", block_size);
 
     // Try to write to base clock freq, which is write only
     oni_size_t base_hz = (oni_size_t)10e6;
@@ -256,13 +256,6 @@ int main(int argc, char *argv[])
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
     assert(!rc && "Register read failure.");
     printf("System clock rate: %u Hz\n", base_hz);
-
-    oni_size_t acq_hz = 0;
-    size_t acq_clk_val_sz = sizeof(acq_hz);
-    rc = oni_get_opt(ctx, ONI_ACQCLKHZ, &acq_hz, &acq_clk_val_sz);
-    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
-    assert(!rc && "Register read failure.");
-    printf("Acquisition clock rate: %u Hz\n", acq_hz);
 
     // Start acquisition
     oni_size_t run = 1;
@@ -294,7 +287,8 @@ int main(int argc, char *argv[])
         printf("\td - toggle 1/1000 display\n");
         printf("\tp - toggle stream pause\n");
         printf("\tx - issue a hardware reset\n");
-        printf("\tr - enter register command\n");
+        printf("\tw - write to device register\n");
+        printf("\tr - read from device register\n");
         printf("\tq - quit\n");
         printf(">>> ");
 
@@ -325,8 +319,9 @@ int main(int argc, char *argv[])
         else if (c == 'd') {
             display = (display == 0) ? 1 : 0;
         }
-        else if (c == 'r') {
-            printf("Enter dev_idx reg_addr reg_val\n");
+        else if (c == 'w') {
+            printf("Write to a device register.\n");
+            printf("Enter: dev_idx reg_addr reg_val\n");
             printf(">>> ");
 
             // Read the command
@@ -337,7 +332,7 @@ int main(int argc, char *argv[])
 
             // Parse the command string
             long values[3];
-            rc = parse_reg_cmd(buf, values);
+            rc = parse_reg_cmd(buf, values, 3);
             if (rc == -1) { printf("Error: bad command\n"); continue; }
             free(buf);
 
@@ -346,6 +341,31 @@ int main(int argc, char *argv[])
             oni_size_t val = (oni_size_t)values[2];
 
             oni_write_reg(ctx, dev_idx, addr, val);
+        }
+        else if (c == 'r') {
+            printf("Read a device register.\n");
+            printf("Enter: dev_idx reg_addr\n");
+            printf(">>> ");
+
+            // Read the command
+            char *buf = NULL;
+            size_t len = 0;
+            rc = getline(&buf, &len, stdin);
+            if (rc == -1) { printf("Error: bad command\n"); continue; }
+
+            // Parse the command string
+            long values[2];
+            rc = parse_reg_cmd(buf, values, 2);
+            if (rc == -1) { printf("Error: bad command\n"); continue; }
+            free(buf);
+
+            size_t dev_idx = (size_t)values[0];
+            oni_size_t addr = (oni_size_t)values[1];
+
+            oni_reg_val_t val = 0;
+            oni_read_reg(ctx, dev_idx, addr, &val);
+
+            printf("Reg. value: %u\n", val);
         }
     }
 

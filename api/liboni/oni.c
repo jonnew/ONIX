@@ -115,7 +115,7 @@ typedef enum oni_signal {
 // Configuration file offsets
 typedef enum oni_conf_reg_off {
     // Register R/W interface
-    CONFDEVIDOFFSET     = 0,   // Configuration device id register byte offset
+    CONFDEVIDXOFFSET    = 0,   // Configuration device index register byte offset
     CONFADDROFFSET      = 4,   // Configuration register address register byte offset
     CONFVALUEOFFSET     = 8,   // Configuration register value register byte offset
     CONFRWOFFSET        = 12,  // Configuration register read/write register byte offset
@@ -125,13 +125,12 @@ typedef enum oni_conf_reg_off {
     CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
-    CONFACQCLKHZOFFSET  = 32,  // Configuration acquisition clock frequency register byte offset
 } oni_conf_off_t;
 
 // Static helpers
 static int _oni_reset_routine(oni_ctx ctx);
 static inline int _oni_read(int data_fd, void* data, size_t size);
-static inline int _oni_write(int data_fd, char* data, size_t size);
+static inline int _oni_write(int data_fd, const char* data, size_t size);
 static inline int _oni_read_signal_packet(int signal_fd, uint8_t *buffer);
 static int _oni_read_signal_data(int signal_fd, oni_signal_t *type, void *data, size_t size);
 static int _oni_pump_signal_type(int signal_fd, int flags, oni_signal_t *type);
@@ -353,18 +352,6 @@ int oni_get_opt(const oni_ctx ctx, int option, void *value, size_t *option_len)
             *option_len = ONI_REGSZ;
             break;
         }
-        case ONI_ACQCLKHZ: {
-            if (*option_len != ONI_REGSZ)
-                return ONI_EBUFFERSIZE;
-
-            int rc
-                = _oni_read_config(ctx->config.fid, CONFACQCLKHZOFFSET, value);
-            if (rc)
-                return rc;
-
-            *option_len = ONI_REGSZ;
-            break;
-        }
         case ONI_BLOCKREADSIZE: {
             oni_size_t required_bytes = sizeof(oni_size_t);
             if (*option_len < required_bytes)
@@ -447,12 +434,6 @@ int oni_set_opt(oni_ctx ctx, int option, const void *value, size_t option_len)
 
             if (*(oni_reg_val_t *)value != 0) {
 
-                // NB: Removed because it makes no sense. Just make the required state IDLE
-                // If running, stop acqusition
-                //int rc = _oni_write_config(
-                //    ctx->config.fid, CONFRUNNINGOFFSET, *(oni_reg_val_t*)value);
-                //if (rc) return rc;
-
                 // Set the reset register
                 int rc = _oni_write_config(
                     ctx->config.fid, CONFRESETOFFSET, *(oni_reg_val_t*)value);
@@ -460,17 +441,11 @@ int oni_set_opt(oni_ctx ctx, int option, const void *value, size_t option_len)
 
                 // Get device map etc
                 _oni_reset_routine(ctx);
-
-                // Run state is now IDLE
-                //ctx->run_state = IDLE;
             }
 
             break;
         }
         case ONI_SYSCLKHZ: {
-            return ONI_EREADONLY;
-        }
-        case ONI_ACQCLKHZ: {
             return ONI_EREADONLY;
         }
         case ONI_BLOCKREADSIZE: {
@@ -523,32 +498,32 @@ int oni_write_reg(const oni_ctx ctx,
         return ONI_ESEEKFAILURE;
 
     // Make sure we are not already in config triggered state
-    uint32_t trig = 0x00;
-    if (read(ctx->config.fid, &trig, sizeof(uint32_t)) == 0)
+    oni_reg_val_t trig = 0;
+    if (read(ctx->config.fid, &trig, sizeof(oni_reg_val_t)) == 0)
         return ONI_EREADFAILURE;
 
     if (trig != 0)
         return ONI_ERETRIG;
 
     // Set config registers and trigger a write
-    if (lseek(ctx->config.fid, CONFDEVIDOFFSET, SEEK_SET) < 0)
+    if (lseek(ctx->config.fid, CONFDEVIDXOFFSET, SEEK_SET) < 0)
         return ONI_ESEEKFAILURE;
 
-    if (write(ctx->config.fid, &dev_idx, sizeof(uint32_t)) <= 0)
+    if (write(ctx->config.fid, &dev_idx, sizeof(oni_reg_val_t)) <= 0)
         return ONI_EWRITEFAILURE;
 
-    if (write(ctx->config.fid, &addr, sizeof(uint32_t)) <= 0)
+    if (write(ctx->config.fid, &addr, sizeof(oni_reg_val_t)) <= 0)
         return ONI_EWRITEFAILURE;
 
-    if (write(ctx->config.fid, &value, sizeof(uint32_t)) <= 0)
+    if (write(ctx->config.fid, &value, sizeof(oni_reg_val_t)) <= 0)
         return ONI_EWRITEFAILURE;
 
-    uint32_t rw = 0x01;
-    if (write(ctx->config.fid, &rw, sizeof(uint32_t)) <= 0)
+    oni_reg_val_t rw = 1;
+    if (write(ctx->config.fid, &rw, sizeof(oni_reg_val_t)) <= 0)
         return ONI_EWRITEFAILURE;
 
-    trig = 0x01;
-    if (write(ctx->config.fid, &trig, sizeof(uint32_t)) <= 0)
+    trig = 1;
+    if (write(ctx->config.fid, &trig, sizeof(oni_reg_val_t)) <= 0)
         return ONI_EWRITEFAILURE;
 
     oni_signal_t type;
@@ -577,40 +552,45 @@ int oni_read_reg(const oni_ctx ctx,
         return ONI_ESEEKFAILURE;
 
     // Make sure we are not already in config triggered state
-    uint8_t trig = 0x00;
-    if (read(ctx->config.fid, &trig, 1) == 0)
+    oni_reg_val_t trig = 0;
+    if (read(ctx->config.fid, &trig, sizeof(oni_reg_val_t)) == 0)
         return ONI_EREADFAILURE;
 
     if (trig != 0)
         return ONI_ERETRIG;
 
     // Set config registers and trigger a write
-    if (lseek(ctx->config.fid, CONFDEVIDOFFSET, SEEK_SET) < 0)
+    if (lseek(ctx->config.fid, CONFDEVIDXOFFSET, SEEK_SET) < 0)
         return ONI_ESEEKFAILURE;
 
-    if (write(ctx->config.fid, &dev_idx, sizeof(uint32_t)) <= 0)
+    if (write(ctx->config.fid, &dev_idx, sizeof(oni_reg_val_t)) <= 0)
         return ONI_EWRITEFAILURE;
 
-    if (write(ctx->config.fid, &addr, sizeof(uint32_t)) <= 0)
+    if (write(ctx->config.fid, &addr, sizeof(oni_reg_val_t)) <= 0) // CONFADDROFFSET
         return ONI_EWRITEFAILURE;
 
-    if (write(ctx->config.fid, &value, sizeof(uint32_t)) <= 0)
+    if (write(ctx->config.fid, &value, sizeof(oni_reg_val_t)) <= 0) // CONFVALUEOFFSET
         return ONI_EWRITEFAILURE;
 
-    uint8_t rw = 0x00;
-    if (write(ctx->config.fid, &rw, sizeof(uint8_t)) <= 0)
+    oni_reg_val_t rw = 0;
+    if (write(ctx->config.fid, &rw, sizeof(oni_reg_val_t)) <= 0) // CONFRWOFFSET
         return ONI_EWRITEFAILURE;
 
-    trig = 0x01;
-    if (write(ctx->config.fid, &trig, sizeof(uint8_t)) <= 0)
+    trig = 1;
+    if (write(ctx->config.fid, &trig, sizeof(oni_reg_val_t)) <= 0) // CONFTRIGOFFSET
         return ONI_EWRITEFAILURE;
 
     oni_signal_t type;
-    int rc = _oni_pump_signal_data(
-        ctx->signal.fid, CONFIGRACK | CONFIGRNACK, &type, value, sizeof(*value));
+    int rc = _oni_pump_signal_type(ctx->signal.fid, CONFIGRACK | CONFIGRNACK, &type);
     if (rc) return rc;
 
     if (type == CONFIGRNACK)
+        return ONI_EREADFAILURE;
+
+    if (lseek(ctx->config.fid, CONFVALUEOFFSET, SEEK_SET) < 0)
+        return ONI_ESEEKFAILURE;
+
+    if (read(ctx->config.fid, value, sizeof(uint32_t)) <= 0)
         return ONI_EREADFAILURE;
 
     return ONI_ESUCCESS;
@@ -681,7 +661,7 @@ int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame)
     return total_size;
 }
 
-int oni_write(const oni_ctx ctx, size_t dev_idx, void *data, size_t data_sz)
+int oni_write(const oni_ctx ctx, size_t dev_idx, const void *data, size_t data_sz)
 {
     assert(ctx != NULL && "Context is NULL");
 
@@ -893,7 +873,7 @@ static inline int _oni_read(int data_fd, void *data, size_t size)
     return received;
 }
 
-static inline int _oni_write(int data_fd, char *data, size_t size)
+static inline int _oni_write(int data_fd, const char *data, size_t size)
 {
     size_t written = 0;
 
@@ -1099,9 +1079,9 @@ static int _oni_read_buffer(oni_ctx ctx, void **data, size_t size, int allow_ref
 
     // TODO: Is there a way to get rid of allow_refill?
     // NB: Frames must reference a single buffer, so we must refill if less
-    // than max possible frame size on the first read within oni_read_frame(). 
-    // Making this limit smaller will result in memory corruption, so don't do it. 
-    // Allowing refills multiple times during one call to oni_read_frame() will 
+    // than max possible frame size on the first read within oni_read_frame().
+    // Making this limit smaller will result in memory corruption, so don't do it.
+    // Allowing refills multiple times during one call to oni_read_frame() will
     // also cause memory corruption.
     if (remaining < ctx->max_read_frame_size && allow_refill) {
 

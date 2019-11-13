@@ -11,10 +11,10 @@ extern "C" {
 #define ONI_EXPORT
 #endif
 
-#define ONI_MAXDEVID 1999
+#define ONI_MAXDEVID 9999
 
 // NB: Officially supported device IDs for the open-ephys++ project occupy
-// device IDs < 2000. IDs above this value are not reserved and can be used
+// device IDs < 10,000. IDs above this value are not reserved and can be used
 // for custom projects.
 // NB: If you add a device here, make sure to update oni_device_str(), and
 // update documentation below

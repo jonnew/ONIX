@@ -91,7 +91,6 @@ enum {
     ONI_RUNNING,
     ONI_RESET,
     ONI_SYSCLKHZ,
-    ONI_ACQCLKHZ,
     ONI_BLOCKREADSIZE
 };
 
@@ -141,7 +140,7 @@ ONI_EXPORT int oni_read_reg(const oni_ctx ctx, size_t dev_idx, oni_reg_addr_t ad
 ONI_EXPORT int oni_write_reg(const oni_ctx ctx, size_t dev_idx, oni_reg_addr_t addr, oni_reg_val_t value);
 ONI_EXPORT int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame);
 ONI_EXPORT void oni_destroy_frame(oni_frame_t *frame);
-ONI_EXPORT int oni_write(const oni_ctx ctx, size_t dev_idx, void *data, size_t data_sz);
+ONI_EXPORT int oni_write(const oni_ctx ctx, size_t dev_idx, const void *data, size_t data_sz);
 
 // Internal type conversion
 ONI_EXPORT void oni_version(int *major, int *minor, int *patch);

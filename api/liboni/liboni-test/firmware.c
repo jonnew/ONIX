@@ -60,7 +60,7 @@ typedef enum oni_signal {
 typedef enum oni_conf_reg_off {
 
     // Register R/W interface
-    CONFDEVIDOFFSET     = 0,   // Configuration device id register byte offset
+    CONFDEVIDXOFFSET    = 0,   // Configuration device id register byte offset
     CONFADDROFFSET      = 4,   // Configuration register address register byte offset
     CONFVALUEOFFSET     = 8,   // Configuration register value register byte offset
     CONFRWOFFSET        = 12,  // Configuration register read/write register byte offset
@@ -70,7 +70,6 @@ typedef enum oni_conf_reg_off {
     CONFRUNNINGOFFSET   = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET     = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET  = 28,  // Configuration base clock frequency register byte offset
-    CONFACQCLKHZOFFSET  = 32,  // Configuration acquisition clock frequency register byte offset
 } oni_conf_reg_off_t;
 
 // Devices handled by this firmware
@@ -153,7 +152,6 @@ void generate_default_config(int config_fd)
     // Write defaults for registers that need it
     write_config(config_fd, CONFRUNNINGOFFSET, (void *)&running, sizeof(oni_size_t));
     write_config(config_fd, CONFSYSCLKHZOFFSET, (void *)&sys_clock_hz, sizeof(oni_size_t));
-    write_config(config_fd, CONFACQCLKHZOFFSET, (void *)&acq_clock_hz, sizeof(oni_size_t));
 }
 
 int send_msg_signal(int sig_fd, oni_signal_t type)
@@ -423,14 +421,14 @@ reset:
 
         // --  Global registers --
         oni_size_t run;
-        read_config(config_fd, CONFRUNNINGOFFSET, &run, 4);
+        read_config(config_fd, CONFRUNNINGOFFSET, &run, sizeof(oni_size_t));
         running = run;
 
         oni_size_t reset;
-        read_config(config_fd, CONFRESETOFFSET, &reset, 4);
+        read_config(config_fd, CONFRESETOFFSET, &reset, sizeof(oni_size_t));
         if (reset) {
             reset = 0; // untrigger
-            write_config(config_fd, CONFRESETOFFSET, &reset, 4);
+            write_config(config_fd, CONFRESETOFFSET, &reset, sizeof(oni_size_t));
             goto reset;
         }
 
@@ -439,53 +437,51 @@ reset:
         // NB: It is very important to 0-initalize the register values here
         // because (I think) they are cast to void * in read_config and
         // this is bad for some reason
-        oni_size_t dev_id;
-        read_config(config_fd, CONFDEVIDOFFSET, &dev_id, 4);
+        oni_size_t dev_idx;
+        read_config(config_fd, CONFDEVIDXOFFSET, &dev_idx, sizeof(oni_size_t));
         // printf("Dev ID: %d\n", dev_id);
 
         oni_size_t reg_addr;
-        read_config(config_fd, CONFADDROFFSET, &reg_addr, 4);
+        read_config(config_fd, CONFADDROFFSET, &reg_addr, sizeof(oni_size_t));
         // printf("Reg. Addr: %u\n", reg_addr);
 
         oni_size_t reg_val;
-        read_config(config_fd, CONFVALUEOFFSET, &reg_val, 4);
+        read_config(config_fd, CONFVALUEOFFSET, &reg_val, sizeof(oni_size_t));
         // printf("Reg. val.: %u\n", reg_val);
 
         oni_size_t reg_rw;
-        read_config(config_fd, CONFRWOFFSET, &reg_rw, 1);
+        read_config(config_fd, CONFRWOFFSET, &reg_rw, sizeof(oni_size_t));
         // printf("Reg. RW: %hhu\n", reg_rw);
 
         oni_size_t trig_value;
-        read_config(config_fd, CONFTRIGOFFSET, &trig_value, 1);
+        read_config(config_fd, CONFTRIGOFFSET, &trig_value, sizeof(oni_size_t));
         // printf("Trig val.: %hhu\n", trig_value);
 
         if (trig_value && !reg_rw) { // Read operation requested by host
 
             printf("Register read requested.\n");
 
-            // TODO: Go get the value. For now, we are just mirror
-            // the value in reg_val
-            uint32_t read_reg = reg_val;
-
             // Send the result back
-            send_data_signal(
-                sig_fd, CONFIGRACK, &read_reg, sizeof(read_reg));
+            send_msg_signal(sig_fd, CONFIGRACK);
 
             // Untrigger
-            trig_value = 0x00;
-            write_config(config_fd, CONFTRIGOFFSET, &trig_value, 1);
+            trig_value = 0;
+            write_config(
+                config_fd, CONFTRIGOFFSET, &trig_value, sizeof(oni_size_t));
 
         } else if (trig_value && reg_rw) { // write operation requested by host
 
             // TODO: Use the value register to program device register
             // (not impelemented here)
+            printf("Register write requested.\n");
 
             // Send read acknowledge back to host
             send_msg_signal(sig_fd, CONFIGWACK);
 
             // Untrigger
-            trig_value = 0x00;
-            write_config(config_fd, CONFTRIGOFFSET, &trig_value, 1);
+            trig_value = 0;
+            write_config(
+                config_fd, CONFTRIGOFFSET, &trig_value, sizeof(oni_size_t));
         }
     }
 

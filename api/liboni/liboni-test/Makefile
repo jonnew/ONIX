@@ -5,17 +5,17 @@
 
 CC=cc
 CFLAGS=-O3 -Wall
-LDFLAGS=-loepcie
+LDFLAGS=-loni
 
 .PHONY: all
-all: bin/firmware bin/host bin/cobs_test
+all: bin/firmware bin/host bin/cobs_test ## Build the firmware emulator, basic host, and helper functions
 
 .PHONY: debug
-debug: CFLAGS += -DDEBUG -g3
+debug: CFLAGS += -DDEBUG -g3 ## Build with debug symbols
 debug: all
 
 .PHONY: profile
-profile: LDFLAGS += -lprofiler
+profile: LDFLAGS += -lprofiler  ## Link in the perftools profiler
 profile: all
 
 bin/cobs_test: cobs_test.c
@@ -33,7 +33,10 @@ bin/host: host.c
 	@[ -d bin ] || mkdir bin
 	$(CC) $(CFLAGS) $? -lm -lpthread $(LDFLAGS) -o $@
 
-clean:
+.PHONY: clean
+clean: ## Clean build artifacts
 	rm -r ./bin
 
-.PHONY: clean
+.PHONY: help
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
