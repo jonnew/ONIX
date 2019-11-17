@@ -8,9 +8,14 @@ it provides host PC communication for the following:
 
 - Two deserailizers for any multifunction headstage conforming to our
   serialization protocol
-- 12x 16-bit, +/-10V analog outputs or inputs. Analog inputs separated into 2 simultaneously sampled 6-channel banks
+- 12x 16-bit, +/-10V analog outputs or inputs. Analog inputs separated into 2
+  simultaneously sampled 6-channel banks. Analog outputs are always looped back
+  using the analog inputs.
+- 3x high speed LVDS input pairs
+- 2x high speed LVDS outputs pairs
 - 2x high speed, arbitrary logic-level, clock inputs
 - 1x high speed clock output
+- 4x MLVDS input or output trigger lines
 
 Easy access to IO is provided by the [breakout
 board](../breakout/README.md).
@@ -28,15 +33,15 @@ The bill of materials for this device can be found
 In order to meet approximately correct trace impedances, the design assumes the following stackup:
 
 1. Top Copper 0.035 mm
-1. Prepreg (2313*1) 0.1 mm
+1. Prepreg (2313\*1) 0.1 mm
 1. Inner Copper 0.0175 mm
 1. Core (Copper) 0.565 mm
 1. Inner Copper 0.0175 mm
-1. Prepeg (2116*1) 0.127 mm
+1. Prepeg (2116\*1) 0.127 mm
 1. Inner Copper 0.0175 mm
 1. Core (Copper) 0.565 mm
 1. Inner Copper 0.0175 mm
-1. Prepreg (2313*1) 0.1 mm
+1. Prepreg (2313\*1) 0.1 mm
 1. Bottom Copper 0.0175 mm
 
 
