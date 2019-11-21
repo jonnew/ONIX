@@ -10,6 +10,7 @@
 #include "oni.h"
 #include "onidevices.h"
 #include "oelogo.h"
+#include "drivers\oepcie\liboni-driver-oepcie.h"
 
 // Dump raw device streams to files?
 //#define DUMPFILES
@@ -181,17 +182,17 @@ int main(int argc, char *argv[])
     }
 
     // Generate context
-    ctx = oni_create_ctx();
+    ctx = oni_create_ctx(OEPCIE_NAME);
     if (!ctx) exit(EXIT_FAILURE);
 
     // Set paths in context
-    oni_set_opt(ctx, ONI_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
-    oni_set_opt(ctx, ONI_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
-    oni_set_opt(ctx, ONI_READSTREAMPATH, read_path, strlen(read_path) + 1);
-    oni_set_opt(ctx, ONI_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
+    oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
+    oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, sig_path, strlen(sig_path) + 1);
+    oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, read_path, strlen(read_path) + 1);
+    oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, write_path, strlen(write_path) + 1);
 
     // Initialize context and discover hardware
-    int rc = oni_init_ctx(ctx);
+    int rc = oni_init_ctx(ctx,-1);
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
     assert(rc == 0);
 
