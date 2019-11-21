@@ -36,8 +36,9 @@ static inline void* get_driver_function(lib_handle_t handle, const char* functio
 }
 
 // simple macro to load a function a check for error
+#define DSTR(x) #x
 #define LOAD_FUNCTION(fname) {\
-			driver-> ## fname = ( oni_driver_ ## fname ## _f)get_driver_function(handle,#fname); \
+			driver-> ## fname = ( oni_driver_ ## fname ## _f)get_driver_function(handle,DSTR(oni_driver_ ## fname)); \
 			if (!driver-> ## fname) error = -1; \
 			}
 
@@ -59,7 +60,7 @@ int oni_create_driver(const char* lib_name, oni_driver_t* driver)
 	handle = open_library(full_lib_name);
 	free(full_lib_name);
 	if (!handle)
-		return 0;
+		return -1;
 	
 	LOAD_FUNCTION(create_ctx);
 	LOAD_FUNCTION(destroy_ctx);
