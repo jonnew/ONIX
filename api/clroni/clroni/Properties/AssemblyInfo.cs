@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("clroepcie")]
-[assembly: AssemblyDescription("A .NET binding for the liboepcie data acqusition library.")]
+[assembly: AssemblyTitle("clroni")]
+[assembly: AssemblyDescription("A .NET binding for the liboni data acqusition library.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jon Newman")]
-[assembly: AssemblyProduct("clroepcie")]
+[assembly: AssemblyProduct("clroni")]
 [assembly: AssemblyCopyright("Copyright © Jon Newman 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

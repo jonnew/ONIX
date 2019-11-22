@@ -28,6 +28,7 @@ namespace oni.lib
         READONLY = -18, // Attempted write to read only object (register, context option, etc)
         UNIMPL = -19, // Specified, but unimplemented, feature
         INVALREADSIZE = -20, // Block read size is smaller than the maximal frame size
+        NOREADDEV = -21, // Frame read attempted when there are no readable devices in the device map
     }
 
     // Make managed version of oni_device_t

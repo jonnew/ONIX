@@ -95,10 +95,6 @@ class Host
                 Console.WriteLine("System clock frequency: "
                                   + ctx.SystemClockHz);
 
-                // See the hardware clock
-                Console.WriteLine("Acquisition clock frequency: "
-                                    + ctx.AcquisitionClockHz);
-
                 // Start acqusisition
                 ctx.Start();
 

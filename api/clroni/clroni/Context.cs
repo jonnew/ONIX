@@ -46,7 +46,6 @@
 
             // Get context metadata
             SystemClockHz = GetIntOption(Option.SYSCLKHZ);
-            AcquisitionClockHz = GetIntOption(Option.ACQCLKHZ);
             MaxReadFrameSize = GetIntOption(Option.MAXREADFRAMESIZE);
 
             // Populate device map
@@ -73,7 +72,6 @@
         private object context_lock = new object();
 
         public readonly int SystemClockHz = 0;
-        public readonly int AcquisitionClockHz = 0;
         public readonly int MaxReadFrameSize = 0;
         public readonly int ReadBytes = 0;
 
@@ -237,10 +235,10 @@
             DEVICEMAP,
             NUMDEVICES,
             MAXREADFRAMESIZE,
+            RUNONRESET,
             RUNNING,
             RESET,
             SYSCLKHZ,
-            ACQCLKHZ,
             BLOCKREADSIZE
         }
 

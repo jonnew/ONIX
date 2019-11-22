@@ -35,6 +35,7 @@ oni_device_t *devices = NULL;
 volatile int quit = 0;
 volatile int display = 0;
 volatile int display_clock = 0;
+const int quiet = 1;
 int running = 1;
 
 int parse_reg_cmd(const char *cmd, long *values, int len)
@@ -66,6 +67,7 @@ void *read_loop(void *vargp)
 #endif
 {
     unsigned long counter = 0;
+    unsigned long this_cnt = 0;
 
     while (!quit)  {
 
@@ -97,10 +99,13 @@ void *read_loop(void *vargp)
 #ifdef DUMPFILES
             fwrite(data, 1, data_sz, dump_files[this_idx]);
 #endif
-            if (display && counter % 1000 == 0) { // && this_idx == 5 ) { //
-                printf("\tDev: %zu (%s)\n",
+            if (display && counter % 1000 == 0) { //this_idx == 19 && this_cnt < 500) { // && counter % 1000 == 0) { // && this_idx == 4 ) { //
+                
+                this_cnt++;
+                printf("\tDev: %zu (%s) \n",
                     this_idx,
                     oni_device_str(this_dev.id));
+                    // this_cnt);
 
                 int i;
                 printf("\tData: [");
@@ -180,16 +185,28 @@ int main(int argc, char *argv[])
         read_path = argv[3];
         write_path = argv[4];
     }
+    
+    // Return code
+    int rc = ONI_ESUCCESS;
 
     // Generate context
     ctx = oni_create_ctx(OEPCIE_NAME);
     if (!ctx) exit(EXIT_FAILURE);
 
     // Set paths in context
-    oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
-    oni_set_driver_opt(ctx, ONI_OEPCIE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
-    oni_set_driver_opt(ctx, ONI_OEPCIE_READSTREAMPATH, read_path, strlen(read_path) + 1);
-    oni_set_driver_opt(ctx, ONI_OEPCIE_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
+    rc = oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
+    rc = oni_set_driver_opt(ctx, ONI_OEPCIE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
+    rc = oni_set_driver_opt(ctx, ONI_OEPCIE_READSTREAMPATH, read_path, strlen(read_path) + 1);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
+    rc = oni_set_driver_opt(ctx, ONI_OEPCIE_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
+
+    // Set acqusition to run immediately following reset
+    oni_reg_val_t immediate_run = 1;
+    rc = oni_set_opt(ctx, ONI_RUNONRESET, &immediate_run, sizeof(oni_reg_val_t));
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
 
     // Initialize context and discover hardware
     int rc = oni_init_ctx(ctx,-1);
@@ -213,7 +230,7 @@ int main(int argc, char *argv[])
 #endif
 
     // Show device map
-    printf("Found the following devices:\n");
+    //printf("Found the following devices:\n");
     size_t dev_idx;
     for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
 
