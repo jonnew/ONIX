@@ -18,9 +18,6 @@ const char *oni_device_str(int dev_id)
         case ONI_RHD2164: {
             return "Intan RHD2164 bioamplifier";
         }
-        case ONI_MPU9250: {
-            return "MPU9250 9-axis IMU";
-        }
         case ONI_ESTIM: {
             return "Electrical stimulation subcircuit";
         }
@@ -29,9 +26,6 @@ const char *oni_device_str(int dev_id)
         }
         case ONI_TS4231: {
             return "Triad TS4231 optical to digital converter";
-        }
-        case ONI_SERDESGPO: {
-            return "GPO pins available on the DS90UB913A-Q1 serializer";
         }
         case ONI_DINPUT32: {
             return "32-bit digital input port";
@@ -51,7 +45,17 @@ const char *oni_device_str(int dev_id)
         case ONI_HEARTBEAT: {
             return "Host heartbeat";
         }
+        case ONI_AD51X2_ID: {
+            return "AD51X2 digital potentiometer";
+        }
+        case ONI_FMCVCTRL_ID: {
+            return "Open Ephys FMC Host Board rev. 1.3 link voltage controller";
+        }
+        case ONI_AD7617_ID: {
+            return "AD7617 ADC/DAS.";
+        }
         default:
             return "Unknown device";
     }
 }
+
