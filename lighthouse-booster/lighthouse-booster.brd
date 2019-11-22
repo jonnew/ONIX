@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -172,10 +172,10 @@
 <wire x1="18" y1="-31" x2="17" y2="-30" width="0" layer="20" curve="90"/>
 <wire x1="17" y1="-30" x2="1" y2="-30" width="0" layer="20"/>
 <wire x1="1" y1="-30" x2="0" y2="-29" width="0" layer="20" curve="-90"/>
-<hole x="-2" y="-5" drill="2"/>
-<hole x="-5" y="-2" drill="2"/>
-<hole x="-26" y="-2" drill="2"/>
-<hole x="-2" y="-26" drill="2"/>
+<hole x="-2" y="-5" drill="2.3"/>
+<hole x="-5" y="-2" drill="2.3"/>
+<hole x="-26" y="-2" drill="2.3"/>
+<hole x="-2" y="-26" drill="2.3"/>
 <polygon width="0" layer="40">
 <vertex x="0" y="0"/>
 <vertex x="0" y="-28.97574375" curve="90"/>
@@ -681,9 +681,6 @@ JLC7628 Stackup
 <element name="D75" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-37" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D74" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-37" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="C50" library="jonnew" package="0805T" value="22uF" x="-40.9" y="-33.9" smashed="yes" rot="MR90"/>
 <element name="C47" library="jonnew" package="0805T" value="22uF" x="-39.3" y="-33.9" smashed="yes" rot="MR90"/>
 <element name="C44" library="jonnew" package="0805T" value="22uF" x="-37.7" y="-33.9" smashed="yes" rot="MR90"/>
@@ -700,9 +697,6 @@ JLC7628 Stackup
 <element name="D66" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D65" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-33.1" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R39" library="jonnew" package="0805T" value="0.36" x="-33.1" y="-40.1" smashed="yes" rot="MR270"/>
 <element name="R42" library="jonnew" package="0805T" value="0.36" x="-31.5" y="-40.1" smashed="yes" rot="MR270"/>
 <element name="D58" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-39.5" smashed="yes" rot="R90">
@@ -710,9 +704,6 @@ JLC7628 Stackup
 </element>
 <element name="D57" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D56" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-29.2" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="R33" library="jonnew" package="0805T" value="0.36" x="-28.4" y="-41.1" smashed="yes" rot="MR180"/>
 <element name="R36" library="jonnew" package="0805T" value="0.36" x="-28.4" y="-39.6" smashed="yes" rot="MR180"/>
@@ -722,9 +713,6 @@ JLC7628 Stackup
 <element name="D48" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D47" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-25.3" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R27" library="jonnew" package="0805T" value="0.36" x="-29.6" y="-37.9" smashed="yes" rot="MR180"/>
 <element name="R30" library="jonnew" package="0805T" value="0.36" x="-29.6" y="-36.5" smashed="yes" rot="MR180"/>
 <element name="D40" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-39.5" smashed="yes" rot="R90">
@@ -732,9 +720,6 @@ JLC7628 Stackup
 </element>
 <element name="D39" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-21.4" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D38" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-21.4" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="U7" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-38" y="-37" smashed="yes" rot="MR90">
 <attribute name="NAME" x="-36.15" y="-37.5" size="1.016" layer="26" font="vector" ratio="18" rot="MR0"/>
@@ -757,9 +742,6 @@ JLC7628 Stackup
 <element name="D29" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-37" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D28" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-37" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="C17" library="jonnew" package="0805T" value="22uF" x="-40.9" y="-21.7" smashed="yes" rot="MR90"/>
 <element name="C14" library="jonnew" package="0805T" value="22uF" x="-39.3" y="-21.7" smashed="yes" rot="MR90"/>
 <element name="C12" library="jonnew" package="0805T" value="22uF" x="-37.7" y="-21.8" smashed="yes" rot="MR90"/>
@@ -776,9 +758,6 @@ JLC7628 Stackup
 <element name="D23" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D22" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-33.1" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R12" library="jonnew" package="0805T" value="0.36" x="-34.5" y="-27.9" smashed="yes" rot="MR270"/>
 <element name="R14" library="jonnew" package="0805T" value="0.36" x="-32.9" y="-27.9" smashed="yes" rot="MR270"/>
 <element name="D18" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-27.7" smashed="yes" rot="R90">
@@ -786,9 +765,6 @@ JLC7628 Stackup
 </element>
 <element name="D17" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D16" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-29.2" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="R7" library="jonnew" package="0805T" value="0.36" x="-29.9" y="-27.9" smashed="yes" rot="MR270"/>
 <element name="R9" library="jonnew" package="0805T" value="0.36" x="-31.4" y="-27.9" smashed="yes" rot="MR270"/>
@@ -798,9 +774,6 @@ JLC7628 Stackup
 <element name="D11" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D10" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-25.3" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R2" library="jonnew" package="0805T" value="0.36" x="-29.9" y="-25" smashed="yes" rot="MR90"/>
 <element name="R4" library="jonnew" package="0805T" value="0.36" x="-31.3" y="-25" smashed="yes" rot="MR90"/>
 <element name="D6" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-27.7" smashed="yes" rot="R90">
@@ -808,9 +781,6 @@ JLC7628 Stackup
 </element>
 <element name="D5" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-21.4" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D4" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-21.4" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="U2" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-38.7" y="-24.9" smashed="yes" rot="MR90"/>
 <element name="C9" library="jonnew" package="0402T" value="10nF" x="-41.2" y="-24" smashed="yes" rot="MR270"/>
@@ -829,9 +799,6 @@ JLC7628 Stackup
 <element name="D26" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-37" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D25" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-37" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="C16" library="jonnew" package="0805T" value="22uF" x="-40.9" y="-5.3" smashed="yes" rot="MR90"/>
 <element name="C13" library="jonnew" package="0805T" value="22uF" x="-39.4" y="-5.3" smashed="yes" rot="MR90"/>
 <element name="C11" library="jonnew" package="0805T" value="22uF" x="-37.9" y="-5.3" smashed="yes" rot="MR90"/>
@@ -848,9 +815,6 @@ JLC7628 Stackup
 <element name="D20" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-33.1" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D19" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-33.1" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R11" library="jonnew" package="0805T" value="0.36" x="-34.8" y="-13.5" smashed="yes" rot="MR270"/>
 <element name="R13" library="jonnew" package="0805T" value="0.36" x="-33.4" y="-13.5" smashed="yes" rot="MR270"/>
 <element name="D15" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-12.7" smashed="yes" rot="R90">
@@ -858,9 +822,6 @@ JLC7628 Stackup
 </element>
 <element name="D14" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-29.2" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D13" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.3" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-29.2" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="R6" library="jonnew" package="0805T" value="0.36" x="-30.4" y="-13.4" smashed="yes" rot="MR270"/>
 <element name="R8" library="jonnew" package="0805T" value="0.36" x="-31.9" y="-13.4" smashed="yes" rot="MR270"/>
@@ -870,9 +831,6 @@ JLC7628 Stackup
 <element name="D8" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-25.3" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D7" library="jonnew" package="LUXEON-3.7MM" value="" x="-28.4" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-25.3" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R1" library="jonnew" package="0805T" value="0.36" x="-30.6" y="-11.2" smashed="yes" rot="MR180"/>
 <element name="R3" library="jonnew" package="0805T" value="0.36" x="-30.6" y="-9.7" smashed="yes" rot="MR180"/>
 <element name="D3" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-12.7" smashed="yes" rot="R90">
@@ -880,9 +838,6 @@ JLC7628 Stackup
 </element>
 <element name="D2" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-21.4" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D1" library="jonnew" package="LUXEON-3.7MM" value="" x="-24.5" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-21.4" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="U1" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-39.5" y="-9.3" smashed="yes" rot="MR90">
 <attribute name="NAME" x="-39.9" y="-10" size="1.016" layer="26" font="vector" ratio="18" rot="MR90"/>
@@ -903,9 +858,6 @@ JLC7628 Stackup
 <element name="D69" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-17.3" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D68" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-17.3" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="C48" library="jonnew" package="0805T" value="22uF" x="-21.2" y="-1.5" smashed="yes" rot="R270"/>
 <element name="C45" library="jonnew" package="0805T" value="22uF" x="-19.7" y="-1.5" smashed="yes" rot="R270"/>
 <element name="C42" library="jonnew" package="0805T" value="22uF" x="-17.2" y="-1.5" smashed="yes" rot="R270"/>
@@ -922,9 +874,6 @@ JLC7628 Stackup
 <element name="D60" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D59" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-13.4" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R37" library="jonnew" package="0805T" value="0.36" x="-12.3" y="-16.2" smashed="yes" rot="R90"/>
 <element name="R40" library="jonnew" package="0805T" value="0.36" x="-10.8" y="-16.2" smashed="yes" rot="R90"/>
 <element name="D52" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-12.7" smashed="yes" rot="R90">
@@ -932,9 +881,6 @@ JLC7628 Stackup
 </element>
 <element name="D51" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D50" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-9.5" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="R31" library="jonnew" package="0805T" value="0.36" x="-7.8" y="-16.2" smashed="yes" rot="R90"/>
 <element name="R34" library="jonnew" package="0805T" value="0.36" x="-9.3" y="-16.2" smashed="yes" rot="R90"/>
@@ -944,9 +890,6 @@ JLC7628 Stackup
 <element name="D42" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D41" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-5.6" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R25" library="jonnew" package="0805T" value="0.36" x="-6.3" y="-16.2" smashed="yes" rot="R90"/>
 <element name="R28" library="jonnew" package="0805T" value="0.36" x="-4.8" y="-16.2" smashed="yes" rot="R90"/>
 <element name="D34" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-12.7" smashed="yes" rot="R90">
@@ -954,9 +897,6 @@ JLC7628 Stackup
 </element>
 <element name="D33" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-8.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-1.7" y="-10.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D32" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-4.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-1.7" y="-6.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="U5" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-26.1" y="-16.3" smashed="yes" rot="R270">
 <attribute name="NAME" x="-26.55" y="-15.55" size="1.016" layer="25" font="vector" ratio="18" rot="R270"/>
@@ -977,9 +917,6 @@ JLC7628 Stackup
 <element name="D114" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-17.3" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D113" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-17.3" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="C84" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-10.2" smashed="yes" rot="R180"/>
 <element name="C81" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-11.7" smashed="yes" rot="R180"/>
 <element name="C78" library="jonnew" package="0805T" value="22uF" x="-1.5" y="-13.2" smashed="yes" rot="R180"/>
@@ -996,9 +933,6 @@ JLC7628 Stackup
 <element name="D105" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D104" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-13.4" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R70" library="jonnew" package="0805T" value="0.36" x="-24.7" y="-31.3" smashed="yes" rot="MR90"/>
 <element name="R73" library="jonnew" package="0805T" value="0.36" x="-23.2" y="-31.3" smashed="yes" rot="MR90"/>
 <element name="D97" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-27.7" smashed="yes" rot="R90">
@@ -1006,9 +940,6 @@ JLC7628 Stackup
 </element>
 <element name="D96" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D95" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-9.5" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="R64" library="jonnew" package="0805T" value="0.36" x="-21.7" y="-31.3" smashed="yes" rot="MR90"/>
 <element name="R67" library="jonnew" package="0805T" value="0.36" x="-20.2" y="-31.3" smashed="yes" rot="MR90"/>
@@ -1018,9 +949,6 @@ JLC7628 Stackup
 <element name="D87" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D86" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-5.6" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R58" library="jonnew" package="0805T" value="0.36" x="-21.7" y="-34.9" smashed="yes" rot="MR180"/>
 <element name="R61" library="jonnew" package="0805T" value="0.36" x="-21.7" y="-33.5" smashed="yes" rot="MR180"/>
 <element name="D79" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-27.7" smashed="yes" rot="R90">
@@ -1028,9 +956,6 @@ JLC7628 Stackup
 </element>
 <element name="D78" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-23.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-1.7" y="-25.7" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D77" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-19.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-1.7" y="-21.8" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="U8" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-24.8" y="-34.7" smashed="yes" rot="MR0"/>
 <element name="C75" library="jonnew" package="0402T" value="10nF" x="-22.2" y="-36" smashed="yes" rot="MR180"/>
@@ -1049,9 +974,6 @@ JLC7628 Stackup
 <element name="D72" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-17.3" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D71" library="jonnew" package="LUXEON-3.7MM" value="" x="-20.4" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-17.3" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="C49" library="jonnew" package="0805T" value="22uF" x="-2.1" y="-31.8" smashed="yes" rot="R90"/>
 <element name="C46" library="jonnew" package="0805T" value="22uF" x="-18.8" y="-32.4" smashed="yes" rot="MR90"/>
 <element name="C43" library="jonnew" package="0805T" value="22uF" x="-17.3" y="-32.4" smashed="yes" rot="MR90"/>
@@ -1068,9 +990,6 @@ JLC7628 Stackup
 <element name="D63" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-13.4" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D62" library="jonnew" package="LUXEON-3.7MM" value="" x="-16.5" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-13.4" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R38" library="jonnew" package="0805T" value="0.36" x="-11.6" y="-35.4" smashed="yes" rot="MR270"/>
 <element name="R41" library="jonnew" package="0805T" value="0.36" x="-10" y="-35.4" smashed="yes" rot="MR270"/>
 <element name="D55" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-39.5" smashed="yes" rot="R90">
@@ -1078,9 +997,6 @@ JLC7628 Stackup
 </element>
 <element name="D54" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-9.5" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D53" library="jonnew" package="LUXEON-3.7MM" value="" x="-12.6" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-9.5" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="R32" library="jonnew" package="0805T" value="0.36" x="-8.3" y="-36.2" smashed="yes" rot="MR270"/>
 <element name="R35" library="jonnew" package="0805T" value="0.36" x="-6.8" y="-36.2" smashed="yes" rot="MR270"/>
@@ -1090,9 +1006,6 @@ JLC7628 Stackup
 <element name="D45" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-5.6" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D44" library="jonnew" package="LUXEON-3.7MM" value="" x="-8.7" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-5.6" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="R26" library="jonnew" package="0805T" value="0.36" x="-5.2" y="-36.2" smashed="yes" rot="MR270"/>
 <element name="R29" library="jonnew" package="0805T" value="0.36" x="-3.8" y="-36.2" smashed="yes" rot="MR270"/>
 <element name="D37" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-39.5" smashed="yes" rot="R90">
@@ -1100,9 +1013,6 @@ JLC7628 Stackup
 </element>
 <element name="D36" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-35.6" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-1.7" y="-37.5" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D35" library="jonnew" package="LUXEON-3.7MM" value="" x="-4.8" y="-31.7" smashed="yes" rot="R90">
-<attribute name="VALUE" x="-1.7" y="-33.6" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="U6" library="jonnew" package="SOT-23-5" value="UCC27517DBVR" x="-7.8" y="-39.3" smashed="yes" rot="MR90">
 <attribute name="NAME" x="-8.3" y="-40.1" size="1.016" layer="26" font="vector" ratio="18" rot="MR90"/>
@@ -1118,17 +1028,11 @@ JLC7628 Stackup
 <element name="D117" library="jonnew" package="LUXEON-3.7MM" value="" x="0.6" y="-36.1" smashed="yes" rot="R90">
 <attribute name="VALUE" x="3.7" y="-38" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D116" library="jonnew" package="LUXEON-3.7MM" value="" x="0.6" y="-32.2" smashed="yes" rot="R90">
-<attribute name="VALUE" x="3.7" y="-34.1" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="D109" library="jonnew" package="LUXEON-3.7MM" value="" x="4.5" y="-40" smashed="yes" rot="R90">
 <attribute name="VALUE" x="7.6" y="-41.9" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="D108" library="jonnew" package="LUXEON-3.7MM" value="" x="4.5" y="-36.1" smashed="yes" rot="R90">
 <attribute name="VALUE" x="7.6" y="-38" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D107" library="jonnew" package="LUXEON-3.7MM" value="" x="4.5" y="-32.2" smashed="yes" rot="R90">
-<attribute name="VALUE" x="7.6" y="-34.1" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="D100" library="jonnew" package="LUXEON-3.7MM" value="" x="8.4" y="-40" smashed="yes" rot="R90">
 <attribute name="VALUE" x="11.5" y="-41.9" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
@@ -1136,26 +1040,17 @@ JLC7628 Stackup
 <element name="D99" library="jonnew" package="LUXEON-3.7MM" value="" x="8.4" y="-36.1" smashed="yes" rot="R90">
 <attribute name="VALUE" x="11.5" y="-38" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D98" library="jonnew" package="LUXEON-3.7MM" value="" x="8.4" y="-32.2" smashed="yes" rot="R90">
-<attribute name="VALUE" x="11.5" y="-34.1" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="D91" library="jonnew" package="LUXEON-3.7MM" value="" x="12.3" y="-40" smashed="yes" rot="R90">
 <attribute name="VALUE" x="15.4" y="-41.9" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="D90" library="jonnew" package="LUXEON-3.7MM" value="" x="12.3" y="-36.1" smashed="yes" rot="R90">
 <attribute name="VALUE" x="15.4" y="-38" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
-<element name="D89" library="jonnew" package="LUXEON-3.7MM" value="" x="12.3" y="-32.2" smashed="yes" rot="R90">
-<attribute name="VALUE" x="15.4" y="-34.1" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
 <element name="D82" library="jonnew" package="LUXEON-3.7MM" value="" x="16.2" y="-40" smashed="yes" rot="R90">
 <attribute name="VALUE" x="19.3" y="-41.9" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="D81" library="jonnew" package="LUXEON-3.7MM" value="" x="16.2" y="-36.1" smashed="yes" rot="R90">
 <attribute name="VALUE" x="19.3" y="-38" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
-</element>
-<element name="D80" library="jonnew" package="LUXEON-3.7MM" value="" x="16.2" y="-32.2" smashed="yes" rot="R90">
-<attribute name="VALUE" x="19.3" y="-34.1" size="1.016" layer="27" font="vector" ratio="18" rot="R90"/>
 </element>
 <element name="R86" library="jonnew" package="0805T" value="0.36" x="1.7" y="-40.1" smashed="yes" rot="MR270"/>
 <element name="R89" library="jonnew" package="0805T" value="0.36" x="0.3" y="-40.1" smashed="yes" rot="MR270"/>
@@ -1192,17 +1087,11 @@ JLC7628 Stackup
 <element name="D120" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="16.4" smashed="yes">
 <attribute name="VALUE" x="-38.1" y="13.3" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="D119" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.1" y="16.4" smashed="yes">
-<attribute name="VALUE" x="-34" y="13.3" size="1.016" layer="27" font="vector" ratio="18"/>
-</element>
 <element name="D112" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="12.5" smashed="yes">
 <attribute name="VALUE" x="-42" y="9.4" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
 <element name="D111" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="12.5" smashed="yes">
 <attribute name="VALUE" x="-38.1" y="9.4" size="1.016" layer="27" font="vector" ratio="18"/>
-</element>
-<element name="D110" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.1" y="12.5" smashed="yes">
-<attribute name="VALUE" x="-34" y="9.4" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
 <element name="D103" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="8.6" smashed="yes">
 <attribute name="VALUE" x="-42" y="5.5" size="1.016" layer="27" font="vector" ratio="18"/>
@@ -1210,26 +1099,17 @@ JLC7628 Stackup
 <element name="D102" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="8.7" smashed="yes">
 <attribute name="VALUE" x="-38.1" y="5.6" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="D101" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.1" y="8.6" smashed="yes">
-<attribute name="VALUE" x="-34" y="5.5" size="1.016" layer="27" font="vector" ratio="18"/>
-</element>
 <element name="D94" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="4.7" smashed="yes">
 <attribute name="VALUE" x="-42" y="1.6" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
 <element name="D93" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.2" y="4.7" smashed="yes">
 <attribute name="VALUE" x="-38.1" y="1.6" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
-<element name="D92" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.1" y="4.7" smashed="yes">
-<attribute name="VALUE" x="-34" y="1.6" size="1.016" layer="27" font="vector" ratio="18"/>
-</element>
 <element name="D85" library="jonnew" package="LUXEON-3.7MM" value="" x="-40.1" y="0.8" smashed="yes">
 <attribute name="VALUE" x="-42" y="-2.3" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
 <element name="D84" library="jonnew" package="LUXEON-3.7MM" value="" x="-36.3" y="0.9" smashed="yes">
 <attribute name="VALUE" x="-38.2" y="-2.2" size="1.016" layer="27" font="vector" ratio="18"/>
-</element>
-<element name="D83" library="jonnew" package="LUXEON-3.7MM" value="" x="-32.1" y="0.8" smashed="yes">
-<attribute name="VALUE" x="-34" y="-2.3" size="1.016" layer="27" font="vector" ratio="18"/>
 </element>
 <element name="R87" library="jonnew" package="0805T" value="0.36" x="-40.1" y="12.55" smashed="yes" rot="MR0"/>
 <element name="R90" library="jonnew" package="0805T" value="0.36" x="-40.1" y="14" smashed="yes" rot="MR0"/>
@@ -1282,6 +1162,126 @@ JLC7628 Stackup
 <element name="R10" library="jonnew" package="0402T" value="10k" x="-30.2" y="-15.5" smashed="yes" rot="R270"/>
 <element name="C15" library="jonnew" package="0402T" value="100pF" x="-30.2" y="-17.1" smashed="yes" rot="R270"/>
 <element name="U3" library="jonnew" package="DSBGA8-1.9X0.9MM" value="SN74LVC1G123YZPR" x="-31.3" y="-16.4" smashed="yes" rot="R270"/>
+<element name="L1" library="jonnew" package="0805T" value="" x="-24.5" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-26.786" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L2" library="jonnew" package="0805T" value="" x="-28.3" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-30.586" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L3" library="jonnew" package="0805T" value="" x="-32.3" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-34.586" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L4" library="jonnew" package="0805T" value="" x="-36.2" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-38.486" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L5" library="jonnew" package="0805T" value="" x="-40.1" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-42.386" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L6" library="jonnew" package="0805T" value="" x="-4.8" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-7.086" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L7" library="jonnew" package="0805T" value="" x="-8.7" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-10.986" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L8" library="jonnew" package="0805T" value="" x="-12.6" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-14.886" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L9" library="jonnew" package="0805T" value="" x="-16.5" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-18.786" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L10" library="jonnew" package="0805T" value="" x="-20.4" y="-5.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-22.686" y="-3.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L11" library="jonnew" package="0805T" value="" x="-4.8" y="-20.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-7.086" y="-18.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L12" library="jonnew" package="0805T" value="" x="-8.7" y="-20.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-10.986" y="-18.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L13" library="jonnew" package="0805T" value="" x="-12.6" y="-20.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-14.886" y="-18.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L14" library="jonnew" package="0805T" value="" x="-16.5" y="-20.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-18.786" y="-18.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L15" library="jonnew" package="0805T" value="" x="-20.4" y="-20.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-22.686" y="-18.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L16" library="jonnew" package="0805T" value="" x="-24.5" y="-20.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-26.786" y="-18.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L17" library="jonnew" package="0805T" value="" x="-28.3" y="-20.1" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-30.586" y="-18.068" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L18" library="jonnew" package="0805T" value="" x="-32.3" y="-20.2" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-34.586" y="-18.168" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L19" library="jonnew" package="0805T" value="" x="-36.3" y="-20.2" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-38.586" y="-18.168" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L20" library="jonnew" package="0805T" value="" x="-40.1" y="-20.2" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-42.386" y="-18.168" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L21" library="jonnew" package="0805T" value="" x="-4.8" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-7.086" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L22" library="jonnew" package="0805T" value="" x="-8.7" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-10.986" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L23" library="jonnew" package="0805T" value="" x="-12.6" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-14.886" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L24" library="jonnew" package="0805T" value="" x="-16.5" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-18.786" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L25" library="jonnew" package="0805T" value="" x="-20.4" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-22.686" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L26" library="jonnew" package="0805T" value="" x="16.2" y="-32.4" smashed="yes" rot="R270">
+<attribute name="VALUE" x="13.914" y="-30.368" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L27" library="jonnew" package="0805T" value="" x="12.3" y="-32.4" smashed="yes" rot="R270">
+<attribute name="VALUE" x="10.014" y="-30.368" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L28" library="jonnew" package="0805T" value="" x="8.4" y="-32.4" smashed="yes" rot="R270">
+<attribute name="VALUE" x="6.114" y="-30.368" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L29" library="jonnew" package="0805T" value="" x="4.5" y="-32.4" smashed="yes" rot="R270">
+<attribute name="VALUE" x="2.214" y="-30.368" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L30" library="jonnew" package="0805T" value="" x="0.6" y="-32.4" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-1.686" y="-30.368" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L31" library="jonnew" package="0805T" value="" x="-24.5" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-26.786" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L32" library="jonnew" package="0805T" value="" x="-28.4" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-30.686" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L33" library="jonnew" package="0805T" value="" x="-32.3" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-34.586" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L34" library="jonnew" package="0805T" value="" x="-36.2" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-38.486" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L35" library="jonnew" package="0805T" value="" x="-40.1" y="-31.9" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-42.386" y="-29.868" size="1.016" layer="27" font="vector" ratio="18" rot="R270"/>
+</element>
+<element name="L36" library="jonnew" package="0805T" value="" x="-32.3" y="0.8" smashed="yes" rot="R180">
+<attribute name="VALUE" x="-30.268" y="3.086" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
+</element>
+<element name="L37" library="jonnew" package="0805T" value="" x="-32.3" y="4.8" smashed="yes" rot="R180">
+<attribute name="VALUE" x="-30.268" y="7.086" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
+</element>
+<element name="L38" library="jonnew" package="0805T" value="" x="-32.3" y="8.6" smashed="yes" rot="R180">
+<attribute name="VALUE" x="-30.268" y="10.886" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
+</element>
+<element name="L39" library="jonnew" package="0805T" value="" x="-32.3" y="12.6" smashed="yes" rot="R180">
+<attribute name="VALUE" x="-30.268" y="14.886" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
+</element>
+<element name="L40" library="jonnew" package="0805T" value="" x="-32.3" y="16.5" smashed="yes" rot="R180">
+<attribute name="VALUE" x="-30.268" y="18.786" size="1.016" layer="27" font="vector" ratio="18" rot="R180"/>
+</element>
 </elements>
 <signals>
 <signal name="+3V3">
@@ -1527,87 +1527,6 @@ JLC7628 Stackup
 <contactref element="C68" pad="2"/>
 <contactref element="C101" pad="1"/>
 <contactref element="C86" pad="1"/>
-<contactref element="D98" pad="A1"/>
-<contactref element="D98" pad="A2"/>
-<contactref element="D89" pad="A1"/>
-<contactref element="D89" pad="A2"/>
-<contactref element="D80" pad="A1"/>
-<contactref element="D80" pad="A2"/>
-<contactref element="D119" pad="A1"/>
-<contactref element="D119" pad="A2"/>
-<contactref element="D110" pad="A1"/>
-<contactref element="D110" pad="A2"/>
-<contactref element="D101" pad="A1"/>
-<contactref element="D101" pad="A2"/>
-<contactref element="D92" pad="A1"/>
-<contactref element="D92" pad="A2"/>
-<contactref element="D47" pad="A1"/>
-<contactref element="D47" pad="A2"/>
-<contactref element="D83" pad="A1"/>
-<contactref element="D83" pad="A2"/>
-<contactref element="D38" pad="A1"/>
-<contactref element="D38" pad="A2"/>
-<contactref element="D28" pad="A1"/>
-<contactref element="D28" pad="A2"/>
-<contactref element="D22" pad="A1"/>
-<contactref element="D22" pad="A2"/>
-<contactref element="D16" pad="A1"/>
-<contactref element="D16" pad="A2"/>
-<contactref element="D10" pad="A1"/>
-<contactref element="D10" pad="A2"/>
-<contactref element="D74" pad="A1"/>
-<contactref element="D74" pad="A2"/>
-<contactref element="D4" pad="A1"/>
-<contactref element="D4" pad="A2"/>
-<contactref element="D25" pad="A1"/>
-<contactref element="D25" pad="A2"/>
-<contactref element="D19" pad="A1"/>
-<contactref element="D19" pad="A2"/>
-<contactref element="D13" pad="A1"/>
-<contactref element="D13" pad="A2"/>
-<contactref element="D7" pad="A1"/>
-<contactref element="D7" pad="A2"/>
-<contactref element="D1" pad="A1"/>
-<contactref element="D1" pad="A2"/>
-<contactref element="D68" pad="A1"/>
-<contactref element="D68" pad="A2"/>
-<contactref element="D59" pad="A1"/>
-<contactref element="D59" pad="A2"/>
-<contactref element="D50" pad="A1"/>
-<contactref element="D50" pad="A2"/>
-<contactref element="D41" pad="A1"/>
-<contactref element="D41" pad="A2"/>
-<contactref element="D65" pad="A1"/>
-<contactref element="D65" pad="A2"/>
-<contactref element="D32" pad="A1"/>
-<contactref element="D32" pad="A2"/>
-<contactref element="D113" pad="A1"/>
-<contactref element="D113" pad="A2"/>
-<contactref element="D104" pad="A1"/>
-<contactref element="D104" pad="A2"/>
-<contactref element="D95" pad="A1"/>
-<contactref element="D95" pad="A2"/>
-<contactref element="D86" pad="A1"/>
-<contactref element="D86" pad="A2"/>
-<contactref element="D77" pad="A1"/>
-<contactref element="D77" pad="A2"/>
-<contactref element="D71" pad="A1"/>
-<contactref element="D71" pad="A2"/>
-<contactref element="D62" pad="A1"/>
-<contactref element="D62" pad="A2"/>
-<contactref element="D53" pad="A1"/>
-<contactref element="D53" pad="A2"/>
-<contactref element="D44" pad="A1"/>
-<contactref element="D44" pad="A2"/>
-<contactref element="D56" pad="A1"/>
-<contactref element="D56" pad="A2"/>
-<contactref element="D35" pad="A1"/>
-<contactref element="D35" pad="A2"/>
-<contactref element="D116" pad="A1"/>
-<contactref element="D116" pad="A2"/>
-<contactref element="D107" pad="A1"/>
-<contactref element="D107" pad="A2"/>
-<wire x1="-36.2" y1="-3.825" x2="-35.1" y2="-3.825" width="0.5" layer="1"/>
 <wire x1="-35.1" y1="-3.825" x2="-35.1" y2="-2.2" width="0.5" layer="1"/>
 <polygon width="0.127" layer="16" thermals="no">
 <vertex x="-32.5" y="-1.1"/>
@@ -1662,7 +1581,7 @@ JLC7628 Stackup
 <vertex x="-6.4" y="-32.3"/>
 <vertex x="-6.4" y="-29.9"/>
 </polygon>
-<polygon width="0.127" layer="1" isolate="0.1" thermals="no" rank="2">
+<polygon width="0.127" layer="1" isolate="0.1" rank="2">
 <vertex x="-60" y="35"/>
 <vertex x="40" y="35"/>
 <vertex x="40" y="-65"/>
@@ -1813,7 +1732,7 @@ JLC7628 Stackup
 <via x="-20.4" y="-3.2" extent="1-16" drill="0.2"/>
 <via x="-19.6" y="-3.2" extent="1-16" drill="0.2"/>
 <via x="-26.6" y="-3.4" extent="1-16" drill="0.2"/>
-<via x="-25.2" y="-3.2" extent="1-16" drill="0.2"/>
+<via x="-25" y="-3.2" extent="1-16" drill="0.2"/>
 <via x="-24.6" y="-2.5" extent="1-16" drill="0.2"/>
 <via x="-17.4" y="-18.2" extent="1-16" drill="0.2"/>
 <via x="-16.6" y="-18.2" extent="1-16" drill="0.2"/>
@@ -1947,6 +1866,46 @@ JLC7628 Stackup
 <via x="-38.25" y="17.2" extent="1-16" drill="0.2"/>
 <via x="-34.35" y="17.05" extent="1-16" drill="0.2"/>
 <via x="-33.9" y="17.6" extent="1-16" drill="0.2"/>
+<contactref element="L1" pad="1"/>
+<contactref element="L2" pad="1"/>
+<contactref element="L3" pad="1"/>
+<contactref element="L4" pad="1"/>
+<contactref element="L5" pad="1"/>
+<contactref element="L6" pad="1"/>
+<contactref element="L7" pad="1"/>
+<contactref element="L8" pad="1"/>
+<contactref element="L9" pad="1"/>
+<contactref element="L10" pad="1"/>
+<contactref element="L11" pad="1"/>
+<contactref element="L12" pad="1"/>
+<contactref element="L13" pad="1"/>
+<contactref element="L14" pad="1"/>
+<contactref element="L15" pad="1"/>
+<contactref element="L16" pad="1"/>
+<contactref element="L17" pad="1"/>
+<contactref element="L18" pad="1"/>
+<contactref element="L19" pad="1"/>
+<contactref element="L20" pad="1"/>
+<contactref element="L21" pad="1"/>
+<contactref element="L22" pad="1"/>
+<contactref element="L23" pad="1"/>
+<contactref element="L24" pad="1"/>
+<contactref element="L25" pad="1"/>
+<contactref element="L26" pad="1"/>
+<contactref element="L27" pad="1"/>
+<contactref element="L28" pad="1"/>
+<contactref element="L29" pad="1"/>
+<contactref element="L30" pad="1"/>
+<contactref element="L31" pad="1"/>
+<contactref element="L32" pad="1"/>
+<contactref element="L33" pad="1"/>
+<contactref element="L34" pad="1"/>
+<contactref element="L35" pad="1"/>
+<contactref element="L36" pad="1"/>
+<contactref element="L37" pad="1"/>
+<contactref element="L38" pad="1"/>
+<contactref element="L39" pad="1"/>
+<contactref element="L40" pad="1"/>
 </signal>
 <signal name="BLUE_C">
 <contactref element="J1" pad="24"/>
@@ -2140,13 +2099,13 @@ JLC7628 Stackup
 </polygon>
 <via x="-40" y="-2.24" extent="1-16" drill="0.2"/>
 <via x="-38.9" y="-1.6" extent="1-16" drill="0.2"/>
-<polygon width="0.127" layer="1" thermals="no">
+<polygon width="0.127" layer="1">
 <vertex x="-30.3" y="-2"/>
 <vertex x="0.7" y="-2"/>
 <vertex x="0.7" y="0.8"/>
 <vertex x="-30.3" y="0.8"/>
 </polygon>
-<polygon width="0.127" layer="1" thermals="no">
+<polygon width="0.127" layer="1">
 <vertex x="0.6" y="-30.1"/>
 <vertex x="-1.8" y="-30.1"/>
 <vertex x="-1.8" y="-9.4"/>
@@ -2436,8 +2395,6 @@ JLC7628 Stackup
 <via x="-27.9" y="-37.3" extent="1-16" drill="0.2"/>
 <via x="-27.9" y="-37.8" extent="1-16" drill="0.2"/>
 <via x="-27.45" y="-37.8" extent="1-16" drill="0.2"/>
-<via x="-25.1" y="-33.4" extent="1-16" drill="0.2"/>
-<via x="-24.5" y="-33.4" extent="1-16" drill="0.2"/>
 <via x="-24.5" y="-33.9" extent="1-16" drill="0.2"/>
 <via x="-25.1" y="-33.9" extent="1-16" drill="0.2"/>
 <wire x1="-17.25" y1="-37.6" x2="-17.5" y2="-37.6" width="0.127" layer="16"/>
@@ -2687,13 +2644,13 @@ JLC7628 Stackup
 <signal name="N$3">
 <contactref element="D75" pad="A2"/>
 <contactref element="D75" pad="A1"/>
-<contactref element="D74" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-41.3" y="-32.6"/>
 <vertex x="-38.9" y="-32.6"/>
 <vertex x="-38.9" y="-36"/>
 <vertex x="-41.3" y="-36"/>
 </polygon>
+<contactref element="L35" pad="2"/>
 </signal>
 <signal name="N$4">
 <contactref element="Q6" pad="6"/>
@@ -2776,13 +2733,13 @@ JLC7628 Stackup
 <signal name="N$10">
 <contactref element="D66" pad="A2"/>
 <contactref element="D66" pad="A1"/>
-<contactref element="D65" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-37.4" y="-32.6"/>
 <vertex x="-35" y="-32.6"/>
 <vertex x="-35" y="-36"/>
 <vertex x="-37.4" y="-36"/>
 </polygon>
+<contactref element="L34" pad="2"/>
 </signal>
 <signal name="N$11">
 <contactref element="R22" pad="2"/>
@@ -2799,13 +2756,13 @@ JLC7628 Stackup
 <signal name="N$12">
 <contactref element="D57" pad="A2"/>
 <contactref element="D57" pad="A1"/>
-<contactref element="D56" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-33.5" y="-32.6"/>
 <vertex x="-31.1" y="-32.6"/>
 <vertex x="-31.1" y="-36"/>
 <vertex x="-33.5" y="-36"/>
 </polygon>
+<contactref element="L33" pad="2"/>
 </signal>
 <signal name="N$13">
 <contactref element="R33" pad="2"/>
@@ -2838,13 +2795,13 @@ JLC7628 Stackup
 <signal name="N$15">
 <contactref element="D48" pad="A2"/>
 <contactref element="D48" pad="A1"/>
-<contactref element="D47" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-29.6" y="-32.6"/>
 <vertex x="-27.2" y="-32.6"/>
 <vertex x="-27.2" y="-36"/>
 <vertex x="-29.6" y="-36"/>
 </polygon>
+<contactref element="L32" pad="2"/>
 </signal>
 <signal name="N$16">
 <contactref element="R30" pad="2"/>
@@ -2874,7 +2831,6 @@ JLC7628 Stackup
 <signal name="N$18">
 <contactref element="D39" pad="A2"/>
 <contactref element="D39" pad="A1"/>
-<contactref element="D38" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-25.7" y="-32.6"/>
 <vertex x="-23.3" y="-32.6"/>
@@ -2885,6 +2841,7 @@ JLC7628 Stackup
 <vertex x="-24.1" y="-33.1"/>
 <vertex x="-25.7" y="-33.1"/>
 </polygon>
+<contactref element="L31" pad="2"/>
 </signal>
 <signal name="N$19">
 <contactref element="D30" pad="A2"/>
@@ -2900,13 +2857,13 @@ JLC7628 Stackup
 <signal name="N$20">
 <contactref element="D29" pad="A2"/>
 <contactref element="D29" pad="A1"/>
-<contactref element="D28" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-41.3" y="-20.8"/>
 <vertex x="-38.9" y="-20.8"/>
 <vertex x="-38.9" y="-24.2"/>
 <vertex x="-41.3" y="-24.2"/>
 </polygon>
+<contactref element="L20" pad="2"/>
 </signal>
 <signal name="N$21">
 <contactref element="Q2" pad="6"/>
@@ -2966,13 +2923,13 @@ JLC7628 Stackup
 <signal name="N$31">
 <contactref element="D23" pad="A2"/>
 <contactref element="D23" pad="A1"/>
-<contactref element="D22" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-37.4" y="-20.8"/>
 <vertex x="-35" y="-20.8"/>
 <vertex x="-35" y="-24.2"/>
 <vertex x="-37.4" y="-24.2"/>
 </polygon>
+<contactref element="L19" pad="2"/>
 </signal>
 <signal name="N$32">
 <contactref element="R12" pad="2"/>
@@ -2999,13 +2956,13 @@ JLC7628 Stackup
 <signal name="N$34">
 <contactref element="D17" pad="A2"/>
 <contactref element="D17" pad="A1"/>
-<contactref element="D16" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-33.5" y="-20.8"/>
 <vertex x="-31.1" y="-20.8"/>
 <vertex x="-31.1" y="-24.2"/>
 <vertex x="-33.5" y="-24.2"/>
 </polygon>
+<contactref element="L18" pad="2"/>
 </signal>
 <signal name="N$35">
 <contactref element="R7" pad="2"/>
@@ -3033,13 +2990,13 @@ JLC7628 Stackup
 <signal name="N$37">
 <contactref element="D11" pad="A2"/>
 <contactref element="D11" pad="A1"/>
-<contactref element="D10" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-29.6" y="-20.8"/>
 <vertex x="-27.2" y="-20.8"/>
 <vertex x="-27.2" y="-24.2"/>
 <vertex x="-29.6" y="-24.2"/>
 </polygon>
+<contactref element="L17" pad="2"/>
 </signal>
 <signal name="N$38">
 <contactref element="R2" pad="2"/>
@@ -3069,13 +3026,13 @@ JLC7628 Stackup
 <signal name="N$40">
 <contactref element="D5" pad="A2"/>
 <contactref element="D5" pad="A1"/>
-<contactref element="D4" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-25.7" y="-20.8"/>
 <vertex x="-23.3" y="-20.8"/>
 <vertex x="-23.3" y="-24.2"/>
 <vertex x="-25.7" y="-24.2"/>
 </polygon>
+<contactref element="L16" pad="2"/>
 </signal>
 <signal name="N$41">
 <contactref element="Q2" pad="4"/>
@@ -3110,13 +3067,13 @@ JLC7628 Stackup
 <signal name="N$49">
 <contactref element="D26" pad="A2"/>
 <contactref element="D26" pad="A1"/>
-<contactref element="D25" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-41.3" y="-5.8"/>
 <vertex x="-38.9" y="-5.8"/>
 <vertex x="-38.9" y="-9.2"/>
 <vertex x="-41.3" y="-9.2"/>
 </polygon>
+<contactref element="L5" pad="2"/>
 </signal>
 <signal name="N$50">
 <contactref element="Q1" pad="6"/>
@@ -3170,13 +3127,13 @@ JLC7628 Stackup
 <signal name="N$54">
 <contactref element="D20" pad="A2"/>
 <contactref element="D20" pad="A1"/>
-<contactref element="D19" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-37.4" y="-5.8"/>
 <vertex x="-35" y="-5.8"/>
 <vertex x="-35" y="-9.2"/>
 <vertex x="-37.4" y="-9.2"/>
 </polygon>
+<contactref element="L4" pad="2"/>
 </signal>
 <signal name="N$55">
 <contactref element="R11" pad="2"/>
@@ -3205,13 +3162,13 @@ JLC7628 Stackup
 <signal name="N$57">
 <contactref element="D14" pad="A2"/>
 <contactref element="D14" pad="A1"/>
-<contactref element="D13" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-33.5" y="-5.8"/>
 <vertex x="-31.1" y="-5.8"/>
 <vertex x="-31.1" y="-9.2"/>
 <vertex x="-33.5" y="-9.2"/>
 </polygon>
+<contactref element="L3" pad="2"/>
 </signal>
 <signal name="N$58">
 <contactref element="R6" pad="2"/>
@@ -3240,13 +3197,13 @@ JLC7628 Stackup
 <signal name="N$60">
 <contactref element="D8" pad="A2"/>
 <contactref element="D8" pad="A1"/>
-<contactref element="D7" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-29.6" y="-5.8"/>
 <vertex x="-27.2" y="-5.8"/>
 <vertex x="-27.2" y="-9.2"/>
 <vertex x="-29.6" y="-9.2"/>
 </polygon>
+<contactref element="L2" pad="2"/>
 </signal>
 <signal name="N$61">
 <contactref element="R1" pad="2"/>
@@ -3275,13 +3232,13 @@ JLC7628 Stackup
 <signal name="N$63">
 <contactref element="D2" pad="A2"/>
 <contactref element="D2" pad="A1"/>
-<contactref element="D1" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-25.7" y="-5.8"/>
 <vertex x="-23.3" y="-5.8"/>
 <vertex x="-23.3" y="-9.2"/>
 <vertex x="-25.7" y="-9.2"/>
 </polygon>
+<contactref element="L1" pad="2"/>
 </signal>
 <signal name="N$64">
 <contactref element="U1" pad="5"/>
@@ -3313,13 +3270,13 @@ JLC7628 Stackup
 <signal name="N$72">
 <contactref element="D69" pad="A2"/>
 <contactref element="D69" pad="A1"/>
-<contactref element="D68" pad="C"/>
 <polygon width="0.127" layer="1" isolate="0.1" thermals="no">
 <vertex x="-21.6" y="-5.8"/>
 <vertex x="-19.2" y="-5.8"/>
 <vertex x="-19.2" y="-9.2"/>
 <vertex x="-21.6" y="-9.2"/>
 </polygon>
+<contactref element="L10" pad="2"/>
 </signal>
 <signal name="N$73">
 <contactref element="Q4" pad="6"/>
@@ -3372,13 +3329,13 @@ JLC7628 Stackup
 <signal name="N$77">
 <contactref element="D60" pad="A2"/>
 <contactref element="D60" pad="A1"/>
-<contactref element="D59" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-17.7" y="-5.8"/>
 <vertex x="-15.3" y="-5.8"/>
 <vertex x="-15.3" y="-9.2"/>
 <vertex x="-17.7" y="-9.2"/>
 </polygon>
+<contactref element="L9" pad="2"/>
 </signal>
 <signal name="N$78">
 <contactref element="R37" pad="2"/>
@@ -3402,13 +3359,13 @@ JLC7628 Stackup
 <signal name="N$80">
 <contactref element="D51" pad="A2"/>
 <contactref element="D51" pad="A1"/>
-<contactref element="D50" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-13.8" y="-5.8"/>
 <vertex x="-11.4" y="-5.8"/>
 <vertex x="-11.4" y="-9.2"/>
 <vertex x="-13.8" y="-9.2"/>
 </polygon>
+<contactref element="L8" pad="2"/>
 </signal>
 <signal name="N$81">
 <contactref element="R31" pad="2"/>
@@ -3432,13 +3389,13 @@ JLC7628 Stackup
 <signal name="N$83">
 <contactref element="D42" pad="A2"/>
 <contactref element="D42" pad="A1"/>
-<contactref element="D41" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-9.9" y="-5.8"/>
 <vertex x="-7.5" y="-5.8"/>
 <vertex x="-7.5" y="-9.2"/>
 <vertex x="-9.9" y="-9.2"/>
 </polygon>
+<contactref element="L7" pad="2"/>
 </signal>
 <signal name="N$84">
 <contactref element="R25" pad="2"/>
@@ -3461,13 +3418,13 @@ JLC7628 Stackup
 <signal name="N$86">
 <contactref element="D33" pad="A2"/>
 <contactref element="D33" pad="A1"/>
-<contactref element="D32" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-6" y="-5.8"/>
 <vertex x="-3.6" y="-5.8"/>
 <vertex x="-3.6" y="-9.2"/>
 <vertex x="-6" y="-9.2"/>
 </polygon>
+<contactref element="L6" pad="2"/>
 </signal>
 <signal name="N$87">
 <contactref element="Q4" pad="4"/>
@@ -3507,13 +3464,13 @@ JLC7628 Stackup
 <signal name="N$95">
 <contactref element="D114" pad="A2"/>
 <contactref element="D114" pad="A1"/>
-<contactref element="D113" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-21.6" y="-20.8"/>
 <vertex x="-19.2" y="-20.8"/>
 <vertex x="-19.2" y="-24.2"/>
 <vertex x="-21.6" y="-24.2"/>
 </polygon>
+<contactref element="L15" pad="2"/>
 </signal>
 <signal name="N$96">
 <contactref element="Q7" pad="6"/>
@@ -3578,13 +3535,13 @@ JLC7628 Stackup
 <signal name="N$100">
 <contactref element="D105" pad="A2"/>
 <contactref element="D105" pad="A1"/>
-<contactref element="D104" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-17.7" y="-20.8"/>
 <vertex x="-15.3" y="-20.8"/>
 <vertex x="-15.3" y="-24.2"/>
 <vertex x="-17.7" y="-24.2"/>
 </polygon>
+<contactref element="L14" pad="2"/>
 </signal>
 <signal name="N$101">
 <contactref element="R70" pad="2"/>
@@ -3615,13 +3572,13 @@ JLC7628 Stackup
 <signal name="N$103">
 <contactref element="D96" pad="A2"/>
 <contactref element="D96" pad="A1"/>
-<contactref element="D95" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-13.8" y="-20.8"/>
 <vertex x="-11.4" y="-20.8"/>
 <vertex x="-11.4" y="-24.2"/>
 <vertex x="-13.8" y="-24.2"/>
 </polygon>
+<contactref element="L13" pad="2"/>
 </signal>
 <signal name="N$104">
 <contactref element="R64" pad="2"/>
@@ -3651,13 +3608,13 @@ JLC7628 Stackup
 <signal name="N$106">
 <contactref element="D87" pad="A2"/>
 <contactref element="D87" pad="A1"/>
-<contactref element="D86" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-9.9" y="-20.8"/>
 <vertex x="-7.5" y="-20.8"/>
 <vertex x="-7.5" y="-24.2"/>
 <vertex x="-9.9" y="-24.2"/>
 </polygon>
+<contactref element="L12" pad="2"/>
 </signal>
 <signal name="N$107">
 <contactref element="R58" pad="2"/>
@@ -3667,15 +3624,15 @@ JLC7628 Stackup
 <wire x1="-5.7063875" y1="-29.6813875" x2="-10.1186125" y2="-29.6813875" width="0.5" layer="1"/>
 <via x="-10.1186125" y="-29.6813875" extent="1-16" drill="0.5"/>
 <via x="-17.948509375" y="-29.6779875" extent="1-16" drill="0.5"/>
-<via x="-19.951490625" y="-33.501490625" extent="1-16" drill="0.5"/>
-<wire x1="-19.951490625" y1="-33.501490625" x2="-19.95298125" y2="-33.5" width="0.5" layer="16"/>
-<wire x1="-19.95298125" y1="-33.5" x2="-20.7" y2="-33.5" width="0.5" layer="16"/>
-<wire x1="-20.7" y1="-33.5" x2="-20.7" y2="-34.9" width="0.5" layer="16"/>
+<via x="-21.251490625" y="-33.751490625" extent="1-16" drill="0.5"/>
+<wire x1="-20.7" y1="-34.9" x2="-20.7" y2="-33.5" width="0.5" layer="16"/>
 <wire x1="-10.17809375" y1="-29.62190625" x2="-10.1186125" y2="-29.6813875" width="0.5" layer="16"/>
 <wire x1="-17.948509375" y1="-29.6779875" x2="-17.892428125" y2="-29.62190625" width="0.5" layer="16"/>
 <wire x1="-17.892428125" y1="-29.62190625" x2="-10.17809375" y2="-29.62190625" width="0.5" layer="16"/>
-<wire x1="-17.948509375" y1="-29.6779875" x2="-19.951490625" y2="-31.68096875" width="0.5" layer="15"/>
-<wire x1="-19.951490625" y1="-31.68096875" x2="-19.951490625" y2="-33.501490625" width="0.5" layer="15"/>
+<wire x1="-20.7" y1="-33.5" x2="-20.951490625" y2="-33.751490625" width="0.5" layer="16"/>
+<wire x1="-20.951490625" y1="-33.751490625" x2="-21.251490625" y2="-33.751490625" width="0.5" layer="16"/>
+<wire x1="-21.251490625" y1="-32.98096875" x2="-21.251490625" y2="-33.751490625" width="0.5" layer="15"/>
+<wire x1="-17.948509375" y1="-29.6779875" x2="-21.251490625" y2="-32.98096875" width="0.5" layer="15"/>
 </signal>
 <signal name="N$108">
 <contactref element="D79" pad="A2"/>
@@ -3691,13 +3648,13 @@ JLC7628 Stackup
 <signal name="N$109">
 <contactref element="D78" pad="A2"/>
 <contactref element="D78" pad="A1"/>
-<contactref element="D77" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-6" y="-20.8"/>
 <vertex x="-3.6" y="-20.8"/>
 <vertex x="-3.6" y="-24.2"/>
 <vertex x="-6" y="-24.2"/>
 </polygon>
+<contactref element="L11" pad="2"/>
 </signal>
 <signal name="N$110">
 <contactref element="Q7" pad="4"/>
@@ -3736,13 +3693,13 @@ JLC7628 Stackup
 <signal name="N$118">
 <contactref element="D72" pad="A2"/>
 <contactref element="D72" pad="A1"/>
-<contactref element="D71" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-21.6" y="-32.6"/>
 <vertex x="-19.2" y="-32.6"/>
 <vertex x="-19.2" y="-36"/>
 <vertex x="-21.6" y="-36"/>
 </polygon>
+<contactref element="L25" pad="2"/>
 </signal>
 <signal name="N$119">
 <contactref element="Q5" pad="6"/>
@@ -3807,13 +3764,13 @@ JLC7628 Stackup
 <signal name="N$123">
 <contactref element="D63" pad="A2"/>
 <contactref element="D63" pad="A1"/>
-<contactref element="D62" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-17.7" y="-32.6"/>
 <vertex x="-15.3" y="-32.6"/>
 <vertex x="-15.3" y="-36"/>
 <vertex x="-17.7" y="-36"/>
 </polygon>
+<contactref element="L24" pad="2"/>
 </signal>
 <signal name="N$124">
 <contactref element="R38" pad="2"/>
@@ -3843,13 +3800,13 @@ JLC7628 Stackup
 <signal name="N$126">
 <contactref element="D54" pad="A2"/>
 <contactref element="D54" pad="A1"/>
-<contactref element="D53" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-13.8" y="-32.6"/>
 <vertex x="-11.4" y="-32.6"/>
 <vertex x="-11.4" y="-36"/>
 <vertex x="-13.8" y="-36"/>
 </polygon>
+<contactref element="L23" pad="2"/>
 </signal>
 <signal name="N$127">
 <contactref element="R32" pad="2"/>
@@ -3877,13 +3834,13 @@ JLC7628 Stackup
 <signal name="N$129">
 <contactref element="D45" pad="A2"/>
 <contactref element="D45" pad="A1"/>
-<contactref element="D44" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-9.9" y="-32.6"/>
 <vertex x="-7.5" y="-32.6"/>
 <vertex x="-7.5" y="-36"/>
 <vertex x="-9.9" y="-36"/>
 </polygon>
+<contactref element="L22" pad="2"/>
 </signal>
 <signal name="N$130">
 <contactref element="R26" pad="2"/>
@@ -3911,13 +3868,13 @@ JLC7628 Stackup
 <signal name="N$132">
 <contactref element="D36" pad="A2"/>
 <contactref element="D36" pad="A1"/>
-<contactref element="D35" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-6" y="-32.6"/>
 <vertex x="-3.6" y="-32.6"/>
 <vertex x="-3.6" y="-36"/>
 <vertex x="-6" y="-36"/>
 </polygon>
+<contactref element="L21" pad="2"/>
 </signal>
 <signal name="N$133">
 <contactref element="U6" pad="5"/>
@@ -3952,13 +3909,13 @@ JLC7628 Stackup
 <signal name="N$141">
 <contactref element="D117" pad="A2"/>
 <contactref element="D117" pad="A1"/>
-<contactref element="D116" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-0.6" y="-33.1"/>
 <vertex x="1.8" y="-33.1"/>
 <vertex x="1.8" y="-36.5"/>
 <vertex x="-0.6" y="-36.5"/>
 </polygon>
+<contactref element="L30" pad="2"/>
 </signal>
 <signal name="N$142">
 <contactref element="Q8" pad="6"/>
@@ -4011,13 +3968,13 @@ JLC7628 Stackup
 <signal name="N$146">
 <contactref element="D108" pad="A2"/>
 <contactref element="D108" pad="A1"/>
-<contactref element="D107" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="3.3" y="-33.1"/>
 <vertex x="5.7" y="-33.1"/>
 <vertex x="5.7" y="-36.5"/>
 <vertex x="3.3" y="-36.5"/>
 </polygon>
+<contactref element="L29" pad="2"/>
 </signal>
 <signal name="N$147">
 <contactref element="R71" pad="2"/>
@@ -4043,7 +4000,6 @@ JLC7628 Stackup
 </signal>
 <signal name="N$149">
 <contactref element="D99" pad="A1"/>
-<contactref element="D98" pad="C"/>
 <contactref element="D99" pad="A2"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="7.2" y="-33.1"/>
@@ -4051,6 +4007,7 @@ JLC7628 Stackup
 <vertex x="9.6" y="-36.5"/>
 <vertex x="7.2" y="-36.5"/>
 </polygon>
+<contactref element="L28" pad="2"/>
 </signal>
 <signal name="N$150">
 <contactref element="R65" pad="2"/>
@@ -4077,13 +4034,13 @@ JLC7628 Stackup
 <signal name="N$152">
 <contactref element="D90" pad="A2"/>
 <contactref element="D90" pad="A1"/>
-<contactref element="D89" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="11.1" y="-33.1"/>
 <vertex x="13.5" y="-33.1"/>
 <vertex x="13.5" y="-36.5"/>
 <vertex x="11.1" y="-36.5"/>
 </polygon>
+<contactref element="L27" pad="2"/>
 </signal>
 <signal name="N$153">
 <contactref element="R59" pad="2"/>
@@ -4110,13 +4067,13 @@ JLC7628 Stackup
 <signal name="N$155">
 <contactref element="D81" pad="A2"/>
 <contactref element="D81" pad="A1"/>
-<contactref element="D80" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="15" y="-33.1"/>
 <vertex x="17.4" y="-33.1"/>
 <vertex x="17.4" y="-36.5"/>
 <vertex x="15" y="-36.5"/>
 </polygon>
+<contactref element="L26" pad="2"/>
 </signal>
 <signal name="N$156">
 <contactref element="Q8" pad="4"/>
@@ -4149,13 +4106,13 @@ JLC7628 Stackup
 <signal name="N$164">
 <contactref element="D120" pad="A2"/>
 <contactref element="D120" pad="A1"/>
-<contactref element="D119" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-36.4" y="15.2"/>
 <vertex x="-36.4" y="17.6"/>
 <vertex x="-33" y="17.6"/>
 <vertex x="-33" y="15.2"/>
 </polygon>
+<contactref element="L40" pad="2"/>
 </signal>
 <signal name="N$165">
 <contactref element="Q9" pad="6"/>
@@ -4210,13 +4167,13 @@ JLC7628 Stackup
 <signal name="N$169">
 <contactref element="D111" pad="A2"/>
 <contactref element="D111" pad="A1"/>
-<contactref element="D110" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-36.4" y="11.3"/>
 <vertex x="-36.4" y="13.7"/>
 <vertex x="-33" y="13.7"/>
 <vertex x="-33" y="11.3"/>
 </polygon>
+<contactref element="L39" pad="2"/>
 </signal>
 <signal name="N$170">
 <contactref element="R72" pad="2"/>
@@ -4242,13 +4199,13 @@ JLC7628 Stackup
 <signal name="N$172">
 <contactref element="D102" pad="A2"/>
 <contactref element="D102" pad="A1"/>
-<contactref element="D101" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-36.4" y="7.4"/>
 <vertex x="-36.4" y="9.8"/>
 <vertex x="-33" y="9.8"/>
 <vertex x="-33" y="7.4"/>
 </polygon>
+<contactref element="L38" pad="2"/>
 </signal>
 <signal name="N$173">
 <contactref element="R66" pad="2"/>
@@ -4274,13 +4231,13 @@ JLC7628 Stackup
 <signal name="N$175">
 <contactref element="D93" pad="A2"/>
 <contactref element="D93" pad="A1"/>
-<contactref element="D92" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-36.4" y="3.5"/>
 <vertex x="-36.4" y="5.9"/>
 <vertex x="-33" y="5.9"/>
 <vertex x="-33" y="3.5"/>
 </polygon>
+<contactref element="L37" pad="2"/>
 </signal>
 <signal name="N$176">
 <contactref element="R60" pad="2"/>
@@ -4307,13 +4264,13 @@ JLC7628 Stackup
 <signal name="N$178">
 <contactref element="D84" pad="A2"/>
 <contactref element="D84" pad="A1"/>
-<contactref element="D83" pad="C"/>
 <polygon width="0.127" layer="1" thermals="no">
 <vertex x="-36.4" y="-0.4"/>
 <vertex x="-36.4" y="2"/>
 <vertex x="-33" y="2"/>
 <vertex x="-33" y="-0.4"/>
 </polygon>
+<contactref element="L36" pad="2"/>
 </signal>
 <signal name="N$179">
 <contactref element="Q9" pad="4"/>
@@ -4706,56 +4663,43 @@ JLC7628 Stackup
 <approved hash="8,16,ff79f8b4b3ba8829"/>
 <approved hash="8,16,f6a8b2801a9d7abb"/>
 <approved hash="8,16,7aa916db6b52e84a"/>
-<approved hash="18,29,93fa88eaa8f5b3e5"/>
-<approved hash="18,29,a3e2d8f2f8fd83ed"/>
-<approved hash="18,29,e0d967ad9b9c2bf1"/>
-<approved hash="18,29,e0266736fdfb810c"/>
-<approved hash="18,29,3596c7946c4966d6"/>
 <approved hash="18,29,3313c1946a756155"/>
 <approved hash="18,29,4161c0486a511323"/>
 <approved hash="18,29,96afc0b46b55c5e1"/>
-<approved hash="18,29,510bc0f464d50d4d"/>
-<approved hash="18,29,5467df7d3e204e9b"/>
-<approved hash="18,29,97a9c0b86b51c4eb"/>
+<approved hash="18,29,e8cb05fc3e2526ab"/>
 <approved hash="18,29,6c06c0f46ac93e46"/>
-<approved hash="18,29,6cd9c0986bf13f9b"/>
-<approved hash="18,29,41bbc6aa3e246406"/>
-<approved hash="18,29,bf8cdfaa9faaff8c"/>
-<approved hash="18,29,7ea61cc0dcc0bea6"/>
-<approved hash="18,29,0a87d1359332531b"/>
+<approved hash="18,29,3596c7946c4966d6"/>
+<approved hash="18,29,54b91ec23e21098c"/>
 <approved hash="18,29,5962263626365962"/>
-<approved hash="18,29,92a4f1f8f1f892a4"/>
 <approved hash="18,29,e5bb828f828fe5bb"/>
-<approved hash="18,29,1b5ebe2440c01825"/>
-<approved hash="18,29,5cdee6530766a3b6"/>
-<approved hash="18,29,aaf2b3c2e3380618"/>
-<approved hash="18,29,e44df10a7e70a089"/>
-<approved hash="18,29,8e369b510d63a065"/>
+<approved hash="18,29,db1762f80e1e6dfd"/>
+<approved hash="18,29,92a4f1f8f1f892a4"/>
+<approved hash="18,29,98fa5a1d27f8b117"/>
+<approved hash="18,29,5a599f115a26bc61"/>
+<approved hash="18,29,62a3fdf87dfbe2a0"/>
+<approved hash="18,29,4104546fdaa5a069"/>
+<approved hash="18,29,963b017081731638"/>
+<approved hash="18,29,a60a2e50847a619f"/>
 <approved hash="18,29,f85d6bd9c18b619b"/>
 <approved hash="18,29,da79354eb54d5a7a"/>
 <approved hash="18,29,d3044a1dca1e5307"/>
-<approved hash="18,29,4104546fdaa5a069"/>
-<approved hash="18,29,62a3fdf87dfbe2a0"/>
-<approved hash="18,29,bc201779977a3c23"/>
-<approved hash="18,29,9b350455ae6761ab"/>
-<approved hash="18,29,84951faa9fa90496"/>
-<approved hash="18,29,a3dab69d204ba075"/>
-<approved hash="18,29,5d9bccbc66ca61ef"/>
-<approved hash="18,29,a60a2e50847a619f"/>
-<approved hash="18,29,963b017081731638"/>
+<approved hash="18,29,8e369b510d63a065"/>
+<approved hash="18,29,e44df10a7e70a089"/>
 <approved hash="18,29,ed54849da416fc96"/>
 <approved hash="18,30,5806aee0b6a47120"/>
 <approved hash="18,30,4c2abea31389d45a"/>
 <approved hash="18,30,59a4782f67913fa7"/>
 <approved hash="18,30,06ce2ab0b0b6666e"/>
 <approved hash="18,30,376bde3c5e3bb76c"/>
-<approved hash="18,30,c702728a178b5efa"/>
 <approved hash="18,30,19ea285f7fcab692"/>
+<approved hash="18,30,c702728a178b5efa"/>
 <approved hash="18,30,69b3feccfeab6998"/>
 <approved hash="18,30,a89626e91d712136"/>
 <approved hash="19,1,9ef3a4252a59874a"/>
 <approved hash="19,1,ae4e29ad5f38f874"/>
 <approved hash="19,1,a3382a086706b44e"/>
+<approved hash="4,1,2a500da5909b7728"/>
+<approved hash="4,1,4f87afd683774b2b"/>
 <approved hash="4,16,9d24ca26aebbb090"/>
 </errors>
 </board>
