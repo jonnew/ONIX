@@ -65,7 +65,6 @@ oni_driver_ctx oni_driver_create_ctx()
 {
 	oni_oepcie_ctx ctx;
 	ctx = calloc(1, sizeof(struct oni_oepcie_ctx_impl));
-
 	if (ctx == NULL)
 		return NULL;
 

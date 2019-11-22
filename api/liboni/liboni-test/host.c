@@ -187,9 +187,9 @@ int main(int argc, char *argv[])
 
     // Set paths in context
     oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
-    oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, sig_path, strlen(sig_path) + 1);
-    oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, read_path, strlen(read_path) + 1);
-    oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, write_path, strlen(write_path) + 1);
+    oni_set_driver_opt(ctx, ONI_OEPCIE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
+    oni_set_driver_opt(ctx, ONI_OEPCIE_READSTREAMPATH, read_path, strlen(read_path) + 1);
+    oni_set_driver_opt(ctx, ONI_OEPCIE_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
 
     // Initialize context and discover hardware
     int rc = oni_init_ctx(ctx,-1);
