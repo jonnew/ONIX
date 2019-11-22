@@ -209,7 +209,7 @@ int main(int argc, char *argv[])
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
 
     // Initialize context and discover hardware
-    int rc = oni_init_ctx(ctx,-1);
+    rc = oni_init_ctx(ctx,-1);
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
     assert(rc == 0);
 
