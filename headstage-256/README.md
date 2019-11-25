@@ -28,8 +28,18 @@ etc) ares are located on these google sheets:
 - [eib-128 channel mapping](https://docs.google.com/spreadsheets/d/11wRDYOqHN5lPb03yUdfXfK0zvaDYsVetplaNK-R90Gg/edit#gid=663991061)
 - [eib-256 channel mapping](https://docs.google.com/spreadsheets/d/11wRDYOqHN5lPb03yUdfXfK0zvaDYsVetplaNK-R90Gg/edit#gid=538743909)
 
+## Expansion Boads
+headstage-256 has two exposed headers that supply power and general purpose analog or digital IO to expand 
+its functionality. Subdirectories with the prefix 'expansion` are boards that fit into these headers to 
+supply various auxiliary functions. These include:
+
+1. expansion-uphone: ultrasonic micrphone expansion board
+2. expansion-long-range: large active area light house receiver board to expand 3D tracking range by several meters.
+3. expansion-debug: pinout GPIO to large 0.1" pitch headers.
+
+
 ## License
-Copyright Jonathan P. Newman 2018.
+Copyright Jonathan P. Newman
 
 This documentation describes Open Hardware and is licensed under the
 CERN OHL v.1.2.
@@ -39,3 +49,4 @@ OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed WITHOUT
 ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY
 QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the CERN OHL v.1.2 for
 applicable conditions
+
