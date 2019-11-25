@@ -1,6 +1,7 @@
 # eib-64
 64-channel electrode interface board (EIB) with electrical and optical
 stimulation. Designed for small animal (e.g. mouse) tetrode electrophysiology.
+Compatible with [headstage-64](../headstage-64/) and small shuttle-drives.
 
 ![eib-64](./img/eib-64.jpg)
 
@@ -18,7 +19,7 @@ The EIB pinout (ADC input mapping, stimulation connections, etc) is located on [
 This EIB uses Neuralynx ["small" gold pins](https://neuralynx.com/hardware/small-eib-pins) to attach tetrode wires. Usage instructions are provided in the [Neuralynx EIB pin Manual](https://neuralynx.com/documents/EIB%20Pins%20Manual.pdf).
 
 ## License
-Copyright Jonathan P. Newman 2017.
+Copyright Jonathan P. Newman
 
 This documentation describes Open Hardware and is licensed under the
 CERN OHL v.1.2.
