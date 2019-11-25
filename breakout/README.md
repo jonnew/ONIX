@@ -1,16 +1,18 @@
 # Analog IO Breakout Board
-This board allows easy bench-top access to the IO provided by the
+This board allows bench access to the IO provided by the
 [fmc-host board](../fmc-host/README.md). It features
 
-- BNC, SMA, ribbon, or direct wire access to 16 analog inputs and 8 analog
-  outputs
+- 4x headstage ports, each with a power switch
+- 3x, passive, high-seed clock feed throughs
+- BNC, ribbon, or direct wire access to 12 analog inputs or outputs
+- Ribbon or direct wire access to 8 digital outputs and 8 digital inpouts
+- 8 buttons for marking experimental events
+- Full-speed, USB 2.0 access to the onboard [TinyFPGA BX](https://www.crowdsupply.com/tinyfpga/tinyfpga-bx) 
+for communication and programming.
+- HARP bus
 - Rugged M6 or 1/4-20 mounting options compliant with 19" racks and optical
   tables
 - 3D printed case
-- 128x128px OLED https://www.adafruit.com/product/1431
-
-
-![analog-io-breakout](./img/analog-io-breakout.png)
 
 ## Gerber Files
 {% include gerber_layers.md %}
