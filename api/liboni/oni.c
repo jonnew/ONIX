@@ -138,15 +138,15 @@ int oni_init_ctx(oni_ctx ctx, int device_index)
     if (ctx->run_state != UNINITIALIZED)
         return ONI_EINVALSTATE;
 
-	int error = ctx->driver.init(ctx->driver.ctx, device_index);
-	if (error)
-		return error;
+    int rc = ctx->driver.init(ctx->driver.ctx, device_index);
+    if (rc)
+        return rc;
 
     // NB: Trigger reset routine (populates device map and key acqusition
     // parameters) Success will set run_state to IDLE
 
     // If running, stop acqusition
-	int rc = _oni_write_config(ctx, ONI_CONFIG_RUNNING, ctx->run_on_reset);
+    rc = _oni_write_config(ctx, ONI_CONFIG_RUNNING, ctx->run_on_reset);
     if (rc) return rc;
 
     // Set the reset register
@@ -166,14 +166,14 @@ int oni_init_ctx(oni_ctx ctx, int device_index)
 int oni_destroy_ctx(oni_ctx ctx)
 {
     assert(ctx != NULL && "Context is NULL");
-	int error = ctx->driver.destroy_ctx(ctx->driver.ctx);
-	if (error)
-		return error;
+    int rc = ctx->driver.destroy_ctx(ctx->driver.ctx);
+    if (rc)
+        return rc;
 
-	free(ctx->dev_map);
-	free(ctx);
+    free(ctx->dev_map);
+    free(ctx);
 
-	return ONI_ESUCCESS;
+    return ONI_ESUCCESS;
 }
 
 int oni_get_opt(const oni_ctx ctx, int option, void *value, size_t *option_len)
@@ -276,8 +276,7 @@ int oni_get_opt(const oni_ctx ctx, int option, void *value, size_t *option_len)
             if (*option_len != ONI_REGSZ)
                 return ONI_EBUFFERSIZE;
 
-            int rc
-                = _oni_read_config(ctx, ONI_CONFIG_SYSCLK, value);
+            int rc = _oni_read_config(ctx, ONI_CONFIG_SYSCLK, value);
             if (rc)
                 return rc;
 
@@ -386,17 +385,17 @@ int oni_set_opt(oni_ctx ctx, int option, const void *value, size_t option_len)
             return ONI_EINVALOPT;
     }
 
-    return ctx->driver.set_opt_callback(ctx->driver.create_ctx, option, value, option_len);
+    return ctx->driver.set_opt_callback(ctx->driver.ctx, option, value, option_len);
 }
 
-int_oni_get_driver_opt(const oni_ctx ctx, int driver_option, void* value, size_t *option_len)
+int oni_get_driver_opt(const oni_ctx ctx, int driver_option, void* value, size_t *option_len)
 {
-	return ctx->driver.get_opt(ctx->driver.ctx, driver_option, value, option_len);
+    return ctx->driver.get_opt(ctx->driver.ctx, driver_option, value, option_len);
 }
 
 int oni_set_driver_opt(oni_ctx ctx, int driver_option, const void* value, size_t option_len)
 {
-	return ctx->driver.set_opt(ctx->driver.ctx, driver_option, value, option_len);
+    return ctx->driver.set_opt(ctx->driver.ctx, driver_option, value, option_len);
 }
 
 int oni_write_reg(const oni_ctx ctx,
@@ -406,7 +405,6 @@ int oni_write_reg(const oni_ctx ctx,
 {
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state > UNINITIALIZED && "Context must be INITIALIZED.");
-	int error;
 
     // Checks that the device index is valid
     if (dev_idx >= ctx->num_dev && dev_idx)
@@ -414,30 +412,30 @@ int oni_write_reg(const oni_ctx ctx,
 
     // Make sure we are not already in config triggered state
     oni_reg_val_t trig = 0;
-	error = _oni_read_config(ctx, ONI_CONFIG_TRIG, &trig);
-	if (error) return error;
+    int rc = _oni_read_config(ctx, ONI_CONFIG_TRIG, &trig);
+    if (rc) return rc;
 
     if (trig != 0)
         return ONI_ERETRIG;
 
     // Set config registers and trigger a write
-	error = _oni_write_config(ctx, ONI_CONFIG_DEVICE_IDX, dev_idx);
-	if (error) return error;
-	error = _oni_write_config(ctx, ONI_CONFIG_REG_ADDR, addr);
-	if (error) return error;
-	error = _oni_write_config(ctx, ONI_CONFIG_REG_VALUE, value);
-	if (error) return error;
+    rc = _oni_write_config(ctx, ONI_CONFIG_DEVICE_IDX, dev_idx);
+    if (rc) return rc;
+    rc = _oni_write_config(ctx, ONI_CONFIG_REG_ADDR, addr);
+    if (rc) return rc;
+    rc = _oni_write_config(ctx, ONI_CONFIG_REG_VALUE, value);
+    if (rc) return rc;
 
     oni_reg_val_t rw = 1;
-	error = _oni_write_config(ctx, ONI_CONFIG_RW, rw);
-	if (error) return error;
+    rc = _oni_write_config(ctx, ONI_CONFIG_RW, rw);
+    if (rc) return rc;
 
     trig = 1;
-	error = _oni_write_config(ctx, ONI_CONFIG_TRIG, trig);
-	if (error) return error;
+    rc = _oni_write_config(ctx, ONI_CONFIG_TRIG, trig);
+    if (rc) return rc;
 
     oni_signal_t type;
-    int rc = _oni_pump_signal_type(ctx, CONFIGWACK | CONFIGWNACK, &type);
+    rc = _oni_pump_signal_type(ctx, CONFIGWACK | CONFIGWNACK, &type);
     if (rc) return rc;
 
     if (type == CONFIGWNACK)
@@ -454,43 +452,41 @@ int oni_read_reg(const oni_ctx ctx,
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state > UNINITIALIZED && "Context must be INITIALIZED.");
 
-	int error;
-
     // Checks that the device index is valid
     if (dev_idx >= ctx->num_dev && dev_idx)
         return ONI_EDEVIDX;
 
 	// Make sure we are not already in config triggered state
-	oni_reg_val_t trig = 0;
-	error = _oni_read_config(ctx, ONI_CONFIG_TRIG, &trig);
-	if (error) return error;
+    oni_reg_val_t trig = 0;
+    int rc = _oni_read_config(ctx, ONI_CONFIG_TRIG, &trig);
+    if (rc) return rc;
 
-	if (trig != 0)
-		return ONI_ERETRIG;
+    if (trig != 0)
+        return ONI_ERETRIG;
 
-	// Set config registers and trigger a write
-	error = _oni_write_config(ctx, ONI_CONFIG_DEVICE_IDX, dev_idx);
-	if (error) return error;
-	error = _oni_write_config(ctx, ONI_CONFIG_REG_ADDR, addr);
-	if (error) return error;
+    // Set config registers and trigger a write
+    rc = _oni_write_config(ctx, ONI_CONFIG_DEVICE_IDX, dev_idx);
+    if (rc) return rc;
+    rc = _oni_write_config(ctx, ONI_CONFIG_REG_ADDR, addr);
+    if (rc) return rc;
 
-	oni_reg_val_t rw = 0;
-	error = _oni_write_config(ctx, ONI_CONFIG_RW, rw);
-	if (error) return error;
+    oni_reg_val_t rw = 0;
+    rc = _oni_write_config(ctx, ONI_CONFIG_RW, rw);
+    if (rc) return rc;
 
-	trig = 1;
-	error = _oni_write_config(ctx, ONI_CONFIG_TRIG, trig);
-	if (error) return error;
+    trig = 1;
+    rc = _oni_write_config(ctx, ONI_CONFIG_TRIG, trig);
+    if (rc) return rc;
 
     oni_signal_t type;
-    int rc = _oni_pump_signal_type(ctx, CONFIGRACK | CONFIGRNACK, &type);
+    rc = _oni_pump_signal_type(ctx, CONFIGRACK | CONFIGRNACK, &type);
     if (rc) return rc;
 
     if (type == CONFIGRNACK)
         return ONI_EREADFAILURE;
 
-	error = _oni_read_config(ctx, ONI_CONFIG_REG_VALUE, value);
-	if (error) return error;
+    rc = _oni_read_config(ctx, ONI_CONFIG_REG_VALUE, value);
+    if (rc) return rc;
 
     return ONI_ESUCCESS;
 }
@@ -754,12 +750,12 @@ static int _oni_reset_routine(oni_ctx ctx) {
 
 static inline int _oni_read(oni_ctx ctx, oni_read_stream_t stream, void *data, size_t size)
 {
-	return ctx->driver.read_stream(ctx->driver.ctx, stream, data, size);
+    return ctx->driver.read_stream(ctx->driver.ctx, stream, data, size);
 }
 
 static inline int _oni_write(oni_ctx ctx, oni_write_stream_t stream, const char *data, size_t size)
 {
-	return ctx->driver.write_stream(ctx->driver.ctx, stream, data, size);
+    return ctx->driver.write_stream(ctx->driver.ctx, stream, data, size);
 }
 
 static inline int _oni_read_signal_packet(oni_ctx ctx, uint8_t *buffer)
@@ -915,14 +911,14 @@ static inline int _oni_write_config(oni_ctx ctx,
                             oni_config_t reg,
                             oni_reg_val_t value)
 {
-	return ctx->driver.write_config(ctx->driver.ctx, reg, value);
+    return ctx->driver.write_config(ctx->driver.ctx, reg, value);
 }
 
 static inline int _oni_read_config(oni_ctx ctx,
-						   oni_config_t reg,
+                           oni_config_t reg,
                            oni_reg_val_t *value)
 {
-	return ctx->driver.read_config(ctx->driver.ctx, reg, value);
+    return ctx->driver.read_config(ctx->driver.ctx, reg, value);
 }
 
 static int _oni_read_buffer(oni_ctx ctx, void **data, size_t size, int allow_refill)

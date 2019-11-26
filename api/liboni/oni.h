@@ -92,7 +92,7 @@ ONI_EXPORT int oni_get_opt(const oni_ctx ctx, int option, void* value, size_t *s
 ONI_EXPORT int oni_set_opt(oni_ctx ctx, int option, const void* value, size_t size);
 
 // Driver option getting/setting
-ONI_EXPORT int_oni_get_driver_opt(const oni_ctx ctx, int driver_option, void* value, size_t *size);
+ONI_EXPORT int oni_get_driver_opt(const oni_ctx ctx, int driver_option, void* value, size_t *size);
 ONI_EXPORT int oni_set_driver_opt(oni_ctx ctx, int driver_option, const void* value, size_t size);
 
 // Hardware inspection, manipulation, and IO

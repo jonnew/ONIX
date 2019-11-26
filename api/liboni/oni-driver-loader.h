@@ -35,19 +35,19 @@ typedef const char*(*oni_driver_get_id_f)();
 
 // Driver field with function table and driver context
 typedef struct oni_driver {
-	lib_handle_t handle;
-	oni_driver_ctx ctx;
-	oni_driver_create_ctx_f create_ctx;
-	oni_driver_destroy_ctx_f destroy_ctx;
-	oni_driver_init_f init;
-	oni_driver_read_stream_f read_stream;
-	oni_driver_write_stream_f write_stream;
-	oni_driver_read_config_f read_config;
-	oni_driver_write_config_f write_config;
-	oni_driver_set_opt_callback_f set_opt_callback;
-	oni_driver_set_opt_f set_opt;
-	oni_driver_get_opt_f get_opt;
-	oni_driver_get_id_f get_id;
+    lib_handle_t handle;
+    oni_driver_ctx ctx;
+    oni_driver_create_ctx_f create_ctx;
+    oni_driver_destroy_ctx_f destroy_ctx;
+    oni_driver_init_f init;
+    oni_driver_read_stream_f read_stream;
+    oni_driver_write_stream_f write_stream;
+    oni_driver_read_config_f read_config;
+    oni_driver_write_config_f write_config;
+    oni_driver_set_opt_callback_f set_opt_callback;
+    oni_driver_set_opt_f set_opt;
+    oni_driver_get_opt_f get_opt;
+    oni_driver_get_id_f get_id;
 } oni_driver_t;
 
 int oni_create_driver(const char* lib_name, oni_driver_t* driver);

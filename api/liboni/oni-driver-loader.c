@@ -5,98 +5,98 @@
 #include <stdlib.h>
 
 static inline void close_library(lib_handle_t handle) {
-	if (handle) {
+    if (handle) {
 #ifdef _WIN32
-		FreeLibrary(handle);
+        FreeLibrary(handle);
 #else
-		dlclose(handle);
+        dlclose(handle);
 #endif
-	}
+    }
 }
 
 static inline lib_handle_t open_library(const char* name)
 {
 #ifdef _WIN32
-	return LoadLibrary(name);
+    return LoadLibrary(name);
 #else
-	// Clear errors
-	dlerror();
-	return dlopen(name, )
+    // Clear errors
+    dlerror();
+    return dlopen(name, RTLD_NOW | RTLD_LOCAL);
 #endif
 }
 
 static inline void* get_driver_function(lib_handle_t handle, const char* function_name)
 {
 #ifdef _WIN32
-	return (void*)GetProcAddress(handle, function_name);
+    return (void*)GetProcAddress(handle, function_name);
 #else
-	dlerror();
-	return (void*)dlsym(handle, function_name);
+    dlerror();
+    return (void*)dlsym(handle, function_name);
 #endif
 }
 
 // simple macro to load a function a check for error
 #define DSTR(x) #x
 #define LOAD_FUNCTION(fname) {\
-			driver-> ## fname = ( oni_driver_ ## fname ## _f)get_driver_function(handle,DSTR(oni_driver_ ## fname)); \
-			if (!driver-> ## fname) error = -1; \
-			}
+    driver-> fname = ( oni_driver_ ## fname ## _f)get_driver_function(handle,DSTR(oni_driver_ ## fname)); \
+    if (!driver-> fname) rc = -1; \
+    }
 
 int oni_create_driver(const char* lib_name, oni_driver_t* driver)
 {
 #ifdef _WIN32
-	const char* extension = ".dll";
+    const char* extension = ".dll";
 #else
-	const char* extension = ".so";
+    const char* extension = ".so";
 #endif 
-	const char* prefix = "liboni-driver-";
-	lib_handle_t handle;
-	int error = ONI_ESUCCESS;
+    const char* prefix = "liboni-driver-";
+    lib_handle_t handle;
+    int rc = ONI_ESUCCESS;
 
-	size_t len = strlen(extension) + strlen(lib_name) + strlen(prefix);
+    size_t len = strlen(extension) + strlen(lib_name) + strlen(prefix);
 
-	char* full_lib_name = malloc(len+1);
-	sprintf(full_lib_name, "%s%s%s", prefix, lib_name, extension);
-	handle = open_library(full_lib_name);
-	free(full_lib_name);
-	if (!handle)
-		return -1;
-	
-	LOAD_FUNCTION(create_ctx);
-	LOAD_FUNCTION(destroy_ctx);
-	LOAD_FUNCTION(init);
-	LOAD_FUNCTION(read_stream);
-	LOAD_FUNCTION(write_stream);
-	LOAD_FUNCTION(read_config);
-	LOAD_FUNCTION(write_config);
-	LOAD_FUNCTION(set_opt_callback);
-	LOAD_FUNCTION(set_opt);
-	LOAD_FUNCTION(get_opt);
-	LOAD_FUNCTION(get_id);
+    char* full_lib_name = malloc(len+1);
+    sprintf(full_lib_name, "%s%s%s", prefix, lib_name, extension);
+    handle = open_library(full_lib_name);
+    free(full_lib_name);
+    if (!handle)
+        return -1;
 
-	if (!error)
-	{
-		driver->ctx = driver->create_ctx();
-		if (!driver->ctx)
-			error = -1;
-	}
-	
-	if (error)
-		close_library(handle);
-	else
-		driver->handle = handle;
+    LOAD_FUNCTION(create_ctx);
+    LOAD_FUNCTION(destroy_ctx);
+    LOAD_FUNCTION(init);
+    LOAD_FUNCTION(read_stream);
+    LOAD_FUNCTION(write_stream);
+    LOAD_FUNCTION(read_config);
+    LOAD_FUNCTION(write_config);
+    LOAD_FUNCTION(set_opt_callback);
+    LOAD_FUNCTION(set_opt);
+    LOAD_FUNCTION(get_opt);
+    LOAD_FUNCTION(get_id);
 
-	return error;
+    if (!rc)
+    {
+        driver->ctx = driver->create_ctx();
+        if (!driver->ctx)
+            rc = -1;
+}
+
+    if (rc)
+        close_library(handle);
+    else
+        driver->handle = handle;
+
+    return rc;
 }
 
 int oni_destroy_driver(oni_driver_t* driver)
 {
-	int error;
-	error = driver->destroy_ctx(driver->ctx);
-	if (!error)
-	{
-		close_library(driver->handle);
-		memset(driver, 0, sizeof(driver));
-	}
-	return error;
+    int rc;
+    rc = driver->destroy_ctx(driver->ctx);
+    if (!rc)
+    {
+        close_library(driver->handle);
+        memset(driver, 0, sizeof(oni_driver_t));
+    }
+    return rc;
 }
