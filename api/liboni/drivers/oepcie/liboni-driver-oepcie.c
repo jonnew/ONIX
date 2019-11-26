@@ -22,6 +22,10 @@
 #define _O_BINARY 0
 #endif
 
+#define UNUSED(x) (void)(x)
+// to save some repetition
+#define CTX_CAST const oni_oepcie_ctx ctx = (oni_oepcie_ctx)driver_ctx
+
 struct stream_fid {
     char *path;
     int fid;
@@ -58,9 +62,6 @@ typedef enum oni_conf_reg_off {
 
 static inline oni_conf_off_t _oni_register_offset(oni_config_t reg);
 
-// to save some repetition
-#define CTX_CAST const oni_oepcie_ctx ctx = (oni_oepcie_ctx)driver_ctx
-
 oni_driver_ctx oni_driver_create_ctx()
 {
     oni_oepcie_ctx ctx;
@@ -80,6 +81,7 @@ oni_driver_ctx oni_driver_create_ctx()
 
 int oni_driver_init(oni_driver_ctx driver_ctx, int device_index)
 {
+    UNUSED(device_index);
     CTX_CAST;
     // Open the device files
     ctx->config.fid = open(ctx->config.path, O_RDWR | _O_BINARY);
@@ -238,6 +240,10 @@ int oni_driver_read_config(oni_driver_ctx driver_ctx, oni_config_t reg, oni_reg_
 //Right now we do not do anything for the common options
 int oni_driver_set_opt_callback(oni_driver_ctx driver_ctx, int oni_option, const void* value, size_t option_len)
 {
+    UNUSED(driver_ctx);
+    UNUSED(oni_option);
+    UNUSED(value);
+    UNUSED(option_len);
     return ONI_ESUCCESS;
 }
 
