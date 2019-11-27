@@ -15,8 +15,6 @@
 #define write _write
 #define close _close
 #define lseek _lseek
-#pragma intrinsic (_InterlockedIncrement)
-#pragma intrinsic (_InterlockedDecrement)
 #else
 #include <unistd.h>
 #define _O_BINARY 0
