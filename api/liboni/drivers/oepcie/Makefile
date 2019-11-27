@@ -1,16 +1,12 @@
 # "make help" prints help.
 SHELL     :=  /bin/bash
 NAME      :=  liboni
-SNAME     :=  $(NAME).a
 DNAME     :=  $(NAME).so.1
 DNAMELN   :=  $(NAME).so
-HDR       :=  oni.h onidefs.h onidevices.h onidriver.h oelogo.h # Public headers to be installed
-SRC       :=  oni.c onidevices.c
-POSIX_SRC :=  onidriverloader.c
+HDR       :=  onidriver-oepcie.h # Public headers to be installed
+SRC       :=  onidriver-oepcie.c
 OBJ       :=  $(SRC:.c=.o)
-POSIX_OBJ :=  $(POSIX_SRC:.c=.o)
-CFLAGS    :=  -Wall -W -Werror -fPIC -O3 $(DEFS)
-ISOCFLAGS :=  -pedantic
+CFLAGS    :=  -pedantic -Wall -W -Werror -fPIC -O3 $(DEFS)
 LDFLAGS   :=  -L.
 PREFIX    :=  /usr/local
 
@@ -21,7 +17,7 @@ COMMA := ,
 COMMA-SEPARATE = $(subst ${SPACE},${COMMA},$(strip $1))
 
 .PHONY: all
-all: $(SNAME) $(DNAME) ## Make release version of liboni.
+all: $(DNAME) ## Make release version of onidriver-oepcie.
 
 .PHONY: debug
 debug: CFLAGS += -DDEBUG -g3 ## Make liboni with debug symbols.
@@ -44,20 +40,16 @@ uninstall: ## Remove liboni from installation directory.
 	$(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 	$(RM) $(DESTDIR)$(PREFIX)/include/{$(call COMMA-SEPARATE,${HDR})}
 
-$(SNAME): $(OBJ) $(POSIX_OBJ)
-	$(AR) $(ARFLAGS) $@ $^
 
 $(DNAME): LDFLAGS += -shared
-$(DNAME): $(OBJ) $(POSIX_OBJ)
+$(DNAME): $(OBJ)
 	$(CC) $(LDFLAGS) $^ -o $@
-
-$(OBJ): CFLAGS += $(ISOCFLAGS)
 
 .PHONY: clean
 clean: ## Remove local build objects
-	$(RM) $(OBJ) $(POSIX_OBJ)
-	$(RM) $(SNAME) $(DNAME)
+	$(RM) $(OBJ)
+	$(RM) $(DNAME)
 
 .PHONY: help
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "};
