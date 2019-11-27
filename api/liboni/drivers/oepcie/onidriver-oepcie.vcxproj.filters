@@ -11,12 +11,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="liboni-driver-oepcie.h">
+    <ClInclude Include="onidriver-oepcie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="liboni-driver-oepcie.c">
+    <ClCompile Include="onidriver-oepcie.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

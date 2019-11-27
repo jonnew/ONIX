@@ -127,14 +127,14 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="oni-driver-loader.c" />
+    <ClCompile Include="onidriverloader.c" />
     <ClCompile Include="oni.c" />
     <ClCompile Include="onidevices.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="oni-defs.h" />
-    <ClInclude Include="oni-driver-loader.h" />
-    <ClInclude Include="oni-driver.h" />
+    <ClInclude Include="onidefs.h" />
+    <ClInclude Include="onidriverloader.h" />
+    <ClInclude Include="onidriver.h" />
     <ClInclude Include="oni.h" />
     <ClInclude Include="onidevices.h" />
   </ItemGroup>

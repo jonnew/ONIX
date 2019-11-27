@@ -21,7 +21,7 @@
     <ClCompile Include="oni.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="oni-driver-loader.c">
+    <ClCompile Include="onidriverloader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +32,13 @@
     <ClInclude Include="oni.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="oni-driver.h">
+    <ClInclude Include="onidriver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="oni-driver-loader.h">
+    <ClInclude Include="onidriverloader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="oni-defs.h">
+    <ClInclude Include="onidefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

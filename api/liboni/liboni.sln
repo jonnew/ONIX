@@ -10,7 +10,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboni-test", "liboni-test\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboni", "liboni.vcxproj", "{0B6B9ACA-75DE-4776-A6CA-B4123ED59F1D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboni-driver-oepcie", "drivers\oepcie\liboni-driver-oepcie.vcxproj", "{D26D81AE-7407-4922-8E13-C3B84EB2B18B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "onidriver-oepcie", "drivers\oepcie\onidriver-oepcie.vcxproj", "{D26D81AE-7407-4922-8E13-C3B84EB2B18B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
