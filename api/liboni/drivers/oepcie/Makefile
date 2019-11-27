@@ -27,7 +27,6 @@ debug: all
 install: $(SNAME) $(DNAME) ## Install liboni. Defaults to make install PREFIX=/usr/local.
 	@[ -d $(DESTDIR)$(PREFIX)/lib ] || mkdir -p $(DESTDIR)$(PREFIX)/lib
 	@[ -d $(DESTDIR)$(PREFIX)/include ] || mkdir -p $(DESTDIR)$(PREFIX)/include
-	cp $(SNAME) $(DESTDIR)$(PREFIX)/lib/$(SNAME)
 	cp $(DNAME) $(DESTDIR)$(PREFIX)/lib/$(DNAME)
 	cp $(HDR) $(DESTDIR)$(PREFIX)/include
 	@[ -d $(DESTDIR)$(PREFIX)/lib/$(DNAMELN) ] || $(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
@@ -35,7 +34,6 @@ install: $(SNAME) $(DNAME) ## Install liboni. Defaults to make install PREFIX=/u
 
 .PHONY: uninstall
 uninstall: ## Remove liboni from installation directory.
-	$(RM) $(DESTDIR)$(PREFIX)/lib/$(SNAME)
 	$(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAME)
 	$(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 	$(RM) $(DESTDIR)$(PREFIX)/include/{$(call COMMA-SEPARATE,${HDR})}

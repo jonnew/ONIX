@@ -10,7 +10,7 @@
 #include "oni.h"
 #include "onidevices.h"
 #include "oelogo.h"
-#include "drivers\oepcie\liboni-driver-oepcie.h"
+#include "onidriver-oepcie.h"
 
 // Dump raw device streams to files?
 //#define DUMPFILES
