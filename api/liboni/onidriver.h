@@ -1,7 +1,7 @@
 #ifndef __ONI_DRIVER_H__
 #define __ONI_DRIVER_H__
 
-#include "oni-defs.h"
+#include "onidefs.h"
 
 // Possible read streams
 typedef enum {

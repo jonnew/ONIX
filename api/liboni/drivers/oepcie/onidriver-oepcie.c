@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "liboni-driver-oepcie.h"
-#include "../../oni-driver.h"
+#include "onidriver-oepcie.h"
+#include "../../onidriver.h"
 
 #ifdef _WIN32
 #include <io.h>

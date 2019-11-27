@@ -44,7 +44,7 @@ extern "C" {
 #define ONI_EXPORT
 #endif
 
-#include "oni-defs.h"
+#include "onidefs.h"
 
 // Device type
 typedef struct {

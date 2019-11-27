@@ -2,7 +2,7 @@
 #define __ONI_DRIVER_LOADER_H__
 
 #define ONI_DRIVER_IGNORE_FUNCTION_PROTOTYPES
-#include "oni-driver.h"
+#include "onidriver.h"
 
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN

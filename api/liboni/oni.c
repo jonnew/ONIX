@@ -7,7 +7,7 @@
 #include <string.h>
 
 #include "oni.h"
-#include "oni-driver-loader.h"
+#include "onidriverloader.h"
 
 // Define if hardware produces byte-reversed types from compile command
 #ifdef ONI_BIGEND

@@ -1,4 +1,4 @@
-#include "oni-driver-loader.h"
+#include "onidriverloader.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -49,7 +49,7 @@ int oni_create_driver(const char* lib_name, oni_driver_t* driver)
 #else
     const char* extension = ".so";
 #endif 
-    const char* prefix = "liboni-driver-";
+    const char* prefix = "onidriver-";
     lib_handle_t handle;
     int rc = ONI_ESUCCESS;
 
