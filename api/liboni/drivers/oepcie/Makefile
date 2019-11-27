@@ -1,6 +1,6 @@
 # "make help" prints help.
 SHELL     :=  /bin/bash
-NAME      :=  liboni
+NAME      :=  onidriver-oepcie
 DNAME     :=  $(NAME).so.1
 DNAMELN   :=  $(NAME).so
 HDR       :=  onidriver-oepcie.h # Public headers to be installed
