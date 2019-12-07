@@ -12413,7 +12413,7 @@ serializer, this translates to 2.55A
 available, which is enough for 1A/LED 
 + 500 mA serializer and FPGA.</text>
 <text x="718.82" y="830.58" size="2.54" layer="97" rot="R180">DNP</text>
-<text x="538.48" y="960.12" size="2.54" layer="97">NB: Use both 
+<text x="563.88" y="967.74" size="2.54" layer="97">NB: Use both 
 MISO lines</text>
 <text x="381" y="891.54" size="2.54" layer="97">NB: R-arrays provide input
 protection. Limit current 
@@ -12637,20 +12637,20 @@ to form a star connection.</text>
 <text x="500.38" y="591.82" size="2.54" layer="97">NB: Freq =
 1.48 MHz</text>
 <wire x1="360.68" y1="1315.72" x2="360.68" y2="1295.4" width="0.508" layer="97" style="longdash"/>
-<text x="55.88" y="1051.56" size="2.54" layer="97" rot="MR180">PIN       ADC    DAC
+<text x="58.42" y="1056.64" size="2.54" layer="97" rot="MR180">PIN       ADC    DAC
 --------------------------
-AIO_0     3B     0
-AIO_1     2B     3
-AIO_2     0B     2
-AIO_3     1B     1
-AIO_4     4B     4
-AIO_5     5B     6
-AIO_6     4A     7
-AIO_7     5A     5
-AIO_8     3A     11
-AIO_9     2A     9
-AIO_10   1A     8
-AIO_11   0A     10</text>
+AIO_11   3B     0
+AIO_10   2B     1
+AIO_9     0B     3
+AIO_8     1B     2
+AIO_7     4B     6
+AIO_6     5B     7
+AIO_5     4A     5
+AIO_4     5A     4
+AIO_3     3A     9
+AIO_2     2A     8
+AIO_1     1A     10
+AIO_0     0A     11</text>
 </plain>
 <instances>
 <instance part="CLKI0" gate="G$1" x="53.34" y="784.86"/>
@@ -12890,8 +12890,8 @@ AIO_11   0A     10</text>
 <instance part="P42" gate="PWR1" x="561.34" y="1018.54"/>
 <instance part="R79" gate="R" x="543.56" y="1005.84" rot="R180"/>
 <instance part="R80" gate="R" x="546.1" y="970.28" rot="R180"/>
-<instance part="R81" gate="R" x="581.66" y="952.5"/>
-<instance part="C106" gate="C" x="548.64" y="944.88" rot="R270"/>
+<instance part="R81" gate="R" x="561.34" y="960.12" rot="R90"/>
+<instance part="C106" gate="C" x="561.34" y="944.88"/>
 <instance part="P43" gate="PWR1" x="566.42" y="1071.88" rot="MR0"/>
 <instance part="C110" gate="C" x="566.42" y="1051.56" rot="MR180"/>
 <instance part="C108" gate="C" x="553.72" y="1051.56" rot="MR180"/>
@@ -13819,7 +13819,8 @@ AIO_11   0A     10</text>
 <junction x="533.4" y="1043.94"/>
 <junction x="533.4" y="998.22"/>
 <pinref part="C106" gate="C" pin="2"/>
-<wire x1="533.4" y1="944.88" x2="543.56" y2="944.88" width="0.1524" layer="91"/>
+<wire x1="561.34" y1="939.8" x2="561.34" y2="937.26" width="0.1524" layer="91"/>
+<wire x1="561.34" y1="937.26" x2="533.4" y2="937.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C110" gate="C" pin="1"/>
@@ -15176,6 +15177,9 @@ AIO_11   0A     10</text>
 <pinref part="R78" gate="R" pin="1"/>
 <wire x1="548.64" y1="1013.46" x2="561.34" y2="1013.46" width="0.1524" layer="91"/>
 <junction x="561.34" y="1013.46"/>
+<pinref part="R81" gate="R" pin="2"/>
+<wire x1="561.34" y1="965.2" x2="561.34" y2="970.28" width="0.1524" layer="91"/>
+<junction x="561.34" y="970.28"/>
 </segment>
 <segment>
 <pinref part="U16" gate="A" pin="VDRIVE"/>
@@ -16349,6 +16353,7 @@ AIO_11   0A     10</text>
 <wire x1="101.6" y1="889" x2="101.6" y2="896.62" width="0.1524" layer="91"/>
 <pinref part="AUX" gate="G$1" pin="1"/>
 <wire x1="68.58" y1="899.16" x2="93.98" y2="899.16" width="0.1524" layer="91"/>
+<label x="71.12" y="899.16" size="1.27" layer="95"/>
 </segment>
 <segment>
 <pinref part="AUX" gate="G$1" pin="26"/>
@@ -16357,6 +16362,7 @@ AIO_11   0A     10</text>
 <wire x1="93.98" y1="955.04" x2="101.6" y2="955.04" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="955.04" x2="101.6" y2="962.66" width="0.1524" layer="91"/>
 <pinref part="SUPPLY17" gate="A" pin="+12V"/>
+<label x="71.12" y="962.66" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="-15V" class="0">
@@ -16698,12 +16704,14 @@ AIO_11   0A     10</text>
 <pinref part="AUX" gate="G$1" pin="14"/>
 <wire x1="68.58" y1="901.7" x2="106.68" y2="901.7" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="901.7" x2="106.68" y2="891.54" width="0.1524" layer="91"/>
+<label x="71.12" y="901.7" size="1.27" layer="95"/>
 </segment>
 <segment>
 <wire x1="88.9" y1="960.12" x2="88.9" y2="955.04" width="0.1524" layer="91"/>
 <pinref part="SUPPLY12" gate="G$1" pin="AGND"/>
 <pinref part="AUX" gate="G$1" pin="13"/>
 <wire x1="68.58" y1="960.12" x2="88.9" y2="960.12" width="0.1524" layer="91"/>
+<label x="71.12" y="960.12" size="1.27" layer="95"/>
 </segment>
 <segment>
 <pinref part="SUPPLY109" gate="G$1" pin="AGND"/>
@@ -17093,8 +17101,15 @@ AIO_11   0A     10</text>
 <pinref part="J10" gate="G$3" pin="HA08_P"/>
 </segment>
 <segment>
-<wire x1="586.74" y1="952.5" x2="617.22" y2="952.5" width="0.1524" layer="91"/>
-<pinref part="R81" gate="R" pin="2"/>
+<pinref part="U16" gate="A" pin="!RESET"/>
+<wire x1="520.7" y1="952.5" x2="561.34" y2="952.5" width="0.1524" layer="91"/>
+<junction x="561.34" y="952.5"/>
+<pinref part="C106" gate="C" pin="1"/>
+<wire x1="561.34" y1="952.5" x2="561.34" y2="947.42" width="0.1524" layer="91"/>
+<pinref part="R81" gate="R" pin="1"/>
+<wire x1="617.22" y1="952.5" x2="561.34" y2="952.5" width="0.1524" layer="91"/>
+<wire x1="561.34" y1="955.04" x2="561.34" y2="952.5" width="0.1524" layer="91"/>
+<junction x="561.34" y="952.5"/>
 <label x="617.22" y="952.5" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
@@ -18100,7 +18115,7 @@ AIO_11   0A     10</text>
 <pinref part="J10" gate="G$5" pin="HA21_N"/>
 </segment>
 </net>
-<net name="AIO_0" class="0">
+<net name="AIO_11" class="0">
 <segment>
 <label x="187.96" y="1280.16" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="193.04" y1="1280.16" x2="187.96" y2="1280.16" width="0.1524" layer="91"/>
@@ -18117,7 +18132,7 @@ AIO_11   0A     10</text>
 <label x="368.3" y="939.8" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIO_1" class="0">
+<net name="AIO_10" class="0">
 <segment>
 <wire x1="68.58" y1="955.04" x2="73.66" y2="955.04" width="0.1524" layer="91"/>
 <label x="73.66" y="955.04" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18134,7 +18149,7 @@ AIO_11   0A     10</text>
 <pinref part="U7" gate="G$1" pin="D4"/>
 </segment>
 </net>
-<net name="AIO_2" class="0">
+<net name="AIO_9" class="0">
 <segment>
 <wire x1="68.58" y1="952.5" x2="73.66" y2="952.5" width="0.1524" layer="91"/>
 <label x="73.66" y="952.5" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18151,7 +18166,7 @@ AIO_11   0A     10</text>
 <pinref part="U7" gate="G$1" pin="D2"/>
 </segment>
 </net>
-<net name="AIO_3" class="0">
+<net name="AIO_8" class="0">
 <segment>
 <wire x1="68.58" y1="949.96" x2="73.66" y2="949.96" width="0.1524" layer="91"/>
 <label x="73.66" y="949.96" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18235,7 +18250,7 @@ AIO_11   0A     10</text>
 <wire x1="383.54" y1="1242.06" x2="393.7" y2="1242.06" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="AIO_4" class="0">
+<net name="AIO_7" class="0">
 <segment>
 <wire x1="68.58" y1="947.42" x2="73.66" y2="947.42" width="0.1524" layer="91"/>
 <label x="73.66" y="947.42" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18252,7 +18267,7 @@ AIO_11   0A     10</text>
 <label x="368.3" y="934.72" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIO_5" class="0">
+<net name="AIO_6" class="0">
 <segment>
 <wire x1="68.58" y1="944.88" x2="73.66" y2="944.88" width="0.1524" layer="91"/>
 <label x="73.66" y="944.88" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18269,7 +18284,7 @@ AIO_11   0A     10</text>
 <label x="368.3" y="929.64" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIO_6" class="0">
+<net name="AIO_5" class="0">
 <segment>
 <wire x1="68.58" y1="942.34" x2="73.66" y2="942.34" width="0.1524" layer="91"/>
 <label x="73.66" y="942.34" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18286,7 +18301,7 @@ AIO_11   0A     10</text>
 <pinref part="U8" gate="G$1" pin="D4"/>
 </segment>
 </net>
-<net name="AIO_7" class="0">
+<net name="AIO_4" class="0">
 <segment>
 <wire x1="68.58" y1="939.8" x2="73.66" y2="939.8" width="0.1524" layer="91"/>
 <label x="73.66" y="939.8" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18303,7 +18318,7 @@ AIO_11   0A     10</text>
 <label x="368.3" y="972.82" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIO_8" class="0">
+<net name="AIO_3" class="0">
 <segment>
 <wire x1="68.58" y1="937.26" x2="73.66" y2="937.26" width="0.1524" layer="91"/>
 <label x="73.66" y="937.26" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18320,7 +18335,7 @@ AIO_11   0A     10</text>
 <pinref part="U9" gate="G$1" pin="D2"/>
 </segment>
 </net>
-<net name="AIO_9" class="0">
+<net name="AIO_2" class="0">
 <segment>
 <wire x1="68.58" y1="934.72" x2="73.66" y2="934.72" width="0.1524" layer="91"/>
 <label x="73.66" y="934.72" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18337,7 +18352,7 @@ AIO_11   0A     10</text>
 <label x="368.3" y="990.6" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIO_10" class="0">
+<net name="AIO_1" class="0">
 <segment>
 <wire x1="68.58" y1="932.18" x2="73.66" y2="932.18" width="0.1524" layer="91"/>
 <label x="73.66" y="932.18" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -18354,7 +18369,7 @@ AIO_11   0A     10</text>
 <pinref part="U9" gate="G$1" pin="D4"/>
 </segment>
 </net>
-<net name="AIO_11" class="0">
+<net name="AIO_0" class="0">
 <segment>
 <wire x1="68.58" y1="929.64" x2="73.66" y2="929.64" width="0.1524" layer="91"/>
 <label x="73.66" y="929.64" size="1.27" layer="95" rot="MR180" xref="yes"/>
@@ -19301,22 +19316,24 @@ AIO_11   0A     10</text>
 <junction x="162.56" y="855.98"/>
 </segment>
 </net>
-<net name="N$30" class="0">
+<net name="LVDS_DIN2_N/CAN_P" class="0">
 <segment>
 <wire x1="68.58" y1="904.24" x2="127" y2="904.24" width="0.1524" layer="91"/>
 <pinref part="AUX" gate="G$1" pin="2"/>
 <pinref part="SJ2" gate="G$1" pin="COM"/>
 <wire x1="132.08" y1="894.08" x2="127" y2="894.08" width="0.1524" layer="91"/>
 <wire x1="127" y1="894.08" x2="127" y2="904.24" width="0.1524" layer="91"/>
+<label x="71.12" y="904.24" size="1.27" layer="95"/>
 </segment>
 </net>
-<net name="N$31" class="0">
+<net name="LVDS_DIN2_P/CAN_N" class="0">
 <segment>
 <wire x1="68.58" y1="906.78" x2="111.76" y2="906.78" width="0.1524" layer="91"/>
 <pinref part="AUX" gate="G$1" pin="15"/>
 <pinref part="SJ1" gate="G$1" pin="COM"/>
 <wire x1="116.84" y1="894.08" x2="111.76" y2="894.08" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="894.08" x2="111.76" y2="906.78" width="0.1524" layer="91"/>
+<label x="71.12" y="906.78" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="MLVDS_CLK_0_N" class="1">
@@ -19777,21 +19794,23 @@ AIO_11   0A     10</text>
 <pinref part="U2" gate="G$1" pin="AOUT+"/>
 <wire x1="172.72" y1="1008.38" x2="139.7" y2="1008.38" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="1008.38" x2="139.7" y2="927.1" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="927.1" x2="73.66" y2="927.1" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="927.1" x2="71.12" y2="924.56" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="927.1" x2="99.06" y2="927.1" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="927.1" x2="96.52" y2="924.56" width="0.1524" layer="91"/>
 <pinref part="AUX" gate="G$1" pin="6"/>
-<wire x1="71.12" y1="924.56" x2="68.58" y2="924.56" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="924.56" x2="68.58" y2="924.56" width="0.1524" layer="91"/>
+<label x="71.12" y="924.56" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="LVDS_DOUT0_N" class="3">
 <segment>
 <pinref part="AUX" gate="G$1" pin="19"/>
-<wire x1="68.58" y1="927.1" x2="71.12" y2="927.1" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="927.1" x2="73.66" y2="924.56" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="924.56" x2="142.24" y2="924.56" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="927.1" x2="96.52" y2="927.1" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="927.1" x2="99.06" y2="924.56" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="924.56" x2="142.24" y2="924.56" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="924.56" x2="142.24" y2="1005.84" width="0.1524" layer="91"/>
 <pinref part="U2" gate="G$1" pin="AOUT-"/>
 <wire x1="142.24" y1="1005.84" x2="172.72" y2="1005.84" width="0.1524" layer="91"/>
+<label x="71.12" y="927.1" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="LVDS_DOUT1_P" class="3">
@@ -19799,21 +19818,23 @@ AIO_11   0A     10</text>
 <pinref part="U2" gate="G$1" pin="BOUT+"/>
 <wire x1="172.72" y1="1000.76" x2="144.78" y2="1000.76" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="1000.76" x2="144.78" y2="922.02" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="922.02" x2="73.66" y2="922.02" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="922.02" x2="71.12" y2="919.48" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="922.02" x2="99.06" y2="922.02" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="922.02" x2="96.52" y2="919.48" width="0.1524" layer="91"/>
 <pinref part="AUX" gate="G$1" pin="5"/>
-<wire x1="71.12" y1="919.48" x2="68.58" y2="919.48" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="919.48" x2="68.58" y2="919.48" width="0.1524" layer="91"/>
+<label x="71.12" y="919.48" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="LVDS_DOUT1_N" class="3">
 <segment>
 <pinref part="AUX" gate="G$1" pin="18"/>
-<wire x1="68.58" y1="922.02" x2="71.12" y2="922.02" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="922.02" x2="73.66" y2="919.48" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="919.48" x2="147.32" y2="919.48" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="922.02" x2="96.52" y2="922.02" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="922.02" x2="99.06" y2="919.48" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="919.48" x2="147.32" y2="919.48" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="919.48" x2="147.32" y2="998.22" width="0.1524" layer="91"/>
 <pinref part="U2" gate="G$1" pin="BOUT-"/>
 <wire x1="147.32" y1="998.22" x2="172.72" y2="998.22" width="0.1524" layer="91"/>
+<label x="71.12" y="922.02" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="LVDS_DIN0_P" class="3">
@@ -19826,6 +19847,7 @@ AIO_11   0A     10</text>
 <wire x1="149.86" y1="916.94" x2="68.58" y2="916.94" width="0.1524" layer="91"/>
 <pinref part="R36" gate="R" pin="2"/>
 <junction x="167.64" y="967.74"/>
+<label x="71.12" y="916.94" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="LVDS_DIN0_N" class="3">
@@ -19838,6 +19860,7 @@ AIO_11   0A     10</text>
 <wire x1="152.4" y1="914.4" x2="68.58" y2="914.4" width="0.1524" layer="91"/>
 <pinref part="R36" gate="R" pin="1"/>
 <junction x="167.64" y="957.58"/>
+<label x="71.12" y="914.4" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="LVDS_DIN1_P" class="3">
@@ -19846,26 +19869,28 @@ AIO_11   0A     10</text>
 <wire x1="172.72" y1="952.5" x2="167.64" y2="952.5" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="952.5" x2="154.94" y2="952.5" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="952.5" x2="154.94" y2="911.86" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="911.86" x2="73.66" y2="911.86" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="911.86" x2="71.12" y2="909.32" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="911.86" x2="99.06" y2="911.86" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="911.86" x2="96.52" y2="909.32" width="0.1524" layer="91"/>
 <pinref part="AUX" gate="G$1" pin="3"/>
-<wire x1="71.12" y1="909.32" x2="68.58" y2="909.32" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="909.32" x2="68.58" y2="909.32" width="0.1524" layer="91"/>
 <pinref part="R37" gate="R" pin="2"/>
 <junction x="167.64" y="952.5"/>
+<label x="71.12" y="909.32" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="LVDS_DIN1_N" class="3">
 <segment>
 <pinref part="AUX" gate="G$1" pin="16"/>
-<wire x1="68.58" y1="911.86" x2="71.12" y2="911.86" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="911.86" x2="73.66" y2="909.32" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="909.32" x2="157.48" y2="909.32" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="911.86" x2="96.52" y2="911.86" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="911.86" x2="99.06" y2="909.32" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="909.32" x2="157.48" y2="909.32" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="909.32" x2="157.48" y2="942.34" width="0.1524" layer="91"/>
 <pinref part="U3" gate="G$1" pin="B-"/>
 <wire x1="157.48" y1="942.34" x2="167.64" y2="942.34" width="0.1524" layer="91"/>
 <pinref part="R37" gate="R" pin="1"/>
 <wire x1="167.64" y1="942.34" x2="172.72" y2="942.34" width="0.1524" layer="91"/>
 <junction x="167.64" y="942.34"/>
+<label x="71.12" y="911.86" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="LVDS_DIN2_P" class="3">
@@ -19919,18 +19944,6 @@ AIO_11   0A     10</text>
 <wire x1="76.2" y1="1181.1" x2="76.2" y2="1176.02" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="$N56" class="0">
-<segment>
-<pinref part="U16" gate="A" pin="!RESET"/>
-<wire x1="520.7" y1="952.5" x2="561.34" y2="952.5" width="0.1524" layer="91"/>
-<wire x1="561.34" y1="952.5" x2="576.58" y2="952.5" width="0.1524" layer="91"/>
-<junction x="561.34" y="952.5"/>
-<pinref part="C106" gate="C" pin="1"/>
-<wire x1="561.34" y1="952.5" x2="561.34" y2="944.88" width="0.1524" layer="91"/>
-<wire x1="561.34" y1="944.88" x2="551.18" y2="944.88" width="0.1524" layer="91"/>
-<pinref part="R81" gate="R" pin="1"/>
-</segment>
-</net>
 </nets>
 </sheet>
 </sheets>
@@ -19960,9 +19973,7 @@ AIO_11   0A     10</text>
 <approved hash="104,1,769.62,1198.88,U23,VOUT1N,GND,,,"/>
 <approved hash="104,1,769.62,1178.56,U23,VOUT2P,GND,,,"/>
 <approved hash="104,1,769.62,1158.24,U23,VOUT2N,-15V,,,"/>
-<approved hash="202,1,810.26,1188.72,U23,SS1,,,,"/>
 <approved hash="104,1,810.26,1178.56,U23,VIN2,+3V3,,,"/>
-<approved hash="202,1,810.26,1148.08,U23,SS2,,,,"/>
 <approved hash="104,1,665.48,1280.16,U19,IN,N$15,,,"/>
 <approved hash="104,1,665.48,1219.2,U20,IN,N$42,,,"/>
 <approved hash="104,1,665.48,1158.24,U21,IN,N$58,,,"/>

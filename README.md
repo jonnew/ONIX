@@ -1,12 +1,12 @@
-[__Open Ephys++__](https://jonnew.github.io/open-ephys-pcie/) is hardware,
-firmware, communication protocols, specifications, and APIs for serialized,
-very-high channel count, closed-loop electrophysiology. It is an evolution of
-the hardware and software introduced in [Open Ephys
-project](http://www.open-ephys.org/) and involves many of the same developers.
-The firmware and API are general purpose -- they can be used to acquire from
-and control custom headstages with arbitrary arrangements of sensors and
-actuators (e.g. cameras, bioamplifier chips, LED drivers, etc.) and are not
-limited to the hardware in this repository.
+[__Open Ephys 2.0__](https://jonnew.github.io/open-ephys-pcie/) is a collection
+of [ONI](https://github.com/jonnew/ONI)-compatible hardware, firmware, and API
+for serialized, very-high channel count, closed-loop electrophysiology. It is
+an evolution of the first-generation hardware and software introduced in [Open
+Ephys project](http://www.open-ephys.org/) and involves many of the same
+developers.  The firmware and API are general purpose -- they can be used to
+acquire from and control custom headstages with arbitrary arrangements of
+sensors and actuators (e.g. cameras, bioamplifier chips, LED drivers, etc.) and
+are not limited to the hardware in this repository.
 
 [![Join the chat at https://gitter.im/open-ephys-pcie/Lobby](https://badges.gitter.im/open-ephys-pcie/Lobby.svg)](https://gitter.im/open-ephys-pcie/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -21,8 +21,8 @@ __Citing this work__:
   - [![DOI](https://zenodo.org/badge/95248663.svg)](https://zenodo.org/badge/latestdoi/95248663)
 
 ## Features
-- Formal specifications: serialization protocols, host communication protocols,
-  device drivers, and host API
+- Follows the ONI-specification for serialization protocols, host communication
+  protocols, device drivers, and host API
 - Firmware and API permit acquisition and control of arbitrary arrangements of
   sensors and actuators:
 
@@ -49,21 +49,18 @@ __Citing this work__:
 
 ## Repository Contents and Licensing
 Each top level directory of this repository corresponds to a distinct system
-module. These can be specifications (e.g. `spec`), hardware components (e.g.
+module. These can firmware (e.g. TODO), hardware components (e.g.
 `headstage-64`), or programming interfaces (e.g. `api`). __Each subdirectory
 may have distinct contributors and/or licenses__. Please refer to the README
 file within each directory for further information on usage, licensing, etc.
 
-## Specification
-The [Open Ephys++ Specification](spec/README.md) formally specifies data
+## ONI-Compatible
+The [Open Neuro Interface](https://github.com/jonnew/ONI) formally specifies data
 serialization, host/PC communication, firmware blocks, device drivers and
 programming interfaces for this project. All firmware, software, and hardware
-artifacts in this repository implementations of this specification.
-Therefor, third party implementations that maintain compatibility with the spec
+artifacts in this repository are implementations of this specification.
+Therefore, third party implementations that maintain compatibility with ONI
 will interoperate with the software and hardware within this project.
-Seriously, do a better job than us, we will be grateful! Also, if you have
-concerns with the spec, please get in touch. We want this to be
-used and applicable in a variety of circumstances.
 
 ## Software
 

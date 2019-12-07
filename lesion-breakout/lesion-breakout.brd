@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.5" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="13" fill="1" visible="no" active="no"/>
@@ -706,7 +706,7 @@ design rules under a new name.</description>
 <vertex x="-27.7" y="26.3"/>
 <vertex x="35.3" y="26.3"/>
 <vertex x="35.3" y="-35"/>
-<vertex x="-36.9" y="-53.4"/>
+<vertex x="-28" y="-35"/>
 </polygon>
 <wire x1="0" y1="-1.1" x2="0" y2="1.1" width="0.2" layer="1"/>
 <via x="0" y="1.1" extent="1-16" drill="0.3"/>
