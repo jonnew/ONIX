@@ -1,4 +1,4 @@
-# eib-64
+# eib-64-large
 64-channel electrode interface board (EIB) with electrical and optical
 stimulation. Designed for large animal (e.g. rat) tetrode electrophysiology.
 Compatible with [headstage-64](../headstage-64/) and large shuttle-drives.
