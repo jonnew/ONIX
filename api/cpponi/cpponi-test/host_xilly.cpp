@@ -7,8 +7,23 @@
 #include <sstream>
 #include <string>
 
+#include <oelogo.h>
 #include <oni.hpp>
 #include <onidevices.hpp>
+#include <onidriver_xillybus.h> // Use xillybus driver
+
+// Default paths
+#ifdef _WIN32
+#define ONI_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_32"
+#define ONI_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
+#define ONI_DEFAULTWRITEPATH   "\\\\.\\xillybus_data_write_32"
+#define ONI_DEFAULTSIGNALPATH  "\\\\.\\xillybus_signal_8"
+#else
+#define ONI_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_32"
+#define ONI_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
+#define ONI_DEFAULTWRITEPATH   "/dev/xillybus_data_write_32"
+#define ONI_DEFAULTSIGNALPATH  "/dev/xillybus_signal_8"
+#endif
 
 // Dump raw device streams to files?
 //#define DUMPFILES
@@ -130,9 +145,15 @@ int main(int argc, char *argv[])
         write_path = argv[4];
     }
 
-    // Create context
+    // Create context using the xillybus driver
+    // driver_arg_t's provide driver specific context options settings
     auto ctx = std::make_shared<oni::context_t>(
-        config_path, read_path, write_path, sig_path);
+        XILLYBUS_DRIVER_NAME,
+        0,
+        oni::driver_arg_t<const char *>{ONI_XILLYBUS_CONFIGSTREAMPATH, config_path},
+        oni::driver_arg_t<const char *>{ONI_XILLYBUS_SIGNALSTREAMPATH, sig_path},
+        oni::driver_arg_t<const char *>{ONI_XILLYBUS_READSTREAMPATH, read_path},
+        oni::driver_arg_t<const char *>{ONI_XILLYBUS_WRITESTREAMPATH, write_path});
 
     // Examine device map
     auto dev_map = ctx->device_map();
@@ -173,10 +194,6 @@ int main(int argc, char *argv[])
     // library, then why must I specify a type parameter here?
     std::cout << "System clock rate: "
               << ctx->get_opt<uint32_t>(ONI_SYSCLKHZ)
-              << " Hz\n";
-
-    std::cout << "Acquisition clock rate: "
-              << ctx->get_opt<uint32_t>(ONI_ACQCLKHZ)
               << " Hz\n";
 
     // Start acquisition

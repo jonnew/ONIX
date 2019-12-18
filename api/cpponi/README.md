@@ -1,5 +1,5 @@
 # cpponi
-C++14 bindings for [`liboni`](../liboni/README.md).
+C++17 bindings for [`liboni`](../liboni/README.md).
 
 ## Build
 This is a header only library, so there is nothing to build. Just run
@@ -16,8 +16,8 @@ $ make uninstall PREFIX=/path/to/uninstall
 The [cpponi-test](cpponi-test) directory contains minimal working
 programs that use this library
 
-1. `host` : Basic data acquisition loop. Communicate with `liboepoe-test/firmware` or actual
-   hardware.
+1. `host_xilly` : Basic data acquisition loop. Communicate with
+   `liboni/liboni-test/firm_xilly` or actual hardware.
 
 ## Performance testing
 1. Install google perftools:
@@ -35,15 +35,15 @@ $ make profile
    UNIX pipe read/write.
 ```
 $ cd ../liboni/liboni-test/bin
-$ ./firmware 10e6
+$ ./firm_xilly 10e6
 ```
-4. Run the `host` program while dumping profile info:
+4. Run the `host_xilly` program while dumping profile info:
 ```
-$ env CPUPROFILE=/tmp/host.prof ./host /tmp/xillybus_cmd_mem_32 /tmp/xillybus_async_read_8 /tmp/xillybus_data_read_32
+$ env CPUPROFILE=/tmp/host.prof ./host_xilly /tmp/cmd_32 /tmp/signal_8 /tmp/read_32 /tmp/write_32
 ```
 5. Examine output
 ```
-$ pprof ./host /tmp/host.prof
+$ google-pprof ./host_xilly /tmp/host.prof
 ```
 
 ## License
