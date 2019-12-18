@@ -35,10 +35,10 @@ volatile uint64_t sample_tick = 0;
 volatile int quit = 0;
 
 // FIFO file path and desciptor handles to mimic xillybus streams
-const char *config_path = "/tmp/xillybus_cmd_32";
-const char *sig_path = "/tmp/xillybus_signal_8";
-const char *read_path = "/tmp/xillybus_data_read_32";
-const char *write_path = "/tmp/xillybus_data_write_32";
+const char *config_path = "/tmp/cmd_32";
+const char *sig_path = "/tmp/signal_8";
+const char *read_path = "/tmp/read_32";
+const char *write_path = "/tmp/write_32";
 
 int config_fd = -1;
 int read_fd = -1;
@@ -84,7 +84,7 @@ static oni_device_t my_devices[]
         .num_reads = 1,
         .write_size = 0,
         .num_writes = 1},
-       {.id = ONI_MPU9250,
+       {.id = ONI_BNO055,
         .read_size = 9 * sizeof(uint16_t),
         .num_reads = 1,
         .write_size = 0,

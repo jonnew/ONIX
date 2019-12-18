@@ -10,7 +10,20 @@
 #include "oni.h"
 #include "onidevices.h"
 #include "oelogo.h"
-#include "onidriver-oepcie.h"
+#include "onidriver_xillybus.h" // Use xillybus driver
+
+// Default paths
+#ifdef _WIN32
+#define ONI_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_32"
+#define ONI_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
+#define ONI_DEFAULTWRITEPATH   "\\\\.\\xillybus_data_write_32"
+#define ONI_DEFAULTSIGNALPATH  "\\\\.\\xillybus_signal_8"
+#else
+#define ONI_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_32"
+#define ONI_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
+#define ONI_DEFAULTWRITEPATH   "/dev/xillybus_data_write_32"
+#define ONI_DEFAULTSIGNALPATH  "/dev/xillybus_signal_8"
+#endif
 
 // Dump raw device streams to files?
 //#define DUMPFILES
@@ -100,7 +113,7 @@ void *read_loop(void *vargp)
             fwrite(data, 1, data_sz, dump_files[this_idx]);
 #endif
             if (display && counter % 1000 == 0) { //this_idx == 19 && this_cnt < 500) { // && counter % 1000 == 0) { // && this_idx == 4 ) { //
-                
+
                 this_cnt++;
                 printf("\tDev: %zu (%s) \n",
                     this_idx,
@@ -185,22 +198,22 @@ int main(int argc, char *argv[])
         read_path = argv[3];
         write_path = argv[4];
     }
-    
+
     // Return code
     int rc = ONI_ESUCCESS;
 
     // Generate context
-    ctx = oni_create_ctx(OEPCIE_NAME);
+    ctx = oni_create_ctx(XILLYBUS_DRIVER_NAME);
     if (!ctx) exit(EXIT_FAILURE);
 
     // Set paths in context
-    rc = oni_set_driver_opt(ctx, ONI_OEPCIE_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
+    rc = oni_set_driver_opt(ctx, ONI_XILLYBUS_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
-    rc = oni_set_driver_opt(ctx, ONI_OEPCIE_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
+    rc = oni_set_driver_opt(ctx, ONI_XILLYBUS_SIGNALSTREAMPATH, sig_path, strlen(sig_path) + 1);
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
-    rc = oni_set_driver_opt(ctx, ONI_OEPCIE_READSTREAMPATH, read_path, strlen(read_path) + 1);
+    rc = oni_set_driver_opt(ctx, ONI_XILLYBUS_READSTREAMPATH, read_path, strlen(read_path) + 1);
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
-    rc = oni_set_driver_opt(ctx, ONI_OEPCIE_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
+    rc = oni_set_driver_opt(ctx, ONI_XILLYBUS_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
 
     // Set acqusition to run immediately following reset

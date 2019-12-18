@@ -14,7 +14,7 @@ enum {
     ONI_BLOCKREADSIZE
 };
 
-// NB: If you add an error here, make sure to update oni_error_str()
+// NB: If you add an error here, make sure to update oni_error_str() in oni.c
 enum {
     ONI_ESUCCESS = 0,  // Success
     ONI_EPATHINVALID = -1,  // Invalid stream path, fail on open

@@ -26,39 +26,33 @@ extern "C" {
 
 // OS-specific definitions
 #ifdef _WIN32
-#define ONI_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_32"
-#define ONI_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
-#define ONI_DEFAULTWRITEPATH   "\\\\.\\xillybus_data_write_32"
-#define ONI_DEFAULTSIGNALPATH  "\\\\.\\xillybus_signal_8"
-
 #ifdef LIBONI_EXPORTS
 #define ONI_EXPORT __declspec(dllexport)
-#else 
-#define ONI_EXPORT __declspec(dllimport)
+#else
+#define ONI_EXPORT
 #endif
 #else
-#define ONI_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_32"
-#define ONI_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
-#define ONI_DEFAULTWRITEPATH   "/dev/xillybus_data_write_32"
-#define ONI_DEFAULTSIGNALPATH  "/dev/xillybus_signal_8"
 #define ONI_EXPORT
 #endif
 
 #include "onidefs.h"
+
+// Reference counting buffer
+typedef struct oni_buf_impl *oni_buffer;
+
+// Acqusition context
+typedef struct oni_ctx_impl *oni_ctx;
 
 // Device type
 typedef struct {
     oni_dev_id_t id;         // Device ID number (see oedevices.h)
     oni_size_t read_size;    // Device data read size per frame in bytes
     oni_size_t num_reads;    // Number of frames that must be read to construct a
-                            // full sample (e.g., for row reads from camera)
+                             // full sample (e.g., for row reads from camera)
     oni_size_t write_size;   // Device data write size per frame in bytes
     oni_size_t num_writes;   // Number of frames that must be written to construct
-                            // a full output sample
+                             // a full output sample
 } oni_device_t;
-
-// Opaque handle to reference counting buffer.
-typedef struct oni_buf_impl *oni_buffer;
 
 // Frame type
 typedef struct oni_frame {
@@ -79,21 +73,18 @@ typedef struct oni_frame {
 
 } oni_frame_t;
 
-// Context
-typedef struct oni_ctx_impl *oni_ctx;
-
 // Context manipulation
-ONI_EXPORT oni_ctx oni_create_ctx(const char* drivername);
-ONI_EXPORT int oni_init_ctx(oni_ctx ctx, int device_index);
+ONI_EXPORT oni_ctx oni_create_ctx(const char* drv_name);
+ONI_EXPORT int oni_init_ctx(oni_ctx ctx, int host_idx);
 ONI_EXPORT int oni_destroy_ctx(oni_ctx ctx);
 
 // Context option getting/setting
-ONI_EXPORT int oni_get_opt(const oni_ctx ctx, int option, void* value, size_t *size);
-ONI_EXPORT int oni_set_opt(oni_ctx ctx, int option, const void* value, size_t size);
+ONI_EXPORT int oni_get_opt(const oni_ctx ctx, int ctx_opt, void* value, size_t *size);
+ONI_EXPORT int oni_set_opt(oni_ctx ctx, int ctx_opt, const void* value, size_t size);
 
 // Driver option getting/setting
-ONI_EXPORT int oni_get_driver_opt(const oni_ctx ctx, int driver_option, void* value, size_t *size);
-ONI_EXPORT int oni_set_driver_opt(oni_ctx ctx, int driver_option, const void* value, size_t size);
+ONI_EXPORT int oni_get_driver_opt(const oni_ctx ctx, int drv_opt, void* value, size_t *size);
+ONI_EXPORT int oni_set_driver_opt(oni_ctx ctx, int drv_opt, const void* value, size_t size);
 
 // Hardware inspection, manipulation, and IO
 ONI_EXPORT int oni_read_reg(const oni_ctx ctx, size_t dev_idx, oni_reg_addr_t addr, oni_reg_val_t *value);

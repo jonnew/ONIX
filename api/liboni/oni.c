@@ -29,6 +29,7 @@
 // Minimal high-bandwidth fifo read size (bytes)
 #define ONI_DATAFIFOWIDTH 4
 
+// Reference counter
 struct ref {
     void (*free)(const struct ref *);
     int count;
@@ -49,7 +50,7 @@ struct oni_buf_impl {
 // Acqusition context
 struct oni_ctx_impl {
 
-	oni_driver_t driver;
+    oni_driver_t driver;
 
     // Run acqusition immediately following reset
     oni_reg_val_t run_on_reset;
@@ -106,7 +107,7 @@ static inline void _ref_dec(const struct ref *ref);
 static int _device_map_byte_swap(oni_ctx ctx);
 #endif
 
-oni_ctx oni_create_ctx(const char* drivername)
+oni_ctx oni_create_ctx(const char* drv_name)
 {
     oni_ctx ctx = calloc(1, sizeof(struct oni_ctx_impl));
 
@@ -115,12 +116,12 @@ oni_ctx oni_create_ctx(const char* drivername)
         return NULL;
     }
 
-	if (oni_create_driver(drivername, &ctx->driver))
-	{
-		errno = EINVAL;
-		free(ctx);
-		return NULL;
-	}
+    if (oni_create_driver(drv_name, &ctx->driver))
+    {
+        errno = EINVAL;
+        free(ctx);
+        return NULL;
+    }
 
     ctx->num_dev = 0;
     ctx->dev_map = NULL;
@@ -130,7 +131,7 @@ oni_ctx oni_create_ctx(const char* drivername)
     return ctx;
 }
 
-int oni_init_ctx(oni_ctx ctx, int device_index)
+int oni_init_ctx(oni_ctx ctx, int host_idx)
 {
     assert(ctx != NULL && "Context is NULL.");
     assert(ctx->run_state == UNINITIALIZED && "Context is in invalid state.");
@@ -138,9 +139,8 @@ int oni_init_ctx(oni_ctx ctx, int device_index)
     if (ctx->run_state != UNINITIALIZED)
         return ONI_EINVALSTATE;
 
-    int rc = ctx->driver.init(ctx->driver.ctx, device_index);
-    if (rc)
-        return rc;
+    int rc = ctx->driver.init(ctx->driver.ctx, host_idx);
+    if (rc) return rc;
 
     // NB: Trigger reset routine (populates device map and key acqusition
     // parameters) Success will set run_state to IDLE
@@ -167,8 +167,7 @@ int oni_destroy_ctx(oni_ctx ctx)
 {
     assert(ctx != NULL && "Context is NULL");
     int rc = ctx->driver.destroy_ctx(ctx->driver.ctx);
-    if (rc)
-        return rc;
+    if (rc) return rc;
 
     free(ctx->dev_map);
     free(ctx);
@@ -176,14 +175,11 @@ int oni_destroy_ctx(oni_ctx ctx)
     return ONI_ESUCCESS;
 }
 
-int oni_get_opt(const oni_ctx ctx, int option, void *value, size_t *option_len)
+int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
 {
     assert(ctx != NULL && "Context is NULL");
-    // assert(ctx->run_state > CTXNULL && "Context state must INITIALIZED.");
-    //if (ctx->run_state < UN)
-    //    return ONI_EINVALSTATE;
 
-    switch (option) {
+    switch (ctx_opt) {
         case ONI_DEVICEMAP: {
 
             assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
@@ -245,8 +241,7 @@ int oni_get_opt(const oni_ctx ctx, int option, void *value, size_t *option_len)
                 return ONI_EBUFFERSIZE;
 
             int rc = _oni_read_config(ctx, ONI_CONFIG_RUNNING, value);
-            if (rc)
-                return rc;
+            if (rc) return rc;
 
             *option_len = ONI_REGSZ;
             break;
@@ -261,8 +256,7 @@ int oni_get_opt(const oni_ctx ctx, int option, void *value, size_t *option_len)
                 return ONI_EBUFFERSIZE;
 
             int rc = _oni_read_config(ctx, ONI_CONFIG_RESET, value);
-            if (rc)
-                return rc;
+            if (rc) return rc;
 
             *option_len = ONI_REGSZ;
             break;
@@ -277,8 +271,7 @@ int oni_get_opt(const oni_ctx ctx, int option, void *value, size_t *option_len)
                 return ONI_EBUFFERSIZE;
 
             int rc = _oni_read_config(ctx, ONI_CONFIG_SYSCLK, value);
-            if (rc)
-                return rc;
+            if (rc) return rc;
 
             *option_len = ONI_REGSZ;
             break;
@@ -299,11 +292,11 @@ int oni_get_opt(const oni_ctx ctx, int option, void *value, size_t *option_len)
     return ONI_ESUCCESS;
 }
 
-int oni_set_opt(oni_ctx ctx, int option, const void *value, size_t option_len)
+int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
 {
     assert(ctx != NULL && "Context is NULL");
 
-    switch (option) {
+    switch (ctx_opt) {
         case ONI_RUNONRESET: {
             // Can be set in any context state
             if (option_len != sizeof(oni_reg_val_t))
@@ -385,23 +378,23 @@ int oni_set_opt(oni_ctx ctx, int option, const void *value, size_t option_len)
             return ONI_EINVALOPT;
     }
 
-    return ctx->driver.set_opt_callback(ctx->driver.ctx, option, value, option_len);
+    return ctx->driver.set_opt_callback(ctx->driver.ctx, ctx_opt, value, option_len);
 }
 
-int oni_get_driver_opt(const oni_ctx ctx, int driver_option, void* value, size_t *option_len)
+int oni_get_driver_opt(const oni_ctx ctx, int drv_opt, void* value, size_t *option_len)
 {
-    return ctx->driver.get_opt(ctx->driver.ctx, driver_option, value, option_len);
+    return ctx->driver.get_opt(ctx->driver.ctx, drv_opt, value, option_len);
 }
 
-int oni_set_driver_opt(oni_ctx ctx, int driver_option, const void* value, size_t option_len)
+int oni_set_driver_opt(oni_ctx ctx, int drv_opt, const void* value, size_t option_len)
 {
-    return ctx->driver.set_opt(ctx->driver.ctx, driver_option, value, option_len);
+    return ctx->driver.set_opt(ctx->driver.ctx, drv_opt, value, option_len);
 }
 
 int oni_write_reg(const oni_ctx ctx,
-                 size_t dev_idx,
-                 oni_reg_addr_t addr,
-                 oni_reg_val_t value)
+                  size_t dev_idx,
+                  oni_reg_addr_t addr,
+                  oni_reg_val_t value)
 {
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state > UNINITIALIZED && "Context must be INITIALIZED.");
@@ -415,8 +408,7 @@ int oni_write_reg(const oni_ctx ctx,
     int rc = _oni_read_config(ctx, ONI_CONFIG_TRIG, &trig);
     if (rc) return rc;
 
-    if (trig != 0)
-        return ONI_ERETRIG;
+    if (trig != 0) return ONI_ERETRIG;
 
     // Set config registers and trigger a write
     rc = _oni_write_config(ctx, ONI_CONFIG_DEVICE_IDX, dev_idx);
@@ -434,20 +426,20 @@ int oni_write_reg(const oni_ctx ctx,
     rc = _oni_write_config(ctx, ONI_CONFIG_TRIG, trig);
     if (rc) return rc;
 
+    // Wait for reponse from hardware
     oni_signal_t type;
     rc = _oni_pump_signal_type(ctx, CONFIGWACK | CONFIGWNACK, &type);
     if (rc) return rc;
 
-    if (type == CONFIGWNACK)
-        return ONI_EWRITEFAILURE;
+    if (type == CONFIGWNACK) return ONI_EWRITEFAILURE;
 
     return ONI_ESUCCESS;
 }
 
 int oni_read_reg(const oni_ctx ctx,
-                size_t dev_idx,
-                oni_reg_addr_t addr,
-                oni_reg_val_t *value)
+                 size_t dev_idx,
+                 oni_reg_addr_t addr,
+                 oni_reg_val_t *value)
 {
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state > UNINITIALIZED && "Context must be INITIALIZED.");
@@ -456,13 +448,12 @@ int oni_read_reg(const oni_ctx ctx,
     if (dev_idx >= ctx->num_dev && dev_idx)
         return ONI_EDEVIDX;
 
-	// Make sure we are not already in config triggered state
+    // Make sure we are not already in config triggered state
     oni_reg_val_t trig = 0;
     int rc = _oni_read_config(ctx, ONI_CONFIG_TRIG, &trig);
     if (rc) return rc;
 
-    if (trig != 0)
-        return ONI_ERETRIG;
+    if (trig != 0) return ONI_ERETRIG;
 
     // Set config registers and trigger a write
     rc = _oni_write_config(ctx, ONI_CONFIG_DEVICE_IDX, dev_idx);
@@ -478,12 +469,12 @@ int oni_read_reg(const oni_ctx ctx,
     rc = _oni_write_config(ctx, ONI_CONFIG_TRIG, trig);
     if (rc) return rc;
 
+    // Wait for reponse from hardware
     oni_signal_t type;
     rc = _oni_pump_signal_type(ctx, CONFIGRACK | CONFIGRNACK, &type);
     if (rc) return rc;
 
-    if (type == CONFIGRNACK)
-        return ONI_EREADFAILURE;
+    if (type == CONFIGRNACK) return ONI_EREADFAILURE;
 
     rc = _oni_read_config(ctx, ONI_CONFIG_REG_VALUE, value);
     if (rc) return rc;
@@ -575,7 +566,7 @@ int oni_write(const oni_ctx ctx, size_t dev_idx, const void *data, size_t data_s
     if (this_dev->write_size == 0 || data_sz != this_dev->write_size)
         return ONI_EWRITESIZE;
 
-    // TODO: Seems unncessary to copy here but of I dont I perform two writes
+    // TODO: Seems unncessary to copy here but if I dont, I perform two write calls
     size_t wsize = data_sz + sizeof(oni_size_t);
     wsize += wsize % ONI_DATAFIFOWIDTH;
     char *buffer = malloc(wsize);
@@ -586,8 +577,7 @@ int oni_write(const oni_ctx ctx, size_t dev_idx, const void *data, size_t data_s
 
     free(buffer);
 
-    if (rc != (int)wsize)
-        return ONI_EWRITEFAILURE;
+    if (rc != (int)wsize) return ONI_EWRITEFAILURE;
 
     return rc;
 }
@@ -849,7 +839,7 @@ static int _oni_pump_signal_type(oni_ctx ctx, int flags, oni_signal_t *type)
 }
 
 static int _oni_pump_signal_data(
-	oni_ctx ctx, int flags, oni_signal_t *type, void *data, size_t size)
+    oni_ctx ctx, int flags, oni_signal_t *type, void *data, size_t size)
 {
     oni_signal_t packet_type = NULLSIG;
     int pack_size = 0;

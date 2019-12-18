@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboni-test", "liboni-test\liboni-test.vcxproj", "{875641A8-A2C1-4B2A-9F04-C71C3887724A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -10,7 +10,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboni-test", "liboni-test\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboni", "liboni.vcxproj", "{0B6B9ACA-75DE-4776-A6CA-B4123ED59F1D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "onidriver-oepcie", "drivers\oepcie\onidriver-oepcie.vcxproj", "{D26D81AE-7407-4922-8E13-C3B84EB2B18B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "onidriver_xillybus", "drivers\xillybus\onidriver_xillybus.vcxproj", "{D26D81AE-7407-4922-8E13-C3B84EB2B18B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

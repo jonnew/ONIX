@@ -35,12 +35,12 @@ static inline void* get_driver_function(lib_handle_t handle, const char* functio
 #endif
 }
 
-// simple macro to load a function a check for error
+// Macro to load a function a check for error
 #define DSTR(x) #x
 #define LOAD_FUNCTION(fname) {\
     driver-> fname = ( oni_driver_ ## fname ## _f)get_driver_function(handle,DSTR(oni_driver_ ## fname)); \
     if (!driver-> fname) rc = -1; \
-    }
+}
 
 int oni_create_driver(const char* lib_name, oni_driver_t* driver)
 {
@@ -48,19 +48,22 @@ int oni_create_driver(const char* lib_name, oni_driver_t* driver)
     const char* extension = ".dll";
 #else
     const char* extension = ".so";
-#endif 
-    const char* prefix = "onidriver-";
+#endif
+    const char* prefix = "libonidriver_";
     lib_handle_t handle;
     int rc = ONI_ESUCCESS;
 
     size_t len = strlen(extension) + strlen(lib_name) + strlen(prefix);
 
-    char* full_lib_name = malloc(len+1);
+    char* full_lib_name = malloc(len + 1);
     sprintf(full_lib_name, "%s%s%s", prefix, lib_name, extension);
     handle = open_library(full_lib_name);
     free(full_lib_name);
-    if (!handle)
+
+    if (!handle) {
+        //fprintf(stderr, "Failed to load driver: %s\n", dlerror());
         return -1;
+    }
 
     LOAD_FUNCTION(create_ctx);
     LOAD_FUNCTION(destroy_ctx);
@@ -72,14 +75,13 @@ int oni_create_driver(const char* lib_name, oni_driver_t* driver)
     LOAD_FUNCTION(set_opt_callback);
     LOAD_FUNCTION(set_opt);
     LOAD_FUNCTION(get_opt);
-    LOAD_FUNCTION(get_id);
+    LOAD_FUNCTION(str);
 
     if (!rc)
     {
         driver->ctx = driver->create_ctx();
-        if (!driver->ctx)
-            rc = -1;
-}
+        if (!driver->ctx) rc = -1;
+    }
 
     if (rc)
         close_library(handle);

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "onidriver-oepcie.h"
+#include "onidriver_xillybus.h"
 #include "../../onidriver.h"
 
 #ifdef _WIN32
@@ -21,27 +21,27 @@
 #endif
 
 #define UNUSED(x) (void)(x)
+
 // to save some repetition
-#define CTX_CAST const oni_oepcie_ctx ctx = (oni_oepcie_ctx)driver_ctx
+#define CTX_CAST const oni_xillybus_ctx ctx = (oni_xillybus_ctx)driver_ctx
 
 struct stream_fid {
     char *path;
     int fid;
 };
 
-struct oni_oepcie_ctx_impl {
+struct oni_xillybus_ctx_impl {
+
     // Communication channels
     struct stream_fid config;
     struct stream_fid read;
     struct stream_fid write;
     struct stream_fid signal;
-    enum {
-        CLOSED,
-        OPEN
-    } file_state;
+
+    enum { CLOSED, OPEN } file_state;
 };
 
-typedef struct oni_oepcie_ctx_impl* oni_oepcie_ctx;
+typedef struct oni_xillybus_ctx_impl* oni_xillybus_ctx;
 
 // Configuration file offsets
 typedef enum oni_conf_reg_off {
@@ -62,8 +62,8 @@ static inline oni_conf_off_t _oni_register_offset(oni_config_t reg);
 
 oni_driver_ctx oni_driver_create_ctx()
 {
-    oni_oepcie_ctx ctx;
-    ctx = calloc(1, sizeof(struct oni_oepcie_ctx_impl));
+    oni_xillybus_ctx ctx;
+    ctx = calloc(1, sizeof(struct oni_xillybus_ctx_impl));
     if (ctx == NULL)
         return NULL;
 
@@ -73,13 +73,14 @@ oni_driver_ctx oni_driver_create_ctx()
     ctx->write.path = NULL;
     ctx->signal.path = NULL;
     ctx->file_state = CLOSED;
-    
+
     return ctx;
 }
 
-int oni_driver_init(oni_driver_ctx driver_ctx, int device_index)
+int oni_driver_init(oni_driver_ctx driver_ctx, int host_idx)
 {
-    UNUSED(device_index);
+    UNUSED(host_idx);
+
     CTX_CAST;
     // Open the device files
     ctx->config.fid = open(ctx->config.path, O_RDWR | _O_BINARY);
@@ -140,22 +141,24 @@ oni_close_ctx_fail:
     return ONI_ECLOSEFAIL;
 }
 
-int oni_driver_read_stream(oni_driver_ctx driver_ctx, oni_read_stream_t stream, void* data, size_t size)
+int oni_driver_read_stream(oni_driver_ctx driver_ctx,
+                           oni_read_stream_t stream,
+                           void *data,
+                           size_t size)
 {
     CTX_CAST;
     size_t received = 0;
 
     int data_fd;
-    switch (stream)
-    {
-    case ONI_READ_STREAM_DATA:
-        data_fd = ctx->read.fid;
-        break;
-    case ONI_READ_STREAM_SIGNAL:
-        data_fd = ctx->signal.fid;
-        break;
-    default:
-        return ONI_EPATHINVALID;
+    switch (stream) {
+        case ONI_READ_STREAM_DATA:
+            data_fd = ctx->read.fid;
+            break;
+        case ONI_READ_STREAM_SIGNAL:
+            data_fd = ctx->signal.fid;
+            break;
+        default:
+            return ONI_EPATHINVALID;
     }
 
     while (received < size) {
@@ -174,7 +177,10 @@ int oni_driver_read_stream(oni_driver_ctx driver_ctx, oni_read_stream_t stream, 
     return received;
 }
 
-int oni_driver_write_stream(oni_driver_ctx driver_ctx, oni_write_stream_t stream, const char* data, size_t size)
+int oni_driver_write_stream(oni_driver_ctx driver_ctx,
+                            oni_write_stream_t stream,
+                            const char *data,
+                            size_t size)
 {
     CTX_CAST;
     size_t written = 0;
@@ -205,7 +211,9 @@ int oni_driver_write_stream(oni_driver_ctx driver_ctx, oni_write_stream_t stream
     return written;
 }
 
-int oni_driver_write_config(oni_driver_ctx driver_ctx, oni_config_t reg, oni_reg_val_t value)
+int oni_driver_write_config(oni_driver_ctx driver_ctx,
+                            oni_config_t reg,
+                            oni_reg_val_t value)
 {
     CTX_CAST;
     oni_conf_off_t write_offset = _oni_register_offset(reg);
@@ -236,7 +244,10 @@ int oni_driver_read_config(oni_driver_ctx driver_ctx, oni_config_t reg, oni_reg_
 }
 
 //Right now we do not do anything for the common options
-int oni_driver_set_opt_callback(oni_driver_ctx driver_ctx, int oni_option, const void* value, size_t option_len)
+int oni_driver_set_opt_callback(oni_driver_ctx driver_ctx,
+                                int oni_option,
+                                const void *value,
+                                size_t option_len)
 {
     UNUSED(driver_ctx);
     UNUSED(oni_option);
@@ -245,122 +256,125 @@ int oni_driver_set_opt_callback(oni_driver_ctx driver_ctx, int oni_option, const
     return ONI_ESUCCESS;
 }
 
-int oni_driver_set_opt(oni_driver_ctx driver_ctx, int driver_option, const void* value, size_t option_len)
+int oni_driver_set_opt(oni_driver_ctx driver_ctx,
+                       int driver_option,
+                       const void *value,
+                       size_t option_len)
 {
     CTX_CAST;
-    switch (driver_option)
-    {
-    case ONI_OEPCIE_CONFIGSTREAMPATH: {
-        assert(ctx->file_state == CLOSED && "Context state must be UNINITIALIZED.");
-        if (ctx->file_state != CLOSED)
-            return ONI_EINVALSTATE;
-        ctx->config.path = realloc(ctx->config.path, option_len);
-        memcpy(ctx->config.path, value, option_len);
-        break;
-    }
-    case ONI_OEPCIE_READSTREAMPATH: {
-        assert(ctx->file_state == CLOSED && "Context state must be UNINITIALIZED.");
-        if (ctx->file_state != CLOSED)
-            return ONI_EINVALSTATE;
-        ctx->read.path = realloc(ctx->read.path, option_len);
-        memcpy(ctx->read.path, value, option_len);
-        break;
-    }
-    case ONI_OEPCIE_WRITESTREAMPATH: {
-        assert(ctx->file_state == CLOSED && "Context state must be UNINITIALIZED.");
-        if (ctx->file_state != CLOSED)
-            return ONI_EINVALSTATE;
-        ctx->write.path = realloc(ctx->write.path, option_len);
-        memcpy(ctx->write.path, value, option_len);
-        break;
-    }
-    case ONI_OEPCIE_SIGNALSTREAMPATH: {
-        assert(ctx->file_state == CLOSED && "Context state must be UNINITIALIZED.");
-        if (ctx->file_state != CLOSED)
-            return ONI_EINVALSTATE;
-        ctx->signal.path = realloc(ctx->signal.path, option_len);
-        memcpy(ctx->signal.path, value, option_len);
-        break;
-    }
-    default:
-        return ONI_EINVALOPT;
+    switch (driver_option) {
+        case ONI_XILLYBUS_CONFIGSTREAMPATH: {
+            assert(ctx->file_state == CLOSED && "Context state must be UNINITIALIZED.");
+            if (ctx->file_state != CLOSED)
+                return ONI_EINVALSTATE;
+            ctx->config.path = realloc(ctx->config.path, option_len);
+            memcpy(ctx->config.path, value, option_len);
+            break;
+        }
+        case ONI_XILLYBUS_READSTREAMPATH: {
+            assert(ctx->file_state == CLOSED && "Context state must be UNINITIALIZED.");
+            if (ctx->file_state != CLOSED)
+                return ONI_EINVALSTATE;
+            ctx->read.path = realloc(ctx->read.path, option_len);
+            memcpy(ctx->read.path, value, option_len);
+            break;
+        }
+        case ONI_XILLYBUS_WRITESTREAMPATH: {
+            assert(ctx->file_state == CLOSED && "Context state must be UNINITIALIZED.");
+            if (ctx->file_state != CLOSED)
+                return ONI_EINVALSTATE;
+            ctx->write.path = realloc(ctx->write.path, option_len);
+            memcpy(ctx->write.path, value, option_len);
+            break;
+        }
+        case ONI_XILLYBUS_SIGNALSTREAMPATH: {
+            assert(ctx->file_state == CLOSED && "Context state must be UNINITIALIZED.");
+            if (ctx->file_state != CLOSED)
+                return ONI_EINVALSTATE;
+            ctx->signal.path = realloc(ctx->signal.path, option_len);
+            memcpy(ctx->signal.path, value, option_len);
+            break;
+        }
+        default:
+            return ONI_EINVALOPT;
     }
     return ONI_ESUCCESS;
 }
 
-int oni_driver_get_opt(oni_driver_ctx driver_ctx, int driver_option, void* value, size_t* option_len)
+int oni_driver_get_opt(oni_driver_ctx driver_ctx,
+                       int driver_option,
+                       void *value,
+                       size_t *option_len)
 {
     CTX_CAST;
-    switch (driver_option)
-    {
-    case ONI_OEPCIE_CONFIGSTREAMPATH: {
-        if (*option_len < (strlen(ctx->config.path) + 1))
-            return ONI_EBUFFERSIZE;
+    switch (driver_option) {
+        case ONI_XILLYBUS_CONFIGSTREAMPATH: {
+            if (*option_len < (strlen(ctx->config.path) + 1))
+                return ONI_EBUFFERSIZE;
 
-        size_t n = strlen(ctx->config.path) + 1;
-        memcpy(value, ctx->config.path, n);
-        *option_len = n;
-        break;
-    }
-    case ONI_OEPCIE_READSTREAMPATH: {
-        if (*option_len < (strlen(ctx->read.path) + 1))
-            return ONI_EBUFFERSIZE;
+            size_t n = strlen(ctx->config.path) + 1;
+            memcpy(value, ctx->config.path, n);
+            *option_len = n;
+            break;
+        }
+        case ONI_XILLYBUS_READSTREAMPATH: {
+            if (*option_len < (strlen(ctx->read.path) + 1))
+                return ONI_EBUFFERSIZE;
 
-        size_t n = strlen(ctx->read.path) + 1;
-        memcpy(value, ctx->read.path, n);
-        *option_len = n;
-        break;
-    }
-    case ONI_OEPCIE_WRITESTREAMPATH: {
-        if (*option_len < (strlen(ctx->write.path) + 1))
-            return ONI_EBUFFERSIZE;
+            size_t n = strlen(ctx->read.path) + 1;
+            memcpy(value, ctx->read.path, n);
+            *option_len = n;
+            break;
+        }
+        case ONI_XILLYBUS_WRITESTREAMPATH: {
+            if (*option_len < (strlen(ctx->write.path) + 1))
+                return ONI_EBUFFERSIZE;
 
-        size_t n = strlen(ctx->write.path) + 1;
-        memcpy(value, ctx->write.path, n);
-        *option_len = n;
-        break;
-    }
-    case ONI_OEPCIE_SIGNALSTREAMPATH: {
-        if (*option_len < (strlen(ctx->signal.path) + 1))
-            return ONI_EBUFFERSIZE;
+            size_t n = strlen(ctx->write.path) + 1;
+            memcpy(value, ctx->write.path, n);
+            *option_len = n;
+            break;
+        }
+        case ONI_XILLYBUS_SIGNALSTREAMPATH: {
+            if (*option_len < (strlen(ctx->signal.path) + 1))
+                return ONI_EBUFFERSIZE;
 
-        size_t n = strlen(ctx->signal.path) + 1;
-        memcpy(value, ctx->signal.path, n);
-        *option_len = n;
-        break;
-    }
-    default:
-        return ONI_EINVALOPT;
+            size_t n = strlen(ctx->signal.path) + 1;
+            memcpy(value, ctx->signal.path, n);
+            *option_len = n;
+            break;
+        }
+        default:
+            return ONI_EINVALOPT;
     }
     return ONI_ESUCCESS;
 }
 
-const char* oni_driver_get_id()
+const char* oni_driver_str()
 {
-    return OEPCIE_NAME;
+    return XILLYBUS_DRIVER_NAME;
 }
 
 static inline oni_conf_off_t _oni_register_offset(oni_config_t reg)
 {
-    switch (reg)
-    {
-    case ONI_CONFIG_DEVICE_IDX:
-        return CONFDEVIDXOFFSET;
-    case ONI_CONFIG_REG_ADDR:
-        return CONFADDROFFSET;
-    case ONI_CONFIG_REG_VALUE:
-        return CONFVALUEOFFSET;
-    case ONI_CONFIG_RW:
-        return CONFRWOFFSET;
-    case ONI_CONFIG_TRIG:
-        return CONFTRIGOFFSET;
-    case ONI_CONFIG_RUNNING:
-        return CONFRUNNINGOFFSET;
-    case ONI_CONFIG_RESET:
-        return CONFRESETOFFSET;
-    case ONI_CONFIG_SYSCLK:
-        return CONFSYSCLKHZOFFSET;
-    default:
-        return 0;
+    switch (reg) {
+        case ONI_CONFIG_DEVICE_IDX:
+            return CONFDEVIDXOFFSET;
+        case ONI_CONFIG_REG_ADDR:
+            return CONFADDROFFSET;
+        case ONI_CONFIG_REG_VALUE:
+            return CONFVALUEOFFSET;
+        case ONI_CONFIG_RW:
+            return CONFRWOFFSET;
+        case ONI_CONFIG_TRIG:
+            return CONFTRIGOFFSET;
+        case ONI_CONFIG_RUNNING:
+            return CONFRUNNINGOFFSET;
+        case ONI_CONFIG_RESET:
+            return CONFRESETOFFSET;
+        case ONI_CONFIG_SYSCLK:
+            return CONFSYSCLKHZOFFSET;
+        default:
+            return 0;
     }
 }

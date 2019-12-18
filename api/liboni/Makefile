@@ -28,14 +28,16 @@ debug: CFLAGS += -DDEBUG -g3 ## Make liboni with debug symbols.
 debug: all
 
 .PHONY: install 
-install: $(SNAME) $(DNAME) ## Install liboni. Defaults to make install PREFIX=/usr/local.
+install: $(SNAME) $(DNAME) ## Install driver. Defaults to make install PREFIX=/usr
 	@[ -d $(DESTDIR)$(PREFIX)/lib ] || mkdir -p $(DESTDIR)$(PREFIX)/lib
 	@[ -d $(DESTDIR)$(PREFIX)/include ] || mkdir -p $(DESTDIR)$(PREFIX)/include
-	cp $(SNAME) $(DESTDIR)$(PREFIX)/lib/$(SNAME)
 	cp $(DNAME) $(DESTDIR)$(PREFIX)/lib/$(DNAME)
+	cp $(SNAME) $(DESTDIR)$(PREFIX)/lib/$(SNAME)
 	cp $(HDR) $(DESTDIR)$(PREFIX)/include
 	@[ -d $(DESTDIR)$(PREFIX)/lib/$(DNAMELN) ] || $(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 	ln -s $(DESTDIR)$(PREFIX)/lib/$(DNAME) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
+	ldconfig
+	ldconfig -p | grep liboni
 
 .PHONY: uninstall
 uninstall: ## Remove liboni from installation directory.
