@@ -1,5 +1,5 @@
 # cpponi
-C++17 bindings for [`liboni`](../liboni/README.md).
+C++17 & C++2a bindings for [`liboni`](../liboni/README.md).
 
 ## Build
 This is a header only library, so there is nothing to build. Just run
@@ -11,6 +11,15 @@ to place headers in whatever path is specified by PREFIX. PREFIX defaults to
 ```
 $ make uninstall PREFIX=/path/to/uninstall
 ```
+When compiling programs using this library, you can use `-std=c++2a` to expose
+the `frame_t.data` method:
+
+```c++
+template <typename raw_t>
+std::span<const raw_t> data(size_t dev_idx)
+```
+
+Otherwise you must rely on `begin()` and `end()` to use frame data.
 
 ## Test Programs
 The [cpponi-test](cpponi-test) directory contains minimal working

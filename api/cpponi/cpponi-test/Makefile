@@ -5,7 +5,7 @@
 
 CC=c++
 
-CFLAGS=-O3 -std=c++17 -Wall
+CFLAGS=-O3 -std=c++2a -stdlib=libc++ -Wall
 LDFLAGS=-loni
 
 .PHONY: all

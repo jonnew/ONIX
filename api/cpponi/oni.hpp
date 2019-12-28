@@ -8,7 +8,10 @@
 #include <string>
 #include <system_error>
 #include <vector>
-//#include <span>
+
+#if __cplusplus >= 201707
+#include <span>
+#endif
 
 #include <oni.h>
 #include <onidevices.h>
@@ -16,9 +19,9 @@
 // In order to prevent unused variable warnings when building in non-debug
 // mode use this macro to make assertions.
 #ifndef NDEBUG
-#   define ONI_ASSERT(expression) assert(expression)
+#define ONI_ASSERT(expression) assert(expression)
 #else
-#   define ONI_ASSERT(expression) (void)(expression)
+#define ONI_ASSERT(expression) (void)(expression)
 #endif
 
 namespace oni {
@@ -46,7 +49,6 @@ namespace oni {
         return v;
     }
 
-    //template<typename... DriverArgs>
     class context_t;
 
     using device_t = oni_device_t;
@@ -60,7 +62,6 @@ namespace oni {
     // storage. Spans are C++20.
     class frame_t
     {
-        //template<typename... DriverArgs>
         friend class context_t; // NB: Fills frame_t::frame_ptr_;
 
         public:
@@ -95,6 +96,26 @@ namespace oni {
                 return static_cast<bool>(frame_ptr_->corrupt);
             }
 
+#if __cplusplus >= 201707
+            template <typename raw_t>
+            std::span<const raw_t> data(size_t dev_idx)
+            {
+                // Find the position of the requested idx in the frames
+                // dev_idx's array to get offset
+                auto it = std::find(
+                    frame_ptr_->dev_idxs, frame_ptr_->dev_idxs + frame_ptr_->num_dev, dev_idx);
+
+                if (it == frame_ptr_->dev_idxs + frame_ptr_->num_dev)
+                    throw(error_t(ONI_EDEVIDX));
+
+                // Return iterator dev_idx's data begin()
+                auto i = std::distance(frame_ptr_->dev_idxs, it);
+                auto begin = reinterpret_cast<raw_t *>(
+                    frame_ptr_->data + frame_ptr_->dev_offs[i]);
+
+                return std::span(begin, dev_map_[dev_idx].read_size / sizeof(raw_t));
+            }
+#endif
             template <typename raw_t>
             raw_t const *begin(size_t dev_idx)
             {
@@ -141,8 +162,6 @@ namespace oni {
 
     class context_t {
 
-        //static const int NUM_DRV_ARGS = sizeof...(DriverArgs);
-
     public:
         template<typename... DriverArgs>
         inline context_t(const char *driver_name, int host_idx, DriverArgs... args)
@@ -155,10 +174,6 @@ namespace oni {
             // Apply driver-specific options
             for(const auto a : {args...})
                 set_driver_opt(std::get<0>(a), std::get<1>(a));
-            //set_driver_opt(ONI_XILLYBUS_CONFIGSTREAMPATH, config_path);
-            //set_driver_opt(ONI_XILLYBUS_SIGNALSTREAMPATH, sig_path);
-            //set_driver_opt(ONI_XILLYBUS_READSTREAMPATH, read_path);
-            //set_driver_opt(ONI_XILLYBUS_WRITESTREAMPATH, write_path);
 
             // Initialize
             auto rc = oni_init_ctx(ctx_, host_idx);

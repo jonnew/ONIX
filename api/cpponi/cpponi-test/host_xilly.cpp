@@ -8,8 +8,8 @@
 #include <string>
 
 #include <oelogo.h>
-#include <oni.hpp>
-#include <onidevices.hpp>
+#include "oni.hpp"
+#include "onidevices.hpp"
 #include <onidriver_xillybus.h> // Use xillybus driver
 
 // Default paths
@@ -90,24 +90,41 @@ void data_loop(std::shared_ptr<oni::context_t> ctx)
             auto device_indices = frame.device_indices();
             for (const auto i : device_indices) {
 
+               
+#if __cplusplus >= 201707 // Switch to C++2a version of std lib
+                auto data = frame.data<uint16_t>(i);
+#else
+
                 // TODO: Eventually can be used to construct std::span for easy
                 // consumption
                 auto begin = frame.begin<uint16_t>(i);
                 auto end = frame.end<uint16_t>(i);
+#endif
 
-#ifdef DUMPFILES
+#ifdef DUMPFILES 
+#if __cplusplus >= 201707
+                fwrite(data.data(), data.size(), dump_files[i]);
+#else
                 fwrite(
                     begin, sizeof(uint16_t), end - begin, dump_files[i]);
 #endif
+#endif
 
-            if (display && counter % 100 == 0) {
-                std::cout << "\tDev: " << i << " ("
-                          << oni::device_str(dev_map[i].id) << ")\n";
+                if (display && counter % 100 == 0) {
 
-                std::cout << "\tData: [";
-                for (auto d = begin; d != end; d++)
-                    std::cout << *d << " ";
-                std::cout << "]\n";
+                    std::cout << "\tDev: " << i << " ("
+                              << oni::device_str(dev_map[i].id) << ")\n";
+
+                    std::cout << "\tData: [";
+#if __cplusplus >= 201707
+                    for (const auto &d : data)
+                        std::cout << d << " ";
+#else
+                    for (auto d = begin; d != end; d++)
+                        std::cout << *d << " ";
+#endif
+
+                    std::cout << "]\n";
                 }
             }
 
@@ -259,9 +276,8 @@ int main(int argc, char *argv[])
 
 #ifdef DUMPFILES
     // Close dump files
-    for (int dev_idx = 0; dev_idx < dev_map.size(); dev_idx++) {
+    for (int dev_idx = 0; dev_idx < dev_map.size(); dev_idx++)
         fclose(dump_files[dev_idx]);
-    }
 #endif
 
     return 0;
