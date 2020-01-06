@@ -47,9 +47,3 @@ $ make
 
 ## License
 [MIT](https://en.wikipedia.org/wiki/MIT_License)
-
-## Issues
-- Pausing data does not make sense if it does not occur on natural data boundaries. If im going to have an OE_RUNNING option, then it just needs to keep reading frames (at the software level) and dumping them with as little overhead as possible.
-- Reseting causes infinite read() if there is not data being produced on the read channel. This could be solved by putting info device into heartbeat, or just giving it a heartbeat all the time.
-- This means that once started after reset, the info device should not respect a pause! According to first comment, nothing should respect pause at the hardware level.
-- Reset does not flush fifos properly. They need to be closed() and re-opened().

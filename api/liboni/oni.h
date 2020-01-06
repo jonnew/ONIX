@@ -63,13 +63,13 @@ typedef struct oni_frame {
     uint8_t corrupt;        // Is this frame corrupt?
 
     // Data
-    oni_size_t *dev_idxs;    // Array of device indices in frame
-    oni_size_t *dev_offs;    // Device data offsets within data block
+    oni_size_t *dev_idxs;   // Array of device indices in frame
+    oni_size_t *dev_offs;   // Device data offsets within data block
     uint8_t *data;          // Multi-device raw data block
-    oni_size_t data_sz;      // Size in bytes of data buffer
+    oni_size_t data_sz;     // Size in bytes of data buffer
 
     // External buffer, don't touch
-    oni_buffer buffer;       // Handle to external buffer
+    oni_buffer buffer;      // Handle to external buffer
 
 } oni_frame_t;
 

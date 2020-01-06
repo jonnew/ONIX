@@ -121,6 +121,8 @@ int oni_driver_destroy_ctx(oni_driver_ctx driver_ctx)
 {
     CTX_CAST;
 
+    assert(ctx != NULL && "Driver context is NULL");
+
     if (ctx->file_state >= OPEN) {
 
         if (close(ctx->config.fid) == -1) goto oni_close_ctx_fail;

@@ -35,11 +35,15 @@ namespace oni.lib
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct device_t
     {
-        public uint id;             // Device ID
+        public int id;             // Device ID
         public uint read_size;      // Read size
         public uint num_reads;      // Num reads per sample
         public uint write_size;     // Write size
         public uint num_writes;     // Num writes per sample
+
+        // Adjust this as required
+        public override string ToString() =>
+            $@"{Marshal.PtrToStringAnsi(NativeMethods.oni_device_str(id))}, Per frame read size: {read_size}, Frames per sample: {num_reads}, Write Size: {write_size}, Writes per sample: {num_writes}";
     }
 
     [SuppressUnmanagedCodeSecurity] // Call into native code without incurring the performance loss of a run-time security check when doing so
@@ -50,10 +54,6 @@ namespace oni.lib
         private const CallingConvention CCCdecl = CallingConvention.Cdecl;
 
         private const string LibraryName = "liboni";
-        public const string DefaultConfigPath = "\\\\.\\xillybus_cmd_32";
-        public const string DefaultSignalPath = "\\\\.\\xillybus_signal_8";
-        public const string DefaultReadPath = "\\\\.\\xillybus_data_read_32";
-        public const string DefaultWritePath = "\\\\.\\xillybus_data_write_32";
 
         // The static constructor prepares static readonly fields
         static NativeMethods()
@@ -79,12 +79,11 @@ namespace oni.lib
         }
 
         // liboni:
-
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         private static extern void oni_version(out int major, out int minor, out int patch);
 
-        [DllImport(LibraryName, CallingConvention = CCCdecl)]
-        public static extern IntPtr oni_create_ctx();
+        [DllImport(LibraryName, CallingConvention = CCCdecl, CharSet = CharSet.Ansi)]
+        public static extern IntPtr oni_create_ctx(string driver_name, int host_idx);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern int oni_init_ctx(IntPtr ctx);
@@ -101,8 +100,20 @@ namespace oni.lib
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern int oni_set_opt(IntPtr ctx, int option, IntPtr val, int size);
 
-        [DllImport(LibraryName, CharSet= CharSet.Ansi, CallingConvention = CCCdecl)]
+        [DllImport(LibraryName,  CallingConvention = CCCdecl)]
         public static extern int oni_set_opt(IntPtr ctx, int option, string val, int size);
+
+        [DllImport(LibraryName, CallingConvention = CCCdecl)]
+        public static extern int oni_get_driver_opt(IntPtr ctx, int option, IntPtr val, IntPtr size);
+
+        [DllImport(LibraryName, CallingConvention = CCCdecl)]
+        public static extern int oni_get_driver_opt(IntPtr ctx, int option, StringBuilder val, IntPtr size);
+
+        [DllImport(LibraryName, CallingConvention = CCCdecl)]
+        public static extern int oni_set_driver_opt(IntPtr ctx, int option, IntPtr val, int size);
+
+        [DllImport(LibraryName,  CallingConvention = CCCdecl)]
+        public static extern int oni_set_driver_opt(IntPtr ctx, int option, string val, int size);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern int oni_read_reg(IntPtr ctx, uint dev_idx, uint addr, IntPtr val);

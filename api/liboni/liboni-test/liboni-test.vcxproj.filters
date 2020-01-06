@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="host.c">
+    <ClCompile Include="testfunc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testfunc.c">
+    <ClCompile Include="host_xilly.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

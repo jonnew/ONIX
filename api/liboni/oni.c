@@ -166,6 +166,7 @@ int oni_init_ctx(oni_ctx ctx, int host_idx)
 int oni_destroy_ctx(oni_ctx ctx)
 {
     assert(ctx != NULL && "Context is NULL");
+
     int rc = ctx->driver.destroy_ctx(ctx->driver.ctx);
     if (rc) return rc;
 
