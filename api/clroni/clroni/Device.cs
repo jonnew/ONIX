@@ -53,17 +53,6 @@
         //    OSTIM_RESET = 14, // Reset all parameters to default
         //}
 
-        // TODO: Move to SerdesGPO
-        //public enum SerdesGPORegister
-        //{
-        //    SERDESGPO_NULLPARM = 0, // No command
-        //    SERDESGPO_NUM = 1, // Select a GPO pin to control (0-3)
-        //    SERDESGPO_STATE = 2, // Set the state of the selected pin (0 = LOW, other = HIGH)
-        //    SERDESGPO_RESET = 3, // Reset all parameters to default pull all GPO pins LOW.
-        //}
-
-
-
         // TODO: Move to DigitalOutput32
         //enum DigitalOutput32Register
         //{

@@ -1,10 +1,13 @@
+#ifndef __OELOGO_H__
+#define __OELOGO_H__
+
 const char logo_med[] =
 "                                                          \n"
-"   Jon Newman @ MWL, MIT                **                \n"
-"   Jie Zhang @ MWL, MIT                ////               \n"
-"   Josh Seigle @ Allen                  ///.              \n"
-"   Jakob Voigts @ MHL, MIT              ///,.             \n"
-"                                        *///,             \n"
+"   Jon Newman @ MIT                     **                \n"
+"   Jie Zhang @ MIT                     ////               \n"
+"   Aarón Cuevas López @ UPV             ///.              \n"
+"   Josh Seigle @ Allen                  ///,.             \n"
+"   Jakob Voigts @ MIT                   *///,             \n"
 "                     *.                  ///,,            \n"
 "                   ,####/                ///,,,           \n"
 "                 ,,,,/####//             *///,,.          \n"
@@ -26,3 +29,5 @@ const char logo_med[] =
 "   since 2010.                          ....,/(##(/       \n"
 "                                             .,###.       \n"
 "                                                          \n";
+
+#endif

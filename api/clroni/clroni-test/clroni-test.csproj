@@ -130,11 +130,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>if $(PlatformName) == x64 (
-    copy $(SolutionDir)\Externals\oni\x64\liboni.dll $(TargetDir)
-    echo "Copying x64 liboni.dll"
+    copy $(SolutionDir)\Externals\oni\x64\liboni*.dll $(TargetDir)
+    echo "Copying x64 liboni*.dll"
 ) ELSE (
-    copy $(SolutionDir)\Externals\oni\x86\liboni.dll $(TargetDir)
-    echo "Copying x86 liboni.dll"
+    copy $(SolutionDir)\Externals\oni\x86\liboni*.dll $(TargetDir)
+    echo "Copying x86 liboni*.dll"
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

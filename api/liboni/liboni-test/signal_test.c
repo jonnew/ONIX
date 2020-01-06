@@ -29,7 +29,7 @@ int main() {
     assert(strcmp(msg, de_msg) == 0);
 
     // ** CONFIG_WACK test ** //
-    
+
 
     printf("Success.\n");
 }

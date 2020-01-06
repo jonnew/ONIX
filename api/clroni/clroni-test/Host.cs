@@ -47,10 +47,15 @@ class DataProcessor
         }
     }
 
-class Host
+class HostXilly
 {
     static void Main(string[] args)
     {
+        const string DefaultConfigPath = "\\\\.\\xillybus_cmd_32";
+        const string DefaultSignalPath = "\\\\.\\xillybus_signal_8";
+        const string DefaultReadPath = "\\\\.\\xillybus_data_read_32";
+        const string DefaultWritePath = "\\\\.\\xillybus_data_write_32";
+
         // Get version
         var ver = oni.lib.NativeMethods.LibraryVersion;
         Console.WriteLine("Using liboni version: " + ver);
@@ -67,13 +72,14 @@ class Host
                 read = args[2];
                 write = args[3];
             } else {
-                conf = oni.lib.NativeMethods.DefaultConfigPath;
-                sig = oni.lib.NativeMethods.DefaultSignalPath;
-                read = oni.lib.NativeMethods.DefaultReadPath;
-                write = oni.lib.NativeMethods.DefaultWritePath;
+                conf = DefaultConfigPath;
+                sig = DefaultSignalPath;
+                read = DefaultReadPath;
+                write = DefaultWritePath;
             }
 
-            using(var ctx = new oni.Context(conf, read, write, sig))
+            using(var ctx = new oni.Context(
+                      "xillybus", 0, 0, conf, 1, sig, 2, read, 3, write))
             {
 
                 Console.WriteLine("Found the following devices:");
@@ -168,7 +174,7 @@ class Host
             } // ctx.Dispose() is called.
 
         } catch (ONIException ex) {
-            Console.Error.WriteLine("Host.exe failed with the following error: "
+            Console.Error.WriteLine("HostXilly.exe failed with the following error: "
                                     + ex.ToString());
             Console.Error.WriteLine("Current errno: "
                                     + Marshal.GetLastWin32Error());

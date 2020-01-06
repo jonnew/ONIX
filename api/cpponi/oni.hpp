@@ -8,18 +8,20 @@
 #include <string>
 #include <system_error>
 #include <vector>
-//#include <span>
+
+#if __cplusplus >= 201707
+#include <span>
+#endif
 
 #include <oni.h>
 #include <onidevices.h>
-#include <oelogo.h>
 
 // In order to prevent unused variable warnings when building in non-debug
 // mode use this macro to make assertions.
 #ifndef NDEBUG
-#   define ONI_ASSERT(expression) assert(expression)
+#define ONI_ASSERT(expression) assert(expression)
 #else
-#   define ONI_ASSERT(expression) (void)(expression)
+#define ONI_ASSERT(expression) (void)(expression)
 #endif
 
 namespace oni {
@@ -51,6 +53,7 @@ namespace oni {
 
     using device_t = oni_device_t;
     using device_map_t = std::vector<device_t>;
+    template<typename T> using driver_arg_t = std::pair<int,T>;
 
     // TODO: Data held by frame_t is const. This means data needs to be copied
     // in order to be processed. This is good from a thread safety point of
@@ -59,7 +62,7 @@ namespace oni {
     // storage. Spans are C++20.
     class frame_t
     {
-        friend context_t; // NB: Fills frame_t::frame_ptr_;
+        friend class context_t; // NB: Fills frame_t::frame_ptr_;
 
         public:
             inline frame_t(const device_map_t &dev_map, oni_frame_t *frame)
@@ -93,6 +96,26 @@ namespace oni {
                 return static_cast<bool>(frame_ptr_->corrupt);
             }
 
+#if __cplusplus >= 201707
+            template <typename raw_t>
+            std::span<const raw_t> data(size_t dev_idx)
+            {
+                // Find the position of the requested idx in the frames
+                // dev_idx's array to get offset
+                auto it = std::find(
+                    frame_ptr_->dev_idxs, frame_ptr_->dev_idxs + frame_ptr_->num_dev, dev_idx);
+
+                if (it == frame_ptr_->dev_idxs + frame_ptr_->num_dev)
+                    throw(error_t(ONI_EDEVIDX));
+
+                // Return iterator dev_idx's data begin()
+                auto i = std::distance(frame_ptr_->dev_idxs, it);
+                auto begin = reinterpret_cast<raw_t *>(
+                    frame_ptr_->data + frame_ptr_->dev_offs[i]);
+
+                return std::span(begin, dev_map_[dev_idx].read_size / sizeof(raw_t));
+            }
+#endif
             template <typename raw_t>
             raw_t const *begin(size_t dev_idx)
             {
@@ -140,24 +163,20 @@ namespace oni {
     class context_t {
 
     public:
-        inline context_t(const char *config_path = ONI_DEFAULTCONFIGPATH,
-                         const char *read_path = ONI_DEFAULTREADPATH,
-                         const char *write_path = ONI_DEFAULTWRITEPATH,
-                         const char *signal_path = ONI_DEFAULTSIGNALPATH)
+        template<typename... DriverArgs>
+        inline context_t(const char *driver_name, int host_idx, DriverArgs... args)
         {
             // Create
-            ctx_ = oni_create_ctx();
+            ctx_ = oni_create_ctx(driver_name);
             if (ctx_ == nullptr)
                 throw std::system_error(errno, std::system_category());
 
-            // Set paths
-            set_opt(ONI_CONFIGSTREAMPATH, config_path, strlen(config_path) + 1);
-            set_opt(ONI_SIGNALSTREAMPATH, signal_path, strlen(signal_path) + 1);
-            set_opt(ONI_READSTREAMPATH, read_path, strlen(read_path) + 1);
-            set_opt(ONI_WRITESTREAMPATH, write_path, strlen(write_path) + 1);
+            // Apply driver-specific options
+            for(const auto a : {args...})
+                set_driver_opt(std::get<0>(a), std::get<1>(a));
 
             // Initialize
-            auto rc = oni_init_ctx(ctx_);
+            auto rc = oni_init_ctx(ctx_, host_idx);
             if (rc != 0) throw error_t(rc);
 
             // Populate device map
@@ -189,19 +208,40 @@ namespace oni {
 
         inline ~context_t() noexcept { close(); }
 
-        template <typename opt_type>
-        opt_type get_opt(int option) const
+        template <typename opt_t>
+        opt_t get_opt(int option) const
         {
-            opt_type optval;
-            size_t optlen = sizeof(opt_type);
+            opt_t optval;
+            size_t optlen = sizeof(opt_t);
             get_opt(option, &optval, &optlen);
             return optval;
         }
 
-        template <typename opt_type>
-        void set_opt(int option, opt_type const &optval)
+        template <typename opt_t>
+        inline void set_opt(int option, opt_t const &optval)
         {
-            set_opt(option, &optval, sizeof(opt_type));
+            if constexpr(std::is_pointer<opt_t>::value)
+                set_opt(option, optval, opt_size(optval));
+            else
+                set_opt(option, &optval, opt_size(optval));
+        }
+
+        template <typename opt_t>
+        opt_t get_driver_opt(int option) const
+        {
+            opt_t optval;
+            size_t optlen = sizeof(opt_t);
+            get_driver_opt(option, &optval, &optlen);
+            return optval;
+        }
+
+        template <typename opt_t>
+        inline void set_driver_opt(int option, opt_t const &optval)
+        {
+            if constexpr(std::is_pointer<opt_t>::value)
+                set_driver_opt(option, optval, opt_size(optval));
+            else
+                set_driver_opt(option, &optval, opt_size(optval));
         }
 
         inline oni_reg_val_t read_reg(size_t dev_idx, oni_reg_addr_t addr)
@@ -233,7 +273,7 @@ namespace oni {
         }
 
         template <typename data_t>
-        inline void write(size_t dev_idx, std::vector<data_t> data) const 
+        inline void write(size_t dev_idx, std::vector<data_t> data) const
         {
             auto rc = oni_write(
                 ctx_, dev_idx, data.data, data.size * sizeof(data_t));
@@ -241,6 +281,21 @@ namespace oni {
         }
 
     private:
+
+        template<typename opt_t>
+        inline size_t opt_size(opt_t opt)
+        {
+            size_t optlen = 0;
+            if constexpr(std::is_same<opt_t, char *>::value)
+                optlen = strlen(opt) + 1;
+            if constexpr(std::is_same<opt_t, const char *>::value)
+                optlen = strlen(opt) + 1;
+            else
+                optlen = sizeof(opt);
+
+            return optlen;
+        }
+
         inline void get_opt(int option, void *value, size_t *size) const
         {
             auto rc = oni_get_opt(ctx_, option, value, size);
@@ -250,6 +305,18 @@ namespace oni {
         inline void set_opt(int option, const void *value, size_t size)
         {
             auto rc = oni_set_opt(ctx_, option, value, size);
+            if (rc != 0) throw error_t(rc);
+        }
+
+        inline void get_driver_opt(int option, void *value, size_t *size) const
+        {
+            auto rc = oni_get_driver_opt(ctx_, option, value, size);
+            if (rc != 0) throw error_t(rc);
+        }
+
+        inline void set_driver_opt(int option, const void *value, size_t size)
+        {
+            auto rc = oni_set_driver_opt(ctx_, option, value, size);
             if (rc != 0) throw error_t(rc);
         }
 

@@ -21,12 +21,24 @@
     <ClCompile Include="oni.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="onidriverloader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="onidevices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="oni.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="onidriver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="onidriverloader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="onidefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

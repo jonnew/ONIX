@@ -47,14 +47,13 @@ typedef enum oni_device_id {
 // - Input frame data contents: [uint64_t local_clock,
 //                               uint32_t info_code]
 enum oni_info_codes {
-    ONI_INFO_HEARTBEAT       = 0,   // Heartbeat
-    ONI_INFO_EWATCHDOG       = 1,   // Frame not sent withing watchdog threshold
-    ONI_INFO_ESERDESPARITY   = 2,   // SERDES parity error detected
-    ONI_INFO_ESERDESCHKSUM   = 3,   // SERDES packet checksum error detected
-    ONI_INFO_ETOOMANYREMOTE  = 4,   // TOO many remote devices for host to support
-    ONI_INFO_EREMOTEINIT     = 5,   // Remote initialization error
-    ONI_INFO_EBADPACKET      = 6,   // Malformed packet during SERDES demultiplexing
-    ONI_INFO_ELOSTREMOTE     = 7,   // Lost remote lock
+    ONI_INFO_ELOSTREMOTE     = 0,   // Lost remote lock
+    ONI_INFO_EBADPACKET      = 1,   // Malformed packet during SERDES demultiplexing
+    ONI_INFO_EREMOTEINIT     = 2,   // Remote initialization error
+    ONI_INFO_ETOOMANYREMOTE  = 3,   // TOO many remote devices for host to support
+    ONI_INFO_ESERDESCHKSUM   = 4,   // SERDES packet checksum error detected
+    ONI_INFO_ESERDESPARITY   = 5,   // SERDES parity error detected
+    ONI_INFO_EWATCHDOG       = 6,   // Frame not sent withing watchdog threshold
 };
 // - Output data: N/A
 // - Configuration registers: N/A

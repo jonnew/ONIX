@@ -105,8 +105,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy $(ProjectDir)\..\..\liboni\Win32\Release\liboni.dll $(ProjectDir)\..\Externals\oni\x86\liboni.dll /y
-copy $(ProjectDir)\..\..\liboni\x64\Release\liboni.dll $(ProjectDir)\..\Externals\oni\x64\liboni.dll /y</PreBuildEvent>
+    <PreBuildEvent>copy $(ProjectDir)\..\..\liboni\Win32\Release\liboni*.dll $(ProjectDir)\..\Externals\oni\x86\liboni*.dll /y
+copy $(ProjectDir)\..\..\liboni\x64\Release\liboni*.dll $(ProjectDir)\..\Externals\oni\x64\liboni*.dll /y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
