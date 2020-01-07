@@ -5,33 +5,39 @@ Specification](https://github.com/jonnew/ONI).
 ## Scope and External Dependencies
 `liboni` is a C library that implements the [Open Ephys++ API
 Specification](#api-spec). It is written in C to facilitate
-cross platform and cross-language use. It is composed of two mutually
-exclusive file pairs:
+cross platform and cross-language use. It is composed of the following files:
 
-1. oepcie.h and oepcie.c: main API implementation
-1. oedevice.h and oedevices.c: officially supported device and register
+1. oni.h and oni.c: main API implementation
+1. onidevice.h and onidevices.c: officially supported device and register
    definitions. This file can be ignored for project that do not wish to
    conform to the official device specification.
+1. ondriverloader.h and onidriverloader.c: functions for dynamically loading
+   hardware translation driver.
+1. onidriver.h: hardware translation driver header that must be implemented for
+   a particular host hardware
 
 `liboni` is a low level library used by high-level language binding and/or
 software plugin developers. It is not meant to be used by neuroscientists
-directly. The only external dependency aside from the C standard library is is
-a hardware communication backend that fulfills the requirements of the ONI
-[FPGA/Host Communication Specification](#comm-protocol). An example of such a
-backend is [Xillybus](http://xillybus.com/), which provides proprietary FPGA IP
-cores and free and open source device drivers to allow the communication
-channels to be implemented using the PCIe bus. From the API's perspective,
-hardware communication abstracted to IO system calls (`open`, `read`, `write`,
-etc.) on file descriptors.  File descriptor semantics and behavior are
-identical to either normal files (configuration channel) or named pipes
-(signal, data input, and data output channels). Because of this, a drop in
-replacement for the Xillybus IP Core can be used without any API changes. The
-development of a free and open-source FPGA cores that emulate the functionality
-of Xillybus would be a major benefit to the systems neuroscience community.
+directly. The only external dependency aside from the C standard library and
+dynamic library loading functions is is a hardware translation driver ("driver") that
 
+fulfills the requirements of the ONI Host Interconnect Specification
+Specification](#comm-protocol). This implementation contains drivers for
+
+1. [Xillybus](http://xillybus.com/):provides proprietary FPGA IP cores and
+free and open source device drivers to allow the communication channels to be
+implemented using the PCIe bus.
+1. RIFFA: TODO
+1. FTDI USB3.0: TODO
+1. Opal-Kelly USB3.0: TODO
+
+From the API's perspective, hardware communication abstracted to IO system
+calls (`open`, `read`, `write`, etc.) on file descriptors. File descriptor
+semantics and behavior are identical to either normal files (configuration
+channel) or named pipes (signal, data input, and data output channels).
 Importantly, the low-level synchronization, resource allocation, and logic
-required to use the hardware communication backend is implicit to `liboni`
-API function calls. Orchestration of the communication backend _is not directly
+required to use the hardware communication backend is implicit to `liboni` API
+function calls. Orchestration of the communication backend _is not directly
 managed by the library user_.
 
 ## License
@@ -50,7 +56,13 @@ to place headers in whatever path is specified by PREFIX. PREFIX defaults to
 ```
 $ make uninstall PREFIX=/path/to/uninstall
 ```
-Then update dynamic library cache via
+To make a particular driver, navigate to its location within the `drivers`
+subdirectory and:
+```
+$ make <options>
+$ make install PREFIX=/path/to/install
+```
+Then update dynamic library cache via:
 ```
 $ ldconfig
 ```

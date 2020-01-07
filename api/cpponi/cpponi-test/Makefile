@@ -5,11 +5,11 @@
 
 CC=c++
 
-CFLAGS=-O3 -std=c++14 -Wall
+CFLAGS=-O3 -std=c++2a -stdlib=libc++ -Wall
 LDFLAGS=-loni
 
 .PHONY: all
-all: host
+all: host_xilly
 
 .PHONY: debug
 debug: CFLAGS += -DDEBUG -g3
@@ -19,10 +19,10 @@ debug: all
 profile: LDFLAGS += -lprofiler
 profile: all
 
-host: host.cpp
+host_xilly: host_xilly.cpp
 	@echo Making $@
-	$(CC) $(CFLAGS) $? -lm -lpthread $(LDFLAGS) -o $@
+	$(CC) $(CFLAGS) $? -lm -lpthread -ldl $(LDFLAGS) -o $@
 
 .PHONY: clean
 clean:
-	rm host
+	rm host_xilly

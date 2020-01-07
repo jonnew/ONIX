@@ -1,12 +1,10 @@
-﻿namespace oni
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Runtime.InteropServices;
-    using Microsoft.Win32.SafeHandles;
-     
-    using lib;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Microsoft.Win32.SafeHandles;
 
+namespace oni
+{
 
     // Make managed version of oni_frame_t
     [StructLayout(LayoutKind.Sequential)]
@@ -23,17 +21,12 @@
 
     public unsafe class Frame : SafeHandleZeroOrMinusOneIsInvalid
     {
-        //[DllImport("kernel32.dll", EntryPoint = "RtlMoveMemory", SetLastError = false)]
-        //static extern void CopyMemory(IntPtr Destination, IntPtr Source, uint Length);
-
-        public const int MaxDevPerFrame = 32; // Copy from oni.h
-
         protected Frame() 
         : base(true)
         {
         }
 
-        internal void Map(Dictionary<int, device_t> dev_map)
+        internal void Map(Dictionary<int, lib.device_t> dev_map)
         {
             DeviceMap = dev_map;
             var frame = (frame_t*)handle.ToPointer();
@@ -55,6 +48,21 @@
             return ((frame_t*)handle.ToPointer())->corrupt != 0;
         }
 
+        // The whole data block
+        public byte[] Data()
+        {
+            var frame = (frame_t*)handle.ToPointer();
+
+            var buffer = new byte[frame->data_sz];
+            //var output = new T[num_bytes / Marshal.SizeOf(default(T))];
+            var start_ptr = frame->data;
+
+            // TODO: Seems like we should be able to copy directly into output!
+            Marshal.Copy((IntPtr)start_ptr, buffer, 0, (int)frame->data_sz);
+            //Buffer.BlockCopy(buffer, 0, output, 0, (int)num_bytes);
+            return buffer;
+        }
+
         // Ideally, I would like this to be a "Span" into the exsting, allocated frame
         // Now, there are _two_ deep copies happening here as far as I can tell which is ridiculous
         public T[] Data<T>(int dev_idx) where T : struct
@@ -67,7 +75,7 @@
             // If device is not in frame
             if (pos == -1)
             {
-                throw new ONIException((int)Error.DEVIDX);
+                throw new ONIException(lib.Error.DEVIDX);
             }
 
             // Get the read size and offset for this device
@@ -96,7 +104,7 @@
             // If device is not in frame
             if (pos == -1)
             {
-                throw new ONIException((int)Error.DEVIDX);
+                throw new ONIException(lib.Error.DEVIDX);
             }
 
             // Get the read size and offset for this device
@@ -114,7 +122,7 @@
 
         protected override bool ReleaseHandle()
         {
-            NativeMethods.oni_destroy_frame(handle);
+            lib.NativeMethods.oni_destroy_frame(handle);
             return true;
         }
 
@@ -122,6 +130,6 @@
         public List<int> DeviceIndices { get; private set; }
 
         // Global device index -> device_t struct
-        private Dictionary<int, device_t> DeviceMap;
+        private Dictionary<int, lib.device_t> DeviceMap;
     }
 }

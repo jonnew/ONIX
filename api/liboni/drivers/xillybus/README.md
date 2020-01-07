@@ -1,23 +1,29 @@
-# `liboepcie` Xillybus Backend Guide
-
-`liboepcie` is agnostic to implementation of the "communication backend" so
-long it fulfils the interface requirements detailed in the [oepcie
-specification](../spec/spec.pdf). This is because, ultimately, all
-communication is handled using low-level system IO system calls (`read`,
-`write`, `lseek`, etc.) that operate on file descriptors. For instance, both
-the `signal` and the `read` communication channels can be implemented using
-UNIX named pipes and the configuration channel can be implemented using a
-normal file.  In fact, this is exactly how `liboepcie` is
-[tested](../api/liboepcie)
+# `onidriver_xillybus` Hardware Translation Driver
 
 [Xillybus](http://xillybus.com/) is a company that provides closed-source (but
 monetarily-free for academic use) FPGA IP cores as well as free and open-source
 device drivers that abstract PCIe communication to the level of system IO
 calls. For this reason, Xillybus IP Cores and drivers can be used as a high
-performance PCIe-based backend by `liboepcie`. A custom, completely open-source
-solution is in the works, but it is currently not available. The following
-steps show how to generate IP cores and obtain device drivers in order to use a
-Xillybus PCIe backend with `liboepcie`.  Windows and Linux hosts are supported.
+performance PCIe-based backend. A custom, completely open-source solution is in
+the works, but it is currently not available. `onidriver_xillybus` is designed
+to use Xillybus to implement the [ONI](https://github.com/jonnew/ONI) Host
+Communication Insterconnect using the Hardware Translation Driver
+specification. This driver translates Xillybus specific interfaction to
+higher-level API calls by implementing all the functions in `onidriver.h`.  The
+following steps show how to generate IP cores and obtain device drivers that
+will function with `onidriver_xillybus` Both Windows and Linux hosts are
+supported.
+
+## Building the library
+### Linux
+```
+make                # Build without debug symbols
+sudo make install   # Install in /usr/local and run ldconfig to update library cache
+make help           # list all make options
+```
+
+### Windows
+Run the project in Visual Studio
 
 ## Generating HDL IP Cores
 1. Make a [Xillybus account](http://xillybus.com/ipfactory/signup)

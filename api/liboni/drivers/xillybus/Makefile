@@ -1,16 +1,12 @@
 # "make help" prints help.
 SHELL     :=  /bin/bash
-NAME      :=  liboni
-SNAME     :=  $(NAME).a
+NAME      :=  libonidriver_xillybus
 DNAME     :=  $(NAME).so.1
 DNAMELN   :=  $(NAME).so
-HDR       :=  oni.h onidefs.h onidevices.h onidriver.h oelogo.h # Public headers to be installed
-SRC       :=  oni.c onidevices.c
-POSIX_SRC :=  onidriverloader.c
+HDR       :=  onidriver_xillybus.h # Public headers to be installed
+SRC       :=  onidriver_xillybus.c
 OBJ       :=  $(SRC:.c=.o)
-POSIX_OBJ :=  $(POSIX_SRC:.c=.o)
-CFLAGS    :=  -Wall -W -Werror -fPIC -O3 $(DEFS)
-ISOCFLAGS :=  -pedantic
+CFLAGS    :=  -pedantic -Wall -W -Werror -fPIC -O3 $(DEFS)
 LDFLAGS   :=  -L.
 PREFIX    :=  /usr/local
 
@@ -21,44 +17,37 @@ COMMA := ,
 COMMA-SEPARATE = $(subst ${SPACE},${COMMA},$(strip $1))
 
 .PHONY: all
-all: $(SNAME) $(DNAME) ## Make release version of liboni.
+all: $(DNAME) ## Make release version of onidriver_xillybus.
 
 .PHONY: debug
-debug: CFLAGS += -DDEBUG -g3 ## Make liboni with debug symbols.
+debug: CFLAGS += -DDEBUG -g3 ## Make driver with debug symbols.
 debug: all
 
 .PHONY: install 
-install: $(SNAME) $(DNAME) ## Install driver. Defaults to make install PREFIX=/usr
+install: $(SNAME) $(DNAME) ## Install driver. Defaults to make install PREFIX=/usr/local.
 	@[ -d $(DESTDIR)$(PREFIX)/lib ] || mkdir -p $(DESTDIR)$(PREFIX)/lib
 	@[ -d $(DESTDIR)$(PREFIX)/include ] || mkdir -p $(DESTDIR)$(PREFIX)/include
 	cp $(DNAME) $(DESTDIR)$(PREFIX)/lib/$(DNAME)
-	cp $(SNAME) $(DESTDIR)$(PREFIX)/lib/$(SNAME)
 	cp $(HDR) $(DESTDIR)$(PREFIX)/include
 	@[ -d $(DESTDIR)$(PREFIX)/lib/$(DNAMELN) ] || $(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 	ln -s $(DESTDIR)$(PREFIX)/lib/$(DNAME) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 	ldconfig
-	ldconfig -p | grep liboni
+	ldconfig -p | grep libonidriver
 
 .PHONY: uninstall
-uninstall: ## Remove liboni from installation directory.
-	$(RM) $(DESTDIR)$(PREFIX)/lib/$(SNAME)
+uninstall: ## Remove driver from installation directory.
 	$(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAME)
 	$(RM) $(DESTDIR)$(PREFIX)/lib/$(DNAMELN)
 	$(RM) $(DESTDIR)$(PREFIX)/include/{$(call COMMA-SEPARATE,${HDR})}
 
-$(SNAME): $(OBJ) $(POSIX_OBJ)
-	$(AR) $(ARFLAGS) $@ $^
-
 $(DNAME): LDFLAGS += -shared
-$(DNAME): $(OBJ) $(POSIX_OBJ)
+$(DNAME): $(OBJ)
 	$(CC) $(LDFLAGS) $^ -o $@
-
-$(OBJ): CFLAGS += $(ISOCFLAGS)
 
 .PHONY: clean
 clean: ## Remove local build objects
-	$(RM) $(OBJ) $(POSIX_OBJ)
-	$(RM) $(SNAME) $(DNAME)
+	$(RM) $(OBJ)
+	$(RM) $(DNAME)
 
 .PHONY: help
 help:

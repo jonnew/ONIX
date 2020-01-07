@@ -84,8 +84,8 @@ static int _oni_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size)
     return 0;
 }
 
-int main ( int argc, char *argv[] ) {
-
+int main(int argc, char *argv[])
+{
     if (argc != 2) /* argc should be 2 for correct execution */
     {
         /* We print argv[0] assuming it is the program name */
@@ -127,7 +127,7 @@ int main ( int argc, char *argv[] ) {
         }
 
         printf("\n");
-    } 
+    }
 
     return 0;
 }
