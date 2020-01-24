@@ -731,6 +731,9 @@ static int _oni_reset_routine(oni_ctx ctx) {
     // NB: Default the block read size to a single max sized frame. This is bad
     // for high bandwidth performance and good for closed-loop delay.
     ctx->block_read_size += ctx->max_read_frame_size + ctx->max_read_frame_size % ONI_DATAFIFOWIDTH;
+	
+	//set the block read size in the driver, in case it needs it
+	ctx->driver.set_opt_callback(ctx->driver.ctx, ONI_BLOCKREADSIZE, &(ctx->block_read_size), sizeof(ctx->block_read_size));
 
 #ifdef ONI_BE
     _device_map_byte_swap(ctx);
