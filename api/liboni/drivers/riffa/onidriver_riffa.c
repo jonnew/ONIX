@@ -188,6 +188,7 @@ int oni_driver_set_opt_callback(oni_driver_ctx driver_ctx,
 {
 	uint32_t rc;
 	CTX_CAST;
+	UNUSED(option_len);
 
 	if (oni_option == ONI_CONFIG_RUNNING && *(uint32_t*)value == 0)
 	{
