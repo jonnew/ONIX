@@ -4,6 +4,60 @@ with [eib-64](../eib-64/README.md).
 
 ![headstage-64](./img/headstage-64.png)
 
+## Electrophysiology
+This heastage uses an [Intan RHD2164]() bioamplifier chip. This chip provides:
+- 64 channels of ephys are pinned out through the large mezzanine connector on the
+  bottom of the headstage
+- 3 auxiliary channels
+    - AUX 1 and 2 are pinned out on the bottom of the headstage to an unpopulated
+      mezzanine connector
+    - Channel 3 is tied to the electrical stimulator's current measurement circuit
+    
+## 3D Position Tracking
+Headstage-64 featurs 4 TSxxx Vive lighthouse receivers for 3D position tracking.
+
+## 3D Orientation Tracking
+
+
+## Neural Stimulators
+Headstage-64 provides onboard electrical and optical stimulation. Stimulus 
+trains can be parameterized in a similar way to the master-8 or pulse pal. 
+Electical and optical stimulus trains cannot be delivered simultaneously. 
+If there is a conflict, electical stimuluation will take priority and optical 
+stimulus triggers will be ignored.
+
+To acheive the shortest latency, electrical and optical stimulation can be triggered 
+using the GPIO1 serializer output. Because both stimulators share this trigger line, 
+it is important to only enable one of the devices (using its ENABLE register) prioir 
+to toggling this pin.
+
+### Optical Stimulation
+
+Q. Can i parallel the Cathode connections to increase max current
+A. Yes.
+
+
+
+
+### Electical Stimulation
+The electrical stimulation cicuit is an improved Howland current pump followed by
+an precision current measurement circuit. The current pump is supplied by +/-15V
+rails and can supply up to +/- 2.5 mA. The output c 
+
+ISTIM = (VDAC  - 2.5)/1000.
+e.g. 
+VDAC = 2.5   -> ISTIM = 0
+VDAC = 5.0   -> ISTIM = 2.5 mA
+VDAC = 0.0   -> ISTIM = -2.5mA
+
+and
+
+Imeas = 400 * ISTIM + 1.25V
+e.g. 
+ISTIM = 0      -> IMEAS = 1.25V
+ISTIM = 2.5mA  -> IMEAS = 2.25V
+ISTIM = -2.5mA -> IMEAS = 0.25V
+
 ## Schematic
 ![headstage-64 Schematic](./img/headstage-64_schematic.png)
 
@@ -26,7 +80,7 @@ etc) is located on [this google
 sheet](https://docs.google.com/spreadsheets/d/11wRDYOqHN5lPb03yUdfXfK0zvaDYsVetplaNK-R90Gg/edit#gid=663991061)
 
 ## License
-Copyright Jonathan P. Newman, Jakob Voigts 2017.
+Copyright Jonathan P. Newman, Jakob Voigts 2020.
 
 This documentation describes Open Hardware and is licensed under the
 CERN OHL v.1.2.

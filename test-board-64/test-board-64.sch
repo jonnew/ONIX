@@ -3290,7 +3290,7 @@ by exp-lbrs.ulp</description>
 <attribute name="DESIGNER" value="JON NEWMAN, MWL@MIT"/>
 <attribute name="DESIGN_NAME" value="64 Channel Headstage Test Board"/>
 <attribute name="LICENSE" value="(c) Jon Newman CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.2"/>
+<attribute name="REVISION" value="1.3"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -3421,6 +3421,7 @@ by exp-lbrs.ulp</description>
 <text x="779.78" y="294.64" size="1.27" layer="97" rot="R90">Stimulation Electrode
 ~200 uM diameter: 110nF in series with 3.5k (Noorsal, 2012)</text>
 <text x="711.2" y="335.28" size="1.27" layer="97">Stim LEDs</text>
+<text x="205.74" y="149.86" size="2.54" layer="97">Compatible with headstage-64 Rev. 1.4</text>
 </plain>
 <instances>
 <instance part="DOC_INFO" gate="G$1" x="203.2" y="111.76"/>
@@ -3990,9 +3991,9 @@ by exp-lbrs.ulp</description>
 <label x="640.08" y="312.42" size="1.778" layer="95" rot="R270"/>
 </segment>
 <segment>
-<label x="401.32" y="276.86" size="1.27" layer="95" rot="R270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="70"/>
-<wire x1="401.32" y1="299.72" x2="401.32" y2="276.86" width="0.1524" layer="91"/>
+<label x="317.5" y="276.86" size="1.27" layer="95" rot="R270" xref="yes"/>
+<wire x1="317.5" y1="299.72" x2="317.5" y2="276.86" width="0.1524" layer="91"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="37"/>
 </segment>
 </net>
 <net name="REF" class="0">
@@ -4002,9 +4003,9 @@ by exp-lbrs.ulp</description>
 <label x="617.22" y="312.42" size="1.778" layer="95" rot="R270"/>
 </segment>
 <segment>
-<label x="398.78" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="69"/>
-<wire x1="398.78" y1="299.72" x2="398.78" y2="276.86" width="0.1524" layer="91"/>
+<label x="401.32" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<wire x1="401.32" y1="299.72" x2="401.32" y2="276.86" width="0.1524" layer="91"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="70"/>
 </segment>
 <segment>
 <label x="767.08" y="287.02" size="1.27" layer="95" rot="R270" xref="yes"/>
@@ -4089,9 +4090,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT0D" class="0">
 <segment>
-<wire x1="347.98" y1="276.86" x2="347.98" y2="299.72" width="0.1524" layer="91"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="49"/>
-<label x="347.98" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<wire x1="350.52" y1="276.86" x2="350.52" y2="299.72" width="0.1524" layer="91"/>
+<label x="350.52" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="50"/>
 </segment>
 <segment>
 <wire x1="505.46" y1="375.92" x2="505.46" y2="398.78" width="0.1524" layer="91"/>
@@ -4108,9 +4109,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT0C" class="0">
 <segment>
-<wire x1="350.52" y1="276.86" x2="350.52" y2="299.72" width="0.1524" layer="91"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="50"/>
-<label x="350.52" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<wire x1="353.06" y1="276.86" x2="353.06" y2="299.72" width="0.1524" layer="91"/>
+<label x="353.06" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="51"/>
 </segment>
 <segment>
 <wire x1="508" y1="375.92" x2="508" y2="398.78" width="0.1524" layer="91"/>
@@ -4127,9 +4128,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT0B" class="0">
 <segment>
-<wire x1="353.06" y1="276.86" x2="353.06" y2="299.72" width="0.1524" layer="91"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="51"/>
-<label x="353.06" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<wire x1="355.6" y1="276.86" x2="355.6" y2="299.72" width="0.1524" layer="91"/>
+<label x="355.6" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="52"/>
 </segment>
 <segment>
 <wire x1="510.54" y1="375.92" x2="510.54" y2="398.78" width="0.1524" layer="91"/>
@@ -4146,9 +4147,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT0A" class="0">
 <segment>
-<wire x1="355.6" y1="276.86" x2="355.6" y2="299.72" width="0.1524" layer="91"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="52"/>
-<label x="355.6" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<wire x1="358.14" y1="276.86" x2="358.14" y2="299.72" width="0.1524" layer="91"/>
+<label x="358.14" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="53"/>
 </segment>
 <segment>
 <pinref part="S4" gate="G$1" pin="16"/>
@@ -4165,9 +4166,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT1A" class="0">
 <segment>
-<wire x1="345.44" y1="276.86" x2="345.44" y2="299.72" width="0.1524" layer="91"/>
-<label x="345.44" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="48"/>
+<wire x1="347.98" y1="276.86" x2="347.98" y2="299.72" width="0.1524" layer="91"/>
+<label x="347.98" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="49"/>
 </segment>
 <segment>
 <wire x1="502.92" y1="375.92" x2="502.92" y2="398.78" width="0.1524" layer="91"/>
@@ -4184,9 +4185,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT1B" class="0">
 <segment>
-<wire x1="342.9" y1="276.86" x2="342.9" y2="299.72" width="0.1524" layer="91"/>
-<label x="342.9" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="47"/>
+<wire x1="345.44" y1="276.86" x2="345.44" y2="299.72" width="0.1524" layer="91"/>
+<label x="345.44" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="48"/>
 </segment>
 <segment>
 <wire x1="500.38" y1="375.92" x2="500.38" y2="398.78" width="0.1524" layer="91"/>
@@ -4203,9 +4204,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT1C" class="0">
 <segment>
-<wire x1="340.36" y1="276.86" x2="340.36" y2="299.72" width="0.1524" layer="91"/>
-<label x="340.36" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="46"/>
+<wire x1="342.9" y1="276.86" x2="342.9" y2="299.72" width="0.1524" layer="91"/>
+<label x="342.9" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="47"/>
 </segment>
 <segment>
 <wire x1="497.84" y1="375.92" x2="497.84" y2="398.78" width="0.1524" layer="91"/>
@@ -4222,9 +4223,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT1D" class="0">
 <segment>
-<wire x1="337.82" y1="276.86" x2="337.82" y2="299.72" width="0.1524" layer="91"/>
-<label x="337.82" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="45"/>
+<wire x1="340.36" y1="276.86" x2="340.36" y2="299.72" width="0.1524" layer="91"/>
+<label x="340.36" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="46"/>
 </segment>
 <segment>
 <wire x1="495.3" y1="375.92" x2="495.3" y2="398.78" width="0.1524" layer="91"/>
@@ -4241,9 +4242,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT2A" class="0">
 <segment>
-<wire x1="335.28" y1="276.86" x2="335.28" y2="299.72" width="0.1524" layer="91"/>
-<label x="335.28" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="44"/>
+<wire x1="337.82" y1="276.86" x2="337.82" y2="299.72" width="0.1524" layer="91"/>
+<label x="337.82" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="45"/>
 </segment>
 <segment>
 <wire x1="441.96" y1="375.92" x2="441.96" y2="398.78" width="0.1524" layer="91"/>
@@ -4260,9 +4261,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT2B" class="0">
 <segment>
-<wire x1="332.74" y1="276.86" x2="332.74" y2="299.72" width="0.1524" layer="91"/>
-<label x="332.74" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="43"/>
+<wire x1="335.28" y1="276.86" x2="335.28" y2="299.72" width="0.1524" layer="91"/>
+<label x="335.28" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="44"/>
 </segment>
 <segment>
 <wire x1="439.42" y1="375.92" x2="439.42" y2="398.78" width="0.1524" layer="91"/>
@@ -4279,9 +4280,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT2C" class="0">
 <segment>
-<wire x1="330.2" y1="276.86" x2="330.2" y2="299.72" width="0.1524" layer="91"/>
-<label x="330.2" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="42"/>
+<wire x1="332.74" y1="276.86" x2="332.74" y2="299.72" width="0.1524" layer="91"/>
+<label x="332.74" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="43"/>
 </segment>
 <segment>
 <wire x1="436.88" y1="375.92" x2="436.88" y2="398.78" width="0.1524" layer="91"/>
@@ -4298,9 +4299,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT2D" class="0">
 <segment>
-<wire x1="327.66" y1="276.86" x2="327.66" y2="299.72" width="0.1524" layer="91"/>
-<label x="327.66" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="41"/>
+<wire x1="330.2" y1="276.86" x2="330.2" y2="299.72" width="0.1524" layer="91"/>
+<label x="330.2" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="42"/>
 </segment>
 <segment>
 <wire x1="434.34" y1="375.92" x2="434.34" y2="398.78" width="0.1524" layer="91"/>
@@ -4317,9 +4318,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT3A" class="0">
 <segment>
-<wire x1="325.12" y1="276.86" x2="325.12" y2="299.72" width="0.1524" layer="91"/>
-<label x="325.12" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="40"/>
+<wire x1="327.66" y1="276.86" x2="327.66" y2="299.72" width="0.1524" layer="91"/>
+<label x="327.66" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="41"/>
 </segment>
 <segment>
 <wire x1="431.8" y1="375.92" x2="431.8" y2="398.78" width="0.1524" layer="91"/>
@@ -4336,9 +4337,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT3B" class="0">
 <segment>
-<wire x1="322.58" y1="276.86" x2="322.58" y2="299.72" width="0.1524" layer="91"/>
-<label x="322.58" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="39"/>
+<wire x1="325.12" y1="276.86" x2="325.12" y2="299.72" width="0.1524" layer="91"/>
+<label x="325.12" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="40"/>
 </segment>
 <segment>
 <wire x1="429.26" y1="375.92" x2="429.26" y2="398.78" width="0.1524" layer="91"/>
@@ -4355,9 +4356,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT3C" class="0">
 <segment>
-<wire x1="320.04" y1="276.86" x2="320.04" y2="299.72" width="0.1524" layer="91"/>
-<label x="320.04" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="38"/>
+<wire x1="322.58" y1="276.86" x2="322.58" y2="299.72" width="0.1524" layer="91"/>
+<label x="322.58" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="39"/>
 </segment>
 <segment>
 <wire x1="426.72" y1="375.92" x2="426.72" y2="398.78" width="0.1524" layer="91"/>
@@ -4374,9 +4375,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT3D" class="0">
 <segment>
-<wire x1="317.5" y1="276.86" x2="317.5" y2="299.72" width="0.1524" layer="91"/>
-<label x="317.5" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="37"/>
+<wire x1="320.04" y1="276.86" x2="320.04" y2="299.72" width="0.1524" layer="91"/>
+<label x="320.04" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="38"/>
 </segment>
 <segment>
 <wire x1="424.18" y1="375.92" x2="424.18" y2="398.78" width="0.1524" layer="91"/>
@@ -5001,9 +5002,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT12A" class="0">
 <segment>
-<wire x1="396.24" y1="276.86" x2="396.24" y2="299.72" width="0.1524" layer="91"/>
-<label x="396.24" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="68"/>
+<wire x1="398.78" y1="276.86" x2="398.78" y2="299.72" width="0.1524" layer="91"/>
+<label x="398.78" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="69"/>
 </segment>
 <segment>
 <wire x1="421.64" y1="241.3" x2="421.64" y2="218.44" width="0.1524" layer="91"/>
@@ -5020,9 +5021,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT12B" class="0">
 <segment>
-<wire x1="393.7" y1="276.86" x2="393.7" y2="299.72" width="0.1524" layer="91"/>
-<label x="393.7" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="67"/>
+<wire x1="396.24" y1="276.86" x2="396.24" y2="299.72" width="0.1524" layer="91"/>
+<label x="396.24" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="68"/>
 </segment>
 <segment>
 <wire x1="424.18" y1="241.3" x2="424.18" y2="218.44" width="0.1524" layer="91"/>
@@ -5039,9 +5040,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT12C" class="0">
 <segment>
-<wire x1="391.16" y1="276.86" x2="391.16" y2="299.72" width="0.1524" layer="91"/>
-<label x="391.16" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="66"/>
+<wire x1="393.7" y1="276.86" x2="393.7" y2="299.72" width="0.1524" layer="91"/>
+<label x="393.7" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="67"/>
 </segment>
 <segment>
 <wire x1="426.72" y1="241.3" x2="426.72" y2="218.44" width="0.1524" layer="91"/>
@@ -5058,9 +5059,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT12D" class="0">
 <segment>
-<wire x1="388.62" y1="276.86" x2="388.62" y2="299.72" width="0.1524" layer="91"/>
-<label x="388.62" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="65"/>
+<wire x1="391.16" y1="276.86" x2="391.16" y2="299.72" width="0.1524" layer="91"/>
+<label x="391.16" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="66"/>
 </segment>
 <segment>
 <wire x1="429.26" y1="241.3" x2="429.26" y2="218.44" width="0.1524" layer="91"/>
@@ -5077,9 +5078,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT13A" class="0">
 <segment>
-<wire x1="386.08" y1="276.86" x2="386.08" y2="299.72" width="0.1524" layer="91"/>
-<label x="386.08" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="64"/>
+<wire x1="388.62" y1="276.86" x2="388.62" y2="299.72" width="0.1524" layer="91"/>
+<label x="388.62" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="65"/>
 </segment>
 <segment>
 <wire x1="431.8" y1="241.3" x2="431.8" y2="218.44" width="0.1524" layer="91"/>
@@ -5096,9 +5097,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT13B" class="0">
 <segment>
-<wire x1="383.54" y1="276.86" x2="383.54" y2="299.72" width="0.1524" layer="91"/>
-<label x="383.54" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="63"/>
+<wire x1="386.08" y1="276.86" x2="386.08" y2="299.72" width="0.1524" layer="91"/>
+<label x="386.08" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="64"/>
 </segment>
 <segment>
 <wire x1="434.34" y1="241.3" x2="434.34" y2="218.44" width="0.1524" layer="91"/>
@@ -5115,9 +5116,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT13C" class="0">
 <segment>
-<wire x1="381" y1="276.86" x2="381" y2="299.72" width="0.1524" layer="91"/>
-<label x="381" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="62"/>
+<wire x1="383.54" y1="276.86" x2="383.54" y2="299.72" width="0.1524" layer="91"/>
+<label x="383.54" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="63"/>
 </segment>
 <segment>
 <wire x1="436.88" y1="241.3" x2="436.88" y2="218.44" width="0.1524" layer="91"/>
@@ -5134,9 +5135,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT13D" class="0">
 <segment>
-<wire x1="378.46" y1="276.86" x2="378.46" y2="299.72" width="0.1524" layer="91"/>
-<label x="378.46" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="61"/>
+<wire x1="381" y1="276.86" x2="381" y2="299.72" width="0.1524" layer="91"/>
+<label x="381" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="62"/>
 </segment>
 <segment>
 <wire x1="439.42" y1="241.3" x2="439.42" y2="218.44" width="0.1524" layer="91"/>
@@ -5153,9 +5154,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT15D" class="0">
 <segment>
-<wire x1="358.14" y1="276.86" x2="358.14" y2="299.72" width="0.1524" layer="91"/>
-<label x="358.14" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="53"/>
+<wire x1="360.68" y1="276.86" x2="360.68" y2="299.72" width="0.1524" layer="91"/>
+<label x="360.68" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="54"/>
 </segment>
 <segment>
 <wire x1="510.54" y1="241.3" x2="510.54" y2="218.44" width="0.1524" layer="91"/>
@@ -5172,9 +5173,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT15C" class="0">
 <segment>
-<wire x1="360.68" y1="276.86" x2="360.68" y2="299.72" width="0.1524" layer="91"/>
-<label x="360.68" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="54"/>
+<wire x1="363.22" y1="276.86" x2="363.22" y2="299.72" width="0.1524" layer="91"/>
+<label x="363.22" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="55"/>
 </segment>
 <segment>
 <wire x1="508" y1="241.3" x2="508" y2="218.44" width="0.1524" layer="91"/>
@@ -5191,9 +5192,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT15B" class="0">
 <segment>
-<wire x1="363.22" y1="276.86" x2="363.22" y2="299.72" width="0.1524" layer="91"/>
-<label x="363.22" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="55"/>
+<wire x1="365.76" y1="276.86" x2="365.76" y2="299.72" width="0.1524" layer="91"/>
+<label x="365.76" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="56"/>
 </segment>
 <segment>
 <wire x1="505.46" y1="241.3" x2="505.46" y2="218.44" width="0.1524" layer="91"/>
@@ -5210,9 +5211,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT15A" class="0">
 <segment>
-<wire x1="365.76" y1="276.86" x2="365.76" y2="299.72" width="0.1524" layer="91"/>
-<label x="365.76" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="56"/>
+<wire x1="368.3" y1="276.86" x2="368.3" y2="299.72" width="0.1524" layer="91"/>
+<label x="368.3" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="57"/>
 </segment>
 <segment>
 <wire x1="502.92" y1="241.3" x2="502.92" y2="218.44" width="0.1524" layer="91"/>
@@ -5229,9 +5230,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT14D" class="0">
 <segment>
-<wire x1="368.3" y1="276.86" x2="368.3" y2="299.72" width="0.1524" layer="91"/>
-<label x="368.3" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="57"/>
+<wire x1="370.84" y1="276.86" x2="370.84" y2="299.72" width="0.1524" layer="91"/>
+<label x="370.84" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="58"/>
 </segment>
 <segment>
 <wire x1="500.38" y1="241.3" x2="500.38" y2="218.44" width="0.1524" layer="91"/>
@@ -5248,9 +5249,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT14C" class="0">
 <segment>
-<wire x1="370.84" y1="276.86" x2="370.84" y2="299.72" width="0.1524" layer="91"/>
-<label x="370.84" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="58"/>
+<wire x1="373.38" y1="276.86" x2="373.38" y2="299.72" width="0.1524" layer="91"/>
+<label x="373.38" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="59"/>
 </segment>
 <segment>
 <wire x1="497.84" y1="241.3" x2="497.84" y2="218.44" width="0.1524" layer="91"/>
@@ -5267,9 +5268,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT14B" class="0">
 <segment>
-<wire x1="373.38" y1="276.86" x2="373.38" y2="299.72" width="0.1524" layer="91"/>
-<label x="373.38" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="59"/>
+<wire x1="375.92" y1="276.86" x2="375.92" y2="299.72" width="0.1524" layer="91"/>
+<label x="375.92" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="60"/>
 </segment>
 <segment>
 <wire x1="495.3" y1="241.3" x2="495.3" y2="218.44" width="0.1524" layer="91"/>
@@ -5286,9 +5287,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="TT14A" class="0">
 <segment>
-<wire x1="375.92" y1="276.86" x2="375.92" y2="299.72" width="0.1524" layer="91"/>
-<label x="375.92" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="HEADSTAGE" gate="G$1" pin="60"/>
+<wire x1="378.46" y1="276.86" x2="378.46" y2="299.72" width="0.1524" layer="91"/>
+<label x="378.46" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
+<pinref part="HEADSTAGE" gate="G$1" pin="61"/>
 </segment>
 <segment>
 <wire x1="492.76" y1="241.3" x2="492.76" y2="218.44" width="0.1524" layer="91"/>

@@ -1642,7 +1642,7 @@
 <attribute name="DESIGNER" value="JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="EIB-64-LARGE"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.0"/>
+<attribute name="REVISION" value="1.1"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -1684,10 +1684,11 @@
 <sheet>
 <plain>
 <frame x1="0" y1="0" x2="220.98" y2="160.02" columns="8" rows="5" layer="94"/>
+<text x="10.16" y="43.18" size="2.54" layer="97">Compatible with headstage-64 rev. 1.4</text>
 </plain>
 <instances>
 <instance part="ESTIM" gate="G$1" x="154.94" y="71.12" rot="MR270"/>
-<instance part="SUPPLY1" gate="PE" x="180.34" y="106.68" rot="MR0"/>
+<instance part="SUPPLY1" gate="PE" x="48.26" y="106.68"/>
 <instance part="U$2" gate="G$1" x="7.62" y="5.08"/>
 <instance part="GND0" gate="G$1" x="175.26" y="76.2" rot="MR90"/>
 <instance part="GND1" gate="G$1" x="180.34" y="76.2" rot="MR90"/>
@@ -1695,12 +1696,12 @@
 <instance part="CAT0" gate="G$1" x="71.12" y="71.12" rot="MR270"/>
 <instance part="CAT1" gate="G$1" x="68.58" y="71.12" rot="MR270"/>
 <instance part="AN" gate="G$1" x="68.58" y="132.08" rot="MR90"/>
-<instance part="REF" gate="G$1" x="152.4" y="132.08" rot="MR90"/>
-<instance part="SHLD_A" gate="G$1" x="154.94" y="132.08" rot="R90"/>
+<instance part="REF" gate="G$1" x="154.94" y="132.08" rot="MR90"/>
+<instance part="SHLD_A" gate="G$1" x="71.12" y="132.08" rot="MR90"/>
 <instance part="J1" gate="G$1" x="154.94" y="101.6" rot="MR0"/>
-<instance part="TET0" gate="G$1" x="104.14" y="132.08" rot="MR90"/>
-<instance part="TET1" gate="G$1" x="93.98" y="132.08" rot="MR90"/>
-<instance part="TET2" gate="G$1" x="83.82" y="132.08" rot="MR90"/>
+<instance part="TET0" gate="G$1" x="106.68" y="132.08" rot="MR90"/>
+<instance part="TET1" gate="G$1" x="96.52" y="132.08" rot="MR90"/>
+<instance part="TET2" gate="G$1" x="86.36" y="132.08" rot="MR90"/>
 <instance part="TET4" gate="G$1" x="76.2" y="71.12" rot="R270"/>
 <instance part="TET5" gate="G$1" x="86.36" y="71.12" rot="R270"/>
 <instance part="TET6" gate="G$1" x="96.52" y="71.12" rot="R270"/>
@@ -1709,11 +1710,11 @@
 <instance part="TET9" gate="G$1" x="129.54" y="71.12" rot="MR270"/>
 <instance part="TET10" gate="G$1" x="139.7" y="71.12" rot="MR270"/>
 <instance part="TET11" gate="G$1" x="149.86" y="71.12" rot="MR270"/>
-<instance part="TET13" gate="G$1" x="137.16" y="132.08" rot="R90"/>
-<instance part="TET14" gate="G$1" x="127" y="132.08" rot="R90"/>
-<instance part="TET15" gate="G$1" x="116.84" y="132.08" rot="R90"/>
-<instance part="TET16" gate="G$1" x="147.32" y="132.08" rot="R90"/>
-<instance part="TET17" gate="G$1" x="73.66" y="132.08" rot="MR90"/>
+<instance part="TET13" gate="G$1" x="139.7" y="132.08" rot="R90"/>
+<instance part="TET14" gate="G$1" x="129.54" y="132.08" rot="R90"/>
+<instance part="TET15" gate="G$1" x="119.38" y="132.08" rot="R90"/>
+<instance part="TET16" gate="G$1" x="149.86" y="132.08" rot="R90"/>
+<instance part="TET17" gate="G$1" x="76.2" y="132.08" rot="MR90"/>
 </instances>
 <busses>
 </busses>
@@ -1937,198 +1938,198 @@
 </net>
 <net name="N$31" class="0">
 <segment>
-<wire x1="73.66" y1="132.08" x2="73.66" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="38"/>
+<wire x1="76.2" y1="132.08" x2="76.2" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET17" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="39"/>
 </segment>
 </net>
 <net name="N$29" class="0">
 <segment>
-<wire x1="78.74" y1="132.08" x2="78.74" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="40"/>
+<wire x1="81.28" y1="132.08" x2="81.28" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET17" gate="G$1" pin="0"/>
+<pinref part="J1" gate="G$1" pin="41"/>
 </segment>
 </net>
 <net name="N$28" class="0">
 <segment>
-<wire x1="81.28" y1="132.08" x2="81.28" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="41"/>
+<wire x1="83.82" y1="132.08" x2="83.82" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET2" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="42"/>
 </segment>
 </net>
 <net name="N$27" class="0">
 <segment>
-<wire x1="83.82" y1="132.08" x2="83.82" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="42"/>
+<wire x1="86.36" y1="132.08" x2="86.36" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET2" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="43"/>
 </segment>
 </net>
 <net name="N$26" class="0">
 <segment>
-<wire x1="86.36" y1="132.08" x2="86.36" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="43"/>
+<wire x1="88.9" y1="132.08" x2="88.9" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET2" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="44"/>
 </segment>
 </net>
 <net name="N$25" class="0">
 <segment>
-<wire x1="88.9" y1="132.08" x2="88.9" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="44"/>
+<wire x1="91.44" y1="132.08" x2="91.44" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET2" gate="G$1" pin="0"/>
+<pinref part="J1" gate="G$1" pin="45"/>
 </segment>
 </net>
 <net name="N$24" class="0">
 <segment>
-<wire x1="91.44" y1="132.08" x2="91.44" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="45"/>
+<wire x1="93.98" y1="132.08" x2="93.98" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET1" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="46"/>
 </segment>
 </net>
 <net name="N$23" class="0">
 <segment>
-<wire x1="93.98" y1="132.08" x2="93.98" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="46"/>
+<wire x1="96.52" y1="132.08" x2="96.52" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET1" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="47"/>
 </segment>
 </net>
 <net name="N$22" class="0">
 <segment>
-<wire x1="96.52" y1="132.08" x2="96.52" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="47"/>
+<wire x1="99.06" y1="132.08" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET1" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="48"/>
 </segment>
 </net>
 <net name="N$21" class="0">
 <segment>
-<wire x1="99.06" y1="132.08" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="48"/>
+<wire x1="101.6" y1="132.08" x2="101.6" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET1" gate="G$1" pin="0"/>
+<pinref part="J1" gate="G$1" pin="49"/>
 </segment>
 </net>
 <net name="N$20" class="0">
 <segment>
-<wire x1="101.6" y1="132.08" x2="101.6" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="49"/>
+<wire x1="104.14" y1="132.08" x2="104.14" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET0" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="50"/>
 </segment>
 </net>
 <net name="N$19" class="0">
 <segment>
-<wire x1="104.14" y1="132.08" x2="104.14" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="50"/>
+<wire x1="106.68" y1="132.08" x2="106.68" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET0" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="51"/>
 </segment>
 </net>
 <net name="N$18" class="0">
 <segment>
-<wire x1="106.68" y1="132.08" x2="106.68" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="51"/>
+<wire x1="109.22" y1="132.08" x2="109.22" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET0" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="52"/>
 </segment>
 </net>
 <net name="N$17" class="0">
 <segment>
-<wire x1="109.22" y1="132.08" x2="109.22" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="52"/>
+<wire x1="111.76" y1="132.08" x2="111.76" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET0" gate="G$1" pin="0"/>
+<pinref part="J1" gate="G$1" pin="53"/>
 </segment>
 </net>
 <net name="N$16" class="0">
 <segment>
-<wire x1="111.76" y1="132.08" x2="111.76" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="53"/>
+<wire x1="114.3" y1="132.08" x2="114.3" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET15" gate="G$1" pin="0"/>
+<pinref part="J1" gate="G$1" pin="54"/>
 </segment>
 </net>
 <net name="N$15" class="0">
 <segment>
-<wire x1="114.3" y1="132.08" x2="114.3" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="54"/>
+<wire x1="116.84" y1="132.08" x2="116.84" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET15" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="55"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
-<wire x1="116.84" y1="132.08" x2="116.84" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="55"/>
+<wire x1="119.38" y1="132.08" x2="119.38" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET15" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="56"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
-<wire x1="119.38" y1="132.08" x2="119.38" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="56"/>
+<wire x1="121.92" y1="132.08" x2="121.92" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET15" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="57"/>
 </segment>
 </net>
 <net name="N$12" class="0">
 <segment>
-<wire x1="121.92" y1="132.08" x2="121.92" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="57"/>
+<wire x1="124.46" y1="132.08" x2="124.46" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET14" gate="G$1" pin="0"/>
+<pinref part="J1" gate="G$1" pin="58"/>
 </segment>
 </net>
 <net name="N$11" class="0">
 <segment>
-<wire x1="124.46" y1="132.08" x2="124.46" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="58"/>
+<wire x1="127" y1="132.08" x2="127" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET14" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="59"/>
 </segment>
 </net>
 <net name="N$10" class="0">
 <segment>
-<wire x1="127" y1="132.08" x2="127" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="59"/>
+<wire x1="129.54" y1="132.08" x2="129.54" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET14" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="60"/>
 </segment>
 </net>
 <net name="N$9" class="0">
 <segment>
-<wire x1="129.54" y1="132.08" x2="129.54" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="60"/>
+<wire x1="132.08" y1="132.08" x2="132.08" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET14" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="61"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
-<wire x1="132.08" y1="132.08" x2="132.08" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="61"/>
+<wire x1="134.62" y1="132.08" x2="134.62" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET13" gate="G$1" pin="0"/>
+<pinref part="J1" gate="G$1" pin="62"/>
 </segment>
 </net>
 <net name="N$7" class="0">
 <segment>
-<wire x1="134.62" y1="132.08" x2="134.62" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="62"/>
+<wire x1="137.16" y1="132.08" x2="137.16" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET13" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="63"/>
 </segment>
 </net>
 <net name="N$6" class="0">
 <segment>
-<wire x1="137.16" y1="132.08" x2="137.16" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="63"/>
+<wire x1="139.7" y1="132.08" x2="139.7" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET13" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="64"/>
 </segment>
 </net>
 <net name="N$5" class="0">
 <segment>
-<wire x1="139.7" y1="132.08" x2="139.7" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="64"/>
+<wire x1="142.24" y1="132.08" x2="142.24" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET13" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="65"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
-<wire x1="144.78" y1="132.08" x2="144.78" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="66"/>
+<wire x1="147.32" y1="132.08" x2="147.32" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET16" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="67"/>
 </segment>
 </net>
 <net name="N$1" class="0">
 <segment>
-<wire x1="149.86" y1="132.08" x2="149.86" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="68"/>
+<wire x1="152.4" y1="132.08" x2="152.4" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET16" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="69"/>
 </segment>
 </net>
 <net name="N$36" class="0">
@@ -2141,20 +2142,20 @@
 <net name="REF" class="0">
 <segment>
 <pinref part="REF" gate="G$1" pin="0"/>
-<wire x1="152.4" y1="109.22" x2="152.4" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="69"/>
+<wire x1="154.94" y1="109.22" x2="154.94" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="J1" gate="G$1" pin="70"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
 <pinref part="SUPPLY1" gate="PE" pin="GND"/>
-<wire x1="180.34" y1="116.84" x2="180.34" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="109.22" x2="154.94" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="116.84" x2="180.34" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="116.84" x2="48.26" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="116.84" x2="48.26" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="SHLD_A" gate="G$1" pin="0"/>
-<wire x1="154.94" y1="132.08" x2="154.94" y2="116.84" width="0.1524" layer="91"/>
-<junction x="154.94" y="116.84"/>
-<pinref part="J1" gate="G$1" pin="70"/>
+<wire x1="71.12" y1="132.08" x2="71.12" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="J1" gate="G$1" pin="37"/>
+<wire x1="71.12" y1="116.84" x2="71.12" y2="109.22" width="0.1524" layer="91"/>
+<junction x="71.12" y="116.84"/>
 </segment>
 <segment>
 <pinref part="GND0" gate="G$1" pin="0"/>
@@ -2197,30 +2198,30 @@
 </net>
 <net name="N$2" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="65"/>
-<wire x1="142.24" y1="109.22" x2="142.24" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="109.22" x2="144.78" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="TET16" gate="G$1" pin="0"/>
+<pinref part="J1" gate="G$1" pin="66"/>
 </segment>
 </net>
 <net name="N$4" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="67"/>
-<wire x1="147.32" y1="132.08" x2="147.32" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="132.08" x2="149.86" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET16" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="68"/>
 </segment>
 </net>
 <net name="N$30" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="39"/>
-<wire x1="76.2" y1="132.08" x2="76.2" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="132.08" x2="78.74" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET17" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="40"/>
 </segment>
 </net>
 <net name="N$32" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="37"/>
-<wire x1="71.12" y1="132.08" x2="71.12" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="132.08" x2="73.66" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="TET17" gate="G$1" pin="3"/>
+<pinref part="J1" gate="G$1" pin="38"/>
 </segment>
 </net>
 </nets>
