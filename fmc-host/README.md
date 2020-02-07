@@ -1,24 +1,24 @@
 # FMC Host Board
-This card serves as host interface for serialized headstages, as well as
-general purpose analog and digital IO. This board is a VITA-57.1 compliant
-module that uses high pin-count FMC connector. In combination with a base FPGA
-board (e.g. [Numato Lab
+This card serves as host interface for serialized headstages and miniscopes, as
+well as general purpose analog and digital IO. This board is a VITA-57.1
+compliant module that uses high pin-count FMC connector. In combination with a
+base FPGA board (e.g. [Numato Lab
 Nereid](https://numato.com/product/nereid-kintex-7-pci-express-fpga-development-board),
 it provides host PC communication for the following:
 
 - Two deserailizers for any multifunction headstage conforming to our
   serialization protocol
-- 12x 16-bit, +/-10V analog outputs or inputs. Analog inputs separated into 2
-  simultaneously sampled 6-channel banks. Analog outputs are always looped back
-  using the analog inputs.
+- 12x 16-bit, +/-10V analog outputs or inputs. Direction selected via analog
+  switch controllable over the FMC connector. Analog inputs are separated into
+  2 simultaneously sampled 6-channel banks. When analog outputs are used, they
+  are are always looped back using the analog inputs.
 - 3x high speed LVDS input pairs
 - 2x high speed LVDS outputs pairs
-- 2x high speed, arbitrary logic-level, clock inputs
-- 1x high speed clock output
+- 2x high speed, arbitrary logic-level, singled-ended lock inputs
+- 1x high speed single ended, 50 ohm clock output
 - 4x MLVDS input or output trigger lines
 
-Easy access to IO is provided by the [breakout
-board](../breakout/README.md).
+Easy access to IO is provided by the [breakout board](../breakout/README.md).
 
 ![pcie-host](./img/fmc-host.png)
 
@@ -43,6 +43,3 @@ In order to meet approximately correct trace impedances, the design assumes the 
 1. Inner Copper 0.0175 mm
 1. Prepreg (2313\*1) 0.1 mm
 1. Bottom Copper 0.0175 mm
-
-
-
