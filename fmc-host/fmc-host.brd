@@ -3785,16 +3785,16 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="-33.057" y="22.262" size="0.8" layer="26" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="R59" library="jonnew" package="RN2X8-1506" value="2.2k" x="-45.7" y="7.5" smashed="yes" rot="R90">
-<attribute name="NAME" x="-45.3" y="6.7" size="0.8" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="-46.75" y="4.35" size="0.8" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="R60" library="jonnew" package="RN2X8-1506" value="2.2k" x="-45.7" y="12.6" smashed="yes" rot="R90">
-<attribute name="NAME" x="-45.3" y="11.5" size="0.8" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="-46.75" y="14.9" size="0.8" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="R61" library="jonnew" package="RN2X8-1506" value="2.2k" x="-45.7" y="23.9" smashed="yes" rot="R90">
-<attribute name="NAME" x="-45.3" y="22.9" size="0.8" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="-46.6" y="26.15" size="0.8" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="R62" library="jonnew" package="RN2X8-1506" value="2.2k" x="-45.7" y="18.9" smashed="yes" rot="R90">
-<attribute name="NAME" x="-45.3" y="18" size="0.8" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="-46.75" y="15.9" size="0.8" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="U19" library="jonnew" package="PVSON-N8+4-3X3" value="TPS7A49" x="-11.2" y="27.6" smashed="yes" rot="R270">
 <attribute name="NAME" x="-8.941" y="28.759" size="0.8" layer="25" font="vector" ratio="20" rot="R270"/>
@@ -4026,7 +4026,7 @@ einem neuen Namen ab.</description>
 <element name="U22" library="jonnew" package="TSSOP8" value="24AA64ST" x="6" y="45.1" smashed="yes" rot="MR270">
 <attribute name="MF" value="" x="6" y="45.1" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="MPN" value="25AA640A-I/ST" x="6" y="45.1" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="7.025" y="44.825" size="0.8" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="NAME" x="7.025" y="42.525" size="0.8" layer="26" font="vector" ratio="20" rot="MR0"/>
 <attribute name="OC_FARNELL" value="1818513" x="6" y="45.1" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="OC_NEWARK" value="27M1300" x="6" y="45.1" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
@@ -4214,7 +4214,7 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="-57.938" y="17.457" size="0.8" layer="26" font="vector" ratio="20" rot="MR90"/>
 </element>
 <element name="U3" library="jonnew" package="TSSOP-16" value="FIN1032MTCX" x="-31.5" y="0.1" smashed="yes">
-<attribute name="NAME" x="-32.0682" y="-0.19" size="0.8" layer="25" font="vector" ratio="20"/>
+<attribute name="NAME" x="-35.46" y="-0.3182" size="0.8" layer="25" font="vector" ratio="20" rot="R90"/>
 </element>
 <element name="U2" library="jonnew" package="MSOP-8-PAD-3X3" value="SN65LVDS9638DGN" x="-29.6" y="5.2" smashed="yes" rot="R180">
 <attribute name="NAME" x="-34.1" y="4.4" size="0.8" layer="25" font="vector" ratio="20"/>
