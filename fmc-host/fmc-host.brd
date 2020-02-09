@@ -3924,17 +3924,14 @@ einem neuen Namen ab.</description>
 </element>
 <element name="D1" library="jonnew" package="LED-0402" value="HSMG-C280" x="-44.7" y="24.2" smashed="yes" rot="MR180">
 <attribute name="NAME" x="-44.13" y="21.77" size="0.8" layer="26" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="-42.16" y="25.47" size="1.016" layer="28" font="vector" ratio="18" rot="MR270"/>
 </element>
 <element name="R1" library="jonnew" package="0402" value="2k" x="-44.7" y="26.5" smashed="yes" rot="MR90"/>
 <element name="D2" library="jonnew" package="LED-0402" value="HSMG-C280" x="-42.9" y="24.2" smashed="yes" rot="MR180">
 <attribute name="NAME" x="-42.23" y="21.77" size="0.8" layer="26" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="-40.36" y="25.47" size="1.016" layer="28" font="vector" ratio="18" rot="MR270"/>
 </element>
 <element name="R2" library="jonnew" package="0402" value="4.7k" x="-42.9" y="26.5" smashed="yes" rot="MR90"/>
 <element name="D3" library="jonnew" package="LED-0402" value="HSMG-C280" x="-40.8" y="24.1" smashed="yes" rot="MR0">
 <attribute name="NAME" x="-40.23" y="21.97" size="0.8" layer="26" font="vector" ratio="20" rot="MR0"/>
-<attribute name="VALUE" x="-43.34" y="22.83" size="1.016" layer="28" font="vector" ratio="18" rot="MR90"/>
 </element>
 <element name="R3" library="jonnew" package="0402" value="4.7k" x="-40.8" y="26.8" smashed="yes" rot="MR90">
 <attribute name="NAME" x="-39.938" y="26.057" size="0.8" layer="26" font="vector" ratio="20" rot="MR90"/>
