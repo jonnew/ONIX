@@ -1443,9 +1443,8 @@ grid 2.54 mm</description>
 <wire x1="-0.4572" y1="0.254" x2="0.4572" y2="0.254" width="0.1016" layer="51"/>
 <wire x1="0.4572" y1="-0.254" x2="-0.4572" y2="-0.254" width="0.1016" layer="51"/>
 <wire x1="-0.6668" y1="0.4588" x2="0.6668" y2="0.4588" width="0.127" layer="21"/>
-<wire x1="0.6668" y1="0.4588" x2="0.7668" y2="0.4588" width="0.127" layer="21"/>
-<wire x1="0.7668" y1="0.4588" x2="0.7668" y2="-0.4588" width="0.127" layer="21"/>
-<wire x1="0.7668" y1="-0.4588" x2="0.6668" y2="-0.4588" width="0.127" layer="21"/>
+<wire x1="0.6668" y1="0.4588" x2="0.9168" y2="0.4588" width="0.127" layer="21"/>
+<wire x1="0.9168" y1="-0.4588" x2="0.6668" y2="-0.4588" width="0.127" layer="21"/>
 <wire x1="0.6668" y1="-0.4588" x2="-0.6668" y2="-0.4588" width="0.127" layer="21"/>
 <wire x1="-0.6668" y1="-0.4588" x2="-0.6668" y2="0.4588" width="0.127" layer="21"/>
 <smd name="A" x="-0.325" y="0" dx="0.35" dy="0.6" layer="1" cream="no"/>
@@ -1454,9 +1453,10 @@ grid 2.54 mm</description>
 <text x="-1.27" y="-1.778" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <rectangle x1="-0.508" y1="-0.254" x2="-0.254" y2="0.254" layer="51"/>
 <rectangle x1="0.254" y1="-0.254" x2="0.508" y2="0.254" layer="51"/>
-<wire x1="0.6668" y1="0.4588" x2="0.6668" y2="-0.4588" width="0.127" layer="21"/>
 <rectangle x1="-0.45" y1="-0.24" x2="-0.2" y2="0.25" layer="31"/>
 <rectangle x1="0.2" y1="-0.24" x2="0.45" y2="0.25" layer="31"/>
+<wire x1="0.9168" y1="0.4588" x2="0.9168" y2="-0.4588" width="0.127" layer="21"/>
+<rectangle x1="0.61" y1="-0.44" x2="0.92" y2="0.44" layer="21"/>
 </package>
 <package name="FMC_SINGLE_WIDTH_MODULE">
 <wire x1="10.9" y1="-3" x2="10.9" y2="66" width="0.127" layer="20"/>
@@ -1492,10 +1492,10 @@ ALLOWED HERE
 <circle x="-1.05" y="58.7" radius="0.282840625" width="0.127" layer="51"/>
 <text x="2" y="3" size="1.016" layer="51" font="vector" ratio="18" align="center">B ALIGN</text>
 <text x="-1" y="57" size="1.016" layer="51" font="vector" ratio="18" align="center">T ALIGN</text>
-<rectangle x1="-65.6" y1="0" x2="-54.6" y2="4.5" layer="1"/>
-<rectangle x1="-65.6" y1="0" x2="-54.6" y2="4.5" layer="29"/>
-<rectangle x1="-65.6" y1="57.05" x2="-54.6" y2="61.3" layer="29"/>
-<rectangle x1="-65.6" y1="57.05" x2="-54.55" y2="61.3" layer="1"/>
+<rectangle x1="-65.35" y1="57.05" x2="-54.55" y2="61.05" layer="1"/>
+<rectangle x1="-65.35" y1="0.25" x2="-54.55" y2="4.5" layer="29"/>
+<rectangle x1="-65.35" y1="0.25" x2="-54.55" y2="4.5" layer="1"/>
+<rectangle x1="-65.35" y1="57.05" x2="-54.55" y2="61.05" layer="29"/>
 </package>
 <package name="X_FL_R_SMT_1(02)">
 <circle x="-0.6873" y="-1.2635" radius="0.25" width="0" layer="21"/>
@@ -4084,45 +4084,6 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <text x="-4" y="6" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-4" y="4.7" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 </package>
-<package name="FMC_SINGLE_WIDTH_MODULE_EXTENDED">
-<wire x1="18.4" y1="-3" x2="18.4" y2="66" width="0.127" layer="20"/>
-<wire x1="18.4" y1="66" x2="-43.3" y2="66" width="0.127" layer="20"/>
-<wire x1="-43.3" y1="66" x2="-43.3" y2="64.4" width="0.127" layer="20"/>
-<wire x1="-43.3" y1="64.4" x2="-44.3" y2="63.4" width="0.127" layer="20" curve="-90"/>
-<wire x1="-44.3" y1="63.4" x2="-54.1" y2="63.4" width="0.127" layer="20"/>
-<wire x1="-54.1" y1="63.4" x2="-54.1" y2="62.3" width="0.127" layer="20"/>
-<wire x1="-54.1" y1="62.3" x2="-55.1" y2="61.3" width="0.127" layer="20" curve="-90"/>
-<wire x1="-55.1" y1="61.3" x2="-65.6" y2="61.3" width="0.127" layer="20"/>
-<wire x1="-65.6" y1="61.3" x2="-65.6" y2="0" width="0.127" layer="20"/>
-<wire x1="-65.6" y1="0" x2="-39.5" y2="0" width="0.127" layer="20"/>
-<wire x1="-39.5" y1="0" x2="-38.5" y2="-1" width="0.127" layer="20" curve="-90"/>
-<wire x1="-38.5" y1="-1" x2="-38.5" y2="-3" width="0.127" layer="20"/>
-<wire x1="-38.5" y1="-3" x2="18.4" y2="-3" width="0.127" layer="20"/>
-<pad name="BEZ1" x="-54.6" y="59.05" drill="2.7" diameter="4" rot="R180"/>
-<pad name="BEZ2" x="-54.6" y="2.5" drill="2.7" diameter="4" rot="R180"/>
-<circle x="0" y="0" radius="0.282840625" width="0.127" layer="51"/>
-<text x="0" y="-2.27" size="1.016" layer="51" font="vector" ratio="18" align="center">B STANDOFF 
-(ORIGIN)</text>
-<text x="-59" y="22" size="1.27" layer="51" rot="R90">FRONT PANEL IO
-ALLOWED HERE
-9.5mm MAX HEIGHT</text>
-<wire x1="-65.6" y1="55.8" x2="-34.6" y2="55.8" width="0.127" layer="51"/>
-<wire x1="-34.6" y1="55.8" x2="-34.6" y2="5.8" width="0.127" layer="51"/>
-<wire x1="-34.6" y1="5.8" x2="-65.6" y2="5.8" width="0.127" layer="51"/>
-<wire x1="-65.6" y1="5.8" x2="-65.6" y2="55.8" width="0.127" layer="51"/>
-<circle x="7.7" y="6.7" radius="0.282840625" width="0.127" layer="51"/>
-<text x="7.7" y="5.73" size="1.016" layer="51" font="vector" ratio="18" align="center">PIN1</text>
-<text x="0" y="62" size="1.016" layer="51" font="vector" ratio="18" align="center">T STANDOFF</text>
-<circle x="0" y="63" radius="0.282840625" width="0.127" layer="51"/>
-<circle x="2" y="4.3" radius="0.282840625" width="0.127" layer="51"/>
-<circle x="-1.05" y="58.7" radius="0.282840625" width="0.127" layer="51"/>
-<text x="2" y="3" size="1.016" layer="51" font="vector" ratio="18" align="center">B ALIGN</text>
-<text x="-1" y="57" size="1.016" layer="51" font="vector" ratio="18" align="center">T ALIGN</text>
-<rectangle x1="-65.6" y1="0" x2="-54.6" y2="4.5" layer="1"/>
-<rectangle x1="-65.6" y1="0" x2="-54.6" y2="4.5" layer="29"/>
-<rectangle x1="-65.6" y1="57.05" x2="-54.6" y2="61.3" layer="29"/>
-<rectangle x1="-65.6" y1="57.05" x2="-54.55" y2="61.3" layer="1"/>
-</package>
 <package name="2X05">
 <wire x1="-6.35" y1="-1.905" x2="-5.715" y2="-2.54" width="0.1524" layer="21"/>
 <wire x1="-4.445" y1="-2.54" x2="-3.81" y2="-1.905" width="0.1524" layer="21"/>
@@ -4713,7 +4674,7 @@ ALLOWED HERE
 <smd name="6" x="1.4" y="-0.25" dx="0.7" dy="0.25" layer="1" rot="R180"/>
 <smd name="7" x="1.4" y="0.25" dx="0.7" dy="0.25" layer="1" rot="R180"/>
 <smd name="8" x="1.4" y="0.75" dx="0.7" dy="0.25" layer="1" rot="R180"/>
-<smd name="PAD" x="0" y="0" dx="1.65" dy="2.38" layer="1"/>
+<smd name="PAD" x="0" y="0" dx="1.65" dy="2.38" layer="1" cream="no"/>
 <text x="-2.159" y="2.159" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.286" y="-2.921" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <wire x1="-1.5" y1="1.2" x2="-1.5" y2="1.5" width="0.1524" layer="21"/>
@@ -4723,6 +4684,7 @@ ALLOWED HERE
 <wire x1="1.5" y1="-1.5" x2="-1.5" y2="-1.5" width="0.1524" layer="21"/>
 <wire x1="-1.5" y1="-1.5" x2="-1.5" y2="-1.2" width="0.1524" layer="21"/>
 <circle x="-1.5" y="1.5" radius="0.282840625" width="0" layer="21"/>
+<rectangle x1="-0.7" y1="-1" x2="0.7" y2="1" layer="31"/>
 </package>
 <package name="TSSOP-16">
 <smd name="16" x="2.8" y="2.275" dx="0.3" dy="1.6" layer="1" rot="R270"/>
@@ -5868,7 +5830,7 @@ package type P</description>
 </package>
 <package name="WQFN48-7X7-PAD">
 <smd name="1" x="2.75" y="3.4" dx="0.24" dy="0.6" layer="1"/>
-<smd name="PAD" x="0" y="0" dx="4.1" dy="4.1" layer="1" rot="R180"/>
+<smd name="PAD" x="0" y="0" dx="4.1" dy="4.1" layer="1" rot="R180" cream="no"/>
 <smd name="2" x="2.25" y="3.4" dx="0.24" dy="0.6" layer="1"/>
 <smd name="3" x="1.75" y="3.4" dx="0.24" dy="0.6" layer="1"/>
 <smd name="4" x="1.25" y="3.4" dx="0.24" dy="0.6" layer="1"/>
@@ -5925,6 +5887,15 @@ package type P</description>
 <text x="-3.656" y="4.204" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-3.729" y="-4.996" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
 <circle x="3.45" y="3.45" radius="0.35" width="0" layer="21"/>
+<rectangle x1="-0.585" y1="-0.585" x2="0.585" y2="0.585" layer="31"/>
+<rectangle x1="-0.585" y1="0.785" x2="0.585" y2="1.955" layer="31"/>
+<rectangle x1="-1.955" y1="0.785" x2="-0.785" y2="1.955" layer="31"/>
+<rectangle x1="-1.955" y1="-0.585" x2="-0.785" y2="0.585" layer="31"/>
+<rectangle x1="-1.955" y1="-1.955" x2="-0.785" y2="-0.785" layer="31"/>
+<rectangle x1="-0.585" y1="-1.955" x2="0.585" y2="-0.785" layer="31"/>
+<rectangle x1="0.785" y1="-1.955" x2="1.955" y2="-0.785" layer="31"/>
+<rectangle x1="0.785" y1="-0.585" x2="1.955" y2="0.585" layer="31"/>
+<rectangle x1="0.785" y1="0.785" x2="1.955" y2="1.955" layer="31"/>
 </package>
 <package name="SJ_2_0201_T">
 <smd name="1" x="-0.5588" y="0" dx="0.4318" dy="0.4318" layer="1"/>
@@ -5948,6 +5919,45 @@ package type P</description>
 </polygon>
 <wire x1="-0.6604" y1="0" x2="-1.0414" y2="0" width="0.127" layer="51"/>
 <wire x1="0.635" y1="0" x2="1.0414" y2="0" width="0.127" layer="51"/>
+</package>
+<package name="FMC_SINGLE_WIDTH_MODULE_EXTENDED">
+<wire x1="18.4" y1="-3" x2="18.4" y2="66" width="0.127" layer="20"/>
+<wire x1="18.4" y1="66" x2="-43.3" y2="66" width="0.127" layer="20"/>
+<wire x1="-43.3" y1="66" x2="-43.3" y2="64.4" width="0.127" layer="20"/>
+<wire x1="-43.3" y1="64.4" x2="-44.3" y2="63.4" width="0.127" layer="20" curve="-90"/>
+<wire x1="-44.3" y1="63.4" x2="-54.1" y2="63.4" width="0.127" layer="20"/>
+<wire x1="-54.1" y1="63.4" x2="-54.1" y2="62.3" width="0.127" layer="20"/>
+<wire x1="-54.1" y1="62.3" x2="-55.1" y2="61.3" width="0.127" layer="20" curve="-90"/>
+<wire x1="-55.1" y1="61.3" x2="-65.6" y2="61.3" width="0.127" layer="20"/>
+<wire x1="-65.6" y1="61.3" x2="-65.6" y2="0" width="0.127" layer="20"/>
+<wire x1="-65.6" y1="0" x2="-39.5" y2="0" width="0.127" layer="20"/>
+<wire x1="-39.5" y1="0" x2="-38.5" y2="-1" width="0.127" layer="20" curve="-90"/>
+<wire x1="-38.5" y1="-1" x2="-38.5" y2="-3" width="0.127" layer="20"/>
+<wire x1="-38.5" y1="-3" x2="18.4" y2="-3" width="0.127" layer="20"/>
+<pad name="BEZ1" x="-54.6" y="59.05" drill="2.7" diameter="4" rot="R180"/>
+<pad name="BEZ2" x="-54.6" y="2.5" drill="2.7" diameter="4" rot="R180"/>
+<circle x="0" y="0" radius="0.282840625" width="0.127" layer="51"/>
+<text x="0" y="-2.27" size="1.016" layer="51" font="vector" ratio="18" align="center">B STANDOFF 
+(ORIGIN)</text>
+<text x="-59" y="22" size="1.27" layer="51" rot="R90">FRONT PANEL IO
+ALLOWED HERE
+9.5mm MAX HEIGHT</text>
+<wire x1="-65.6" y1="55.8" x2="-34.6" y2="55.8" width="0.127" layer="51"/>
+<wire x1="-34.6" y1="55.8" x2="-34.6" y2="5.8" width="0.127" layer="51"/>
+<wire x1="-34.6" y1="5.8" x2="-65.6" y2="5.8" width="0.127" layer="51"/>
+<wire x1="-65.6" y1="5.8" x2="-65.6" y2="55.8" width="0.127" layer="51"/>
+<circle x="7.7" y="6.7" radius="0.282840625" width="0.127" layer="51"/>
+<text x="7.7" y="5.73" size="1.016" layer="51" font="vector" ratio="18" align="center">PIN1</text>
+<text x="0" y="62" size="1.016" layer="51" font="vector" ratio="18" align="center">T STANDOFF</text>
+<circle x="0" y="63" radius="0.282840625" width="0.127" layer="51"/>
+<circle x="2" y="4.3" radius="0.282840625" width="0.127" layer="51"/>
+<circle x="-1.05" y="58.7" radius="0.282840625" width="0.127" layer="51"/>
+<text x="2" y="3" size="1.016" layer="51" font="vector" ratio="18" align="center">B ALIGN</text>
+<text x="-1" y="57" size="1.016" layer="51" font="vector" ratio="18" align="center">T ALIGN</text>
+<rectangle x1="-65.35" y1="57.05" x2="-54.55" y2="61.05" layer="1"/>
+<rectangle x1="-65.35" y1="0.25" x2="-54.55" y2="4.5" layer="29"/>
+<rectangle x1="-65.35" y1="0.25" x2="-54.55" y2="4.5" layer="1"/>
+<rectangle x1="-65.35" y1="57.05" x2="-54.55" y2="61.05" layer="29"/>
 </package>
 </packages>
 <symbols>
@@ -11893,7 +11903,7 @@ I2C</description>
 <part name="C89" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="R63" library="jonnew" deviceset="R" device="_0402" value="2k"/>
 <part name="R64" library="jonnew" deviceset="R" device="_0402" value="2k"/>
-<part name="J2" library="jonnew" deviceset="COAX" device="_MMCX-THRU" value="SMA002"/>
+<part name="J1" library="jonnew" deviceset="COAX" device="_MMCX-THRU" value="SMA002"/>
 <part name="C87" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="C49" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="C66" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
@@ -12140,11 +12150,11 @@ I2C</description>
 <part name="R51" library="jonnew" deviceset="R" device="_0402" value="1k"/>
 <part name="SUPPLY98" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY106" library="jonnew" deviceset="GND" device=""/>
-<part name="D1" library="jonnew" deviceset="LED" device="_0402"/>
+<part name="D1" library="jonnew" deviceset="LED" device="_0402" value="HSMG-C280"/>
 <part name="R1" library="jonnew" deviceset="R" device="_0402" value="2k"/>
-<part name="D2" library="jonnew" deviceset="LED" device="_0402"/>
+<part name="D2" library="jonnew" deviceset="LED" device="_0402" value="HSMG-C280"/>
 <part name="R2" library="jonnew" deviceset="R" device="_0402" value="4.7k"/>
-<part name="D3" library="jonnew" deviceset="LED" device="_0402"/>
+<part name="D3" library="jonnew" deviceset="LED" device="_0402" value="HSMG-C280"/>
 <part name="R3" library="jonnew" deviceset="R" device="_0402" value="4.7k"/>
 <part name="TP1" library="jonnew" deviceset="TP" device="B1,27"/>
 <part name="TP2" library="jonnew" deviceset="TP" device="B1,27"/>
@@ -12166,7 +12176,7 @@ I2C</description>
 <part name="SUPPLY70" library="jonnew" deviceset="GND" device=""/>
 <part name="TP6" library="jonnew" deviceset="TP" device="B1,27"/>
 <part name="TP7" library="jonnew" deviceset="TP" device="B1,27"/>
-<part name="J8" library="jonnew" deviceset="PINHD-2X8" device="_SMD"/>
+<part name="J8" library="jonnew" deviceset="PINHD-2X8" device="_SMD" value="95278-101A16LF"/>
 <part name="SUPPLY163" library="jonnew" deviceset="GND" device=""/>
 <part name="R65" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="C81" library="jonnew" deviceset="C" device="_1206" value="10uF"/>
@@ -12223,7 +12233,7 @@ I2C</description>
 <part name="P4" library="jonnew" deviceset="+1V8" device=""/>
 <part name="SUPPLY36" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY85" library="jonnew" deviceset="GND" device=""/>
-<part name="J1" library="jonnew" deviceset="COAX" device="_MMCX-THRU" value="SMA002"/>
+<part name="J2" library="jonnew" deviceset="COAX" device="_MMCX-THRU" value="SMA002"/>
 <part name="C62" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="C69" library="jonnew" deviceset="C" device="_0805" value="1uF"/>
 <part name="C58" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
@@ -12281,7 +12291,7 @@ I2C</description>
 <part name="SUPPLY52" library="jonnew" deviceset="GND" device=""/>
 <part name="R26" library="jonnew" deviceset="R" device="_0402" value="60 1%"/>
 <part name="P14" library="jonnew" deviceset="+3V3" device=""/>
-<part name="J6" library="jonnew" deviceset="PINHD-2X5" device="_ESHF-SM"/>
+<part name="J6" library="jonnew" deviceset="PINHD-2X5" device="_ESHF-SM" value="ESHF-105-01-L-D-SM-K-TR"/>
 <part name="U12" library="jonnew" deviceset="DS91M040" device="_WQFN32" value="DS91M040"/>
 <part name="P24" library="jonnew" deviceset="+3V3" device=""/>
 <part name="SUPPLY128" library="jonnew" deviceset="GND" device=""/>
@@ -12751,7 +12761,7 @@ AIO_0     0A     11</text>
 <instance part="C89" gate="C" x="406.4" y="779.78" rot="MR180"/>
 <instance part="R63" gate="R" x="421.64" y="779.78" rot="R90"/>
 <instance part="R64" gate="R" x="429.26" y="779.78" rot="R90"/>
-<instance part="J2" gate="G$1" x="45.72" y="78.74"/>
+<instance part="J1" gate="G$1" x="45.72" y="78.74"/>
 <instance part="C87" gate="C" x="403.86" y="259.08" rot="R180"/>
 <instance part="C49" gate="C" x="246.38" y="248.92" rot="R180"/>
 <instance part="C66" gate="C" x="340.36" y="259.08" rot="MR180"/>
@@ -13093,7 +13103,7 @@ AIO_0     0A     11</text>
 <instance part="P4" gate="G$1" x="160.02" y="170.18" rot="MR0"/>
 <instance part="SUPPLY36" gate="PE" x="160.02" y="124.46" rot="MR0"/>
 <instance part="SUPPLY85" gate="PE" x="287.02" y="71.12"/>
-<instance part="J1" gate="G$1" x="45.72" y="312.42"/>
+<instance part="J2" gate="G$1" x="45.72" y="312.42"/>
 <instance part="C62" gate="C" x="330.2" y="365.76" rot="R180"/>
 <instance part="C69" gate="C" x="340.36" y="365.76" rot="R180"/>
 <instance part="C58" gate="C" x="320.04" y="365.76" rot="R180"/>
@@ -13487,7 +13497,7 @@ AIO_0     0A     11</text>
 <segment>
 <wire x1="48.26" y1="76.2" x2="58.42" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="76.2" x2="58.42" y2="60.96" width="0.1524" layer="91"/>
-<pinref part="J2" gate="G$1" pin="2"/>
+<pinref part="J1" gate="G$1" pin="2"/>
 <pinref part="SUPPLY2" gate="PE" pin="GND"/>
 </segment>
 <segment>
@@ -14349,7 +14359,7 @@ AIO_0     0A     11</text>
 <segment>
 <wire x1="48.26" y1="309.88" x2="58.42" y2="309.88" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="309.88" x2="58.42" y2="294.64" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="2"/>
+<pinref part="J2" gate="G$1" pin="2"/>
 <pinref part="SUPPLY1" gate="PE" pin="GND"/>
 </segment>
 <segment>
@@ -17806,7 +17816,7 @@ AIO_0     0A     11</text>
 <pinref part="C47" gate="C" pin="2"/>
 <label x="63.5" y="96.52" size="1.27" layer="95" rot="MR270"/>
 <wire x1="233.68" y1="203.2" x2="60.96" y2="203.2" width="0.1524" layer="91"/>
-<pinref part="J2" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="78.74" x2="48.26" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="203.2" x2="60.96" y2="78.74" width="0.1524" layer="91"/>
 <junction x="60.96" y="78.74"/>
@@ -18818,7 +18828,7 @@ AIO_0     0A     11</text>
 <pinref part="C46" gate="C" pin="2"/>
 <label x="63.5" y="332.74" size="1.27" layer="95" rot="MR270"/>
 <wire x1="233.68" y1="436.88" x2="60.96" y2="436.88" width="0.1524" layer="91"/>
-<pinref part="J1" gate="G$1" pin="1"/>
+<pinref part="J2" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="312.42" x2="48.26" y2="312.42" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="436.88" x2="60.96" y2="312.42" width="0.1524" layer="91"/>
 <junction x="60.96" y="312.42"/>
@@ -19989,96 +19999,39 @@ AIO_0     0A     11</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="101,1,683.26,73.66,J9,BEZ1,,,,"/>
-<approved hash="101,1,683.26,83.82,J9,BEZ2,,,,"/>
-<approved hash="104,1,190.5,789.94,U5G$2,V+,+3V3,,,"/>
-<approved hash="104,1,190.5,774.7,U5G$2,V-,GND,,,"/>
-<approved hash="104,1,190.5,701.04,U6G$2,V+,+3V3,,,"/>
-<approved hash="104,1,190.5,685.8,U6G$2,V-,GND,,,"/>
-<approved hash="104,1,393.7,744.22,U14,VDD,+3V3,,,"/>
-<approved hash="104,1,393.7,723.9,U14,AVSS,GND,,,"/>
-<approved hash="104,1,515.62,642.62,U18,VIN,+12V,,,"/>
-<approved hash="104,1,474.98,642.62,U18,VOUT1,VLINK_B,,,"/>
-<approved hash="104,1,474.98,635,U18,VOUT2,VLINK_A,,,"/>
-<approved hash="104,1,152.4,614.68,U1,VCC,+3V3,,,"/>
-<approved hash="104,1,810.26,1219.2,U23,VIN1,+3V3,,,"/>
-<approved hash="104,1,769.62,1219.2,U23,VOUT1P,+15V,,,"/>
-<approved hash="104,1,769.62,1198.88,U23,VOUT1N,GND,,,"/>
-<approved hash="104,1,769.62,1178.56,U23,VOUT2P,GND,,,"/>
-<approved hash="104,1,769.62,1158.24,U23,VOUT2N,-15V,,,"/>
-<approved hash="104,1,810.26,1178.56,U23,VIN2,+3V3,,,"/>
-<approved hash="104,1,665.48,1280.16,U19,IN,N$15,,,"/>
-<approved hash="104,1,665.48,1219.2,U20,IN,N$42,,,"/>
-<approved hash="104,1,665.48,1158.24,U21,IN,N$58,,,"/>
-<approved hash="104,1,383.54,1280.16,U13,AVCC,+5V_AN,,,"/>
-<approved hash="104,1,383.54,1275.08,U13,AVDD,+13V_AN,,,"/>
-<approved hash="104,1,383.54,1270,U13,AVSS,-13V_AN,,,"/>
-<approved hash="104,1,383.54,1259.84,U13,VLOGIC,+3V3,,,"/>
-<approved hash="104,1,337.82,1280.16,U13,DGND,GND,,,"/>
-<approved hash="104,1,398.78,1010.92,U15,GND,AGND,,,"/>
-<approved hash="104,1,510.54,551.18,U17,VLOGIC,+3V3,,,"/>
-<approved hash="104,1,510.54,556.26,U17,VDD,+3V3,,,"/>
-<approved hash="104,1,510.54,515.62,U17,VSS,GND,,,"/>
-<approved hash="104,1,723.9,137.16,U22,VCC,VAUX,,,"/>
-<approved hash="104,1,345.44,637.54,U12,VDD,+3V3,,,"/>
-<approved hash="202,1,345.44,629.92,U12,FSEN1,,,,"/>
-<approved hash="202,1,345.44,627.38,U12,FSEN2,,,,"/>
-<approved hash="104,1,198.12,886.46,U4,VCC,+3V3,,,"/>
-<approved hash="104,1,198.12,924.56,U3,VCC,+3V3,,,"/>
-<approved hash="202,1,172.72,922.02,U3,D+,,,,"/>
-<approved hash="202,1,172.72,911.86,U3,D-,,,,"/>
-<approved hash="104,1,198.12,990.6,U2,VCC,+3V3,,,"/>
-<approved hash="104,1,193.04,1216.66,U7,GND,AGND,,,"/>
-<approved hash="104,1,193.04,1226.82,U7,V+,+13V_AN,,,"/>
-<approved hash="104,1,193.04,1221.74,U7,V-,-13V_AN,,,"/>
-<approved hash="104,1,193.04,1132.84,U8,GND,AGND,,,"/>
-<approved hash="104,1,193.04,1143,U8,V+,+13V_AN,,,"/>
-<approved hash="104,1,193.04,1137.92,U8,V-,-13V_AN,,,"/>
-<approved hash="104,1,193.04,1049.02,U9,GND,AGND,,,"/>
-<approved hash="104,1,193.04,1059.18,U9,V+,+13V_AN,,,"/>
-<approved hash="104,1,193.04,1054.1,U9,V-,-13V_AN,,,"/>
-<approved hash="104,1,261.62,195.58,U11,VDD11_D,N$30,,,"/>
-<approved hash="104,1,287.02,195.58,U11,VDD18_P1,VDD_PX_A,,,"/>
-<approved hash="104,1,281.94,195.58,U11,VDD18,+1V8,,,"/>
-<approved hash="104,1,276.86,195.58,U11,VDD18_P0,VDD_PX_A,,,"/>
-<approved hash="104,1,271.78,195.58,U11,VDD18_FPD1,VDD_FPDX_A,,,"/>
-<approved hash="104,1,266.7,195.58,U11,VDD18_FPD0,VDD_FPDX_A,,,"/>
-<approved hash="202,1,248.92,154.94,U11,RIN1-,,,,"/>
-<approved hash="202,1,248.92,160.02,U11,RIN1+,,,,"/>
-<approved hash="104,1,292.1,195.58,U11,VDD11_FPD,N$45,,,"/>
-<approved hash="104,1,261.62,429.26,U10,VDD11_D,N$48,,,"/>
-<approved hash="104,1,287.02,429.26,U10,VDD18_P1,VDD_PX_B,,,"/>
-<approved hash="104,1,281.94,429.26,U10,VDD18,+1V8,,,"/>
-<approved hash="104,1,276.86,429.26,U10,VDD18_P0,VDD_PX_B,,,"/>
-<approved hash="104,1,271.78,429.26,U10,VDD18_FPD1,VDD_FPDX_B,,,"/>
-<approved hash="104,1,266.7,429.26,U10,VDD18_FPD0,VDD_FPDX_B,,,"/>
-<approved hash="202,1,248.92,388.62,U10,RIN1-,,,,"/>
-<approved hash="202,1,248.92,393.7,U10,RIN1+,,,,"/>
-<approved hash="104,1,292.1,429.26,U10,VDD11_FPD,N$50,,,"/>
-<approved hash="206,1,127,607.06,$N2,,,,,"/>
-<approved hash="206,1,127,596.9,$N2,,,,,"/>
-<approved hash="113,1,61.2817,1210.31,D1,,,,,"/>
-<approved hash="113,1,76.5217,1210.31,D2,,,,,"/>
-<approved hash="113,1,76.5217,1184.91,D3,,,,,"/>
-<approved hash="113,1,48.26,1234.28,TP1,,,,,"/>
-<approved hash="113,1,88.9,1234.28,TP2,,,,,"/>
-<approved hash="113,1,88.9,1198.72,TP3,,,,,"/>
-<approved hash="113,1,88.9,1165.7,TP4,,,,,"/>
-<approved hash="113,1,287.02,746.596,TP5,,,,,"/>
-<approved hash="113,1,716.28,78.5764,TP9,,,,,"/>
-<approved hash="113,1,726.44,79.2816,TP10,,,,,"/>
-<approved hash="113,1,754.38,68.0384,TP11,,,,,"/>
-<approved hash="113,1,764.54,68.0384,TP12,,,,,"/>
-<approved hash="113,1,220.98,766.916,TP8,,,,,"/>
-<approved hash="113,1,220.98,698.336,TP6,,,,,"/>
-<approved hash="113,1,220.98,787.236,TP7,,,,,"/>
-<approved hash="113,1,396.782,1242.06,TP15,,,,,"/>
-<approved hash="113,1,53.34,526.506,J6,,,,,"/>
-<approved hash="113,1,119.02,894.08,SJ1,,,,,"/>
-<approved hash="113,1,134.26,894.08,SJ2,,,,,"/>
-<approved hash="113,1,774.7,68.0384,TP16,,,,,"/>
-<approved hash="113,1,736.6,79.2816,TP17,,,,,"/>
-<approved hash="113,1,746.76,79.2816,TP18,,,,,"/>
+<approved hash="101,1,683.26,101.6,X4,BEZ1,,,,"/>
+<approved hash="101,1,683.26,111.76,X4,BEZ2,,,,"/>
+<approved hash="104,1,152.4,642.62,U1,VCC,+3V3,,,"/>
+<approved hash="202,1,345.44,657.86,U12,FSEN1,,,,"/>
+<approved hash="202,1,345.44,655.32,U12,FSEN2,,,,"/>
+<approved hash="202,1,172.72,949.96,U3,D+,,,,"/>
+<approved hash="202,1,172.72,939.8,U3,D-,,,,"/>
+<approved hash="202,1,248.92,182.88,U11,RIN1-,,,,"/>
+<approved hash="202,1,248.92,187.96,U11,RIN1+,,,,"/>
+<approved hash="202,1,248.92,416.56,U10,RIN1-,,,,"/>
+<approved hash="202,1,248.92,421.64,U10,RIN1+,,,,"/>
+<approved hash="206,1,127,635,$N2,,,,,"/>
+<approved hash="206,1,127,624.84,$N2,,,,,"/>
+<approved hash="113,1,48.26,1262.22,TP1,,,,,"/>
+<approved hash="113,1,88.9,1262.22,TP2,,,,,"/>
+<approved hash="113,1,88.9,1226.66,TP3,,,,,"/>
+<approved hash="113,1,88.9,1193.64,TP4,,,,,"/>
+<approved hash="113,1,429.26,666.022,TP13,,,,,"/>
+<approved hash="113,1,287.02,774.536,TP5,,,,,"/>
+<approved hash="113,1,716.28,106.516,TP9,,,,,"/>
+<approved hash="113,1,726.44,107.222,TP10,,,,,"/>
+<approved hash="113,1,754.38,95.9784,TP11,,,,,"/>
+<approved hash="113,1,764.54,95.9784,TP12,,,,,"/>
+<approved hash="113,1,220.98,794.856,TP8,,,,,"/>
+<approved hash="113,1,220.98,726.276,TP6,,,,,"/>
+<approved hash="113,1,220.98,815.176,TP7,,,,,"/>
+<approved hash="113,1,444.5,673.642,TP14,,,,,"/>
+<approved hash="113,1,396.782,1270,TP15,,,,,"/>
+<approved hash="113,1,119.02,922.02,SJ1,,,,,"/>
+<approved hash="113,1,134.26,922.02,SJ2,,,,,"/>
+<approved hash="113,1,774.7,95.9784,TP16,,,,,"/>
+<approved hash="113,1,736.6,107.222,TP17,,,,,"/>
+<approved hash="113,1,746.76,107.222,TP18,,,,,"/>
 </errors>
 </schematic>
 </drawing>
