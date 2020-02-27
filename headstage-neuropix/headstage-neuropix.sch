@@ -6889,7 +6889,7 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 </class>
 </classes>
 <parts>
-<part name="U7" library="jonnew" deviceset="DS90UB913A" device="_WQFN"/>
+<part name="U7" library="jonnew" deviceset="DS90UB913A" device="_WQFN" value="DS90UB933_WQFN"/>
 <part name="U5" library="jonnew" deviceset="TLV707" device="" value="TLV70733"/>
 <part name="U4" library="jonnew" deviceset="TLV707" device="" value="TLV70712"/>
 <part name="C27" library="jonnew" deviceset="C" device="_0402T" value="1uF"/>
@@ -7146,7 +7146,7 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 <sheet>
 <plain>
 <text x="502.92" y="350.52" size="1.778" layer="97" rot="MR0">NB: VCoax must NOT exceed 5.5V</text>
-<text x="292.1" y="368.3" size="10.16" layer="97" rot="R90">SERIALIZER</text>
+<text x="284.48" y="388.62" size="10.16" layer="97" rot="R90">SERIALIZER</text>
 <text x="309.88" y="807.72" size="10.16" layer="97">POWER</text>
 <text x="528.32" y="807.72" size="10.16" layer="97">NEUROPIX</text>
 <text x="568.96" y="457.2" size="10.16" layer="97">DEBUG</text>
@@ -7531,11 +7531,11 @@ the external 32.768 kHz crystal.</text>
 <instance part="SUPPLY32" gate="PE" x="530.86" y="726.44" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="535.305" y="721.741" size="1.778" layer="96" rot="MR0"/>
 </instance>
-<instance part="TP10" gate="G$1" x="309.88" y="335.28" smashed="yes">
-<attribute name="NAME" x="309.88" y="336.55" size="1.778" layer="95" rot="R90" align="center-left"/>
+<instance part="TP10" gate="G$1" x="317.5" y="337.82" smashed="yes">
+<attribute name="NAME" x="316.23" y="337.82" size="1.778" layer="95" rot="R180" align="center-left"/>
 </instance>
-<instance part="TP11" gate="G$1" x="314.96" y="335.28" smashed="yes">
-<attribute name="NAME" x="314.96" y="336.55" size="1.778" layer="95" rot="R90" align="center-left"/>
+<instance part="TP11" gate="G$1" x="322.58" y="337.82" smashed="yes">
+<attribute name="NAME" x="323.85" y="337.82" size="1.778" layer="95" align="center-left"/>
 </instance>
 <instance part="J4" gate="G$1" x="629.92" y="426.72"/>
 <instance part="P45" gate="G$1" x="624.84" y="444.5"/>
@@ -7559,11 +7559,11 @@ the external 32.768 kHz crystal.</text>
 <attribute name="VALUE" x="579.755" y="409.321" size="1.778" layer="96"/>
 </instance>
 <instance part="X1" gate="G$1" x="20.32" y="261.62"/>
-<instance part="SUPPLY17" gate="PE" x="299.72" y="299.72" smashed="yes">
-<attribute name="VALUE" x="295.275" y="295.021" size="1.778" layer="96"/>
+<instance part="SUPPLY17" gate="PE" x="312.42" y="299.72" smashed="yes">
+<attribute name="VALUE" x="307.975" y="295.021" size="1.778" layer="96"/>
 </instance>
-<instance part="TP8" gate="G$1" x="299.72" y="307.34" smashed="yes">
-<attribute name="NAME" x="299.72" y="308.61" size="1.778" layer="95" rot="R90" align="center-left"/>
+<instance part="TP8" gate="G$1" x="312.42" y="307.34" smashed="yes">
+<attribute name="NAME" x="312.42" y="308.61" size="1.778" layer="95" rot="R90" align="center-left"/>
 </instance>
 <instance part="X2" gate="G$1" x="144.78" y="284.48"/>
 <instance part="C13" gate="C" x="185.42" y="360.68"/>
@@ -7658,18 +7658,6 @@ the external 32.768 kHz crystal.</text>
 <instance part="P54" gate="G$1" x="137.16" y="660.4"/>
 </instances>
 <busses>
-<bus name="DIN[0..11],HSYNC,PCLK,VSYNC">
-<segment>
-<wire x1="325.12" y1="375.92" x2="325.12" y2="340.36" width="0.762" layer="92"/>
-<label x="323.85" y="340.36" size="1.27" layer="95" rot="R90"/>
-</segment>
-</bus>
-<bus name="DIN[0..11],HSYNC,VSYNC,PCLK">
-<segment>
-<wire x1="111.76" y1="459.74" x2="111.76" y2="406.4" width="0.762" layer="92"/>
-<label x="114.3" y="419.1" size="1.27" layer="95" rot="R90"/>
-</segment>
-</bus>
 </busses>
 <nets>
 <net name="GND" class="0">
@@ -8087,7 +8075,7 @@ the external 32.768 kHz crystal.</text>
 <segment>
 <pinref part="TP8" gate="G$1" pin="TP"/>
 <pinref part="SUPPLY17" gate="PE" pin="GND"/>
-<wire x1="299.72" y1="304.8" x2="299.72" y2="302.26" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="304.8" x2="312.42" y2="302.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY19" gate="PE" pin="GND"/>
@@ -8676,169 +8664,184 @@ the external 32.768 kHz crystal.</text>
 <wire x1="596.9" y1="375.92" x2="596.9" y2="342.9" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="DIN10" class="0">
+<net name="SER_DIN10" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN10"/>
-<wire x1="325.12" y1="365.76" x2="332.74" y2="365.76" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="365.76" x2="332.74" y2="365.76" width="0.1524" layer="91"/>
+<label x="307.34" y="365.76" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$3" pin="DIFFIO_RX_L5N/ADCIN5/C1"/>
-<wire x1="86.36" y1="759.46" x2="88.9" y2="759.46" width="0.1524" layer="91"/>
-<label x="88.9" y="759.46" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="759.46" x2="93.98" y2="759.46" width="0.1524" layer="91"/>
+<label x="93.98" y="759.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN9" class="0">
+<net name="SER_DIN9" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN9"/>
-<wire x1="325.12" y1="363.22" x2="332.74" y2="363.22" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="363.22" x2="332.74" y2="363.22" width="0.1524" layer="91"/>
+<label x="307.34" y="363.22" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$3" pin="DIFFIO_RX_L1P/ADCIN2/C2"/>
-<wire x1="86.36" y1="767.08" x2="88.9" y2="767.08" width="0.1524" layer="91"/>
-<label x="88.9" y="767.08" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="767.08" x2="93.98" y2="767.08" width="0.1524" layer="91"/>
+<label x="93.98" y="767.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN8" class="0">
+<net name="SER_DIN8" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN8"/>
-<wire x1="325.12" y1="360.68" x2="332.74" y2="360.68" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="360.68" x2="332.74" y2="360.68" width="0.1524" layer="91"/>
+<label x="307.34" y="360.68" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$3" pin="DIFFIO_RX_L1N/ADCIN1/D2"/>
-<wire x1="86.36" y1="769.62" x2="88.9" y2="769.62" width="0.1524" layer="91"/>
-<label x="88.9" y="769.62" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="769.62" x2="93.98" y2="769.62" width="0.1524" layer="91"/>
+<label x="93.98" y="769.62" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN7" class="0">
+<net name="SER_DIN7" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN7"/>
-<wire x1="325.12" y1="358.14" x2="332.74" y2="358.14" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="358.14" x2="332.74" y2="358.14" width="0.1524" layer="91"/>
+<label x="307.34" y="358.14" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$3" pin="DIFFIO_RX_L7N/ADCIN7/E1"/>
-<wire x1="86.36" y1="754.38" x2="88.9" y2="754.38" width="0.1524" layer="91"/>
-<label x="88.9" y="754.38" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="754.38" x2="93.98" y2="754.38" width="0.1524" layer="91"/>
+<label x="93.98" y="754.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN6" class="0">
+<net name="SER_DIN6" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN6"/>
-<wire x1="325.12" y1="355.6" x2="332.74" y2="355.6" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="355.6" x2="332.74" y2="355.6" width="0.1524" layer="91"/>
+<label x="307.34" y="355.6" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$3" pin="DIFFIO_RX_L7P/ADCIN8/E2"/>
-<wire x1="86.36" y1="751.84" x2="88.9" y2="751.84" width="0.1524" layer="91"/>
-<label x="88.9" y="751.84" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="751.84" x2="93.98" y2="751.84" width="0.1524" layer="91"/>
+<label x="93.98" y="751.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN5" class="0">
+<net name="SER_DIN5" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN5"/>
-<wire x1="325.12" y1="353.06" x2="332.74" y2="353.06" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="353.06" x2="332.74" y2="353.06" width="0.1524" layer="91"/>
+<label x="307.34" y="353.06" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$9" pin="DIFFIO_RX_T19N/B11"/>
-<wire x1="111.76" y1="439.42" x2="86.36" y2="439.42" width="0.1524" layer="91"/>
-<label x="88.9" y="439.42" size="1.27" layer="95"/>
+<pinref part="U1" gate="G$9" pin="DIFFIO_RX_T14N/D10"/>
+<wire x1="93.98" y1="469.9" x2="86.36" y2="469.9" width="0.1524" layer="91"/>
+<label x="93.98" y="469.9" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN4" class="0">
+<net name="SER_DIN4" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN4"/>
-<wire x1="325.12" y1="350.52" x2="332.74" y2="350.52" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="350.52" x2="332.74" y2="350.52" width="0.1524" layer="91"/>
+<label x="307.34" y="350.52" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T20P/B7"/>
-<wire x1="111.76" y1="436.88" x2="86.36" y2="436.88" width="0.1524" layer="91"/>
-<label x="88.9" y="436.88" size="1.27" layer="95"/>
+<wire x1="93.98" y1="436.88" x2="86.36" y2="436.88" width="0.1524" layer="91"/>
+<label x="93.98" y="436.88" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN3" class="0">
+<net name="SER_DIN3" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN3"/>
-<wire x1="325.12" y1="347.98" x2="332.74" y2="347.98" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="347.98" x2="332.74" y2="347.98" width="0.1524" layer="91"/>
+<label x="307.34" y="347.98" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T20N/B6"/>
-<wire x1="111.76" y1="431.8" x2="86.36" y2="431.8" width="0.1524" layer="91"/>
-<label x="88.9" y="431.8" size="1.27" layer="95"/>
+<wire x1="93.98" y1="431.8" x2="86.36" y2="431.8" width="0.1524" layer="91"/>
+<label x="93.98" y="431.8" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN2" class="0">
+<net name="SER_DIN2" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN2"/>
-<wire x1="325.12" y1="345.44" x2="332.74" y2="345.44" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="345.44" x2="332.74" y2="345.44" width="0.1524" layer="91"/>
+<label x="307.34" y="345.44" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$9" pin="B4"/>
-<wire x1="111.76" y1="414.02" x2="86.36" y2="414.02" width="0.1524" layer="91"/>
-<label x="88.9" y="414.02" size="1.27" layer="95"/>
+<wire x1="93.98" y1="414.02" x2="86.36" y2="414.02" width="0.1524" layer="91"/>
+<label x="93.98" y="414.02" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN1" class="0">
+<net name="SER_DIN1" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN1"/>
-<wire x1="325.12" y1="342.9" x2="332.74" y2="342.9" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="342.9" x2="332.74" y2="342.9" width="0.1524" layer="91"/>
+<label x="307.34" y="342.9" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$9" pin="DIFFIO_RX_T16P/C8"/>
+<wire x1="93.98" y1="464.82" x2="86.36" y2="464.82" width="0.1524" layer="91"/>
+<label x="93.98" y="464.82" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="SER_DIN0" class="0">
+<segment>
+<pinref part="U7" gate="G$1" pin="DIN0"/>
+<wire x1="307.34" y1="340.36" x2="332.74" y2="340.36" width="0.1524" layer="91"/>
+<label x="307.34" y="340.36" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T16N/DEV_CLRN/B8"/>
-<wire x1="111.76" y1="459.74" x2="86.36" y2="459.74" width="0.1524" layer="91"/>
-<label x="88.9" y="459.74" size="1.27" layer="95"/>
+<wire x1="93.98" y1="459.74" x2="86.36" y2="459.74" width="0.1524" layer="91"/>
+<label x="93.98" y="459.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN0" class="0">
-<segment>
-<pinref part="U7" gate="G$1" pin="DIN0"/>
-<wire x1="325.12" y1="340.36" x2="332.74" y2="340.36" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$9" pin="DIFFIO_RX_T23N/A5"/>
-<wire x1="111.76" y1="419.1" x2="86.36" y2="419.1" width="0.1524" layer="91"/>
-<label x="88.9" y="419.1" size="1.27" layer="95"/>
-</segment>
-</net>
-<net name="PCLK" class="0">
+<net name="SER_PCLK" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="PCLK1"/>
-<wire x1="325.12" y1="375.92" x2="332.74" y2="375.92" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="375.92" x2="332.74" y2="375.92" width="0.1524" layer="91"/>
+<label x="307.34" y="375.92" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="86.36" y1="429.26" x2="91.44" y2="429.26" width="0.1524" layer="91"/>
-<label x="91.44" y="429.26" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="429.26" x2="93.98" y2="429.26" width="0.1524" layer="91"/>
+<label x="93.98" y="429.26" size="1.27" layer="95" xref="yes"/>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T21N/A11"/>
 </segment>
 </net>
-<net name="VSYNC" class="0">
+<net name="SER_VSYNC" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="VSYNC"/>
-<wire x1="325.12" y1="373.38" x2="332.74" y2="373.38" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="373.38" x2="332.74" y2="373.38" width="0.1524" layer="91"/>
+<label x="307.34" y="373.38" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="86.36" y1="406.4" x2="111.76" y2="406.4" width="0.1524" layer="91"/>
-<label x="88.9" y="406.4" size="1.27" layer="95"/>
+<wire x1="86.36" y1="406.4" x2="93.98" y2="406.4" width="0.1524" layer="91"/>
+<label x="93.98" y="406.4" size="1.27" layer="95" xref="yes"/>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T26N/A3"/>
 </segment>
 </net>
-<net name="HSYNC" class="0">
+<net name="SER_HSYNC" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="HSYNC"/>
-<wire x1="325.12" y1="370.84" x2="332.74" y2="370.84" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="370.84" x2="332.74" y2="370.84" width="0.1524" layer="91"/>
+<label x="307.34" y="370.84" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T26P/A2"/>
-<wire x1="111.76" y1="408.94" x2="86.36" y2="408.94" width="0.1524" layer="91"/>
-<label x="88.9" y="408.94" size="1.27" layer="95"/>
+<wire x1="93.98" y1="408.94" x2="86.36" y2="408.94" width="0.1524" layer="91"/>
+<label x="93.98" y="408.94" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="DIN11" class="0">
+<net name="SER_DIN11" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="DIN11"/>
-<wire x1="325.12" y1="368.3" x2="332.74" y2="368.3" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="368.3" x2="332.74" y2="368.3" width="0.1524" layer="91"/>
+<label x="307.34" y="368.3" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$3" pin="DIFFIO_RX_L5P/ADCIN6/B1"/>
-<wire x1="86.36" y1="756.92" x2="88.9" y2="756.92" width="0.1524" layer="91"/>
-<label x="88.9" y="756.92" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="756.92" x2="93.98" y2="756.92" width="0.1524" layer="91"/>
+<label x="93.98" y="756.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$28" class="0">
@@ -9361,27 +9364,27 @@ the external 32.768 kHz crystal.</text>
 <pinref part="U1" gate="G$7" pin="DIFFIO_RX_B2P/R3"/>
 </segment>
 </net>
-<net name="SERDES_GPIO0" class="0">
+<net name="SER_GPIO0" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="GPIO0"/>
-<wire x1="332.74" y1="325.12" x2="314.96" y2="325.12" width="0.1524" layer="91"/>
-<label x="304.8" y="325.12" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="332.74" y1="325.12" x2="322.58" y2="325.12" width="0.1524" layer="91"/>
+<label x="307.34" y="325.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="TP11" gate="G$1" pin="TP"/>
-<wire x1="314.96" y1="325.12" x2="304.8" y2="325.12" width="0.1524" layer="91"/>
-<wire x1="314.96" y1="332.74" x2="314.96" y2="325.12" width="0.1524" layer="91"/>
-<junction x="314.96" y="325.12"/>
+<wire x1="322.58" y1="325.12" x2="307.34" y2="325.12" width="0.1524" layer="91"/>
+<wire x1="322.58" y1="335.28" x2="322.58" y2="325.12" width="0.1524" layer="91"/>
+<junction x="322.58" y="325.12"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T23P/A7"/>
-<wire x1="91.44" y1="424.18" x2="86.36" y2="424.18" width="0.1524" layer="91"/>
-<label x="91.44" y="424.18" size="1.27" layer="95" xref="yes"/>
+<wire x1="93.98" y1="424.18" x2="86.36" y2="424.18" width="0.1524" layer="91"/>
+<label x="93.98" y="424.18" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="SERDES_SDA" class="0">
+<net name="SER_SDA" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="SDA"/>
-<wire x1="332.74" y1="317.5" x2="304.8" y2="317.5" width="0.1524" layer="91"/>
-<label x="304.8" y="317.5" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="332.74" y1="317.5" x2="307.34" y2="317.5" width="0.1524" layer="91"/>
+<label x="307.34" y="317.5" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <label x="170.18" y="457.2" size="1.27" layer="95" xref="yes"/>
@@ -9391,30 +9394,29 @@ the external 32.768 kHz crystal.</text>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T17N/A14"/>
 <wire x1="86.36" y1="457.2" x2="160.02" y2="457.2" width="0.1524" layer="91"/>
 <junction x="160.02" y="457.2"/>
-<label x="88.9" y="457.2" size="1.27" layer="95"/>
 </segment>
 </net>
-<net name="SERDES_GPIO1" class="0">
+<net name="SER_GPIO1" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="GPIO1"/>
-<wire x1="332.74" y1="327.66" x2="309.88" y2="327.66" width="0.1524" layer="91"/>
-<label x="304.8" y="327.66" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="332.74" y1="327.66" x2="317.5" y2="327.66" width="0.1524" layer="91"/>
+<label x="307.34" y="327.66" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="TP10" gate="G$1" pin="TP"/>
-<wire x1="309.88" y1="327.66" x2="304.8" y2="327.66" width="0.1524" layer="91"/>
-<wire x1="309.88" y1="332.74" x2="309.88" y2="327.66" width="0.1524" layer="91"/>
-<junction x="309.88" y="327.66"/>
+<wire x1="317.5" y1="327.66" x2="307.34" y2="327.66" width="0.1524" layer="91"/>
+<wire x1="317.5" y1="335.28" x2="317.5" y2="327.66" width="0.1524" layer="91"/>
+<junction x="317.5" y="327.66"/>
 </segment>
 <segment>
-<wire x1="86.36" y1="434.34" x2="91.44" y2="434.34" width="0.1524" layer="91"/>
-<label x="91.44" y="434.34" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="434.34" x2="93.98" y2="434.34" width="0.1524" layer="91"/>
+<label x="93.98" y="434.34" size="1.27" layer="95" xref="yes"/>
 <pinref part="U1" gate="G$9" pin="DIFFIO_RX_T21P/A9"/>
 </segment>
 </net>
-<net name="SERDES_SCL" class="0">
+<net name="SER_SCL" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="SCL"/>
-<wire x1="332.74" y1="314.96" x2="304.8" y2="314.96" width="0.1524" layer="91"/>
-<label x="304.8" y="314.96" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="332.74" y1="314.96" x2="307.34" y2="314.96" width="0.1524" layer="91"/>
+<label x="307.34" y="314.96" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <label x="170.18" y="449.58" size="1.27" layer="95" xref="yes"/>
@@ -9424,7 +9426,6 @@ the external 32.768 kHz crystal.</text>
 <pinref part="U1" gate="G$9" pin="VREFB8N0/A13"/>
 <wire x1="86.36" y1="449.58" x2="147.32" y2="449.58" width="0.1524" layer="91"/>
 <junction x="147.32" y="449.58"/>
-<label x="88.9" y="449.58" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="N$92" class="0">
@@ -9691,8 +9692,8 @@ the external 32.768 kHz crystal.</text>
 <net name="DEBUG0" class="0">
 <segment>
 <pinref part="U1" gate="G$8" pin="E14"/>
-<wire x1="86.36" y1="505.46" x2="91.44" y2="505.46" width="0.1524" layer="91"/>
-<label x="91.44" y="505.46" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="505.46" x2="93.98" y2="505.46" width="0.1524" layer="91"/>
+<label x="93.98" y="505.46" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="561.34" y1="436.88" x2="556.26" y2="436.88" width="0.1524" layer="91"/>
@@ -9703,8 +9704,8 @@ the external 32.768 kHz crystal.</text>
 <net name="DEBUG1" class="0">
 <segment>
 <pinref part="U1" gate="G$8" pin="VREFB6N0/E15"/>
-<wire x1="86.36" y1="510.54" x2="91.44" y2="510.54" width="0.1524" layer="91"/>
-<label x="91.44" y="510.54" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="510.54" x2="93.98" y2="510.54" width="0.1524" layer="91"/>
+<label x="93.98" y="510.54" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="561.34" y1="434.34" x2="556.26" y2="434.34" width="0.1524" layer="91"/>
@@ -9715,8 +9716,8 @@ the external 32.768 kHz crystal.</text>
 <net name="DEBUG2" class="0">
 <segment>
 <pinref part="U1" gate="G$8" pin="DIFFIO_RX_R18N/G15"/>
-<wire x1="86.36" y1="515.62" x2="91.44" y2="515.62" width="0.1524" layer="91"/>
-<label x="91.44" y="515.62" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="515.62" x2="93.98" y2="515.62" width="0.1524" layer="91"/>
+<label x="93.98" y="515.62" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="561.34" y1="431.8" x2="556.26" y2="431.8" width="0.1524" layer="91"/>
@@ -9727,8 +9728,8 @@ the external 32.768 kHz crystal.</text>
 <net name="DEBUG4" class="0">
 <segment>
 <pinref part="U1" gate="G$8" pin="DIFFIO_RX_R18P/J15"/>
-<wire x1="86.36" y1="518.16" x2="91.44" y2="518.16" width="0.1524" layer="91"/>
-<label x="91.44" y="518.16" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="518.16" x2="93.98" y2="518.16" width="0.1524" layer="91"/>
+<label x="93.98" y="518.16" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="561.34" y1="426.72" x2="556.26" y2="426.72" width="0.1524" layer="91"/>
@@ -9775,8 +9776,8 @@ the external 32.768 kHz crystal.</text>
 <net name="DEBUG7" class="0">
 <segment>
 <pinref part="U1" gate="G$6" pin="DIFFIO_RX_R2P/N15"/>
-<wire x1="86.36" y1="568.96" x2="96.52" y2="568.96" width="0.1524" layer="91"/>
-<label x="96.52" y="568.96" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="568.96" x2="93.98" y2="568.96" width="0.1524" layer="91"/>
+<label x="93.98" y="568.96" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="561.34" y1="419.1" x2="556.26" y2="419.1" width="0.1524" layer="91"/>
@@ -10089,8 +10090,8 @@ the external 32.768 kHz crystal.</text>
 <label x="617.22" y="530.86" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="86.36" y1="762" x2="88.9" y2="762" width="0.1524" layer="91"/>
-<label x="88.9" y="762" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="762" x2="93.98" y2="762" width="0.1524" layer="91"/>
+<label x="93.98" y="762" size="1.27" layer="95" xref="yes"/>
 <pinref part="U1" gate="G$3" pin="DIFFIO_RX_L3P/ADCIN4/G5"/>
 </segment>
 </net>
@@ -10101,8 +10102,8 @@ the external 32.768 kHz crystal.</text>
 <label x="617.22" y="535.94" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="86.36" y1="764.54" x2="88.9" y2="764.54" width="0.1524" layer="91"/>
-<label x="88.9" y="764.54" size="1.27" layer="95" xref="yes"/>
+<wire x1="86.36" y1="764.54" x2="93.98" y2="764.54" width="0.1524" layer="91"/>
+<label x="93.98" y="764.54" size="1.27" layer="95" xref="yes"/>
 <pinref part="U1" gate="G$3" pin="DIFFIO_RX_L3N/ADCIN3/F5"/>
 </segment>
 </net>
@@ -10160,6 +10161,30 @@ the external 32.768 kHz crystal.</text>
 <wire x1="533.4" y1="690.88" x2="535.94" y2="690.88" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="SER_GPIO2" class="0">
+<segment>
+<pinref part="U7" gate="G$1" pin="GPIO2/CLKOUT"/>
+<wire x1="332.74" y1="330.2" x2="307.34" y2="330.2" width="0.1524" layer="91"/>
+<label x="307.34" y="330.2" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<wire x1="86.36" y1="467.36" x2="93.98" y2="467.36" width="0.1524" layer="91"/>
+<label x="93.98" y="467.36" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<pinref part="U1" gate="G$9" pin="DIFFIO_RX_T15N/B14"/>
+</segment>
+</net>
+<net name="SER_GPIO3" class="0">
+<segment>
+<pinref part="U7" gate="G$1" pin="GPO3/CLKIN"/>
+<wire x1="332.74" y1="332.74" x2="307.34" y2="332.74" width="0.1524" layer="91"/>
+<label x="307.34" y="332.74" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<wire x1="86.36" y1="444.5" x2="93.98" y2="444.5" width="0.1524" layer="91"/>
+<label x="93.98" y="444.5" size="1.27" layer="95" xref="yes"/>
+<pinref part="U1" gate="G$9" pin="DIFFIO_RX_T19P/B12"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
@@ -10207,13 +10232,13 @@ the external 32.768 kHz crystal.</text>
 <approved hash="113,1,187.796,731.52,TP2,,,,,"/>
 <approved hash="113,1,187.796,734.06,TP1,,,,,"/>
 <approved hash="113,1,213.36,728.254,J1,,,,,"/>
-<approved hash="113,1,309.88,335.822,TP10,,,,,"/>
-<approved hash="113,1,314.96,335.822,TP11,,,,,"/>
+<approved hash="113,1,309.88,338.362,TP10,,,,,"/>
+<approved hash="113,1,314.96,338.362,TP11,,,,,"/>
 <approved hash="113,1,630.215,427.471,J4,,,,,"/>
 <approved hash="113,1,568.96,429.804,J2,,,,,"/>
 <approved hash="113,1,612.14,432.342,TP13,,,,,"/>
 <approved hash="113,1,604.52,432.342,TP12,,,,,"/>
-<approved hash="113,1,299.72,307.176,TP8,,,,,"/>
+<approved hash="113,1,312.42,307.176,TP8,,,,,"/>
 <approved hash="113,1,647.995,427.471,J6,,,,,"/>
 </errors>
 </schematic>

@@ -1,0 +1,83 @@
+// JPN, MWL, MIT 2017
+
+// 0. Make sure all polygons' rank are >= 2
+// 1. Start with applying a DRU that makes via annular via rings as small as you want them
+// 2. Run this ULP to generate a script to add an larger annular rings only to _connected_ vias
+// 3. Run the script
+
+int epsil_u = 5;         // Internal units, smallest resolution
+real width_mm = 0.0508;  // 2 mil polygon wire width
+string h;
+
+string cmd = "GRID MM 1;\n";
+sprintf(h, "CHANGE WIDTH %f;\n", 0.0);
+cmd += h;
+
+board(B) {
+
+  // Loop through signals
+  B.signals(S) {
+
+    // Current signal name
+    string name = S.name;
+
+    // Loop through vias
+    S.vias(V) {
+
+      // Loop through wires
+      S.wires(W) {
+
+        // Is this connected to the currently examined via?
+        if ((abs(W.x1 - V.x) < epsil_u  && abs(W.y1 - V.y) < epsil_u)
+        ||  (abs(W.x2 - V.x) < epsil_u  && abs(W.y2 - V.y) < epsil_u)) {
+
+          // Get via diameter according to DRU
+          real d = u2mm(V.drill);
+          real x = u2mm(V.x);
+          real y = u2mm(V.y);
+
+          // Calculate annular ring size
+          // TODO: Currently, this is hardcoded. For the general case, this
+          // needs to access information in the DRU file. Not sure how to do
+          // this efficiently
+          real ar = d * 0.25;
+          if (ar > 0.3048) {        // 12 mil
+             ar = 0.3048;
+          } else if (ar < 0.0508) { // 2 mil
+             ar = 0.0508;
+          }
+
+          // Via radius
+          real vr = d/2 + ar - width_mm/2;
+
+          // There is a connection so draw a cicle with the annular ring radius
+          // in the layer of the wire
+          sprintf(h, "CHANGE LAYER %d;\n", W.layer);
+          cmd += h;
+          sprintf(h, "CHANGE THERMALS off;\n");
+          cmd += h;
+          sprintf(h, "POLYGON '%s' %f (%f %f) +180 (%f %f) +180 (%f %f);\n", name, width_mm, x-vr, y, x + vr, y, x-vr, y);
+          cmd += h;
+        }
+      }
+    }
+  }
+
+  cmd += "GRID LAST;\n";
+
+  // Show the command
+  int Result = dlgDialog("Descriptions") {
+    dlgHBoxLayout {
+      dlgVBoxLayout { dlgSpacing(500); }
+      dlgTextEdit(cmd);
+    }
+    dlgHBoxLayout {
+      dlgPushButton("+Execute") dlgAccept();
+      dlgSpacing(100);
+      dlgPushButton("-Cancel") dlgReject();
+      }
+    };
+
+  if (Result == 0) exit(0);
+  exit(cmd);
+}
