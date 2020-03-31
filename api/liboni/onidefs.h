@@ -4,21 +4,21 @@
 
 // Context options
 enum {
-    ONI_DEVICEMAP,
-    ONI_NUMDEVICES,
-    ONI_MAXREADFRAMESIZE,
-    ONI_RUNONRESET,
-    ONI_RUNNING,
-    ONI_RESET,
-    ONI_SYSCLKHZ,
-    ONI_BLOCKREADSIZE
+    ONI_OPT_DEVICEMAP = 0,
+    ONI_OPT_NUMDEVICES,
+    ONI_OPT_MAXREADFRAMESIZE,
+    ONI_OPT_RUNONRESET,
+    ONI_OPT_RUNNING,
+    ONI_OPT_RESET,
+    ONI_OPT_SYSCLKHZ,
+    ONI_OPT_BLOCKREADSIZE
 };
 
 // NB: If you add an error here, make sure to update oni_error_str() in oni.c
 enum {
     ONI_ESUCCESS = 0,  // Success
     ONI_EPATHINVALID = -1,  // Invalid stream path, fail on open
-    ONI_EDEVID = -2,  // Invalid device ID on init or reg op
+    ONI_EDEVID = -2,  // Invalid device ID
     ONI_EDEVIDX = -3,  // Invalid device index
     ONI_EWRITESIZE = -4,  // Data write size is incorrect for designated device
     ONI_EREADFAILURE = -5,  // Failure to read from a stream/register
@@ -38,8 +38,11 @@ enum {
     ONI_EUNIMPL = -19, // Specified, but unimplemented, feature
     ONI_EINVALREADSIZE = -20, // Block read size is smaller than the maximal frame size
     ONI_ENOREADDEV = -21, // Frame read attempted when there are no readable devices in the device map
+    ONI_EINIT = -22, // Hardware initialization failed
+    ONI_EWRITEONLY = -23, // Attempted to read from a write only object (register, context option, etc)
+
     // NB: Always at bottom
-    ONI_MINERRORNUM = -22
+    ONI_MINERRORNUM = -24
 };
 
 // Registers available in the specification
@@ -56,9 +59,10 @@ typedef enum {
 
 // Fixed width device types
 typedef uint32_t oni_size_t;
-typedef uint32_t oni_dev_id_t;
-typedef uint32_t oni_reg_addr_t;
-typedef uint32_t oni_reg_val_t;
+typedef uint32_t oni_dev_id_t; // Device IDs are 32-bit numbers
+typedef uint32_t oni_reg_addr_t; // Registers use a 32-bit address
+typedef uint32_t oni_reg_val_t;  // Registers have 32-bit values
+typedef uint32_t oni_fifo_dat_t; // FIFOs use 32-bit words
 
 // Register size
 #define ONI_REGSZ sizeof(oni_reg_val_t)

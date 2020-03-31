@@ -67,11 +67,11 @@ oni_driver_ctx oni_driver_create_ctx()
     if (ctx == NULL)
         return NULL;
 
-    // NB: Setting pointers to NULL Enables downstream use of realloc()
-    ctx->config.path = NULL;
-    ctx->read.path = NULL;
-    ctx->write.path = NULL;
-    ctx->signal.path = NULL;
+    // Set default paths
+    ctx->config.path = ONI_XILLYBUS_DEFAULTCONFIGPATH;
+    ctx->read.path = ONI_XILLYBUS_DEFAULTREADPATH;
+    ctx->write.path = ONI_XILLYBUS_DEFAULTWRITEPATH;
+    ctx->signal.path = ONI_XILLYBUS_DEFAULTSIGNALPATH;
     ctx->file_state = CLOSED;
 
     return ctx;
@@ -191,7 +191,7 @@ int oni_driver_write_stream(oni_driver_ctx driver_ctx,
     switch (stream)
     {
     case ONI_WRITE_STREAM_DATA:
-        data_fd = ctx->read.fid;
+        data_fd = ctx->write.fid;
         break;
     default:
         return ONI_EPATHINVALID;

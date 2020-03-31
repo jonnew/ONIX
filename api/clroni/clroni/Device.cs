@@ -3,7 +3,7 @@
     using System.Runtime.InteropServices;
 
     using lib;
-    
+
     public static class Device
     {
         // Global device enumeration (see onidevices.h)
@@ -25,6 +25,11 @@
             AD51X2 = 13,
             FMCVCTRL = 14,
             AD7617 = 15,
+            AD576X = 16,
+            TESTREG0 = 17,
+            BREAKDIG1R3 = 18,
+            FMCCLKIN1R4 = 19,
+            FMCCLKOUT1R4 = 20,
         }
 
         public static string Name(int id)

@@ -3,7 +3,7 @@
 
 // Version macros for compile-time API version detection
 #define ONI_VERSION_MAJOR 2
-#define ONI_VERSION_MINOR 3
+#define ONI_VERSION_MINOR 4
 #define ONI_VERSION_PATCH 0
 
 #define ONI_MAKE_VERSION(major, minor, patch) \
@@ -73,6 +73,19 @@ typedef struct oni_frame {
 
 } oni_frame_t;
 
+// // TODO: common read/write frame
+// typedef struct oni_frame {
+//
+//     // Data
+//     oni_size_t dev_idx;     // Device indices in frame
+//     oni_size_t data_sz;     // Size in bytes of data buffer
+//     uint8_t *data;          // Multi-device raw data block
+//
+//     // External buffer, don't touch
+//     oni_buffer buffer;      // Handle to external buffer (only for input frames?)
+//
+// } oni_frame_t;
+
 // Context manipulation
 ONI_EXPORT oni_ctx oni_create_ctx(const char* drv_name);
 ONI_EXPORT int oni_init_ctx(oni_ctx ctx, int host_idx);
@@ -84,7 +97,7 @@ ONI_EXPORT int oni_set_opt(oni_ctx ctx, int ctx_opt, const void* value, size_t s
 
 // Driver option getting/setting
 ONI_EXPORT int oni_get_driver_opt(const oni_ctx ctx, int drv_opt, void* value, size_t *size);
-ONI_EXPORT int oni_set_driver_opt(oni_ctx ctx, int drv_opt, const void* value, size_t size);
+ONI_EXPORT int oni_set_driver_opt(oni_ctx ctx, int drv_opt, const void* value, size_t size);\
 
 // Hardware inspection, manipulation, and IO
 ONI_EXPORT int oni_read_reg(const oni_ctx ctx, size_t dev_idx, oni_reg_addr_t addr, oni_reg_val_t *value);
@@ -92,6 +105,9 @@ ONI_EXPORT int oni_write_reg(const oni_ctx ctx, size_t dev_idx, oni_reg_addr_t a
 ONI_EXPORT int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame);
 ONI_EXPORT void oni_destroy_frame(oni_frame_t *frame);
 ONI_EXPORT int oni_write(const oni_ctx ctx, size_t dev_idx, const void *data, size_t data_sz);
+
+// Debug functions
+ONI_EXPORT int oni_read_raw(const oni_ctx ctx, char **data, size_t data_sz);
 
 // Internal type conversion
 ONI_EXPORT void oni_version(int *major, int *minor, int *patch);

@@ -12,19 +12,6 @@
 #include "oelogo.h"
 #include "onidriver_xillybus.h" // Use xillybus driver
 
-// Default paths
-#ifdef _WIN32
-#define ONI_DEFAULTCONFIGPATH  "\\\\.\\xillybus_cmd_32"
-#define ONI_DEFAULTREADPATH    "\\\\.\\xillybus_data_read_32"
-#define ONI_DEFAULTWRITEPATH   "\\\\.\\xillybus_data_write_32"
-#define ONI_DEFAULTSIGNALPATH  "\\\\.\\xillybus_signal_8"
-#else
-#define ONI_DEFAULTCONFIGPATH  "/dev/xillybus_cmd_32"
-#define ONI_DEFAULTREADPATH    "/dev/xillybus_data_read_32"
-#define ONI_DEFAULTWRITEPATH   "/dev/xillybus_data_write_32"
-#define ONI_DEFAULTSIGNALPATH  "/dev/xillybus_signal_8"
-#endif
-
 // Dump raw device streams to files?
 //#define DUMPFILES
 
@@ -44,10 +31,12 @@ FILE **dump_files;
 #endif
 
 volatile oni_ctx ctx = NULL;
+oni_size_t num_devs = 0;
 oni_device_t *devices = NULL;
 volatile int quit = 0;
 volatile int display = 0;
 volatile int display_clock = 0;
+volatile unsigned long write_counter = 0;
 const int quiet = 1;
 int running = 1;
 
@@ -135,53 +124,73 @@ void *read_loop(void *vargp)
     return NULL;
 }
 
-//#ifdef _WIN32
-//DWORD WINAPI write_loop(LPVOID lpParam)
-//#else
-//void *write_loop(void *vargp)
-//#endif
-//{
-//    // Write zeros to device 3
-//
-//    while (!quit)  {
-//
-//        int row_num = 0;
-//        while (row_num < 256) {
-//
-//            int rc = 0;
-//            uint16_t data[275];
-//
-//            // Header
-//            data[0] = 16384 + row_num;
-//
-//            // Row update
-//            int i = 0;
-//            for (i = 0; i < 256; i++)
-//                data[i + 19]  = row_num;
-//
-//            rc = oni_write(ctx, 0, data, sizeof(data));
-//            printf("%d: %d\n", row_num, rc);
-//
-//            if (rc < 0) {
-//                printf("Error: %s\n", oni_error_str(rc));
-//                quit = 1;
-//                break;
-//            }
-//
-//            row_num++;
-//        }
-//    }
-//
-//    return NULL;
-//}
+#ifdef _WIN32
+DWORD WINAPI write_loop(LPVOID lpParam)
+#else
+void *write_loop(void *vargp)
+#endif
+{
+    // Incrmenting value to all writable devices ~every 1 msec
+
+    // Find writable devices and sizes
+    while (!quit) {
+        for (int i = 0; i < num_devs; i++) {
+            if (devices[i].write_size > 0) {
+
+                uint16_t *data = malloc(devices[i].write_size);
+
+                for (int j = 0; j < devices[i].write_size / 2; j++)
+                    data[j] = write_counter;
+
+                int rc = oni_write(ctx, i, data, devices[i].write_size);
+
+                free(data);
+
+                if (rc < 0) {
+                    printf("Error: %s\n", oni_error_str(rc));
+                    break;
+                }
+            }
+        }
+        usleep(1000);
+        write_counter++;
+    }
+    return NULL;
+}
+
+void print_dev_table(oni_device_t *devices, int num_devs)
+{
+    // Show device table
+    printf("+-------+-------+-------+-------+-------+-------+------\n");
+    printf("|     \t|  \t|Read\t|Reads/\t|Wrt.\t|Wrt./ \t|     \n");
+    printf("|Index\t|ID\t|size\t|frame \t|size\t|frame \t|Desc.\n");
+    printf("+-------+-------+-------+-------+-------+-------+------\n");
+
+    size_t dev_idx;
+    for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
+
+        const char *dev_str = oni_device_str(devices[dev_idx].id);
+
+        printf("|%zd\t|%d\t|%u\t|%u\t|%u\t|%u\t|%s\n",
+            dev_idx,
+            devices[dev_idx].id,
+            devices[dev_idx].read_size,
+            devices[dev_idx].num_reads,
+            devices[dev_idx].write_size,
+            devices[dev_idx].num_writes,
+            dev_str);
+    }
+
+    printf("+-------+-------+-------+-------+-------+-------+------\n");
+}
 
 int main(int argc, char *argv[])
 {
     // Default paths
-    const char *config_path = ONI_DEFAULTCONFIGPATH;
-    const char *sig_path = ONI_DEFAULTSIGNALPATH;
-    const char *read_path = ONI_DEFAULTREADPATH;
-    const char *write_path = ONI_DEFAULTWRITEPATH;
+    const char *config_path = ONI_XILLYBUS_DEFAULTCONFIGPATH;
+    const char *sig_path = ONI_XILLYBUS_DEFAULTSIGNALPATH;
+    const char *read_path = ONI_XILLYBUS_DEFAULTREADPATH;
+    const char *write_path = ONI_XILLYBUS_DEFAULTWRITEPATH;
 
     printf(logo_med);
     if (argc != 1 && argc != 5) {
@@ -227,7 +236,7 @@ int main(int argc, char *argv[])
     assert(rc == 0);
 
     // Examine device map
-    oni_size_t num_devs = 0;
+    num_devs = 0;
     size_t num_devs_sz = sizeof(num_devs);
     oni_get_opt(ctx, ONI_NUMDEVICES, &num_devs, &num_devs_sz);
 
@@ -240,29 +249,17 @@ int main(int argc, char *argv[])
 #ifdef DUMPFILES
     // Make room for dump files
     dump_files = malloc(num_devs * sizeof(FILE *));
-#endif
 
-    // Show device map
-    //printf("Found the following devices:\n");
-    size_t dev_idx;
-    for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
-
-        const char *dev_str = oni_device_str(devices[dev_idx].id);
-
-        printf("\t%zd) ID: %d (%s), Read size: %u\n",
-            dev_idx,
-            devices[dev_idx].id,
-            dev_str,
-            devices[dev_idx].read_size);
-
-#ifdef DUMPFILES
-        // Open dump files
+    // Open dump files
+    for (int i = 0; i < num_devss; i++) {
         char * buffer = malloc(100);
-        snprintf(buffer, 100, "%s_idx-%zd_id-%d.raw", "dev", dev_idx, devices[dev_idx].id);
-        dump_files[dev_idx] = fopen(buffer, "wb");
+        snprintf(buffer, 100, "%s_idx-%zd_id-%d.raw", "dev", dev_idx, devices[i].id);
+        dump_files[i] = fopen(buffer, "wb");
         free(buffer);
-#endif
     }
+#endif
+
+    print_dev_table(devices, num_devs);
 
     oni_size_t frame_size = 0;
     size_t frame_size_sz = sizeof(frame_size);
@@ -299,14 +296,14 @@ int main(int argc, char *argv[])
     HANDLE read_thread;
     read_thread = CreateThread(NULL, 0, read_loop, NULL, 0, &read_tid);
 
-    //DWORD write_tid;
-    //HANDLE write_thread;
-    //write_thread = CreateThread(NULL, 0, write_loop, NULL, 0, &write_tid);
+    DWORD write_tid;
+    HANDLE write_thread;
+    write_thread = CreateThread(NULL, 0, write_loop, NULL, 0, &write_tid);
 #else
     pthread_t read_tid;
     pthread_create(&read_tid, NULL, read_loop, NULL);
-    //pthread_t write_tid;
-    //pthread_create(&write_tid, NULL, write_loop, NULL);
+    pthread_t write_tid;
+    pthread_create(&write_tid, NULL, write_loop, NULL);
 #endif
 
     // Read stdin to start (s) or pause (p)
@@ -314,6 +311,7 @@ int main(int argc, char *argv[])
     while (c != 'q') {
 
         printf("Enter a command and press enter:\n");
+        printf("\tt - print device table\n");
         printf("\tc - toggle 1/1000 clock display\n");
         printf("\td - toggle 1/1000 display\n");
         printf("\tp - toggle stream pause\n");
@@ -346,6 +344,9 @@ int main(int argc, char *argv[])
         }
         else if (c == 'c') {
             display_clock = (display_clock == 0) ? 1 : 0;
+        }
+        else if (c == 't') {
+            print_dev_table(devices, num_devs);
         }
         else if (c == 'd') {
             display = (display == 0) ? 1 : 0;
@@ -407,13 +408,12 @@ int main(int argc, char *argv[])
     WaitForSingleObject(read_thread, 200); // INFINITE);
     CloseHandle(read_thread);
 
-
-    //WaitForSingleObject(write_thread, INFINITE);
-    //CloseHandle(write_thread);
+    WaitForSingleObject(write_thread, 200);
+    CloseHandle(write_thread);
 #else
     if(running)
         pthread_join(read_tid, NULL);
-    //pthread_join(write_tid, NULL);
+        pthread_join(write_tid, NULL);
 #endif
 #ifdef DUMPFILES
     // Close dump files

@@ -7,50 +7,26 @@
     using Microsoft.Win32.SafeHandles;
 
     using lib;
-    using System.Threading.Tasks;
 
     public class Context : SafeHandleZeroOrMinusOneIsInvalid
     {
-        protected Context() 
+        protected Context()
         : base(true)
         {
         }
 
-        public Context(string driver_name, int host_idx, params object[] args)
+        public Context(string driver_name, int host_idx)
         :base (true)  // this.handle is IntPtr wrapped by the SafeHandle
         {
             // Create context
-            handle = NativeMethods.oni_create_ctx(driver_name, host_idx);
+            handle = NativeMethods.oni_create_ctx(driver_name);
             if (handle == IntPtr.Zero)
             {
                 throw new InvalidProgramException("oni_create_ctx");
             }
-            
-            // Set driver options
-            if (args.Length % 2 != 0) 
-            {
-                throw new ArgumentException("args must be a list of alternating driver options and values.");
-            }
-            
-            for (int i = 0; i < args.Length; i+=2)
-                SetStringOption((int)args[i], (string)args[i+1], true);
 
-            // Attempt to initialize context, but timeout if it takes longer than 2 seconds
-            var task = Task.Run(() =>
-            {
-                return NativeMethods.oni_init_ctx(handle);
-            });
-
-            bool isCompletedSuccessfully = task.Wait(TimeSpan.FromSeconds(2));
-
-            if (isCompletedSuccessfully)
-            {
-                if (task.Result != 0) { throw new ONIException(task.Result); }
-            }
-            else
-            {
-                throw new TimeoutException("Context intialization timed out.");
-            }
+            var rc = NativeMethods.oni_init_ctx(handle, host_idx);
+            if (rc != 0) { throw new ONIException(rc); }
 
             // Get context metadata
             SystemClockHz = GetIntOption((int)Option.SYSCLKHZ);
@@ -85,7 +61,6 @@
         public readonly int MaxReadFrameSize = 0;
         public readonly int ReadBytes = 0;
         bool destroyed = true;
-        readonly object openContextsLock = new object();
 
         protected override bool ReleaseHandle()
         {
@@ -104,12 +79,6 @@
             }
         }
 
-        public void Destroy()
-        {
-            if (!ReleaseHandle())
-                throw new ONIException((int)oni.lib.Error.CLOSEFAIL);
-        }
-
         public int DeviceID(uint device_index)
         {
             if (device_index < DeviceMap.Count)
@@ -121,7 +90,7 @@
         // GetOption
         private IntPtr GetOption(int option, int size, bool drv_opt = false)
         {
-            // NB: If I dont do all this wacky stuff, the size 
+            // NB: If I dont do all this wacky stuff, the size
             // parameter ends up being too wrong for 64-bit compilation.
             var sz = Marshal.AllocHGlobal(IntPtr.Size);
             if (IntPtr.Size == 4) Marshal.WriteInt32(sz, size); else Marshal.WriteInt64(sz, size);
@@ -141,7 +110,7 @@
         private int GetIntOption(int option, bool drv_opt = false)
         {
             var value = GetOption(option, Marshal.SizeOf(typeof(int)), drv_opt);
-            return Marshal.ReadInt32(value); 
+            return Marshal.ReadInt32(value);
         }
 
         // String GetOption
@@ -241,7 +210,7 @@
 
         //    if (await Task.WhenAny(t, Task.Delay(RegisterTimeoutMillis)) == t)
         //    {
-        //        return;   
+        //        return;
         //    }
         //    else
         //    {
@@ -253,8 +222,8 @@
         {
             Frame frame;
             int rc = NativeMethods.oni_read_frame(handle, out frame);
-            frame.Map(DeviceMap);
             if (rc < 0) { throw new ONIException(rc); }
+            frame.Map(DeviceMap);
             return frame;
         }
 

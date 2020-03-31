@@ -45,14 +45,29 @@ const char *oni_device_str(int dev_id)
         case ONI_HEARTBEAT: {
             return "Host heartbeat";
         }
-        case ONI_AD51X2_ID: {
+        case ONI_AD51X2: {
             return "AD51X2 digital potentiometer";
         }
-        case ONI_FMCVCTRL_ID: {
-            return "Open Ephys FMC Host Board rev. 1.3 link voltage controller";
+        case ONI_FMCVCTRL: {
+            return "Open Ephys FMC Host Board rev. 1.3 link voltage control subcircuit";
         }
-        case ONI_AD7617_ID: {
-            return "AD7617 ADC/DAS.";
+        case ONI_AD7617: {
+            return "AD7617 ADC/DAS";
+        }
+        case ONI_AD576X: {
+            return "AD576x DAC";
+        }
+        case ONI_TESTREG0: {
+            return "A test device used for testing remote register programming";
+        }
+        case ONI_BREAKDIG1R3: {
+            return "Open Ephys Breakout board rev. 1.3 digital and user IO";
+        }
+        case ONI_FMCCLKIN1R4: {
+            return "Open Ephys FMC Host Board rev. 1.4 clock intput subcircuit";
+        }
+        case ONI_FMCCLKOUT1R4: {
+            return "Open Ephys FMC Host Board rev. 1.4 clock output subcircuit";
         }
         default:
             return "Unknown device";

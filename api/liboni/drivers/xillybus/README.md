@@ -25,6 +25,48 @@ make help           # list all make options
 ### Windows
 Run the project in Visual Studio
 
+## Driver Options
+### `ONI_XILLYBUS_CONFIGSTREAMPATH`\*
+Obtain path specifying config data stream.
+
+| | |
+|---------------------|--------------------------------------------------------------------|
+| option value type   | `char *` |
+| access              | R/W |
+| option description  | A character string specifying the configuration stream path |
+| default value       | /dev/xillybus_oni_config_32, \\\\.\\xillybus_oni_config_32 (Windows) |
+
+### `ONI_XILLYBUS_SIGNALSTREAMPATH`\*
+Obtain path specifying hardware signal data stream
+
+| | |
+|---------------------|--------------------------------------------------------------------|
+| option value type   | `char *` |
+| access              | R/W |
+| option description  | A character string specifying the signal stream path |
+| default value       | /dev/xillybus_oni_signal_8, \\\\.\\xillybus_oni_signal_8 (Windows) |
+
+### `ONI_XILLYBUS_READSTREAMPATH`\*
+Obtain path specifying input data stream.
+
+| | |
+|---------------------|--------------------------------------------------------------------|
+| option value type   | `char *` |
+| access              | R/W |
+| option description  | A character string specifying the input stream path |
+| default value       | /dev/xillybus_oni_input_32 \\\\.\\xillybus_oni_input_32 (Windows) |
+
+### `ONI_XILLYBUS_WRITESTREAMPATH`\*
+Obtain path specifying input data stream.
+
+| | |
+|---------------------|--------------------------------------------------------------------|
+| option value type   | `char *` |
+| access              | R/W |
+| option description  | A character string specifying the output stream path |
+| default value       | /dev/xillybus_oni_output_32, \\\\.\\xillybus_oni_output_32 (Windows) |
+
+
 ## Generating HDL IP Cores
 1. Make a [Xillybus account](http://xillybus.com/ipfactory/signup)
 1. Visit the [Xillybus IP Core Factory](http://xillybus.com/ipfactory/)
@@ -38,19 +80,19 @@ Run the project in Visual Studio
 
 1. After the core has been generated, create 3 device files for the core with
    the following settings
-    - `xillybus_cmd_32`
+    - `xillybus_oni_config_32`
 
     ![xillybus_cmd_32 options](./resources/xillybus_cmd_32.png)
 
-    - `xillybus_signal_8`
+    - `xillybus_oni_signal_8`
 
     ![xillybus_signal_8 options](./resources/xillybus_signal_8.png)
 
-    - `xillybus_data_read_32`
+    - `xillybus_oni_input__32`
 
     ![xillybus_data_read_32 options](./resources/xillybus_data_read_32.png)
 
-    - `xillybus_data_write_32`
+    - `xillybus_oni_output_32`
 
     ![xillybus_data_write_32 options](./resources/xillybus_data_write_32.png)
 1. Generate the core for use in your host firmware.
@@ -71,4 +113,5 @@ Xillybus on a Windows
 host](http://xillybus.com/downloads/doc/xillybus_getting_started_windows.pdf).
 The driver can downloaded
 [here](http://xillybus.com/downloads/xillybus-windriver-1.2.0.0.zip).
+
 

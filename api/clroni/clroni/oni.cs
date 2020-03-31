@@ -29,6 +29,7 @@ namespace oni.lib
         UNIMPL = -19, // Specified, but unimplemented, feature
         INVALREADSIZE = -20, // Block read size is smaller than the maximal frame size
         NOREADDEV = -21, // Frame read attempted when there are no readable devices in the device map
+        INIT = -22,
     }
 
     // Make managed version of oni_device_t
@@ -83,10 +84,10 @@ namespace oni.lib
         private static extern void oni_version(out int major, out int minor, out int patch);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl, CharSet = CharSet.Ansi)]
-        public static extern IntPtr oni_create_ctx(string driver_name, int host_idx);
+        public static extern IntPtr oni_create_ctx(string driver_name);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
-        public static extern int oni_init_ctx(IntPtr ctx);
+        public static extern int oni_init_ctx(IntPtr ctx, int host_idx);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern int oni_destroy_ctx(IntPtr ctx);
