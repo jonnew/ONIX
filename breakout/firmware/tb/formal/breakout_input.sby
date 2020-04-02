@@ -1,0 +1,13 @@
+[options]
+mode bmc
+depth 100
+
+[engines]
+smtbmc
+
+[script]
+read -formal -D BREAKOUT_INPUT breakout_input.v
+prep -top breakout_input
+
+[files]
+../../breakout_input.v
