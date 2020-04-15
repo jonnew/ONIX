@@ -64,9 +64,17 @@ oni_driver_ctx oni_driver_create_ctx()
 int oni_driver_init(oni_driver_ctx driver_ctx, int host_idx)
 {
     CTX_CAST;
-    if (host_idx < 0) host_idx = 0;
+    if (host_idx < 0) host_idx = 0; //we should implement an auto list and select method
     ctx->fpga = fpga_open(host_idx);
     if (ctx->fpga == NULL) return ONI_EINIT;
+    
+    //get a lock so this handle resets the system on close
+    if (riffa_lock(ctx->fpga) != 0) //if not possible to get the lock.
+    {
+        fpga_close(ctx->fpga);
+        ctx->fpga = NULL;
+        return ONI_ERETRIG; //seemed the most appropriate error
+    }
 
     //reset the whole system
     fpga_reset(ctx->fpga);
@@ -81,7 +89,7 @@ int oni_driver_destroy_ctx(oni_driver_ctx driver_ctx)
 
     if (ctx->fpga != NULL)
     {
-        fpga_reset(ctx->fpga); //Let's keep the fpga turned off, just in case
+        fpga_reset(ctx->fpga); //Let's keep the fpga turned off, just in case. Should automatically reset on close with the lock, but this does not hurt.
         fpga_close(ctx->fpga);
     }
     free(ctx);
