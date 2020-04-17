@@ -140,6 +140,7 @@ NTSTATUS RiffaEvtDeviceAdd(IN WDFDRIVER Driver, IN PWDFDEVICE_INIT DeviceInit) {
 	WDF_INTERRUPT_CONFIG intrConfig;
 	WDFDEVICE  device;
 	PDEVICE_EXTENSION devExt = NULL;
+	WDF_FILEOBJECT_CONFIG fileConfig;
 
 	UNREFERENCED_PARAMETER(Driver);
 
@@ -155,6 +156,15 @@ NTSTATUS RiffaEvtDeviceAdd(IN WDFDRIVER Driver, IN PWDFDEVICE_INIT DeviceInit) {
 	pnpPowerCallbacks.EvtDevicePrepareHardware = RiffaEvtDevicePrepareHardware;
 	pnpPowerCallbacks.EvtDeviceReleaseHardware = RiffaEvtDeviceReleaseHardware;
 	WdfDeviceInitSetPnpPowerEventCallbacks(DeviceInit, &pnpPowerCallbacks);
+
+	//Initialize file callbacks
+	WDF_FILEOBJECT_CONFIG_INIT(&fileConfig,
+		WDF_NO_EVENT_CALLBACK,
+		WDF_NO_EVENT_CALLBACK,
+		&RiffaFileCleanup);
+	fileConfig.FileObjectClass = WdfFileObjectWdfCanUseFsContext;
+
+	WdfDeviceInitSetFileObjectConfig(DeviceInit, &fileConfig, WDF_NO_OBJECT_ATTRIBUTES);
 
 	// Initialize FDO Request context.
 	WDF_OBJECT_ATTRIBUTES_INIT_CONTEXT_TYPE(&attributes, REQUEST_EXTENSION);
@@ -181,6 +191,7 @@ NTSTATUS RiffaEvtDeviceAdd(IN WDFDRIVER Driver, IN PWDFDEVICE_INIT DeviceInit) {
 	memset(devExt->IntrData, 0, 2 * RIFFA_MAX_NUM_CHNLS * sizeof(INTR_CHNL_DIR_DATA));
 	memset(devExt->Chnl, 0, 2 * RIFFA_MAX_NUM_CHNLS * sizeof(CHNL_DIR_STATE));
 	devExt->Device = device;
+	devExt->lockedFile = NULL;
 
 	// Create a new IO Queue for IRP_MJ_DEVICE_CONTROL requests.
 	WDF_IO_QUEUE_CONFIG_INIT(&queueConfig, WdfIoQueueDispatchParallel);
@@ -238,7 +249,21 @@ NTSTATUS RiffaEvtDeviceAdd(IN WDFDRIVER Driver, IN PWDFDEVICE_INIT DeviceInit) {
 	return status;
 }
 
+VOID RiffaFileCleanup(WDFFILEOBJECT FileObject)
+{
 
+	PDEVICE_EXTENSION devExt;
+
+	PAGED_CODE();
+
+	devExt = RiffaGetDeviceContext(WdfFileObjectGetDevice(FileObject));
+
+	if (InterlockedCompareExchangePointer(&(devExt->lockedFile), devExt->lockedFile, devExt->lockedFile) == FileObject)
+	{
+		RiffaIoctlReset(devExt, NULL);
+		InterlockedExchangePointer(&(devExt->lockedFile), NULL);
+	}
+}
 
 /**
  * Free all the resources allocated in DriverEntry.
@@ -980,6 +1005,14 @@ VOID RiffaEvtIoDeviceControl(IN WDFQUEUE Queue, IN WDFREQUEST Request,
     	RiffaIoctlReset(devExt, Request);
 		break;
 
+	case IOCTL_RIFFA_LOCK:
+		RiffaIoctlLock(devExt, Request);
+		break;
+
+	case IOCTL_RIFFA_UNLOCK:
+		RiffaIoctlUnlock(devExt, Request);
+		break;
+
     default:
         // The specified I/O control code is unrecognized by this driver.
 		DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_ERROR_LEVEL,
@@ -1365,10 +1398,37 @@ VOID RiffaIoctlReset(IN PDEVICE_EXTENSION DevExt, IN WDFREQUEST Request) {
 	memset(DevExt->IntrData, 0, 2 * RIFFA_MAX_NUM_CHNLS * sizeof(INTR_CHNL_DIR_DATA));
 
 	// Finish this request
-	WdfRequestCompleteWithInformation(Request, STATUS_SUCCESS, 0);
+	if (Request != NULL)
+		WdfRequestCompleteWithInformation(Request, STATUS_SUCCESS, 0);
 }
 
+VOID RiffaIoctlLock(IN PDEVICE_EXTENSION DevExt, IN WDFREQUEST Request)
+{
+	WDFFILEOBJECT fileObject;
+	NTSTATUS status = STATUS_INVALID_LOCK_SEQUENCE;
+	fileObject = WdfRequestGetFileObject(Request);
 
+	if (InterlockedCompareExchangePointer(&(DevExt->lockedFile), fileObject, NULL) == NULL)
+	{
+		status = STATUS_SUCCESS;
+	}
+
+	WdfRequestCompleteWithInformation(Request, status, 0);
+}
+
+VOID RiffaIoctlUnlock(IN PDEVICE_EXTENSION DevExt, IN WDFREQUEST Request)
+{
+	WDFFILEOBJECT fileObject;
+	NTSTATUS status = STATUS_INVALID_LOCK_SEQUENCE;
+	fileObject = WdfRequestGetFileObject(Request);
+
+	if (InterlockedCompareExchangePointer(&(DevExt->lockedFile), NULL, fileObject) == fileObject)
+	{
+		status = STATUS_SUCCESS;
+	}
+
+	WdfRequestCompleteWithInformation(Request, status, 0);
+}
 
 /******************************************************************************
  * DMA ENTRY, EXIT, TIMER FUNCTIONS

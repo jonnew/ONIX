@@ -88,6 +88,9 @@
       </WppScanConfigurationData>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
+    <Inf>
+      <TimeStamp>6.0.1.1</TimeStamp>
+    </Inf>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -97,18 +100,29 @@
       </WppScanConfigurationData>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
+    <Inf>
+      <TimeStamp>6.0.1.1</TimeStamp>
+    </Inf>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WppEnabled>false</WppEnabled>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
+    <Inf>
+      <TimeStamp>6.0.1.0</TimeStamp>
+      <SpecifyDriverVerDirectiveVersion>true</SpecifyDriverVerDirectiveVersion>
+    </Inf>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WppEnabled>false</WppEnabled>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
+    <Inf>
+      <TimeStamp>6.0.1.0</TimeStamp>
+      <SpecifyDriverVerDirectiveVersion>true</SpecifyDriverVerDirectiveVersion>
+    </Inf>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Inf Include="..\..\sys\riffa.inx" />
@@ -118,12 +132,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\sys\precomp.h" />
+    <ClInclude Include="..\..\sys\resource.h" />
     <ClInclude Include="..\..\sys\riffa_driver.h" />
     <ClInclude Include="..\..\sys\riffa_private.h" />
     <ClInclude Include="..\..\sys\trace.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sys\riffa.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\sys\riffa.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

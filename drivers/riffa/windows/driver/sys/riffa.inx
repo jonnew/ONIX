@@ -98,7 +98,7 @@ KmdfService = RIFFA, RIFFA_wdfsect
 KmdfLibraryVersion = $KMDFVERSION$
 
 [Strings]
-UCSD = "University of California, San Diego"
+UCSD = "University of California, San Diego / Open-Ephys"
 ClassName = "RIFFA Devices"
 RIFFA.SVCDESC = "Driver Service for RIFFA FPGAs"
 RIFFA.XILINXDESC = "Xilinx(R) FPGA"

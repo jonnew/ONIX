@@ -127,5 +127,12 @@ int fpga_list(fpga_info_list * list) {
 	return rc;
 }
 
+int fpga_lock(fpga_t * fpga)
+{
+	return ioctl(fpga->fd, IOCTL_LOCK, fpga->id);
+}
 
-
+int fpga_unlock(fpga_t * fpga)
+{
+	return ioctl(fpga->fd, IOCTL_UNLOCK, fpga->id);
+}

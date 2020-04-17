@@ -64,6 +64,7 @@
 #include <linux/slab.h>
 #include <asm/uaccess.h>
 #include <asm/div64.h>
+#include <linux/mutex.h>
 #include "riffa_driver.h"
 #include "circ_queue.h"
 
@@ -123,6 +124,12 @@ struct fpga_state {
 	int num_chnls;
 	struct chnl_dir ** recv;
 	struct chnl_dir ** send;
+	struct mutex lock;
+	struct file* lockedFile;
+};
+
+struct file_state {
+	atomic_t fpga_id;
 };
 
 // Global variables (to this file only)
@@ -996,6 +1003,58 @@ static inline void reset(int id)
 	}
 }
 
+static inline int fpga_lock(int id, struct file *filp)
+{
+	struct fpga_state * sc;
+	int status = 0;
+	struct file_state* fst;
+	
+	//File already associated with a lock
+	fst = (struct file_state*)filp->private_data;
+	if (atomic_read(&fst->fpga_id) >= 0)
+		return -1;
+
+	if (atomic_read(&used_fpgas[id])) {
+		sc = fpgas[id];
+		mutex_lock(&(sc->lock));
+		if (sc->lockedFile == NULL)
+		{
+			sc->lockedFile = filp;
+			atomic_set(&fst->fpga_id,id);
+		}
+		else
+			status = -1;
+		mutex_unlock(&(sc->lock));
+	}
+	return status;
+}
+
+static inline int fpga_unlock(int id, struct file *filp)
+{
+	struct fpga_state * sc;
+	int status = 0;
+	struct file_state* fst;
+
+	//File not associated with a lock
+	fst = (struct file_state*)filp->private_data;
+	if (atomic_read(&fst->fpga_id) < 0)
+		return -1;
+
+	if (atomic_read(&used_fpgas[id])) {
+		sc = fpgas[id];
+		mutex_lock(&(sc->lock));
+		if (sc->lockedFile == filp)
+		{
+			sc->lockedFile = NULL;
+			atomic_set(&fst->fpga_id,-1);
+		}
+		else
+			status = -1;
+		mutex_unlock(&(sc->lock));
+	}
+	return status;
+}
+
 /**
  * Main entry point for reading and writing on the device. Return value depends 
  * on ioctlnum and expected behavior. See code for details.
@@ -1033,10 +1092,62 @@ static long fpga_ioctl(struct file *filp, unsigned int ioctlnum,
 	case IOCTL_RESET:
 		reset((int)ioctlparam);
 		break;
+	case IOCTL_LOCK:
+		return fpga_lock((int)ioctlparam, filp);
+		break;
+	case IOCTL_UNLOCK:
+		return fpga_unlock((int)ioctlparam, filp);
+		break;
 	default:
 		return -ENOTTY;
 		break;
 	}
+	return 0;
+}
+
+static int fpga_close(struct inode* inode, struct file* filp)
+{
+	int id;
+	struct file_state* fst;
+	struct fpga_state * sc;
+	int must_reset = 0;
+
+	fst = (struct file_state*)filp->private_data;
+	id = atomic_read(&fst->fpga_id);
+	if (id >= 0)
+	{
+		if (atomic_read(&used_fpgas[id])) 
+		{
+			sc = fpgas[id];
+			mutex_lock(&(sc->lock));
+			if (sc->lockedFile == filp)
+			{
+				must_reset = 1;
+			}
+			else
+				printk(KERN_WARNING "Riffa device file lock not matching with fpga lock. System might not respond properly\n");
+			mutex_unlock(&(sc->lock));
+
+			if (must_reset)
+			{
+				reset(id);
+				mutex_lock(&(sc->lock));
+				sc->lockedFile = NULL;
+				mutex_unlock(&(sc->lock));
+			}
+		}
+	}
+	kfree(fst);
+	return 0;
+}
+
+static int fpga_open(struct inode* inode, struct file *filp)
+{
+	struct file_state* fst;
+
+	fst = (struct file_state*)kmalloc(sizeof(struct file_state), GFP_KERNEL);
+	atomic_set(&fst->fpga_id,-1);
+	filp->private_data = fst;
 	return 0;
 }
 
@@ -1152,6 +1263,8 @@ static int __devinit fpga_probe(struct pci_dev *dev, const struct pci_device_id 
 		return (-ENOMEM);
 	}
 	atomic_set(&sc->intr_disabled, 0);
+	sc->lockedFile = NULL;
+	mutex_init(&(sc->lock));
 	snprintf(sc->name, sizeof(sc->name), "%s%d", pci_name(dev), 0);
 	sc->vendor_id = dev->vendor;
 	sc->device_id = dev->device;
@@ -1560,6 +1673,8 @@ static struct pci_driver fpga_driver = {
 static const struct file_operations fpga_fops = {
 	.owner			= THIS_MODULE,
 	.unlocked_ioctl	= fpga_ioctl,
+	.open 			= fpga_open,
+	.release		= fpga_close
 };
 
 /**

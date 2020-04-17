@@ -116,6 +116,7 @@ typedef struct _DEVICE_EXTENSION {
 	WDFCOMMONBUFFER 		SpillBuffer;
 	PUCHAR 					SpillBufferBase;
 	PHYSICAL_ADDRESS 		SpillBufferBaseLA;	// Logical Address
+	WDFFILEOBJECT			lockedFile;
 } DEVICE_EXTENSION, *PDEVICE_EXTENSION;
 
 // The request extension for the request object
@@ -151,6 +152,8 @@ EVT_WDF_DEVICE_PREPARE_HARDWARE RiffaEvtDevicePrepareHardware;
 EVT_WDF_DEVICE_RELEASE_HARDWARE RiffaEvtDeviceReleaseHardware;
 NTSTATUS RiffaReadHardwareIds(IN PDEVICE_EXTENSION DevExt);
 
+EVT_WDF_FILE_CLEANUP RiffaFileCleanup;
+
 EVT_WDF_INTERRUPT_ISR RiffaEvtInterruptIsr;
 EVT_WDF_INTERRUPT_DPC RiffaEvtInterruptDpc;
 BOOLEAN RiffaProcessInterrupt(IN PDEVICE_EXTENSION DevExt, IN UINT32 Offset, IN UINT32 Vect);
@@ -163,6 +166,8 @@ VOID RiffaIoctlRecv(IN PDEVICE_EXTENSION DevExt, IN WDFREQUEST Request,
 VOID RiffaIoctlList(IN PDEVICE_EXTENSION DevExt, IN WDFREQUEST Request,
 	IN size_t OutputBufferLength, IN size_t InputBufferLength);
 VOID RiffaIoctlReset(IN PDEVICE_EXTENSION DevExt, IN WDFREQUEST Request);
+VOID RiffaIoctlLock(IN PDEVICE_EXTENSION DevExt, IN WDFREQUEST Request);
+VOID RiffaIoctlUnlock(IN PDEVICE_EXTENSION DevExt, IN WDFREQUEST Request);
 
 VOID RiffaCompleteRequest(IN PDEVICE_EXTENSION DevExt, IN UINT32 Chnl, IN NTSTATUS Status, IN BOOLEAN TimedOut);
 EVT_WDF_TIMER RiffaEvtTimerFunc;

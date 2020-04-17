@@ -4,7 +4,7 @@ Signature="$WINDOWS NT$"
 Class=FPGA
 ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171}
 Provider=%UCSD%
-DriverVer = 01/23/2020,17.58.18.457
+DriverVer = 04/16/2020,6.0.1.1
 CatalogFile=riffa.cat
 
 [DestinationDirs]
@@ -100,7 +100,7 @@ KmdfService = RIFFA, RIFFA_wdfsect
 KmdfLibraryVersion = 1.15
 
 [Strings]
-UCSD = "University of California, San Diego"
+UCSD = "University of California, San Diego / Open-Ephys"
 ClassName = "RIFFA Devices"
 RIFFA.SVCDESC = "Driver Service for RIFFA FPGAs"
 RIFFA.XILINXDESC = "Xilinx(R) FPGA"

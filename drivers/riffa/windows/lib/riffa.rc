@@ -42,7 +42,7 @@
  */
 
 1 VERSIONINFO
- FILEVERSION 1,0,0,0
+ FILEVERSION 1,0,1,0
  PRODUCTVERSION 2,0,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -59,9 +59,9 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "Comments", "RIFFA 64 bit Windows Library"
-            VALUE "CompanyName", "University of California, San Diego"
+            VALUE "CompanyName", "University of California, San Diego / Open-Ephys"
             VALUE "FileDescription", "User 64 bit library for RIFFA."
-            VALUE "FileVersion", "1, 0, 0, 0"
+            VALUE "FileVersion", "1, 0, 1, 0"
             VALUE "InternalName", "RIFFA"
             VALUE "LegalCopyright", "Copyright © 2011 The Regents of the University of California. All Rights Reserved."
             VALUE "OriginalFilename", "riffa.dll"

@@ -125,6 +125,8 @@ typedef struct fpga_info_list fpga_info_list;
 #define IOCTL_RECV _IOR(MAJOR_NUM, 2, fpga_chnl_io *)
 #define IOCTL_LIST _IOR(MAJOR_NUM, 3, fpga_info_list *)
 #define IOCTL_RESET _IOW(MAJOR_NUM, 4, int)
+#define IOCTL_LOCK _IOW(MAJOR_NUM, 5, int)
+#define IOCTL_UNLOCK _IOW(MAJOR_NUM, 6, int)
 
 
 

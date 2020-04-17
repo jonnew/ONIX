@@ -113,6 +113,21 @@ int fpga_recv(fpga_t * fpga, int chnl, void * data, int len, long long timeout);
  */
 void fpga_reset(fpga_t * fpga);
 
+/**
+ * Enables a driver lock tied to this specific FPGA handle. If this handle is
+ * closed while the lock is set, be it by fpga_close or by a crash of the hostt
+ * software, the FPGA will reset, as if a call to fpga_reset was performed.
+ * This call will return 0 if successful, otherwise if the lock cannot be acquired.
+ * This usually means other handle has the lock.
+ */
+int fpga_lock(fpga_t * fpga);
+
+/**
+ * Releases the lock on this handle
+ * Returns nonzero if this handle did not have the lock.
+ */
+int fpga_unlock(fpga_t * fpga);
+
 #ifdef __cplusplus
 }
 #endif

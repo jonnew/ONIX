@@ -36,10 +36,18 @@
     <ClInclude Include="..\..\sys\trace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sys\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sys\riffa.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\sys\riffa.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
