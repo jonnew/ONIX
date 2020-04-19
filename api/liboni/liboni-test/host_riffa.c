@@ -6,6 +6,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <math.h>
 
 #include "oni.h"
 #include "onidevices.h"
@@ -13,6 +14,9 @@
 
 // Dump raw device streams to files?
 //#define DUMPFILES
+
+// Turn on RT optimization
+#define RT
 
 #ifdef DUMPFILES
 FILE **dump_files;
@@ -30,10 +34,10 @@ FILE **dump_files;
 #endif
 
 volatile oni_ctx ctx = NULL;
+oni_size_t num_devs = 0;
 oni_device_t *devices = NULL;
 volatile int quit = 0;
 volatile int display = 0;
-volatile int display_clock = 0;
 const int quiet = 1;
 int running = 1;
 
@@ -67,6 +71,9 @@ int parse_reg_cmd(const char *cmd, long *values, int len)
     return 0;
 }
 
+int16_t last_sample = 32767;
+uint32_t out_count = 0;
+
 #ifdef _WIN32
 DWORD WINAPI read_loop(LPVOID lpParam)
 #else
@@ -76,10 +83,14 @@ void *read_loop(void *vargp)
     unsigned long counter = 0;
     unsigned long this_cnt = 0;
 
+    //// Pre-allocate write frame
+    //oni_frame_t *w_frame = NULL;
+    //oni_create_frame(ctx, &w_frame, 8, 4);
+
     while (!quit)  {
 
         int rc = 0;
-        oni_frame_t *frame;
+        oni_frame_t *frame = NULL;
         rc = oni_read_frame(ctx, &frame);
         if (rc < 0) {
             printf("Error: %s\n", oni_error_str(rc));
@@ -87,87 +98,85 @@ void *read_loop(void *vargp)
             break;
         }
 
-        if (display_clock && counter % 10000 == 0)
-            printf("\tSample: %" PRIu64 "\n\n", frame->clock);
-
-        int i;
-        for (i = 0; i < frame->num_dev; i++) {
-
-            // Pull data
-            if (i >= frame->num_dev)
-                continue;
-
-            size_t this_idx = frame->dev_idxs[i];
-
-            oni_device_t this_dev = devices[this_idx];
-            uint8_t *data = (uint8_t *)(frame->data + frame->dev_offs[i]);
-            size_t data_sz = this_dev.read_size;
-
 #ifdef DUMPFILES
-            fwrite(data, 1, data_sz, dump_files[this_idx]);
+        fwrite(frame->data, 1, frame->data_sz, dump_files[frame->dev_idx]);
 #endif
-            if (display && counter % 1000 == 0) {
+        if (display && counter % 1000 == 0) {
 
-                this_cnt++;
-                printf("\tDev: %zu (%s) \n",
-                    this_idx,
-                    oni_device_str(this_dev.id));
-                    // this_cnt);
+            oni_device_t this_dev = devices[frame->dev_idx];
 
-                int i;
-                printf("\tData: [");
-                for (i = 0; i < data_sz; i += 2)
-                    printf("%u ", *(uint16_t *)(data + i));
-                printf("]\n");
-            }
+            this_cnt++;
+            printf("\tDev: %zu (%s) \n",
+                frame->dev_idx,
+                oni_device_str(this_dev.id));
+                // this_cnt);
+
+            int i;
+            printf("\tData: [");
+            for (i = 0; i < frame->data_sz; i += 2)
+                printf("%u ", *(uint16_t *)(frame->data + i));
+            printf("]\n");
         }
+
+         //// Feedback loop test
+         //if (frame->dev_idx == 7) {
+         //
+         //    int16_t sample = *(int16_t *)(frame->data + 10);
+         //
+         //    if (sample - last_sample > 500) {
+         //
+         //        memcpy(w_frame->data, &out_count, 4);
+         //        out_count++;
+
+         //        int rc = oni_write_frame(ctx, w_frame);
+         //        if (rc < 0) { printf("Error: %s\n", oni_error_str(rc)); }
+
+         //    }
+         //
+         //    last_sample = sample;
+         //}
 
         counter++;
         oni_destroy_frame(frame);
     }
 
+    //oni_destroy_frame(w_frame);
+
     return NULL;
 }
 
-//#ifdef _WIN32
-//DWORD WINAPI write_loop(LPVOID lpParam)
-//#else
-//void *write_loop(void *vargp)
-//#endif
-//{
-//    // Write zeros to device 3
-//
-//    while (!quit)  {
-//
-//        int row_num = 0;
-//        while (row_num < 256) {
-//
-//            int rc = 0;
-//            uint16_t data[275];
-//
-//            // Header
-//            data[0] = 16384 + row_num;
-//
-//            // Row update
-//            int i = 0;
-//            for (i = 0; i < 256; i++)
-//                data[i + 19]  = row_num;
-//
-//            rc = oni_write(ctx, 0, data, sizeof(data));
-//            printf("%d: %d\n", row_num, rc);
-//
-//            if (rc < 0) {
-//                printf("Error: %s\n", oni_error_str(rc));
-//                quit = 1;
-//                break;
-//            }
-//
-//            row_num++;
-//        }
-//    }
-//
-//    return NULL;
-//}
+#ifdef _WIN32
+DWORD WINAPI write_loop(LPVOID lpParam)
+#else
+void *write_loop(void *vargp)
+#endif
+{
+    // Pre-allocate write frame
+    // TODO: hardcoded dev_idx not good
+    oni_frame_t *w_frame = NULL;
+    oni_create_frame(ctx, &w_frame, 8, 4);
+
+    // Loop count
+    uint32_t count = 0;
+
+    // Cycle through writable devices and write counter to their data
+    while (!quit) {
+
+        memcpy(w_frame->data, &out_count, 4);
+        out_count++;
+
+        int rc = oni_write_frame(ctx, w_frame);
+        if (rc < 0) { printf("Error: %s\n", oni_error_str(rc)); }
+
+        count++;
+
+        Sleep(1);
+    }
+
+     oni_destroy_frame(w_frame);
+
+    return NULL;
+}
 
 void start_threads()
 {
@@ -182,11 +191,19 @@ void start_threads()
     DWORD read_tid;
     read_thread = CreateThread(NULL, 0, read_loop, NULL, 0, &read_tid);
 
-    //DWORD write_tid;
-    //write_thread = CreateThread(NULL, 0, write_loop, NULL, 0, &write_tid);
+    DWORD write_tid;
+    write_thread = CreateThread(NULL, 0, write_loop, NULL, 0, &write_tid);
+
+#ifdef RT
+    if (!SetThreadPriority(read_thread, THREAD_PRIORITY_TIME_CRITICAL))
+        printf("Unable to set read thread priority.\n");
+    if (!SetThreadPriority(write_thread, THREAD_PRIORITY_HIGHEST))
+        printf("Unable to set read thread priority.\n");
+#endif
+
 #else
     pthread_create(&read_tid, NULL, read_loop, NULL);
-    //pthread_create(&write_tid, NULL, write_loop, NULL);
+    pthread_create(&write_tid, NULL, write_loop, NULL);
 #endif
 }
 
@@ -194,13 +211,14 @@ void stop_threads()
 {
     // Join data and signal threads
     quit = 1;
+
 #ifdef _WIN32
 
     WaitForSingleObject(read_thread, 200); // INFINITE);
     CloseHandle(read_thread);
 
-    //WaitForSingleObject(write_thread, INFINITE);
-    //CloseHandle(write_thread);
+    WaitForSingleObject(write_thread, 200);
+    CloseHandle(write_thread);
 #else
     if (running)
         pthread_join(read_tid, NULL);
@@ -240,14 +258,24 @@ void print_dev_table(oni_device_t *devices, int num_devs)
 
 int main(int argc, char *argv[])
 {
+
     printf(logo_med);
+
+#if defined(_WIN32) && defined(RT)
+    if (!SetPriorityClass(GetCurrentProcess(), REALTIME_PRIORITY_CLASS)) {
+        printf("Failed to set thread priority\n");
+        exit(EXIT_FAILURE);
+    }
+#else
+    // TODO
+#endif
 
     // Return code
     int rc = ONI_ESUCCESS;
 
     // Generate context
     ctx = oni_create_ctx("riffa");
-    if (!ctx) exit(EXIT_FAILURE);
+    if (!ctx) { printf("Failed to create context\n"); exit(EXIT_FAILURE); }
 
     // Set acqusition to run immediately following reset
     oni_reg_val_t immediate_run = 0;
@@ -260,7 +288,6 @@ int main(int argc, char *argv[])
     assert(rc == 0);
 
     // Examine device map
-    oni_size_t num_devs = 0;
     size_t num_devs_sz = sizeof(num_devs);
     oni_get_opt(ctx, ONI_OPT_NUMDEVICES, &num_devs, &num_devs_sz);
 
@@ -291,13 +318,21 @@ int main(int argc, char *argv[])
     oni_get_opt(ctx, ONI_OPT_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
     printf("Max. read frame size: %u bytes\n", frame_size);
 
-    oni_size_t block_size = 2048;
+    oni_size_t block_size = 1024;
     size_t block_size_sz = sizeof(block_size);
     oni_set_opt(ctx, ONI_OPT_BLOCKREADSIZE, &block_size, block_size_sz);
     printf("Setting block read size to: %u bytes\n", block_size);
 
     oni_get_opt(ctx, ONI_OPT_BLOCKREADSIZE, &block_size, &block_size_sz);
     printf("Block read size: %u bytes\n", block_size);
+
+    block_size = 8192;
+    block_size_sz = sizeof(block_size);
+    oni_set_opt(ctx, ONI_OPT_BLOCKWRITESIZE, &block_size, block_size_sz);
+    printf("Setting write pre-allocation buffer to: %u bytes\n", block_size);
+
+    oni_get_opt(ctx, ONI_OPT_BLOCKWRITESIZE, &block_size, &block_size_sz);
+    printf("Write pre-allocation size: %u bytes\n", block_size);
 
     // Try to write to base clock freq, which is write only
     oni_size_t base_hz = (oni_size_t)10e6;
@@ -350,9 +385,6 @@ int main(int argc, char *argv[])
             oni_size_t reset = 1;
             rc = oni_set_opt(ctx, ONI_OPT_RESET, &reset, sizeof(reset));
             if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
-        }
-        else if (c == 'c') {
-            display_clock = (display_clock == 0) ? 1 : 0;
         }
         else if (c == 'd') {
             display = (display == 0) ? 1 : 0;

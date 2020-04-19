@@ -5,42 +5,46 @@ namespace oni.lib
     using System.Security;
     using System.Text;
 
+    // See oni_defs.h or oni_error_str()
     public enum Error
     {
-        SUCCESS = 0,  // Success
-        PATHINVALID = -1,  // Invalid stream path, fail on open
-        DEVID = -2,  // Invalid device ID on init or reg op
-        DEVIDX = -3,  // Invalid device index
-        WRITESIZE = -4,  // Data write size is incorrect for designated device
-        READFAILURE = -5,  // Failure to read from a stream/register
-        WRITEFAILURE = -6,  // Failure to write to a stream/register
-        NULLCTX = -7,  // Attempt to call function w null ctx
-        SEEKFAILURE = -8,  // Failure to seek on stream
-        INVALSTATE = -9,  // Invalid operation for the current context run state
-        INVALOPT = -10, // Invalid context option
-        INVALARG = -11, // Invalid function arguments
-        COBSPACK = -12, // Invalid COBS packet
-        RETRIG = -13, // Attempt to trigger an already triggered operation
-        BUFFERSIZE = -14, // Supplied buffer is too small
-        BADDEVMAP = -15, // Badly formated device map supplied by firmware
-        BADALLOC = -16, // Bad dynamic memory allocation
-        CLOSEFAIL = -17, // File descriptor close failure, check errno
-        READONLY = -18, // Attempted write to read only object (register, context option, etc)
-        UNIMPL = -19, // Specified, but unimplemented, feature
-        INVALREADSIZE = -20, // Block read size is smaller than the maximal frame size
-        NOREADDEV = -21, // Frame read attempted when there are no readable devices in the device map
+        SUCCESS = 0,
+        PATHINVALID = -1,
+        DEVID = -2,
+        DEVIDX = -3,
+        WRITESIZE = -4,
+        READFAILURE = -5,
+        WRITEFAILURE = -6,
+        NULLCTX = -7,
+        SEEKFAILURE = -8,
+        INVALSTATE = -9,
+        INVALOPT = -10,
+        INVALARG = -11,
+        COBSPACK = -12,
+        RETRIG = -13,
+        BUFFERSIZE = -14,
+        BADDEVMAP = -15,
+        BADALLOC = -16,
+        CLOSEFAIL = -17,
+        READONLY = -18,
+        UNIMPL = -19,
+        INVALREADSIZE = -20,
+        NOREADDEV = -21,
         INIT = -22,
+        WRITEONLY = -23,
+        INVALWRITESIZE = -24,
+        NOWRITEDEV = -25,
     }
 
     // Make managed version of oni_device_t
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct device_t
     {
-        public int id;             // Device ID
-        public uint read_size;      // Read size
-        public uint num_reads;      // Num reads per sample
-        public uint write_size;     // Write size
-        public uint num_writes;     // Num writes per sample
+        public readonly int id;              // Device ID
+        public readonly uint read_size;      // Read size
+        public readonly uint num_reads;      // Num reads per sample
+        public readonly uint write_size;     // Write size
+        public readonly uint num_writes;     // Num writes per sample
 
         // Adjust this as required
         public override string ToString() =>
@@ -126,7 +130,10 @@ namespace oni.lib
         public static extern int oni_read_frame(IntPtr ctx, out Frame frame);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl, SetLastError = true)]
-        public static extern int oni_write(IntPtr ctx, uint dev_idx, IntPtr data, uint data_sz);
+        public static extern int oni_create_frame(IntPtr ctx, out Frame frame, uint dev_idx, uint data_sz);
+
+        [DllImport(LibraryName, CallingConvention = CCCdecl, SetLastError = true)]
+        public static extern int oni_write_frame(IntPtr ctx, Frame frame);
 
         [DllImport(LibraryName, CallingConvention = CCCdecl)]
         public static extern void oni_destroy_frame(IntPtr frame);

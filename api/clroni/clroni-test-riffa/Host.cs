@@ -11,10 +11,8 @@ class DataProcessor
     private oni.Context ctx;
 
     public bool display = false;
-    public bool display_clock = false;
     public volatile bool quit = false;
-    const int display_downsample = 100;
-    ulong counter = 0;
+    const int display_downsample = 101;
 
     public DataProcessor(oni.Context ctx)
     {
@@ -23,6 +21,16 @@ class DataProcessor
 
     public void CaptureData()
     {
+        ulong counter = 0;
+       // 
+       // int rc = 0;
+       // while (rc == 0 && !quit)
+       // {
+       //     ctx.Write(8, (uint)counter);
+       //     Thread.SpinWait(100000); // Sleep(1);
+       //     counter++;
+       // }
+
         int rc = 0;
         while (rc == 0 && !quit)
         {
@@ -32,19 +40,15 @@ class DataProcessor
 
                 if (counter++ % display_downsample == 0)
                 {
-                    if (display_clock)
-                        Console.WriteLine("\tFrame clock: {0}\n", frame.Clock());
-
                     if (display)
                     {
-                        foreach (var idx in frame.DeviceIndices)
-                        {
-                            var dat = frame.Data<ushort>(idx);
-                            Console.WriteLine("\tDev: {0} ({1})", idx, Device.Name((int)ctx.DeviceMap[idx].id));
-                            Console.WriteLine("\t[{0}]", String.Join(", ", dat));
-                        }
+                        var dat = frame.Data<ushort>();
+                        var idx = frame.DeviceIndex();
+                        Console.WriteLine("\tDev: {0} ({1})", idx, Device.Name((int)ctx.DeviceMap[idx].id));
+                        Console.WriteLine("\t[{0}]", String.Join(", ", dat));
                     }
                 }
+
             }
             catch (ONIException ex)
             {
@@ -121,8 +125,6 @@ class HostRiffa
                             ctx.Stop();
                             Console.WriteLine("\tPuased.");
                         }
-                    } else if (c == 'c') {
-                        processor.display_clock = !processor.display_clock;
                     } else if (c == 'd') {
                         processor.display = !processor.display;
                     }

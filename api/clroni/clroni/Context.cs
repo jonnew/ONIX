@@ -8,7 +8,7 @@
 
     using lib;
 
-    public class Context : SafeHandleZeroOrMinusOneIsInvalid
+    public unsafe class Context : SafeHandleZeroOrMinusOneIsInvalid
     {
         protected Context()
         : base(true)
@@ -223,25 +223,24 @@
             Frame frame;
             int rc = NativeMethods.oni_read_frame(handle, out frame);
             if (rc < 0) { throw new ONIException(rc); }
-            frame.Map(DeviceMap);
             return frame;
         }
 
-        // Byte array write specialization
-        public void Write(uint dev_idx, IntPtr data, int length)
+        public void Write<T>(uint dev_idx, T data) where T : struct
         {
-            int rc = NativeMethods.oni_write(handle, dev_idx, data, (uint)length);
-            if (rc < 0) { throw new ONIException(rc); }
+            Write(dev_idx, new T[] { data });
         }
 
-        // TODO: C# 7.3
-        // Generic write with array type cast
-        //public void Write<T>(uint dev_idx, T[] data) where T : unmanaged
-        //{
-        //    var byte_data = Array.ConvertAll(data, item => (byte)item);
-        //    int rc = NativeMethods.oni_write(handle, dev_idx, byte_data, byte_data.Length);
-        //    if (rc < 0) { throw new ONIException(rc); }
-        //}
+        public void Write<T> (uint dev_idx, T[] data) where T : struct
+        {
+            Frame frame;
+            int rc = NativeMethods.oni_create_frame(handle, out frame, dev_idx, (uint)Buffer.ByteLength(data));
+            if (rc < 0) { throw new ONIException(rc); }
+            frame.SetData(data);
+
+            rc = NativeMethods.oni_write_frame(handle, frame);
+            if (rc < 0) { throw new ONIException(rc); }
+        }
 
         // NB: These need to be redeclared unfortuately
         public enum Option : int
@@ -253,7 +252,8 @@
             RUNNING,
             RESET,
             SYSCLKHZ,
-            BLOCKREADSIZE
+            BLOCKREADSIZE,
+            BLOCKWRITESIZE
         }
     }
 }

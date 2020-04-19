@@ -46,6 +46,9 @@ enum riffa_channels {
     RIFFA_SIGNAL = 3
 };
 
+// TODO:
+//static const size_t write_stream_width = 4;
+//static const size_t read_stream_width = 4;
 static const oni_size_t write_block_size = 1024;
 
 oni_driver_ctx oni_driver_create_ctx()
@@ -127,7 +130,7 @@ int oni_driver_write_stream(oni_driver_ctx driver_ctx,
     size_t size)
 {
     CTX_CAST;
-    size_t remaining = size;
+    size_t remaining = size >> 2; // bytes to 32 bit words
     size_t to_send, sent;
     uint32_t* ptr = (uint32_t*)data;
 

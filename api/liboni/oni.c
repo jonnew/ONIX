@@ -10,10 +10,15 @@
 #include "onidriverloader.h"
 
 // TODO:
-// 1. Finish mods to write stream. get rid of commented out obselete stuff
+// 1. Get rid of oni_fifo_size_t and anything else
+// hardcoding fifo width at this top level driver. Or the loaded driver
+// could import this number somehow (e.g. via extern variable or context member).
 
 // Consistent overhead bytestuffing buffer size
 #define ONI_COBSBUFFERSIZE 255
+
+// Frame constants
+#define ONI_FRAMEHEADERSZ 2 * sizeof(oni_fifo_dat_t) // [dev_idx, data_sz]
 
 // Reference counter
 struct ref {
@@ -21,7 +26,7 @@ struct ref {
     int count;
 };
 
-// Reference-counted read buffer
+// Reference counting buffer
 struct oni_buf_impl {
 
     // Raw data buffer
@@ -32,6 +37,15 @@ struct oni_buf_impl {
     // Reference count
     struct ref count;
 };
+
+// Frame with attached, automatically managed storage
+typedef union {
+    oni_frame_t public;
+    struct {
+        oni_frame_t;
+        struct oni_buf_impl *buffer;
+    } private;
+} oni_frame_impl_t;
 
 // Acquisition context
 struct oni_ctx_impl {
@@ -46,18 +60,17 @@ struct oni_ctx_impl {
     oni_size_t num_dev;
     oni_device_t* dev_map;
 
-    // Maximum read frame size (bytes, includes header)
+    // Maximum frame size (bytes, includes header)
     oni_size_t max_read_frame_size;
+    oni_size_t max_write_frame_size;
 
-    // Block read size (bytes, defaults to max_read_frame_size)
+    // Block read/write size (bytes, defaults to max_read/write_frame_size)
     oni_size_t block_read_size;
+    oni_size_t block_write_size;
 
-    // Current, attached buffer
-    struct oni_buf_impl *shared_buf;
-
-    // Write frame remainder
-    //size_t write_remainder_size;
-    //char write_remainder[sizeof(oni_fifo_dat_t)];
+    // Current, attached buffers
+    struct oni_buf_impl *shared_rbuf;
+    struct oni_buf_impl *shared_wbuf;
 
     // Acquisition state
     enum {
@@ -90,8 +103,9 @@ static int _oni_pump_signal_data(oni_ctx ctx, int flags, oni_signal_t *type, voi
 static int _oni_cobs_unstuff(uint8_t *dst, const uint8_t *src, size_t size);
 static inline int _oni_write_config(oni_ctx ctx, oni_config_t reg, oni_reg_val_t value);
 static inline int _oni_read_config(oni_ctx, oni_config_t reg, oni_reg_val_t *value);
+static int _oni_alloc_write_buffer(oni_ctx ctx, void **data, size_t size);
 static int _oni_read_buffer(oni_ctx ctx, void **data, size_t size, int);
-static void _oni_dump_buffer(oni_ctx ctx);
+static void _oni_dump_buffers(oni_ctx ctx);
 static void _oni_destroy_buffer(const struct ref *ref);
 static inline void _ref_inc(const struct ref *ref);
 static inline void _ref_dec(const struct ref *ref);
@@ -133,7 +147,7 @@ int oni_init_ctx(oni_ctx ctx, int host_idx)
     if (rc) return rc;
 
     // NB: Trigger reset routine (populates device map and key acquisition
-    // parameters) Success will set run_state to IDLE
+    // parameters) Success will set ctx->run_state to IDLE
 
     // If running, stop acquisition
     rc = _oni_write_config(ctx, ONI_CONFIG_RUNNING, ctx->run_on_reset);
@@ -264,6 +278,16 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
             *option_len = required_bytes;
             break;
         }
+        case ONI_OPT_BLOCKWRITESIZE: {
+            oni_size_t required_bytes = sizeof(oni_size_t);
+            if (*option_len < required_bytes)
+                return ONI_EBUFFERSIZE;
+
+            *(oni_size_t *)value = ctx->block_write_size;
+            *option_len = required_bytes;
+            break;
+        }
+
         default:
             return ONI_EINVALOPT;
     }
@@ -300,7 +324,7 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
             // TODO: Is this always the right thing to do? In the case our our RIFFA implementation, yes.
             // But other implementations may not clear intermeidate FIFOs meaning that the first data
             // encountered on restart is not the start of a frame.
-            _oni_dump_buffer(ctx);
+            _oni_dump_buffers(ctx);
 
             if (*(oni_reg_val_t *)value != 0)
                 ctx->run_state = RUNNING;
@@ -355,6 +379,32 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
 
             break;
 
+        }
+        case ONI_OPT_BLOCKWRITESIZE: {
+            // NB: If we are careful, this could be changed during RUNNING
+            // state. However, I would need to perform runtime size check of
+            // the block readsize. Also, what if it occured on a separate
+            // thread during a call to oni_read_frame?
+            assert(ctx->run_state == IDLE && "Context state must be IDLE.");
+            if (ctx->run_state != IDLE)
+                return ONI_EINVALSTATE;
+
+            if (option_len != sizeof(oni_size_t))
+                return ONI_EBUFFERSIZE;
+
+            oni_size_t block_write_size = *(oni_size_t *)value;
+
+            // Make sure the block read size is greater than max frame size
+            if (block_write_size < ctx->max_write_frame_size)
+                return ONI_EINVALWRITESIZE;
+
+            // Make sure the block read size is a multiple of the FIFO width
+            if (block_write_size % sizeof(oni_fifo_dat_t) != 0)
+                return ONI_EINVALWRITESIZE;
+
+            ctx->block_write_size = block_write_size;
+
+            break;
         }
         case ONI_OPT_DEVICEMAP:
         case ONI_OPT_NUMDEVICES:
@@ -470,6 +520,12 @@ int oni_read_reg(const oni_ctx ctx,
     return ONI_ESUCCESS;
 }
 
+// NB: Although it seems tha with fixed sized reads, we should be able to just
+// point the frame header into the shared buffer, the issue is that
+// we still need to know what device we are dealing with, which requires that we
+// look at the buffer. So there needs to be two _oni_read_buffer's in here no matter
+// what, as far as I can tell. But these are basically just function call overhead
+// unless there is an allocation event anyway.
 int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame)
 {
     assert(ctx != NULL && "Context is NULL");
@@ -478,78 +534,50 @@ int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame)
     // a different thread
     assert(ctx->run_state >= IDLE && "Context is not acquiring.");
 
+    // No devices produce data
     if (ctx->max_read_frame_size == 0)
         return ONI_ENOREADDEV;
 
-    // TODO: There is no need for all of this. The header fields in oni_frame_t
-    // should just point into the shared buffer.
-
-    // Get the header and figure out how many devices are in the frame
+    // Get the device index and data size from the buffer
     uint8_t *header = NULL;
-    int rc = _oni_read_buffer(ctx, (void **)&header, ONI_RFRAMEHEADERSZ, 1);
-    if (rc != 0) return rc;
+    int rc = _oni_read_buffer(ctx, (void **)&header, 8, 1);
+    if (rc) return rc;
 
-    // Allocate space for frame container and device offset list
-    uint16_t num_dev = *(uint16_t *)(header + sizeof(uint64_t));
-    *frame = malloc(sizeof(oni_frame_t) + num_dev * sizeof(oni_size_t));
-    oni_frame_t *fptr = *frame;
-
-    // Device offset list points to extra space after frame container
-    fptr->dev_offs = (oni_size_t *)((char *)fptr + sizeof(oni_frame_t));
+    // Allocate frame and buffer
+    oni_frame_impl_t *iframe = malloc(sizeof(oni_frame_impl_t));
 
     // Total frame size
     int total_size = sizeof(oni_frame_t);
 
     // Copy frame header members (contiuous)
-    // 1. clock (8)
-    // 2. n_dev (2)
-    // 3. corrupt (1)
-    memcpy(&fptr->clock, header, sizeof(uint64_t) + sizeof(uint16_t) + sizeof(uint8_t));
-
-    // Read device indices that are in this frame
-    rc = _oni_read_buffer(
-        ctx, (void **)&fptr->dev_idxs, fptr->num_dev * sizeof(oni_size_t), 0);
-    if (rc != 0) return rc;
-
-    // Find data read size
-    uint16_t i;
-    int rsize = 0;
-    for (i = 0; i < fptr->num_dev; i++) {
-        *(fptr->dev_offs + i) = rsize;
-        rsize += ctx->dev_map[*(fptr->dev_idxs + i)].read_size;
-    }
+    // 1. index (4)
+    // 2. data_sz (4)
+    memcpy(&iframe->private.dev_idx, header, 2 * sizeof(oni_fifo_dat_t));
 
     // Find read size (+ padding)
+    size_t rsize = iframe->private.data_sz;
     rsize += rsize % sizeof(oni_fifo_dat_t);
-    fptr->data_sz = rsize;
     total_size += rsize;
 
     // Read data
-    rc = _oni_read_buffer(ctx, (void **)&fptr->data, rsize, 0);
-    if (rc != 0) return rc;
+    rc = _oni_read_buffer(ctx, (void **)&iframe->private.data, rsize, 0);
+    if (rc) return rc;
 
     // Update buffer ref count and provide reference to frame
-    _ref_inc(&(ctx->shared_buf->count));
-    fptr->buffer = ctx->shared_buf;
+    _ref_inc(&(ctx->shared_rbuf->count));
+    // frame->buffer = ctx->shared_rbuf;
+    iframe->private.buffer = ctx->shared_rbuf;
 
-     return total_size;
+    // Public portion of frame
+    *frame = &iframe->public;
+
+    // Size of public portion of frame
+    return total_size;
 }
 
-int oni_read_raw(const oni_ctx ctx, char **frame)
-{
-    return 1;
-}
-
-// TODO: If I create an oni_create_frame() helper function,
-// I can pre allocate the frame and save malloc and two memcpys here
-// Also, if we make read-frames more similar to write frames (e.g. only
-// contain one devices data along with a size value) this could
-// be used in both places and I would finally get around the hard-coded
-// frame size issue that is against the ONI spec!
-// If I did that, then this function would just take a pointer to the oni_frame
-
-
-int oni_write(const oni_ctx ctx, size_t dev_idx, const void *data, size_t data_sz)
+// NB : Multiframe writes are allowed as long as data_sz is a multiple of
+// a single write frame's size.
+int oni_create_frame(const oni_ctx ctx, oni_frame_t **frame, size_t dev_idx, size_t data_sz)
 {
     assert(ctx != NULL && "Context is NULL");
 
@@ -557,63 +585,76 @@ int oni_write(const oni_ctx ctx, size_t dev_idx, const void *data, size_t data_s
     // a different thread
     assert(ctx->run_state >= IDLE && "Context is not acquiring.");
 
-    // Checks that the device index is valid
-    if (dev_idx >= ctx->num_dev)
-        return ONI_EDEVIDX;
+    // No devices accept data
+    if (ctx->max_write_frame_size == 0)
+        return ONI_ENOWRITEDEV;
 
-    // Get the device from the map
-    oni_device_t *this_dev = ctx->dev_map + dev_idx;
+    // Allocate frame and buffer
+    oni_frame_impl_t *iframe = malloc(sizeof(oni_frame_impl_t));
 
-    // Make sure this device is writable and write size is correct
-    if (this_dev->write_size == 0 || data_sz != this_dev->write_size)
-        return ONI_EWRITESIZE;
+    // Total frame size
+    int total_size = sizeof(oni_frame_t);
 
-    // Calculate buffer size
-    size_t frame_size =  2 * sizeof(oni_fifo_dat_t) + data_sz;
-    assert(frame_size % sizeof(oni_fifo_dat_t) == 0 && "Write frame size must fall on sizeof(oni_fifo_dat_t) boundaries.");
+    // Pad if needed
+    // TODO: Should we do this? If so should this just return an error if padding is required?
+    size_t asize = data_sz;
+    asize += asize % sizeof(oni_fifo_dat_t);
+    total_size += asize;
 
-    // Create write buffer
-    char *buffer = malloc(frame_size);
-    //if (ctx->write_remainder_size) {
-        //memcpy(buffer, ctx->write_remainder, ctx->write_remainder_size);
-    //}
+    // Allocate data storage
+    uint8_t *buffer_start = NULL;
+    int rc = _oni_alloc_write_buffer(
+        ctx, (void **)&buffer_start, 2 * sizeof(oni_fifo_dat_t) + asize);
+    if (rc) return rc;
 
-    memcpy(buffer, (oni_fifo_dat_t *)&dev_idx, sizeof(oni_fifo_dat_t));
-    memcpy(buffer + sizeof(oni_fifo_dat_t), &data_sz, sizeof(oni_fifo_dat_t));
-    memcpy(buffer + 2 * sizeof(oni_fifo_dat_t), data, data_sz);
+    // Fill out public fields
+    // NB: https://stackoverflow.com/questions/9691404/how-to-initialize-const-in-a-struct-in-c-with-malloc
+    *(oni_size_t *)&iframe->private.dev_idx = dev_idx;
+    *(oni_size_t *)&iframe->private.data_sz = data_sz;
+    iframe->private.data = buffer_start + 2 * sizeof(oni_fifo_dat_t);
 
-    // Write the buffer
-    int rc = _oni_write(ctx, ONI_WRITE_STREAM_DATA, buffer, frame_size);
-    free(buffer);
+    // Copy frame header members (contiuous)
+    // 1. index (4)
+    // 2. data_sz (4)
+    *(oni_fifo_dat_t *)buffer_start = iframe->private.dev_idx;
+    *((oni_fifo_dat_t *)buffer_start + 1)
+        = iframe->private.data_sz >> BYTE_TO_FIFO_SHIFT;
 
-    if (rc != (int)frame_size) return ONI_EWRITEFAILURE;
+    // Update buffer ref count and provide reference to frame
+    _ref_inc(&(ctx->shared_wbuf->count));
+    iframe->private.buffer = ctx->shared_wbuf;
 
-    // Save the remainder for the next write
-    //if (r) {
-    //    ctx->write_remainder_size = r;
-    //    memcpy(ctx->write_remainder, (char *)data + frame_size, r);
-    //}
+    // Public portion of frame
+    *frame = &iframe->public;
+
+    // Size of public portion of frame
+    return total_size;
+}
+
+int oni_write_frame(const oni_ctx ctx, const oni_frame_t *frame)
+{
+    // Write the frame
+    oni_frame_impl_t *iframe = (oni_frame_impl_t *)frame;
+
+    // Continous frame starts 2 elements back in shared buffer
+    size_t wsize = iframe->private.data_sz + 2 * sizeof(oni_fifo_dat_t);
+    int rc = _oni_write(ctx, ONI_WRITE_STREAM_DATA, iframe->private.data - 2 * sizeof(oni_fifo_dat_t), wsize);
+    if (rc != (int)wsize) return ONI_EWRITEFAILURE;
 
     return rc;
-
-    //// TODO: Seems unnecessary to copy here but if I dont, I perform two write calls
-    //size_t wsize = data_sz + sizeof(oni_size_t);
-    //wsize += wsize % sizeof(oni_fifo_dat_t); // TODO: Do not pad data, just save the remainder and put it on the begining of the next write
-    //char *buffer = malloc(wsize);
-    //memcpy(buffer, (oni_size_t *)&dev_idx, sizeof(oni_size_t));
-    //memcpy(buffer + sizeof(oni_size_t), &data_sz);
-
 }
 
 void oni_destroy_frame(oni_frame_t *frame)
 {
     if (frame != NULL) {
 
+        oni_frame_impl_t* iframe = (oni_frame_impl_t*)frame;
+
         // Decrement buffer reference count
-        _ref_dec(&(frame->buffer->count));
+        _ref_dec(&(iframe->private.buffer->count));
 
         // Free the container
-        free(frame);
+        free(iframe);
     }
 }
 
@@ -695,7 +736,8 @@ const char *oni_error_str(int err)
             return "Block read size is smaller than the maximal frame size";
         }
         case ONI_ENOREADDEV: {
-            return "Frame read attempted when there are no readable devices in the device map";
+            return "Frame read attempted when there are no readable devices in "
+                   "the device map";
         }
         case ONI_EWRITEONLY: {
             return "Attempted to read from a write only object (register, context "
@@ -703,6 +745,14 @@ const char *oni_error_str(int err)
         }
         case ONI_EINIT: {
             return "Hardware initialization failed";
+        }
+        case ONI_EINVALWRITESIZE: {
+            return "Write buffer pre-allocation size is smaller than the "
+                   "maximal write frame size";
+        }
+        case ONI_ENOWRITEDEV: {
+            return "Frame allocation attempted when there are no writable "
+                   "devices in the device map";
         }
         default:
             return "Unknown error";
@@ -726,8 +776,8 @@ static int _oni_reset_routine(oni_ctx ctx)
         return ONI_EBADALLOC;
 
     oni_size_t i;
-    ctx->max_read_frame_size = ONI_RFRAMEHEADERSZ;
-    size_t total_write_sz = 0;
+    ctx->max_read_frame_size = 0;
+    ctx->max_write_frame_size = 0;
     for (i = 0; i < ctx->num_dev; i++) {
 
         sig_type = NULLSIG;
@@ -739,25 +789,30 @@ static int _oni_reset_routine(oni_ctx ctx)
         if (sig_type != DEVICEINST)
             return ONI_EBADDEVMAP;
 
-        // Append the device onto the map
+        // Append the device onto the table
         memcpy(ctx->dev_map + i, buffer, sizeof(oni_device_t));
-        ctx->max_read_frame_size += (ctx->dev_map + i)->read_size;
-        total_write_sz += (ctx->dev_map + i)->write_size;
+
+        // Check to see if this is the biggest frame in the table
+        if ((ctx->dev_map + i)->read_size > ctx->max_read_frame_size)
+            ctx->max_read_frame_size = (ctx->dev_map + i)->read_size;
+
+        if ((ctx->dev_map + i)->write_size > ctx->max_write_frame_size)
+            ctx->max_write_frame_size = (ctx->dev_map + i)->write_size;
     }
 
-    // Fail if there are no devices to control or acquire from
-    if (ctx->max_read_frame_size == ONI_RFRAMEHEADERSZ && total_write_sz == 0)
-        return ONI_EBADDEVMAP;
+    // Add the header contents to the read size
+    ctx->max_read_frame_size += ONI_FRAMEHEADERSZ;
+    ctx->max_write_frame_size += ONI_FRAMEHEADERSZ;
 
     // NB: Default the block read size to a single max sized frame. This is bad
-    // for high bandwidth performance and good for closed-loop delay.
-    ctx->block_read_size += ctx->max_read_frame_size + ctx->max_read_frame_size % sizeof(oni_fifo_dat_t);
+    // for high bandwidth performance and good for closed-loop delay. The opposite is true
+    // for write frames (to an extent) so this is defaulted to something large.
+    ctx->block_read_size = ctx->max_read_frame_size + ctx->max_read_frame_size % sizeof(oni_fifo_dat_t);
+    ctx->block_write_size = ctx->max_write_frame_size + ctx->max_write_frame_size % sizeof(oni_fifo_dat_t);
+    ctx->block_write_size = ctx->block_write_size < 4096 ? 4096 : ctx->block_write_size;
 
-    //set the block read size in the driver, in case it needs it
+    // Set the block read size in the driver, in case it needs it
     ctx->driver.set_opt_callback(ctx->driver.ctx, ONI_OPT_BLOCKREADSIZE, &(ctx->block_read_size), sizeof(ctx->block_read_size));
-
-    // Set write remainder back to 0
-    //ctx->write_remainder_size = 0;
 
     return ONI_ESUCCESS;
 }
@@ -925,8 +980,8 @@ static int _oni_read_buffer(oni_ctx ctx, void **data, size_t size, int allow_ref
 {
     // Remaining bytes in buffer
     size_t remaining;
-    if (ctx->shared_buf != NULL)
-        remaining = ctx->shared_buf->end_pos - ctx->shared_buf->read_pos;
+    if (ctx->shared_rbuf != NULL)
+        remaining = ctx->shared_rbuf->end_pos - ctx->shared_rbuf->read_pos;
     else
         remaining = 0;
 
@@ -939,51 +994,96 @@ static int _oni_read_buffer(oni_ctx ctx, void **data, size_t size, int allow_ref
     if (remaining < ctx->max_read_frame_size && allow_refill) {
 
         assert(ctx->max_read_frame_size <= ctx->block_read_size &&
-            "Block read size is too small given the possible frame size.");
+            "Block read size is too small given the possible read frame size.");
 
         // New buffer allocated, old_buffer saved
-        struct oni_buf_impl *old_buffer = ctx->shared_buf;
-        ctx->shared_buf = malloc(sizeof(struct oni_buf_impl));
+        struct oni_buf_impl *old_buffer = ctx->shared_rbuf;
+        ctx->shared_rbuf = malloc(sizeof(struct oni_buf_impl));
 
         // Allocate data block in buffer
-        ctx->shared_buf->buffer = malloc(remaining + ctx->block_read_size);
+        ctx->shared_rbuf->buffer = malloc(remaining + ctx->block_read_size);
 
         // Transfer remaining data to new buffer
         if (old_buffer != NULL) {
 
             // Copy remaining contents into new buffer
-            memcpy(ctx->shared_buf->buffer, old_buffer->read_pos, remaining);
+            memcpy(ctx->shared_rbuf->buffer, old_buffer->read_pos, remaining);
 
             // Context releases control of old buffer
             _ref_dec(&(old_buffer->count));
         }
 
         // (Re)set buffer state
-        ctx->shared_buf->count = (struct ref) {_oni_destroy_buffer, 1};
-        ctx->shared_buf->read_pos = ctx->shared_buf->buffer;
-        ctx->shared_buf->end_pos
-            = ctx->shared_buf->buffer + remaining + ctx->block_read_size;
+        ctx->shared_rbuf->count = (struct ref) {_oni_destroy_buffer, 1};
+        ctx->shared_rbuf->read_pos = ctx->shared_rbuf->buffer;
+        ctx->shared_rbuf->end_pos
+            = ctx->shared_rbuf->buffer + remaining + ctx->block_read_size;
 
         // Fill the buffer with new data
         int rc = _oni_read(ctx, ONI_READ_STREAM_DATA,
-                          ctx->shared_buf->buffer + remaining,
+                          ctx->shared_rbuf->buffer + remaining,
                           ctx->block_read_size);
-        if ((size_t)rc != ctx->block_read_size) return rc;
+        if ((size_t)rc != ctx->block_read_size) return ONI_EREADFAILURE;
     }
 
     // "Read" (i.e. reference) buffer and update buffer read position
-    *data = ctx->shared_buf->read_pos;
-    ctx->shared_buf->read_pos += size;
+    *data = ctx->shared_rbuf->read_pos;
+    ctx->shared_rbuf->read_pos += size;
+
+    return ONI_ESUCCESS;
+}
+
+static int _oni_alloc_write_buffer(oni_ctx ctx, void **data, size_t size)
+{
+    // Remaining bytes in buffer
+    size_t remaining;
+    if (ctx->shared_wbuf != NULL)
+        remaining = ctx->shared_wbuf->end_pos - ctx->shared_wbuf->read_pos;
+    else
+        remaining = 0;
+
+    // Size request is too large
+    if (size > ctx->block_write_size) return ONI_EBADALLOC;
+
+    if (remaining < size) {
+
+        assert(ctx->max_write_frame_size <= ctx->block_write_size &&
+            "Block write size is too small given the possible write frame size.");
+
+        // New buffer allocated, old_buffer saved
+        struct oni_buf_impl *old_buffer = ctx->shared_wbuf;
+        ctx->shared_wbuf = malloc(sizeof(struct oni_buf_impl));
+
+        // Allocate data block in buffer
+        ctx->shared_wbuf->buffer = malloc(ctx->block_write_size);
+
+        // Context releases control of old buffer
+        if (old_buffer != NULL)
+            _ref_dec(&(old_buffer->count));
+
+        // (Re)set buffer state
+        ctx->shared_wbuf->count = (struct ref) { _oni_destroy_buffer, 1 };
+        ctx->shared_wbuf->read_pos = ctx->shared_wbuf->buffer;
+        ctx->shared_wbuf->end_pos
+            = ctx->shared_wbuf->buffer + ctx->block_write_size;
+    }
+
+    // "Read" (i.e. reference) buffer and update buffer read position
+    *data = ctx->shared_wbuf->read_pos;
+    ctx->shared_wbuf->read_pos += size;
 
     return ONI_ESUCCESS;
 }
 
 // NB: Allow context to relase control of buffer without refilling in the case of restart
-static void _oni_dump_buffer(oni_ctx ctx)
+static void _oni_dump_buffers(oni_ctx ctx)
 {
     // Trigger buffer recreation on next call to _oni_read_buffer
-    if (ctx->shared_buf != NULL)
-        ctx->shared_buf->read_pos = ctx->shared_buf->end_pos;
+    if (ctx->shared_rbuf != NULL)
+        ctx->shared_rbuf->read_pos = ctx->shared_rbuf->end_pos;
+
+    if (ctx->shared_wbuf != NULL)
+        ctx->shared_wbuf->read_pos = ctx->shared_wbuf->end_pos;
 }
 
 // NB: Stolen from Linux kernel. Used to get the buffer holding a given
