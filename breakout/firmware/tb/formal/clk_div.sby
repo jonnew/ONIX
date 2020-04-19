@@ -1,0 +1,13 @@
+[options]
+mode bmc
+depth 100
+
+[engines]
+smtbmc
+
+[script]
+read -formal -D CLK_DIV clk_div.v
+prep -top clk_div
+
+[files]
+../../clk_div.v

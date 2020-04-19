@@ -1,0 +1,12 @@
+*.bin
+*.vcd
+*.json
+*.wlf
+*.rpt
+*.asc
+*.mpf
+*.mti
+work/
+tb/formal/*/
+*.dblite
+
