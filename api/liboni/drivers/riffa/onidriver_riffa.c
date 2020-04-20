@@ -72,7 +72,7 @@ int oni_driver_init(oni_driver_ctx driver_ctx, int host_idx)
     if (ctx->fpga == NULL) return ONI_EINIT;
     
     //get a lock so this handle resets the system on close
-    if (riffa_lock(ctx->fpga) != 0) //if not possible to get the lock.
+    if (fpga_lock(ctx->fpga) != 0) //if not possible to get the lock.
     {
         fpga_close(ctx->fpga);
         ctx->fpga = NULL;

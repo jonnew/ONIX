@@ -300,6 +300,3 @@ FakesAssemblies/
 !windows/driver/Prebuilt/**
 !windows/driver/riffa/riffa/*.pfx
 
-#do not ignore prebuilt riffa libs
-!**/riffa.dll
-!**/riffa.lib
