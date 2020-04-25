@@ -25,7 +25,6 @@
 `include "./i2c-master/rtl/verilog/i2c_master_byte_ctrl.v"
 `include "./i2c-master/rtl/verilog/i2c_master_top.v"
 `include "wb_i2c_master_controller.v"
-`include "clk_div.v"
 
 module user_io # (
     parameter CLK_RATE_HZ = 16_000_000,

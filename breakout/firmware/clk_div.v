@@ -13,6 +13,7 @@ always @ (posedge i_clk) begin
 
     if (i_reset) begin
         clk_cnt <= 0;
+
     end else begin
         clk_cnt <= clk_cnt + 1;
         if (clk_cnt >= N - 1) clk_cnt <= 0;

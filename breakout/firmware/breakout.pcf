@@ -95,5 +95,6 @@ set_io --warn-no-port XTAL B2 # input
 
 # Clock constraints
 set_frequency XTAL 16 
-set_frequency SYC_CLK 50 
-set_frequency LVDS_OUT[0] 100
+set_frequency LVDS_IN[0] 10
+set_frequency sys_clk 40 # really 60...
+set_frequency LVDS_OUT[0] 12

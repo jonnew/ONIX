@@ -1,54 +1,53 @@
 `timescale 1 ns / 100 ps
-`include "breakout_to_host.v"
+//`include "breakout_to_host.v"
 
 module breakout_to_host_tb();
 
-    reg         i_reset;
-    reg         i_clk;
-    reg [7:0]   i_port;
-    reg [7:0]   i_button;
-    reg [3:0]   i_link_pow;
+reg         i_clk;
+reg         i_reset;
 
-    wire        o_clk;
-    wire        o_q0;
-    wire        o_q1;
+reg [7:0]   i_port;
+reg [7:0]   i_button;
+reg [3:0]   i_link_pow;
 
-    breakout_to_host uut (.*);
+wire        o_clk_s;
+wire        o_d0_s;
+wire        o_d1_s;
 
-    // 200 MHz clock
-    always
-    #5 i_clk = ~i_clk;
+breakout_to_host uut (.*);
 
-    // Initial blocks are sequential and start at time 0
-    initial begin
+// 50 MHz clock
+always
+#10 i_clk = ~i_clk;
 
-    //$dumpfile("breakout_input_tb.vcd");
-    //$dumpvars(0, breakout_input_tb);
+// Initial blocks are sequential and start at time 0
+initial begin
 
-    // at time 0
-    //$display($time, "Sim begin");
-    i_clk = 1;
-    i_reset = 1;
-    i_port = 0;
-    i_button = 0;
-    i_link_pow = 0;
+$dumpfile("breakout_to_host_tb.vcd");
+$dumpvars();
 
-    // at time 100 ns, lower reset
-    #100  i_reset = 0;
+i_clk = 1;
+i_port = 0;
+i_button = 0;
+i_link_pow = 0;
+i_reset = 1;
 
-    i_port = 8'b11110000;
-    i_button = 8'b10101010;
-    i_link_pow = 4'b1000;
+#100
+i_reset = 0;
 
-    #200  i_reset = 1;
-    #300  i_reset = 0;
-    #500  i_reset = 0;
+#500 
 
-    i_port = 8'b11110000;
-    i_button = 8'b10101010;
-    i_link_pow = 4'b1111;
+i_port = 8'b11110000;
+i_button = 8'b10101010;
+i_link_pow = 4'b1000;
 
-    //#1500 $finish;
-    end
+#500 
+
+i_port = 8'b11110000;
+i_button = 8'b10101010;
+i_link_pow = 4'b1111;
+
+#1500 $finish;
+end
 
 endmodule
