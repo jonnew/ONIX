@@ -27,7 +27,6 @@ typedef int(*oni_driver_write_config_f)(oni_driver_ctx, oni_config_t, oni_reg_va
 
 typedef int(*oni_driver_set_opt_callback_f)(oni_driver_ctx, int, const void*, size_t);
 
-
 typedef int(*oni_driver_set_opt_f)(oni_driver_ctx, int, const void*, size_t);
 typedef int(*oni_driver_get_opt_f)(oni_driver_ctx, int, void*, size_t*);
 

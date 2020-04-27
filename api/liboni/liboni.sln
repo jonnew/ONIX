@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboni-test", "liboni-test\liboni-test.vcxproj", "{875641A8-A2C1-4B2A-9F04-C71C3887724A}"
 	ProjectSection(ProjectDependencies) = postProject
-		{D26D81AE-7407-4922-8E13-C3B84EB2B18B} = {D26D81AE-7407-4922-8E13-C3B84EB2B18B}
+		{2EEE4EEA-F12C-4087-81EF-1EB27CE2036B} = {2EEE4EEA-F12C-4087-81EF-1EB27CE2036B}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liboni", "liboni.vcxproj", "{0B6B9ACA-75DE-4776-A6CA-B4123ED59F1D}"
@@ -13,6 +13,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "onidriver_xillybus", "drivers\xillybus\onidriver_xillybus.vcxproj", "{D26D81AE-7407-4922-8E13-C3B84EB2B18B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "onidriver_riffa", "drivers\riffa\onidriver_riffa.vcxproj", "{2EEE4EEA-F12C-4087-81EF-1EB27CE2036B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665} = {DD7D202A-C101-4A1A-8D17-674F0A7CA665}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "riffa", "..\..\drivers\riffa\windows\lib\riffa.vcxproj", "{DD7D202A-C101-4A1A-8D17-674F0A7CA665}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +59,14 @@ Global
 		{2EEE4EEA-F12C-4087-81EF-1EB27CE2036B}.Release|x64.Build.0 = Release|x64
 		{2EEE4EEA-F12C-4087-81EF-1EB27CE2036B}.Release|x86.ActiveCfg = Release|Win32
 		{2EEE4EEA-F12C-4087-81EF-1EB27CE2036B}.Release|x86.Build.0 = Release|Win32
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665}.Debug|x64.ActiveCfg = Debug|x64
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665}.Debug|x64.Build.0 = Debug|x64
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665}.Debug|x86.ActiveCfg = Debug|Win32
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665}.Debug|x86.Build.0 = Debug|Win32
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665}.Release|x64.ActiveCfg = Release|x64
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665}.Release|x64.Build.0 = Release|x64
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665}.Release|x86.ActiveCfg = Release|Win32
+		{DD7D202A-C101-4A1A-8D17-674F0A7CA665}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

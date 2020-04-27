@@ -5,18 +5,13 @@ using Microsoft.Win32.SafeHandles;
 
 namespace oni
 {
-
     // Make managed version of oni_frame_t
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct frame_t
     {
-        public ulong clock; // Base clock counter
-        public ushort num_dev; // Number of devices in frame
-        public byte corrupt; // Is this frame corrupt?
-        public uint* dev_idxs; // Array of device indices in frame
-        public uint* dev_offs; // Device data offsets within data block
-        public byte* data; // Multi-device raw data block
-        public uint data_sz; // Size in bytes of data buffer
+        public readonly uint dev_idx; // Array of device indices in frame
+        public readonly uint data_sz; // Size in bytes of data buffer
+        public readonly byte* data; // Multi-device raw data block
     }
 
     public unsafe class Frame : SafeHandleZeroOrMinusOneIsInvalid
@@ -26,98 +21,35 @@ namespace oni
         {
         }
 
-        internal void Map(Dictionary<int, lib.device_t> dev_map)
-        {
-            DeviceMap = dev_map;
-            var frame = (frame_t*)handle.ToPointer();
-
-            DeviceIndices = new List<int>(frame->num_dev);
-            for (int i = 0; i < frame->num_dev; i++)
-            {
-                DeviceIndices.Add((int)*(frame->dev_idxs + i));
-            }
-        }
-
-        public ulong Clock()
-        {
-            return ((frame_t*)handle.ToPointer())->clock;
-        }
-
-        public bool Corrupt()
-        {
-            return ((frame_t*)handle.ToPointer())->corrupt != 0;
-        }
-
-        // The whole data block
-        public byte[] Data()
-        {
-            var frame = (frame_t*)handle.ToPointer();
-
-            var buffer = new byte[frame->data_sz];
-            //var output = new T[num_bytes / Marshal.SizeOf(default(T))];
-            var start_ptr = frame->data;
-
-            // TODO: Seems like we should be able to copy directly into output!
-            Marshal.Copy((IntPtr)start_ptr, buffer, 0, (int)frame->data_sz);
-            //Buffer.BlockCopy(buffer, 0, output, 0, (int)num_bytes);
-            return buffer;
-        }
-
         // Ideally, I would like this to be a "Span" into the exsting, allocated frame
         // Now, there are _two_ deep copies happening here as far as I can tell which is ridiculous
-        public T[] Data<T>(int dev_idx) where T : struct
+        public T[] Data<T>() where T : struct
         {
             var frame = (frame_t*)handle.ToPointer();
 
-            // Device position in frame
-            var pos = DeviceIndices.FindIndex(x => x == dev_idx);
-
-            // If device is not in frame
-            if (pos == -1)
-            {
-                throw new ONIException(lib.Error.DEVIDX);
-            }
-
             // Get the read size and offset for this device
-            var num_bytes = DeviceMap[dev_idx].read_size;
-            var byte_offset = frame->dev_offs[pos];
+            var num_bytes = frame->data_sz;
 
             var buffer = new byte[num_bytes];
             var output = new T[num_bytes / Marshal.SizeOf(default(T))];
-            var start_ptr = frame->data + byte_offset;
 
-            // TODO: Seems like we should be able to copy directly into output!
-            Marshal.Copy((IntPtr)start_ptr, buffer, 0, (int)num_bytes);
+            // TODO: Seems like we should be able to copy directly into output or not copy at all!
+            Marshal.Copy((IntPtr)frame->data, buffer, 0, (int)num_bytes);
             Buffer.BlockCopy(buffer, 0, output, 0, (int)num_bytes);
             return output;
         }
 
-        // Ideally, I would like this to be a "Span" into the exsting, allocated frame
-        // Now, there are _two_ deep copies happening here as far as I can tell which is ridiculous
-        public T[] Data<T>(int dev_idx, int num_bytes) where T : struct
+        // Same as Data() method, this has two copies per call which is ridiculous
+        internal void SetData<T>(T[] data) where T : struct
         {
             var frame = (frame_t*)handle.ToPointer();
 
-            // Device position in frame
-            var pos = DeviceIndices.FindIndex(x => x == dev_idx);
-
-            // If device is not in frame
-            if (pos == -1)
-            {
-                throw new ONIException(lib.Error.DEVIDX);
-            }
-
             // Get the read size and offset for this device
-            var byte_offset = frame->dev_offs[pos];
+            var num_bytes = frame->data_sz;
 
             var buffer = new byte[num_bytes];
-            var output = new T[num_bytes / Marshal.SizeOf(default(T))];
-            var start_ptr = frame->data + byte_offset;
-
-            // TODO: Seems like we should be able to copy directly into output!
-            Marshal.Copy((IntPtr)start_ptr, buffer, 0, (int)num_bytes);
-            Buffer.BlockCopy(buffer, 0, output, 0, (int)num_bytes);
-            return output;
+            Buffer.BlockCopy(data, 0, buffer, 0, (int)num_bytes);
+            Marshal.Copy(buffer, 0, (IntPtr)frame->data, (int)num_bytes);
         }
 
         protected override bool ReleaseHandle()
@@ -127,9 +59,9 @@ namespace oni
         }
 
         // Devices with data in this frame
-        public List<int> DeviceIndices { get; private set; }
-
-        // Global device index -> device_t struct
-        private Dictionary<int, lib.device_t> DeviceMap;
+        public int DeviceIndex()
+        {
+            return (int)(((frame_t*)handle.ToPointer())->dev_idx);
+        }
     }
 }
