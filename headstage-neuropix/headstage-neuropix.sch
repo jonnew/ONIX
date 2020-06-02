@@ -6890,7 +6890,7 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 </classes>
 <parts>
 <part name="U6" library="jonnew" deviceset="DS90UB913A" device="_WQFN" value="DS90UB933_WQFN"/>
-<part name="U5" library="jonnew" deviceset="TLV707" device="" value="TLV70733"/>
+<part name="U5" library="jonnew" deviceset="TLV707" device="" value="NCP161BMX330"/>
 <part name="U4" library="jonnew" deviceset="TLV707" device="" value="TLV70712"/>
 <part name="C28" library="jonnew" deviceset="C" device="_0402TW" value="10uF"/>
 <part name="SUPPLY26" library="jonnew" deviceset="GND" device=""/>
@@ -7017,7 +7017,7 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 <part name="P15" library="jonnew" deviceset="+3V3" device=""/>
 <part name="C11" library="jonnew" deviceset="C" device="_0201T" value="10nF"/>
 <part name="J3" library="jonnew" deviceset="PINHD-1X45" device="_FH23" value="FH23-45S-0.3SHW(05)"/>
-<part name="J1" library="jonnew" deviceset="PINHD-2X5" device="_IDC"/>
+<part name="J1" library="jonnew" deviceset="PINHD-2X5" device="_IDC" value="302-S101"/>
 <part name="SUPPLY16" library="jonnew" deviceset="GND" device=""/>
 <part name="P23" library="jonnew" deviceset="+3V3" device=""/>
 <part name="L5" library="jonnew" deviceset="L" device="_0402T" value="BLM15PX601SN1D"/>
@@ -7049,10 +7049,10 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 <part name="SUPPLY35" library="jonnew" deviceset="GND" device=""/>
 <part name="TP10" library="jonnew" deviceset="TP" device="TP09R"/>
 <part name="TP11" library="jonnew" deviceset="TP" device="TP09R"/>
-<part name="J5" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
+<part name="J5" library="jonnew" deviceset="JP2E" device="_THRU-HOLE" value="77311-118-02LF"/>
 <part name="P58" library="jonnew" deviceset="+VCOAX" device=""/>
 <part name="SUPPLY56" library="jonnew" deviceset="GND" device=""/>
-<part name="J4" library="jonnew" deviceset="PINHD-2X8" device="_THRU"/>
+<part name="J4" library="jonnew" deviceset="PINHD-2X8" device="_THRU" value="68602-116HLF"/>
 <part name="SUPPLY54" library="jonnew" deviceset="GND" device=""/>
 <part name="TP13" library="jonnew" deviceset="TP" device="TP20R"/>
 <part name="SUPPLY53" library="jonnew" deviceset="GND" device=""/>
@@ -7087,7 +7087,7 @@ CONN FPC BOTTOM 45POS 0.30MM R/A</description>
 <part name="R14" library="jonnew" deviceset="R" device="_0201T" value="4.7k"/>
 <part name="P9" library="jonnew" deviceset="+1V8" device=""/>
 <part name="P12" library="jonnew" deviceset="+1V8" device=""/>
-<part name="J7" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
+<part name="J7" library="jonnew" deviceset="JP2E" device="_THRU-HOLE" value="77311-118-02LF"/>
 <part name="SUPPLY57" library="jonnew" deviceset="GND" device=""/>
 <part name="P29" library="jonnew" deviceset="+3V3" device=""/>
 <part name="P19" library="jonnew" deviceset="+VCOAX" device=""/>
@@ -7200,7 +7200,7 @@ and ADC block
 determines ADC 
 max voltage. Use
 3.3V.</text>
-<text x="30.48" y="591.82" size="1.778" layer="97" rot="R90">NB: VCCIO = 1.8V for the neuropix interface.</text>
+<text x="33.02" y="629.92" size="1.778" layer="97" rot="R90">NB: VCCIO = 1.8V for the neuropix interface.</text>
 <text x="116.84" y="810.26" size="10.16" layer="97">FPGA</text>
 <text x="38.1" y="528.32" size="1.778" layer="97">South-East</text>
 <text x="38.1" y="474.98" size="1.778" layer="97">East</text>
@@ -7213,10 +7213,7 @@ max voltage. Use
 - Internal VREF = 3.3V</text>
 <text x="182.88" y="739.14" size="1.778" layer="97">NB: Programming interface</text>
 <text x="106.68" y="363.22" size="1.778" layer="97">NB: 0.1 is not needed.</text>
-<text x="30.48" y="668.02" size="1.27" layer="97" rot="R90">NB:VCCIO = 2.5 for LVPECL</text>
-<text x="88.9" y="695.96" size="1.27" layer="97">NB: LVPECL with V_cm = 1.8V. 
-500 Mbps ≤ DMAX ≤ 700 Mbps 
-for bothclock inputs. CLK0 drives PLL1.</text>
+<text x="88.9" y="693.42" size="1.27" layer="97">NB:CLK0 drives PLL1.</text>
 <text x="337.82" y="591.82" size="10.16" layer="97">IMU</text>
 <text x="337.82" y="558.8" size="1.778" layer="97">I2C Selected</text>
 <text x="396.24" y="556.26" size="1.778" layer="97">NB To get the best performance out
@@ -7237,6 +7234,7 @@ the external 32.768 kHz crystal.</text>
 <frame x1="15.24" y1="256.54" x2="726.44" y2="840.74" columns="8" rows="5" layer="94"/>
 <wire x1="591.82" y1="393.7" x2="718.82" y2="393.7" width="0.508" layer="94" style="longdash"/>
 <wire x1="591.82" y1="393.7" x2="591.82" y2="261.62" width="0.508" layer="94" style="longdash"/>
+<text x="439.42" y="668.02" size="1.778" layer="97">NB: programmed to 93.6 MHz</text>
 </plain>
 <instances>
 <instance part="U6" gate="G$1" x="358.14" y="335.28" smashed="yes">
@@ -10354,15 +10352,11 @@ the external 32.768 kHz crystal.</text>
 <approved hash="113,1,187.796,728.98,TP3,,,,,"/>
 <approved hash="113,1,187.796,731.52,TP2,,,,,"/>
 <approved hash="113,1,187.796,734.06,TP1,,,,,"/>
-<approved hash="113,1,213.36,728.254,J1,,,,,"/>
 <approved hash="113,1,311.929,320.319,TP10,,,,,"/>
 <approved hash="113,1,323.071,320.319,TP11,,,,,"/>
-<approved hash="113,1,688.635,328.411,J5,,,,,"/>
-<approved hash="113,1,627.38,330.744,J2,,,,,"/>
 <approved hash="113,1,670.56,333.282,TP13,,,,,"/>
 <approved hash="113,1,662.94,333.282,TP12,,,,,"/>
 <approved hash="113,1,309.88,291.936,TP8,,,,,"/>
-<approved hash="113,1,706.415,328.411,J6,,,,,"/>
 </errors>
 </schematic>
 </drawing>
