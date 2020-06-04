@@ -6389,7 +6389,7 @@ grid 2.54 mm</description>
 <class number="1" name="stripline" width="0.48" drill="0.5">
 <clearance class="1" value="0.1"/>
 </class>
-<class number="3" name="100 Ohm Diff Mid" width="0.19" drill="0.2">
+<class number="3" name="100 Ohm Diff Mid" width="0.19" drill="0.3">
 <clearance class="3" value="0.09"/>
 </class>
 </classes>
@@ -6804,7 +6804,7 @@ grid 2.54 mm</description>
 <part name="SUPPLY119" library="jonnew" deviceset="GND" device=""/>
 <part name="J31" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
 <part name="SUPPLY120" library="jonnew" deviceset="GND" device=""/>
-<part name="U10" library="jonnew" deviceset="LEVEL_SHIFTER" device="_SOT23"/>
+<part name="U10" library="jonnew" deviceset="LEVEL_SHIFTER" device="_SOT23" value="TXB0101"/>
 <part name="C1" library="jonnew" deviceset="C" device="_0402" value="0.1uF"/>
 <part name="SUPPLY121" library="jonnew" deviceset="GND" device=""/>
 <part name="P+55" library="jonnew" deviceset="+5V" device=""/>
@@ -11095,60 +11095,8 @@ on bottom of TinyFPGA</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="104,1,180.34,167.64,U10,VCC,+3V3,,,"/>
-<approved hash="104,1,180.34,119.38,U11,VCC,+3V3,,,"/>
-<approved hash="104,1,180.34,73.66,U12,VCC,+3V3,,,"/>
-<approved hash="104,1,121.92,408.94,U5,VIN,+12V,,,"/>
-<approved hash="104,1,81.28,408.94,U5,VOUT1,+3V3,,,"/>
-<approved hash="104,1,81.28,401.32,U5,VOUT2,+5V0,,,"/>
-<approved hash="104,1,332.74,271.78,U9,VIN,+5V0,,,"/>
-<approved hash="104,1,421.64,139.7,D25,VCC,+3V3,,,"/>
-<approved hash="104,1,421.64,99.06,D25,VSS,GND,,,"/>
-<approved hash="104,1,421.64,63.5,D34,VCC,+3V3,,,"/>
-<approved hash="104,1,421.64,22.86,D34,VSS,GND,,,"/>
-<approved hash="104,1,195.58,683.26,U13,VDD,+5V0,,,"/>
-<approved hash="104,1,236.22,683.26,U14,VDD,+5V0,,,"/>
-<approved hash="104,1,276.86,683.26,U15,VDD,+5V0,,,"/>
-<approved hash="104,1,317.5,683.26,U16,VDD,+5V0,,,"/>
-<approved hash="104,1,358.14,683.26,U17,VDD,+5V0,,,"/>
-<approved hash="104,1,398.78,683.26,U18,VDD,+5V0,,,"/>
-<approved hash="104,1,195.58,640.08,U19,VDD,+5V0,,,"/>
-<approved hash="104,1,236.22,640.08,U20,VDD,+5V0,,,"/>
-<approved hash="104,1,276.86,640.08,U21,VDD,+5V0,,,"/>
-<approved hash="104,1,317.5,640.08,U22,VDD,+5V0,,,"/>
-<approved hash="104,1,358.14,640.08,U23,VDD,+5V0,,,"/>
-<approved hash="104,1,398.78,640.08,U24,VDD,+5V0,,,"/>
-<approved hash="104,1,195.58,774.7,U25,VDD,+5V0,,,"/>
-<approved hash="104,1,236.22,774.7,U26,VDD,+5V0,,,"/>
-<approved hash="104,1,276.86,774.7,U27,VDD,+5V0,,,"/>
-<approved hash="104,1,317.5,774.7,U28,VDD,+5V0,,,"/>
-<approved hash="104,1,358.14,774.7,U29,VDD,+5V0,,,"/>
-<approved hash="104,1,398.78,774.7,U30,VDD,+5V0,,,"/>
-<approved hash="104,1,439.42,774.7,U31,VDD,+5V0,,,"/>
-<approved hash="104,1,480.06,774.7,U32,VDD,+5V0,,,"/>
-<approved hash="104,1,195.58,728.98,U33,VDD,+5V0,,,"/>
-<approved hash="104,1,236.22,728.98,U34,VDD,+5V0,,,"/>
-<approved hash="104,1,276.86,728.98,U35,VDD,+5V0,,,"/>
-<approved hash="104,1,317.5,728.98,U36,VDD,+5V0,,,"/>
-<approved hash="104,1,195.58,820.42,U7,VDD,+5V0,,,"/>
-<approved hash="104,1,236.22,820.42,U37,VDD,+5V0,,,"/>
-<approved hash="104,1,276.86,820.42,U38,VDD,+5V0,,,"/>
-<approved hash="104,1,317.5,820.42,U39,VDD,+5V0,,,"/>
-<approved hash="104,1,358.14,820.42,U40,VDD,+5V0,,,"/>
-<approved hash="104,1,398.78,820.42,U41,VDD,+5V0,,,"/>
-<approved hash="104,1,439.42,820.42,U42,VDD,+5V0,,,"/>
-<approved hash="104,1,480.06,820.42,U43,VDD,+5V0,,,"/>
-<approved hash="104,1,195.58,866.14,U44,VDD,+5V0,,,"/>
-<approved hash="104,1,236.22,866.14,U45,VDD,+5V0,,,"/>
-<approved hash="104,1,276.86,866.14,U46,VDD,+5V0,,,"/>
-<approved hash="104,1,317.5,866.14,U47,VDD,+5V0,,,"/>
-<approved hash="104,1,358.14,866.14,U48,VDD,+5V0,,,"/>
-<approved hash="104,1,398.78,866.14,U49,VDD,+5V0,,,"/>
-<approved hash="104,1,439.42,866.14,U50,VDD,+5V0,,,"/>
-<approved hash="104,1,480.06,866.14,U51,VDD,+5V0,,,"/>
-<approved hash="104,1,149.86,866.14,U52,VDD,+5V0,,,"/>
-<approved hash="104,1,83.82,866.14,U53,VCCA,+3V3,,,"/>
-<approved hash="104,1,114.3,866.14,U53,VCCB,+5V0,,,"/>
+<approved hash="104,1,421.64,139.7,D21,VCC,+3V3,,,"/>
+<approved hash="104,1,421.64,99.06,D21,VSS,GND,,,"/>
 <approved hash="113,1,539.157,498.561,J4,,,,,"/>
 <approved hash="113,1,157.48,35.3964,TP4,,,,,"/>
 <approved hash="113,1,38.1,403.696,TP2,,,,,"/>
@@ -11172,7 +11120,6 @@ on bottom of TinyFPGA</text>
 <approved hash="113,1,438.051,551.459,P+14,,,,,"/>
 <approved hash="113,1,170.18,35.3964,TP6,,,,,"/>
 <approved hash="113,1,198.12,35.3964,TP7,,,,,"/>
-<approved hash="113,1,185.42,25.5636,TP9,,,,,"/>
 <approved hash="113,1,149.86,35.3964,TP3,,,,,"/>
 <approved hash="113,1,165.1,35.3964,TP5,,,,,"/>
 </errors>
