@@ -1,0 +1,6 @@
+# Ignore non-essential lt-spice files
+*.op.raw
+*.log
+*.net
+*.raw
+*.fft
