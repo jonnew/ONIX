@@ -6133,7 +6133,6 @@ back at some simulations I ran when I designed the LVDS
 I/O circuitry.  Yes, these signal levels should work just fine
 with our chips (as you have observed).  I don't see any
 problems doing this."</text>
-<text x="269.24" y="414.02" size="1.778" layer="97">DNP</text>
 <text x="144.78" y="236.22" size="1.778" layer="97">NB: CLK3 drives PLL2</text>
 <frame x1="0" y1="0" x2="660.4" y2="764.54" columns="8" rows="5" layer="94"/>
 <text x="287.02" y="599.44" size="1.778" layer="97">NB:
