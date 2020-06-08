@@ -3953,7 +3953,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </part>
 <part name="SUPPLY17" library="jonnew" deviceset="GND" device=""/>
 <part name="S1" library="jonnew" deviceset="SPST_TACT2" device="_EVQP4" value="EVQ-P42B3M"/>
-<part name="C4" library="jonnew" deviceset="C" device="_0603" value="1uF"/>
+<part name="C4" library="jonnew" deviceset="C" device="_0805" value="10uF"/>
 <part name="SUPPLY11" library="jonnew" deviceset="GND" device=""/>
 <part name="J2" library="jonnew" deviceset="PINHD-2X4" device="_0.05&quot;"/>
 <part name="U3" library="jonnew" deviceset="LDO_ADJUST" device="_TPS799" value="TPS799"/>
@@ -3971,6 +3971,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="R2" library="jonnew" deviceset="R" device="_0402" value="1k"/>
 <part name="R3" library="jonnew" deviceset="R" device="_0402" value="10k"/>
 <part name="R4" library="jonnew" deviceset="R" device="_0402" value="10k"/>
+<part name="C7" library="jonnew" deviceset="C" device="_0603" value="1uF"/>
+<part name="SUPPLY19" library="jonnew" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4048,6 +4050,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <instance part="R2" gate="R" x="132.08" y="86.36" rot="R180"/>
 <instance part="R3" gate="R" x="144.78" y="88.9" rot="R180"/>
 <instance part="R4" gate="R" x="157.48" y="91.44" rot="R180"/>
+<instance part="C7" gate="C" x="228.6" y="63.5"/>
+<instance part="SUPPLY19" gate="PE" x="228.6" y="33.02" rot="MR0"/>
 </instances>
 <busses>
 </busses>
@@ -4232,6 +4236,11 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <pinref part="SUPPLY9" gate="PE" pin="GND"/>
 <pinref part="R2" gate="R" pin="1"/>
 </segment>
+<segment>
+<pinref part="C7" gate="C" pin="2"/>
+<wire x1="228.6" y1="58.42" x2="228.6" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="SUPPLY19" gate="PE" pin="GND"/>
+</segment>
 </net>
 <net name="VIN" class="0">
 <segment>
@@ -4317,6 +4326,9 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="228.6" y1="93.98" x2="228.6" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="U3" gate="G$1" pin="EN"/>
 <wire x1="228.6" y1="83.82" x2="223.52" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="C7" gate="C" pin="1"/>
+<wire x1="228.6" y1="83.82" x2="228.6" y2="66.04" width="0.1524" layer="91"/>
+<junction x="228.6" y="83.82"/>
 </segment>
 </net>
 <net name="N$4" class="0">
