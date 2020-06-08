@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -4742,8 +4742,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <smd name="1" x="-2.1" y="0.975" dx="0.4" dy="1.6" layer="1" rot="R90"/>
 <smd name="3" x="-2.1" y="-0.325" dx="0.4" dy="1.6" layer="1" rot="R90"/>
 <smd name="4" x="-2.1" y="-0.975" dx="0.4" dy="1.6" layer="1" rot="R90"/>
-<smd name="5" x="2.1" y="-0.325" dx="0.4" dy="1.6" layer="1" rot="R270"/>
-<smd name="6" x="2.1" y="-0.975" dx="0.4" dy="1.6" layer="1" rot="R270"/>
+<smd name="5" x="2.1" y="-0.975" dx="0.4" dy="1.6" layer="1" rot="R270"/>
+<smd name="6" x="2.1" y="-0.325" dx="0.4" dy="1.6" layer="1" rot="R270"/>
 <smd name="7" x="2.1" y="0.325" dx="0.4" dy="1.6" layer="1" rot="R270"/>
 <smd name="8" x="2.1" y="0.975" dx="0.4" dy="1.6" layer="1" rot="R270"/>
 <smd name="PAD" x="0" y="0" dx="1.57" dy="1.89" layer="1"/>
@@ -12006,7 +12006,7 @@ I2C</description>
 <part name="SUPPLY2" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY103" library="jonnew" deviceset="GND" device=""/>
 <part name="SUPPLY193" library="jonnew" deviceset="+12V" device=""/>
-<part name="U1" library="jonnew" deviceset="BUFFER-DUAL" device="_SC70" value="NC7WZ07P6X"/>
+<part name="U1" library="jonnew" deviceset="BUFFER-DUAL" device="_SC70" value="SN74LVC2G34DCKR"/>
 <part name="SUPPLY39" library="jonnew" deviceset="GND" device=""/>
 <part name="U23" library="jonnew" deviceset="LTM8049" device="_BGA"/>
 <part name="SUPPLY157" library="jonnew" deviceset="GND" device=""/>
@@ -18125,7 +18125,7 @@ AIO_0     0A     11</text>
 <label x="368.3" y="980.44" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIN_AOUT3" class="0">
+<net name="AIN_AOUT8" class="0">
 <segment>
 <wire x1="617.22" y1="906.78" x2="279.4" y2="906.78" width="0.1524" layer="91"/>
 <wire x1="279.4" y1="906.78" x2="279.4" y2="1272.54" width="0.1524" layer="91"/>
@@ -18140,7 +18140,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$4" pin="LA15_N"/>
 </segment>
 </net>
-<net name="AIN_AOUT0" class="0">
+<net name="AIN_AOUT11" class="0">
 <segment>
 <wire x1="223.52" y1="1303.02" x2="284.48" y2="1303.02" width="0.1524" layer="91"/>
 <wire x1="284.48" y1="1303.02" x2="284.48" y2="911.86" width="0.1524" layer="91"/>
@@ -18155,7 +18155,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$4" pin="LA15_P"/>
 </segment>
 </net>
-<net name="AIN_AOUT1" class="0">
+<net name="AIN_AOUT10" class="0">
 <segment>
 <wire x1="617.22" y1="904.24" x2="276.86" y2="904.24" width="0.1524" layer="91"/>
 <wire x1="276.86" y1="904.24" x2="276.86" y2="1257.3" width="0.1524" layer="91"/>
@@ -18170,7 +18170,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$4" pin="LA16_N"/>
 </segment>
 </net>
-<net name="AIN_AOUT2" class="0">
+<net name="AIN_AOUT9" class="0">
 <segment>
 <wire x1="223.52" y1="1287.78" x2="281.94" y2="1287.78" width="0.1524" layer="91"/>
 <wire x1="281.94" y1="1287.78" x2="281.94" y2="909.32" width="0.1524" layer="91"/>
@@ -18328,7 +18328,7 @@ AIO_0     0A     11</text>
 <label x="368.3" y="1028.7" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="AIN_AOUT7" class="0">
+<net name="AIN_AOUT4" class="0">
 <segment>
 <wire x1="223.52" y1="1219.2" x2="274.32" y2="1219.2" width="0.1524" layer="91"/>
 <wire x1="274.32" y1="1219.2" x2="274.32" y2="901.7" width="0.1524" layer="91"/>
@@ -18343,7 +18343,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$3" pin="HA20_P"/>
 </segment>
 </net>
-<net name="AIN_AOUT4" class="0">
+<net name="AIN_AOUT7" class="0">
 <segment>
 <wire x1="223.52" y1="1203.96" x2="271.78" y2="1203.96" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="1203.96" x2="271.78" y2="899.16" width="0.1524" layer="91"/>
@@ -18358,7 +18358,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$3" pin="HA15_N"/>
 </segment>
 </net>
-<net name="AIN_AOUT5" class="0">
+<net name="AIN_AOUT6" class="0">
 <segment>
 <wire x1="223.52" y1="1188.72" x2="269.24" y2="1188.72" width="0.1524" layer="91"/>
 <wire x1="269.24" y1="1188.72" x2="269.24" y2="896.62" width="0.1524" layer="91"/>
@@ -18373,7 +18373,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$4" pin="LA03_N"/>
 </segment>
 </net>
-<net name="AIN_AOUT6" class="0">
+<net name="AIN_AOUT5" class="0">
 <segment>
 <wire x1="223.52" y1="1173.48" x2="266.7" y2="1173.48" width="0.1524" layer="91"/>
 <wire x1="266.7" y1="1173.48" x2="266.7" y2="894.08" width="0.1524" layer="91"/>
@@ -18388,7 +18388,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$5" pin="HA07_P"/>
 </segment>
 </net>
-<net name="AIN_AOUT11" class="0">
+<net name="AIN_AOUT0" class="0">
 <segment>
 <wire x1="223.52" y1="1135.38" x2="264.16" y2="1135.38" width="0.1524" layer="91"/>
 <wire x1="264.16" y1="1135.38" x2="264.16" y2="891.54" width="0.1524" layer="91"/>
@@ -18403,7 +18403,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$3" pin="HA08_N"/>
 </segment>
 </net>
-<net name="AIN_AOUT8" class="0">
+<net name="AIN_AOUT3" class="0">
 <segment>
 <wire x1="223.52" y1="1120.14" x2="261.62" y2="1120.14" width="0.1524" layer="91"/>
 <wire x1="261.62" y1="1120.14" x2="261.62" y2="889" width="0.1524" layer="91"/>
@@ -18418,7 +18418,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$4" pin="LA04_P"/>
 </segment>
 </net>
-<net name="AIN_AOUT9" class="0">
+<net name="AIN_AOUT2" class="0">
 <segment>
 <wire x1="223.52" y1="1104.9" x2="259.08" y2="1104.9" width="0.1524" layer="91"/>
 <wire x1="259.08" y1="1104.9" x2="259.08" y2="886.46" width="0.1524" layer="91"/>
@@ -18433,7 +18433,7 @@ AIO_0     0A     11</text>
 <pinref part="J9" gate="G$3" pin="HA13_P"/>
 </segment>
 </net>
-<net name="AIN_AOUT10" class="0">
+<net name="AIN_AOUT1" class="0">
 <segment>
 <wire x1="223.52" y1="1089.66" x2="256.54" y2="1089.66" width="0.1524" layer="91"/>
 <wire x1="256.54" y1="1089.66" x2="256.54" y2="883.92" width="0.1524" layer="91"/>
