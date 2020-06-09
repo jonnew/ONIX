@@ -1452,6 +1452,175 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <rectangle x1="-0.6" y1="-1" x2="-0.2" y2="1" layer="51"/>
 <rectangle x1="0.2" y1="-1" x2="0.6" y2="1" layer="51"/>
 </package>
+<package name="DF40-70HEAD-LESS-SILK">
+<text x="-8.89" y="2.54" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-8.89" y="-3.81" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<smd name="1" x="-6.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<wire x1="-7.8" y1="-1" x2="-7.8" y2="1" width="0.127" layer="21"/>
+<smd name="2" x="-6.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="3" x="-6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="4" x="-5.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="5" x="-5.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="6" x="-4.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="7" x="-4.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="8" x="-4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="9" x="-3.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="10" x="-3.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="11" x="-2.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="12" x="-2.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="13" x="-2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="14" x="-1.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="15" x="-1.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="16" x="-0.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="17" x="-0.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="18" x="0" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="19" x="0.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="20" x="0.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="21" x="1.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="22" x="1.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="23" x="2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="24" x="2.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="25" x="2.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="26" x="3.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="27" x="3.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="28" x="4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="29" x="4.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="30" x="4.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="31" x="5.2" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="32" x="5.6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="33" x="6" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="34" x="6.4" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="35" x="6.8" y="-1.585" dx="0.23" dy="0.75" layer="1"/>
+<smd name="36" x="6.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="37" x="6.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="38" x="6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="39" x="5.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="40" x="5.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="41" x="4.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="42" x="4.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="43" x="4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="44" x="3.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="45" x="3.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="46" x="2.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="47" x="2.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="48" x="2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="49" x="1.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="50" x="1.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="51" x="0.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="52" x="0.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="53" x="0" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="54" x="-0.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="55" x="-0.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="56" x="-1.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="57" x="-1.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="58" x="-2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="59" x="-2.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="60" x="-2.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="61" x="-3.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="62" x="-3.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="63" x="-4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="64" x="-4.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="65" x="-4.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="66" x="-5.2" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="67" x="-5.6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="68" x="-6" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="69" x="-6.4" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="70" x="-6.8" y="1.585" dx="0.23" dy="0.75" layer="1" rot="R180"/>
+<smd name="M3" x="7.275" y="1.585" dx="0.35" dy="0.75" layer="1" rot="R180"/>
+<smd name="M2" x="7.275" y="-1.585" dx="0.35" dy="0.75" layer="1"/>
+<smd name="M1" x="-7.275" y="-1.585" dx="0.35" dy="0.75" layer="1"/>
+<smd name="M4" x="-7.275" y="1.585" dx="0.35" dy="0.75" layer="1" rot="R180"/>
+<wire x1="7.8" y1="1" x2="7.8" y2="-1" width="0.127" layer="21"/>
+<rectangle x1="-8.4" y1="-1.7" x2="8.4" y2="1.7" layer="39"/>
+</package>
+<package name="DDF40-70REC-LRG">
+<circle x="-7.4234" y="0.5542" radius="0.227184375" width="0.127" layer="21"/>
+<text x="-8.89" y="2.54" size="0.889" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-8.89" y="-3.81" size="0.889" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<smd name="1" x="-6.8" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="2" x="-6.4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="3" x="-6" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="4" x="-5.6" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="5" x="-5.2" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="6" x="-4.8" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="7" x="-4.4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="8" x="-4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="9" x="-3.6" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="10" x="-3.2" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="11" x="-2.8" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="12" x="-2.4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="13" x="-2" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="14" x="-1.6" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="15" x="-1.2" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="16" x="-0.8" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="17" x="-0.4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="18" x="0" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="19" x="0.4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="20" x="0.8" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="21" x="1.2" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="22" x="1.6" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="23" x="2" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="24" x="2.4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="25" x="2.8" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="26" x="3.2" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="27" x="3.6" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="28" x="4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="29" x="4.4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="30" x="4.8" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="31" x="5.2" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="32" x="5.6" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="33" x="6" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="34" x="6.4" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="35" x="6.8" y="1.42" dx="0.2" dy="1.64" layer="1"/>
+<smd name="36" x="6.8" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="37" x="6.4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="38" x="6" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="39" x="5.6" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="40" x="5.2" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="41" x="4.8" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="42" x="4.4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="43" x="4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="44" x="3.6" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="45" x="3.2" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="46" x="2.8" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="47" x="2.4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="48" x="2" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="49" x="1.6" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="50" x="1.2" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="51" x="0.8" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="52" x="0.4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="53" x="0" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="54" x="-0.4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="55" x="-0.8" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="56" x="-1.2" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="57" x="-1.6" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="58" x="-2" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="59" x="-2.4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="60" x="-2.8" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="61" x="-3.2" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="62" x="-3.6" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="63" x="-4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="64" x="-4.4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="65" x="-4.8" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="66" x="-5.2" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="67" x="-5.6" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="68" x="-6" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="69" x="-6.4" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<smd name="70" x="-6.8" y="-1.42" dx="0.2" dy="1.64" layer="1" rot="R180"/>
+<wire x1="-8.3" y1="-1.44" x2="-8.3" y2="1.44" width="0.127" layer="21"/>
+<wire x1="-8.3" y1="1.44" x2="-7.2" y2="1.44" width="0.127" layer="21"/>
+<wire x1="7.2" y1="1.44" x2="8.3" y2="1.44" width="0.127" layer="21"/>
+<wire x1="8.3" y1="1.44" x2="8.3" y2="-1.44" width="0.127" layer="21"/>
+<wire x1="8.3" y1="-1.44" x2="7.2" y2="-1.44" width="0.127" layer="21"/>
+<wire x1="-7.2" y1="-1.44" x2="-8.3" y2="-1.44" width="0.127" layer="21"/>
+<wire x1="-8" y1="1.1" x2="-8" y2="-1.1" width="0.127" layer="21"/>
+<wire x1="8" y1="-1.1" x2="8" y2="1.1" width="0.127" layer="21"/>
+<wire x1="-8" y1="1.1" x2="-7.2" y2="1.1" width="0.127" layer="21"/>
+<wire x1="-8" y1="-1.1" x2="-7.2" y2="-1.1" width="0.127" layer="21"/>
+<wire x1="8" y1="1.1" x2="7.2" y2="1.1" width="0.127" layer="21"/>
+<wire x1="8" y1="-1.1" x2="7.2" y2="-1.1" width="0.127" layer="21"/>
+<rectangle x1="-8.4" y1="-1.7" x2="8.4" y2="1.7" layer="39"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PINHD2X35">
@@ -1964,7 +2133,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="PINHD-2X35" uservalue="yes">
+<deviceset name="PINHD-2X35" prefix="J" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="PINHD2X35" x="-40.64" y="0"/>
 </gates>
@@ -2272,6 +2441,160 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <connect gate="G$1" pin="70" pad="70"/>
 <connect gate="G$1" pin="8" pad="8 P8"/>
 <connect gate="G$1" pin="9" pad="9 P9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_DF40-70HEAD-LESS-SILK" package="DF40-70HEAD-LESS-SILK">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="11" pad="11"/>
+<connect gate="G$1" pin="12" pad="12"/>
+<connect gate="G$1" pin="13" pad="13"/>
+<connect gate="G$1" pin="14" pad="14"/>
+<connect gate="G$1" pin="15" pad="15"/>
+<connect gate="G$1" pin="16" pad="16"/>
+<connect gate="G$1" pin="17" pad="17"/>
+<connect gate="G$1" pin="18" pad="18"/>
+<connect gate="G$1" pin="19" pad="19"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="20" pad="20"/>
+<connect gate="G$1" pin="21" pad="21"/>
+<connect gate="G$1" pin="22" pad="22"/>
+<connect gate="G$1" pin="23" pad="23"/>
+<connect gate="G$1" pin="24" pad="24"/>
+<connect gate="G$1" pin="25" pad="25"/>
+<connect gate="G$1" pin="26" pad="26"/>
+<connect gate="G$1" pin="27" pad="27"/>
+<connect gate="G$1" pin="28" pad="28"/>
+<connect gate="G$1" pin="29" pad="29"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="30" pad="30"/>
+<connect gate="G$1" pin="31" pad="31"/>
+<connect gate="G$1" pin="32" pad="32"/>
+<connect gate="G$1" pin="33" pad="33"/>
+<connect gate="G$1" pin="34" pad="34"/>
+<connect gate="G$1" pin="35" pad="35"/>
+<connect gate="G$1" pin="36" pad="36"/>
+<connect gate="G$1" pin="37" pad="37"/>
+<connect gate="G$1" pin="38" pad="38"/>
+<connect gate="G$1" pin="39" pad="39"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="40" pad="40"/>
+<connect gate="G$1" pin="41" pad="41"/>
+<connect gate="G$1" pin="42" pad="42"/>
+<connect gate="G$1" pin="43" pad="43"/>
+<connect gate="G$1" pin="44" pad="44"/>
+<connect gate="G$1" pin="45" pad="45"/>
+<connect gate="G$1" pin="46" pad="46"/>
+<connect gate="G$1" pin="47" pad="47"/>
+<connect gate="G$1" pin="48" pad="48"/>
+<connect gate="G$1" pin="49" pad="49"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="50" pad="50"/>
+<connect gate="G$1" pin="51" pad="51"/>
+<connect gate="G$1" pin="52" pad="52"/>
+<connect gate="G$1" pin="53" pad="53"/>
+<connect gate="G$1" pin="54" pad="54"/>
+<connect gate="G$1" pin="55" pad="55"/>
+<connect gate="G$1" pin="56" pad="56"/>
+<connect gate="G$1" pin="57" pad="57"/>
+<connect gate="G$1" pin="58" pad="58"/>
+<connect gate="G$1" pin="59" pad="59"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="60" pad="60"/>
+<connect gate="G$1" pin="61" pad="61"/>
+<connect gate="G$1" pin="62" pad="62"/>
+<connect gate="G$1" pin="63" pad="63"/>
+<connect gate="G$1" pin="64" pad="64"/>
+<connect gate="G$1" pin="65" pad="65"/>
+<connect gate="G$1" pin="66" pad="66"/>
+<connect gate="G$1" pin="67" pad="67"/>
+<connect gate="G$1" pin="68" pad="68"/>
+<connect gate="G$1" pin="69" pad="69"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="70" pad="70"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_DF40REF-LRG" package="DDF40-70REC-LRG">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="11" pad="11"/>
+<connect gate="G$1" pin="12" pad="12"/>
+<connect gate="G$1" pin="13" pad="13"/>
+<connect gate="G$1" pin="14" pad="14"/>
+<connect gate="G$1" pin="15" pad="15"/>
+<connect gate="G$1" pin="16" pad="16"/>
+<connect gate="G$1" pin="17" pad="17"/>
+<connect gate="G$1" pin="18" pad="18"/>
+<connect gate="G$1" pin="19" pad="19"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="20" pad="20"/>
+<connect gate="G$1" pin="21" pad="21"/>
+<connect gate="G$1" pin="22" pad="22"/>
+<connect gate="G$1" pin="23" pad="23"/>
+<connect gate="G$1" pin="24" pad="24"/>
+<connect gate="G$1" pin="25" pad="25"/>
+<connect gate="G$1" pin="26" pad="26"/>
+<connect gate="G$1" pin="27" pad="27"/>
+<connect gate="G$1" pin="28" pad="28"/>
+<connect gate="G$1" pin="29" pad="29"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="30" pad="30"/>
+<connect gate="G$1" pin="31" pad="31"/>
+<connect gate="G$1" pin="32" pad="32"/>
+<connect gate="G$1" pin="33" pad="33"/>
+<connect gate="G$1" pin="34" pad="34"/>
+<connect gate="G$1" pin="35" pad="35"/>
+<connect gate="G$1" pin="36" pad="36"/>
+<connect gate="G$1" pin="37" pad="37"/>
+<connect gate="G$1" pin="38" pad="38"/>
+<connect gate="G$1" pin="39" pad="39"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="40" pad="40"/>
+<connect gate="G$1" pin="41" pad="41"/>
+<connect gate="G$1" pin="42" pad="42"/>
+<connect gate="G$1" pin="43" pad="43"/>
+<connect gate="G$1" pin="44" pad="44"/>
+<connect gate="G$1" pin="45" pad="45"/>
+<connect gate="G$1" pin="46" pad="46"/>
+<connect gate="G$1" pin="47" pad="47"/>
+<connect gate="G$1" pin="48" pad="48"/>
+<connect gate="G$1" pin="49" pad="49"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="50" pad="50"/>
+<connect gate="G$1" pin="51" pad="51"/>
+<connect gate="G$1" pin="52" pad="52"/>
+<connect gate="G$1" pin="53" pad="53"/>
+<connect gate="G$1" pin="54" pad="54"/>
+<connect gate="G$1" pin="55" pad="55"/>
+<connect gate="G$1" pin="56" pad="56"/>
+<connect gate="G$1" pin="57" pad="57"/>
+<connect gate="G$1" pin="58" pad="58"/>
+<connect gate="G$1" pin="59" pad="59"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="60" pad="60"/>
+<connect gate="G$1" pin="61" pad="61"/>
+<connect gate="G$1" pin="62" pad="62"/>
+<connect gate="G$1" pin="63" pad="63"/>
+<connect gate="G$1" pin="64" pad="64"/>
+<connect gate="G$1" pin="65" pad="65"/>
+<connect gate="G$1" pin="66" pad="66"/>
+<connect gate="G$1" pin="67" pad="67"/>
+<connect gate="G$1" pin="68" pad="68"/>
+<connect gate="G$1" pin="69" pad="69"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="70" pad="70"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3303,39 +3626,39 @@ by exp-lbrs.ulp</description>
 <parts>
 <part name="DOC_INFO" library="jonnew" deviceset="DOCFIELD-GEN" device=""/>
 <part name="SIG_IN" library="josh" deviceset="BNC_RIGHT_ANGLE" device="" value="1-1634622-0"/>
-<part name="R4" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
-<part name="GND_IMP" library="jonnew" deviceset="JP3E" device=""/>
+<part name="R4" library="jonnew" deviceset="RN1X8" device="" value="4609X-101-224LF"/>
+<part name="GND_IMP" library="jonnew" deviceset="JP3E" device="" value="JP3-0.1&quot;"/>
 <part name="R9" library="jonnew" deviceset="R" device="_0805" value="10k"/>
 <part name="R11" library="jonnew" deviceset="R" device="_0805" value="10k"/>
 <part name="R10" library="jonnew" deviceset="R" device="_0805" value="100"/>
 <part name="R12" library="jonnew" deviceset="R" device="_0805" value="100"/>
-<part name="S4" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
+<part name="S4" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="1825057-7"/>
 <part name="SUPPLY5" library="jonnew" deviceset="GND" device=""/>
-<part name="SIG_GAIN" library="jonnew" deviceset="JP3E" device=""/>
-<part name="R3" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
-<part name="S3" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
+<part name="SIG_GAIN" library="jonnew" deviceset="JP3E" device="" value="JP3-0.1&quot;"/>
+<part name="R3" library="jonnew" deviceset="RN1X8" device="" value="4609X-101-224LF"/>
+<part name="S3" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="1825057-7"/>
 <part name="SUPPLY6" library="jonnew" deviceset="GND" device=""/>
-<part name="R2" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
-<part name="S2" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
+<part name="R2" library="jonnew" deviceset="RN1X8" device="" value="4609X-101-224LF"/>
+<part name="S2" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="1825057-7"/>
 <part name="SUPPLY7" library="jonnew" deviceset="GND" device=""/>
-<part name="R1" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
-<part name="S1" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
+<part name="R1" library="jonnew" deviceset="RN1X8" device="" value="4609X-101-224LF"/>
+<part name="S1" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="1825057-7"/>
 <part name="SUPPLY8" library="jonnew" deviceset="GND" device=""/>
-<part name="R5" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
-<part name="S5" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
+<part name="R5" library="jonnew" deviceset="RN1X8" device="" value="4609X-101-224LF"/>
+<part name="S5" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="1825057-7"/>
 <part name="SUPPLY9" library="jonnew" deviceset="GND" device=""/>
-<part name="R6" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
-<part name="S6" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
+<part name="R6" library="jonnew" deviceset="RN1X8" device="" value="4609X-101-224LF"/>
+<part name="S6" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="1825057-7"/>
 <part name="SUPPLY10" library="jonnew" deviceset="GND" device=""/>
-<part name="R7" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
-<part name="S7" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
+<part name="R7" library="jonnew" deviceset="RN1X8" device="" value="4609X-101-224LF"/>
+<part name="S7" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="1825057-7"/>
 <part name="SUPPLY11" library="jonnew" deviceset="GND" device=""/>
-<part name="R8" library="jonnew" deviceset="RN1X8" device="" value="4609"/>
-<part name="S8" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="ADE"/>
+<part name="R8" library="jonnew" deviceset="RN1X8" device="" value="4609X-101-224LF"/>
+<part name="S8" library="jonnew" deviceset="DIPSW-008" device="_ADE" value="1825057-7"/>
 <part name="SUPPLY12" library="jonnew" deviceset="GND" device=""/>
-<part name="REF_TO_GND" library="jonnew" deviceset="JP3E" device=""/>
-<part name="R_REF" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
-<part name="R_GND" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
+<part name="REF_TO_GND" library="jonnew" deviceset="JP3E" device="" value="JP3-0.1&quot;"/>
+<part name="R_REF" library="jonnew" deviceset="JP2E" device="_THRU-HOLE" value="SOC2-0.1&quot;"/>
+<part name="R_GND" library="jonnew" deviceset="JP2E" device="_THRU-HOLE" value="SOC2-0.1&quot;"/>
 <part name="J1" library="test-board" deviceset="PINHD-1X9" device=""/>
 <part name="J2" library="test-board" deviceset="PINHD-1X9" device=""/>
 <part name="J3" library="test-board" deviceset="PINHD-1X9" device=""/>
@@ -3374,15 +3697,15 @@ by exp-lbrs.ulp</description>
 <part name="SUPPLY32" library="jonnew" deviceset="GND" device=""/>
 <part name="BANK_SELECT" library="jonnew" deviceset="DIPSW-008-SPDT" device="_206-124" value="KAT1108E"/>
 <part name="SUPPLY33" library="jonnew" deviceset="GND" device=""/>
-<part name="HEADSTAGE" library="jonnew" deviceset="PINHD-2X35" device="_DF40REC" value="DF40-REC"/>
+<part name="HEADSTAGE" library="jonnew" deviceset="PINHD-2X35" device="_DF40REF-LRG" value="DF40C-70DP-0.4V(51)"/>
 <part name="D1" library="jonnew" deviceset="LED" device="_LXZ1" value="LXZ1-PB01"/>
 <part name="D2" library="jonnew" deviceset="LED" device="_LXZ1" value="LXZ1-PL01"/>
-<part name="CDL" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
+<part name="CDL" library="jonnew" deviceset="JP2E" device="_THRU-HOLE" value="SOC2-0.1&quot;"/>
 <part name="TP14" library="jonnew" deviceset="TP" device="PAD1-20" value="V_ESTIM"/>
-<part name="LED_SELECT" library="jonnew" deviceset="JP3E" device=""/>
-<part name="D2_EXT" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
-<part name="D1_EXT" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
-<part name="RS" library="jonnew" deviceset="JP2E" device="_THRU-HOLE"/>
+<part name="LED_SELECT" library="jonnew" deviceset="JP3E" device="" value="JP3-0.1&quot;"/>
+<part name="D2_EXT" library="jonnew" deviceset="JP2E" device="_THRU-HOLE" value="SOC2-0.1&quot;"/>
+<part name="D1_EXT" library="jonnew" deviceset="JP2E" device="_THRU-HOLE" value="SOC2-0.1&quot;"/>
+<part name="RS" library="jonnew" deviceset="JP2E" device="_THRU-HOLE" value="SOC2-0.1&quot;"/>
 </parts>
 <sheets>
 <sheet>
@@ -3427,7 +3750,9 @@ by exp-lbrs.ulp</description>
 <instance part="DOC_INFO" gate="G$1" x="203.2" y="111.76"/>
 <instance part="SIG_IN" gate="G$1" x="591.82" y="406.4"/>
 <instance part="R4" gate="G$1" x="525.78" y="411.48"/>
-<instance part="GND_IMP" gate="G$1" x="635" y="317.5"/>
+<instance part="GND_IMP" gate="G$1" x="635" y="317.5" smashed="yes">
+<attribute name="NAME" x="636.27" y="320.04" size="1.778" layer="95" rot="R90"/>
+</instance>
 <instance part="R9" gate="R" x="619.76" y="406.4"/>
 <instance part="R11" gate="R" x="645.16" y="406.4"/>
 <instance part="R10" gate="R" x="632.46" y="396.24" rot="R90"/>
@@ -3456,14 +3781,14 @@ by exp-lbrs.ulp</description>
 <instance part="R8" gate="G$1" x="480.06" y="205.74" rot="R180"/>
 <instance part="S8" gate="G$1" x="520.7" y="205.74" rot="R90"/>
 <instance part="SUPPLY12" gate="PE" x="533.4" y="187.96"/>
-<instance part="REF_TO_GND" gate="G$1" x="612.14" y="317.5"/>
+<instance part="REF_TO_GND" gate="G$1" x="612.14" y="317.5" smashed="yes">
+<attribute name="NAME" x="613.41" y="320.04" size="1.778" layer="95" rot="R90"/>
+</instance>
 <instance part="R_REF" gate="G$1" x="619.76" y="299.72" smashed="yes" rot="R270">
 <attribute name="NAME" x="633.73" y="294.64" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="622.3" y="294.005" size="1.778" layer="96"/>
 </instance>
 <instance part="R_GND" gate="G$1" x="642.62" y="299.72" smashed="yes" rot="R270">
 <attribute name="NAME" x="656.59" y="294.64" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="645.16" y="294.005" size="1.778" layer="96"/>
 </instance>
 <instance part="J1" gate="G$1" x="299.72" y="398.78" rot="R270"/>
 <instance part="J2" gate="G$1" x="370.84" y="398.78" rot="R270"/>
@@ -3475,9 +3800,13 @@ by exp-lbrs.ulp</description>
 <instance part="J8" gate="G$1" x="492.76" y="218.44" rot="R90"/>
 <instance part="SUPPLY17" gate="PE" x="594.36" y="233.68"/>
 <instance part="SUPPLY18" gate="PE" x="604.52" y="233.68"/>
-<instance part="SUPPLY20" gate="PE" x="617.22" y="281.94"/>
+<instance part="SUPPLY20" gate="PE" x="617.22" y="281.94" smashed="yes">
+<attribute name="VALUE" x="612.775" y="277.241" size="1.778" layer="96"/>
+</instance>
 <instance part="SUPPLY21" gate="PE" x="604.52" y="383.54"/>
-<instance part="SUPPLY22" gate="PE" x="640.08" y="281.94"/>
+<instance part="SUPPLY22" gate="PE" x="640.08" y="281.94" smashed="yes">
+<attribute name="VALUE" x="635.635" y="277.241" size="1.778" layer="96"/>
+</instance>
 <instance part="SUPPLY23" gate="PE" x="632.46" y="383.54"/>
 <instance part="SUPPLY24" gate="PE" x="665.48" y="383.54"/>
 <instance part="TP1" gate="G$1" x="594.36" y="251.46"/>
@@ -3504,25 +3833,29 @@ by exp-lbrs.ulp</description>
 <instance part="BANK_SELECT" gate="G$1" x="736.6" y="408.94" rot="R270"/>
 <instance part="SUPPLY33" gate="PE" x="728.98" y="383.54"/>
 <instance part="HEADSTAGE" gate="G$1" x="401.32" y="307.34" rot="R180"/>
-<instance part="D1" gate="G$1" x="721.36" y="302.26"/>
-<instance part="D2" gate="G$1" x="734.06" y="302.26"/>
+<instance part="D1" gate="G$1" x="721.36" y="302.26" smashed="yes">
+<attribute name="NAME" x="724.916" y="297.688" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="727.075" y="297.688" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="D2" gate="G$1" x="734.06" y="302.26" smashed="yes">
+<attribute name="NAME" x="737.616" y="297.688" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="739.775" y="297.688" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="CDL" gate="G$1" x="767.08" y="309.88" smashed="yes" rot="R90">
 <attribute name="NAME" x="758.19" y="317.5" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="764.54" y="315.595" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="TP14" gate="G$1" x="685.8" y="251.46"/>
-<instance part="LED_SELECT" gate="G$1" x="711.2" y="314.96"/>
+<instance part="LED_SELECT" gate="G$1" x="711.2" y="314.96" smashed="yes">
+<attribute name="NAME" x="712.47" y="317.5" size="1.778" layer="95" rot="R90"/>
+</instance>
 <instance part="D2_EXT" gate="G$1" x="708.66" y="299.72" smashed="yes" rot="R90">
 <attribute name="NAME" x="702.31" y="299.72" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="706.12" y="305.435" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="D1_EXT" gate="G$1" x="698.5" y="299.72" smashed="yes" rot="R90">
 <attribute name="NAME" x="692.15" y="299.72" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="695.96" y="305.435" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="RS" gate="G$1" x="767.08" y="292.1" smashed="yes" rot="R90">
 <attribute name="NAME" x="758.19" y="299.72" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="764.54" y="297.815" size="1.778" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
@@ -3988,7 +4321,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <pinref part="GND_IMP" gate="G$1" pin="2"/>
 <wire x1="640.08" y1="317.5" x2="640.08" y2="312.42" width="0.1524" layer="91"/>
-<label x="640.08" y="312.42" size="1.778" layer="95" rot="R270"/>
+<label x="640.08" y="312.42" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 <segment>
 <label x="317.5" y="276.86" size="1.27" layer="95" rot="R270" xref="yes"/>
@@ -4000,7 +4333,7 @@ by exp-lbrs.ulp</description>
 <segment>
 <pinref part="REF_TO_GND" gate="G$1" pin="2"/>
 <wire x1="617.22" y1="317.5" x2="617.22" y2="312.42" width="0.1524" layer="91"/>
-<label x="617.22" y="312.42" size="1.778" layer="95" rot="R270"/>
+<label x="617.22" y="312.42" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 <segment>
 <label x="401.32" y="276.86" size="1.27" layer="95" rot="MR270" xref="yes"/>
