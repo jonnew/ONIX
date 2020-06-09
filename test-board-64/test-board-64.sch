@@ -3759,7 +3759,9 @@ by exp-lbrs.ulp</description>
 <instance part="R12" gate="R" x="665.48" y="396.24" rot="R90"/>
 <instance part="S4" gate="G$1" x="485.14" y="411.48" rot="R270"/>
 <instance part="SUPPLY5" gate="PE" x="472.44" y="396.24"/>
-<instance part="SIG_GAIN" gate="G$1" x="695.96" y="406.4" rot="R180"/>
+<instance part="SIG_GAIN" gate="G$1" x="695.96" y="406.4" smashed="yes" rot="R180">
+<attribute name="NAME" x="694.69" y="403.86" size="1.778" layer="95" rot="R270"/>
+</instance>
 <instance part="R3" gate="G$1" x="454.66" y="411.48"/>
 <instance part="S3" gate="G$1" x="414.02" y="411.48" rot="R270"/>
 <instance part="SUPPLY6" gate="PE" x="401.32" y="396.24"/>
@@ -4288,7 +4290,6 @@ by exp-lbrs.ulp</description>
 <pinref part="SIG_IN" gate="G$1" pin="SIG"/>
 <wire x1="596.9" y1="406.4" x2="614.68" y2="406.4" width="0.1524" layer="91"/>
 <pinref part="R9" gate="R" pin="1"/>
-<label x="601.98" y="406.4" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="655.32" y1="248.92" x2="655.32" y2="236.22" width="0.1524" layer="91"/>
