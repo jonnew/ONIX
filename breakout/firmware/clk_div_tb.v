@@ -1,5 +1,5 @@
 `timescale 1 ns / 100 ps
-`include "clk_div.v"
+//`include "clk_div.v"
 
 module clk_div_tb();
 
@@ -25,10 +25,13 @@ module clk_div_tb();
 
     // Initial blocks are sequential and start at time 0
     initial begin
+    $dumpfile("clk_div_tb.vcd");
+    $dumpvars();
+
     i_reset = 0;
     i_clk = 0;
 
-    //#300 $finish;
+    #300 $finish;
     end
 
 endmodule

@@ -14,7 +14,10 @@
 #  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 #  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-PROJ = breakout
+TOP = breakout
+#TOP = clk_div
+#TOP = breakout_to_host
+#TOP = host_to_breakout
 
 PIN_DEF = breakout.pcf
 DEVICE = lp8k
@@ -23,46 +26,60 @@ ALL_VER := $(wildcard *.v) $(wildcard */*.v)
 SYNTH_FILES := $(filter-out $(wildcard *_tb.v), $(ALL_VER))
 TB_VER := $(wildcard *_tb.v)
 
-all: $(PROJ).rpt $(PROJ).bin
+all: $(TOP).rpt $(TOP).bin
 
+# Synthesis
 %.json: %.v
-	yosys -p 'synth_ice40 -top $(PROJ) -json $@' $<
+	yosys -p 'synth_ice40 -top $(TOP) -json $@' $<
 
+# PnR
 %.asc: $(PIN_DEF) %.json
 	nextpnr-ice40 --lp8k --package cm81 --json $(word 2,$^) --pcf $(word 1,$^) --asc $@ #--gui
 
+# Write binary
 %.bin: %.asc
 	icepack $< $@
 
+# Timing analysis
 %.rpt: %.asc
 	icetime -d $(DEVICE) -mtr $@ $<
 
+# Write pre-synthesis simulation files
 %_tb: %_tb.v %.v
 	iverilog -o $@ $^
 
+# Perform pre-synthesis simulation
 %_tb.vcd: %_tb
 	vvp -N $< +vcd=$@
 
+# Pre-synthesis simulation target
+.PHONY: sim
+sim: $(TOP)_tb.vcd
+
+# Transpile synthesized design to large .v file
 %_syn.v: %.json
 	yosys -p 'read_json $^; write_verilog $@'
 
-%_syntb.out: $(TB_VER) %_syn.v
+# Write post-synthesis simulation files using primitives from $(CELLS)
+%_syntb.out: %_tb.v %_syn.v
 	iverilog -o $@ $^ `yosys-config --datdir/ice40/cells_sim.v`
 
+# Perform post-synthesis simulation
 %_syntb.vcd: %_syntb.out
-	vvp -N $< +vcd=$@
+	vvp -v -N $< +vcd=$@
 
-prog: $(PROJ).bin
+# Post-synthesis simulation target
+.PHONY: postsim
+postsim: $(TOP)_syntb.vcd
+
+# Program the board
+.PHONY: prog
+prog: $(TOP).bin
 	tinyprog -p $<
 
-sudo-prog: $(PROJ).bin
-	@echo 'Executing prog as root!!!'
-	sudo tinyprog -p $<
-
-test: $(PROJ)_syntb.vcd
-
-view: test
-	gtkwave $(PROJ)_tb.vcd
+#sudo-prog: $(TOP).bin
+#	@echo 'Executing prog as root!!!'
+#	sudo tinyprog -p $<
 
 .PHONY: formal
 formal: formal.sby
@@ -70,7 +87,7 @@ formal: formal.sby
 	sby formal.sby
 
 clean:
-	rm -f $(PROJ).json $(PROJ).asc $(PROJ).rpt $(PROJ).bin *.vcd $(PROJ)_syn.v $(PROJ)_syntb.out
+	rm -f $(TOP).json $(TOP).asc $(TOP).rpt $(TOP).bin *.vcd $(TOP)_syn.v $(TOP)_syntb.out
 
 .SECONDARY:
 .PHONY: all prog clean test
