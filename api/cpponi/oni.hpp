@@ -9,12 +9,30 @@
 #include <system_error>
 #include <vector>
 
+#ifdef _WIN32
+#if _MSVC_LANG >= 201704
+#include <span>
+#define CPPONI_USE_SPAN
+#endif
+#else
 #if __cplusplus >= 201707
 #include <span>
+#define ONI_USE_SPAN
+#endif
 #endif
 
 #include <oni.h>
 #include <onidevices.h>
+
+// Version macros for compile-time API version detection
+// NB: see https://semver.org/
+#define CPPONI_VERSION_MAJOR 3
+#define CPPONI_VERSION_MINOR 1
+#define CPPONI_VERSION_PATCH 0
+
+#define CPPONI_VERSION                                                         \
+    ONI_MAKE_VERSION(                                                          \
+        CPPONI_VERSION_MAJOR, CPPONI_VERSION_MINOR, CPPONI_VERSION_PATCH)
 
 // In order to prevent unused variable warnings when building in non-debug
 // mode use this macro to make assertions.
@@ -25,6 +43,8 @@
 #endif
 
 namespace oni {
+
+    static_assert(ONI_VERSION >= ONI_MAKE_VERSION(3, 0, 0), "liboni is too old.");
 
     class error_t : public std::exception
     {
@@ -55,136 +75,73 @@ namespace oni {
     using device_map_t = std::vector<device_t>;
     template<typename T> using driver_arg_t = std::pair<int,T>;
 
-    // TODO: Data held by frame_t is const. This means data needs to be copied
+    // NB: Data held by frame_t is const. This means data needs to be copied
     // in order to be processed. This is good from a thread safety point of
-    // view but potentially bad from an efficency point of view.
-    // TODO: This frame class can hold a spans for each device into external
+    // view but potentially bad from an efficiency point of view.
+    // NB: This frame class provide spans for each device that look into external
     // storage. Spans are C++20.
     class frame_t
     {
         friend class context_t; // NB: Fills frame_t::frame_ptr_;
 
-        public:
-            inline frame_t(const device_map_t &dev_map, oni_frame_t *frame)
-            : dev_map_(dev_map)
-            , frame_ptr_{frame, [=](oni_frame_t *fp) { oni_destroy_frame(fp); }}
-            {
-                // Nothing
-            }
+    public:
+        // NB: Copy and move assignment operators are going to be deleted
+        // since this class has const members. Copy and move ctors will
+        // implicitly declared.
+        inline frame_t(const device_map_t &dev_map, oni_frame_t *frame)
+        : frame_ptr_{frame, [=](oni_frame_t *fp) { oni_destroy_frame(fp); }}
+        {
+            // Nothing
+        }
 
-            // NB: Copy and move assignment operators are going to be deleted
-            // since this class has const members. Copy and move ctors will
-            // implicity delclared. This is good: assignment does not make sense
-            // because we need assurance device map is equal. Only way to do
-            // this is with construction.
 
-            //TODO: Needed? Data is const. Why would we want to clone this?
-            // Access by multiple threads using shallow copies should be safe.
-            //inline frame_t clone() const
-            //{
-            //    auto fp = (oni_frame_t *)malloc(size_);
-            //    std::memcpy(fp, frame_ptr_.get(), size_);
-            //
-            //    // Create frame with allocated pointer
-            //    return frame_t(dev_map_, fp, size_);
-            //}
+        // uint64_t clock() const { return frame_ptr_->clock; }
+        size_t device_index() const { return frame_ptr_->dev_idx; }
 
-            uint64_t clock() const { return frame_ptr_->clock; }
-
-            bool corrupt() const
-            {
-                return static_cast<bool>(frame_ptr_->corrupt);
-            }
-
-#if __cplusplus >= 201707
-            template <typename raw_t>
-            std::span<const raw_t> data(size_t dev_idx)
-            {
-                // Find the position of the requested idx in the frames
-                // dev_idx's array to get offset
-                auto it = std::find(
-                    frame_ptr_->dev_idxs, frame_ptr_->dev_idxs + frame_ptr_->num_dev, dev_idx);
-
-                if (it == frame_ptr_->dev_idxs + frame_ptr_->num_dev)
-                    throw(error_t(ONI_EDEVIDX));
-
-                // Return iterator dev_idx's data begin()
-                auto i = std::distance(frame_ptr_->dev_idxs, it);
-                auto begin = reinterpret_cast<raw_t *>(
-                    frame_ptr_->data + frame_ptr_->dev_offs[i]);
-
-                return std::span(begin, dev_map_[dev_idx].read_size / sizeof(raw_t));
-            }
+#ifdef CPPONI_USE_SPAN
+        // Data view, no copy
+        template <typename raw_t>
+        std::span<const raw_t> data() const
+        {
+            return std::span(reinterpret_cast<raw_t *>(frame_ptr_->data),
+                                frame_ptr_->data_sz / sizeof(raw_t));
+        }
+#else
+        // Copies
+        template <typename raw_t>
+        std::vector<raw_t> data() const
+        {
+            // This should be RVOed
+            return std::vector(
+                reinterpret_cast<raw_t *const>(frame_ptr_->data),
+                reinterpret_cast<raw_t * const>(frame_ptr_->data) + frame_ptr_->data_sz / sizeof(raw_t));
+        }
 #endif
-            template <typename raw_t>
-            raw_t const *begin(size_t dev_idx)
-            {
-                // Find the position of the requested idx in the frames
-                // dev_idx's array to get offset
-                auto it = std::find(
-                    frame_ptr_->dev_idxs, frame_ptr_->dev_idxs + frame_ptr_->num_dev, dev_idx);
 
-                if (it == frame_ptr_->dev_idxs + frame_ptr_->num_dev)
-                    throw(error_t(ONI_EDEVIDX));
-
-                // Return iterator dev_idx's data begin()
-                auto i = std::distance(frame_ptr_->dev_idxs, it);
-                return reinterpret_cast<raw_t *>(frame_ptr_->data
-                                                 + frame_ptr_->dev_offs[i]);
-            }
-
-            template <typename raw_t>
-            raw_t const *end(size_t dev_idx)
-            {
-                auto it = std::find(
-                    frame_ptr_->dev_idxs, frame_ptr_->dev_idxs + frame_ptr_->num_dev, dev_idx);
-
-                if (it == frame_ptr_->dev_idxs + frame_ptr_->num_dev)
-                    throw(error_t(ONI_EDEVIDX));
-
-                // Return iterator dev_idx's data begin()
-                auto i = std::distance(frame_ptr_->dev_idxs, it);
-                return reinterpret_cast<raw_t *>(frame_ptr_->data
-                                                 + frame_ptr_->dev_offs[i]
-                                                 + dev_map_[dev_idx].read_size);
-            }
-
-            std::vector<size_t> device_indices() const
-            {
-                return std::vector<size_t>(frame_ptr_->dev_idxs,
-                                           frame_ptr_->dev_idxs + frame_ptr_->num_dev);
-            }
-
-        private:
-            const device_map_t &dev_map_;
-            const std::shared_ptr<const oni_frame_t> frame_ptr_;
+    private:
+        const std::shared_ptr<const oni_frame_t> frame_ptr_;
     };
 
     class context_t {
 
     public:
-        template<typename... DriverArgs>
-        inline context_t(const char *driver_name, int host_idx, DriverArgs... args)
+        inline context_t(const char *driver_name, int host_idx)
         {
             // Create
             ctx_ = oni_create_ctx(driver_name);
             if (ctx_ == nullptr)
                 throw std::system_error(errno, std::system_category());
 
-            // Apply driver-specific options
-            for(const auto a : {args...})
-                set_driver_opt(std::get<0>(a), std::get<1>(a));
-
             // Initialize
             auto rc = oni_init_ctx(ctx_, host_idx);
             if (rc != 0) throw error_t(rc);
 
             // Populate device map
-            auto num_devs = get_opt<oni_size_t>(ONI_NUMDEVICES);
+            auto num_devs = get_opt<oni_size_t>(ONI_OPT_NUMDEVICES);
 
             size_t devices_sz = sizeof(oni_device_t) * num_devs;
             device_map_.resize(num_devs);
-            get_opt(ONI_DEVICEMAP, device_map_.data(), &devices_sz);
+            get_opt_(ONI_OPT_DEVICETABLE, device_map_.data(), &devices_sz);
         }
 
         // No copies
@@ -202,18 +159,18 @@ namespace oni {
         inline context_t &operator=(context_t &&rhs) noexcept
         {
             std::swap(ctx_, rhs.ctx_);
-            device_map_ = rhs.device_map_;
+            device_map_ = std::move(rhs.device_map_);
             return *this;
         }
 
-        inline ~context_t() noexcept { close(); }
+        inline ~context_t() noexcept { close_(); }
 
         template <typename opt_t>
         opt_t get_opt(int option) const
         {
             opt_t optval;
             size_t optlen = sizeof(opt_t);
-            get_opt(option, &optval, &optlen);
+            get_opt_(option, &optval, &optlen);
             return optval;
         }
 
@@ -221,9 +178,9 @@ namespace oni {
         inline void set_opt(int option, opt_t const &optval)
         {
             if constexpr(std::is_pointer<opt_t>::value)
-                set_opt(option, optval, opt_size(optval));
+                set_opt_(option, optval, opt_size_(optval));
             else
-                set_opt(option, &optval, opt_size(optval));
+                set_opt_(option, &optval, opt_size_(optval));
         }
 
         template <typename opt_t>
@@ -231,7 +188,7 @@ namespace oni {
         {
             opt_t optval;
             size_t optlen = sizeof(opt_t);
-            get_driver_opt(option, &optval, &optlen);
+            get_driver_opt_(option, &optval, &optlen);
             return optval;
         }
 
@@ -239,12 +196,13 @@ namespace oni {
         inline void set_driver_opt(int option, opt_t const &optval)
         {
             if constexpr(std::is_pointer<opt_t>::value)
-                set_driver_opt(option, optval, opt_size(optval));
+                set_driver_opt_(option, optval, opt_size_(optval));
             else
-                set_driver_opt(option, &optval, opt_size(optval));
+                set_driver_opt_(option, &optval, opt_size_(optval));
         }
 
-        inline oni_reg_val_t read_reg(size_t dev_idx, oni_reg_addr_t addr)
+        inline oni_reg_val_t read_reg(oni_dev_idx_t dev_idx,
+                                      oni_reg_addr_t addr)
         {
             oni_reg_val_t value = 0;
             auto rc = oni_read_reg(ctx_, dev_idx, addr, &value);
@@ -252,12 +210,12 @@ namespace oni {
             return value;
         }
 
-        inline void
-        write_reg(size_t dev_idx, oni_reg_addr_t addr, oni_reg_val_t value)
+        inline void write_reg(oni_dev_idx_t dev_idx,
+                              oni_reg_addr_t addr,
+                              oni_reg_val_t value)
         {
             auto rc = oni_write_reg(ctx_, dev_idx, addr, value);
-            if (rc != 0)
-                throw error_t(rc);
+            if (rc != 0) throw error_t(rc);
         }
 
         inline device_map_t device_map() const noexcept { return device_map_; }
@@ -272,18 +230,49 @@ namespace oni {
             return frame_t(device_map_, fp);
         }
 
+#ifdef CPPONI_USE_SPAN
+        template <typename data_t>
+        inline void write(size_t dev_idx, std::span<const data_t> data) const
+        {
+            // Light-weight allocate write frame
+            oni_frame_t *w_frame = NULL;
+            int rc= oni_create_frame(ctx_, &w_frame, dev_idx, data.size_bytes());
+            if (rc < 0) throw error_t(rc);
+
+            // Copy data into frame
+            memcpy(w_frame->data, data.data(), data.size_bytes());
+
+            // Do write
+            rc = oni_write_frame(ctx_, w_frame);
+            if (rc < 0)
+                throw error_t(rc);
+
+            oni_destroy_frame(w_frame);
+        }
+#else
         template <typename data_t>
         inline void write(size_t dev_idx, std::vector<data_t> data) const
-        {
-            auto rc = oni_write(
-                ctx_, dev_idx, data.data, data.size * sizeof(data_t));
-            if (rc < 0) throw error_t(rc);
-        }
 
+        {
+            // Light-weight allocate write frame
+            oni_frame_t  *w_frame = NULL;
+            int rc = oni_create_frame(ctx_, &w_frame, dev_idx, data.size() * sizeof(data_t));
+            if (rc < 0) throw error_t(rc);
+
+            // Copy data into frame
+            memcpy(w_frame->data, data.data(), data.size() * sizeof(data_t));
+
+            // Do write
+            rc = oni_write_frame(ctx_, w_frame);
+            if (rc < 0) throw error_t(rc);
+
+            oni_destroy_frame(w_frame);
+        }
+#endif
     private:
 
         template<typename opt_t>
-        inline size_t opt_size(opt_t opt)
+        inline size_t opt_size_(opt_t opt)
         {
             size_t optlen = 0;
             if constexpr(std::is_same<opt_t, char *>::value)
@@ -296,32 +285,32 @@ namespace oni {
             return optlen;
         }
 
-        inline void get_opt(int option, void *value, size_t *size) const
+        inline void get_opt_(int option, void *value, size_t *size) const
         {
             auto rc = oni_get_opt(ctx_, option, value, size);
             if (rc != 0) throw error_t(rc);
         }
 
-        inline void set_opt(int option, const void *value, size_t size)
+        inline void set_opt_(int option, const void *value, size_t size)
         {
             auto rc = oni_set_opt(ctx_, option, value, size);
             if (rc != 0) throw error_t(rc);
         }
 
-        inline void get_driver_opt(int option, void *value, size_t *size) const
+        inline void get_driver_opt_(int option, void *value, size_t *size) const
         {
             auto rc = oni_get_driver_opt(ctx_, option, value, size);
             if (rc != 0) throw error_t(rc);
         }
 
-        inline void set_driver_opt(int option, const void *value, size_t size)
+        inline void set_driver_opt_(int option, const void *value, size_t size)
         {
             auto rc = oni_set_driver_opt(ctx_, option, value, size);
             if (rc != 0) throw error_t(rc);
         }
 
         // NB: Called in destructor, no throwing
-        inline void close() noexcept
+        inline void close_() noexcept
         {
             if (ctx_ == nullptr)
                 return;
@@ -329,7 +318,7 @@ namespace oni {
             // Reset the hardware, ignore error codes since this may or
             // this is called in destructor and we cannot throw.
             oni_reg_val_t reset = 1;
-            oni_set_opt(ctx_, ONI_RESET, &reset, sizeof(reset));
+            oni_set_opt(ctx_, ONI_OPT_RESET, &reset, sizeof(reset));
 
             // Free resources
             auto rc = oni_destroy_ctx(ctx_);
