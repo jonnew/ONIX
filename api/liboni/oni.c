@@ -13,6 +13,14 @@
 // 1. Get rid of oni_fifo_size_t and anything else
 // hardcoding fifo width at this top level driver. Or the loaded driver
 // could import this number somehow (e.g. via extern variable or context member).
+// 2. FMC host rev 1.3 vs 1.4 in devices.
+
+// Device hash table overhead factor
+#define ONI_DEVHASHOVERHEAD (10.0)
+
+// NB: 255 in sub-address is invalid in this implementation,
+// so we can use this to clear the hash table
+#define ONI_DEVIDXNULL 0xFFFFFFFF
 
 // Consistent overhead bytestuffing buffer size
 #define ONI_COBSBUFFERSIZE 255
@@ -56,9 +64,13 @@ struct oni_ctx_impl {
     // Run acquisition immediately following reset
     oni_reg_val_t run_on_reset;
 
-    // Devices
+    // Device array
     oni_size_t num_dev;
-    oni_device_t* dev_map;
+    oni_device_t *dev_table;
+
+    // Device hash table
+    oni_size_t dev_hash_len;
+    oni_device_t *dev_hash_table;
 
     // Maximum frame size (bytes, includes header)
     oni_size_t max_read_frame_size;
@@ -88,13 +100,15 @@ typedef enum oni_signal {
     CONFIGWNACK         = (1u << 2), // Configuration no-write-acknowledgment
     CONFIGRACK          = (1u << 3), // Configuration read-acknowledgment
     CONFIGRNACK         = (1u << 4), // Configuration no-read-acknowledgment
-    DEVICEMAPACK        = (1u << 5), // Device map start acknowledgment
-    DEVICEINST          = (1u << 6), // Device map instance
+    DEVICETABLEACK      = (1u << 5), // Device table start acknowledgment
+    DEVICEINST          = (1u << 6), // Device table instance
 } oni_signal_t;
 
 // Static helpers
+static inline oni_dev_idx_t _oni_hash32(oni_dev_idx_t x);
+static inline int _oni_hashfind32(oni_ctx ctx, oni_dev_idx_t x);
 static int _oni_reset_routine(oni_ctx ctx);
-static inline int _oni_read(oni_ctx ctx, oni_read_stream_t stream, void* data, size_t size);
+static inline int _oni_read(oni_ctx ctx, oni_read_stream_t stream, void *data, size_t size);
 static inline int _oni_write(oni_ctx ctx, oni_write_stream_t stream, const char* data, size_t size);
 static int _oni_read_signal_packet(oni_ctx ctx, uint8_t *buffer);
 static int _oni_read_signal_data(oni_ctx ctx, oni_signal_t *type, void *data, size_t size);
@@ -127,10 +141,9 @@ oni_ctx oni_create_ctx(const char* drv_name)
     }
 
     ctx->num_dev = 0;
-    ctx->dev_map = NULL;
+    ctx->dev_hash_table = NULL;
     ctx->run_state = UNINITIALIZED;
     ctx->run_on_reset = 0;
-    //ctx->write_remainder_size = 0;
 
     return ctx;
 }
@@ -146,7 +159,7 @@ int oni_init_ctx(oni_ctx ctx, int host_idx)
     int rc = ctx->driver.init(ctx->driver.ctx, host_idx);
     if (rc) return rc;
 
-    // NB: Trigger reset routine (populates device map and key acquisition
+    // NB: Trigger reset routine (populates device table and key acquisition
     // parameters) Success will set ctx->run_state to IDLE
 
     // If running, stop acquisition
@@ -157,7 +170,7 @@ int oni_init_ctx(oni_ctx ctx, int host_idx)
     rc = _oni_write_config(ctx, ONI_CONFIG_RESET, 1);
     if (rc) return rc;
 
-    // Get device map etc
+    // Get device table etc
     rc = _oni_reset_routine(ctx);
     if (rc) return rc;
 
@@ -174,7 +187,7 @@ int oni_destroy_ctx(oni_ctx ctx)
     int rc = ctx->driver.destroy_ctx(ctx->driver.ctx);
     if (rc) return rc;
 
-    free(ctx->dev_map);
+    free(ctx->dev_hash_table);
     free(ctx);
 
     return ONI_ESUCCESS;
@@ -185,7 +198,7 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
     assert(ctx != NULL && "Context is NULL");
 
     switch (ctx_opt) {
-        case ONI_OPT_DEVICEMAP: {
+        case ONI_OPT_DEVICETABLE: {
 
             assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
             if (ctx->run_state < IDLE)
@@ -195,7 +208,7 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
             if (*option_len < required_bytes)
                 return ONI_EBUFFERSIZE;
 
-            memcpy(value, ctx->dev_map, required_bytes);
+            memcpy(value, ctx->dev_table, required_bytes);
             *option_len = required_bytes;
             break;
         }
@@ -229,11 +242,11 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
         }
         case ONI_OPT_RUNONRESET: {
 
-            if (*option_len != sizeof(oni_reg_val_t))
+            if (*option_len < ONI_REGSZ)
                 return ONI_EBUFFERSIZE;
 
             *(oni_reg_val_t *)value = ctx->run_on_reset;
-            *option_len = sizeof(oni_reg_val_t);
+            *option_len = ONI_REGSZ;
             break;
         }
         case ONI_OPT_RUNNING: {
@@ -242,7 +255,7 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
             if (ctx->run_state < IDLE)
                 return ONI_EINVALSTATE;
 
-            if (*option_len != ONI_REGSZ)
+            if (*option_len < ONI_REGSZ)
                 return ONI_EBUFFERSIZE;
 
             int rc = _oni_read_config(ctx, ONI_CONFIG_RUNNING, value);
@@ -260,7 +273,7 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
             if (ctx->run_state < IDLE)
                 return ONI_EINVALSTATE;
 
-            if (*option_len != ONI_REGSZ)
+            if (*option_len < ONI_REGSZ)
                 return ONI_EBUFFERSIZE;
 
             int rc = _oni_read_config(ctx, ONI_CONFIG_SYSCLK, value);
@@ -270,21 +283,21 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
             break;
         }
         case ONI_OPT_BLOCKREADSIZE: {
-            oni_size_t required_bytes = sizeof(oni_size_t);
-            if (*option_len < required_bytes)
+
+            if (*option_len < ONI_REGSZ)
                 return ONI_EBUFFERSIZE;
 
             *(oni_size_t *)value = ctx->block_read_size;
-            *option_len = required_bytes;
+            *option_len = ONI_REGSZ;
             break;
         }
         case ONI_OPT_BLOCKWRITESIZE: {
-            oni_size_t required_bytes = sizeof(oni_size_t);
-            if (*option_len < required_bytes)
+
+            if (*option_len < ONI_REGSZ)
                 return ONI_EBUFFERSIZE;
 
             *(oni_size_t *)value = ctx->block_write_size;
-            *option_len = required_bytes;
+            *option_len = ONI_REGSZ;
             break;
         }
 
@@ -321,8 +334,8 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
             if (rc) return rc;
 
             // Dump buffers
-            // TODO: Is this always the right thing to do? In the case our our RIFFA implementation, yes.
-            // But other implementations may not clear intermeidate FIFOs meaning that the first data
+            // TODO: Is this always the right thing to do? In the case our RIFFA implementation, yes.
+            // But other implementations may not clear intermediate FIFOs meaning that the first data
             // encountered on restart is not the start of a frame.
             _oni_dump_buffers(ctx);
 
@@ -347,7 +360,7 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
                     ctx, ONI_CONFIG_RESET, *(oni_reg_val_t*)value);
                 if (rc) return rc;
 
-                // Get device map etc
+                // Get device table etc
                 _oni_reset_routine(ctx);
             }
 
@@ -356,7 +369,7 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
         case ONI_OPT_BLOCKREADSIZE: {
             // NB: If we are careful, this could be changed during RUNNING
             // state. However, I would need to perform runtime size check of
-            // the block readsize. Also, what if it occured on a separate
+            // the block readsize. Also, what if it occurred on a separate
             // thread during a call to oni_read_frame?
             assert(ctx->run_state == IDLE && "Context state must be IDLE.");
             if (ctx->run_state != IDLE)
@@ -383,7 +396,7 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
         case ONI_OPT_BLOCKWRITESIZE: {
             // NB: If we are careful, this could be changed during RUNNING
             // state. However, I would need to perform runtime size check of
-            // the block readsize. Also, what if it occured on a separate
+            // the block readsize. Also, what if it occurred on a separate
             // thread during a call to oni_read_frame?
             assert(ctx->run_state == IDLE && "Context state must be IDLE.");
             if (ctx->run_state != IDLE)
@@ -406,7 +419,7 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
 
             break;
         }
-        case ONI_OPT_DEVICEMAP:
+        case ONI_OPT_DEVICETABLE:
         case ONI_OPT_NUMDEVICES:
         case ONI_OPT_MAXREADFRAMESIZE:
         case ONI_OPT_SYSCLKHZ: {
@@ -430,16 +443,12 @@ int oni_set_driver_opt(oni_ctx ctx, int drv_opt, const void* value, size_t optio
 }
 
 int oni_write_reg(const oni_ctx ctx,
-                  size_t dev_idx,
+                  oni_dev_idx_t dev_idx,
                   oni_reg_addr_t addr,
                   oni_reg_val_t value)
 {
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state > UNINITIALIZED && "Context must be INITIALIZED.");
-
-    // Checks that the device index is valid
-    if (dev_idx >= ctx->num_dev && dev_idx)
-        return ONI_EDEVIDX;
 
     // Make sure we are not already in config triggered state
     oni_reg_val_t trig = 0;
@@ -449,7 +458,7 @@ int oni_write_reg(const oni_ctx ctx,
     if (trig != 0) return ONI_ERETRIG;
 
     // Set config registers and trigger a write
-    rc = _oni_write_config(ctx, ONI_CONFIG_DEVICE_IDX, dev_idx);
+    rc = _oni_write_config(ctx, ONI_CONFIG_DEV_IDX, dev_idx);
     if (rc) return rc;
     rc = _oni_write_config(ctx, ONI_CONFIG_REG_ADDR, addr);
     if (rc) return rc;
@@ -464,7 +473,7 @@ int oni_write_reg(const oni_ctx ctx,
     rc = _oni_write_config(ctx, ONI_CONFIG_TRIG, trig);
     if (rc) return rc;
 
-    // Wait for reponse from hardware
+    // Wait for response from hardware
     oni_signal_t type;
     rc = _oni_pump_signal_type(ctx, CONFIGWACK | CONFIGWNACK, &type);
     if (rc) return rc;
@@ -475,16 +484,12 @@ int oni_write_reg(const oni_ctx ctx,
 }
 
 int oni_read_reg(const oni_ctx ctx,
-                 size_t dev_idx,
+                 oni_dev_idx_t dev_idx,
                  oni_reg_addr_t addr,
                  oni_reg_val_t *value)
 {
     assert(ctx != NULL && "Context is NULL");
     assert(ctx->run_state > UNINITIALIZED && "Context must be INITIALIZED.");
-
-    // Checks that the device index is valid
-    if (dev_idx >= ctx->num_dev && dev_idx)
-        return ONI_EDEVIDX;
 
     // Make sure we are not already in config triggered state
     oni_reg_val_t trig = 0;
@@ -494,7 +499,7 @@ int oni_read_reg(const oni_ctx ctx,
     if (trig != 0) return ONI_ERETRIG;
 
     // Set config registers and trigger a write
-    rc = _oni_write_config(ctx, ONI_CONFIG_DEVICE_IDX, dev_idx);
+    rc = _oni_write_config(ctx, ONI_CONFIG_DEV_IDX, dev_idx);
     if (rc) return rc;
     rc = _oni_write_config(ctx, ONI_CONFIG_REG_ADDR, addr);
     if (rc) return rc;
@@ -507,7 +512,7 @@ int oni_read_reg(const oni_ctx ctx,
     rc = _oni_write_config(ctx, ONI_CONFIG_TRIG, trig);
     if (rc) return rc;
 
-    // Wait for reponse from hardware
+    // Wait for response from hardware
     oni_signal_t type;
     rc = _oni_pump_signal_type(ctx, CONFIGRACK | CONFIGRNACK, &type);
     if (rc) return rc;
@@ -549,7 +554,7 @@ int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame)
     // Total frame size
     int total_size = sizeof(oni_frame_t);
 
-    // Copy frame header members (contiuous)
+    // Copy frame header members (continuous)
     // 1. index (4)
     // 2. data_sz (4)
     memcpy(&iframe->private.dev_idx, header, 2 * sizeof(oni_fifo_dat_t));
@@ -577,7 +582,10 @@ int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame)
 
 // NB : Multiframe writes are allowed as long as data_sz is a multiple of
 // a single write frame's size.
-int oni_create_frame(const oni_ctx ctx, oni_frame_t **frame, size_t dev_idx, size_t data_sz)
+int oni_create_frame(const oni_ctx ctx,
+                     oni_frame_t **frame,
+                     oni_dev_idx_t dev_idx,
+                     size_t data_sz)
 {
     assert(ctx != NULL && "Context is NULL");
 
@@ -585,9 +593,17 @@ int oni_create_frame(const oni_ctx ctx, oni_frame_t **frame, size_t dev_idx, siz
     // a different thread
     assert(ctx->run_state >= IDLE && "Context is not acquiring.");
 
-    // No devices accept data
-    if (ctx->max_write_frame_size == 0)
-        return ONI_ENOWRITEDEV;
+    // Get the device hash index
+    int i = _oni_hashfind32(ctx, dev_idx);
+    if (i < 0) return ONI_EDEVIDX;
+
+    // Check that the devices accepts
+    if (ctx->dev_hash_table[i].write_size == 0)
+        return ONI_ENOTWRITEDEV;
+
+    // Check that data_sz is a multiple of write_size
+    if (data_sz % ctx->dev_hash_table[i].write_size != 0)
+        return ONI_EWRITESIZE;
 
     // Allocate frame and buffer
     oni_frame_impl_t *iframe = malloc(sizeof(oni_frame_impl_t));
@@ -596,7 +612,6 @@ int oni_create_frame(const oni_ctx ctx, oni_frame_t **frame, size_t dev_idx, siz
     int total_size = sizeof(oni_frame_t);
 
     // Pad if needed
-    // TODO: Should we do this? If so should this just return an error if padding is required?
     size_t asize = data_sz;
     asize += asize % sizeof(oni_fifo_dat_t);
     total_size += asize;
@@ -613,7 +628,7 @@ int oni_create_frame(const oni_ctx ctx, oni_frame_t **frame, size_t dev_idx, siz
     *(oni_size_t *)&iframe->private.data_sz = data_sz;
     iframe->private.data = buffer_start + 2 * sizeof(oni_fifo_dat_t);
 
-    // Copy frame header members (contiuous)
+    // Copy frame header members (continuous)
     // 1. index (4)
     // 2. data_sz (4)
     *(oni_fifo_dat_t *)buffer_start = iframe->private.dev_idx;
@@ -636,7 +651,7 @@ int oni_write_frame(const oni_ctx ctx, const oni_frame_t *frame)
     // Write the frame
     oni_frame_impl_t *iframe = (oni_frame_impl_t *)frame;
 
-    // Continous frame starts 2 elements back in shared buffer
+    // Continuous frame starts 2 elements back in shared buffer
     size_t wsize = iframe->private.data_sz + 2 * sizeof(oni_fifo_dat_t);
     int rc = _oni_write(ctx, ONI_WRITE_STREAM_DATA, iframe->private.data - 2 * sizeof(oni_fifo_dat_t), wsize);
     if (rc != (int)wsize) return ONI_EWRITEFAILURE;
@@ -684,7 +699,8 @@ const char *oni_error_str(int err)
             return "Invalid device index";
         }
         case ONI_EWRITESIZE: {
-            return "Data write size is incorrect for designated device";
+            return "Data size is not an integer multiple of the write size for "
+                   "the designated device";
         }
         case ONI_EREADFAILURE: {
             return "Failure to read from a stream or register";
@@ -693,7 +709,7 @@ const char *oni_error_str(int err)
             return "Failure to write to a stream or register";
         }
         case ONI_ENULLCTX: {
-            return "Null context";
+            return "Attempt to use a NULL context";
         }
         case ONI_ESEEKFAILURE: {
             return "Failure to seek on stream";
@@ -716,8 +732,8 @@ const char *oni_error_str(int err)
         case ONI_EBUFFERSIZE: {
             return "Supplied buffer is too small";
         }
-        case ONI_EBADDEVMAP: {
-            return "Badly formatted device map supplied by firmware";
+        case ONI_EBADDEVTABLE: {
+            return "Badly formatted device table supplied by firmware";
         }
         case ONI_EBADALLOC: {
             return "Bad dynamic memory allocation";
@@ -737,7 +753,7 @@ const char *oni_error_str(int err)
         }
         case ONI_ENOREADDEV: {
             return "Frame read attempted when there are no readable devices in "
-                   "the device map";
+                   "the device table";
         }
         case ONI_EWRITEONLY: {
             return "Attempted to read from a write only object (register, context "
@@ -750,13 +766,39 @@ const char *oni_error_str(int err)
             return "Write buffer pre-allocation size is smaller than the "
                    "maximal write frame size";
         }
-        case ONI_ENOWRITEDEV: {
-            return "Frame allocation attempted when there are no writable "
-                   "devices in the device map";
+        case ONI_ENOTWRITEDEV: {
+            return "Frame allocation attempted for a non-writable device";
+        }
+        case ONI_EDEVIDXREPEAT: {
+            return "Device table contains repeated device indices";
         }
         default:
             return "Unknown error";
     }
+}
+
+static inline oni_dev_idx_t _oni_hash32(oni_dev_idx_t x)
+{
+    x = ((x >> 16) ^ x) * 0x45d9f3b;
+    x = ((x >> 16) ^ x) * 0x45d9f3b;
+    x = (x >> 16) ^ x;
+    return x;
+}
+
+static inline int _oni_hashfind32(oni_ctx ctx, oni_dev_idx_t x)
+{
+    int probe;
+
+    for (probe = _oni_hash32(x) % ctx->dev_hash_len;
+         ctx->dev_hash_table[probe].idx != ONI_DEVIDXNULL;
+         probe = (probe + 1) % ctx->dev_hash_len) {
+
+        if (ctx->dev_hash_table[probe].idx) {
+            return probe;
+        }
+    }
+
+    return -1;
 }
 
 static int _oni_reset_routine(oni_ctx ctx)
@@ -764,18 +806,28 @@ static int _oni_reset_routine(oni_ctx ctx)
     // Get number of devices
     oni_signal_t sig_type = NULLSIG;
     int rc = _oni_pump_signal_data(
-        ctx, DEVICEMAPACK, &sig_type, &(ctx->num_dev), sizeof(ctx->num_dev));
+        ctx, DEVICETABLEACK, &sig_type, &(ctx->num_dev), sizeof(ctx->num_dev));
     if (rc) return rc;
 
-    // Make space for the device map
-    oni_device_t *new_map
-        = realloc(ctx->dev_map, ctx->num_dev * sizeof(oni_device_t));
-    if (new_map)
-        ctx->dev_map = new_map;
+    // Hash table size
+    ctx->dev_hash_len = ctx->num_dev * ONI_DEVHASHOVERHEAD + 1;
+
+    // Make space for the device tables
+    oni_device_t *temp = realloc(ctx->dev_table,
+                                 ctx->num_dev * sizeof(oni_device_t));
+    if (temp)
+        ctx->dev_table = temp;
     else
         return ONI_EBADALLOC;
 
-    oni_size_t i;
+    temp = realloc(ctx->dev_hash_table,
+                   ctx->dev_hash_len * sizeof(oni_device_t));
+    if (temp)
+        ctx->dev_hash_table = temp;
+    else
+        return ONI_EBADALLOC;
+
+    size_t i;
     ctx->max_read_frame_size = 0;
     ctx->max_write_frame_size = 0;
     for (i = 0; i < ctx->num_dev; i++) {
@@ -787,17 +839,55 @@ static int _oni_reset_routine(oni_ctx ctx)
 
         // We should see num_dev device instances appear on the signal stream
         if (sig_type != DEVICEINST)
-            return ONI_EBADDEVMAP;
+            return ONI_EBADDEVTABLE;
 
         // Append the device onto the table
-        memcpy(ctx->dev_map + i, buffer, sizeof(oni_device_t));
+        memcpy(ctx->dev_table + i, buffer, sizeof(oni_device_t));
 
         // Check to see if this is the biggest frame in the table
-        if ((ctx->dev_map + i)->read_size > ctx->max_read_frame_size)
-            ctx->max_read_frame_size = (ctx->dev_map + i)->read_size;
+        if ((ctx->dev_table + i)->read_size > ctx->max_read_frame_size)
+            ctx->max_read_frame_size = (ctx->dev_table + i)->read_size;
 
-        if ((ctx->dev_map + i)->write_size > ctx->max_write_frame_size)
-            ctx->max_write_frame_size = (ctx->dev_map + i)->write_size;
+        if ((ctx->dev_table + i)->write_size > ctx->max_write_frame_size)
+            ctx->max_write_frame_size = (ctx->dev_table + i)->write_size;
+    }
+
+    // Clear the table
+    for (i = 0; i < ctx->dev_hash_len; i++) {
+        ctx->dev_hash_table[i].idx = ONI_DEVIDXNULL;
+    }
+
+    // Sort device_table
+    // Check that dev_idx entries are unique (required for hash)
+    // Fill the hash_table table
+    for (i = 0; i < ctx->num_dev; i++) {
+
+        // NB: i = ctx->num_dev - 1 will not loop
+        size_t j;
+        size_t min_idx = i;
+        for (j = i + 1; j < ctx->num_dev; j++) {
+
+            if (ctx->dev_table[i].idx == ctx->dev_table[j].idx)
+                return ONI_EDEVIDXREPEAT;
+
+            if (ctx->dev_table[j].idx < ctx->dev_table[min_idx].idx)
+                min_idx = j;
+        }
+
+        // Swap place device i and min_idx
+        oni_device_t temp = ctx->dev_table[min_idx];
+        ctx->dev_table[min_idx] = ctx->dev_table[i];
+        ctx->dev_table[i] = temp;
+
+        // Hashing with open addressing
+        size_t probe;
+        for (probe = _oni_hash32(ctx->dev_table[i].idx) % ctx->dev_hash_len;
+             ctx->dev_hash_table[probe].idx != ONI_DEVIDXNULL;
+             probe = (probe + 1) % ctx->dev_hash_len) {
+        };
+
+        assert(ctx->dev_hash_table[probe].idx == ONI_DEVIDXNULL);
+        ctx->dev_hash_table[probe] = ctx->dev_table[i];
     }
 
     // Add the header contents to the read size
@@ -829,7 +919,7 @@ static inline int _oni_write(oni_ctx ctx, oni_write_stream_t stream, const char 
 
 static inline int _oni_read_signal_packet(oni_ctx ctx, uint8_t *buffer)
 {
-    // Read the next zero-deliminated packet
+    // Read the next zero-delimited packet
     int i = 0;
     uint8_t curr_byte = 1;
     int bad_delim = 0;
@@ -848,7 +938,7 @@ static inline int _oni_read_signal_packet(oni_ctx ctx, uint8_t *buffer)
     if (bad_delim)
         return ONI_ECOBSPACK;
     else
-        return --i; // Length of packet without 0 delimeter
+        return --i; // Length of packet without 0 delimiter
 }
 
 static int _oni_read_signal_data(oni_ctx ctx, oni_signal_t *type, void *data, size_t size)
@@ -936,7 +1026,7 @@ static int _oni_pump_signal_data(oni_ctx ctx, int flags, oni_signal_t *type, voi
     *type = packet_type;
 
     // pack_size still has overhead byte and header, so we remove those
-    size_t data_size = pack_size - 1 - sizeof(oni_signal_t);
+    int data_size = pack_size - 1 - sizeof(oni_signal_t);
     if (size < data_size)
         return ONI_EBUFFERSIZE;
 

@@ -18,7 +18,7 @@
     <ClCompile Include="testfunc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="host_riffa.c">
+    <ClCompile Include="host.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
