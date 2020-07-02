@@ -43,7 +43,7 @@ namespace clroni_test
                         {
                             var dat = frame.Data<ushort>();
                             var idx = frame.DeviceIndex();
-                            Console.WriteLine("\tDev: {0} ({1})", idx, Device.Name(ctx.DeviceMap[(int)idx].id));
+                            Console.WriteLine("\tDev: {0} ({1})", idx, Device.Name(ctx.DeviceTable[idx].id));
                             Console.WriteLine("\t[{0}]", String.Join(", ", dat));
                         }
                     }
@@ -87,7 +87,7 @@ namespace clroni_test
                 using(var ctx = new oni.Context(driver, hw_idx))
                 {
                     Console.WriteLine("Found the following devices:");
-                    foreach (var elem in ctx.DeviceMap) {
+                    foreach (var elem in ctx.DeviceTable.Values) {
 
                         Console.WriteLine("\t{0}) ID: {1}, Read size: {2}",
                                           elem.idx,

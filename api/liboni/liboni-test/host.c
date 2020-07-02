@@ -102,8 +102,9 @@ void *read_loop(void *vargp)
         fwrite(frame->data, 1, frame->data_sz, dump_files[frame->dev_idx]);
 #endif
         if (display
-            && counter % 1000 == 0) {
-            //&& devices[frame->dev_idx].id == ONI_TESTREG0) {
+            //&& counter % 1000 == 0) {
+            //&& counter % 1000 == 0) {
+            && devices[frame->dev_idx].id == ONI_RHD2164) {
             //&& devices[frame->dev_idx].id == ONI_TS4231V2ARR) {
 
             oni_device_t this_dev = devices[frame->dev_idx];

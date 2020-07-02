@@ -31,22 +31,22 @@
             SystemClockHz = (uint)GetIntOption((int)Option.SYSCLKHZ);
             MaxReadFrameSize = (uint)GetIntOption((int)Option.MAXREADFRAMESIZE);
 
-            // Populate device map
+            // Populate device table
             int num_devs = GetIntOption((int)Option.NUMDEVICES);
-            DeviceMap = new List<device_t>(num_devs);
+            DeviceTable = new Dictionary<uint, device_t>(num_devs);
             int size_dev = Marshal.SizeOf(new device_t());
-            int size = size_dev * num_devs; // bytes required to read map
+            int size = size_dev * num_devs; // bytes required to read table
 
-            var map = GetOption((int)Option.DEVICEMAP, size);
+            var table = GetOption((int)Option.DEVICETABLE, size);
 
             // TODO: This seems very inefficient. We allocate memory in value
-            // and then copy each element into device_map.  Would be better to
-            // directly provide device map's memory as buffer.
+            // and then copy each element into device table.  Would be better to
+            // directly provide device table's memory as buffer.
             for (int i = 0; i < num_devs; i++)
             {
-                DeviceMap.Add((device_t)Marshal.PtrToStructure(map, typeof(device_t)));
-                //DeviceMap.Add(i, (device_t)Marshal.PtrToStructure(map, typeof(device_t)));
-                map = new IntPtr((long)map + size_dev);
+                var d = (device_t)Marshal.PtrToStructure(table, typeof(device_t));
+                DeviceTable.Add(d.idx, d);
+                table = new IntPtr((long)table + size_dev);
             }
 
             destroyed = false;
@@ -54,8 +54,7 @@
 
         public static readonly uint DefaultIndex = 0;
         public uint Index = DefaultIndex;
-        //public readonly Dictionary<int, device_t> DeviceMap;
-        public readonly List<device_t> DeviceMap;
+        public readonly Dictionary<uint, device_t> DeviceTable;
         readonly object context_lock = new object();
 
         public readonly uint SystemClockHz = 0;
@@ -249,7 +248,7 @@
         // NB: These need to be redeclared unfortunately
         public enum Option : int
         {
-            DEVICEMAP = 0,
+            DEVICETABLE = 0,
             NUMDEVICES,
             MAXREADFRAMESIZE,
             RUNONRESET,
