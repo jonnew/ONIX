@@ -152,7 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="host_riffa.c" />
+    <ClCompile Include="host.c" />
     <ClCompile Include="testfunc.c" />
   </ItemGroup>
   <ItemGroup>

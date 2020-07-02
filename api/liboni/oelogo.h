@@ -1,7 +1,7 @@
 #ifndef __OELOGO_H__
 #define __OELOGO_H__
 
-const char logo_med[] =
+const char oe_logo_med[] =
 "                                                          \n"
 "   Jon Newman @ MIT                     **                \n"
 "   Jie Zhang @ MIT                     ////               \n"

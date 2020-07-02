@@ -6,12 +6,16 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/jonnew/open-ephys-pcie/blob/master/api/LICENSE</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/jonnew/open-ephys-pcie</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>Jon Newman © 2019</copyright>
     <tags>Open Neuro Interface ONI Open Ephys Electrophysiology PCIe Neuro Science</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETFramework4.7.2" />
+    </dependencies>
   </metadata>
   <files>
     <file src="clroni.targets" target="lib\net45"/>

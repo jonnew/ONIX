@@ -21,7 +21,7 @@ namespace oni
         {
         }
 
-        // Ideally, I would like this to be a "Span" into the exsting, allocated frame
+        // Ideally, I would like this to be a "Span" into the existing, allocated frame
         // Now, there are _two_ deep copies happening here as far as I can tell which is ridiculous
         public T[] Data<T>() where T : struct
         {
@@ -52,6 +52,18 @@ namespace oni
             Marshal.Copy(buffer, 0, (IntPtr)frame->data, (int)num_bytes);
         }
 
+        internal void SetData(IntPtr data, int data_size)
+        {
+            var frame = (frame_t*)handle.ToPointer();
+
+            // Get the read size and offset for this device
+            var num_bytes = frame->data_sz;
+
+            // Copy the memory
+            Buffer.MemoryCopy(data.ToPointer(), frame->data, num_bytes, data_size);
+        }
+
+
         protected override bool ReleaseHandle()
         {
             lib.NativeMethods.oni_destroy_frame(handle);
@@ -59,9 +71,9 @@ namespace oni
         }
 
         // Devices with data in this frame
-        public int DeviceIndex()
+        public uint DeviceIndex()
         {
-            return (int)(((frame_t*)handle.ToPointer())->dev_idx);
+            return ((frame_t*)handle.ToPointer())->dev_idx;
         }
     }
 }

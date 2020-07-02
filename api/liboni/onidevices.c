@@ -49,7 +49,8 @@ const char *oni_device_str(int dev_id)
             return "AD51X2 digital potentiometer";
         }
         case ONI_FMCVCTRL: {
-            return "Open Ephys FMC Host Board rev. 1.3 link voltage control subcircuit";
+            return "Open Ephys FMC Host Board rev. 1.3 link voltage control "
+                   "subcircuit";
         }
         case ONI_AD7617: {
             return "AD7617 ADC/DAS";
@@ -63,11 +64,17 @@ const char *oni_device_str(int dev_id)
         case ONI_BREAKDIG1R3: {
             return "Open Ephys Breakout board rev. 1.3 digital and user IO";
         }
-        case ONI_FMCCLKIN1R4: {
-            return "Open Ephys FMC Host Board rev. 1.4 clock intput subcircuit";
+        case ONI_FMCCLKIN1R3: {
+            return "Open Ephys FMC Host Board rev. 1.3 clock intput subcircuit";
         }
-        case ONI_FMCCLKOUT1R4: {
-            return "Open Ephys FMC Host Board rev. 1.4 clock output subcircuit";
+        case ONI_FMCCLKOUT1R3: {
+            return "Open Ephys FMC Host Board rev. 1.3 clock output subcircuit";
+        }
+        case ONI_TS4231V2ARR: {
+            return "Triad TS421 optical to digital converter array for V2 base stations";
+        }
+        case ONI_FMCANALOG1R3: {
+            return "Open Ephys FMC Host Board rev. 1.3 analog IO subcircuit";
         }
         default:
             return "Unknown device";

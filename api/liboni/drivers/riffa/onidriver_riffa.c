@@ -254,7 +254,7 @@ const char* oni_driver_str()
 static inline oni_conf_off_t _oni_register_offset(oni_config_t reg)
 {
     switch (reg) {
-    case ONI_CONFIG_DEVICE_IDX:
+    case ONI_CONFIG_DEV_IDX:
         return CONFDEVIDXOFFSET;
     case ONI_CONFIG_REG_ADDR:
         return CONFADDROFFSET;

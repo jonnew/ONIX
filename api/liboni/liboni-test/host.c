@@ -13,7 +13,7 @@
 #include "oelogo.h"
 
 // Dump raw device streams to files?
-//#define DUMPFILES
+#define DUMPFILES
 
 // Turn on RT optimization
 #define RT
@@ -101,7 +101,11 @@ void *read_loop(void *vargp)
 #ifdef DUMPFILES
         fwrite(frame->data, 1, frame->data_sz, dump_files[frame->dev_idx]);
 #endif
-        if (display && counter % 1000 == 0) {
+        if (display
+            //&& counter % 1000 == 0) {
+            //&& counter % 1000 == 0) {
+            && devices[frame->dev_idx].id == ONI_RHD2164) {
+            //&& devices[frame->dev_idx].id == ONI_TS4231V2ARR) {
 
             oni_device_t this_dev = devices[frame->dev_idx];
 
@@ -111,7 +115,7 @@ void *read_loop(void *vargp)
                 oni_device_str(this_dev.id));
                 // this_cnt);
 
-            int i;
+            oni_fifo_dat_t i;
             printf("\tData: [");
             for (i = 0; i < frame->data_sz; i += 2)
                 printf("%u ", *(uint16_t *)(frame->data + i));
@@ -154,7 +158,11 @@ void *write_loop(void *vargp)
     // Pre-allocate write frame
     // TODO: hardcoded dev_idx not good
     oni_frame_t *w_frame = NULL;
-    oni_create_frame(ctx, &w_frame, 8, 4);
+    int rc = oni_create_frame(ctx, &w_frame, 7, 24);
+    if (rc < 0) {
+        printf("Error: %s\n", oni_error_str(rc));
+        goto error;
+    }
 
     // Loop count
     uint32_t count = 0;
@@ -166,15 +174,18 @@ void *write_loop(void *vargp)
         out_count++;
 
         int rc = oni_write_frame(ctx, w_frame);
-        if (rc < 0) { printf("Error: %s\n", oni_error_str(rc)); }
+        if (rc < 0) {
+            printf("Error: %s\n", oni_error_str(rc));
+            goto error;
+        }
 
         count++;
 
         Sleep(1);
     }
 
-     oni_destroy_frame(w_frame);
-
+error:
+    oni_destroy_frame(w_frame);
     return NULL;
 }
 
@@ -233,33 +244,51 @@ void stop_threads()
 void print_dev_table(oni_device_t *devices, int num_devs)
 {
     // Show device table
-    printf("+-------+-------+-------+-------+-------+-------+------\n");
-    printf("|     \t|  \t|Read\t|Reads/\t|Wrt.\t|Wrt./ \t|     \n");
-    printf("|Index\t|ID\t|size\t|frame \t|size\t|frame \t|Desc.\n");
-    printf("+-------+-------+-------+-------+-------+-------+------\n");
+    printf(
+        "     "
+        "+------------------+-------+-------+-------+-------+-------+-----\n");
+    printf("     |        \t\t|  \t|Read\t|Reads/\t|Wrt.\t|Wrt./ \t|     \n");
+    printf("     |Dev. idx\t\t|ID\t|size\t|frame \t|size\t|frame \t|Desc.\n");
+    printf("+----+------------------+-------+-------+-------+-------+-------+-----\n");
 
     size_t dev_idx;
     for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
 
         const char *dev_str = oni_device_str(devices[dev_idx].id);
 
-        printf("|%zd\t|%d\t|%u\t|%u\t|%u\t|%u\t|%s\n",
-            dev_idx,
-            devices[dev_idx].id,
-            devices[dev_idx].read_size,
-            devices[dev_idx].num_reads,
-            devices[dev_idx].write_size,
-            devices[dev_idx].num_writes,
-            dev_str);
+        printf("|%02zd  |%05zd: 0x%02x.0x%02x\t|%d\t|%u\t|%u\t|%u\t|%u\t|%s\n",
+               dev_idx,
+               devices[dev_idx].idx,
+               (uint8_t)(devices[dev_idx].idx >> 8),
+               (uint8_t)devices[dev_idx].idx,
+               devices[dev_idx].id,
+               devices[dev_idx].read_size,
+               devices[dev_idx].num_reads,
+               devices[dev_idx].write_size,
+               devices[dev_idx].num_writes,
+               dev_str);
     }
 
-    printf("+-------+-------+-------+-------+-------+-------+------\n");
+    printf("+----+-------------------+-------+-------+-------+-------+-------+-----\n");
 }
 
 int main(int argc, char *argv[])
 {
+    printf(oe_logo_med);
 
-    printf(logo_med);
+    int host_idx = 0;
+    char *driver;
+
+    if (argc != 2 && argc != 3) {
+        printf("usage:\n");
+        printf("\thost driver [host_index] ...\n");
+        exit(1);
+    }
+
+    driver = argv[1];
+
+    if (argc == 3)
+        host_idx = atoi(argv[2]);
 
 #if defined(_WIN32) && defined(RT)
     if (!SetPriorityClass(GetCurrentProcess(), REALTIME_PRIORITY_CLASS)) {
@@ -277,7 +306,7 @@ int main(int argc, char *argv[])
     ctx = oni_create_ctx("riffa");
     if (!ctx) { printf("Failed to create context\n"); exit(EXIT_FAILURE); }
 
-    // Set acqusition to run immediately following reset
+    // Set acquisition to run immediately following reset
     oni_reg_val_t immediate_run = 0;
     rc = oni_set_opt(ctx, ONI_OPT_RUNONRESET, &immediate_run, sizeof(oni_reg_val_t));
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
@@ -287,30 +316,30 @@ int main(int argc, char *argv[])
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
     assert(rc == 0);
 
-    // Examine device map
+    // Examine device table
     size_t num_devs_sz = sizeof(num_devs);
     oni_get_opt(ctx, ONI_OPT_NUMDEVICES, &num_devs, &num_devs_sz);
 
-    // Get the device map
+    // Get the device table
     size_t devices_sz = sizeof(oni_device_t) * num_devs;
     devices = (oni_device_t *)realloc(devices, devices_sz);
     if (devices == NULL) { exit(EXIT_FAILURE); }
-    oni_get_opt(ctx, ONI_OPT_DEVICEMAP, devices, &devices_sz);
+    oni_get_opt(ctx, ONI_OPT_DEVICETABLE, devices, &devices_sz);
 
 #ifdef DUMPFILES
     // Make room for dump files
     dump_files = malloc(num_devs * sizeof(FILE *));
 
     // Open dump files
-    for (int i = 0; i < num_devss; i++) {
+    for (size_t i = 0; i < num_devs; i++) {
         char * buffer = malloc(100);
-        snprintf(buffer, 100, "%s_idx-%zd_id-%d.raw", "dev", dev_idx, devices[i].id);
+        snprintf(buffer, 100, "%s_idx-%zd_id-%d.raw", "dev", i, devices[i].id);
         dump_files[i] = fopen(buffer, "wb");
         free(buffer);
     }
 #endif
 
-    // Show device map
+    // Show device table
     print_dev_table(devices, num_devs);
 
     oni_size_t frame_size = 0;
@@ -345,7 +374,7 @@ int main(int argc, char *argv[])
     assert(!rc && "Register read failure.");
     printf("System clock rate: %u Hz\n", base_hz);
 
-    // Start acqusition
+    // Start acquisition
     start_threads();
 
     // Read stdin to start (s) or pause (p)
@@ -413,7 +442,8 @@ int main(int argc, char *argv[])
             oni_size_t addr = (oni_size_t)values[1];
             oni_size_t val = (oni_size_t)values[2];
 
-            oni_write_reg(ctx, dev_idx, addr, val);
+            rc = oni_write_reg(ctx, dev_idx, addr, val);
+            printf("%s\n", oni_error_str(rc));
         }
         else if (c == 'r') {
             printf("Read a device register.\n");
@@ -436,9 +466,12 @@ int main(int argc, char *argv[])
             oni_size_t addr = (oni_size_t)values[1];
 
             oni_reg_val_t val = 0;
-            oni_read_reg(ctx, dev_idx, addr, &val);
-
-            printf("Reg. value: %u\n", val);
+            rc = oni_read_reg(ctx, dev_idx, addr, &val);
+            if (!rc) {
+                printf("Reg. value: %u\n", val);
+            } else {
+                printf("%s\n", oni_error_str(rc));
+            }
         }
         else if (c == 's') {
 
@@ -455,7 +488,7 @@ int main(int argc, char *argv[])
 
 #ifdef DUMPFILES
     // Close dump files
-    for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
+    for (int dev_idx = 0; dev_idx < num_devs; dev_idx++) {
         fclose(dump_files[dev_idx]);
     }
 #endif
