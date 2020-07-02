@@ -7,13 +7,12 @@
     using Microsoft.Win32.SafeHandles;
 
     using lib;
+    using System.Linq;
 
     public unsafe class Context : SafeHandleZeroOrMinusOneIsInvalid
     {
         protected Context()
-        : base(true)
-        {
-        }
+        : base(true) { }
 
         public Context(string driver_name, int host_idx)
         :base (true)  // this.handle is IntPtr wrapped by the SafeHandle
@@ -29,12 +28,12 @@
             if (rc != 0) { throw new ONIException(rc); }
 
             // Get context metadata
-            SystemClockHz = GetIntOption((int)Option.SYSCLKHZ);
-            MaxReadFrameSize = GetIntOption((int)Option.MAXREADFRAMESIZE);
+            SystemClockHz = (uint)GetIntOption((int)Option.SYSCLKHZ);
+            MaxReadFrameSize = (uint)GetIntOption((int)Option.MAXREADFRAMESIZE);
 
             // Populate device map
             int num_devs = GetIntOption((int)Option.NUMDEVICES);
-            DeviceMap = new Dictionary<int, device_t>();
+            DeviceMap = new List<device_t>(num_devs);
             int size_dev = Marshal.SizeOf(new device_t());
             int size = size_dev * num_devs; // bytes required to read map
 
@@ -45,7 +44,8 @@
             // directly provide device map's memory as buffer.
             for (int i = 0; i < num_devs; i++)
             {
-                DeviceMap.Add(i, (device_t)Marshal.PtrToStructure(map, typeof(device_t)));
+                DeviceMap.Add((device_t)Marshal.PtrToStructure(map, typeof(device_t)));
+                //DeviceMap.Add(i, (device_t)Marshal.PtrToStructure(map, typeof(device_t)));
                 map = new IntPtr((long)map + size_dev);
             }
 
@@ -54,12 +54,13 @@
 
         public static readonly uint DefaultIndex = 0;
         public uint Index = DefaultIndex;
-        public readonly Dictionary<int, device_t> DeviceMap;
+        //public readonly Dictionary<int, device_t> DeviceMap;
+        public readonly List<device_t> DeviceMap;
         readonly object context_lock = new object();
 
-        public readonly int SystemClockHz = 0;
-        public readonly int MaxReadFrameSize = 0;
-        public readonly int ReadBytes = 0;
+        public readonly uint SystemClockHz = 0;
+        public readonly uint MaxReadFrameSize = 0;
+        public readonly uint ReadBytes = 0;
         bool destroyed = true;
 
         protected override bool ReleaseHandle()
@@ -79,18 +80,10 @@
             }
         }
 
-        public int DeviceID(uint device_index)
-        {
-            if (device_index < DeviceMap.Count)
-                return DeviceMap[(int)device_index].id;
-            else
-                throw new ONIException((int)Error.DEVIDX);
-        }
-
         // GetOption
         private IntPtr GetOption(int option, int size, bool drv_opt = false)
         {
-            // NB: If I dont do all this wacky stuff, the size
+            // NB: If I don't do all this wacky stuff, the size
             // parameter ends up being too wrong for 64-bit compilation.
             var sz = Marshal.AllocHGlobal(IntPtr.Size);
             if (IntPtr.Size == 4) Marshal.WriteInt32(sz, size); else Marshal.WriteInt64(sz, size);
@@ -242,7 +235,18 @@
             if (rc < 0) { throw new ONIException(rc); }
         }
 
-        // NB: These need to be redeclared unfortuately
+        public void Write(uint dev_idx, IntPtr data, int data_size)
+        {
+            Frame frame;
+            int rc = NativeMethods.oni_create_frame(handle, out frame, dev_idx, (uint)data_size);
+            if (rc < 0) { throw new ONIException(rc); }
+            frame.SetData(data, data_size);
+
+            rc = NativeMethods.oni_write_frame(handle, frame);
+            if (rc < 0) { throw new ONIException(rc); }
+        }
+
+        // NB: These need to be redeclared unfortunately
         public enum Option : int
         {
             DEVICEMAP = 0,

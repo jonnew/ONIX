@@ -28,8 +28,10 @@
             AD576X = 16,
             TESTREG0 = 17,
             BREAKDIG1R3 = 18,
-            FMCCLKIN1R4 = 19,
-            FMCCLKOUT1R4 = 20,
+            FMCCLKIN1R3 = 19,
+            FMCCLKOUT1R3 = 20,
+            TS4231V2ARR = 21,
+            FMCANALOG1R3 = 22
         }
 
         public static string Name(int id)

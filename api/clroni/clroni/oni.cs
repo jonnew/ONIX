@@ -33,7 +33,8 @@ namespace oni.lib
         INIT = -22,
         WRITEONLY = -23,
         INVALWRITESIZE = -24,
-        NOWRITEDEV = -25,
+        NOTWRITEDEV = -25,
+        DEVIDXREPEAT = -26,
     }
 
     // Make managed version of oni_device_t
@@ -45,10 +46,16 @@ namespace oni.lib
         public readonly uint num_reads;      // Num reads per sample
         public readonly uint write_size;     // Write size
         public readonly uint num_writes;     // Num writes per sample
+        public readonly uint idx;            // Complete rsv.rsv.hub.idx device table index
 
         // Adjust this as required
         public override string ToString() =>
-            $@"{Marshal.PtrToStringAnsi(NativeMethods.oni_device_str(id))}, Per frame read size: {read_size}, Frames per sample: {num_reads}, Write Size: {write_size}, Writes per sample: {num_writes}";
+            $@" 0x{idx:X} : {Marshal.PtrToStringAnsi(NativeMethods.oni_device_str(id))}, Per frame read size: {read_size}, Frames per sample: {num_reads}, Write Size: {write_size}, Writes per sample: {num_writes}";
+
+        public string Description()
+        {
+            return Marshal.PtrToStringAnsi(NativeMethods.oni_device_str(id));
+        }
     }
 
     [SuppressUnmanagedCodeSecurity] // Call into native code without incurring the performance loss of a run-time security check when doing so
