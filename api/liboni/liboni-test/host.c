@@ -71,6 +71,17 @@ int parse_reg_cmd(const char *cmd, long *values, int len)
     return 0;
 }
 
+// Simple & slow device lookup
+int find_dev(oni_dev_idx_t idx)
+{
+    int i;
+    for (i = 0; i < num_devs; i++)
+        if (devices[i].idx == idx)
+            return i;
+
+    return -1;
+}
+
 int16_t last_sample = 32767;
 uint32_t out_count = 0;
 
@@ -98,16 +109,18 @@ void *read_loop(void *vargp)
             break;
         }
 
-#ifdef DUMPFILES
-        fwrite(frame->data, 1, frame->data_sz, dump_files[frame->dev_idx]);
-#endif
-        if (display
-            //&& counter % 1000 == 0) {
-            //&& counter % 1000 == 0) {
-            && devices[frame->dev_idx].id == ONI_RHD2164) {
-            //&& devices[frame->dev_idx].id == ONI_TS4231V2ARR) {
+        int i = find_dev(frame->dev_idx);
+        if (i == -1) goto next;
 
-            oni_device_t this_dev = devices[frame->dev_idx];
+#ifdef DUMPFILES
+        fwrite(frame->data, 1, frame->data_sz, dump_files[i]);
+#endif
+
+        if (display
+            && counter % 1000 == 0) {
+            //&& devices[i].id == ONI_RHD2164) {
+
+            oni_device_t this_dev = devices[i];
 
             this_cnt++;
             printf("\tDev: %zu (%s) \n",
@@ -139,7 +152,7 @@ void *read_loop(void *vargp)
          //
          //    last_sample = sample;
          //}
-
+next:
         counter++;
         oni_destroy_frame(frame);
     }
