@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name fmc-host)(type KiCad)(uri "$(KIPRJMOD)/fmc-host.pretty")(options "")(descr ""))
+)
