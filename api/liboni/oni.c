@@ -68,7 +68,7 @@ struct oni_ctx_impl {
     oni_size_t num_dev;
     oni_device_t *dev_table;
 
-    // Device hash table
+    // oni_device_t.idx addressable device hash table
     oni_size_t dev_hash_len;
     oni_device_t *dev_hash_table;
 
@@ -498,7 +498,7 @@ int oni_read_reg(const oni_ctx ctx,
 
     if (trig != 0) return ONI_ERETRIG;
 
-    // Set config registers and trigger a write
+    // Set configuration registers and trigger a write
     rc = _oni_write_config(ctx, ONI_CONFIG_DEV_IDX, dev_idx);
     if (rc) return rc;
     rc = _oni_write_config(ctx, ONI_CONFIG_REG_ADDR, addr);
@@ -525,7 +525,7 @@ int oni_read_reg(const oni_ctx ctx,
     return ONI_ESUCCESS;
 }
 
-// NB: Although it seems tha with fixed sized reads, we should be able to just
+// NB: Although it seems that with fixed sized reads, we should be able to just
 // point the frame header into the shared buffer, the issue is that
 // we still need to know what device we are dealing with, which requires that we
 // look at the buffer. So there needs to be two _oni_read_buffer's in here no matter
@@ -570,7 +570,6 @@ int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame)
 
     // Update buffer ref count and provide reference to frame
     _ref_inc(&(ctx->shared_rbuf->count));
-    // frame->buffer = ctx->shared_rbuf;
     iframe->private.buffer = ctx->shared_rbuf;
 
     // Public portion of frame

@@ -43,7 +43,7 @@ const char *oni_device_str(int dev_id)
             return "Neuropixels 1.0 probe";
         }
         case ONI_HEARTBEAT: {
-            return "Host heartbeat";
+            return "Heartbeat";
         }
         case ONI_AD51X2: {
             return "AD51X2 digital potentiometer";

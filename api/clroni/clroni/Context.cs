@@ -7,15 +7,11 @@
     using Microsoft.Win32.SafeHandles;
 
     using lib;
-    using System.Linq;
 
     public unsafe class Context : SafeHandleZeroOrMinusOneIsInvalid
     {
-        protected Context()
-        : base(true) { }
-
         public Context(string driver_name, int host_idx)
-        :base (true)  // this.handle is IntPtr wrapped by the SafeHandle
+        : base (true)  // this.handle is IntPtr wrapped by the SafeHandle
         {
             // Create context
             handle = NativeMethods.oni_create_ctx(driver_name);
@@ -48,8 +44,6 @@
                 DeviceTable.Add(d.idx, d);
                 table = new IntPtr((long)table + size_dev);
             }
-
-            destroyed = false;
         }
 
         public static readonly uint DefaultIndex = 0;
@@ -60,23 +54,10 @@
         public readonly uint SystemClockHz = 0;
         public readonly uint MaxReadFrameSize = 0;
         public readonly uint ReadBytes = 0;
-        bool destroyed = true;
 
         protected override bool ReleaseHandle()
         {
-            lock (context_lock)
-            {
-                if (destroyed)
-                {
-                    return true;
-                }
-                else
-                {
-                    var rc = NativeMethods.oni_destroy_ctx(handle) == 0;
-                    destroyed = true;
-                    return rc;
-                }
-            }
+            return NativeMethods.oni_destroy_ctx(handle) == 0;
         }
 
         // GetOption
@@ -90,9 +71,9 @@
 
             int rc = 0;
             if (!drv_opt)
-                rc = NativeMethods.oni_get_opt(handle, (int)option, value, sz);
+                rc = NativeMethods.oni_get_opt(handle, option, value, sz);
             else
-                rc = NativeMethods.oni_get_driver_opt(handle, (int)option, value, sz);
+                rc = NativeMethods.oni_get_driver_opt(handle, option, value, sz);
 
             if (rc != 0) { throw new ONIException(rc); }
             return value;
@@ -147,22 +128,27 @@
 
         public void Start()
         {
-            SetIntOption((int)Context.Option.RUNNING, 1);
+            SetIntOption((int)Option.RUNNING, 1);
         }
 
         public void Stop()
         {
-            SetIntOption((int)Context.Option.RUNNING, 0);
+            SetIntOption((int)Option.RUNNING, 0);
         }
 
         public void Reset()
         {
-            SetIntOption((int)Context.Option.RESET, 1);
+            SetIntOption((int)Option.RESET, 1);
         }
 
-        public void SetBlockReadSize(int block_read_size)
+        public void SetBlockReadSize(int block_size)
         {
-            SetIntOption((int)Context.Option.BLOCKREADSIZE, block_read_size);
+            SetIntOption((int)Option.BLOCKREADSIZE, block_size);
+        }
+
+        public void SetBlockWriteSize(int block_size)
+        {
+            SetIntOption((int)Option.BLOCKWRITESIZE, block_size);
         }
 
         public uint ReadRegister(uint dev_idx, uint reg_addr)
@@ -184,31 +170,6 @@
                 if (rc != 0) { throw new ONIException(rc); }
             }
         }
-
-        // TODO: timeout read/write register?
-        // private static readonly int RegisterTimeoutMillis = 5000;
-        //public async void WriteRegister(uint dev_idx, uint reg_addr, uint value)
-        //{
-        //    var ts = new CancellationTokenSource();
-        //    CancellationToken ct = ts.Token;
-        //    var t = Task.Factory.StartNew(() =>
-        //    {
-        //        lock (context_lock)
-        //        {
-        //            int rc = NativeMethods.oni_write_reg(handle, dev_idx, reg_addr, value);
-        //            if (rc != 0) { throw new ONIException(rc); }
-        //        }
-        //    }, ct);
-
-        //    if (await Task.WhenAny(t, Task.Delay(RegisterTimeoutMillis)) == t)
-        //    {
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        throw new ONIException((int)Error.WRITEFAILURE);
-        //    }
-        //}
 
         public Frame ReadFrame()
         {

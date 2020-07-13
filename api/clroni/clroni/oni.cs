@@ -76,8 +76,8 @@ namespace oni.lib
             LibraryVersion = new Version(major, minor, patch);
 
             // Make sure it is supported
-            if (major < 2) {
-                throw VersionNotSupported(null, ">= v2.0.0");
+            if (major < 3) {
+                throw VersionNotSupported(null, ">= v3.0.0");
             }
         }
 
