@@ -11832,7 +11832,7 @@ I2C</description>
 <attribute name="DESIGNER" value="JON NEWMAN"/>
 <attribute name="DESIGN_NAME" value="FMC DESERIALIZER"/>
 <attribute name="LICENSE" value="CERN OHL v1.2"/>
-<attribute name="REVISION" value="1.4"/>
+<attribute name="REVISION" value="1.5"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -12457,6 +12457,8 @@ I2C</description>
 <part name="SUPPLY214" library="jonnew" deviceset="GND" device=""/>
 <part name="C141" library="jonnew" deviceset="C" device="_1206" value="10uF"/>
 <part name="SUPPLY215" library="jonnew" deviceset="GND" device=""/>
+<part name="R89" library="jonnew" deviceset="R" device="_0402" value="2.2k"/>
+<part name="P49" library="jonnew" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -13334,6 +13336,8 @@ AIO_0     0A     11</text>
 <instance part="SUPPLY214" gate="PE" x="350.52" y="121.92"/>
 <instance part="C141" gate="C" x="350.52" y="365.76" rot="R180"/>
 <instance part="SUPPLY215" gate="PE" x="350.52" y="355.6"/>
+<instance part="R89" gate="R" x="589.28" y="581.66" rot="R270"/>
+<instance part="P49" gate="PWR1" x="589.28" y="596.9" rot="MR0"/>
 </instances>
 <busses>
 </busses>
@@ -15460,6 +15464,11 @@ AIO_0     0A     11</text>
 <pinref part="P21" gate="PWR1" pin="+3V3"/>
 <pinref part="R46" gate="R" pin="2"/>
 <wire x1="320.04" y1="454.66" x2="320.04" y2="452.12" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="P49" gate="PWR1" pin="+3V3"/>
+<pinref part="R89" gate="R" pin="1"/>
+<wire x1="589.28" y1="596.9" x2="589.28" y2="586.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$11" class="2">
@@ -17974,8 +17983,12 @@ AIO_0     0A     11</text>
 <pinref part="U17" gate="G$1" pin="MISO"/>
 <wire x1="510.54" y1="548.64" x2="523.24" y2="548.64" width="0.1524" layer="91"/>
 <wire x1="523.24" y1="548.64" x2="523.24" y2="558.8" width="0.1524" layer="91"/>
-<wire x1="523.24" y1="558.8" x2="617.22" y2="558.8" width="0.1524" layer="91"/>
+<wire x1="523.24" y1="558.8" x2="589.28" y2="558.8" width="0.1524" layer="91"/>
 <label x="617.22" y="558.8" size="1.27" layer="95" rot="MR180" xref="yes"/>
+<pinref part="R89" gate="R" pin="2"/>
+<wire x1="589.28" y1="558.8" x2="617.22" y2="558.8" width="0.1524" layer="91"/>
+<wire x1="589.28" y1="558.8" x2="589.28" y2="576.58" width="0.1524" layer="91"/>
+<junction x="589.28" y="558.8"/>
 </segment>
 <segment>
 <wire x1="795.02" y1="604.52" x2="805.18" y2="604.52" width="0.1524" layer="91"/>
