@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name fmc-host-eagle-import)(type Legacy)(uri ${KIPRJMOD}/fmc-host-eagle-import.lib)(options "")(descr ""))
-)
