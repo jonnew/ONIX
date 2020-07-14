@@ -7495,7 +7495,7 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="-2.76" y="48.274" size="0.8" layer="26" font="vector" ratio="20" rot="MR0"/>
 </element>
 <element name="DRILEGEND" library="drilegend" package="DRILEGEND" value="" x="-78.050009375" y="-22.3480125"/>
-<element name="R89" library="jonnew" package="0402" value="2.2k" x="-3.2" y="60.8" rot="R180"/>
+<element name="R89" library="jonnew" package="0402" value="2.2k" x="-5.1" y="60.5"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -9137,8 +9137,8 @@ einem neuen Namen ab.</description>
 <via x="-24.25180625" y="35.6236875" extent="1-16" drill="0.2"/>
 <via x="-23.2" y="10" extent="1-16" drill="0.4"/>
 <via x="-8.7" y="9.8" extent="1-16" drill="0.4"/>
-<via x="-6.3" y="60" extent="1-16" drill="0.4"/>
-<wire x1="-6.3" y1="60" x2="-6.3" y2="60.4586" width="0.4" layer="16"/>
+<via x="-6.3" y="60.1" extent="1-16" drill="0.4"/>
+<wire x1="-6.3" y1="60.1" x2="-6.3" y2="60.4586" width="0.4" layer="16"/>
 <wire x1="-5.9843" y1="60.7743" x2="-6.3" y2="60.4586" width="0.4" layer="16"/>
 <wire x1="-5.9843" y1="60.7743" x2="-5.9" y2="60.8586" width="0.4" layer="16"/>
 <wire x1="-26.973" y1="36.45" x2="-26.973" y2="37.373" width="0.4" layer="1"/>
@@ -9324,9 +9324,8 @@ einem neuen Namen ab.</description>
 <wire x1="-27.5" y1="4.225" x2="-26.525" y2="4.225" width="0.3" layer="1"/>
 <wire x1="-26.525" y1="4.225" x2="-26.4" y2="4.1" width="0.3" layer="1"/>
 <contactref element="R89" pad="1"/>
-<via x="-2.85" y="61.1" extent="1-16" drill="0.2"/>
-<wire x1="-2.6666" y1="60.8" x2="-2.6666" y2="60.9166" width="0.1524" layer="1"/>
-<wire x1="-2.6666" y1="60.9166" x2="-2.85" y2="61.1" width="0.1524" layer="1"/>
+<wire x1="-5.6334" y1="60.5" x2="-6.0334" y2="60.1" width="0.09" layer="1"/>
+<wire x1="-6.0334" y1="60.1" x2="-6.3" y2="60.1" width="0.09" layer="1"/>
 </signal>
 <signal name="N$11" class="2">
 <contactref element="J3" pad="SIG"/>
@@ -12339,31 +12338,33 @@ einem neuen Namen ab.</description>
 <signal name="LINK_PWR_ADJ_SCLK">
 <contactref element="U17" pad="11"/>
 <via x="-1.8" y="54" extent="1-16" drill="0.2"/>
-<via x="-5.6" y="59.8" extent="1-16" drill="0.2"/>
-<wire x1="-5.6" y1="59.8" x2="-5.6" y2="61.553" width="0.09" layer="1"/>
-<wire x1="-5.6" y1="61.553" x2="-5.65" y2="61.603" width="0.09" layer="1"/>
+<via x="-6.8" y="59.6" extent="1-16" drill="0.2"/>
 <contactref element="J9" pad="H38"/>
-<wire x1="-1.8" y1="54" x2="-5.6" y2="57.8" width="0.09" layer="3"/>
-<wire x1="-5.6" y1="57.8" x2="-5.6" y2="59.8" width="0.09" layer="3"/>
 <wire x1="-1.8" y1="54" x2="-1.525" y2="53.725" width="0.09" layer="1"/>
 <wire x1="-1.525" y1="53.725" x2="-1.175" y2="53.725" width="0.09" layer="1"/>
+<wire x1="-5.6235" y1="61.5765" x2="-5.65" y2="61.603" width="0.09" layer="1"/>
+<wire x1="-5.6235" y1="61.5765" x2="-5.6235" y2="61.4231625" width="0.09" layer="1"/>
+<wire x1="-6.8" y1="60.2466625" x2="-6.8" y2="59.6" width="0.09" layer="1"/>
+<wire x1="-5.6235" y1="61.4231625" x2="-6.8" y2="60.2466625" width="0.09" layer="1"/>
+<wire x1="-6.8" y1="59" x2="-6.8" y2="59.6" width="0.09" layer="3"/>
+<wire x1="-1.8" y1="54" x2="-6.8" y2="59" width="0.09" layer="3"/>
 </signal>
 <signal name="LINK_PWR_ADJ_MISO">
 <contactref element="U17" pad="13"/>
 <via x="1" y="53" extent="1-16" drill="0.2"/>
-<via x="-3.8" y="60.6" extent="1-16" drill="0.2"/>
-<wire x1="-4.503" y1="62.25" x2="-4.15" y2="62.25" width="0.09" layer="1"/>
-<wire x1="-4.15" y1="62.25" x2="-3.8" y2="61.9" width="0.09" layer="1"/>
-<wire x1="-3.8" y1="61.9" x2="-3.8" y2="60.6" width="0.09" layer="1"/>
+<via x="-3.8" y="60" extent="1-16" drill="0.2"/>
 <contactref element="J9" pad="F37"/>
 <wire x1="1" y1="53" x2="1.365" y2="52.635" width="0.09" layer="1"/>
 <wire x1="1.365" y1="52.635" x2="1.365" y2="52.455" width="0.09" layer="1"/>
 <wire x1="1" y1="53" x2="0.9" y2="53" width="0.09" layer="3"/>
 <wire x1="-3.8" y1="57.7" x2="0.9" y2="53" width="0.09" layer="3"/>
-<wire x1="-3.8" y1="60.6" x2="-3.8" y2="57.7" width="0.09" layer="3"/>
+<wire x1="-3.8" y1="60" x2="-3.8" y2="57.7" width="0.09" layer="3"/>
 <contactref element="R89" pad="2"/>
-<wire x1="-3.8" y1="60.6" x2="-3.8" y2="60.7334" width="0.1524" layer="1"/>
-<wire x1="-3.8" y1="60.7334" x2="-3.7334" y2="60.8" width="0.1524" layer="1"/>
+<wire x1="-4.503" y1="60.7" x2="-4.503" y2="62.25" width="0.09" layer="1"/>
+<wire x1="-4.503" y1="60.7" x2="-4.503" y2="60.5636" width="0.09" layer="1"/>
+<wire x1="-4.503" y1="60.5636" x2="-4.5666" y2="60.5" width="0.09" layer="1"/>
+<wire x1="-3.8" y1="60" x2="-3.803" y2="60" width="0.09" layer="1"/>
+<wire x1="-3.803" y1="60" x2="-4.503" y2="60.7" width="0.09" layer="1"/>
 </signal>
 <signal name="VLINK_A">
 <contactref element="L8" pad="1"/>
@@ -14489,16 +14490,18 @@ einem neuen Namen ab.</description>
 <signal name="LINK_PWR_ADJ_MOSI">
 <via x="2.1" y="51.5" extent="1-16" drill="0.2"/>
 <contactref element="U17" pad="12"/>
-<via x="-4.7" y="59.8" extent="1-16" drill="0.2"/>
-<wire x1="-5.15" y1="61.603" x2="-4.7" y2="61.153" width="0.09" layer="1"/>
-<wire x1="-4.7" y1="61.153" x2="-4.7" y2="59.8" width="0.09" layer="1"/>
+<via x="-4.7" y="59.7" extent="1-16" drill="0.2"/>
 <contactref element="J9" pad="E36"/>
 <wire x1="-4.7" y1="57.9" x2="-4.646971875" y2="57.850090625" width="0.09" layer="3"/>
-<wire x1="-4.7" y1="57.9" x2="-4.7" y2="59.8" width="0.09" layer="3"/>
+<wire x1="-4.7" y1="57.9" x2="-4.7" y2="59.7" width="0.09" layer="3"/>
 <wire x1="-4.646971875" y1="57.850090625" x2="1.70311875" y2="51.5" width="0.09" layer="3"/>
 <wire x1="1.70311875" y1="51.5" x2="2.1" y2="51.5" width="0.09" layer="3"/>
 <wire x1="2.635" y1="51.185" x2="2.32" y2="51.5" width="0.09" layer="1"/>
 <wire x1="2.32" y1="51.5" x2="2.1" y2="51.5" width="0.09" layer="1"/>
+<wire x1="-4.7" y1="59.7" x2="-5.1" y2="60.1" width="0.09" layer="1"/>
+<wire x1="-5.1" y1="61.8" x2="-5.15" y2="61.75" width="0.09" layer="1"/>
+<wire x1="-5.15" y1="61.75" x2="-5.15" y2="61.603" width="0.09" layer="1"/>
+<wire x1="-5.1" y1="60.1" x2="-5.1" y2="61.8" width="0.09" layer="1"/>
 </signal>
 <signal name="!LINK_PWR_ADJ_CS">
 <contactref element="U17" pad="14"/>
