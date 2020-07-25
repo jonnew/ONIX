@@ -1,4 +1,4 @@
-[__Open Ephys 2.0__](https://jonnew.github.io/open-ephys-pcie/) is a collection
+[ONIX](https://jonnew.github.io/onix) is a collection
 of [ONI](https://github.com/jonnew/ONI)-compatible hardware, firmware, and API
 for serialized, very-high channel count, closed-loop electrophysiology. It is
 an evolution of the first-generation hardware and software introduced in [Open
@@ -7,8 +7,6 @@ developers.  The firmware and API are general purpose -- they can be used to
 acquire from and control custom headstages with arbitrary arrangements of
 sensors and actuators (e.g. cameras, bioamplifier chips, LED drivers, etc.) and
 are not limited to the hardware in this repository.
-
-[![Join the chat at https://gitter.im/open-ephys-pcie/Lobby](https://badges.gitter.im/open-ephys-pcie/Lobby.svg)](https://gitter.im/open-ephys-pcie/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 __Citing this work__: 
 
@@ -33,7 +31,7 @@ __Citing this work__:
 
 - Submillisecond round-trip communication from brain, through host PC's main
   memory, and back again.
-- Flagship headstages:
+- Headstages:
 
     - 64-, 128-, 256-channels of electrophysiology
     - Optogenetic stimulation
@@ -46,13 +44,6 @@ __Citing this work__:
 - High-level API language bindings and existing integration with [Open Ephys
   GUI](http://www.open-ephys.org/gui/) and [Bonsai](http://bonsai-rx.org/).
 - Quality documentation and easy routes to purchasing assembled devices.
-
-## Repository Contents and Licensing
-Each top level directory of this repository corresponds to a distinct system
-module. These can firmware (e.g. TODO), hardware components (e.g.
-`headstage-64`), or programming interfaces (e.g. `api`). __Each subdirectory
-may have distinct contributors and/or licenses__. Please refer to the README
-file within each directory for further information on usage, licensing, etc.
 
 ## ONI-Compatible
 The [Open Neuro Interface](https://github.com/jonnew/ONI) formally specifies data
@@ -73,12 +64,6 @@ existing software and the creation of high level language bindings.
 
 ### [Open Ephys Plugin]()
 - TODO: Integration into open-ephys master
-
-## Firmware [WIP]
-
-Binary files for headstage and host FPGAs are available [here](TODO). Firmware
-source code is currently available under controlled release. Contact the
-maintainer for more information.
 
 ## Hardware
 
@@ -139,7 +124,3 @@ stimulation.
 ### [headstage-programmer](headstage-programmer/README.md)
 JTAG breakout for the [Intel USB Blaster 2](https://www.digikey.com/short/qqw7hm)
 used to program the headstages' MAX10 FPGA.
-
-### pcie-analog-io [WIP]
-General purpose analog IO expansion board which communicates with the host
-computer via the  sits next to [pcie-host]() board.
