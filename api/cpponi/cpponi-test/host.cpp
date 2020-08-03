@@ -59,33 +59,28 @@ int parse_reg_cmd(const char *cmd, long *values, int len)
 void print_dev_table(oni::device_map_t devices)
 {
     // Show device table
-    printf(
-        "     "
-        "+------------------+-------+-------+-------+-------+-------+-----\n");
-    printf("     |        \t\t|  \t|Read\t|Reads/\t|Wrt.\t|Wrt./ \t|     \n");
-    printf("     |Dev. idx\t\t|ID\t|size\t|frame \t|size\t|frame \t|Desc.\n");
-    printf("+----+------------------+-------+-------+-------+-------+-------+--"
-           "---\n");
+    printf("   +--------------------+-------+-------+-------+---------------------\n");
+    printf("   |        \t\t|  \t|Read\t|Wrt. \t|     \n");
+    printf("   |Dev. idx\t\t|ID\t|size\t|size \t|Desc.\n");
+    printf("   +--------------------+-------+-------+-------+---------------------\n");
 
-    for (size_t dev_idx = 0; dev_idx < devices.size(); dev_idx++) {
+    int k = 0;
+    for (const auto &d : devices) {
 
-        const char *dev_str = oni_device_str(devices[dev_idx].id);
+        const char *dev_str = oni_device_str(d.second.id);
 
-        printf("|%02zd  |%05zd: 0x%02x.0x%02x\t|%d\t|%u\t|%u\t|%u\t|%u\t|%s\n",
-               dev_idx,
-               devices[dev_idx].idx,
-               (uint8_t)(devices[dev_idx].idx >> 8),
-               (uint8_t)devices[dev_idx].idx,
-               devices[dev_idx].id,
-               devices[dev_idx].read_size,
-               devices[dev_idx].num_reads,
-               devices[dev_idx].write_size,
-               devices[dev_idx].num_writes,
+        printf("%02zd |%05zd: 0x%02x.0x%02x\t|%d\t|%u\t|%u\t|%s\n",
+               k++,
+               d.second.idx,
+               (uint8_t)(d.second.idx >> 8),
+               (uint8_t)d.second.idx,
+               d.second.id,
+               d.second.read_size,
+               d.second.write_size,
                dev_str);
     }
 
-    printf("+----+-------------------+-------+-------+-------+-------+-------+-"
-           "----\n");
+    printf("   +--------------------+-------+-------+-------+---------------------\n");
 }
 
 void data_loop(std::shared_ptr<oni::context_t> ctx)
@@ -111,8 +106,9 @@ void data_loop(std::shared_ptr<oni::context_t> ctx)
 
             if (display && counter % 1000 == 0) {
 
-                std::cout << "\tDev: " << frame.device_index() << " ("
-                          << oni::device_str(dev_map[frame.device_index()].id)
+
+                std::cout << "\t [" << frame.time() << "] Dev: " << frame.device_index() << " ("
+                          << oni::device_str(dev_map.at(frame.device_index()).id)
                           << ")\n";
 
                 std::cout << "\tData: [";

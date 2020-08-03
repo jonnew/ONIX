@@ -62,7 +62,7 @@ const char *oni_device_str(int dev_id)
             return "A test device used for testing remote register programming";
         }
         case ONI_BREAKDIG1R3: {
-            return "Open Ephys Breakout board rev. 1.3 digital and user IO";
+            return "Open Ephys Breakout Board rev. 1.3 digital and user IO";
         }
         case ONI_FMCCLKIN1R3: {
             return "Open Ephys FMC Host Board rev. 1.3 clock intput subcircuit";
@@ -75,6 +75,9 @@ const char *oni_device_str(int dev_id)
         }
         case ONI_FMCANALOG1R3: {
             return "Open Ephys FMC Host Board rev. 1.3 analog IO subcircuit";
+        }
+        case ONI_FMCLINKCTRL: {
+            return "Open Ephys FMC Host Board coaxial headstage link control circuit";
         }
         default:
             return "Unknown device";

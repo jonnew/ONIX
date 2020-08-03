@@ -117,18 +117,21 @@ void *read_loop(void *vargp)
 #endif
 
         if (display
-            && counter % 1000 == 0) {
-            //&& devices[i].id == ONI_RHD2164) {
+            && counter % 1000 == 0
+            //&& counter < 100
+            //&& devices[i].id == ONI_FMCLINKCTRL
+            ) {
 
             oni_device_t this_dev = devices[i];
 
             this_cnt++;
-            printf("\tDev: %zu (%s) \n",
+            printf("\t[%llu] Dev: %zu (%s) \n",
+                frame->time,
                 frame->dev_idx,
                 oni_device_str(this_dev.id));
                 // this_cnt);
 
-            oni_fifo_dat_t i;
+            size_t i;
             printf("\tData: [");
             for (i = 0; i < frame->data_sz; i += 2)
                 printf("%u ", *(uint16_t *)(frame->data + i));
@@ -171,7 +174,7 @@ void *write_loop(void *vargp)
     // Pre-allocate write frame
     // TODO: hardcoded dev_idx not good
     oni_frame_t *w_frame = NULL;
-    int rc = oni_create_frame(ctx, &w_frame, 7, 24);
+    int rc = oni_create_frame(ctx, &w_frame, 6, 24);
     if (rc < 0) {
         printf("Error: %s\n", oni_error_str(rc));
         goto error;
@@ -204,12 +207,6 @@ error:
 
 void start_threads()
 {
-    // Start acquisition
-    quit = 0;
-    oni_size_t run = 1;
-    int rc = oni_set_opt(ctx, ONI_OPT_RUNNING, &run, sizeof(run));
-    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
-
     // Generate data read_thread and continue here config/signal handling in parallel
 #ifdef _WIN32
     DWORD read_tid;
@@ -257,32 +254,28 @@ void stop_threads()
 void print_dev_table(oni_device_t *devices, int num_devs)
 {
     // Show device table
-    printf(
-        "     "
-        "+------------------+-------+-------+-------+-------+-------+-----\n");
-    printf("     |        \t\t|  \t|Read\t|Reads/\t|Wrt.\t|Wrt./ \t|     \n");
-    printf("     |Dev. idx\t\t|ID\t|size\t|frame \t|size\t|frame \t|Desc.\n");
-    printf("+----+------------------+-------+-------+-------+-------+-------+-----\n");
+    printf("   +--------------------+-------+-------+-------+---------------------\n");
+    printf("   |        \t\t|  \t|Read\t|Wrt. \t|     \n");
+    printf("   |Dev. idx\t\t|ID\t|size\t|size \t|Desc.\n");
+    printf("   +--------------------+-------+-------+-------+---------------------\n");
 
     size_t dev_idx;
     for (dev_idx = 0; dev_idx < num_devs; dev_idx++) {
 
         const char *dev_str = oni_device_str(devices[dev_idx].id);
 
-        printf("|%02zd  |%05zd: 0x%02x.0x%02x\t|%d\t|%u\t|%u\t|%u\t|%u\t|%s\n",
+        printf("%02zd |%05zd: 0x%02x.0x%02x\t|%d\t|%u\t|%u\t|%s\n",
                dev_idx,
                devices[dev_idx].idx,
                (uint8_t)(devices[dev_idx].idx >> 8),
                (uint8_t)devices[dev_idx].idx,
                devices[dev_idx].id,
                devices[dev_idx].read_size,
-               devices[dev_idx].num_reads,
                devices[dev_idx].write_size,
-               devices[dev_idx].num_writes,
                dev_str);
     }
 
-    printf("+----+-------------------+-------+-------+-------+-------+-------+-----\n");
+    printf("   +--------------------+-------+-------+-------+---------------------\n");
 }
 
 int main(int argc, char *argv[])
@@ -318,11 +311,6 @@ int main(int argc, char *argv[])
     // Generate context
     ctx = oni_create_ctx("riffa");
     if (!ctx) { printf("Failed to create context\n"); exit(EXIT_FAILURE); }
-
-    // Set acquisition to run immediately following reset
-    oni_reg_val_t immediate_run = 0;
-    rc = oni_set_opt(ctx, ONI_OPT_RUNONRESET, &immediate_run, sizeof(oni_reg_val_t));
-    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
 
     // Initialize context and discover hardware
     rc = oni_init_ctx(ctx, -1);
@@ -360,6 +348,9 @@ int main(int argc, char *argv[])
     oni_get_opt(ctx, ONI_OPT_MAXREADFRAMESIZE, &frame_size, &frame_size_sz);
     printf("Max. read frame size: %u bytes\n", frame_size);
 
+    oni_get_opt(ctx, ONI_OPT_MAXWRITEFRAMESIZE, &frame_size, &frame_size_sz);
+    printf("Max. write frame size: %u bytes\n", frame_size);
+
     oni_size_t block_size = 1024;
     size_t block_size_sz = sizeof(block_size);
     oni_set_opt(ctx, ONI_OPT_BLOCKREADSIZE, &block_size, block_size_sz);
@@ -377,17 +368,54 @@ int main(int argc, char *argv[])
     printf("Write pre-allocation size: %u bytes\n", block_size);
 
     // Try to write to base clock freq, which is write only
-    oni_size_t base_hz = (oni_size_t)10e6;
-    rc = oni_set_opt(ctx, ONI_OPT_SYSCLKHZ, &base_hz, sizeof(oni_size_t));
+    oni_size_t reg = (oni_size_t)10e6;
+    rc = oni_set_opt(ctx, ONI_OPT_SYSCLKHZ, &reg, sizeof(oni_size_t));
     assert(rc == ONI_EREADONLY && "Successful write to read-only register.");
 
-    size_t clk_val_sz = sizeof(base_hz);
-    rc = oni_get_opt(ctx, ONI_OPT_SYSCLKHZ, &base_hz, &clk_val_sz);
+    size_t reg_sz = sizeof(reg);
+    rc = oni_get_opt(ctx, ONI_OPT_SYSCLKHZ, &reg, &reg_sz);
     if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
     assert(!rc && "Register read failure.");
-    printf("System clock rate: %u Hz\n", base_hz);
+    printf("System clock rate: %u Hz\n", reg);
+
+    rc = oni_get_opt(ctx, ONI_OPT_ACQCLKHZ, &reg, &reg_sz);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
+    assert(!rc && "Register read failure.");
+    printf("Frame counter clock rate: %u Hz\n", reg);
+
+    reg = 42;
+    rc = oni_set_opt(ctx, ONI_OPT_HWADDRESS, &reg, sizeof(oni_size_t));
+    assert(!rc && "Register write failure.");
+
+    rc = oni_get_opt(ctx, ONI_OPT_HWADDRESS, &reg, &reg_sz);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
+    assert(!rc && "Register read failure.");
+    printf("Hardware address: 0x%08x\n", reg);
+
+    rc = oni_get_opt(ctx, ONI_OPT_RUNNING, &reg, &reg_sz);
+    if (rc) {printf("Error: %s\n", oni_error_str(rc)); }
+    assert(!rc && "Register read failure.");
+    printf("Hardware run state: %d\n", reg);
+    printf("Reseting  acquisition clock and starting hardware run simultaneously...\n");
+
+    // Restart acquisition clock counter and start acquisition
+    reg = 2;
+    rc = oni_set_opt(ctx, ONI_OPT_RESETACQCOUNTER, &reg, sizeof(oni_size_t));
+    assert(!rc && "Register write failure.");
+
+    rc = oni_get_opt(ctx, ONI_OPT_RUNNING, &reg, &reg_sz);
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
+    assert(!rc && "Register read failure.");
+    //assert(reg == 1 && "ONI_OPT_RUNNING should be 1.");
+    printf("Hardware run state: %d\n", reg);
 
     // Start acquisition
+    quit = 0;
+    reg = 1; // Reset clock
+    rc = oni_set_opt(ctx, ONI_OPT_RUNNING, &reg, sizeof(oni_size_t));
+    if (rc) { printf("Error: %s\n", oni_error_str(rc)); }
+
+    // Start reading and writing threads
     start_threads();
 
     // Read stdin to start (s) or pause (p)

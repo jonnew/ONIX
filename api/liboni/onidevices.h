@@ -37,11 +37,12 @@ typedef enum oni_device_id {
     ONI_AD7617              = 15,  // AD7617 ADC/DAS
     ONI_AD576X              = 16,  // AD576X DAC
     ONI_TESTREG0            = 17,  // A test device used for testing remote register programming
-    ONI_BREAKDIG1R3         = 18,  // Open Ephys Breakout board rev. 1.3 digital and user IO
+    ONI_BREAKDIG1R3         = 18,  // Open Ephys Breakout Board rev. 1.3 digital and user IO
     ONI_FMCCLKIN1R3         = 19,  // Open Ephys FMC Host Board rev. 1.3 clock input subcircuit
     ONI_FMCCLKOUT1R3        = 20,  // Open Ephys FMC Host Board rev. 1.3 clock output subcircuit
     ONI_TS4231V2ARR         = 21,  // Triad semiconductor TS421 optical to digital converter array targeting V2 base-stations
     ONI_FMCANALOG1R3        = 22,  // Open Ephys FMC Host Board rev. 1.3 analog IO subcircuit
+    ONI_FMCLINKCTRL         = 23,  // Open Ephys FMC Host Board coaxial headstage link control circuit
 
     // NB: Final reserved device ID. Always on bottom
     ONI_MAXDEVICEID          = MAXDEVID,

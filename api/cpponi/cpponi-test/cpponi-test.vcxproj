@@ -160,6 +160,7 @@
     <ProjectReference Include="..\..\liboni\liboni.vcxproj">
       <Project>{0b6b9aca-75de-4776-a6ca-b4123ed59f1d}</Project>
       <Private>true</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

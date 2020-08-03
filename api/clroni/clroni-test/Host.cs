@@ -11,7 +11,7 @@ namespace clroni_test
 
         public bool display = false;
         public volatile bool quit = false;
-        const int display_downsample = 101;
+        const int display_downsample = 1000;
 
         public DataProcessor(oni.Context ctx)
         {
@@ -43,7 +43,7 @@ namespace clroni_test
                         {
                             var dat = frame.Data<ushort>();
                             var idx = frame.DeviceIndex();
-                            Console.WriteLine("\tDev: {0} ({1})", idx, Device.Name(ctx.DeviceTable[idx].id));
+                            Console.WriteLine("\t[{0}] Dev: {1} ({2})", frame.Clock(), idx, Device.Name(ctx.DeviceTable[idx].id));
                             Console.WriteLine("\t[{0}]", String.Join(", ", dat));
                         }
                     }
@@ -99,13 +99,23 @@ namespace clroni_test
                     Console.WriteLine("Max read frame size: "
                                       + ctx.MaxReadFrameSize);
 
+                    // See how big max frames are
+                    Console.WriteLine("Max write frame size: "
+                                      + ctx.MaxWriteFrameSize);
+
                     // See the hardware clock
                     Console.WriteLine("System clock frequency: "
                                       + ctx.SystemClockHz);
 
-                    // Start acquisition
-                    ctx.SetBlockReadSize(4096);
-                    ctx.Start();
+                    // See the hardware address
+                    Console.WriteLine("Hardware address: "
+                                      + ctx.HardwareAddress);
+
+                    // Set read pre-allocation size
+                    ctx.BlockReadSize = 4096;
+
+                    // State acquisition and reset acquisition clock counter
+                    ctx.Start(true);
 
                     // Start processor in background
                     var processor = new DataProcessor(ctx);
@@ -132,7 +142,7 @@ namespace clroni_test
                                 ctx.Start();
                             } else {
                                 ctx.Stop();
-                                Console.WriteLine("\tPuased.");
+                                Console.WriteLine("\tPaused.");
                             }
                         } else if (c == 'd') {
                             processor.display = !processor.display;

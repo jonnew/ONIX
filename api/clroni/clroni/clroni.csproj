@@ -15,6 +15,8 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AssemblyVersion>3.2.0.0</AssemblyVersion>
+    <FileVersion>3.2.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

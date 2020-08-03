@@ -4,7 +4,7 @@
 // Version macros for compile-time API version detection
 // NB: see https://semver.org/
 #define ONI_VERSION_MAJOR 3
-#define ONI_VERSION_MINOR 1
+#define ONI_VERSION_MINOR 2
 #define ONI_VERSION_PATCH 0
 
 #define ONI_MAKE_VERSION(major, minor, patch) \
@@ -37,16 +37,11 @@ typedef struct oni_ctx_impl *oni_ctx;
 
 // Device type
 typedef struct {
-
     // NB: Block read so don't change order
+    oni_size_t idx;           // Complete rsv.rsv.hub.idx device table index
     oni_dev_id_t id;          // Device ID number (see oedevices.h)
     oni_size_t read_size;     // Device data read size per frame in bytes
-    oni_size_t num_reads;     // Number of frames that must be read to construct a
-                              // full sample (e.g., for row reads from camera)
     oni_size_t write_size;    // Device data write size per frame in bytes
-    oni_size_t num_writes;    // Number of frames that must be written to
-                              // construct a full output sample
-    oni_size_t idx;           // Complete rsv.rsv.hub.idx device table index
 
 } oni_device_t;
 
@@ -54,6 +49,7 @@ typedef struct {
 typedef struct oni_frame {
     const oni_fifo_dat_t dev_idx;   // Device index that produced or accepts the frame
     const oni_fifo_dat_t data_sz;   // Size in bytes of data buffer
+    const oni_fifo_time_t time;     // Frame time (ACQCLKHZ)
     uint8_t *data;                  // Raw data block
 
 } oni_frame_t;

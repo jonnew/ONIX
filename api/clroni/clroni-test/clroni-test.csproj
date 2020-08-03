@@ -31,11 +31,27 @@
     <ProjectReference Include="..\clroni\clroni.csproj" />
   </ItemGroup>
 
-    <ItemGroup> 
-        <None Include="$(MSBuildThisFileDirectory)\..\..\liboni\x64\Release\*.dll" Condition=" '$(PlatformName)' == 'x64' " Visible="false">
+
+    <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        <None Include="$(MSBuildThisFileDirectory)\..\..\liboni\x64\Release\*.dll" Visible="false">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Include="$(MSBuildThisFileDirectory)\..\..\liboni\Win32\Release\*.dll" Condition=" '$(PlatformName)' != 'x64' " Visible="false">
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        <None Include="$(MSBuildThisFileDirectory)\..\..\liboni\x64\Debug\*.dll" Visible="false">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <None Include="$(MSBuildThisFileDirectory)\..\..\liboni\Win32\Release\*.dll" Visible="false">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <None Include="$(MSBuildThisFileDirectory)\..\..\liboni\Win32\Debug\*.dll" Visible="false">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>

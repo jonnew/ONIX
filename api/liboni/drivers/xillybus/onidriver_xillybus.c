@@ -56,6 +56,9 @@ typedef enum oni_conf_reg_off {
     CONFRUNNINGOFFSET = 20,  // Configuration run hardware register byte offset
     CONFRESETOFFSET = 24,  // Configuration reset hardware register byte offset
     CONFSYSCLKHZOFFSET = 28,  // Configuration base clock frequency register byte offset
+    CONFACQCLKHZOFFSET = 32, // Configuration frame counter clock frequency register byte offset
+    CONFRESETACQCOUNTER = 36, // Configuration frame counter clock reset register byte offset
+    CONFHWADDRESS = 40 // Configuration hardware address register byte offset
 } oni_conf_off_t;
 
 static inline oni_conf_off_t _oni_register_offset(oni_config_t reg);
@@ -374,8 +377,14 @@ static inline oni_conf_off_t _oni_register_offset(oni_config_t reg)
             return CONFRUNNINGOFFSET;
         case ONI_CONFIG_RESET:
             return CONFRESETOFFSET;
-        case ONI_CONFIG_SYSCLK:
+        case ONI_CONFIG_SYSCLKHZ:
             return CONFSYSCLKHZOFFSET;
+        case ONI_CONFIG_ACQCLKHZ:
+            return CONFACQCLKHZOFFSET;
+        case ONI_CONFIG_RESETACQCOUNTER:
+            return CONFRESETACQCOUNTER;
+        case ONI_CONFIG_HWADDRESS:
+            return CONFHWADDRESS;
         default:
             return 0;
     }

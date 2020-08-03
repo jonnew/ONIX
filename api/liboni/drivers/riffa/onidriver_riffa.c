@@ -32,9 +32,12 @@ typedef enum oni_conf_reg_off {
     CONFTRIGOFFSET = 4, // Configuration read/write trigger register byte offset
 
     // Global configuration
-    CONFRUNNINGOFFSET = 5, // Configuration run hardware register byte offset
-    CONFRESETOFFSET = 6, // Configuration reset hardware register byte offset
-    CONFSYSCLKHZOFFSET = 7, // Configuration base clock frequency register byte offset
+    CONFRUNNINGOFFSET = 5, // Configuration run register byte offset
+    CONFRESETOFFSET = 6, // Configuration reset register byte offset
+    CONFSYSCLKHZOFFSET = 7, // Configuration base system clock frequency register byte offset
+    CONFACQCLKHZOFFSET = 8, // Configuration frame counter clock frequency register byte offset
+    CONFRESETACQCOUNTER = 9, // Configuration frame counter clock reset register byte offset
+    CONFHWADDRESS = 10 // Configuration hardware address register byte offset
 } oni_conf_off_t;
 
 static inline oni_conf_off_t _oni_register_offset(oni_config_t reg);
@@ -254,23 +257,29 @@ const char* oni_driver_str()
 static inline oni_conf_off_t _oni_register_offset(oni_config_t reg)
 {
     switch (reg) {
-    case ONI_CONFIG_DEV_IDX:
-        return CONFDEVIDXOFFSET;
-    case ONI_CONFIG_REG_ADDR:
-        return CONFADDROFFSET;
-    case ONI_CONFIG_REG_VALUE:
-        return CONFVALUEOFFSET;
-    case ONI_CONFIG_RW:
-        return CONFRWOFFSET;
-    case ONI_CONFIG_TRIG:
-        return CONFTRIGOFFSET;
-    case ONI_CONFIG_RUNNING:
-        return CONFRUNNINGOFFSET;
-    case ONI_CONFIG_RESET:
-        return CONFRESETOFFSET;
-    case ONI_CONFIG_SYSCLK:
-        return CONFSYSCLKHZOFFSET;
-    default:
-        return 0;
+        case ONI_CONFIG_DEV_IDX:
+            return CONFDEVIDXOFFSET;
+        case ONI_CONFIG_REG_ADDR:
+            return CONFADDROFFSET;
+        case ONI_CONFIG_REG_VALUE:
+            return CONFVALUEOFFSET;
+        case ONI_CONFIG_RW:
+            return CONFRWOFFSET;
+        case ONI_CONFIG_TRIG:
+            return CONFTRIGOFFSET;
+        case ONI_CONFIG_RUNNING:
+            return CONFRUNNINGOFFSET;
+        case ONI_CONFIG_RESET:
+            return CONFRESETOFFSET;
+        case ONI_CONFIG_SYSCLKHZ:
+            return CONFSYSCLKHZOFFSET;
+        case ONI_CONFIG_ACQCLKHZ:
+            return CONFACQCLKHZOFFSET;
+        case ONI_CONFIG_RESETACQCOUNTER:
+            return CONFRESETACQCOUNTER;
+        case ONI_CONFIG_HWADDRESS:
+            return CONFHWADDRESS;
+        default:
+            return 0;
     }
 }

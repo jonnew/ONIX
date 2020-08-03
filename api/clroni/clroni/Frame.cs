@@ -11,6 +11,7 @@ namespace oni
     {
         public readonly uint dev_idx; // Array of device indices in frame
         public readonly uint data_sz; // Size in bytes of data buffer
+        public readonly ulong time;  // Frame time in terms of acq. clock
         public readonly byte* data; // Multi-device raw data block
     }
 
@@ -63,14 +64,19 @@ namespace oni
             Buffer.MemoryCopy(data.ToPointer(), frame->data, num_bytes, data_size);
         }
 
-
         protected override bool ReleaseHandle()
         {
             lib.NativeMethods.oni_destroy_frame(handle);
             return true;
         }
 
-        // Devices with data in this frame
+        // Frame time
+        public ulong Clock()
+        {
+            return ((frame_t*)handle.ToPointer())->time;
+        }
+
+        // Device with data in this frame
         public uint DeviceIndex()
         {
             return ((frame_t*)handle.ToPointer())->dev_idx;

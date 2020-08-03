@@ -26,7 +26,7 @@
 #define ONI_COBSBUFFERSIZE 255
 
 // Frame constants
-#define ONI_FRAMEHEADERSZ 2 * sizeof(oni_fifo_dat_t) // [dev_idx, data_sz]
+#define ONI_FRAMEHEADERSZ 2 * sizeof(oni_fifo_dat_t) + sizeof(oni_fifo_time_t) // [dev_idx, data_sz, time]
 
 // Reference counter
 struct ref {
@@ -60,9 +60,6 @@ struct oni_ctx_impl {
 
     // Hardware translation driver
     oni_driver_t driver;
-
-    // Run acquisition immediately following reset
-    oni_reg_val_t run_on_reset;
 
     // Device array
     oni_size_t num_dev;
@@ -143,7 +140,6 @@ oni_ctx oni_create_ctx(const char* drv_name)
     ctx->num_dev = 0;
     ctx->dev_hash_table = NULL;
     ctx->run_state = UNINITIALIZED;
-    ctx->run_on_reset = 0;
 
     return ctx;
 }
@@ -161,10 +157,6 @@ int oni_init_ctx(oni_ctx ctx, int host_idx)
 
     // NB: Trigger reset routine (populates device table and key acquisition
     // parameters) Success will set ctx->run_state to IDLE
-
-    // If running, stop acquisition
-    rc = _oni_write_config(ctx, ONI_CONFIG_RUNNING, ctx->run_on_reset);
-    if (rc) return rc;
 
     // Set the reset register
     rc = _oni_write_config(ctx, ONI_CONFIG_RESET, 1);
@@ -200,7 +192,8 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
     switch (ctx_opt) {
         case ONI_OPT_DEVICETABLE: {
 
-            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
+            assert(ctx->run_state > UNINITIALIZED
+                   && "Context state must be IDLE or RUNNING.");
             if (ctx->run_state < IDLE)
                 return ONI_EINVALSTATE;
 
@@ -214,7 +207,8 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
         }
         case ONI_OPT_NUMDEVICES: {
 
-            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
+            assert(ctx->run_state > UNINITIALIZED
+                   && "Context state must be IDLE or RUNNING.");
             if (ctx->run_state < IDLE)
                 return ONI_EINVALSTATE;
 
@@ -226,9 +220,78 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
             *option_len = required_bytes;
             break;
         }
+        case ONI_OPT_RUNNING: {
+
+            assert(ctx->run_state > UNINITIALIZED
+                   && "Context state must be IDLE or RUNNING.");
+            if (ctx->run_state < IDLE)
+                return ONI_EINVALSTATE;
+
+            if (*option_len < ONI_REGSZ)
+                return ONI_EBUFFERSIZE;
+
+            int rc = _oni_read_config(ctx, ONI_CONFIG_RUNNING, value);
+            if (rc)
+                return rc;
+
+            *option_len = ONI_REGSZ;
+            break;
+        }
+        case ONI_OPT_SYSCLKHZ: {
+
+            assert(ctx->run_state > UNINITIALIZED
+                   && "Context state must be IDLE or RUNNING.");
+            if (ctx->run_state < IDLE)
+                return ONI_EINVALSTATE;
+
+            if (*option_len < ONI_REGSZ)
+                return ONI_EBUFFERSIZE;
+
+            int rc = _oni_read_config(ctx, ONI_CONFIG_SYSCLKHZ, value);
+            if (rc)
+                return rc;
+
+            *option_len = ONI_REGSZ;
+            break;
+        }
+        case ONI_OPT_ACQCLKHZ: {
+
+            assert(ctx->run_state > UNINITIALIZED
+                   && "Context state must be IDLE or RUNNING.");
+            if (ctx->run_state < IDLE)
+                return ONI_EINVALSTATE;
+
+            if (*option_len < ONI_REGSZ)
+                return ONI_EBUFFERSIZE;
+
+            int rc = _oni_read_config(ctx, ONI_CONFIG_ACQCLKHZ, value);
+            if (rc)
+                return rc;
+
+            *option_len = ONI_REGSZ;
+            break;
+        }
+        case ONI_OPT_HWADDRESS: {
+
+            assert(ctx->run_state > UNINITIALIZED
+                   && "Context state must be IDLE or RUNNING.");
+            if (ctx->run_state < IDLE)
+                return ONI_EINVALSTATE;
+
+            if (*option_len < ONI_REGSZ)
+                return ONI_EBUFFERSIZE;
+
+            int rc = _oni_read_config(ctx, ONI_CONFIG_HWADDRESS, value);
+            if (rc)
+                return rc;
+
+            *option_len = ONI_REGSZ;
+            break;
+        }
         case ONI_OPT_MAXREADFRAMESIZE: {
 
-            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
+            assert(ctx->run_state > UNINITIALIZED
+                   && "Context state must be IDLE or RUNNING.");
             if (ctx->run_state < IDLE)
                 return ONI_EINVALSTATE;
 
@@ -240,46 +303,19 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
             *option_len = required_bytes;
             break;
         }
-        case ONI_OPT_RUNONRESET: {
+        case ONI_OPT_MAXWRITEFRAMESIZE: {
 
-            if (*option_len < ONI_REGSZ)
-                return ONI_EBUFFERSIZE;
-
-            *(oni_reg_val_t *)value = ctx->run_on_reset;
-            *option_len = ONI_REGSZ;
-            break;
-        }
-        case ONI_OPT_RUNNING: {
-
-            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
+            assert(ctx->run_state > UNINITIALIZED
+                   && "Context state must be IDLE or RUNNING.");
             if (ctx->run_state < IDLE)
                 return ONI_EINVALSTATE;
 
-            if (*option_len < ONI_REGSZ)
+            size_t required_bytes = sizeof(oni_size_t);
+            if (*option_len < required_bytes)
                 return ONI_EBUFFERSIZE;
 
-            int rc = _oni_read_config(ctx, ONI_CONFIG_RUNNING, value);
-            if (rc) return rc;
-
-            *option_len = ONI_REGSZ;
-            break;
-        }
-        case ONI_OPT_RESET: {
-            return ONI_EWRITEONLY;
-        }
-        case ONI_OPT_SYSCLKHZ: {
-
-            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
-            if (ctx->run_state < IDLE)
-                return ONI_EINVALSTATE;
-
-            if (*option_len < ONI_REGSZ)
-                return ONI_EBUFFERSIZE;
-
-            int rc = _oni_read_config(ctx, ONI_CONFIG_SYSCLK, value);
-            if (rc) return rc;
-
-            *option_len = ONI_REGSZ;
+            *(oni_size_t *)value = ctx->max_write_frame_size;
+            *option_len = required_bytes;
             break;
         }
         case ONI_OPT_BLOCKREADSIZE: {
@@ -300,11 +336,12 @@ int oni_get_opt(const oni_ctx ctx, int ctx_opt, void *value, size_t *option_len)
             *option_len = ONI_REGSZ;
             break;
         }
-
+        case ONI_OPT_RESET:
+        case ONI_OPT_RESETACQCOUNTER:
+            return ONI_EWRITEONLY;
         default:
             return ONI_EINVALOPT;
     }
-
     return ONI_ESUCCESS;
 }
 
@@ -313,14 +350,6 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
     assert(ctx != NULL && "Context is NULL");
 
     switch (ctx_opt) {
-        case ONI_OPT_RUNONRESET: {
-            // Can be set in any context state
-            if (option_len != sizeof(oni_reg_val_t))
-                return ONI_EBUFFERSIZE;
-
-            ctx->run_on_reset =  *(oni_reg_val_t *)value;
-            break;
-        }
         case ONI_OPT_RUNNING: {
             assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
             if (ctx->run_state < IDLE)
@@ -363,6 +392,38 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
                 // Get device table etc
                 _oni_reset_routine(ctx);
             }
+
+            break;
+        }
+        case ONI_OPT_RESETACQCOUNTER: {
+            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
+            if (ctx->run_state != IDLE)
+                return ONI_EINVALSTATE;
+
+            if (option_len != ONI_REGSZ)
+                return ONI_EBUFFERSIZE;
+
+            if (*(oni_reg_val_t *)value != 0) {
+
+                // Set the reset register
+                int rc = _oni_write_config(
+                    ctx, ONI_CONFIG_RESETACQCOUNTER, *(oni_reg_val_t *)value);
+                if (rc) return rc;
+            }
+
+            break;
+        }
+        case ONI_OPT_HWADDRESS: {
+            assert(ctx->run_state > UNINITIALIZED && "Context state must be IDLE or RUNNING.");
+            if (ctx->run_state != IDLE)
+                return ONI_EINVALSTATE;
+
+            if (option_len != ONI_REGSZ)
+                return ONI_EBUFFERSIZE;
+
+            int rc = _oni_write_config(
+                ctx, ONI_CONFIG_HWADDRESS, *(oni_reg_val_t *)value);
+            if (rc) return rc;
 
             break;
         }
@@ -421,10 +482,11 @@ int oni_set_opt(oni_ctx ctx, int ctx_opt, const void *value, size_t option_len)
         }
         case ONI_OPT_DEVICETABLE:
         case ONI_OPT_NUMDEVICES:
+        case ONI_OPT_SYSCLKHZ:
+        case ONI_OPT_ACQCLKHZ:
         case ONI_OPT_MAXREADFRAMESIZE:
-        case ONI_OPT_SYSCLKHZ: {
+        case ONI_OPT_MAXWRITEFRAMESIZE:
             return ONI_EREADONLY;
-        }
         default:
             return ONI_EINVALOPT;
     }
@@ -544,8 +606,12 @@ int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame)
         return ONI_ENOREADDEV;
 
     // Get the device index and data size from the buffer
+    // TODO: what is the point of having an oni_fifo_t if we are hard coding the header size anyway?
     uint8_t *header = NULL;
-    int rc = _oni_read_buffer(ctx, (void **)&header, 8, 1);
+    int rc = _oni_read_buffer(ctx,
+                              (void **)&header,
+                              ONI_FRAMEHEADERSZ,
+                              1);
     if (rc) return rc;
 
     // Allocate frame and buffer
@@ -557,7 +623,8 @@ int oni_read_frame(const oni_ctx ctx, oni_frame_t **frame)
     // Copy frame header members (continuous)
     // 1. index (4)
     // 2. data_sz (4)
-    memcpy(&iframe->private.dev_idx, header, 2 * sizeof(oni_fifo_dat_t));
+    // 3. timer (8)
+    memcpy(&iframe->private.dev_idx, header, ONI_FRAMEHEADERSZ);
 
     // Find read size (+ padding)
     size_t rsize = iframe->private.data_sz;
@@ -617,19 +684,19 @@ int oni_create_frame(const oni_ctx ctx,
 
     // Allocate data storage
     uint8_t *buffer_start = NULL;
-    int rc = _oni_alloc_write_buffer(
-        ctx, (void **)&buffer_start, 2 * sizeof(oni_fifo_dat_t) + asize);
+    int rc = _oni_alloc_write_buffer(ctx, (void **)&buffer_start, ONI_FRAMEHEADERSZ + asize);
     if (rc) return rc;
 
     // Fill out public fields
     // NB: https://stackoverflow.com/questions/9691404/how-to-initialize-const-in-a-struct-in-c-with-malloc
     *(oni_size_t *)&iframe->private.dev_idx = dev_idx;
     *(oni_size_t *)&iframe->private.data_sz = data_sz;
-    iframe->private.data = buffer_start + 2 * sizeof(oni_fifo_dat_t);
+    iframe->private.data = buffer_start + ONI_FRAMEHEADERSZ;
 
     // Copy frame header members (continuous)
     // 1. index (4)
     // 2. data_sz (4)
+    // 3. timer: not needed.
     *(oni_fifo_dat_t *)buffer_start = iframe->private.dev_idx;
     *((oni_fifo_dat_t *)buffer_start + 1)
         = iframe->private.data_sz >> BYTE_TO_FIFO_SHIFT;

@@ -10,7 +10,35 @@
 
     public unsafe class Context : SafeHandleZeroOrMinusOneIsInvalid
     {
-        public Context(string driver_name, int host_idx)
+        // NB: These need to be redeclared unfortunately
+        public enum Option : int
+        {
+            DEVICETABLE = 0,
+            NUMDEVICES,
+            RUNNING,
+            RESET,
+            SYSCLKHZ,
+            ACQCLKHZ,
+            RESETACQCOUNTER,
+            HWADDRESS,
+            MAXREADFRAMESIZE,
+            MAXWRITEFRAMESIZE,
+            BLOCKREADSIZE,
+            BLOCKWRITESIZE
+        }
+
+        // Hardware constants
+        public readonly string HostDriver;
+        public readonly int HostIndex;
+        public readonly Dictionary<uint, device_t> DeviceTable;
+        public readonly uint SystemClockHz = 0;
+        public readonly uint AcquisitionClockHz = 0;
+        public readonly uint MaxReadFrameSize = 0;
+        public readonly uint MaxWriteFrameSize = 0;
+
+        readonly object context_lock = new object();
+
+        public Context(string driver_name, int host_index)
         : base (true)  // this.handle is IntPtr wrapped by the SafeHandle
         {
             // Create context
@@ -20,12 +48,16 @@
                 throw new InvalidProgramException("oni_create_ctx");
             }
 
-            var rc = NativeMethods.oni_init_ctx(handle, host_idx);
+            var rc = NativeMethods.oni_init_ctx(handle, host_index);
             if (rc != 0) { throw new ONIException(rc); }
 
             // Get context metadata
+            HostDriver = driver_name;
+            HostIndex = host_index;
             SystemClockHz = (uint)GetIntOption((int)Option.SYSCLKHZ);
+            AcquisitionClockHz = (uint)GetIntOption((int)Option.ACQCLKHZ);
             MaxReadFrameSize = (uint)GetIntOption((int)Option.MAXREADFRAMESIZE);
+            MaxWriteFrameSize = (uint)GetIntOption((int)Option.MAXWRITEFRAMESIZE);
 
             // Populate device table
             int num_devs = GetIntOption((int)Option.NUMDEVICES);
@@ -45,15 +77,6 @@
                 table = new IntPtr((long)table + size_dev);
             }
         }
-
-        public static readonly uint DefaultIndex = 0;
-        public uint Index = DefaultIndex;
-        public readonly Dictionary<uint, device_t> DeviceTable;
-        readonly object context_lock = new object();
-
-        public readonly uint SystemClockHz = 0;
-        public readonly uint MaxReadFrameSize = 0;
-        public readonly uint ReadBytes = 0;
 
         protected override bool ReleaseHandle()
         {
@@ -126,9 +149,12 @@
             if (rc != 0) { throw new ONIException(rc); }
         }
 
-        public void Start()
+        public void Start(bool reset_frame_clock = true)
         {
-            SetIntOption((int)Option.RUNNING, 1);
+            if (reset_frame_clock)
+                SetIntOption((int)Option.RESETACQCOUNTER, 2);
+            else
+                SetIntOption((int)Option.RUNNING, 1);
         }
 
         public void Stop()
@@ -141,14 +167,63 @@
             SetIntOption((int)Option.RESET, 1);
         }
 
-        public void SetBlockReadSize(int block_size)
+        public void ResetFrameClock()
         {
-            SetIntOption((int)Option.BLOCKREADSIZE, block_size);
+            SetIntOption((int)Option.RESETACQCOUNTER, 1);
         }
 
-        public void SetBlockWriteSize(int block_size)
+        //public void SetBlockReadSize(int block_size)
+        //{
+        //    SetIntOption((int)Option.BLOCKREADSIZE, block_size);
+        //}
+
+        //public void SetBlockWriteSize(int block_size)
+        //{
+        //    SetIntOption((int)Option.BLOCKWRITESIZE, block_size);
+        //}
+
+        public bool Running
         {
-            SetIntOption((int)Option.BLOCKWRITESIZE, block_size);
+            get
+            {
+                return GetIntOption((int)Option.RUNNING) > 0;
+            }
+        }
+
+        public int HardwareAddress
+        {
+            get
+            {
+                return GetIntOption((int)Option.HWADDRESS);
+            }
+            set
+            {
+                SetIntOption((int)Option.HWADDRESS, value);
+            }
+        }
+
+        public int BlockReadSize
+        {
+            get
+            {
+                return GetIntOption((int)Option.BLOCKREADSIZE);
+            }
+            set
+            {
+                SetIntOption((int)Option.BLOCKREADSIZE, value);
+            }
+        }
+
+        public int BlockWriteSize
+        {
+            get
+            {
+                return GetIntOption((int)Option.BLOCKWRITESIZE);
+            }
+            set
+            {
+                SetIntOption((int)Option.BLOCKWRITESIZE, value);
+            }
         }
 
         public uint ReadRegister(uint dev_idx, uint reg_addr)
@@ -204,20 +279,6 @@
 
             rc = NativeMethods.oni_write_frame(handle, frame);
             if (rc < 0) { throw new ONIException(rc); }
-        }
-
-        // NB: These need to be redeclared unfortunately
-        public enum Option : int
-        {
-            DEVICETABLE = 0,
-            NUMDEVICES,
-            MAXREADFRAMESIZE,
-            RUNONRESET,
-            RUNNING,
-            RESET,
-            SYSCLKHZ,
-            BLOCKREADSIZE,
-            BLOCKWRITESIZE
         }
     }
 }

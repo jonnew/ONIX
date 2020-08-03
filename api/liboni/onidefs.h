@@ -6,11 +6,14 @@
 enum {
     ONI_OPT_DEVICETABLE = 0,
     ONI_OPT_NUMDEVICES,
-    ONI_OPT_MAXREADFRAMESIZE,
-    ONI_OPT_RUNONRESET,
     ONI_OPT_RUNNING,
     ONI_OPT_RESET,
     ONI_OPT_SYSCLKHZ,
+    ONI_OPT_ACQCLKHZ,
+    ONI_OPT_RESETACQCOUNTER,
+    ONI_OPT_HWADDRESS,
+    ONI_OPT_MAXREADFRAMESIZE,
+    ONI_OPT_MAXWRITEFRAMESIZE,
     ONI_OPT_BLOCKREADSIZE,
     ONI_OPT_BLOCKWRITESIZE
 };
@@ -58,7 +61,10 @@ typedef enum {
     ONI_CONFIG_TRIG,
     ONI_CONFIG_RUNNING,
     ONI_CONFIG_RESET,
-    ONI_CONFIG_SYSCLK
+    ONI_CONFIG_SYSCLKHZ,
+    ONI_CONFIG_ACQCLKHZ,
+    ONI_CONFIG_RESETACQCOUNTER,
+    ONI_CONFIG_HWADDRESS
 } oni_config_t;
 
 // Fixed width device types
@@ -68,6 +74,7 @@ typedef uint32_t oni_dev_idx_t; // Device idx are 32-bit, byte.byte.btye.byte ad
 typedef uint32_t oni_reg_addr_t; // Registers use a 32-bit address
 typedef uint32_t oni_reg_val_t;  // Registers have 32-bit values
 typedef uint32_t oni_fifo_dat_t; // FIFOs use 32-bit words; // TODO: remove
+typedef uint64_t oni_fifo_time_t; // FIFO bound timers use 64-bit words; // TODO: remove
 
 #define BYTE_TO_FIFO_SHIFT 2; // TODO: remove
 

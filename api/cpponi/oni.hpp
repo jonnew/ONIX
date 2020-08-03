@@ -8,6 +8,7 @@
 #include <string>
 #include <system_error>
 #include <vector>
+#include <unordered_map>
 
 #ifdef _WIN32
 #if _MSVC_LANG >= 201704
@@ -72,7 +73,7 @@ namespace oni {
     class context_t;
 
     using device_t = oni_device_t;
-    using device_map_t = std::vector<device_t>;
+    using device_map_t = std::unordered_map<oni_dev_idx_t, device_t>;
     template<typename T> using driver_arg_t = std::pair<int,T>;
 
     // NB: Data held by frame_t is const. This means data needs to be copied
@@ -88,15 +89,14 @@ namespace oni {
         // NB: Copy and move assignment operators are going to be deleted
         // since this class has const members. Copy and move ctors will
         // implicitly declared.
-        inline frame_t(const device_map_t &dev_map, oni_frame_t *frame)
+        inline frame_t(oni_frame_t *frame)
         : frame_ptr_{frame, [=](oni_frame_t *fp) { oni_destroy_frame(fp); }}
         {
             // Nothing
         }
 
-
-        // uint64_t clock() const { return frame_ptr_->clock; }
-        size_t device_index() const { return frame_ptr_->dev_idx; }
+        uint64_t time() const { return frame_ptr_->time; }
+        oni_dev_idx_t device_index() const { return frame_ptr_->dev_idx; }
 
 #ifdef CPPONI_USE_SPAN
         // Data view, no copy
@@ -140,8 +140,15 @@ namespace oni {
             auto num_devs = get_opt<oni_size_t>(ONI_OPT_NUMDEVICES);
 
             size_t devices_sz = sizeof(oni_device_t) * num_devs;
-            device_map_.resize(num_devs);
-            get_opt_(ONI_OPT_DEVICETABLE, device_map_.data(), &devices_sz);
+            device_map_.reserve(num_devs);
+
+            std::vector<device_t> devs;
+            devs.resize(num_devs);
+            get_opt_(ONI_OPT_DEVICETABLE, devs.data(), &devices_sz);
+
+            // Convert to unordered_map
+            for (const auto &d : devs)
+                device_map_.insert({d.idx, d});
         }
 
         // No copies
@@ -227,7 +234,7 @@ namespace oni {
             if (rc < 0) throw error_t(rc);
 
             // TODO: Should use RVO, check disassembly
-            return frame_t(device_map_, fp);
+            return frame_t(fp);
         }
 
 #ifdef CPPONI_USE_SPAN

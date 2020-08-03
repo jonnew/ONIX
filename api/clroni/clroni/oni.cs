@@ -41,16 +41,15 @@ namespace oni.lib
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct device_t
     {
+        public readonly uint idx;            // Complete rsv.rsv.hub.idx device table index
         public readonly int id;              // Device ID
         public readonly uint read_size;      // Read size
-        public readonly uint num_reads;      // Num reads per sample
         public readonly uint write_size;     // Write size
-        public readonly uint num_writes;     // Num writes per sample
-        public readonly uint idx;            // Complete rsv.rsv.hub.idx device table index
+
 
         // Adjust this as required
         public override string ToString() =>
-            $@" 0x{idx:X} : {Marshal.PtrToStringAnsi(NativeMethods.oni_device_str(id))}, Per frame read size: {read_size}, Frames per sample: {num_reads}, Write Size: {write_size}, Writes per sample: {num_writes}";
+            $@" 0x{idx:X} : {Marshal.PtrToStringAnsi(NativeMethods.oni_device_str(id))}, Read size: {read_size}, Write Size: {write_size}";
 
         public string Description()
         {
