@@ -1,9 +1,0 @@
-theme: jekyll-theme-minimal
-
-title: ["Open Ephys++"]
-
-exclude:
-    - spec/spec.md
-    - deprecated
-
-logo: "oe-logo.png"
