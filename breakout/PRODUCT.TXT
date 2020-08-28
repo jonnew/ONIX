@@ -1,4 +1,0 @@
-The creation of commercial products using the hardware documentation in this
-repository is not permited without an explicit, supplementary agreement between
-the Licensor and the Licensee. Please get in touch if you are interested in
-commercial distribute of this tool.

@@ -19,15 +19,3 @@ sheet](https://docs.google.com/spreadsheets/d/11wRDYOqHN5lPb03yUdfXfK0zvaDYsVetp
 
 ## Tetrode Connectorization
 This EIB uses Neuralynx ["large" gold pins](https://neuralynx.com/hardware/large-eib-pins) to attach tetrode wires. Usage instructions are provided in the [Neuralynx EIB pin Manual](https://neuralynx.com/documents/EIB%20Pins%20Manual.pdf).
-
-## License
-Copyright Jonathan P. Newman
-
-This documentation describes Open Hardware and is licensed under the
-CERN OHL v.1.2.
-
-You may redistribute and modify this documentation under the terms of the CERN
-OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed WITHOUT
-ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY
-QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the CERN OHL v.1.2 for
-applicable conditions

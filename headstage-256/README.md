@@ -37,16 +37,3 @@ supply various auxiliary functions. These include:
 2. expansion-long-range: large active area light house receiver board to expand 3D tracking range by several meters.
 3. expansion-debug: pinout GPIO to large 0.1" pitch headers.
 
-
-## License
-Copyright Jonathan P. Newman
-
-This documentation describes Open Hardware and is licensed under the
-CERN OHL v.1.2.
-
-You may redistribute and modify this documentation under the terms of the CERN
-OHL v.1.2. (http://ohwr.org/cernohl). This documentation is distributed WITHOUT
-ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY
-QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the CERN OHL v.1.2 for
-applicable conditions
-
