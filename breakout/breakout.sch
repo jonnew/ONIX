@@ -10046,9 +10046,9 @@ overrides</text>
 <pinref part="R27" gate="R" pin="2"/>
 </segment>
 <segment>
-<wire x1="401.32" y1="132.08" x2="396.24" y2="132.08" width="0.1524" layer="91"/>
-<label x="396.24" y="132.08" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D21" gate="G$1" pin="CH2"/>
+<wire x1="401.32" y1="101.6" x2="396.24" y2="101.6" width="0.1524" layer="91"/>
+<label x="396.24" y="101.6" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="D21" gate="G$1" pin="CH8"/>
 </segment>
 </net>
 <net name="DOUT1" class="0">
@@ -10068,9 +10068,9 @@ overrides</text>
 <pinref part="R29" gate="R" pin="2"/>
 </segment>
 <segment>
-<wire x1="401.32" y1="137.16" x2="396.24" y2="137.16" width="0.1524" layer="91"/>
-<label x="396.24" y="137.16" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D21" gate="G$1" pin="CH1"/>
+<wire x1="401.32" y1="106.68" x2="396.24" y2="106.68" width="0.1524" layer="91"/>
+<label x="396.24" y="106.68" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="D21" gate="G$1" pin="CH7"/>
 </segment>
 </net>
 <net name="DOUT2" class="0">
@@ -10090,9 +10090,9 @@ overrides</text>
 <pinref part="R31" gate="R" pin="2"/>
 </segment>
 <segment>
-<wire x1="401.32" y1="127" x2="396.24" y2="127" width="0.1524" layer="91"/>
-<label x="396.24" y="127" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D21" gate="G$1" pin="CH3"/>
+<wire x1="401.32" y1="111.76" x2="396.24" y2="111.76" width="0.1524" layer="91"/>
+<label x="396.24" y="111.76" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="D21" gate="G$1" pin="CH6"/>
 </segment>
 </net>
 <net name="DOUT3" class="0">
@@ -10112,9 +10112,9 @@ overrides</text>
 <pinref part="R33" gate="R" pin="2"/>
 </segment>
 <segment>
-<wire x1="401.32" y1="121.92" x2="396.24" y2="121.92" width="0.1524" layer="91"/>
-<label x="396.24" y="121.92" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D21" gate="G$1" pin="CH4"/>
+<wire x1="401.32" y1="116.84" x2="396.24" y2="116.84" width="0.1524" layer="91"/>
+<label x="396.24" y="116.84" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="D21" gate="G$1" pin="CH5"/>
 </segment>
 </net>
 <net name="DOUT4" class="0">
@@ -10134,9 +10134,9 @@ overrides</text>
 <pinref part="R35" gate="R" pin="2"/>
 </segment>
 <segment>
-<wire x1="401.32" y1="101.6" x2="396.24" y2="101.6" width="0.1524" layer="91"/>
-<label x="396.24" y="101.6" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D21" gate="G$1" pin="CH8"/>
+<wire x1="401.32" y1="137.16" x2="396.24" y2="137.16" width="0.1524" layer="91"/>
+<label x="396.24" y="137.16" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="D21" gate="G$1" pin="CH1"/>
 </segment>
 </net>
 <net name="DOUT5" class="0">
@@ -10156,9 +10156,9 @@ overrides</text>
 <pinref part="R37" gate="R" pin="2"/>
 </segment>
 <segment>
-<wire x1="401.32" y1="106.68" x2="396.24" y2="106.68" width="0.1524" layer="91"/>
-<label x="396.24" y="106.68" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D21" gate="G$1" pin="CH7"/>
+<wire x1="401.32" y1="132.08" x2="396.24" y2="132.08" width="0.1524" layer="91"/>
+<label x="396.24" y="132.08" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="D21" gate="G$1" pin="CH2"/>
 </segment>
 </net>
 <net name="DOUT6" class="0">
@@ -10178,9 +10178,9 @@ overrides</text>
 <pinref part="R39" gate="R" pin="2"/>
 </segment>
 <segment>
-<wire x1="401.32" y1="111.76" x2="396.24" y2="111.76" width="0.1524" layer="91"/>
-<label x="396.24" y="111.76" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D21" gate="G$1" pin="CH6"/>
+<wire x1="401.32" y1="127" x2="396.24" y2="127" width="0.1524" layer="91"/>
+<label x="396.24" y="127" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="D21" gate="G$1" pin="CH3"/>
 </segment>
 </net>
 <net name="DOUT7" class="0">
@@ -10200,9 +10200,9 @@ overrides</text>
 <pinref part="R41" gate="R" pin="2"/>
 </segment>
 <segment>
-<wire x1="401.32" y1="116.84" x2="396.24" y2="116.84" width="0.1524" layer="91"/>
-<label x="396.24" y="116.84" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="D21" gate="G$1" pin="CH5"/>
+<wire x1="401.32" y1="121.92" x2="396.24" y2="121.92" width="0.1524" layer="91"/>
+<label x="396.24" y="121.92" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<pinref part="D21" gate="G$1" pin="CH4"/>
 </segment>
 </net>
 <net name="DIN0" class="0">
@@ -11340,16 +11340,12 @@ overrides</text>
 <approved hash="104,1,421.64,139.7,D21,VCC,+3V3,,,"/>
 <approved hash="104,1,421.64,99.06,D21,VSS,GND,,,"/>
 <approved hash="113,1,539.157,498.561,J4,,,,,"/>
-<approved hash="113,1,157.48,35.3964,TP4,,,,,"/>
 <approved hash="113,1,38.1,403.696,TP2,,,,,"/>
 <approved hash="113,1,48.26,411.316,TP1,,,,,"/>
 <approved hash="113,1,539.157,488.401,J8,,,,,"/>
 <approved hash="113,1,34.3886,421.919,P+1,,,,,"/>
 <approved hash="113,1,90.2686,294.919,P+5,,,,,"/>
-<approved hash="113,1,170.18,35.3964,TP6,,,,,"/>
-<approved hash="113,1,198.12,35.3964,TP7,,,,,"/>
 <approved hash="113,1,149.86,35.3964,TP3,,,,,"/>
-<approved hash="113,1,165.1,35.3964,TP5,,,,,"/>
 </errors>
 </schematic>
 </drawing>
