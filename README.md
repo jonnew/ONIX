@@ -1,5 +1,5 @@
-[ONIX](https://jonnew.github.io/onix) is a collection
-of [ONI](https://github.com/jonnew/ONI)-compatible hardware, firmware, and API
+[ONIX](https://open-ephys.github.io/onix-docs/index.html) is a collection
+of [ONI](https://github.com/jonnew/ONI)-compatible hardware and API
 for serialized, very-high channel count, closed-loop electrophysiology. It is
 an evolution of the first-generation hardware and software introduced in [Open
 Ephys project](http://www.open-ephys.org/) and involves many of the same
@@ -7,6 +7,8 @@ developers.  The firmware and API are general purpose -- they can be used to
 acquire from and control custom headstages with arbitrary arrangements of
 sensors and actuators (e.g. cameras, bioamplifier chips, LED drivers, etc.) and
 are not limited to the hardware in this repository.
+
+__Documentation__ : https://open-ephys.github.io/onix-docs/index.html
 
 __Citing this work__: 
 
@@ -19,7 +21,7 @@ __Citing this work__:
   - [![DOI](https://zenodo.org/badge/95248663.svg)](https://zenodo.org/badge/latestdoi/95248663)
 
 ## Features
-- Follows the ONI-specification for serialization protocols, host communication
+- Follows the [ONI](https://github.com/jonnew/ONI)-specification for serialization protocols, host communication
   protocols, device drivers, and host API
 - Firmware and API permit acquisition and control of arbitrary arrangements of
   sensors and actuators:
@@ -45,25 +47,11 @@ __Citing this work__:
   GUI](http://www.open-ephys.org/gui/) and [Bonsai](http://bonsai-rx.org/).
 - Quality documentation and easy routes to purchasing assembled devices.
 
-## ONI-Compatible
-The [Open Neuro Interface](https://github.com/jonnew/ONI) formally specifies data
-serialization, host/PC communication, firmware blocks, device drivers and
-programming interfaces for this project. All firmware, software, and hardware
-artifacts in this repository are implementations of this specification.
-Therefore, third party implementations that maintain compatibility with ONI
-will interoperate with the software and hardware within this project.
-
 ## Software
 
-### [Programming Interface](api/README.md)
-High-performance, host-side programming interfaces for integration with
-existing software and the creation of high level language bindings. 
-
-### [Bonsai Package]()
-- TODO: Myget distribution
-
-### [Open Ephys Plugin]()
-- TODO: Integration into open-ephys master
+1. API: https://github.com/jonnew/liboni
+2. Bonsai package: coming soon
+3. Open Ephys GUI plugin: coming soon
 
 ## Hardware
 
