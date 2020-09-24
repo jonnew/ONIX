@@ -1,25 +1,22 @@
 // The TCA9555 connections are hard-coded in this module as follows
 //
-// P00: I_RELAY_SENSE_2
-// P01: I_RELAY_SENSE_1
-// P02: I_RELAY_SENSE_0
-// P03: O_LED_1 (low is on)
-// P04: I_BUTTON_6
-// P05: I_BUTTON_2
-// P06: O_LED_3 (low is on)
-// P07: O_LED_2 (low is on)
+// P00: O_RELAY_AND_2
+// P01: I_RELAY_MECH_2
+// P02: O_RELAY_AND_1
+// P03: I_RELAY_MECH_1
+// P04: O_RELAY_AND_0
+// P05: I_RELAY_MECH_0
+// P06: I_BUTTON_5
+// P07: I_BUTTON_3
 // --
-// P10: I_BUTTON_0
+// P10:
 // P11: I_BUTTON_4
-// P12: I_BUTTON_1
-// P13: I_BUTTON_3
-// P14: I_BUTTON_5
-// P15: I_BUTTON_6
-// P16: O_LED_0 (low is on)
-// P17: I_RELAY_SENSE_3
-//
-// TODO:
-// * RGB LED driver replaces O_LED* (breakout revision 1.3)
+// P12:
+// P13: I_BUTTON_0
+// P14: I_BUTTON_1
+// P15: I_BUTTON_2
+// P16: I_RELAY_MECH_3
+// P17: O_RELAY_AND_3
 
 `include "./i2c-master/rtl/verilog/i2c_master_bit_ctrl.v"
 `include "./i2c-master/rtl/verilog/i2c_master_byte_ctrl.v"
@@ -34,17 +31,25 @@ module user_io # (
     input   wire            i_clk,
     input   wire            i_reset,
 
-    // Ins
-    input   wire    [3:0]   i_led,
+    // Inputs
+    input   wire    [1:0]   i_porta_status,
+    input   wire    [1:0]   i_portb_status,
+    input   wire    [1:0]   i_portc_status,
+    input   wire    [1:0]   i_portd_status,
 
-    // Outs
-    output  reg     [7:0]   o_button,
+    // Outputs
+    output  reg     [5:0]   o_button,
     output  reg     [3:0]   o_link_pow,
 
     inout   wire            io_scl,
-    inout   wire            io_sda,
+    inout   wire            io_sda
 
-    output  wire    [4:0]   o_state
+    // Simulation
+    //output wire            io_scl,
+    //output wire            io_sda
+
+    // Debug
+    //output  wire    [4:0]   o_state
 );
 
 // State machine
@@ -149,7 +154,9 @@ wb_i2c_master_controller wb_master_controller_inst (
 );
 
 // I2C Master (wishbone slave)
-i2c_master_top #(.ARST_LVL (0)) i2c_top2 (
+i2c_master_top # (
+    .ARST_LVL (0)
+) i2c_master (
 
     // wishbone interface
     .wb_clk_i(i_clk),
@@ -173,6 +180,10 @@ i2c_master_top #(.ARST_LVL (0)) i2c_top2 (
     .sda_padoen_o(i2c_sda_t)
 );
 
+//// Simulation
+//assign io_scl       = i2c_sda_o;
+//assign io_sda       = i2c_sda_o;
+
 // I2C tristate mapping
 assign i2c_scl_i    = io_scl;
 assign io_scl       = i2c_scl_t ? 1'bz : i2c_sda_o;
@@ -180,15 +191,23 @@ assign i2c_sda_i    = io_sda;
 assign io_sda       = i2c_sda_t ? 1'bz : i2c_sda_o;
 
 // Debug
-assign o_state      = state;
+//assign o_state      = state;
+
+// Host control over port relay state
+reg [3:0] relay_and;
+always @(posedge i_clk)
+    relay_and <= {i_portd_status != 2'b11,
+                  i_portc_status != 2'b11,
+                  i_portb_status != 2'b11,
+                  i_porta_status != 2'b11};
 
 // Meta-states
 reg [2:0] i2c_idx = 0;
-reg in_write = 1'b1;
+reg in_write = 'b1;
 
 // Wishbone address and register values
 reg [7:0] I2C_WR_REG_ADR [5:0];
-reg [7:0] I2C_WR_REG_VAL [3:0];
+reg [7:0] i2c_wr_reg_val [3:0];
 
 // Assign constant memories
 // See TCA9555 datasheet to make sense of these
@@ -196,16 +215,18 @@ initial begin
     I2C_WR_REG_ADR[0] = 8'h06; // Config reg 0, post-reset start (i2c_idx = 0)
     I2C_WR_REG_ADR[1] = 8'h07; // Config reg 1
     I2C_WR_REG_ADR[2] = 8'h02; // Output reg 0, cycle restart (i2c_idx = 2)
-    I2C_WR_REG_ADR[3] = 8'h03; // Output reg 0
+    I2C_WR_REG_ADR[3] = 8'h03; // Output reg 1
     I2C_WR_REG_ADR[4] = 8'h00; // Input reg 0
     I2C_WR_REG_ADR[5] = 8'h01; // Input reg 1
 end
 
+// First two registers determine pin direction 
+// Last two registers deterimine write data if any of the pins are outputs
 always @* begin
-    I2C_WR_REG_VAL[0] = 8'b00110111; // 8'h37
-    I2C_WR_REG_VAL[1] = 8'b10111111; // 8'hbf
-    I2C_WR_REG_VAL[2] = {i_led[2], i_led[3], 1'b0, 1'b0, i_led[1], 1'b0, 1'b0, 1'b0}; // I2C data  TCA9555 reg 2 val
-    I2C_WR_REG_VAL[3] = {1'b0, i_led[0], 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}; // I2C data  TCA9555 reg 2 val
+    i2c_wr_reg_val[0] = 8'b11101010; // Config reg 0 value (1 = input, 0 = output)
+    i2c_wr_reg_val[1] = 8'b01111111; // Config reg 1 value (1 = input, 0 = output)
+    i2c_wr_reg_val[2] = {1'b0, 1'b0, 1'b0, relay_and[0], 1'b0, relay_and[1], 1'b0, relay_and[2]}; // I2C data TCA9555 reg 2 val
+    i2c_wr_reg_val[3] = {relay_and[3], 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}; // I2C data TCA9555 reg 3 val
 end
 
 // Initialize the TCA9555 and then poll the chip using our simple single
@@ -328,7 +349,7 @@ always @ (posedge i_clk) begin
         WR_VAL: begin
 
             wb_address <= TXR;
-            wb_data_in <= I2C_WR_REG_VAL[i2c_idx]; // (memory val, write mode)
+            wb_data_in <= i2c_wr_reg_val[i2c_idx]; // (memory val, write mode)
             wb_write <= 1;
             state <= WAIT_WB_WR;
             next_state <= WR_STOP;
@@ -345,7 +366,7 @@ always @ (posedge i_clk) begin
             i2c_idx <= i2c_idx + 1;
 
             if (i2c_idx == 3)
-                in_write <= 1'b0; // Go to read meta state
+                in_write <= 'b0; // Go to read meta state
 
         end
 
@@ -381,26 +402,23 @@ always @ (posedge i_clk) begin
 
                 // Pull data from read buffer
                 if (i2c_idx == 4) begin
-                    o_button[6] <= wb_data_out[4];
-                    o_button[2] <= wb_data_out[5];
-                    o_link_pow[2] <= wb_data_out[0];
-                    o_link_pow[1] <= wb_data_out[1];
-                    o_link_pow[0] <= wb_data_out[2];
+                    o_link_pow[2] <= wb_data_out[0] & wb_data_out[1];
+                    o_link_pow[1] <= wb_data_out[2] & wb_data_out[3];
+                    o_link_pow[0] <= wb_data_out[4] & wb_data_out[5];
+                    o_button[5] <= !wb_data_out[6];
+                    o_button[3] <= !wb_data_out[7];
                     i2c_idx <= i2c_idx + 1;
                 end else begin
-                    o_button[0] <= wb_data_out[0];
-                    o_button[4] <= wb_data_out[1];
-                    o_button[1] <= wb_data_out[2];
-                    o_button[3] <= wb_data_out[3];
-                    o_button[5] <= wb_data_out[4];
-                    o_button[7] <= wb_data_out[5];
-                    o_link_pow[3] <= wb_data_out[7];
+                    o_button[4] <= !wb_data_out[1];
+                    o_button[0] <= !wb_data_out[3];
+                    o_button[1] <= !wb_data_out[4];
+                    o_button[2] <= !wb_data_out[5];
+                    o_link_pow[3] <= wb_data_out[6] & wb_data_out[7];
                     in_write <= 1'b1; // Go to read meta-state
-                    i2c_idx <= 2; // Reset to start of cycle
+                    i2c_idx <= 0; //2; // Reset to start of cycle
                 end
 
                 state <= WR_ID;
-
             end
         end
 
@@ -413,9 +431,6 @@ always @ (posedge i_clk) begin
                 state <= next_next_state;
                 wb_read <= 0;
             end
-            //end else begin
-            //    state <= WAIT_I2C;
-            //end
         end
     endcase
 end

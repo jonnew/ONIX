@@ -14,10 +14,13 @@
 #  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 #  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-TOP = breakout
+#TOP = breakout
 #TOP = clk_div
-#TOP = breakout_to_host
+TOP = breakout_to_host
 #TOP = host_to_breakout
+#TOP = host_to_breakout2
+#TOP = handshake_sync
+#TOP = user_io
 
 PIN_DEF = breakout.pcf
 DEVICE = lp8k
@@ -52,10 +55,6 @@ all: $(TOP).rpt $(TOP).bin
 %_tb.vcd: %_tb
 	vvp -N $< +vcd=$@
 
-# Pre-synthesis simulation target
-.PHONY: sim
-sim: $(TOP)_tb.vcd
-
 # Transpile synthesized design to large .v file
 %_syn.v: %.json
 	yosys -p 'read_json $^; write_verilog $@'
@@ -68,6 +67,10 @@ sim: $(TOP)_tb.vcd
 %_syntb.vcd: %_syntb.out
 	vvp -v -N $< +vcd=$@
 
+# Pre-synthesis simulation target
+.PHONY: sim
+sim: $(TOP)_tb.vcd
+
 # Post-synthesis simulation target
 .PHONY: postsim
 postsim: $(TOP)_syntb.vcd
@@ -76,10 +79,6 @@ postsim: $(TOP)_syntb.vcd
 .PHONY: prog
 prog: $(TOP).bin
 	tinyprog -p $<
-
-#sudo-prog: $(TOP).bin
-#	@echo 'Executing prog as root!!!'
-#	sudo tinyprog -p $<
 
 .PHONY: formal
 formal: formal.sby

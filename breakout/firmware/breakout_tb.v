@@ -3,7 +3,14 @@
 module testbench;
 
     reg             XTAL;
-    reg     [7:0]   D_IN;
+    reg             D_IN0;   
+    reg             D_IN1;
+    reg             D_IN2;
+    reg             D_IN3;
+    reg             D_IN4;
+    reg             D_IN5;
+    reg             D_IN6;
+    reg             D_IN7;
     reg     [1:0]   LVDS_IN;
 
     wire    [7:0]   D_OUT;
@@ -15,6 +22,8 @@ module testbench;
     wire            HARP_CLK_OUT;
     wire            LED;
     wire            USBPU;
+
+    wire            NEOPIX;
 
     reg             PLL_SIM;
     wire    [3:0]   link_led;
@@ -53,8 +62,6 @@ module testbench;
         host_data = 0;
         latch_data = 12'b000100000000;
 
-        D_IN = 0;
-
         #1000
         host_data = 12'b000100000000;
 
@@ -69,27 +76,27 @@ module testbench;
 
         #1000 
 
-        #100000 
+        #1000000 
         $finish;
     end
 
-//always @ (posedge LVDS_IN[0]) begin
-//    latch_data <= host_data;
-//end
-
-// LVDS_IN cycles through addresses and data
-always @ (posedge host_clk) begin
-   
-    LVDS_IN[1] <= latch_data[11];
-
-    //if (cnt == 48) begin
-        latch_data <= {latch_data[10:0], latch_data[11]};
-        //cnt <= cnt + 1;
-    //end else begin
+    //always @ (posedge LVDS_IN[0]) begin
     //    latch_data <= host_data;
-    //    cnt <= 0;
     //end
 
-end
+    // LVDS_IN cycles through addresses and data
+    always @ (posedge host_clk) begin
+       
+        LVDS_IN[1] <= latch_data[11];
+
+        //if (cnt == 48) begin
+            latch_data <= {latch_data[10:0], latch_data[11]};
+            //cnt <= cnt + 1;
+        //end else begin
+        //    latch_data <= host_data;
+        //    cnt <= 0;
+        //end
+
+    end
 
 endmodule

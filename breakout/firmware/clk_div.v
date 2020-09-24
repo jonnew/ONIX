@@ -1,5 +1,6 @@
 module clk_div # (
     parameter N = 2,
+    parameter CLK_RST_VAL = 0,
     parameter PULSE = 0
 ) (
     input   wire        i_clk,
@@ -20,7 +21,7 @@ always @ (posedge i_clk) begin
     end
 end
 
-assign o_clk = PULSE ? (clk_cnt == 0 ? 1'b1 : 1'b0) : ((clk_cnt < N / 2) ? 1'b1 : 1'b0); 
+assign o_clk = i_reset ? CLK_RST_VAL : PULSE ? (clk_cnt == 0 ? 'b1 : 'b0) : ((clk_cnt < N / 2) ? 'b1 : 'b0);
 
 // Formal verification
 `ifdef FORMAL
@@ -53,9 +54,9 @@ always @ (posedge i_clk) begin
         assert(o_clk == 1'b1);
     else if (clk_cnt > 0 && PULSE)
         assert(o_clk == 1'b0);
-    else if (clk_cnt < N / 2 && !PULSE) 
+    else if (clk_cnt < N / 2 && !PULSE)
         assert(o_clk == 1'b1);
-    else 
+    else
         assert(o_clk == 1'b0);
 
     assert(clk_cnt < N);

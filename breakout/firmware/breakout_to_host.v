@@ -1,4 +1,4 @@
-// serialized output q0: [but7, ...., but1, but0, pow0, pow1]
+// serialized output q0: [X, X, but5, ...., but1, but0, pow0, pow1]
 // serialized output q1: [din7, ...., din1, din0, pow2, pow3]
 
 `include "clk_div.v"
@@ -10,7 +10,7 @@ module breakout_to_host (
 
     // Parallel inputs
     input   wire [7:0]  i_port,
-    input   wire [7:0]  i_button,
+    input   wire [5:0]  i_button,
     input   wire [3:0]  i_link_pow,
 
     // Serial outputs (2x i_clk due to DDR)
@@ -31,16 +31,16 @@ reg [9:0] shift_d1;
 wire frame_clk;
 
 // Shift clock
-//reg [9:0] shift_clk = 10'b0000011111;
-reg [9:0] shift_clk = 10'b1111100000; // TODO: this is used due to inverted pins on transmitter. get rid of it with pcb fix
+reg [9:0] shift_clk = 10'b0000011111;
+//reg [9:0] shift_clk = 10'b1111100000; // TODO: this is used due to inverted pins on transmitter. get rid of it with pcb fix
 
 // Shift out serialized data and clock 2 bits at a time
 always @ (posedge i_clk) begin
 
     // TODO: same as hack above
-    //if (shift_clk == 10'b0001111100) begin // new sample
-    if (shift_clk == 10'b1110000011) begin // new sample
-        shift_d0 <= {i_link_pow[1:0], i_button[7:0]};
+    if (shift_clk == 10'b0001111100) begin // new sample
+    //if (shift_clk == 10'b1110000011) begin // new sample
+        shift_d0 <= {i_link_pow[1:0], i_button[5:0], 'b00};
         shift_d1 <= {i_link_pow[3:2], i_port[7:0]}; 
 
         //shift_d0 <= {i_button[7:1], i_link_pow[1:0], i_button[0]};
