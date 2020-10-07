@@ -6415,7 +6415,7 @@ grid 2.54 mm</description>
 <attribute name="DESIGNER" value="JON NEWMAN &amp; JAKOB VOIGTS"/>
 <attribute name="DESIGN_NAME" value="ONIX BREAKOUT BOARD"/>
 <attribute name="LICENSE" value="CC BY-NC-SA 4.0"/>
-<attribute name="REVISION" value="1.4"/>
+<attribute name="REVISION" value="1.5"/>
 </attributes>
 <variantdefs>
 </variantdefs>
@@ -6597,7 +6597,7 @@ grid 2.54 mm</description>
 <part name="SUPPLY38" library="jonnew" deviceset="GND" device=""/>
 <part name="TP6" library="jonnew" deviceset="TP" device="_2MM"/>
 <part name="SUPPLY42" library="jonnew" deviceset="AGND" device=""/>
-<part name="TP7" library="jonnew" deviceset="TP" device="TP19R"/>
+<part name="TP7" library="jonnew" deviceset="TP" device="_2MM"/>
 <part name="SUPPLY44" library="jonnew" deviceset="+12V" device=""/>
 <part name="J32" library="jonnew" deviceset="PINHD-1X26" device="_122" value="12226-8250-00FR"/>
 <part name="SUPPLY78" library="jonnew" deviceset="GND" device=""/>
