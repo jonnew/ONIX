@@ -17,17 +17,17 @@ module ws2811
     output                             data_request, // This signal is asserted one cycle before red_in, green_in, and blue_in are sampled.
     output                             new_address,  // This signal is asserted whenever the address signal is updated to its new value.
     output reg [LED_ADDRESS_WIDTH-1:0] address,      // The current LED number. This signal is incremented to the next value two cycles after the last time data_request was asserted.
-    
+
     input [7:0]                        red_in,       // 8-bit red data
     input [7:0]                        green_in,     // 8-bit green data
     input [7:0]                        blue_in,      // 8-bit blue data
-    
+
     ////////////////////
     // External ports //
     ////////////////////
     output reg                         DO            // Signal to send to WS2811 chain.
     );
-   
+
    function integer log2;
       input integer                    value;
       begin
@@ -36,7 +36,7 @@ module ws2811
            value = value>>1;
       end
    endfunction
-	
+
    localparam integer LED_ADDRESS_WIDTH = log2(NUM_LEDS);         // Number of bits to use for address input
 
    /////////////////////////////////////////////////////////////
@@ -49,13 +49,13 @@ module ws2811
    localparam integer H0_CYCLE_COUNT      = 0.32 * CYCLE_COUNT;
    localparam integer H1_CYCLE_COUNT      = 0.64 * CYCLE_COUNT;
    localparam integer CLOCK_DIV_WIDTH     = log2(CYCLE_COUNT);
-   
+
    localparam integer RESET_COUNT         = 100 * CYCLE_COUNT;
    localparam integer RESET_COUNTER_WIDTH = log2(RESET_COUNT);
 
    reg [CLOCK_DIV_WIDTH-1:0]             clock_div;           // Clock divider for a cycle
    reg [RESET_COUNTER_WIDTH-1:0]         reset_counter;       // Counter for a reset cycle
-   
+
    localparam STATE_RESET    = 3'd0;
    localparam STATE_LATCH    = 3'd1;
    localparam STATE_PRE      = 3'd2;
@@ -67,11 +67,11 @@ module ws2811
    localparam COLOR_R     = 2'd1;
    localparam COLOR_B     = 2'd2;
    reg [1:0]                           color;              // Current color being transferred
-                          
+
    reg [7:0]                           red;
    reg [7:0]                           green;
    reg [7:0]                           blue;
-   
+
    reg [7:0]                           current_byte;       // Current byte to send
    reg [2:0]                           current_bit;        // Current bit index to send
 
@@ -83,7 +83,7 @@ module ws2811
 
    assign data_request = reset_almost_done || led_almost_done;
    assign new_address  = (state == STATE_PRE) && (current_bit == 7);
-   
+
    always @ (posedge clk) begin
       if (reset) begin
          address <= 0;
@@ -105,21 +105,20 @@ module ws2811
               else begin
                  reset_counter <= reset_counter + 1;
               end
-           end // case: STATE_RESET
+           end
            STATE_LATCH: begin
-              // Latch the input
+              // Latch the input (green latched into current_byte)
               red <= red_in;
-//              green <= green_in;
               blue <= blue_in;
 
               // Setup the new address
               address <= address + 1;
-              
+
               // Start sending green
               color <= COLOR_G;
               current_byte <= green_in;
               current_bit <= 7;
-              
+
               state <= STATE_PRE;
            end
            STATE_PRE: begin
@@ -189,5 +188,5 @@ module ws2811
          endcase
       end
    end
-   
+
 endmodule

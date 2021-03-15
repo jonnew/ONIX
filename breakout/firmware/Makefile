@@ -16,11 +16,14 @@
 
 #TOP = breakout
 #TOP = clk_div
-TOP = breakout_to_host
+#TOP = breakout_to_host
 #TOP = host_to_breakout
 #TOP = host_to_breakout2
 #TOP = handshake_sync
 #TOP = user_io
+#TOP = uart_debugger
+#TOP = input_debug
+TOP = neopix_controller
 
 PIN_DEF = breakout.pcf
 DEVICE = lp8k
@@ -37,7 +40,7 @@ all: $(TOP).rpt $(TOP).bin
 
 # PnR
 %.asc: $(PIN_DEF) %.json
-	nextpnr-ice40 --lp8k --package cm81 --json $(word 2,$^) --pcf $(word 1,$^) --asc $@ #--gui
+	nextpnr-ice40 --seed 11 --lp8k --package cm81 --json $(word 2,$^) --pcf $(word 1,$^) --asc $@ #--gui
 
 # Write binary
 %.bin: %.asc

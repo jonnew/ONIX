@@ -194,12 +194,14 @@ assign io_sda       = i2c_sda_t ? 1'bz : i2c_sda_o;
 //assign o_state      = state;
 
 // Host control over port relay state
+// NB: PortA-D is in reverse order of HS0-3 on the board
 reg [3:0] relay_and;
-always @(posedge i_clk)
-    relay_and <= {i_portd_status != 2'b11,
-                  i_portc_status != 2'b11,
+always @(posedge i_clk) begin
+    relay_and <= {i_porta_status != 2'b11,
                   i_portb_status != 2'b11,
-                  i_porta_status != 2'b11};
+                  i_portc_status != 2'b11,
+                  i_portd_status != 2'b11};
+end
 
 // Meta-states
 reg [2:0] i2c_idx = 0;
@@ -220,8 +222,8 @@ initial begin
     I2C_WR_REG_ADR[5] = 8'h01; // Input reg 1
 end
 
-// First two registers determine pin direction 
-// Last two registers deterimine write data if any of the pins are outputs
+// First two registers determine pin direction
+// Last two registers determine write data if any of the pins are outputs
 always @* begin
     i2c_wr_reg_val[0] = 8'b11101010; // Config reg 0 value (1 = input, 0 = output)
     i2c_wr_reg_val[1] = 8'b01111111; // Config reg 1 value (1 = input, 0 = output)
@@ -402,9 +404,9 @@ always @ (posedge i_clk) begin
 
                 // Pull data from read buffer
                 if (i2c_idx == 4) begin
-                    o_link_pow[2] <= wb_data_out[0] & wb_data_out[1];
-                    o_link_pow[1] <= wb_data_out[2] & wb_data_out[3];
-                    o_link_pow[0] <= wb_data_out[4] & wb_data_out[5];
+                    o_link_pow[2] <= wb_data_out[1] & wb_data_out[0];
+                    o_link_pow[1] <= wb_data_out[3] & wb_data_out[2];
+                    o_link_pow[0] <= wb_data_out[5] & wb_data_out[4];
                     o_button[5] <= !wb_data_out[6];
                     o_button[3] <= !wb_data_out[7];
                     i2c_idx <= i2c_idx + 1;
@@ -415,6 +417,8 @@ always @ (posedge i_clk) begin
                     o_button[2] <= !wb_data_out[5];
                     o_link_pow[3] <= wb_data_out[6] & wb_data_out[7];
                     in_write <= 1'b1; // Go to read meta-state
+                    // TODO: should this be 2? We are reconfiguring the chip
+                    // every cycle
                     i2c_idx <= 0; //2; // Reset to start of cycle
                 end
 

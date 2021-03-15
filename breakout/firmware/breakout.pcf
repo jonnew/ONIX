@@ -35,6 +35,7 @@
 
 ####
 # TinyFPGA BX information: https://github.com/tinyfpga/TinyFPGA-BX/
+# This PCF is for ONIX Breakout Revision 1.5
 ####
 
 # Left side of board
@@ -79,7 +80,7 @@ set_io --warn-no-port PIN_26 J3
 set_io --warn-no-port PIN_27 J4
 set_io --warn-no-port PIN_28 G9
 set_io --warn-no-port PIN_29 J9
-set_io --warn-no-port PIN_30 E8
+set_io --warn-no-port UART E8               # Pin 30
 set_io --warn-no-port PIN_31 J2
 
 # LED
