@@ -59,26 +59,3 @@ sudo apt-get install gtkwave
 
 Then simply `make test`. You can look at the resulting `.vcd` files using
 gtkwave using `make view-test`.
-
-### PLL
-The PLL module was generated with `icepll`
-
-```
-icepll -i 16 -o 200 -f pll.v -m -n pll
-
-F_PLLIN:    16.000 MHz (given)
-F_PLLOUT:  200.000 MHz (requested)
-F_PLLOUT:  200.000 MHz (achieved)
-
-FEEDBACK: SIMPLE
-F_PFD:   16.000 MHz
-F_VCO:  800.000 MHz
-
-DIVR:  0 (4'b0000)
-DIVF: 49 (7'b0110001)
-DIVQ:  2 (3'b010)
-
-FILTER_RANGE: 1 (3'b001)
-
-PLL configuration written to: pll.v
-```
