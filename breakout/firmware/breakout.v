@@ -4,22 +4,20 @@
 // 1. It is meant, insofar as possible, to be a zero-latency "view" into the
 // hardware on the breakout board that is controlled by the host.
 //
-// 2. The clock governing the whole board is derived from an LVDS line coming
-// from the host board. The PLL is locked to this clock for data transmission.
-// Data coming to the breakout board is synchronous to the LVDS clock and
-// data going out of the breakout board is sychronous to the PLL-generated
-// clock.
-//
-// 3. Have a look at host_to_breakout.v and breakout_to_host.v for
+// 2. The clock governing board functions is derived from an LVDS line coming
+// from the host. The PLL is locked to this clock for data transmission. Data
+// coming to the breakout board is synchronous to the LVDS clock and data
+// going out of the breakout board is synchronous to the PLL-generated clock.
+// Have a look at host_to_breakout.v and breakout_to_host.v for
 // descriptions of data packet format.
 //
-// 4. There is no error correction or CRC, currently.
+// 3. There is no error correction or CRC, currently.
 //
 // COMPATIBILITY:
 // - fmc-host rev. 1.4
 // - fmc-host rev. 1.5
 
-// NB: Uncomment to indentify implicity declared nets
+// NB: Uncomment to identify implicitly-declared nets
 `default_nettype none
 
 `include "pll_10_60_2ns.v"
@@ -101,8 +99,8 @@ pll_10_60_2ns pll_sys(LVDS_IN[0], sys_clk, pll_locked); // 60 MHz sys clk
 
 // Watchdog
 // Power on & pll lock-induced reset
-reg [15:0] reset_cnt = 0;
-assign reset = ~reset_cnt[15];
+reg [23:0] reset_cnt = 0; // ~0.5 sec at 16 MHz
+assign reset = ~reset_cnt[23];
 always @(posedge XTAL)
     if (pll_locked)
         reset_cnt <= reset_cnt + reset;
@@ -168,7 +166,7 @@ host_to_breakout h2b (
 //    .DATA_BYTES(6),
 //    .CLK_RATE_HZ(60_000_000),
 //    .DEAD_CLKS(6000)
-//) uut1 (
+//) debugger (
 //    .i_clk(sys_clk),
 //    .i_reset(reset),
 //    .i_data_valid(slow_word_valid),
@@ -224,68 +222,68 @@ assign LED = 0;
 assign USBPU = 0;
 
 // Enable pullups on the digital input port
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din0 (
-  .PACKAGE_PIN(D_IN0),
-  .D_IN_0(d_in_pu[0])
+    .PACKAGE_PIN(D_IN0),
+    .D_IN_0(d_in_pu[0])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din1 (
-  .PACKAGE_PIN(D_IN1),
-  .D_IN_0(d_in_pu[1])
+    .PACKAGE_PIN(D_IN1),
+    .D_IN_0(d_in_pu[1])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din2 (
-  .PACKAGE_PIN(D_IN2),
-  .D_IN_0(d_in_pu[2])
+    .PACKAGE_PIN(D_IN2),
+    .D_IN_0(d_in_pu[2])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din3 (
-  .PACKAGE_PIN(D_IN3),
-  .D_IN_0(d_in_pu[3])
+    .PACKAGE_PIN(D_IN3),
+    .D_IN_0(d_in_pu[3])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din4 (
-  .PACKAGE_PIN(D_IN4),
-  .D_IN_0(d_in_pu[4])
+    .PACKAGE_PIN(D_IN4),
+    .D_IN_0(d_in_pu[4])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din5 (
-  .PACKAGE_PIN(D_IN5),
-  .D_IN_0(d_in_pu[5])
+    .PACKAGE_PIN(D_IN5),
+    .D_IN_0(d_in_pu[5])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din6 (
-  .PACKAGE_PIN(D_IN6),
-  .D_IN_0(d_in_pu[6])
+    .PACKAGE_PIN(D_IN6),
+    .D_IN_0(d_in_pu[6])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din7 (
-  .PACKAGE_PIN(D_IN7),
-  .D_IN_0(d_in_pu[7])
+    .PACKAGE_PIN(D_IN7),
+    .D_IN_0(d_in_pu[7])
 );
 
 endmodule

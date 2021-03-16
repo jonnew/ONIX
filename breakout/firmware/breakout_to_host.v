@@ -13,7 +13,7 @@ module breakout_to_host (
     input   wire [5:0]  i_button,
     input   wire [3:0]  i_link_pow,
 
-    // Serial outputs (2x i_clk due to DDR)
+    // Serial outputs (2x i_clk frequency due to DDR)
     output  wire        o_clk_s,
     output  wire        o_d0_s,
     output  wire        o_d1_s
