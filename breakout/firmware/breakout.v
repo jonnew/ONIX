@@ -1,28 +1,34 @@
+// NOTES:
 // Facts about this design:
 //
 // 1. It is meant, insofar as possible, to be a zero-latency "view" into the
 // hardware on the breakout board that is controlled by the host.
 //
-// 2. The clock governing the whole board is derived from an LVDS line coming
-// from the host board. The PLL is locked to this clock for data transmission.
-// Data coming to the breakout board is synchronous to the LVDS clock and
-// data going out of the breakout board is sychronous to the PLL-generated
-// clock.
-//
-// 3. Have a look at host_to_breakout.v and breakout_to_host.v for
+// 2. The clock governing board functions is derived from an LVDS line coming
+// from the host. The PLL is locked to this clock for data transmission. Data
+// coming to the breakout board is synchronous to the LVDS clock and data
+// going out of the breakout board is synchronous to the PLL-generated clock.
+// Have a look at host_to_breakout.v and breakout_to_host.v for
 // descriptions of data packet format.
 //
-// 4. There is no error correction or CRC, currently.
+// 3. There is no error correction or CRC, currently.
+//
+// COMPATIBILITY:
+// - fmc-host rev. 1.4
+// - fmc-host rev. 1.5
 
-//`include "pll_10_60.v"
+// NB: Uncomment to identify implicitly-declared nets
+`default_nettype none
+
 `include "pll_10_60_2ns.v"
-//`include "pll_16_60_2ns.v"
 //`include "pll_16_60.v"
 `include "breakout_to_host.v"
 `include "host_to_breakout.v"
 `include "user_io.v"
 `include "harp_sync.v"
 `include "neopix_controller.v"
+//`include "uart_debugger.v"
+`include "uart_tx.v"
 
 module breakout (
     input   wire            XTAL,    // 16MHz clock
@@ -42,7 +48,10 @@ module breakout (
     output  wire            HARP_CLK_OUT,
     output  wire            LED,   // User/boot LED next to power LED
     output  wire            USBPU, // USB pull-up resistor
-    output  wire            NEOPIX
+    output  wire            NEOPIX,
+
+    // Debug
+    output  wire            UART
 
     //// Simulation
     //output   wire            I2C_SCL,
@@ -54,9 +63,14 @@ module breakout (
 reg reset;
 wire [5:0] buttons;
 wire [3:0] link_pow;
+wire harp_hb;
 
 // Host to breakout slow word results
-wire [7:0] ledlevel;
+//wire slow_word_valid;
+//wire [47:0] slow_word;
+wire acq_running;
+wire acq_reset_done;
+wire [3:0] ledlevel;
 wire [1:0] ledmode;
 wire [1:0] porta_status;
 wire [1:0] portb_status;
@@ -83,16 +97,18 @@ pll_10_60_2ns pll_sys(LVDS_IN[0], sys_clk, pll_locked); // 60 MHz sys clk
 //assign reset = 0;
 //assign sys_clk = PLL_SIM;
 
-// Power on reset
-reg [8:0] reset_cnt = 0;
-assign reset = ~reset_cnt[8];
-always @(posedge sys_clk)
+// Watchdog
+// Power on & pll lock-induced reset
+reg [23:0] reset_cnt = 0; // ~0.5 sec at 16 MHz
+assign reset = ~reset_cnt[23];
+always @(posedge XTAL)
     if (pll_locked)
         reset_cnt <= reset_cnt + reset;
+    else
+        reset_cnt <= 0;
 
 // IO expander
 // ---------------------------------------------------------------
-
 user_io # (
     .CLK_RATE_HZ(60_000_000),
     .I2C_CLK_RATE_HZ(400_000)
@@ -107,14 +123,13 @@ user_io # (
     .o_link_pow(link_pow),
     .io_scl(I2C_SCL),
     .io_sda(I2C_SDA)
-    //.o_state(D_OUT[4:0])
 );
 
 // Breakout to host
 // ---------------------------------------------------------------
 breakout_to_host b2h (
     .i_clk(sys_clk),
-    .i_port(D_IN),
+    .i_port(d_in_pu),
     .i_button(buttons),
     .i_link_pow(link_pow),
     .o_clk_s(LVDS_OUT[0]),
@@ -124,11 +139,16 @@ breakout_to_host b2h (
 
 // Host to breakout
 // ---------------------------------------------------------------
+
 host_to_breakout h2b (
-    .i_clk(sys_clk), // Synchronous to LVDS_IN[0]
+    .i_clk(sys_clk),        // Synchronous to LVDS_IN[0]
     .i_clk_s(LVDS_IN[0]),
     .i_d0_s(LVDS_IN[1]),
     .o_port(D_OUT),
+    //.o_reset(TODO),       // Not convinced this needed or good
+    //.o_reserved(TODO),
+    .o_acq_running(acq_running),
+    .o_acq_reset_done(acq_reset_done),
     .o_ledlevel(ledlevel),
     .o_ledmode(ledmode),
     .o_porta_status(porta_status),
@@ -139,9 +159,20 @@ host_to_breakout h2b (
     .o_harp_conf(harp_conf),
     .o_gpio_dir(gpio_dir)
     //.o_slow_valid(slow_word_valid),
-    //.o_slow_value(slow_word),
-    //.o_reset(open), // TODO
+    //.o_slow_value(slow_word)
 );
+
+//uart_debugger # (
+//    .DATA_BYTES(6),
+//    .CLK_RATE_HZ(60_000_000),
+//    .DEAD_CLKS(6000)
+//) debugger (
+//    .i_clk(sys_clk),
+//    .i_reset(reset),
+//    .i_data_valid(slow_word_valid),
+//    .i_data(slow_word),
+//    .o_uart_tx(UART)
+//);
 
 // HARP
 // ---------------------------------------------------------------
@@ -163,11 +194,12 @@ neopix_controller # (
     .i_clk(sys_clk),
     .i_reset(reset),
     .i_harp_hb(harp_hb),
-    .i_pll_lock(pll_locked),
     .i_link_pow(link_pow),
     .i_button(buttons),
     .i_din_state(d_in_pu),
     .i_dout_state(D_OUT),
+    .i_acq_running(acq_running),
+    .i_acq_reset_done(acq_reset_done),
     .i_ledlevel(ledlevel),
     .i_ledmode(ledmode),
     .i_porta_status(porta_status),
@@ -183,75 +215,75 @@ neopix_controller # (
 // IO settings
 // ---------------------------------------------------------------
 
-// Ony indicate progrmaming mode
-assign LED = 0; //pll_locked;
+// Only indicate programming mode (important for in the field programming)
+assign LED = 0;
 
 // Drive USB pull-up resistor to '0' to disable USB
 assign USBPU = 0;
 
 // Enable pullups on the digital input port
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din0 (
-  .PACKAGE_PIN(D_IN0),
-  .D_IN_0(d_in_pu[0])
+    .PACKAGE_PIN(D_IN0),
+    .D_IN_0(d_in_pu[0])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din1 (
-  .PACKAGE_PIN(D_IN1),
-  .D_IN_0(d_in_pu[1])
+    .PACKAGE_PIN(D_IN1),
+    .D_IN_0(d_in_pu[1])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din2 (
-  .PACKAGE_PIN(D_IN2),
-  .D_IN_0(d_in_pu[2])
+    .PACKAGE_PIN(D_IN2),
+    .D_IN_0(d_in_pu[2])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din3 (
-  .PACKAGE_PIN(D_IN3),
-  .D_IN_0(d_in_pu[3])
+    .PACKAGE_PIN(D_IN3),
+    .D_IN_0(d_in_pu[3])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din4 (
-  .PACKAGE_PIN(D_IN4),
-  .D_IN_0(d_in_pu[4])
+    .PACKAGE_PIN(D_IN4),
+    .D_IN_0(d_in_pu[4])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din5 (
-  .PACKAGE_PIN(D_IN5),
-  .D_IN_0(d_in_pu[5])
+    .PACKAGE_PIN(D_IN5),
+    .D_IN_0(d_in_pu[5])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din6 (
-  .PACKAGE_PIN(D_IN6),
-  .D_IN_0(d_in_pu[6])
+    .PACKAGE_PIN(D_IN6),
+    .D_IN_0(d_in_pu[6])
 );
 
-SB_IO #(
-  .PIN_TYPE(6'b 0000_01),
-  .PULLUP(1'b 1)
+SB_IO # (
+    .PIN_TYPE(6'b 0000_01),
+    .PULLUP(1'b 1)
 ) din7 (
-  .PACKAGE_PIN(D_IN7),
-  .D_IN_0(d_in_pu[7])
+    .PACKAGE_PIN(D_IN7),
+    .D_IN_0(d_in_pu[7])
 );
 
 endmodule

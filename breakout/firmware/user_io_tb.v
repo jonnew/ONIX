@@ -37,7 +37,7 @@ module user_io_tb;
 
     // 50 MHz Clk
     always
-    #20 i_clk = ~i_clk;
+    #10 i_clk = ~i_clk;
 
     // Simulus
     initial begin

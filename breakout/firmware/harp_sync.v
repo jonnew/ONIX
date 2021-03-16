@@ -1,5 +1,5 @@
-`include "uart_tx.v" 
-`include "harp_counter.v" 
+//`include "uart_tx.v"
+`include "harp_counter.v"
 
 module harp_sync # (
     parameter CLK_RATE_HZ = 1000000
@@ -10,7 +10,7 @@ module harp_sync # (
     output TX,
     output LED
 );
-    
+
 wire [7:0] uart_data;
 wire uart_start;
 wire uart_finish;

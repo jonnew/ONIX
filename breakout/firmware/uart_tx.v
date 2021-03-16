@@ -1,6 +1,5 @@
 module uart_tx # (
-    parameter CLK_RATE_HZ = 1000000,
-    parameter COUNTER_WIDTH = $clog2(CLK_RATE_HZ / 100000)
+    parameter CLK_RATE_HZ = 50_000_000
 ) (
     input clk,
     input reset,
@@ -11,11 +10,10 @@ module uart_tx # (
     output reg UART_TX
 );
     
+localparam  CYCLES_PER_BIT = CLK_RATE_HZ / 115200;
+reg [$clog2(CYCLES_PER_BIT) - 1 : 0] counter = 'b0;
+
 reg [7:0] data_reg;
-
-localparam CYCLES_PER_BIT = CLK_RATE_HZ / 100000;
-
-reg [COUNTER_WIDTH - 1 : 0] counter = 'b0;
 
 localparam s_idle = 2'd0,
           s_start = 2'd1,

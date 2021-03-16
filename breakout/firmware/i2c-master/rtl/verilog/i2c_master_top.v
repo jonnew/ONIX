@@ -134,6 +134,9 @@ module i2c_master_top
 	wire ien;
 	wire slave_en;
 
+    wire slave_dat_req;
+	wire slave_dat_avail;
+
 	// status register signals
 	wire irxack;
 	reg  rxack;       // received aknowledge from slave

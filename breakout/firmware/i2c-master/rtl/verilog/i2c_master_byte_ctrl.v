@@ -160,7 +160,9 @@ module i2c_master_byte_ctrl
 	wire [7:0] 	slave_adr;
 
 
-   reg [1:0] 	slave_cmd;
+    reg [1:0] 	slave_cmd;
+
+    reg         slave_reset;
 	//
 	// Module body
 	//
