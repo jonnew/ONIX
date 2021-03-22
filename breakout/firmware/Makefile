@@ -15,6 +15,7 @@
 #  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 TOP = breakout
+#TOP = post_assembly_test
 #TOP = clk_div
 #TOP = breakout_to_host
 #TOP = host_to_breakout
@@ -25,7 +26,7 @@ TOP = breakout
 #TOP = input_debug
 #TOP = neopix_controller
 
-PIN_DEF = breakout.pcf
+PIN_DEF = $(TOP).pcf
 DEVICE = lp8k
 
 ALL_VER := $(wildcard *.v) $(wildcard */*.v)

@@ -1,0 +1,101 @@
+###############################################################################
+#
+# TinyFPGA BX constraint file (.pcf)
+#
+###############################################################################
+#
+# Copyright (c) 2018, Luke Valenty
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# The views and conclusions contained in the software and documentation are those
+# of the authors and should not be interpreted as representing official policies,
+# either expressed or implied, of the <project name> project.
+#
+###############################################################################
+
+####
+# TinyFPGA BX information: https://github.com/tinyfpga/TinyFPGA-BX/
+# This PCF is for ONIX Breakout Revision 1.5
+####
+
+# Left side of board
+set_io --warn-no-port D_OUT[7] A2           # Pin 1
+set_io --warn-no-port D_OUT[6] A1           # Pin 2
+set_io --warn-no-port D_OUT[5] B1           # Pin 3
+set_io --warn-no-port D_OUT[4] C2           # Pin 4
+set_io --warn-no-port D_OUT[3] C1           # Pin 5
+set_io --warn-no-port D_OUT[2] D2           # Pin 6
+set_io --warn-no-port D_OUT[1] D1           # Pin 7
+set_io --warn-no-port D_OUT[0] E2           # Pin 8
+set_io --warn-no-port D_IN[3] E1              # Pin 9
+set_io --warn-no-port D_IN[4] G2              # Pin 10
+set_io --warn-no-port D_IN[5] H1              # Pin 11
+set_io --warn-no-port D_IN[6] J1              # Pin 12
+set_io --warn-no-port D_IN[7] H2              # Pin 13
+
+# Right side of board
+set_io --warn-no-port D_IN[0] H9              # Pin 14
+set_io --warn-no-port D_IN[1] D9              # Pin 15
+set_io --warn-no-port D_IN[2] D8              # Pin 16
+set_io --warn-no-port LVDS_IN[1] C9         # Pin 17
+set_io --warn-no-port LVDS_IN[0] A9         # Pin 18
+set_io --warn-no-port LVDS_OUT[0] B8        # Pin 19
+set_io --warn-no-port LVDS_OUT[1] A8        # Pin 20
+set_io --warn-no-port LVDS_OUT[2] B7        # Pin 21
+set_io --warn-no-port I2C_SDA A7            # Pin 22
+set_io --warn-no-port I2C_SCL B6            # Pin 23
+set_io --warn-no-port HARP_CLK_OUT A6       # Pin 24
+
+# SPI flash interface on bottom of board
+set_io --warn-no-port SPI_SS F7
+set_io --warn-no-port SPI_SCK G7
+set_io --warn-no-port SPI_IO0 G6
+set_io --warn-no-port SPI_IO1 H7
+set_io --warn-no-port SPI_IO2 H4
+set_io --warn-no-port SPI_IO3 J8
+
+# General purpose pins on bottom of board
+set_io --warn-no-port NEOPIX G1             # Pin 25
+set_io --warn-no-port PIN_26 J3
+set_io --warn-no-port PIN_27 J4
+set_io --warn-no-port PIN_28 G9
+set_io --warn-no-port PIN_29 J9
+set_io --warn-no-port UART E8               # Pin 30
+set_io --warn-no-port PIN_31 J2
+
+# LED
+set_io --warn-no-port LED B3
+
+# USB
+set_io --warn-no-port USBP B4
+set_io --warn-no-port USBN A4
+set_io --warn-no-port USBPU A3
+
+# 16MHz clock
+set_io --warn-no-port XTAL B2 # input
+
+# Clock constraints
+set_frequency XTAL 16
+set_frequency LVDS_IN[0] 10
+set_frequency sys_clk 60
+set_frequency LVDS_OUT[0] 12

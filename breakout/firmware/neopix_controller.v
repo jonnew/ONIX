@@ -162,41 +162,41 @@ always @ (*) begin
     rgb[24] = (led_mode3 & i_dout_state[0]) ? blue : off;
 
     // Port A (HS3 on the board)
-    if (!led_mode1 || i_porta_status == 1)
+    if (!led_mode1 || i_porta_status[1] == 0)
         rgb[25] = off;
-    else if (i_porta_status == 3)
+    else if (i_porta_status == 2'b11)
         rgb[25] = i_acq_running ? (i_harp_hb ? red : off) : red;
-    else if (i_link_pow[3] && i_porta_status == 2)
+    else if (i_link_pow[3] && i_porta_status == 2'b10)
         rgb[25] = purple;
     else
         rgb[25] = off;
 
     // Port B (HS2 on the board)
-    if (!led_mode1 || i_portb_status == 1)
+    if (!led_mode1 || i_portb_status[1] == 0)
         rgb[26] = off;
-    else if (i_portb_status == 3)
+    else if (i_portb_status == 2'b11)
         rgb[26] = i_acq_running ? (i_harp_hb ? red : off) : red;
-    else if (i_link_pow[2] && i_portb_status == 2)
+    else if (i_link_pow[2] && i_portb_status == 2'b10)
         rgb[26] = purple;
     else
         rgb[26] = off;
 
     // Port C (HS1 on the board)
-    if (!led_mode1 || i_portc_status == 1)
+    if (!led_mode1 || i_portc_status[1] == 0)
         rgb[27] = off;
-    else if (i_portc_status == 3)
+    else if (i_portc_status == 2'b11)
         rgb[27] = i_acq_running ? (i_harp_hb ? red : off) : red;
-    else if (i_link_pow[1] && i_portc_status == 2)
+    else if (i_link_pow[1] && i_portc_status == 2'b10)
         rgb[27] = purple;
     else
         rgb[27] = off;
 
     // Port D (HS0 on the board)
-    if (!led_mode1 || i_portd_status == 1)
+    if (!led_mode1 || i_portd_status[1] == 0)
         rgb[28] = off;
-    else if (i_portd_status == 3)
+    else if (i_portd_status == 2'b11)
         rgb[28] = i_acq_running ? (i_harp_hb ? red : off) : red;
-    else if (i_link_pow[0] && i_portd_status == 2)
+    else if (i_link_pow[0] && i_portd_status == 2'b10)
         rgb[28] = purple;
     else
         rgb[28] = off;

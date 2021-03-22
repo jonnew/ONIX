@@ -38,7 +38,7 @@
 // reserved     | NA
 // ledlevel     | 4 bit register for general LED brighness. 0 = dimmest, 16 = brightest
 // ledmode      | 2 bit register for LED mode. 0 = all off, 1 = only power/running, 2 = power/running, pll, harp, 3 = all on
-// portx_status | 2 bit register describing the headstage port state. 3 = locked, 2 = forced_off, 1 = on but no lock, 0 = off
+// portx_status | 2 bit register describing the headstage port state. Bit 1: port enabled. Bit 0: port locked.
 // aio_dir      | 12 bit register describing the direcitonality of each of the analog inputs. 0 = input, 1 = output.
 // harp_conf    | 2 bit register for possible future harp configuration.
 // gpio_dir     | 16 bit register for possible future digital io directionality configuration.

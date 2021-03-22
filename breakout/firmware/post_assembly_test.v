@@ -1,17 +1,5 @@
 // NOTES:
-// Facts about this design:
-//
-// 1. It is meant, insofar as possible, to be a zero-latency "view" into the
-// hardware on the breakout board that is controlled by the host.
-//
-// 2. The clock governing board functions is derived from an LVDS line coming
-// from the host. The PLL is locked to this clock for data transmission. Data
-// coming to the breakout board is synchronous to the LVDS clock and data
-// going out of the breakout board is synchronous to the PLL-generated clock.
-// Have a look at host_to_breakout.v and breakout_to_host.v for
-// descriptions of data packet format.
-//
-// 3. There is no error correction or CRC, currently.
+// This is top-level that is used for some basic post-assembly testing
 //
 // COMPATIBILITY:
 // - fmc-host rev. 1.4
@@ -20,8 +8,7 @@
 // NB: Uncomment to identify implicitly-declared nets
 `default_nettype none
 
-`include "pll_10_60_2ns.v"
-//`include "pll_16_60.v"
+`include "pll_16_60.v"
 `include "breakout_to_host.v"
 `include "host_to_breakout.v"
 `include "user_io.v"
@@ -30,16 +17,9 @@
 //`include "uart_debugger.v"
 `include "uart_tx.v"
 
-module breakout (
+module post_assembly_test (
     input   wire            XTAL,    // 16MHz clock
-    input   wire            D_IN0,   // Manual SB_IO means I can't use array
-    input   wire            D_IN1,
-    input   wire            D_IN2,
-    input   wire            D_IN3,
-    input   wire            D_IN4,
-    input   wire            D_IN5,
-    input   wire            D_IN6,
-    input   wire            D_IN7,
+    output  wire    [7:0]   D_IN,    // output for testing
     output  wire    [7:0]   D_OUT,
     input   wire    [1:0]   LVDS_IN,
     output  wire    [2:0]   LVDS_OUT,
@@ -80,18 +60,26 @@ wire [11:0] aio_dir;
 wire [1:0] harp_conf;
 wire [15:0] gpio_dir;
 
-// D_INs with pullup applied
-wire [7:0] d_in_pu;
+// Forced test state
+// ---------------------------------------------------------------
+assign D_OUT = 'b1111_1111; 
+assign D_IN = 'b1111_1111; // D_IN is an output so we can see if all ports are high
+assign acq_running = 'b1;
+assign acq_reset_done = 'b1;
+assign ledlevel = 'b1111; // Maximum brightness
+assign ledmode = 'b11; // All LEDs active
+assign porta_status = 'b11; // All ports are active
+assign portb_status = 'b11;
+assign portc_status = 'b11;
+assign portd_status = 'b11;
 
 // Main system clock
 // ---------------------------------------------------------------
 wire sys_clk;
 wire pll_locked ;
 
-pll_10_60_2ns pll_sys(LVDS_IN[0], sys_clk, pll_locked); // 60 MHz sys clk
-
 // Testing
-//pll_16_60 pll_sys(XTAL, sys_clk, pll_locked); // 60 MHz sys clk
+pll_16_60 pll_sys(XTAL, sys_clk, pll_locked); // 60 MHz sys clk
 
 // Simulation
 //assign reset = 0;
@@ -125,42 +113,6 @@ user_io # (
     .io_sda(I2C_SDA)
 );
 
-// Breakout to host
-// ---------------------------------------------------------------
-breakout_to_host b2h (
-    .i_clk(sys_clk),
-    .i_port(d_in_pu),
-    .i_button(buttons),
-    .i_link_pow(link_pow),
-    .o_clk_s(LVDS_OUT[0]),
-    .o_d0_s(LVDS_OUT[1]),
-    .o_d1_s(LVDS_OUT[2])
-);
-
-// Host to breakout
-// ---------------------------------------------------------------
-host_to_breakout h2b (
-    .i_clk(sys_clk),        // Synchronous to LVDS_IN[0]
-    .i_clk_s(LVDS_IN[0]),
-    .i_d0_s(LVDS_IN[1]),
-    .o_port(D_OUT),
-    //.o_reset(TODO),       // Not convinced this needed or good
-    //.o_reserved(TODO),
-    .o_acq_running(acq_running),
-    .o_acq_reset_done(acq_reset_done),
-    .o_ledlevel(ledlevel),
-    .o_ledmode(ledmode),
-    .o_porta_status(porta_status),
-    .o_portb_status(portb_status),
-    .o_portc_status(portc_status),
-    .o_portd_status(portd_status),
-    .o_aio_dir(aio_dir),
-    .o_harp_conf(harp_conf),
-    .o_gpio_dir(gpio_dir)
-    //.o_slow_valid(slow_word_valid),
-    //.o_slow_value(slow_word)
-);
-
 // HARP
 // ---------------------------------------------------------------
 harp_sync # (
@@ -183,7 +135,7 @@ neopix_controller # (
     .i_harp_hb(harp_hb),
     .i_link_pow(link_pow),
     .i_button(buttons),
-    .i_din_state(d_in_pu),
+    .i_din_state(D_IN),
     .i_dout_state(D_OUT),
     .i_acq_running(acq_running),
     .i_acq_reset_done(acq_reset_done),
@@ -208,70 +160,6 @@ assign LED = 0;
 // Drive USB pull-up resistor to '0' to disable USB
 assign USBPU = 0;
 
-// Enable pullups on the digital input port
-SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
-) din0 (
-    .PACKAGE_PIN(D_IN0),
-    .D_IN_0(d_in_pu[0])
-);
-
-SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
-) din1 (
-    .PACKAGE_PIN(D_IN1),
-    .D_IN_0(d_in_pu[1])
-);
-
-SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
-) din2 (
-    .PACKAGE_PIN(D_IN2),
-    .D_IN_0(d_in_pu[2])
-);
-
-SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
-) din3 (
-    .PACKAGE_PIN(D_IN3),
-    .D_IN_0(d_in_pu[3])
-);
-
-SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
-) din4 (
-    .PACKAGE_PIN(D_IN4),
-    .D_IN_0(d_in_pu[4])
-);
-
-SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
-) din5 (
-    .PACKAGE_PIN(D_IN5),
-    .D_IN_0(d_in_pu[5])
-);
-
-SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
-) din6 (
-    .PACKAGE_PIN(D_IN6),
-    .D_IN_0(d_in_pu[6])
-);
-
-SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
-) din7 (
-    .PACKAGE_PIN(D_IN7),
-    .D_IN_0(d_in_pu[7])
-);
 
 // Debugger
 // ---------------------------------------------------------------
