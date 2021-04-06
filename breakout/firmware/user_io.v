@@ -41,12 +41,13 @@ module user_io # (
     output  reg     [5:0]   o_button,
     output  reg     [3:0]   o_link_pow,
 
+`ifndef SIMULATION
     inout   wire            io_scl,
     inout   wire            io_sda
-
-    // Simulation
-    //output wire            io_scl,
-    //output wire            io_sda
+`else
+    output wire             io_scl,
+    output wire             io_sda
+`endif
 
     // Debug
     //output  wire    [4:0]   o_state
@@ -180,15 +181,20 @@ i2c_master_top # (
     .sda_padoen_o(i2c_sda_t)
 );
 
-//// Simulation
-//assign io_scl       = i2c_sda_o;
-//assign io_sda       = i2c_sda_o;
+`ifndef SIMULATION
 
 // I2C tristate mapping
 assign i2c_scl_i    = io_scl;
 assign io_scl       = i2c_scl_t ? 1'bz : i2c_sda_o;
 assign i2c_sda_i    = io_sda;
 assign io_sda       = i2c_sda_t ? 1'bz : i2c_sda_o;
+
+`else
+
+assign io_scl       = i2c_sda_o;
+assign io_sda       = i2c_sda_o;
+
+`endif
 
 // Debug
 //assign o_state      = state;

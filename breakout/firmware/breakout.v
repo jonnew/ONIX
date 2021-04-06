@@ -17,7 +17,7 @@
 // - fmc-host rev. 1.4
 // - fmc-host rev. 1.5
 
-// NB: Uncomment to identify implicitly-declared nets
+// NB: Used to identify implicitly-declared nets
 `default_nettype none
 
 `include "pll_10_60_2ns.v"
@@ -43,21 +43,21 @@ module breakout (
     output  wire    [7:0]   D_OUT,
     input   wire    [1:0]   LVDS_IN,
     output  wire    [2:0]   LVDS_OUT,
+    output  wire            HARP_CLK_OUT,
+    output  wire            LED,    // User/boot LED next to power LED
+    output  wire            USBPU,  // USB pull-up resistor
+    output  wire            NEOPIX,
+`ifndef SIMULATION
     inout   wire            I2C_SCL,
     inout   wire            I2C_SDA,
-    output  wire            HARP_CLK_OUT,
-    output  wire            LED,   // User/boot LED next to power LED
-    output  wire            USBPU, // USB pull-up resistor
-    output  wire            NEOPIX,
-
-    // Debug
-    output  wire            UART
-
-    //// Simulation
-    //output   wire            I2C_SCL,
-    //output   wire            I2C_SDA,
-    //input   wire             PLL_SIM
+`else
+    input   wire            PLL_SIM,
+    output  wire            I2C_SCL,
+    output  wire            I2C_SDA,
+`endif
+    output  wire            UART    // For debug
 );
+
 
 // Internal nets
 reg reset;
@@ -80,6 +80,9 @@ wire [11:0] aio_dir;
 wire [1:0] harp_conf;
 wire [15:0] gpio_dir;
 
+// DIN sample clock
+reg d_in_clk;
+
 // D_INs with pullup applied
 wire [7:0] d_in_pu;
 
@@ -88,14 +91,12 @@ wire [7:0] d_in_pu;
 wire sys_clk;
 wire pll_locked ;
 
+`ifndef SIMULATION
+
 pll_10_60_2ns pll_sys(LVDS_IN[0], sys_clk, pll_locked); // 60 MHz sys clk
 
 // Testing
 //pll_16_60 pll_sys(XTAL, sys_clk, pll_locked); // 60 MHz sys clk
-
-// Simulation
-//assign reset = 0;
-//assign sys_clk = PLL_SIM;
 
 // Watchdog
 // Power on & pll lock-induced reset
@@ -106,6 +107,13 @@ always @(posedge XTAL)
         reset_cnt <= reset_cnt + reset;
     else
         reset_cnt <= 0;
+
+`else
+
+assign reset = 0;
+assign sys_clk = PLL_SIM;
+
+`endif
 
 // IO expander
 // ---------------------------------------------------------------
@@ -132,6 +140,7 @@ breakout_to_host b2h (
     .i_port(d_in_pu),
     .i_button(buttons),
     .i_link_pow(link_pow),
+    .o_port_samp_clk(d_in_clk),
     .o_clk_s(LVDS_OUT[0]),
     .o_d0_s(LVDS_OUT[1]),
     .o_d1_s(LVDS_OUT[2])
@@ -208,69 +217,88 @@ assign LED = 0;
 // Drive USB pull-up resistor to '0' to disable USB
 assign USBPU = 0;
 
+// Digital inputs are sampled on the falling edge of lvds_out
+// The result is packed on the rising edge to avoid metastability
+
 // Enable pullups on the digital input port
 SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
+    .PIN_TYPE(6'b 0000_00),
+    .PULLUP(1'b1)
 ) din0 (
     .PACKAGE_PIN(D_IN0),
-    .D_IN_0(d_in_pu[0])
+    .D_IN_0(d_in_pu[0]),
+    .CLOCK_ENABLE(1'b1),
+    .INPUT_CLK(d_in_clk)
 );
 
 SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
+    .PIN_TYPE(6'b 0000_00),
+    .PULLUP(1'b1)
 ) din1 (
     .PACKAGE_PIN(D_IN1),
-    .D_IN_0(d_in_pu[1])
+    .D_IN_0(d_in_pu[1]),
+    .CLOCK_ENABLE(1'b1),
+    .INPUT_CLK(d_in_clk)
 );
 
 SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
+    .PIN_TYPE(6'b 0000_00),
+    .PULLUP(1'b1)
 ) din2 (
     .PACKAGE_PIN(D_IN2),
-    .D_IN_0(d_in_pu[2])
+    .D_IN_0(d_in_pu[2]),
+    .CLOCK_ENABLE(1'b1),
+    .INPUT_CLK(d_in_clk)
 );
 
 SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
+    .PIN_TYPE(6'b 0000_00),
+    .PULLUP(1'b1)
 ) din3 (
     .PACKAGE_PIN(D_IN3),
-    .D_IN_0(d_in_pu[3])
+    .D_IN_0(d_in_pu[3]),
+    .CLOCK_ENABLE(1'b1),
+    .INPUT_CLK(d_in_clk)
 );
 
 SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
+    .PIN_TYPE(6'b 0000_00),
+    .PULLUP(1'b1)
 ) din4 (
     .PACKAGE_PIN(D_IN4),
-    .D_IN_0(d_in_pu[4])
+    .D_IN_0(d_in_pu[4]),
+    .CLOCK_ENABLE(1'b1),
+    .INPUT_CLK(d_in_clk)
 );
 
 SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
+    .PIN_TYPE(6'b 0000_00),
+    .PULLUP(1'b1)
 ) din5 (
     .PACKAGE_PIN(D_IN5),
-    .D_IN_0(d_in_pu[5])
+    .D_IN_0(d_in_pu[5]),
+    .CLOCK_ENABLE(1'b1),
+    .INPUT_CLK(d_in_clk)
 );
 
 SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
+    .PIN_TYPE(6'b 0000_00),
+    .PULLUP(1'b1)
 ) din6 (
     .PACKAGE_PIN(D_IN6),
-    .D_IN_0(d_in_pu[6])
+    .D_IN_0(d_in_pu[6]),
+    .CLOCK_ENABLE(1'b1),
+    .INPUT_CLK(d_in_clk)
 );
 
 SB_IO # (
-    .PIN_TYPE(6'b 0000_01),
-    .PULLUP(1'b 1)
+    .PIN_TYPE(6'b 0000_00),
+    .PULLUP(1'b1)
 ) din7 (
     .PACKAGE_PIN(D_IN7),
-    .D_IN_0(d_in_pu[7])
+    .D_IN_0(d_in_pu[7]),
+    .CLOCK_ENABLE(1'b1),
+    .INPUT_CLK(d_in_clk)
 );
 
 // Debugger

@@ -13,6 +13,9 @@ module breakout_to_host (
     input   wire [5:0]  i_button,
     input   wire [3:0]  i_link_pow,
 
+    // Clock to sample i_port
+    output  wire        o_port_samp_clk,
+
     // Serial outputs (2x i_clk frequency due to DDR)
     output  wire        o_clk_s,
     output  wire        o_d0_s,
@@ -24,27 +27,33 @@ reg [9:0] shift_d0;
 reg [9:0] shift_d1;
 
 // Frame clock
-wire frame_clk;
+reg [9:0] shift_clk = 10'b1111100000;
+reg state = 0;
 
-// Shift clock
-reg [9:0] shift_clk = 10'b0000011111;
+// Out of phase with the DDR output clock
+assign o_port_samp_clk = shift_clk[4];
 
 // Shift out serialized data and clock 2 bits at a time
 always @ (posedge i_clk) begin
 
-    if (shift_clk == 10'b0001111100) begin // new sample
-        shift_d0 <= {i_link_pow[1:0], i_button[5:0], 2'b00};
-        shift_d1 <= {i_link_pow[3:2], i_port[7:0]};
+    if (shift_clk == 10'b0011111000) begin // new sample
+
+        shift_d0 <= {2'b00, i_button, i_link_pow[1:0]};
+        shift_d1 <= {i_port, i_link_pow[3:2]};
+        state <= 1;
 
     end else begin // 2 bits at time for DDR
-        shift_d0 <= {2'b00, shift_d0[9:2]};
-        shift_d1 <= {2'b00, shift_d1[9:2]};
+
+        shift_d0 <= {shift_d0[7:0], 2'b00};
+        shift_d1 <= {shift_d1[7:0], 2'b00};
+        state <= 0;
+
     end
 
-    shift_clk <= {shift_clk[1:0], shift_clk[9:2]};
+    shift_clk <= {shift_clk[7:0], shift_clk[9:8]};
 end
 
-// Finally, created serialized using DDR output drivers
+// Final serialized stream using DDR output drivers
 SB_IO # (
     .PIN_TYPE(6'b010000),
     .IO_STANDARD("SB_LVCMOS")
@@ -53,8 +62,8 @@ SB_IO # (
     .CLOCK_ENABLE(1'b1),
     .OUTPUT_CLK(i_clk),
     .OUTPUT_ENABLE(1'b1),
-    .D_OUT_0(shift_clk[1]),
-    .D_OUT_1(shift_clk[0])
+    .D_OUT_0(shift_clk[8]),
+    .D_OUT_1(shift_clk[9])
 );
 
 SB_IO # (
@@ -65,8 +74,8 @@ SB_IO # (
     .CLOCK_ENABLE(1'b1),
     .OUTPUT_CLK(i_clk),
     .OUTPUT_ENABLE(1'b1),
-    .D_OUT_0(shift_d0[1]),
-    .D_OUT_1(shift_d0[0])
+    .D_OUT_0(shift_d0[8]),
+    .D_OUT_1(shift_d0[9])
 );
 
 SB_IO # (
@@ -77,8 +86,8 @@ SB_IO # (
     .CLOCK_ENABLE(1'b1),
     .OUTPUT_CLK(i_clk),
     .OUTPUT_ENABLE(1'b1),
-    .D_OUT_0(shift_d1[1]),
-    .D_OUT_1(shift_d1[0])
+    .D_OUT_0(shift_d1[8]),
+    .D_OUT_1(shift_d1[9])
 );
 
 endmodule

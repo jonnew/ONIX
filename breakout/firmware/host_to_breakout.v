@@ -93,9 +93,8 @@ wire [1:0] ddr_d0_s;
 // Shift register state
 reg [11:0] shift_d0;
 reg [47:0] slow_shift = 0;
-//reg last_i_clk_s;
 
-// TODO: remove
+// Debug
 //assign o_ddr_debug = ~ddr_d0_s;
 //assign o_slow_shift_debug = slow_shift;
 //assign o_shift_d0_debug  = shift_d0;

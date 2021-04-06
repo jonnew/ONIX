@@ -19,13 +19,13 @@ TOP = breakout
 #TOP = clk_div
 #TOP = breakout_to_host
 #TOP = host_to_breakout
-#TOP = host_to_breakout2
 #TOP = handshake_sync
 #TOP = user_io
 #TOP = uart_debugger
 #TOP = input_debug
 #TOP = neopix_controller
 
+SIMFLAG =
 PIN_DEF = $(TOP).pcf
 DEVICE = lp8k
 
@@ -37,11 +37,11 @@ all: $(TOP).rpt $(TOP).bin
 
 # Synthesis
 %.json: %.v
-	yosys -p 'synth_ice40 -top $(TOP) -json $@' $<
+	yosys $(SIMFLAG) -p 'synth_ice40 -top $(TOP) -json $@' $<
 
 # PnR
 %.asc: $(PIN_DEF) %.json
-	nextpnr-ice40 --seed 1 --lp8k --package cm81 --json $(word 2,$^) --pcf $(word 1,$^) --asc $@ #--gui
+	nextpnr-ice40 --seed 3 --lp8k --package cm81 --json $(word 2,$^) --pcf $(word 1,$^) --asc $@ #--gui
 
 # Write binary
 %.bin: %.asc
@@ -53,7 +53,7 @@ all: $(TOP).rpt $(TOP).bin
 
 # Write pre-synthesis simulation files
 %_tb: %_tb.v %.v
-	iverilog -o $@ $^
+	iverilog $(SIMFLAG) -o $@ $^
 
 # Perform pre-synthesis simulation
 %_tb.vcd: %_tb
@@ -65,7 +65,7 @@ all: $(TOP).rpt $(TOP).bin
 
 # Write post-synthesis simulation files using primitives from $(CELLS)
 %_syntb.out: %_tb.v %_syn.v
-	iverilog -o $@ $^ `yosys-config --datdir/ice40/cells_sim.v`
+	iverilog $(SIMFLAG) -o $@ $^ `yosys-config --datdir/ice40/cells_sim.v`
 
 # Perform post-synthesis simulation
 %_syntb.vcd: %_syntb.out
@@ -73,10 +73,12 @@ all: $(TOP).rpt $(TOP).bin
 
 # Pre-synthesis simulation target
 .PHONY: sim
+sim: SIMFLAG = -DSIMULATION
 sim: $(TOP)_tb.vcd
 
 # Post-synthesis simulation target
 .PHONY: postsim
+postsim: SIMFLAG = -DSIMULATION
 postsim: $(TOP)_syntb.vcd
 
 # Program the board
