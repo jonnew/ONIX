@@ -107,113 +107,163 @@ reg [23:0] rgb [0:40];
 
 // LED use levels
 reg dark = 1'b0;
-reg released = 1'b1;
-wire led_mode1 = ~dark & (i_ledmode[0] | i_ledmode[1]);
-wire led_mode2 = ~dark & i_ledmode[1];
-wire led_mode3 = ~dark & (i_ledmode[0] & i_ledmode[1]);
+reg [1:0] button0_history = 2'b00;
 
 always @ (posedge i_clk) begin
 
-    if (i_button[0] && released) begin
+    button0_history <= {button0_history[0], i_button[0]};
+
+    if (button0_history == 2'b01) begin
         dark <= dark + 1;
-        released <= 1'b0;
-    end else if (!i_button[0]) begin
-        released <= 1'b1;
     end
 end
+
+// Port-specific running indicators
+reg [3:0] port_running = 4'b0000;
+reg [3:0] port_failed = 4'b0000;
+reg last_acq_running = 1'b0;
+
+always @ (posedge i_clk) begin
+
+    last_acq_running <= i_acq_running;
+
+    // NB: Internal, port-specific running flag only changes on running start,
+    // stop, or loss of lock or power
+    if (!last_acq_running && i_acq_running) begin
+
+        port_running <= {i_porta_status == 2'b11,
+                         i_portb_status == 2'b11,
+                         i_portc_status == 2'b11,
+                         i_portd_status == 2'b11};
+        port_failed <= 4'b0;
+
+    end else if(!i_acq_running) begin
+
+        port_running <= 4'b0;
+        port_failed <= 4'b0;
+
+    end else begin
+
+        // Requires !i_acq_running to reset latch
+        port_failed <= {port_failed[3] || (port_running[3] && i_porta_status != 2'b11),
+                        port_failed[2] || (port_running[2] && i_portb_status != 2'b11),
+                        port_failed[1] || (port_running[1] && i_portc_status != 2'b11),
+                        port_failed[0] || (port_running[0] && i_portd_status != 2'b11)};
+    end
+end
+
+wire leds_on = ~dark;
 
 // LED color logic
 always @ (*) begin
 
-    rgb[0] = led_mode1 ? yellow : off;
+    rgb[0] = leds_on ? yellow : off;
 
-    rgb[1] = led_mode2 ?
+    rgb[1] = leds_on ?
             (i_acq_reset_done ?
             (i_acq_running ?
             (i_harp_hb ?
             red : off) : red) : purple) : off;
 
-    //rgb[1] = (led_mode3 & i_button[5]) ? blue : off;
-    rgb[2] = (led_mode3 & i_button[5]) ? white : off;
-    rgb[3] = (led_mode3 & i_button[4]) ? white : off;
-    rgb[4] = (led_mode3 & i_button[3]) ? white : off;
-    rgb[5] = (led_mode3 & i_button[2]) ? white : off;
-    rgb[6] = (led_mode3 & i_button[1]) ? white : off;
+    rgb[2] = (leds_on & i_button[5]) ? yellow : off;
+    rgb[3] = (leds_on & i_button[4]) ? yellow : off;
+    rgb[4] = (leds_on & i_button[3]) ? yellow : off;
+    rgb[5] = (leds_on & i_button[2]) ? yellow : off;
+    rgb[6] = (leds_on & i_button[1]) ? yellow : off;
 
     rgb[7] = off; // TODO: "Host"
-    rgb[8] = (led_mode2 & i_harp_hb) ? red : off;
+    rgb[8] = (leds_on & i_harp_hb) ? red : off;
 
-    rgb[9]  = (led_mode3 & i_din_state[0]) ? blue : off;
-    rgb[10] = (led_mode3 & i_din_state[1]) ? blue : off;
-    rgb[11] = (led_mode3 & i_din_state[2]) ? blue : off;
-    rgb[12] = (led_mode3 & i_din_state[3]) ? blue : off;
-    rgb[13] = (led_mode3 & i_din_state[4]) ? blue : off;
-    rgb[14] = (led_mode3 & i_din_state[5]) ? blue : off;
-    rgb[15] = (led_mode3 & i_din_state[6]) ? blue : off;
-    rgb[16] = (led_mode3 & i_din_state[7]) ? blue : off;
+    rgb[9]  = (leds_on & i_din_state[0]) ? blue : off;
+    rgb[10] = (leds_on & i_din_state[1]) ? blue : off;
+    rgb[11] = (leds_on & i_din_state[2]) ? blue : off;
+    rgb[12] = (leds_on & i_din_state[3]) ? blue : off;
+    rgb[13] = (leds_on & i_din_state[4]) ? blue : off;
+    rgb[14] = (leds_on & i_din_state[5]) ? blue : off;
+    rgb[15] = (leds_on & i_din_state[6]) ? blue : off;
+    rgb[16] = (leds_on & i_din_state[7]) ? blue : off;
 
-    rgb[17] = (led_mode3 & i_dout_state[7]) ? blue : off;
-    rgb[18] = (led_mode3 & i_dout_state[6]) ? blue : off;
-    rgb[19] = (led_mode3 & i_dout_state[5]) ? blue : off;
-    rgb[20] = (led_mode3 & i_dout_state[4]) ? blue : off;
-    rgb[21] = (led_mode3 & i_dout_state[3]) ? blue : off;
-    rgb[22] = (led_mode3 & i_dout_state[2]) ? blue : off;
-    rgb[23] = (led_mode3 & i_dout_state[1]) ? blue : off;
-    rgb[24] = (led_mode3 & i_dout_state[0]) ? blue : off;
+    rgb[17] = (leds_on & i_dout_state[7]) ? blue : off;
+    rgb[18] = (leds_on & i_dout_state[6]) ? blue : off;
+    rgb[19] = (leds_on & i_dout_state[5]) ? blue : off;
+    rgb[20] = (leds_on & i_dout_state[4]) ? blue : off;
+    rgb[21] = (leds_on & i_dout_state[3]) ? blue : off;
+    rgb[22] = (leds_on & i_dout_state[2]) ? blue : off;
+    rgb[23] = (leds_on & i_dout_state[1]) ? blue : off;
+    rgb[24] = (leds_on & i_dout_state[0]) ? blue : off;
+
+    // NB: These if statements make heavy use of decending case priority
+    // encoding
 
     // Port A (HS3 on the board)
-    if (!led_mode1 || i_porta_status[1] == 0)
+    if (!leds_on || i_porta_status == 2'b00)            // Dark or power off
         rgb[25] = off;
-    else if (i_porta_status == 2'b11)
-        rgb[25] = i_acq_running ? (i_harp_hb ? red : off) : red;
-    else if (i_link_pow[3] && i_porta_status == 2'b10)
+    else if (port_failed[3])                            // Link issue in the middle of acquisition
+        rgb[25] = orange;
+    else if (port_running[3])                           // Acquisition running
+        rgb[25] = i_harp_hb ? red : off;
+    else if (i_porta_status != 2'b01)                   // Locked
         rgb[25] = purple;
+    else if (i_link_pow[3] && i_porta_status == 2'b01)  // Power on, waiting for lock
+        rgb[25] = green;
     else
         rgb[25] = off;
 
     // Port B (HS2 on the board)
-    if (!led_mode1 || i_portb_status[1] == 0)
+    if (!leds_on || i_portb_status == 2'b00)            // Dark or power off
         rgb[26] = off;
-    else if (i_portb_status == 2'b11)
-        rgb[26] = i_acq_running ? (i_harp_hb ? red : off) : red;
-    else if (i_link_pow[2] && i_portb_status == 2'b10)
+    else if (port_failed[2])                            // Link issue in the middle of acquisition
+        rgb[26] = orange;
+    else if (port_running[2])                           // Acquisition running
+        rgb[26] = i_harp_hb ? red : off;
+    else if (i_portb_status != 2'b01)                   // Locked
         rgb[26] = purple;
+    else if (i_link_pow[2] && i_portb_status == 2'b01)  // Power on, waiting for lock
+        rgb[26] = green;
     else
         rgb[26] = off;
 
     // Port C (HS1 on the board)
-    if (!led_mode1 || i_portc_status[1] == 0)
+    if (!leds_on || i_portc_status == 2'b00)            // Dark or power off
         rgb[27] = off;
-    else if (i_portc_status == 2'b11)
-        rgb[27] = i_acq_running ? (i_harp_hb ? red : off) : red;
-    else if (i_link_pow[1] && i_portc_status == 2'b10)
+    else if (port_failed[1])                            // Link issue in the middle of acquisition
+        rgb[27] = orange;
+    else if (port_running[1])                           // Acquisition running
+        rgb[27] = i_harp_hb ? red : off;
+    else if (i_portc_status != 2'b01)                   // Locked
         rgb[27] = purple;
+    else if (i_link_pow[1] && i_portc_status == 2'b01)  // Power on, waiting for lock
+        rgb[27] = green;
     else
         rgb[27] = off;
 
     // Port D (HS0 on the board)
-    if (!led_mode1 || i_portd_status[1] == 0)
+    if (!leds_on || i_portd_status == 2'b00)            // Dark or power off
         rgb[28] = off;
-    else if (i_portd_status == 2'b11)
-        rgb[28] = i_acq_running ? (i_harp_hb ? red : off) : red;
-    else if (i_link_pow[0] && i_portd_status == 2'b10)
+    else if (port_failed[0])                            // Link issue in the middle of acquisition
+        rgb[28] = orange;
+    else if (port_running[0])                           // Acquisition running
+        rgb[28] = i_harp_hb ? red : off;
+    else if (i_portd_status != 2'b01)                   // Locked
         rgb[28] = purple;
+    else if (i_link_pow[0] && i_portd_status == 2'b01)  // Power on, waiting for lock
+        rgb[28] = green;
     else
         rgb[28] = off;
 
-    // Analog IO
-    rgb[29] = led_mode3 ? (i_aio_dir[11] ? green : brown) : off;
-    rgb[30] = led_mode3 ? (i_aio_dir[10] ? green : brown) : off;
-    rgb[31] = led_mode3 ? (i_aio_dir[9]  ? green : brown) : off;
-    rgb[32] = led_mode3 ? (i_aio_dir[8]  ? green : brown) : off;
-    rgb[33] = led_mode3 ? (i_aio_dir[7]  ? green : brown) : off;
-    rgb[34] = led_mode3 ? (i_aio_dir[6]  ? green : brown) : off;
-    rgb[35] = led_mode3 ? (i_aio_dir[0]  ? green : brown) : off;
-    rgb[36] = led_mode3 ? (i_aio_dir[1]  ? green : brown) : off;
-    rgb[37] = led_mode3 ? (i_aio_dir[2]  ? green : brown) : off;
-    rgb[38] = led_mode3 ? (i_aio_dir[3]  ? green : brown) : off;
-    rgb[39] = led_mode3 ? (i_aio_dir[4]  ? green : brown) : off;
-    rgb[40] = led_mode3 ? (i_aio_dir[5]  ? green : brown) : off;
+    // Analog IO. Input = green, output = red
+    rgb[29] = leds_on ? (i_aio_dir[11] ? red : green) : off;
+    rgb[30] = leds_on ? (i_aio_dir[10] ? red : green) : off;
+    rgb[31] = leds_on ? (i_aio_dir[9]  ? red : green) : off;
+    rgb[32] = leds_on ? (i_aio_dir[8]  ? red : green) : off;
+    rgb[33] = leds_on ? (i_aio_dir[7]  ? red : green) : off;
+    rgb[34] = leds_on ? (i_aio_dir[6]  ? red : green) : off;
+    rgb[35] = leds_on ? (i_aio_dir[0]  ? red : green) : off;
+    rgb[36] = leds_on ? (i_aio_dir[1]  ? red : green) : off;
+    rgb[37] = leds_on ? (i_aio_dir[2]  ? red : green) : off;
+    rgb[38] = leds_on ? (i_aio_dir[3]  ? red : green) : off;
+    rgb[39] = leds_on ? (i_aio_dir[4]  ? red : green) : off;
+    rgb[40] = leds_on ? (i_aio_dir[5]  ? red : green) : off;
 
 end
 

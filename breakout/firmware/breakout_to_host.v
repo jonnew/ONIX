@@ -5,6 +5,11 @@
 
 module breakout_to_host (
 
+    // Main clock coming from host, used to generate i_clk_s Using this to
+    // latch data inputs allows sampling to be synchronous with output updates
+    // in host_to_breakout
+    input   wire        i_clk_s,
+
     // 0.5 the frequency of underlying data clock
     input   wire        i_clk, // Full round robin is i_clk * 2 / 10.
 
@@ -22,6 +27,17 @@ module breakout_to_host (
     output  wire        o_d1_s
 );
 
+// Port sampling
+reg [7:0]  port;
+reg [5:0]  button;
+reg [3:0]  link_pow;
+
+always @ (posedge i_clk_s) begin
+    port <= i_port;
+    button <= i_button;
+    link_pow <= i_link_pow;
+end
+
 // Shifted, parallel words
 reg [9:0] shift_d0;
 reg [9:0] shift_d1;
@@ -38,8 +54,8 @@ always @ (posedge i_clk) begin
 
     if (shift_clk == 10'b0011111000) begin // new sample
 
-        shift_d0 <= {2'b00, i_button, i_link_pow[1:0]};
-        shift_d1 <= {i_port, i_link_pow[3:2]};
+        shift_d0 <= {2'b00, button, link_pow[1:0]};
+        shift_d1 <= {port, link_pow[3:2]};
         state <= 1;
 
     end else begin // 2 bits at time for DDR

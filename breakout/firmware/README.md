@@ -23,7 +23,6 @@ the testbenches you will need `yosys`,
 [`iverilog`](http://iverilog.icarus.com/), and
 [`gtkwave`](http://gtkwave.sourceforge.net/).
 
-
 ### Installing the Toolchain
 Install `yosys`:
 

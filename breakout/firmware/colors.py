@@ -53,8 +53,8 @@ def categorical_cmap(nc, nsc, cmap="tab10", continuous=False):
 #c1 = categorical_cmap(12, 16, cmap="Set3", continuous=True)[1]
 #plt.scatter(np.arange(160),np.ones(160)+5, c=np.arange(160), s=180, cmap=c1)
 #
-#c1 = categorical_cmap(10, 16, cmap="tab10", continuous=True)[1]
-#plt.scatter(np.arange(160),np.ones(160)+4, c=np.arange(160), s=180, cmap=c1)
+c1 = categorical_cmap(10, 16, cmap="tab10", continuous=True)[1]
+plt.scatter(np.arange(160),np.ones(160)+4, c=np.arange(160), s=180, cmap=c1)
 
 #c1 = categorical_cmap(8, 16, cmap="Accent", continuous=True)
 #plt.scatter(np.arange(160),np.ones(160)+3, c=np.arange(160), s=180, cmap=c1)
@@ -75,10 +75,26 @@ def categorical_cmap(nc, nsc, cmap="tab10", continuous=False):
 #plt.show()
 
 
+#
+
 
 #%% Create hex initialization file
 cols = categorical_cmap(10, 16, cmap="tab10", continuous=True)[0]
-cols = np.ceil(32.0 * cols)
+
+# The brightness of the colors needs to be really really toned down to look good on Neopixels
+cols_hsv = np.apply_along_axis(lambda c: colorsys.rgb_to_hsv(c[0], c[1], c[2]), 1, cols)
+cols_hsv[:,1] = 0.98;
+cols_hsv[:, 2] = 0.07 * cols_hsv[:, 2]
+cols = np.apply_along_axis(lambda c: colorsys.hsv_to_rgb(c[0], c[1], c[2]), 1, cols_hsv)
+cmap = matplotlib.colors.ListedColormap(cols)
+
+# plt.close('all')
+plt.figure()
+plt.scatter(np.arange(160),np.ones(160)+4, c=np.arange(160), s=180, cmap=cmap)
+
+
+#%%
+cols = np.ceil(255 * cols)
 cols = cols.astype('uint8') 
 
 f = open(r"colors.mem","w")
@@ -86,7 +102,7 @@ f = open(r"colors.mem","w")
 for r in cols:
     for i, e in enumerate(r):
         
-        if i is 2:
+        if i == 2:
             f.write('%02x'%e + '\n')
         else:
             f.write('%02x'%e)

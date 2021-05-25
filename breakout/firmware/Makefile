@@ -41,7 +41,7 @@ all: $(TOP).rpt $(TOP).bin
 
 # PnR
 %.asc: $(PIN_DEF) %.json
-	nextpnr-ice40 --seed 3 --lp8k --package cm81 --json $(word 2,$^) --pcf $(word 1,$^) --asc $@ #--gui
+	nextpnr-ice40 --seed 1 --lp8k --package cm81 --json $(word 2,$^) --pcf $(word 1,$^) --asc $@ #--gui
 
 # Write binary
 %.bin: %.asc

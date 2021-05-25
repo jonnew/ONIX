@@ -100,8 +100,8 @@ pll_10_60_2ns pll_sys(LVDS_IN[0], sys_clk, pll_locked); // 60 MHz sys clk
 
 // Watchdog
 // Power on & pll lock-induced reset
-reg [23:0] reset_cnt = 0; // ~0.5 sec at 16 MHz
-assign reset = ~reset_cnt[23];
+reg [20:0] reset_cnt = 0; // ~0.1 sec at 16 MHz
+assign reset = ~&reset_cnt;
 always @(posedge XTAL)
     if (pll_locked)
         reset_cnt <= reset_cnt + reset;
@@ -137,6 +137,7 @@ user_io # (
 // ---------------------------------------------------------------
 breakout_to_host b2h (
     .i_clk(sys_clk),
+    .i_clk_s(LVDS_IN[0]),
     .i_port(d_in_pu),
     .i_button(buttons),
     .i_link_pow(link_pow),

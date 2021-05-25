@@ -203,10 +203,10 @@ assign io_sda       = i2c_sda_o;
 // NB: PortA-D is in reverse order of HS0-3 on the board
 reg [3:0] relay_and;
 always @(posedge i_clk) begin
-    relay_and <= {i_porta_status[1] == 1,
-                  i_portb_status[1] == 1,
-                  i_portc_status[1] == 1,
-                  i_portd_status[1] == 1};
+    relay_and <= {i_porta_status != 2'b00,
+                  i_portb_status != 2'b00,
+                  i_portc_status != 2'b00,
+                  i_portd_status != 2'b00};
 end
 
 // Meta-states
