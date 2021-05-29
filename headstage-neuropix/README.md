@@ -1,21 +1,14 @@
-# headstage-neuropix
+# ONIX headstage-neuropix1
 Serialized, multifunction headstage targeting the neuropixels 1.0 probe. This
-headstages supports serialized acqusition from:
+headstage supports serialized acqusition from:
 
-- Two neuropixels 1.0 probes.
-- A BNO055 9-axis IMU for real-time, 3D orientation tracking.
-- Two TS4231 light to digital converters for real-time, 3D position tracking
+- Two neuropixels 1.0 probes
+- A BNO055 9-axis IMU for real-time, 3D orientation tracking
+- Three TS4231 light to digital converters for real-time, 3D position tracking
   with HTC Vive base stations
-- A high performance MAX10 FPGA for real-time processing
+- A high performance MAX10 FPGA for real-time processing and probe data
+  correction (offset removal and gain correction)
 
-## Schematic
-![headstage-neuropix Schematic](./img/headstage-neuropix_schematic.png)
-
-## Gerber Files
-{% include gerber_layers.md %}
-
-![headstage-neuropix Gerbers](./img/headstage-neuropix_gerbers.png)
-
-## Bill of Materials
-The BOM is located on [this google
-sheet](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit#gid=1284354220)
+There are two versions of this headstage in this repository, one that uses the
+standard IMEC-specified ZIF connector and a second that uses a larger, more
+reliable one.
