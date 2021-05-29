@@ -1,6 +1,6 @@
 # ONIX headstage-neuropix1
 Serialized, multifunction headstage targeting the neuropixels 1.0 probe. This
-headstage supports serialized acqusition from:
+headstage supports serialized acquisition from:
 
 - Two neuropixels 1.0 probes
 - A BNO055 9-axis IMU for real-time, 3D orientation tracking
