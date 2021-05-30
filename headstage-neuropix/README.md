@@ -1,4 +1,8 @@
 # ONIX headstage-neuropix1
+
+:warning: This headstage has moved to a dedicated repository: https://github.com/open-ephys/onix-headstage-neuropix1.
+This folder should be considered archived.
+
 Serialized, multifunction headstage targeting the neuropixels 1.0 probe. This
 headstage supports serialized acquisition from:
 
