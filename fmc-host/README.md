@@ -1,3 +1,6 @@
+:warning: This headstage has moved to a dedicated repository: https://github.com/open-ephys/onix-fmc-host.
+This folder should be considered archived.
+
 # FMC Host Board
 This card serves as host interface for serialized headstages and miniscopes, as
 well as general purpose analog and digital IO. This board is a VITA-57.1
