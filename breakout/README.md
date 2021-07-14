@@ -1,3 +1,6 @@
+:warning: This project has moved to a dedicated repository: https://github.com/open-ephys/onix-breakout
+This folder should be considered archived.
+
 # ONIX Breakout Board
 This board allows bench access to the IO provided by the
 [fmc-host board](../fmc-host/README.md). It features:
