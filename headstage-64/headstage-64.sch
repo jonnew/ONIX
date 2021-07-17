@@ -563,7 +563,7 @@
 <smd name="1" x="-0.43" y="0.33" dx="0.1" dy="0.1" layer="1" roundness="100" stop="no" thermals="no" cream="no"/>
 <smd name="4" x="0.43" y="0.33" dx="0.1" dy="0.1" layer="1" roundness="100" stop="no" thermals="no" cream="no"/>
 <smd name="3" x="0.43" y="-0.33" dx="0.1" dy="0.1" layer="1" roundness="100" stop="no" thermals="no" cream="no"/>
-<text x="3.5" y="-0.15" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-0.7" y="0.66" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <polygon width="0.0508" layer="29">
 <vertex x="0" y="0.33940625"/>
 <vertex x="0.33940625" y="0"/>
@@ -659,8 +659,8 @@
 <vertex x="-0.625" y="-0.245"/>
 </polygon>
 <rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="39"/>
-<circle x="-0.55" y="0.06" radius="0.1" width="0" layer="21"/>
 <rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="51"/>
+<wire x1="-0.58" y1="0.1" x2="-0.6" y2="0.1" width="0.127" layer="21"/>
 </package>
 <package name="0805T">
 <wire x1="-0.9652" y1="0.635" x2="0.9652" y2="0.635" width="0.1016" layer="51"/>
@@ -1467,14 +1467,15 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="-4.5" y1="3.5" x2="-4.5" y2="-3.5" width="0.127" layer="21"/>
 <wire x1="-4.5" y1="-3.5" x2="4.5" y2="-3.5" width="0.127" layer="21"/>
 <wire x1="4.5" y1="-3.5" x2="4.5" y2="3.5" width="0.127" layer="21"/>
-<polygon width="0.127" layer="21">
-<vertex x="-4.5" y="2.9"/>
-<vertex x="-3.9" y="3.5"/>
-<vertex x="-4.5" y="3.5"/>
-</polygon>
-<circle x="-4.5" y="3.5" radius="0.4" width="0" layer="21"/>
 <text x="-3" y="4" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-3" y="-5" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<polygon width="0.005" layer="21">
+<vertex x="-4.5" y="3.1" curve="-90"/>
+<vertex x="-4.9" y="3.5" curve="-90"/>
+<vertex x="-4.5" y="3.9" curve="-90"/>
+<vertex x="-4.1" y="3.5"/>
+<vertex x="-4.5" y="3.5"/>
+</polygon>
 </package>
 <package name="LPS3015">
 <smd name="1" x="-1.1" y="0" dx="1.14" dy="3.05" layer="1"/>
@@ -1704,8 +1705,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <smd name="1" x="-0.55" y="-0.4" dx="0.6" dy="0.5" layer="1" rot="R180"/>
 <smd name="2" x="0.55" y="-0.4" dx="0.6" dy="0.5" layer="1" rot="R180"/>
 <smd name="3" x="0.55" y="0.4" dx="0.6" dy="0.5" layer="1" rot="R180"/>
-<wire x1="-0.8" y1="0" x2="-0.1" y2="0" width="0.127" layer="21"/>
-<wire x1="-0.1" y1="0" x2="-0.1" y2="-0.7" width="0.127" layer="21"/>
+<wire x1="-0.8" y1="-0.75" x2="-0.3" y2="-0.75" width="0.127" layer="21"/>
 <rectangle x1="-0.8" y1="-0.6" x2="0.8" y2="0.6" layer="39"/>
 <wire x1="-0.8" y1="0.6" x2="0.8" y2="0.6" width="0.127" layer="51"/>
 <wire x1="0.8" y1="0.6" x2="0.8" y2="-0.6" width="0.127" layer="51"/>
@@ -1768,23 +1768,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <rectangle x1="-0.9" y1="-1.3" x2="0.9" y2="1.3" layer="39"/>
 </package>
 <package name="DF40-10HEAD_HALF">
-<circle x="-0.8234" y="-0.5542" radius="0.227184375" width="0.127" layer="21"/>
 <wire x1="-1.8" y1="-1" x2="-1.8" y2="1" width="0.127" layer="21"/>
-<wire x1="-1.8" y1="1" x2="1.8" y2="1" width="0.127" layer="21"/>
 <wire x1="1.8" y1="1" x2="1.8" y2="-1" width="0.127" layer="21"/>
-<wire x1="1.8" y1="-1" x2="-1.8" y2="-1" width="0.127" layer="21"/>
-<wire x1="-1.4" y1="0.5" x2="-1.4" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="-1.4" y1="-0.5" x2="-1.3" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="-1.4" y1="0.5" x2="1.4" y2="0.5" width="0.127" layer="21"/>
-<wire x1="1.4" y1="0.5" x2="1.4" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="1.4" y1="-0.5" x2="-0.4" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="-1.524" y1="1.27" x2="-1.524" y2="2.032" width="0.127" layer="21"/>
-<wire x1="-1.524" y1="2.032" x2="1.524" y2="2.032" width="0.127" layer="21"/>
-<wire x1="1.524" y1="2.032" x2="1.524" y2="1.27" width="0.127" layer="21"/>
-<wire x1="-0.762" y1="1.778" x2="-0.254" y2="1.27" width="0.127" layer="21"/>
-<wire x1="-0.254" y1="1.778" x2="-0.762" y2="1.27" width="0.127" layer="21"/>
-<wire x1="0.254" y1="1.778" x2="0.762" y2="1.27" width="0.127" layer="21"/>
-<wire x1="0.254" y1="1.27" x2="0.762" y2="1.778" width="0.127" layer="21"/>
 <rectangle x1="-2.4" y1="-1.7" x2="2.4" y2="1.7" layer="39"/>
 <smd name="1" x="-0.8" y="-1.585" dx="0.23" dy="0.75" layer="1" cream="no"/>
 <smd name="2" x="-0.4" y="-1.585" dx="0.23" dy="0.75" layer="1" cream="no"/>
@@ -2113,12 +2098,14 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="-2.6" y1="1.9" x2="2.6" y2="1.9" width="0.127" layer="21"/>
 <wire x1="2.6" y1="1.9" x2="2.6" y2="-1.9" width="0.127" layer="21"/>
 <wire x1="2.6" y1="-1.9" x2="-2.6" y2="-1.9" width="0.127" layer="21"/>
-<wire x1="-2.6" y1="-1.9" x2="-2.6" y2="1.9" width="0.127" layer="21"/>
-<circle x="-1.7" y="0.9" radius="0.22360625" width="0" layer="21"/>
+<wire x1="-2.6" y1="-1.9" x2="-2.6" y2="1.1" width="0.127" layer="21"/>
 <text x="-2.5" y="2.1" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
 <text x="-2.5938" y="-3.1748" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
-<wire x1="-1.7" y1="0.9" x2="-2.1" y2="1.2" width="0.127" layer="21"/>
 <rectangle x1="-2.6" y1="-1.9" x2="2.6" y2="1.9" layer="39"/>
+<wire x1="-2.6" y1="1.1" x2="-2.6" y2="1.9" width="0.127" layer="21"/>
+<wire x1="-2.6" y1="1.9" x2="-2.7" y2="1.9" width="0.127" layer="21"/>
+<wire x1="-2.7" y1="1.9" x2="-2.7" y2="1.1" width="0.127" layer="21"/>
+<wire x1="-2.7" y1="1.1" x2="-2.6" y2="1.1" width="0.127" layer="21"/>
 </package>
 <package name="HEADSTAGE-64-REV1.4-DAUGHTER-CARD">
 <wire x1="-2.3" y1="0" x2="-2.8" y2="0" width="0.2" layer="51"/>
@@ -2396,6 +2383,105 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </polygon>
 <wire x1="-0.6604" y1="0" x2="-1.0414" y2="0" width="0.127" layer="51"/>
 <wire x1="0.635" y1="0" x2="1.0414" y2="0" width="0.127" layer="51"/>
+</package>
+<package name="0805PT-NOSILK">
+<wire x1="-0.9652" y1="0.635" x2="0.9652" y2="0.635" width="0.1016" layer="51"/>
+<wire x1="0.9652" y1="-0.635" x2="-0.9652" y2="-0.635" width="0.1016" layer="51"/>
+<smd name="A" x="-1" y="0" dx="0.7" dy="1.3" layer="1"/>
+<smd name="C" x="1" y="0" dx="0.7" dy="1.3" layer="1"/>
+<text x="-1.778" y="1.27" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-2.032" y="-2.286" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+<rectangle x1="-1.016" y1="-0.635" x2="-0.6096" y2="0.635" layer="51"/>
+<rectangle x1="0.6096" y1="-0.635" x2="1.016" y2="0.635" layer="51"/>
+<rectangle x1="-1" y1="-0.6" x2="1" y2="0.6" layer="39"/>
+</package>
+<package name="LTVH9G">
+<text x="-1.07" y="-1.27" size="1.016" layer="25" font="vector" ratio="18" rot="R90">&gt;NAME</text>
+<text x="2.74" y="-1.27" size="1.016" layer="27" font="vector" ratio="18" rot="R90">&gt;VALUE</text>
+<wire x1="-0.4088" y1="-1.0168" x2="-0.4088" y2="1.0168" width="0.127" layer="21"/>
+<wire x1="-0.4088" y1="1.0168" x2="0.6088" y2="1.0168" width="0.127" layer="21"/>
+<wire x1="0.6088" y1="1.0168" x2="0.6088" y2="-1.0168" width="0.127" layer="21"/>
+<wire x1="0.6088" y1="-1.0168" x2="-0.4088" y2="-1.0168" width="0.127" layer="21"/>
+<smd name="A" x="0.1" y="0.5166" dx="0.1" dy="0.1" layer="1" rot="R90" stop="no" cream="no"/>
+<smd name="C" x="0.1" y="-0.5166" dx="0.1" dy="0.1" layer="1" rot="R90" stop="no" cream="no"/>
+<rectangle x1="-0.1" y1="-0.675" x2="0.3" y2="-0.15" layer="29"/>
+<rectangle x1="-0.1" y1="0.15" x2="0.3" y2="0.675" layer="29" rot="R180"/>
+<polygon width="0" layer="31">
+<vertex x="0.1" y="-0.18"/>
+<vertex x="0.29" y="-0.18"/>
+<vertex x="0.29" y="-0.66"/>
+<vertex x="-0.09" y="-0.66"/>
+<vertex x="-0.09" y="-0.35"/>
+<vertex x="0.1" y="-0.35"/>
+</polygon>
+<polygon width="0" layer="31">
+<vertex x="0.1" y="0.18"/>
+<vertex x="0.29" y="0.18"/>
+<vertex x="0.29" y="0.66"/>
+<vertex x="-0.09" y="0.66"/>
+<vertex x="-0.09" y="0.35"/>
+<vertex x="0.1" y="0.35"/>
+</polygon>
+<rectangle x1="-0.3" y1="0.175" x2="0.5" y2="0.9" layer="1"/>
+<rectangle x1="-0.3" y1="-0.9" x2="0.5" y2="-0.175" layer="1" rot="R180"/>
+</package>
+<package name="SIT8008BCA7-18E">
+<smd name="1" x="-0.75" y="-0.6" dx="0.9" dy="0.8" layer="1" rot="R180"/>
+<smd name="2" x="0.75" y="-0.6" dx="0.9" dy="0.8" layer="1" rot="R180"/>
+<smd name="4" x="-0.75" y="0.6" dx="0.9" dy="0.8" layer="1" rot="R180"/>
+<smd name="3" x="0.75" y="0.6" dx="0.9" dy="0.8" layer="1" rot="R180"/>
+<rectangle x1="-1" y1="-0.8" x2="1" y2="0.8" layer="39"/>
+<text x="-1.2" y="1.3" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.2" y="-2.3" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="XTAL4-2X1.6">
+<smd name="1" x="-0.7" y="-0.525" dx="0.9" dy="0.8" layer="1" rot="R180"/>
+<smd name="2" x="0.7" y="-0.525" dx="0.9" dy="0.8" layer="1" rot="R180"/>
+<smd name="4" x="-0.7" y="0.525" dx="0.9" dy="0.8" layer="1" rot="R180"/>
+<smd name="3" x="0.7" y="0.525" dx="0.9" dy="0.8" layer="1" rot="R180"/>
+<rectangle x1="-1" y1="-0.8" x2="1" y2="0.8" layer="39"/>
+<text x="-1.2" y="1.3" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<text x="-1.2" y="-2.3" size="1.016" layer="27" font="vector" ratio="18">&gt;VALUE</text>
+</package>
+<package name="VFLGA4-2.0X1.6">
+<smd name="4" x="-0.775" y="0.475" dx="0.4" dy="0.7" layer="1"/>
+<smd name="1" x="-0.725" y="-0.425" dx="0.5" dy="0.57" layer="1" cream="no"/>
+<smd name="2" x="0.775" y="-0.475" dx="0.4" dy="0.7" layer="1"/>
+<smd name="3" x="0.775" y="0.475" dx="0.4" dy="0.7" layer="1"/>
+<polygon width="0" layer="1">
+<vertex x="-0.975" y="-0.14"/>
+<vertex x="-0.975" y="-0.71"/>
+<vertex x="-0.845" y="-0.84"/>
+<vertex x="-0.475" y="-0.84"/>
+<vertex x="-0.475" y="-0.14"/>
+</polygon>
+<polygon width="0" layer="31">
+<vertex x="-0.975" y="-0.14"/>
+<vertex x="-0.975" y="-0.71"/>
+<vertex x="-0.845" y="-0.84"/>
+<vertex x="-0.475" y="-0.84"/>
+<vertex x="-0.475" y="-0.14"/>
+</polygon>
+<polygon width="0" layer="29">
+<vertex x="-1.005" y="-0.11"/>
+<vertex x="-1.005" y="-0.725"/>
+<vertex x="-0.86" y="-0.87"/>
+<vertex x="-0.445" y="-0.87"/>
+<vertex x="-0.445" y="-0.11"/>
+</polygon>
+<rectangle x1="-1" y1="-0.8" x2="1" y2="0.8" layer="39"/>
+<text x="-1.2" y="1.1" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+</package>
+<package name="SJ_2_0201T_AUTO">
+<wire x1="-0.254" y1="0.1524" x2="0.254" y2="0.1524" width="0.1016" layer="51"/>
+<wire x1="0.254" y1="-0.1524" x2="-0.254" y2="-0.1524" width="0.1016" layer="51"/>
+<smd name="1" x="-0.3" y="0" dx="0.3" dy="0.4" layer="1"/>
+<smd name="2" x="0.3" y="0" dx="0.3" dy="0.4" layer="1"/>
+<text x="-1.0668" y="0.5588" size="1.016" layer="25" font="vector" ratio="18">&gt;NAME</text>
+<rectangle x1="-0.3048" y1="-0.1524" x2="-0.1524" y2="0.1524" layer="51"/>
+<rectangle x1="0.1524" y1="-0.1524" x2="0.3048" y2="0.1524" layer="51"/>
+<rectangle x1="-0.25" y1="-0.15" x2="0.25" y2="0.15" layer="39"/>
+<smd name="3" x="0.9" y="0" dx="0.3" dy="0.4" layer="1"/>
 </package>
 </packages>
 <symbols>
@@ -2945,20 +3031,20 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <wire x1="20.32" y1="-17.78" x2="20.32" y2="25.4" width="0.4064" layer="94"/>
 <wire x1="20.32" y1="25.4" x2="-20.32" y2="25.4" width="0.4064" layer="94"/>
 <wire x1="-20.32" y1="25.4" x2="-20.32" y2="-17.78" width="0.4064" layer="94"/>
-<pin name="DIFFIO_RX_T16P/A7" x="25.4" y="20.32" length="middle" rot="R180"/>
-<pin name="DIFFIO_RX_T16N/DEV_CLRN/B6" x="25.4" y="17.78" length="middle" rot="R180"/>
-<pin name="DIFFIO_RX_T18P/DEV_OEA6" x="25.4" y="15.24" length="middle" rot="R180"/>
-<pin name="DIFFIO_RX_T18N/A5" x="25.4" y="12.7" length="middle" rot="R180"/>
+<pin name="DIFFIO_RX_T16P/A7" x="25.4" y="20.32" length="middle" swaplevel="1" rot="R180"/>
+<pin name="DIFFIO_RX_T16N/DEV_CLRN/B6" x="25.4" y="17.78" length="middle" swaplevel="1" rot="R180"/>
+<pin name="DIFFIO_RX_T18P/DEV_OE/A6" x="25.4" y="15.24" length="middle" swaplevel="1" rot="R180"/>
+<pin name="DIFFIO_RX_T18N/A5" x="25.4" y="12.7" length="middle" swaplevel="1" rot="R180"/>
 <pin name="CONFIG_SEL/C6" x="25.4" y="10.16" length="middle" rot="R180"/>
-<pin name="DIFFIO_RX_T19P/A4" x="25.4" y="7.62" length="middle" rot="R180"/>
+<pin name="DIFFIO_RX_T19P/A4" x="25.4" y="7.62" length="middle" swaplevel="1" rot="R180"/>
 <pin name="NCONFIG/D6" x="25.4" y="5.08" length="middle" direction="in" rot="R180"/>
-<pin name="DIFFIO_RX_T19N/B5" x="25.4" y="2.54" length="middle" rot="R180"/>
-<pin name="CRC_ERROR/C5" x="25.4" y="0" length="middle" rot="R180"/>
+<pin name="DIFFIO_RX_T19N/B5" x="25.4" y="2.54" length="middle" swaplevel="1" rot="R180"/>
+<pin name="CRC_ERROR/C5" x="25.4" y="0" length="middle" swaplevel="1" rot="R180"/>
 <pin name="A3" x="25.4" y="-2.54" length="middle" rot="R180"/>
 <pin name="DIFFIO_RX_T24P/NSTATUS/B3" x="25.4" y="-5.08" length="middle" rot="R180"/>
 <pin name="DIFFIO_RX_T24N/CONF_DONE/A2" x="25.4" y="-7.62" length="middle" rot="R180"/>
-<pin name="DIFFIO_RX_T26P/C4" x="25.4" y="-10.16" length="middle" rot="R180"/>
-<pin name="DIFFIO_RX_T26N/C3" x="25.4" y="-12.7" length="middle" rot="R180"/>
+<pin name="DIFFIO_RX_T26P/C4" x="25.4" y="-10.16" length="middle" swaplevel="1" rot="R180"/>
+<pin name="DIFFIO_RX_T26N/C3" x="25.4" y="-12.7" length="middle" swaplevel="1" rot="R180"/>
 <text x="-15.24" y="-2.54" size="1.778" layer="95" rot="R90">&gt;NAME</text>
 <text x="-12.7" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
 <text x="-17.78" y="-15.24" size="2.0828" layer="94" ratio="10" rot="SR0">Bank 8</text>
@@ -3383,7 +3469,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="TS4231" uservalue="yes">
+<deviceset name="TS4231" prefix="U" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="TS4231" x="0" y="2.54"/>
 </gates>
@@ -3469,6 +3555,15 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <connects>
 <connect gate="G$1" pin="A" pad="3"/>
 <connect gate="G$1" pin="C" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="0805PT-NOSILK" package="0805PT-NOSILK">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -4452,6 +4547,15 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_LTVH9G" package="LTVH9G">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="+1V8" prefix="P">
@@ -4549,7 +4653,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <connect gate="G$6" pin="DIFFIO_RX_T16N/DEV_CLRN/B6" pad="B6"/>
 <connect gate="G$6" pin="DIFFIO_RX_T16P/A7" pad="A7"/>
 <connect gate="G$6" pin="DIFFIO_RX_T18N/A5" pad="A5"/>
-<connect gate="G$6" pin="DIFFIO_RX_T18P/DEV_OEA6" pad="A6"/>
+<connect gate="G$6" pin="DIFFIO_RX_T18P/DEV_OE/A6" pad="A6"/>
 <connect gate="G$6" pin="DIFFIO_RX_T19N/B5" pad="B5"/>
 <connect gate="G$6" pin="DIFFIO_RX_T19P/A4" pad="A4"/>
 <connect gate="G$6" pin="DIFFIO_RX_T24N/CONF_DONE/A2" pad="A2"/>
@@ -5331,6 +5435,39 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="_SIT8008BCA7-18E" package="SIT8008BCA7-18E">
+<connects>
+<connect gate="G$1" pin="EN" pad="1"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="OUT" pad="3"/>
+<connect gate="G$1" pin="VCC" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_2X1.6" package="XTAL4-2X1.6">
+<connects>
+<connect gate="G$1" pin="EN" pad="1"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="OUT" pad="3"/>
+<connect gate="G$1" pin="VCC" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_VFLGA4-2X1.6" package="VFLGA4-2.0X1.6">
+<connects>
+<connect gate="G$1" pin="EN" pad="1"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="OUT" pad="3"/>
+<connect gate="G$1" pin="VCC" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="MUX_2X4:1" uservalue="yes">
@@ -5386,7 +5523,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="PINHD-1X5_HALF_CONNETOR">
+<deviceset name="PINHD-1X5_HALF_CONNECTOR" prefix="J" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="JONNEW_PINH1X6" x="0" y="0"/>
 </gates>
@@ -5651,6 +5788,16 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
 <connect gate="G$1" pin="COM" pad="COM"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_0201T-AUTO" package="SJ_2_0201T_AUTO">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="3"/>
+<connect gate="G$1" pin="COM" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -6022,7 +6169,7 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <part name="R22" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
 <part name="U$51" library="jonnew" deviceset="+3V3" device=""/>
 <part name="SUPPLY68" library="jonnew" deviceset="GND" device=""/>
-<part name="J9" library="jonnew" deviceset="PINHD-1X5_HALF_CONNETOR" device=""/>
+<part name="J9" library="jonnew" deviceset="PINHD-1X5_HALF_CONNECTOR" device="" value="DF40C-10DP-0.4V(51)"/>
 <part name="D8" library="jonnew" deviceset="PHOTODIODE" device="_0805PT" value="VEMD1160X01"/>
 <part name="SUPPLY69" library="jonnew" deviceset="GND" device=""/>
 <part name="TP3" library="jonnew" deviceset="TP" device="TP09R"/>
@@ -6095,6 +6242,8 @@ Source: http://www.osram.convergy.de/ ... lb_r99a.pdf</description>
 <attribute name="PARTNO" value="CL05A475MO5NUNC"/>
 </part>
 <part name="SUPPLY76" library="jonnew" deviceset="GND" device=""/>
+<part name="R9" library="jonnew" deviceset="R" device="_0201T" value="10k"/>
+<part name="SUPPLY77" library="jonnew" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6176,6 +6325,8 @@ regulators.</text>
 - nano-z adapter rev. 1.1
 - test-board-64 rev. 1.2
 - headstage programmer rev. XX</text>
+<text x="27.94" y="492.76" size="1.778" layer="97" rot="MR0">NB: Needed on
+POR to get LOCK</text>
 </plain>
 <instances>
 <instance part="U6" gate="G$1" x="325.12" y="218.44" smashed="yes">
@@ -6870,8 +7021,8 @@ regulators.</text>
 <attribute name="REVISION" x="632.46" y="11.43" size="2.54" layer="94" font="vector"/>
 <attribute name="DESIGNER" x="554.99" y="30.48" size="2.54" layer="94" font="vector"/>
 </instance>
-<instance part="TP4" gate="G$1" x="55.88" y="508" smashed="yes">
-<attribute name="NAME" x="55.88" y="509.27" size="1.778" layer="95" rot="R90" align="center-left"/>
+<instance part="TP4" gate="G$1" x="55.88" y="505.46" smashed="yes" rot="R90">
+<attribute name="NAME" x="54.61" y="505.46" size="1.778" layer="95" rot="R180" align="center-left"/>
 </instance>
 <instance part="SUPPLY59" gate="G$1" x="401.32" y="508" smashed="yes">
 <attribute name="VALUE" x="398.653" y="504.825" size="1.778" layer="96"/>
@@ -7055,18 +7206,17 @@ regulators.</text>
 <attribute name="VALUE" x="367.665" y="597.281" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="J9" gate="G$1" x="314.96" y="391.16" smashed="yes" rot="MR270">
-<attribute name="NAME" x="306.705" y="394.97" size="1.778" layer="95" rot="MR270"/>
-<attribute name="VALUE" x="327.66" y="394.97" size="1.778" layer="96" rot="MR270"/>
+<attribute name="NAME" x="316.23" y="382.905" size="1.778" layer="95" rot="MR180"/>
 </instance>
 <instance part="D8" gate="G$1" x="289.56" y="33.02" smashed="yes" rot="R90">
 <attribute name="NAME" x="282.448" y="39.37" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="285.75" y="26.67" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="SUPPLY69" gate="PE" x="48.26" y="500.38" smashed="yes">
-<attribute name="VALUE" x="43.815" y="495.681" size="1.778" layer="96"/>
+<instance part="SUPPLY69" gate="PE" x="45.72" y="497.84" smashed="yes">
+<attribute name="VALUE" x="41.275" y="493.141" size="1.778" layer="96"/>
 </instance>
-<instance part="TP3" gate="G$1" x="48.26" y="508" smashed="yes">
-<attribute name="NAME" x="48.26" y="509.27" size="1.778" layer="95" rot="R90" align="center-left"/>
+<instance part="TP3" gate="G$1" x="45.72" y="505.46" smashed="yes">
+<attribute name="NAME" x="44.45" y="505.46" size="1.778" layer="95" rot="R180" align="center-left"/>
 </instance>
 <instance part="SUPPLY32" gate="PE" x="78.74" y="683.26" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="83.185" y="678.561" size="1.778" layer="96" rot="MR0"/>
@@ -7261,6 +7411,13 @@ regulators.</text>
 </instance>
 <instance part="SUPPLY76" gate="PE" x="193.04" y="683.26" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="197.485" y="678.561" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="R9" gate="R" x="30.48" y="495.3" smashed="yes" rot="R270">
+<attribute name="NAME" x="31.9786" y="499.11" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="27.178" y="499.11" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="SUPPLY77" gate="PE" x="30.48" y="480.06" smashed="yes">
+<attribute name="VALUE" x="26.035" y="475.361" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -7759,7 +7916,7 @@ regulators.</text>
 <segment>
 <pinref part="TP3" gate="G$1" pin="TP"/>
 <pinref part="SUPPLY69" gate="PE" pin="GND"/>
-<wire x1="48.26" y1="505.46" x2="48.26" y2="502.92" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="502.92" x2="45.72" y2="500.38" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="78.74" y1="698.5" x2="78.74" y2="685.8" width="0.1524" layer="91"/>
@@ -7837,6 +7994,11 @@ regulators.</text>
 <pinref part="C77" gate="C" pin="2"/>
 <pinref part="SUPPLY76" gate="PE" pin="GND"/>
 <wire x1="193.04" y1="695.96" x2="193.04" y2="685.8" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY77" gate="PE" pin="GND"/>
+<pinref part="R9" gate="R" pin="2"/>
+<wire x1="30.48" y1="482.6" x2="30.48" y2="490.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DATA1" class="0">
@@ -9423,7 +9585,7 @@ regulators.</text>
 <label x="474.98" y="342.9" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U14" gate="G$6" pin="DIFFIO_RX_T18P/DEV_OEA6"/>
+<pinref part="U14" gate="G$6" pin="DIFFIO_RX_T18P/DEV_OE/A6"/>
 <wire x1="101.6" y1="185.42" x2="149.86" y2="185.42" width="0.1524" layer="91"/>
 <label x="149.86" y="185.42" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -10198,8 +10360,12 @@ regulators.</text>
 </segment>
 <segment>
 <pinref part="U9" gate="G$1" pin="GPIO2/CLKOUT"/>
-<wire x1="78.74" y1="510.54" x2="71.12" y2="510.54" width="0.1524" layer="91"/>
-<label x="71.12" y="510.54" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="78.74" y1="510.54" x2="30.48" y2="510.54" width="0.1524" layer="91"/>
+<label x="25.4" y="510.54" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="R9" gate="R" pin="1"/>
+<wire x1="30.48" y1="510.54" x2="25.4" y2="510.54" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="500.38" x2="30.48" y2="510.54" width="0.1524" layer="91"/>
+<junction x="30.48" y="510.54"/>
 </segment>
 </net>
 <net name="LED_MOSI/TCK" class="0">
@@ -10260,7 +10426,7 @@ regulators.</text>
 <segment>
 <pinref part="U9" gate="G$1" pin="GPIO0"/>
 <pinref part="TP4" gate="G$1" pin="TP"/>
-<wire x1="78.74" y1="505.46" x2="55.88" y2="505.46" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="505.46" x2="58.42" y2="505.46" width="0.1524" layer="91"/>
 <label x="71.12" y="505.46" size="1.27" layer="95"/>
 </segment>
 <segment>
@@ -10912,7 +11078,6 @@ regulators.</text>
 <approved hash="104,1,330.2,711.2,U2,VLOGIC,+3V3,,,"/>
 <approved hash="104,1,408.94,723.9,U1P,V+,+15V0,,,"/>
 <approved hash="104,1,408.94,708.66,U1P,V-,-15V0,,,"/>
-<approved hash="104,1,307.34,259.08,U10,GNDIO,N$25,,,"/>
 <approved hash="104,1,307.34,309.88,U10,VDD,+3V3,,,"/>
 <approved hash="104,1,307.34,302.26,U10,VDDIO,+3V3,,,"/>
 <approved hash="202,1,347.98,271.78,U10,XIN32,,,,"/>
@@ -10936,11 +11101,9 @@ regulators.</text>
 <approved hash="113,1,183.422,393.7,TP12,,,,,"/>
 <approved hash="113,1,183.422,396.24,TP11,,,,,"/>
 <approved hash="113,1,183.422,398.78,TP10,,,,,"/>
-<approved hash="113,1,55.88,507.836,TP4,,,,,"/>
 <approved hash="113,1,289.724,50.8,TP7,,,,,"/>
 <approved hash="113,1,289.724,45.72,TP8,,,,,"/>
 <approved hash="113,1,182.716,401.32,TP9,,,,,"/>
-<approved hash="113,1,48.26,507.836,TP3,,,,,"/>
 <approved hash="113,1,71.9074,705.076,J1,,,,,"/>
 <approved hash="113,1,337.82,371.2,SJ1,,,,,"/>
 </errors>

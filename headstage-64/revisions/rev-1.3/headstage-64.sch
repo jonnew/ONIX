@@ -6537,7 +6537,7 @@ Source: amp_227161.pdf</description>
 <part name="R46" library="jonnew" deviceset="R" device="_0201T" value="90.9k"/>
 <part name="C57" library="jonnew" deviceset="C" device="_0201T" value="10pF"/>
 <part name="SUPPLY26" library="jonnew" deviceset="GND" device=""/>
-<part name="C39" library="jonnew" deviceset="C" device="_0402T" value="1uF">
+<part name="C39" library="jonnew" deviceset="C" device="_0402T" value="10uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
 <part name="SUPPLY27" library="jonnew" deviceset="GND" device=""/>
@@ -6683,10 +6683,10 @@ Source: amp_227161.pdf</description>
 <part name="C72" library="jonnew" deviceset="C" device="_0402T" value="1uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
-<part name="C55" library="jonnew" deviceset="C" device="_0402T" value="1uF">
+<part name="C55" library="jonnew" deviceset="C" device="_0402T" value="10uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
-<part name="C41" library="jonnew" deviceset="C" device="_0402T" value="1uF">
+<part name="C41" library="jonnew" deviceset="C" device="_0402T" value="10uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
 <part name="C63" library="jonnew" deviceset="C" device="_0402T" value="1uF">
@@ -6769,7 +6769,7 @@ Source: amp_227161.pdf</description>
 <part name="C30" library="jonnew" deviceset="C" device="_0201T" value="0.1uF"/>
 <part name="SUPPLY66" library="jonnew" deviceset="AGND" device=""/>
 <part name="U13" library="jonnew" deviceset="TLV707" device="" value="TLV70733"/>
-<part name="C37" library="jonnew" deviceset="C" device="_0402T" value="1uF">
+<part name="C37" library="jonnew" deviceset="C" device="_0402T" value="10uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
 <part name="C38" library="jonnew" deviceset="C" device="_0402T" value="10uF">
@@ -6782,7 +6782,7 @@ Source: amp_227161.pdf</description>
 <part name="R52" library="jonnew" deviceset="R" device="_0201T" value="4.7k"/>
 <part name="R44" library="jonnew" deviceset="R" device="_0201T" value="4.7k"/>
 <part name="U18" library="jonnew" deviceset="TPS6262X" device="" value="TPS62621"/>
-<part name="C69" library="jonnew" deviceset="C" device="_0402T" value="2.2uF">
+<part name="C69" library="jonnew" deviceset="C" device="_0402T" value="10uF">
 <attribute name="PARTNO" value="CL05A105KO5NNNC"/>
 </part>
 <part name="C70" library="jonnew" deviceset="C" device="_0402T" value="4.7uF">
