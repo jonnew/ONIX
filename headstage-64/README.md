@@ -1,3 +1,6 @@
+:warning: This project has moved to a dedicated repository: https://github.com/open-ephys/onix-headstage-64
+This folder should be considered archived.
+
 # headstage-64
 Serialized, multifunction headstage for small rodents. Designed to function
 with [eib-64](../eib-64/README.md).
