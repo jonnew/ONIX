@@ -1,3 +1,5 @@
+# NOTE: This repository has been split into individual `onix-<project>` repos that are hosted on the [open-ephys github account](https://github.com/open-ephys). This repo has been archived.
+
 [ONIX](https://open-ephys.github.io/onix-docs/index.html) is a collection
 of [ONI](https://github.com/jonnew/ONI)-compatible hardware and API
 for serialized, very-high channel count, closed-loop electrophysiology. It is
